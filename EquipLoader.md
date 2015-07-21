@@ -1,4 +1,4 @@
-# EquipLoader.cs
+# EquipLoader
 
 This serves as a central place to store equipment slots and their corresponding textures. You will use this to obtain the IDs for your equipment textures.
 
