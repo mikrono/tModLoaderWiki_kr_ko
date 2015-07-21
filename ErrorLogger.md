@@ -1,5 +1,7 @@
 # Error Logger
 
+This class consists of functions that write error messages to text files for you to read. It also lets you write logs to text files.
+
 ## Fields
 
 ### public static readonly string LogPath
