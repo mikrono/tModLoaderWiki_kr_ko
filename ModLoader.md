@@ -1,4 +1,4 @@
-# ModLoader.cs
+# ModLoader
 
 This serves as the central class which loads mods. It contains many static fields and methods related to mods and their contents.
 
