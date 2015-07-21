@@ -1,5 +1,7 @@
 # Mod
 
+Mod is an abstract class that you will override. It serves as a central place from which the mod's contents are stored. It provides methods for you to use or override.
+
 ## Properties
 
 ### public string Name
