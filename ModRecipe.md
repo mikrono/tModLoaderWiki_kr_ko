@@ -46,6 +46,10 @@ Sets the result of this recipe with the given vanilla item name and stack size.
 
 Sets the result of this recipe with the given item name from the given mod, and with the given stack stack. If the mod parameter is null, then it will automatically use an item from the mod creating this recipe.
 
+### public void SetResult(ModItem item, int stack = 1)
+
+Sets the result of this recipe to the given type of item and stack size. Useful in ModItem.AddRecipes.
+
 ### public void AddIngredient(int itemID, int stack = 1)
 
 Adds an ingredient to this recipe with the given item type and stack size.
@@ -57,6 +61,10 @@ Adds an ingredient to this recipe with the given vanilla item name and stack siz
 ### public void AddIngredient(Mod mod, string itemName, int stack = 1)
 
 Adds an ingredient to this recipe with the given item name from the given mod, and with the given stack stack. If the mod parameter is null, then it will automatically use an item from the mod creating this recipe.
+
+### public void AddIngredient(ModItem item, int stack = 1)
+
+Adds an ingredient to this recipe of the given type of item and stack size.
 
 ### public void AddTile(int tileID)
 
