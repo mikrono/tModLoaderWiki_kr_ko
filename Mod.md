@@ -8,19 +8,15 @@ Mod is an abstract class that you will override. It serves as a central place fr
 
 Stores the name of the mod. This name serves as the mod's identification, and also helps with saving everything your mod adds.
 
-### public string Version
+### public ModProperties Properties
 
-Currently has no use.
-
-### public string Author
-
-Currently has no use.
+Stores the properties of the mod.
 
 ## Methods
 
-### public abstract void SetModInfo(out string name, ref string version, ref string author)
+### public abstract void SetModInfo(out string name, ref ModProperties properties)
 
-Override this method in order to give your mod a name, version, and author.
+Override this method in order to give your mod a name and set its properties.
 
 ### public abstract void Load()
 
@@ -50,6 +46,6 @@ Sets the GlobalItem instance for this mod.
 
 Gets the GlobalItem instance for this mod.
 
-### public void AddEquipTexture(EquipType type, string texture, string armTexture = "", string femaleTexture = "")
+### public int AddEquipTexture(EquipType type, string texture, string armTexture = "", string femaleTexture = "")
 
-Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture.
+Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
