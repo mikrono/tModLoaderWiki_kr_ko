@@ -20,6 +20,13 @@ Creates a new ModItem instance. You should only use this to add items to your mo
 
 ## Methods
 
+### public virtual bool Autoload(ref string name, ref string texture, ref EquipType? equip)
+
+Allows you to automatically load an item instead of using Mod.AddItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and equip is initialized to null. Use this method to either force or stop an autoload, change the default display name and texture path, and to allow for autoloading equipment textures.
+
+### public virtual void AutoloadEquip(ref string texture, ref string armTexture, ref string femaleTexture)
+This method is called when Autoload sets an equipment type. This allows you to specify equipment texture paths that differ from the defaults. Texture will be initialized to the item texture followed by an underscore and the EquipType, armTexture will be initialized to the item texture followed by "_Arms", and femaleTexture will be initialized to the item texture followed by "_FemaleBody".
+
 ### public virtual DrawAnimation GetAnimation()
 
 Override this method to create an animation for your item. In general you will return a new Terraria.DataStructures.DrawAnimationVertical(int frameDuration, int frameCount).
