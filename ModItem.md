@@ -158,3 +158,7 @@ Allows you to draw things behind this item, or to modify the way this item is dr
 ### public virtual void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale)
 
 Allows you to draw things in front of this item. This method is called even if PreDrawInWorld returns false.
+
+### public virtual void AddRecipes()
+
+This is essentially the same as Mod.AddRecipes. Do note that this will be called for every instance of the overriding ModItem class that is added to the game. This allows you to avoid clutter in your overriding Mod class by adding recipes for which this item is the result.
