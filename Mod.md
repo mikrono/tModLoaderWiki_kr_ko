@@ -49,3 +49,7 @@ Gets the GlobalItem instance for this mod.
 ### public int AddEquipTexture(EquipType type, string texture, string armTexture = "", string femaleTexture = "")
 
 Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
+
+### public void AddDust(string name, ModDust dust, string texture = "")
+
+Adds a type of dust to your mod with the specified name. Create an instance of ModDust normally, preferably through the constructor of an overriding class. Leave the texture as an empty string to use the vanilla dust sprite sheet.
