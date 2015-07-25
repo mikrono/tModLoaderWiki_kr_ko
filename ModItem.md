@@ -159,6 +159,10 @@ Allows you to draw things behind this item, or to modify the way this item is dr
 
 Allows you to draw things in front of this item. This method is called even if PreDrawInWorld returns false.
 
+### public virtual bool CanEquipAccessory(Player player, int slot)
+
+Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
+
 ### public virtual void AddRecipes()
 
 This is essentially the same as Mod.AddRecipes. Do note that this will be called for every instance of the overriding ModItem class that is added to the game. This allows you to avoid clutter in your overriding Mod class by adding recipes for which this item is the result.
