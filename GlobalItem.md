@@ -137,3 +137,7 @@ Allows you to draw things behind an item, or to modify the way an item is drawn 
 ### public virtual void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale)
 
 Allows you to draw things in front of an item. This method is called even if PreDrawInWorld returns false.
+
+### public virtual bool CanEquipAccessory(Item item, Player player, int slot)
+
+Allows you to disallow the player from equipping an accessory. Return false to disallow equipping the accessory. Returns true by default.
