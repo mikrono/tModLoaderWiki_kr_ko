@@ -53,3 +53,11 @@ Adds an equipment texture of the specified type to your mod. You can then get th
 ### public void AddDust(string name, ModDust dust, string texture = "")
 
 Adds a type of dust to your mod with the specified name. Create an instance of ModDust normally, preferably through the constructor of an overriding class. Leave the texture as an empty string to use the vanilla dust sprite sheet.
+
+### public void SetGlobalNPC(GlobalNPC globalNPC)
+
+Sets the GlobalNPC instance for this mod.
+
+### public GlobalNPC GetGlobalNPC()
+
+Gets the GlobalNPC instance for this mod.
