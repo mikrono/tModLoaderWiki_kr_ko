@@ -20,6 +20,14 @@ Creates a new ModItem instance. You should only use this to add items to your mo
 
 ## Methods
 
+### public void AddTooltip(string tooltip)
+
+Adds a line of text to this item's first group of tooltips.
+
+### public void AddTooltip2(string tooltip)
+
+Adds a line of text to this item's second group of tooltips.
+
 ### public virtual bool Autoload(ref string name, ref string texture, ref EquipType? equip)
 
 Allows you to automatically load an item instead of using Mod.AddItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and equip is initialized to null. Use this method to either force or stop an autoload, change the default display name and texture path, and to allow for autoloading equipment textures.
@@ -162,6 +170,14 @@ Allows you to draw things in front of this item. This method is called even if P
 ### public virtual bool CanEquipAccessory(Player player, int slot)
 
 Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
+
+### public virtual void SaveCustomData(BinaryWriter writer)
+
+Allows you to save custom data for this item.
+
+### public virtual void LoadCustomData(BinaryReader reader)
+
+Allows you to load custom data that you have saved for this item.
 
 ### public virtual void AddRecipes()
 
