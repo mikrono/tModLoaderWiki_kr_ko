@@ -173,7 +173,7 @@ Allows you to disallow the player from equipping this accessory. Return false to
 
 ### public virtual void SaveCustomData(BinaryWriter writer)
 
-Allows you to save custom data for this item.
+Allows you to save custom data for this item. You are only able to save up to 64 KB of information per item (I don't imagine anyone will ever need more than that).
 
 ### public virtual void LoadCustomData(BinaryReader reader)
 
