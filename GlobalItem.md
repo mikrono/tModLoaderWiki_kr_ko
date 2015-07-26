@@ -10,6 +10,14 @@ The mod to which this GlobalItem belongs.
 
 ## Methods
 
+### public void AddTooltip(Item item, string tooltip)
+
+Adds a line of text to an item's first group of tooltips.
+
+### public void AddTooltip2(Item item, string tooltip)
+
+Adds a line of text to an item's second group of tooltips.
+
 ### public virtual void SetDefaults(Item item)
 
 Allows you to set the properties of any and every item that gets created.
