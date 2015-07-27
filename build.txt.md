@@ -7,8 +7,12 @@ White space anywhere does not matter. However, each property must be on its own 
 
 Here is a list of properties:
 
-displayName - The name your mod will display in on the mods menu   
-author - The author, which will be displayed on the mods menu   
-version - The version, which will be displayed on the mods menu   
-dllReferences - A list of dll references your mod has. You must place the dll files in the Mod Sources folder to build, and in the Mods folder to load. Name them by their file name without the extension.   
+displayName - The name your mod will display in on the mods menu
+
+author - The author, which will be displayed on the mods menu
+
+version - The version, which will be displayed on the mods menu
+
+dllReferences - A list of dll references your mod has. You must place the dll files in the Mod Sources folder to build, and in the Mods folder to load. Name them by their file name without the extension.
+
 modReferences - A list of mods that your mod depends on. Name them by their file name without the extension.
