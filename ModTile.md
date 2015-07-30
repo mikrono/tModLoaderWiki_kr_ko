@@ -73,3 +73,7 @@ Allows you to customize which items the tile at the given coordinates drops. Ret
 ### public virtual void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
+
+### public virtual void KillMultiTile(int i, int j, int frameX, int frameY)
+
+This hook is called exactly once whenever a block encompassing multiple tiles is destroyed. You can use it to make your multi-tile block drop a single item, for example.
