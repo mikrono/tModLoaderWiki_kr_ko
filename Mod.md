@@ -28,7 +28,7 @@ Override this method to add recipes to the game. It is recommended that you do s
 
 ### public void AddItem(string name, ModItem item, string texture)
 
-Adds a type of item to your mod with the specified name. This method should be called in Load. You can obtain an instance of ModItem by overriding For those of you familiar with tAPI, keep in mind that the internal name and display name are the same thing in tModLoader. The texture parameter follows the same format for texture names of ModLoader.GetTexture.
+Adds a type of item to your mod with the specified internal name. This method should be called in Load. You can obtain an instance of ModItem by overriding it then creating an instance of the subclass. The texture parameter follows the same format for texture names of ModLoader.GetTexture.
 
 ### public ModItem GetItem(string name)
 
@@ -53,6 +53,26 @@ Adds an equipment texture of the specified type to your mod. You can then get th
 ### public void AddDust(string name, ModDust dust, string texture = "")
 
 Adds a type of dust to your mod with the specified name. Create an instance of ModDust normally, preferably through the constructor of an overriding class. Leave the texture as an empty string to use the vanilla dust sprite sheet.
+
+### public void AddTile(string name, ModTile tile, string texture)
+
+Adds a type of tile to the game with the specified name and texture.
+
+### public ModTile GetTile(string name)
+
+Gets the ModTile of this mod corresponding to the given name. Returns null if no ModTile with the given name is found.
+
+### public int TileType(string name)
+
+Gets the type of the ModTile of this mod with the given name. Returns 0 if no ModTile with the given name is found.
+
+### public void SetGlobalTile(GlobalTile globalTile)
+
+Sets the GlobalTile instance for this mod.
+
+### public GlobalTile GetGlobalTile()
+
+Gets the GlobalTile instance for this mod.
 
 ### public void SetGlobalNPC(GlobalNPC globalNPC)
 
