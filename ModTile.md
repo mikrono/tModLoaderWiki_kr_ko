@@ -16,6 +16,30 @@ The name of this type of tile.
 
 The internal ID of this type of tile.
 
+## Fields
+
+These fields can be set from the SetDefaults method.
+
+### public int soundType
+
+The default type of sound made when this tile is hit. Defaults to 0.
+
+### public int soundStyle
+
+The default style of sound made when this tile is hit. Defaults to 1.
+
+### public int numDust
+
+The default number of dust particles made when this tile is hit. Defaults to 10.
+
+### public int dustType
+
+The default type of dust made when this tile is hit. Defaults to 0.
+
+### public int drop
+
+The default type of item dropped when this tile is killed. Defaults to 0, which means no item.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
@@ -29,3 +53,27 @@ Allows you to modify the name and texture path of this tile when it is autoloade
 ### public virtual void SetDefaults()
 
 Allows you to set the properties of this tile. Many properties are stored as arrays throughout Terraria's code.
+
+### public virtual bool KillSound(int i, int j)
+
+Allows you to customize which sound you want to play when the tile at the given coordinates is hit. Return true to stop the game from playing its default sound for the tile. Returns false by default.
+
+### public virtual void NumDust(int i, int j, ref int num)
+
+Allows you to change how many dust particles are created when the tile at the given coordinates is hit.
+
+### public virtual bool CreateDust(int i, int j, ref int type)
+
+Allows you to modify the default type of dust created when the tile at the given coordinates is hit. Return true to stop the default dust from being created. Returns false by default.
+
+### public virtual void DropCritterChance(int i, int j, ref int wormChance, ref int grassHopperChance, ref int jungleGrubChance)
+
+Allows you to modify the chance the tile at the given coordinates has of spawning a certain critter when the tile is killed.
+
+### public virtual bool Drop(int i, int j)
+
+Allows you to customize which items the tile at the given coordinates drops. Return true to stop the game from dropping the tile's default item. Returns false by default.
+
+### public virtual void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
+
+Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
