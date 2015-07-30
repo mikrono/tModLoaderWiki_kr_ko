@@ -28,10 +28,6 @@ The default type of sound made when this tile is hit. Defaults to 0.
 
 The default style of sound made when this tile is hit. Defaults to 1.
 
-### public int numDust
-
-The default number of dust particles made when this tile is hit. Defaults to 10.
-
 ### public int dustType
 
 The default type of dust made when this tile is hit. Defaults to 0.
@@ -56,15 +52,15 @@ Allows you to set the properties of this tile. Many properties are stored as arr
 
 ### public virtual bool KillSound(int i, int j)
 
-Allows you to customize which sound you want to play when the tile at the given coordinates is hit. Return true to stop the game from playing its default sound for the tile. Returns false by default.
+Allows you to customize which sound you want to play when the tile at the given coordinates is hit. Return false to stop the game from playing its default sound for the tile. Returns true by default.
 
-### public virtual void NumDust(int i, int j, ref int num)
+### public virtual void NumDust(int i, int j, bool fail, ref int num)
 
 Allows you to change how many dust particles are created when the tile at the given coordinates is hit.
 
 ### public virtual bool CreateDust(int i, int j, ref int type)
 
-Allows you to modify the default type of dust created when the tile at the given coordinates is hit. Return true to stop the default dust from being created. Returns false by default.
+Allows you to modify the default type of dust created when the tile at the given coordinates is hit. Return false to stop the default dust (the type parameter) from being created. Returns true by default.
 
 ### public virtual void DropCritterChance(int i, int j, ref int wormChance, ref int grassHopperChance, ref int jungleGrubChance)
 
@@ -72,7 +68,7 @@ Allows you to modify the chance the tile at the given coordinates has of spawnin
 
 ### public virtual bool Drop(int i, int j)
 
-Allows you to customize which items the tile at the given coordinates drops. Return true to stop the game from dropping the tile's default item. Returns false by default.
+Allows you to customize which items the tile at the given coordinates drops. Return false to stop the game from dropping the tile's default item. Returns true by default.
 
 ### public virtual void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 
