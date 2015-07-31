@@ -50,10 +50,10 @@ Allows you to determine how much light the block emits. Make sure you set Main.t
 
 Allows you to determine whether or not a tile will draw itself flipped in the world.
 
-### public virtual bool PreDraw(int i, int j, int type)
+### public virtual bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
 Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
 
-### public virtual void PostDraw(int i, int j, int type)
+### public virtual void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
 Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
