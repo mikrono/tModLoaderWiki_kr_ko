@@ -41,3 +41,19 @@ Allows you to customize which items the tile at the given coordinates drops. Ret
 ### public virtual void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
+
+### public virtual void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
+
+Allows you to determine how much light the block emits. Make sure you set Main.tileLighted[type] to true in SetDefaults for this to work.
+
+### public virtual void SetSpriteEffects(int i, int j, int type, ref SpriteEffects spriteEffects)
+
+Allows you to determine whether or not a tile will draw itself flipped in the world.
+
+### public virtual bool PreDraw(int i, int j, int type)
+
+Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
+
+### public virtual void PostDraw(int i, int j, int type)
+
+Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
