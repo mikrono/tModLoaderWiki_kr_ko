@@ -94,10 +94,10 @@ Allows you to determine whether or not the tile will draw itself flipped in the 
 
 Allows you to animate your tile. Use frameCounter to keep track of how long the current frame has been active, and use frame to change the current frame.
 
-### public virtual bool PreDraw(int i, int j)
+### public virtual bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 
 Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
 
-### public virtual void PostDraw(int i, int j)
+### public virtual void PostDraw(int i, int j, SpriteBatch spriteBatch)
 
 Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
