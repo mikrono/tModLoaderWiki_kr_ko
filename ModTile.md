@@ -112,8 +112,8 @@ Allows you to draw things in front of the tile at the given coordinates. This ca
 
 ### public virtual Color? MapColor(int i, int j)
 
-Allows you to customize this tile's map color based on the state of the tile at the given coordinates. See the mapColor field for more information.
+Allows you to customize this tile's map color based on the state of the tile at the given coordinates. See the mapColor field for more information. Returns the mapColor field by default.
 
 ### public virtual string MapName(int frameX, int frameY)
 
-Allows you to customize this tile's display name based on its subtype as given by its display frames. See the mapName field for more information.
+Allows you to customize this tile's display name based on its subtype as given by its display frames. See the mapName field for more information. Returns the mapName field by default.
