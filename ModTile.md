@@ -36,6 +36,10 @@ The default type of dust made when this tile is hit. Defaults to 0.
 
 The default type of item dropped when this tile is killed. Defaults to 0, which means no item.
 
+### public int animationFrameHeight
+
+The height of a group of animation frames for this tile. Defaults to 0, which disables animations.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
@@ -77,3 +81,23 @@ Allows you to determine what happens when the tile at the given coordinates is k
 ### public virtual void KillMultiTile(int i, int j, int frameX, int frameY)
 
 This hook is called exactly once whenever a block encompassing multiple tiles is destroyed. You can use it to make your multi-tile block drop a single item, for example.
+
+### public virtual void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+
+Allows you to determine how much light this block emits. Make sure you set Main.tileLighted[Type] to true in SetDefaults for this to work.
+
+### public virtual void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
+
+Allows you to determine whether or not the tile will draw itself flipped in the world.
+
+### public virtual void AnimateTile(ref int frame, ref int frameCounter)
+
+Allows you to animate your tile. Use frameCounter to keep track of how long the current frame has been active, and use frame to change the current frame.
+
+### public virtual bool PreDraw(int i, int j)
+
+Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
+
+### public virtual void PostDraw(int i, int j)
+
+Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
