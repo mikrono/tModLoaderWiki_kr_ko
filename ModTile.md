@@ -40,6 +40,14 @@ The default type of item dropped when this tile is killed. Defaults to 0, which 
 
 The height of a group of animation frames for this tile. Defaults to 0, which disables animations.
 
+### public Color? mapColor
+
+The color this tile will display in on the map by default. Set to null to use the background color on the map. This field defaults to null.
+
+### public string mapName
+
+The display name of this tile for maps, crafting recipes, etc. Leave as an empty string to display no name (most terrain blocks do this). Defaults to the empty string.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
@@ -101,3 +109,11 @@ Allows you to draw things behind the tile at the given coordinates. Return false
 ### public virtual void PostDraw(int i, int j, SpriteBatch spriteBatch)
 
 Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
+
+### public virtual Color? MapColor(int i, int j)
+
+Allows you to customize this tile's map color based on the state of the tile at the given coordinates. See the mapColor field for more information.
+
+### public virtual string MapName(int frameX, int frameY)
+
+Allows you to customize this tile's display name based on its subtype as given by its display frames. See the mapName field for more information.
