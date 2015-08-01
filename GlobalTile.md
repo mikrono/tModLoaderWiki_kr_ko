@@ -57,3 +57,11 @@ Allows you to draw things behind the tile at the given coordinates. Return false
 ### public virtual void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
 Allows you to draw things in front of the tile at the given coordinates. This can also be used to do things such as creating dust.
+
+### public virtual void RandomUpdate(int i, int j, int type)
+
+Called for every tile the world randomly decides to update in a given tick. Useful for things such as growing or spreading.
+
+### public virtual bool TileFrame(int i, int j, int type, ref bool resetFrame, ref bool noBreak)
+
+Called for every tile that updates due to being placed or being next to a tile that is changed. Return false to stop the game from carrying out its default TileFrame operations. Returns true by default.
