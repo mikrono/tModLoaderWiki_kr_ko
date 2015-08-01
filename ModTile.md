@@ -117,3 +117,11 @@ Allows you to customize this tile's map color based on the state of the tile at 
 ### public virtual string MapName(int frameX, int frameY)
 
 Allows you to customize this tile's display name based on its subtype as given by its display frames. See the mapName field for more information. Returns the mapName field by default.
+
+### public virtual void RandomUpdate(int i, int j)
+
+Called whenever the world randomly decides to update this tile in a given tick. Useful for things such as growing or spreading.
+
+### public virtual bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
+
+Called whenever this tile updates due to being placed or being next to a tile that is changed. Return false to stop the game from carrying out its default TileFrame operations. Returns true by default.
