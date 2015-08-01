@@ -48,6 +48,14 @@ The color this tile will display in on the map by default. Set to null to use th
 
 The display name of this tile for maps, crafting recipes, etc. Leave as an empty string to display no name (most terrain blocks do this). Defaults to the empty string.
 
+### public float mineResist
+
+A multiplier describing how much this block resists harvesting. Higher values will make it take longer to harvest. Defaults to 1f.
+
+### public int minPick
+
+The minimum pickaxe power required for pickaxes to mine this block. Defaults to 0.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
