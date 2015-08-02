@@ -70,6 +70,14 @@ Adds an ingredient to this recipe of the given type of item and stack size.
 
 Adds a required crafting station with the given tile type to this recipe.
 
+### public void AddTile(Mod mod, string tileName)
+
+Adds a required crafting station to this recipe with the given tile name from the given mod. If the mod parameter is null, then it will automatically use a tile from the mod creating this recipe.
+
+### public void AddTile(ModTile tile)
+
+Adds a required crafting station to this recipe of the given type of tile.
+
 ### public void AddRecipe()
 
 Adds this recipe to the game. Call this after you have finished setting the result, ingredients, etc.
