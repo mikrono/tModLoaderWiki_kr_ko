@@ -141,3 +141,11 @@ Called whenever this tile updates due to being placed or being next to a tile th
 ### public virtual bool CanPlace(int i, int j)
 
 Allows you to stop this tile from being placed at the given coordinates. Return false to block the tile from being placed. Returns true by default.
+
+### public virtual void RightClick(int i, int j)
+
+Allows you to make something happen when this tile is right-clicked by the player.
+
+### public virtual void HitWire(int i, int j, int type)
+
+Allows you to make something happen when a wire current passes through this tile.
