@@ -56,6 +56,10 @@ A multiplier describing how much this block resists harvesting. Higher values wi
 
 The minimum pickaxe power required for pickaxes to mine this block. Defaults to 0.
 
+### public int[] adjTiles
+
+An array of the IDs of tiles that this tile can be considered as when looking for crafting stations.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
@@ -133,3 +137,7 @@ Called whenever the world randomly decides to update this tile in a given tick. 
 ### public virtual bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)
 
 Called whenever this tile updates due to being placed or being next to a tile that is changed. Return false to stop the game from carrying out its default TileFrame operations. Returns true by default.
+
+### public virtual bool CanPlace(int i, int j)
+
+Allows you to stop this tile from being placed at the given coordinates. Return false to block the tile from being placed. Returns true by default.
