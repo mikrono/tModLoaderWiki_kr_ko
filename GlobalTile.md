@@ -73,3 +73,11 @@ Allows you to stop a tile from being placed at the given coordinates. Return fal
 ### public virtual int[] AdjTiles(int type)
 
 Allows you to determine which tiles the given tile type can be considered as when looking for crafting stations.
+
+### public virtual void RightClick(int i, int j, int type)
+
+Allows you to make something happen when any tile is right-clicked by the player.
+
+### public virtual void HitWire(int i, int j, int type)
+
+Allows you to make something happen when a wire current passes through any tile.
