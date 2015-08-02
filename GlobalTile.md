@@ -65,3 +65,11 @@ Called for every tile the world randomly decides to update in a given tick. Usef
 ### public virtual bool TileFrame(int i, int j, int type, ref bool resetFrame, ref bool noBreak)
 
 Called for every tile that updates due to being placed or being next to a tile that is changed. Return false to stop the game from carrying out its default TileFrame operations. Returns true by default.
+
+### public virtual bool CanPlace(int i, int j, int type)
+
+Allows you to stop a tile from being placed at the given coordinates. Return false to block the tile from being placed. Returns true by default.
+
+### public virtual int[] AdjTiles(int type)
+
+Allows you to determine which tiles the given tile type can be considered as when looking for crafting stations.
