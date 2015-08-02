@@ -146,6 +146,6 @@ Allows you to stop this tile from being placed at the given coordinates. Return 
 
 Allows you to make something happen when this tile is right-clicked by the player.
 
-### public virtual void HitWire(int i, int j, int type)
+### public virtual void HitWire(int i, int j)
 
 Allows you to make something happen when a wire current passes through this tile.
