@@ -146,6 +146,14 @@ Allows you to draw things behind an item, or to modify the way an item is drawn 
 
 Allows you to draw things in front of an item. This method is called even if PreDrawInWorld returns false.
 
+### public virtual bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+
+Allows you to draw things behind an item in the inventory. Return false to stop the game from drawing the item (useful if you're manually drawing the item). Returns true by default.
+
+### public virtual bool PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+
+Allows you to draw things in front of an item in the inventory. This method is called even if PreDrawInInventory returns false.
+
 ### public virtual bool CanEquipAccessory(Item item, Player player, int slot)
 
 Allows you to disallow the player from equipping an accessory. Return false to disallow equipping the accessory. Returns true by default.
