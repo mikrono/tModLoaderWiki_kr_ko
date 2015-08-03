@@ -46,7 +46,7 @@ Sets the GlobalItem instance for this mod.
 
 Gets the GlobalItem instance for this mod.
 
-### public int AddEquipTexture(EquipType type, string texture, string armTexture = "", string femaleTexture = "")
+### public int AddEquipTexture(ModItem item, EquipType type, string texture, string armTexture = "", string femaleTexture = "")
 
 Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
 
