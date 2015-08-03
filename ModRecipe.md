@@ -78,6 +78,10 @@ Adds a required crafting station to this recipe with the given tile name from th
 
 Adds a required crafting station to this recipe of the given type of tile.
 
+### public virtual int ConsumeItem(int type, int numRequired)
+
+Allows you to determine how many of a certain ingredient is consumed when this recipe is used. Return the number of ingredients that will actually be consumed. By default returns numRequired.
+
 ### public void AddRecipe()
 
 Adds this recipe to the game. Call this after you have finished setting the result, ingredients, etc.
