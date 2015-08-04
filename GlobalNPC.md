@@ -8,6 +8,10 @@ This class allows you to modify and use hooks for all NPCs, including vanilla mo
 
 The mod to which this GlobalNPC belongs.
 
+### public string Name
+
+The name of this GlobalNPC instance.
+
 ## Methods
 
 ### public virtual bool PreNPCLoot(NPC npc)
