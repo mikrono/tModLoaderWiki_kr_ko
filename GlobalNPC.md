@@ -1,6 +1,6 @@
 # GlobalNPC
 
-This class allows you to modify and use hooks for all NPCs, including vanilla mobs. Create an instance of an overriding class then call Mod.SetGlobalNPC to use this.
+This class allows you to modify and use hooks for all NPCs, including vanilla mobs. Create an instance of an overriding class then call Mod.AddGlobalNPC to use this.
 
 ## Properties
 
@@ -13,6 +13,10 @@ The mod to which this GlobalNPC belongs.
 The name of this GlobalNPC instance.
 
 ## Methods
+
+### public virtual bool Autoload(ref string name)
+
+Allows you to automatically load a GlobalNPC instead of using Mod.AddGlobalNPC. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this method to either force or stop an autoload or to control the internal name.
 
 ### public virtual bool PreNPCLoot(NPC npc)
 
