@@ -1,6 +1,6 @@
 # GlobalItem
 
-This class allows you to modify and use hooks for all items, including vanilla items. Create an instance of an overriding class then call Mod.SetGlobalItem to use this.
+This class allows you to modify and use hooks for all items, including vanilla items. Create an instance of an overriding class then call Mod.AddGlobalItem to use this.
 
 ## Properties
 
@@ -21,6 +21,10 @@ Adds a line of text to an item's first group of tooltips.
 ### public void AddTooltip2(Item item, string tooltip)
 
 Adds a line of text to an item's second group of tooltips.
+
+### public virtual bool Autoload(ref string name)
+
+Allows you to automatically load a GlobalItem instead of using Mod.AddGlobalItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this method to either force or stop an autoload or to control the internal name.
 
 ### public virtual void SetDefaults(Item item)
 
