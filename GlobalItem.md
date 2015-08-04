@@ -8,6 +8,10 @@ This class allows you to modify and use hooks for all items, including vanilla i
 
 The mod to which this GlobalItem belongs.
 
+### public string Name
+
+The name of this GlobalItem instance.
+
 ## Methods
 
 ### public void AddTooltip(Item item, string tooltip)
