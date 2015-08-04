@@ -38,13 +38,13 @@ Gets the ModItem instance corresponding to the name. Because this method is in t
 
 Gets the internal ID / type of the ModItem corresponding to the name.
 
-### public void SetGlobalItem(GlobalItem globalItem)
+### public void AddGlobalItem(string name, GlobalItem globalItem)
 
-Sets the GlobalItem instance for this mod.
+Adds the given GlobalItem instance to this mod with the provided name.
 
-### public GlobalItem GetGlobalItem()
+### public GlobalItem GetGlobalItem(string name)
 
-Gets the GlobalItem instance for this mod.
+Gets the GlobalItem instance with the given name from this mod.
 
 ### public int AddEquipTexture(ModItem item, EquipType type, string texture, string armTexture = "", string femaleTexture = "")
 
@@ -66,18 +66,18 @@ Gets the ModTile of this mod corresponding to the given name. Returns null if no
 
 Gets the type of the ModTile of this mod with the given name. Returns 0 if no ModTile with the given name is found.
 
-### public void SetGlobalTile(GlobalTile globalTile)
+### public void AddGlobalTile(string name, GlobalTile globalTile)
 
-Sets the GlobalTile instance for this mod.
+Adds the given GlobalTile instance to this mod with the provided name.
 
-### public GlobalTile GetGlobalTile()
+### public GlobalTile GetGlobalTile(string name)
 
-Gets the GlobalTile instance for this mod.
+Gets the GlobalTile instance with the given name from this mod.
 
-### public void SetGlobalNPC(GlobalNPC globalNPC)
+### public void AddGlobalNPC(string name, GlobalNPC globalNPC)
 
-Sets the GlobalNPC instance for this mod.
+Adds the given GlobalNPC instance to this mod with the provided name.
 
-### public GlobalNPC GetGlobalNPC()
+### public GlobalNPC GetGlobalNPC(string name)
 
-Gets the GlobalNPC instance for this mod.
+Gets the GlobalNPC instance with the given name from this mod.
