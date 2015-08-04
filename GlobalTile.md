@@ -8,6 +8,10 @@ This class allows you to modify the behavior of any tile in the game. Create an 
 
 The mod to which this GlobalTile belongs to.
 
+### public string Name
+
+The name of this GlobalTile instance.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array, int type)
