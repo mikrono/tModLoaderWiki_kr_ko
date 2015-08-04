@@ -1,6 +1,6 @@
 # GlobalTile
 
-This class allows you to modify the behavior of any tile in the game. Create an instance of an overriding class then call Mod.SetGlobalTile to use this.
+This class allows you to modify the behavior of any tile in the game. Create an instance of an overriding class then call Mod.AddGlobalTile to use this.
 
 ## Properties
 
@@ -17,6 +17,10 @@ The name of this GlobalTile instance.
 ### public void AddToArray(ref int[] array, int type)
 
 A convenient method for adding an integer to the end of an array. This can be used with the arrays in TileID.Sets.RoomNeeds.
+
+### public virtual bool Autoload(ref string name)
+
+Allows you to automatically load a GlobalTile instead of using Mod.AddGlobalTile. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this method to either force or stop an autoload or to control the internal name.
 
 ### public virtual void SetDefaults()
 
