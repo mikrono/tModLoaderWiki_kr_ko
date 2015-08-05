@@ -28,7 +28,7 @@ Adds a line of text to this item's first group of tooltips.
 
 Adds a line of text to this item's second group of tooltips.
 
-### public virtual bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+### public virtual bool Autoload(ref string name, ref string texture, IList\<EquipType\> equips)
 
 Allows you to automatically load an item instead of using Mod.AddItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and equip is initialized to an empty list. Use this method to either force or stop an autoload, change the default display name and texture path, and to allow for autoloading equipment textures.
 
