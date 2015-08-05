@@ -74,6 +74,26 @@ Adds the given GlobalTile instance to this mod with the provided name.
 
 Gets the GlobalTile instance with the given name from this mod.
 
+### public void AddWall(string name, ModWall wall, string texture)
+
+Adds a type of wall to the game with the specified name and texture.
+
+### public ModWall GetWall(string name)
+
+Gets the ModWall of this mod corresponding to the given name. Returns null if no ModWall with the given name is found.
+
+### public int WallType(string name)
+
+Gets the type of the ModWall of this mod with the given name. Returns 0 if no ModWall with the given name is found.
+
+### public void AddGlobalWall(string name, GlobalWall globalWall)
+
+Adds the given GlobalWall instance to this mod with the provided name.
+
+### public GlobalWall GetGlobalWall(string name)
+
+Gets the GlobalWall instance with the given name from this mod.
+
 ### public void AddGlobalNPC(string name, GlobalNPC globalNPC)
 
 Adds the given GlobalNPC instance to this mod with the provided name.
