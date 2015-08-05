@@ -33,6 +33,14 @@ Note that this documentation will usually be ahead of the current released versi
 
 [GlobalTile](https://github.com/bluemagic123/tModLoader/wiki/GlobalTile)
 
+**Walls**
+
+[WallLoader](https://github.com/bluemagic123/tModLoader/wiki/WallLoader)
+
+[ModWall](https://github.com/bluemagic123/tModLoader/wiki/ModWall)
+
+[GlobalWall](https://github.com/bluemagic123/tModLoader/wiki/GlobalWall)
+
 **NPCs**
 
 [GlobalNPC](https://github.com/bluemagic123/tModLoader/wiki/GlobalNPC)
