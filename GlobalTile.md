@@ -30,7 +30,7 @@ Allows you to modify the properties of any tile in the game. Most properties are
 
 Allows you to customize which sound you want to play when the tile at the given coordinates is hit. Return false to stop the game from playing its default sound for the tile. Returns true by default.
 
-### public virtual void NumDust(int i, int j, int type, ref int num)
+### public virtual void NumDust(int i, int j, int type, bool fail, ref int num)
 
 Allows you to change how many dust particles are created when the tile at the given coordinates is hit.
 
