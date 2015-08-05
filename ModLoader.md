@@ -12,6 +12,10 @@ The file path in which mods are stored.
 
 The file path in which mod sources are stored. Mod sources are the code and images that developers work with.
 
+### public static readonly string DllPath
+
+The file path in which .dll files referenced by mods should be stored.
+
 ## Methods
 
 ### public static Mod GetMod(string name)
