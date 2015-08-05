@@ -28,12 +28,13 @@ Adds a line of text to this item's first group of tooltips.
 
 Adds a line of text to this item's second group of tooltips.
 
-### public virtual bool Autoload(ref string name, ref string texture, ref EquipType? equip)
+### public virtual bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
 
-Allows you to automatically load an item instead of using Mod.AddItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and equip is initialized to null. Use this method to either force or stop an autoload, change the default display name and texture path, and to allow for autoloading equipment textures.
+Allows you to automatically load an item instead of using Mod.AddItem. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and equip is initialized to an empty list. Use this method to either force or stop an autoload, change the default display name and texture path, and to allow for autoloading equipment textures.
 
-### public virtual void AutoloadEquip(ref string texture, ref string armTexture, ref string femaleTexture)
-This method is called when Autoload sets an equipment type. This allows you to specify equipment texture paths that differ from the defaults. Texture will be initialized to the item texture followed by an underscore and the EquipType, armTexture will be initialized to the item texture followed by "_Arms", and femaleTexture will be initialized to the item texture followed by "_FemaleBody".
+### public virtual void AutoloadEquip(EquipType equip, ref string texture, ref string armTexture, ref string femaleTexture)
+
+This method is called when Autoload adds an equipment type. This allows you to specify equipment texture paths that differ from the defaults. Texture will be initialized to the item texture followed by an underscore and equip.ToString(), armTexture will be initialized to the item texture followed by "_Arms", and femaleTexture will be initialized to the item texture followed by "_FemaleBody".
 
 ### public virtual DrawAnimation GetAnimation()
 
