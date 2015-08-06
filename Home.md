@@ -41,6 +41,14 @@ Note that this documentation will usually be ahead of the current released versi
 
 [GlobalWall](https://github.com/bluemagic123/tModLoader/wiki/GlobalWall)
 
+**Projectiles**
+
+[ProjectileLoader](https://github.com/bluemagic123/tModLoader/wiki/ProjectileLoader)
+
+[ModProjectile](https://github.com/bluemagic123/tModLoader/wiki/ModProjectile)
+
+[GlobalProjectile](https://github.com/bluemagic123/tModLoader/wiki/GlobalProjectile)
+
 **NPCs**
 
 [GlobalNPC](https://github.com/bluemagic123/tModLoader/wiki/GlobalNPC)
