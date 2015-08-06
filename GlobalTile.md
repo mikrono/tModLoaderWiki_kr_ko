@@ -86,6 +86,14 @@ Allows you to determine which tiles the given tile type can be considered as whe
 
 Allows you to make something happen when any tile is right-clicked by the player.
 
+### public virtual void MouseOver(int i, int j, int type)
+
+Allows you to make something happen when the mouse hovers over any tile. Useful for showing item icons or text on the mouse.
+
 ### public virtual void HitWire(int i, int j, int type)
 
 Allows you to make something happen when a wire current passes through any tile.
+
+### public virtual bool Slope(int i, int j, int type)
+
+Allows you to control how hammers slope any tile. Return true to allow the tile to slope normally. Returns true by default.
