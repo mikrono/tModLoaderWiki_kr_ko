@@ -146,7 +146,7 @@ Allows you to stop this tile from being placed at the given coordinates. Return 
 
 Allows you to make something happen when this tile is right-clicked by the player.
 
-### public virtual void MouseOver(int i, int j, int type)
+### public virtual void MouseOver(int i, int j)
 
 Allows you to make something happen when the mouse hovers over this tile. Useful for showing item icons or text on the mouse.
 
@@ -154,6 +154,6 @@ Allows you to make something happen when the mouse hovers over this tile. Useful
 
 Allows you to make something happen when a wire current passes through this tile.
 
-### public virtual bool Slope(int i, int j, int type)
+### public virtual bool Slope(int i, int j)
 
 Allows you to control how hammers slope this tile. Return true to allow it to slope normally. Returns true by default.
