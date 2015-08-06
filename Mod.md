@@ -32,11 +32,11 @@ Adds a type of item to your mod with the specified internal name. This method sh
 
 ### public ModItem GetItem(string name)
 
-Gets the ModItem instance corresponding to the name. Because this method is in the Mod class, conflicts between mods are avoided.
+Gets the ModItem instance corresponding to the name. Because this method is in the Mod class, conflicts between mods are avoided. Returns null if no ModItem with the given name is found.
 
 ### public int ItemType(string name)
 
-Gets the internal ID / type of the ModItem corresponding to the name.
+Gets the internal ID / type of the ModItem corresponding to the name. Returns 0 if no ModItem with the given name is found.
 
 ### public void AddGlobalItem(string name, GlobalItem globalItem)
 
@@ -93,6 +93,26 @@ Adds the given GlobalWall instance to this mod with the provided name.
 ### public GlobalWall GetGlobalWall(string name)
 
 Gets the GlobalWall instance with the given name from this mod.
+
+### public void AddProjectile(string name, ModProjectile projectile, string texture)
+
+Adds a type of projectile to the game with the specified name and texture.
+
+### public ModProjectile GetProjectile(string name)
+
+Gets the ModProjectile of this mod corresponding to the given name. Returns null if no ModProjectile with the given name is found.
+
+### public int ProjectileType(string name)
+
+Gets the type of the ModProjectile of this mod with the given name. Returns 0 if no ModProjectile with the given name is found.
+
+### public void AddGlobalProjectile(string name, GlobalProjectile globalProjectile)
+
+Adds the given GlobalProjectile instance to this mod with the provided name.
+
+### public GlobalProjectile GetGlobalProjectile(string name)
+
+Gets the GlobalProjectile instance with the given name from this mod.
 
 ### public void AddGlobalNPC(string name, GlobalNPC globalNPC)
 
