@@ -77,3 +77,23 @@ Allows you to determine what happens when the tile at the given coordinates is k
 ### public virtual Color? MapColor(int i, int j)
 
 Allows you to customize this wall's map color based on the given coordinates. See the mapColor field for more information. Returns the mapColor field by default.
+
+### public virtual void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
+
+Allows you to determine how much light this wall emits. This can also let you light up the block in front of this wall.
+
+### public virtual void RandomUpdate(int i, int j)
+
+Called whenever the world randomly decides to update the tile containing this wall in a given tick. Useful for things such as growing or spreading.
+
+### public virtual void AnimateWall(ref byte frame, ref byte frameCounter)
+
+Allows you to animate your wall. Use frameCounter to keep track of how long the current frame has been active, and use frame to change the current frame.
+
+### public virtual bool PreDraw(int i, int j, SpriteBatch spriteBatch)
+
+Allows you to draw things behind the wall at the given coordinates. Return false to stop the game from drawing the wall normally. Returns true by default.
+
+### public virtual void PostDraw(int i, int j, SpriteBatch spriteBatch)
+
+Allows you to draw things in front of the wall at the given coordinates.
