@@ -41,3 +41,19 @@ Allows you to customize which items the wall at the given coordinates drops. Ret
 ### public virtual void KillWall(int i, int j, int type, ref bool fail)
 
 Allows you to determine what happens when the wall at the given coordinates is killed or hit with a hammer. Fail determines whether the wall is mined (whether it is killed).
+
+### public virtual void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
+
+Allows you to determine how much light the wall emits. This can also let you light up the block in front of the wall.
+
+### public virtual void RandomUpdate(int i, int j, int type)
+
+Called for every wall the world randomly decides to update in a given tick. Useful for things such as growing or spreading.
+
+### public virtual bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
+
+Allows you to draw things behind the wall at the given coordinates. Return false to stop the game from drawing the wall normally. Returns true by default.
+
+### public virtual void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
+
+Allows you to draw things in front of the wall at the given coordinates.
