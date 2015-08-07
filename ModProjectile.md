@@ -24,4 +24,4 @@ Allows you to automatically load a projectile instead of using Mod.AddProjectile
 
 ### public virtual void SetDefaults()
 
-Allows you to set all your projectile's properties, such as width, damage, aiStyle, frameCount, etc.
+Allows you to set all your projectile's properties, such as width, damage, aiStyle, penetrate, etc.
