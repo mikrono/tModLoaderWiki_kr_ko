@@ -114,6 +114,18 @@ Adds the given GlobalProjectile instance to this mod with the provided name.
 
 Gets the GlobalProjectile instance with the given name from this mod.
 
+### public void AddNPC(string name, ModNPC npc, string texture)
+
+Adds a type of NPC to the game with the specified name and texture.
+
+### public ModNPC GetNPC(string name)
+
+Gets the ModNPC of this mod corresponding to the given name. Returns null if no ModNPC with the given name is found.
+
+### public int NPCType(string name)
+
+Gets the type of the ModNPC of this mod with the given name. Returns 0 if no ModNPC with the given name is found.
+
 ### public void AddGlobalNPC(string name, GlobalNPC globalNPC)
 
 Adds the given GlobalNPC instance to this mod with the provided name.
