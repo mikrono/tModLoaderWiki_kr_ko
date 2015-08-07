@@ -6,7 +6,7 @@ This class serves as a place for you to place all your properties and hooks for 
 
 ### public Projectile projectile
 
-The projectile object that this projectile controls.
+The projectile object that this ModProjectile controls.
 
 ### public Mod mod
 
