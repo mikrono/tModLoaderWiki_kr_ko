@@ -12,6 +12,10 @@ The projectile object that this projectile controls.
 
 The mod that added this ModProjectile.
 
+### public string Name
+
+The internal name of this ModProjectile.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
