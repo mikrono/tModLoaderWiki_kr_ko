@@ -51,6 +51,10 @@ Note that this documentation will usually be ahead of the current released versi
 
 **NPCs**
 
+[NPCLoader](https://github.com/bluemagic123/tModLoader/wiki/NPCLoader)
+
+[ModNPC](https://github.com/bluemagic123/tModLoader/wiki/ModNPC)
+
 [GlobalNPC](https://github.com/bluemagic123/tModLoader/wiki/GlobalNPC)
 
 **Others**
