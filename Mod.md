@@ -22,6 +22,18 @@ Override this method in order to give your mod a name and set its properties.
 
 Override this method to add most of your content to your mod. Here you will call other methods such as AddItem.
 
+### public virtual void AddCraftGroups()
+
+Override this method to add craft groups to this mod. You must add craft groups by calling the AddCraftGroup method here.
+
+### public void AddCraftGroup(string name, string displayName, params int[] items)
+
+Adds a craft group to this mod with the specified internal name, display name, and items.
+
+### public CraftGroup GetCraftGroup(string name)
+
+Gets the CraftGroup object of this mod with the corresponding internal name.
+
 ### public virtual void AddRecipes()
 
 Override this method to add recipes to the game. It is recommended that you do so through instances of ModRecipe, since it provides methods that simplify recipe creation.
