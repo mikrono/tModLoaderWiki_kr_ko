@@ -122,6 +122,14 @@ Returns whether or not an item does something when right-clicked in the inventor
 
 Allows you to make things happen when an item is right-clicked in the inventory. Useful for goodie bags.
 
+### public virtual bool PreOpenVanillaBag(string context, Player player, int arg)
+
+Allows you to make vanilla bags drop your own items and stop the default items from being dropped. Return false to stop the default items from being dropped; returns true by default. Context will either be "present", "bossBag", "crate", "lockBox", "herbBag", or "goodieBag". For boss bags and crates, arg will be set to the type of the item being opened.
+
+### public virtual void OpenVanillaBag(string context, Player player, int arg)
+
+Allows you to make vanilla bags drop your own items in addition to the default items. This method will not be called if any other GlobalItem returns false for PreOpenVanillaBag. Context will either be "present", "bossBag", "crate", "lockBox", "herbBag", or "goodieBag". For boss bags and crates, arg will be set to the type of the item being opened.
+
 ### public virtual void DrawHair(Item item, ref bool drawHair, ref bool drawAltHair)
 
 Allows you to determine whether the player's hair or alt (hat) hair will be drawn when a head armor is worn.
