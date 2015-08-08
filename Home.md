@@ -45,5 +45,6 @@ Note that this documentation will usually be ahead of the current released versi
 **Others**
 
 - [ModRecipe](https://github.com/bluemagic123/tModLoader/wiki/ModRecipe)
+- [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
