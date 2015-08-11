@@ -60,6 +60,22 @@ The minimum pickaxe power required for pickaxes to mine this block. Defaults to 
 
 An array of the IDs of tiles that this tile can be considered as when looking for crafting stations.
 
+### public int closeDoorID
+
+The ID of the tile that this door transforms into when it is closed. Defaults to -1, which means this tile isn't a door.
+
+### public int openDoorID
+
+The ID of the tile that this door transforms into when it is opened. Defaults to -1, which means this tile isn't a door.
+
+### public string chest
+
+The default name of this chest that is displayed when this chest is open. Defaults to the empty string, which means that this tile isn't a chest. Setting this field will make the tile behave like a chest (meteors will avoid it, tiles underneath cannot be mined, etc.), but you will have to manually give it storage capabilities yourself. (See the example mod in the forums thread for something you can copy/paste.)
+
+### public bool bed
+
+Whether or not this tile is a valid spawn point. Defaults to false. If you set this to true, you will still have to manually set the spawn yourself in the RightClick hook.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
