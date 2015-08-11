@@ -12,12 +12,6 @@ The item object that this ModItem controls.
 
 The mod that added this ModItem.
 
-## Constructors
-
-### public ModItem()
-
-Creates a new ModItem instance. You should only use this to add items to your mod.
-
 ## Methods
 
 ### public void AddTooltip(string tooltip)
@@ -155,6 +149,18 @@ Allows you to modify these wing's horizontal flight speed and acceleration.
 ### public virtual void Update(ref float gravity, ref float maxFallSpeed)
 
 Allows you to customize this item's movement when lying in the world.
+
+### public virtual void GrabRange(Player player, ref int grabRange)
+
+Allows you to modify how close this item must be to the player in order to move towards the player.
+
+### public virtual bool GrabStyle(Player player)
+
+Allows you to modify the way this item moves towards the player. Return true if you override this hook; returning false will allow the vanilla grab style to take place. Returns false by default.
+
+### public virtual bool OnPickup(Player player)
+
+Allows you to make special things happen when the player picks up this item. Return false to stop the item from being added to the player's inventory; returns true by default.
 
 ### public virtual Color? GetAlpha(Color lightColor)
 
