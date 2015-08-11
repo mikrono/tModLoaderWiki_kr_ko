@@ -150,6 +150,18 @@ Allows you to modify the horizontal flight speed and acceleration of wings.
 
 Allows you to customize an item's movement when lying in the world.
 
+### public virtual void GrabRange(Item item, Player player, ref int grabRange)
+
+Allows you to modify how close an item must be to the player in order to move towards the player.
+
+### public virtual bool GrabStyle(Item item, Player player)
+
+Allows you to modify the way an item moves towards the player. Return false to allow the vanilla grab style to take place. Returns false by default.
+
+### public virtual bool OnPickup(Item item, Player player)
+
+Allows you to make special things happen when the player picks up an item. Return false to stop the item from being added to the player's inventory; returns true by default.
+
 ### public virtual Color? GetAlpha(Item item, Color lightColor)
 
 Allows you to determine the color and transparency in which an item is drawn. Return null to use the default color (normally light color). Returns null by default.
