@@ -110,6 +110,10 @@ Allows you to modify the chance the tile at the given coordinates has of spawnin
 
 Allows you to customize which items the tile at the given coordinates drops. Return false to stop the game from dropping the tile's default item. Returns true by default.
 
+### public virtual bool CanKillTile(int i, int j, ref bool blockDamaged)
+
+Allows you to determine whether or not the tile at the given coordinates can be hit by anything. Returns true by default. blockDamaged currently has no use.
+
 ### public virtual void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
