@@ -13,6 +13,6 @@ author - The author, which will be displayed on the mods menu
 
 version - The version, which will be displayed on the mods menu
 
-dllReferences - A list of dll references your mod has. You must place the dll files in the Mod Sources folder to build, and in the Mods folder to load. Name them by their file name without the extension.
+dllReferences - A list of dll references your mod has. You must place the dll files in the dllReferences folder both to build this mod and to load this mod. Name them by their file name without the extension.
 
 modReferences - A list of mods that your mod depends on. Name them by their file name without the extension.
