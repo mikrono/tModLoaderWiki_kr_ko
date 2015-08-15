@@ -21,3 +21,15 @@ Allows you to automatically load an NPC instead of using Mod.AddNPC. Return true
 ### public virtual void SetDefaults()
 
 Allows you to set all your NPC's properties, such as width, damage, aiStyle, lifeMax, etc.
+
+### public virtual bool PreAI()
+
+Allows you to determine how this NPC behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
+
+### public virtual void AI()
+
+Allows you to determine how this NPC behaves. This will only be called if PreAI returns true.
+
+### public virtual void PostAI()
+
+Allows you to determine how this NPC behaves. This will be called regardless of what PreAI returns.
