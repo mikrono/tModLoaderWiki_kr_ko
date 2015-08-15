@@ -25,3 +25,15 @@ Allows you to automatically load a projectile instead of using Mod.AddProjectile
 ### public virtual void SetDefaults()
 
 Allows you to set all your projectile's properties, such as width, damage, aiStyle, penetrate, etc.
+
+### public virtual bool PreAI()
+
+Allows you to determine how this projectile behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
+
+### public virtual void AI()
+
+Allows you to determine how this projectile behaves. This will only be called if PreAI returns true.
+
+### public virtual void PostAI()
+
+Allows you to determine how this projectile behaves. This will be called regardless of what PreAI returns.
