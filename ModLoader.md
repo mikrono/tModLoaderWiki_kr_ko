@@ -4,6 +4,10 @@ This serves as the central class which loads mods. It contains many static field
 
 ## Fields
 
+### public static readonly string version
+
+The name and version number of tModLoader.
+
 ### public static readonly string ModPath
 
 The file path in which mods are stored.
