@@ -33,3 +33,11 @@ Allows you to determine how any projectile behaves. This will only be called if 
 ### public virtual void PostAI(Projectile projectile)
 
 Allows you to determine how any projectile behaves. This will be called regardless of what PreAI returns.
+
+### public virtual void TileCollideStyle(Projectile projectile, ref int width, ref int height, ref bool fallThrough)
+
+Allows you to determine how a projectile interacts with tiles. Width and height determine the projectile's hitbox for tile collision, and default to -1. Leave them as -1 to use the projectile's real size. Fallthrough determines whether the projectile can fall through platforms, etc., and defaults to true.
+
+### public virtual bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+
+Allows you to determine what happens when a projectile collides with a tile. OldVelocity is the velocity before tile collision. The velocity that takes tile collision into account can be found with projectile.velocity. Return true to allow the vanilla tile collision code to take place (which normally kills the projectile). Returns true by default.
