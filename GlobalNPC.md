@@ -34,6 +34,14 @@ Allows you to determine how any NPC behaves. This will only be called if PreAI r
 
 Allows you to determine how any NPC behaves. This will be called regardless of what PreAI returns.
 
+### public virtual void FindFrame(NPC npc, int frameHeight)
+
+Allows you to modify the frame from an NPC's texture that is drawn, which is necessary in order to animate NPCs.
+
+### public virtual void HitEffect(NPC npc, int hitDirection, double damage)
+
+Allows you to make things happen whenever an NPC is hit, such as creating dust or gores.
+
 ### public virtual bool PreNPCLoot(NPC npc)
 
 Allows you to determine whether or not the NPC will drop anything at all. Return false to stop the NPC from dropping anything. Returns true by default.
