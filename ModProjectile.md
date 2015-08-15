@@ -51,3 +51,11 @@ Allows you to determine how this projectile interacts with tiles. Width and heig
 ### public virtual bool OnTileCollide(Vector2 oldVelocity)
 
 Allows you to determine what happens when this projectile collides with a tile. OldVelocity is the velocity before tile collision. The velocity that takes tile collision into account can be found with projectile.velocity. Return true to allow the vanilla tile collision code to take place (which normally kills the projectile). Returns true by default.
+
+### public virtual bool PreKill(int timeLeft)
+
+Allows you to determine whether the vanilla code for Kill and the Kill hook will be called. Return false to stop them from being called. Returns true by default. Note that this does _not_ stop the projectile from dying.
+
+### public virtual void Kill(int timeLeft)
+
+Allows you to control what happens when this projectile is killed (for example, creating dust or making sounds).
