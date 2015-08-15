@@ -12,6 +12,16 @@ The NPC object that this ModNPC controls.
 
 The mod that added this ModNPC.
 
+## Fields
+
+### public int aiType
+
+Determines which type of vanilla NPC this ModNPC will copy the behavior (AI) of. Leave as 0 to not copy any behavior. Defaults to 0.
+
+### public int animationType
+
+Determines which type of vanilla NPC this ModNPC will copy the animation (FindFrame) of. Leave as 0 to not copy any animation. Defaults to 0.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
