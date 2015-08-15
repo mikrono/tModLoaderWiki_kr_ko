@@ -145,3 +145,15 @@ Adds the given GlobalNPC instance to this mod with the provided name.
 ### public GlobalNPC GetGlobalNPC(string name)
 
 Gets the GlobalNPC instance with the given name from this mod.
+
+### public void AddGore(string name, ModGore gore, string texture)
+
+Adds a type of Gore to the game with the specified name and texture.
+
+### public ModGore GetGore(string name)
+
+Gets the ModGore of this mod corresponding to the given name. Returns null if no ModGore with the given name is found.
+
+### public int GoreType(string name)
+
+Gets the type of the ModGore of this mod with the given name. Returns 0 if no ModGore with the given name is found.
