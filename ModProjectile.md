@@ -20,7 +20,7 @@ The internal name of this ModProjectile.
 
 ### public int aiType
 
-Determines which type of projectile this ModProjectile will copy the behavior (AI) of. Leave as 0 to not copy any behavior. Defaults to 0.
+Determines which type of vanilla projectile this ModProjectile will copy the behavior (AI) of. Leave as 0 to not copy any behavior. Defaults to 0.
 
 ## Methods
 
