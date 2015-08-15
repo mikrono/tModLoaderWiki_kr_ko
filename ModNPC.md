@@ -33,3 +33,11 @@ Allows you to determine how this NPC behaves. This will only be called if PreAI 
 ### public virtual void PostAI()
 
 Allows you to determine how this NPC behaves. This will be called regardless of what PreAI returns.
+
+### public virtual void FindFrame(int frameHeight)
+
+Allows you to modify the frame from this NPC's texture that is drawn, which is necessary in order to animate NPCs.
+
+### public virtual void HitEffect(int hitDirection, double damage)
+
+Allows you to make things happen whenever this NPC is hit, such as creating dust or gores.
