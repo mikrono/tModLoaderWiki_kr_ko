@@ -51,3 +51,15 @@ Allows you to modify the frame from this NPC's texture that is drawn, which is n
 ### public virtual void HitEffect(int hitDirection, double damage)
 
 Allows you to make things happen whenever this NPC is hit, such as creating dust or gores.
+
+### public virtual bool PreNPCLoot(NPC npc)
+
+Allows you to determine whether or not this NPC will drop anything at all. Return false to stop the NPC from dropping anything. Returns true by default.
+
+### public virtual void NPCLoot(NPC npc)
+
+Allows you to make things happen when this NPC dies (for example, dropping items).
+
+### public virtual void BossLoot(ref string name, ref int potionType)
+
+Allows you to customize what happens when this boss dies, such as which name is displayed in the defeat message and what type of potion it drops.
