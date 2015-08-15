@@ -22,6 +22,10 @@ Determines which type of vanilla NPC this ModNPC will copy the behavior (AI) of.
 
 Determines which type of vanilla NPC this ModNPC will copy the animation (FindFrame) of. Leave as 0 to not copy any animation. Defaults to 0.
 
+### public int bossBag
+
+The item type of the boss bag that is dropped when DropBossBags is called for this NPC.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
