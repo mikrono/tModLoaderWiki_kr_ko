@@ -22,6 +22,18 @@ Allows you to automatically load a GlobalNPC instead of using Mod.AddGlobalNPC. 
 
 Allows you to set the properties of any and every NPC that gets created.
 
+### public virtual bool PreAI(NPC npc)
+
+Allows you to determine how any NPC behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
+
+### public virtual void AI(NPC npc)
+
+Allows you to determine how any NPC behaves. This will only be called if PreAI returns true.
+
+### public virtual void PostAI(NPC npc)
+
+Allows you to determine how any NPC behaves. This will be called regardless of what PreAI returns.
+
 ### public virtual bool PreNPCLoot(NPC npc)
 
 Allows you to determine whether or not the NPC will drop anything at all. Return false to stop the NPC from dropping anything. Returns true by default.
