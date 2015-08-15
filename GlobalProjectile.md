@@ -21,3 +21,15 @@ Allows you to automatically load a GlobalProjectile instead of using Mod.AddGlob
 ### public virtual void SetDefaults(Projectile projectile)
 
 Allows you to set the properties of any and every projectile that gets created.
+
+### public virtual bool PreAI(Projectile projectile)
+
+Allows you to determine how any projectile behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
+
+### public virtual void AI(Projectile projectile)
+
+Allows you to determine how any projectile behaves. This will only be called if PreAI returns true.
+
+### public virtual void PostAI(Projectile projectile)
+
+Allows you to determine how any projectile behaves. This will be called regardless of what PreAI returns.
