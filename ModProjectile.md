@@ -60,38 +60,38 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 
 Allows you to control what happens when this projectile is killed (for example, creating dust or making sounds).
 
-### public virtual bool? CanHitNPC(Projectile projectile, NPC target)
+### public virtual bool? CanHitNPC(NPC target)
 
 Allows you to determine whether this projectile can hit the given NPC. Return true to allow hitting the target, return false to block this projectile from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
 
-### public virtual void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit)
+### public virtual void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit)
 
 Allows you to modify the damage, knockback, etc., that this projectile does to an NPC.
 
-### public virtual void OnHitNPC(Projectile projectile, NPC target, int damage, float knockback, bool crit)
+### public virtual void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 
 Allows you to create special effects when this projectile hits an NPC (for example, inflicting debuffs).
 
-### public virtual bool CanHitPvp(Projectile projectile, Player target)
+### public virtual bool CanHitPvp(Player target)
 
 Allows you to determine whether this projectile can hit the given opponent player. Return false to block this projectile from hitting the target. Returns true by default.
 
-### public virtual void ModifyHitPvp(Projectile projectile, Player target, ref int damage, ref bool crit)
+### public virtual void ModifyHitPvp(Player target, ref int damage, ref bool crit)
 
 Allows you to modify the damage, etc., that this projectile does to an opponent player.
 
-### public virtual void OnHitPvp(Projectile projectile, Player target, int damage, bool crit)
+### public virtual void OnHitPvp(Player target, int damage, bool crit)
 
 Allows you to create special effects when this projectile hits an opponent player.
 
-### public virtual bool CanHitPlayer(Projectile projectile, Player target)
+### public virtual bool CanHitPlayer(Player target)
 
 Allows you to determine whether this hostile projectile can hit the given player. Return false to block this projectile from hitting the target. Returns true by default.
 
-### public virtual void ModifyHitPlayer(Projectile projectile, Player target, ref int damage, ref bool crit, ref int cooldownCounter)
+### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit, ref int cooldownCounter)
 
 Allows you to modify the damage, etc., that this hostile projectile does to a player. CooldownCounter determines which of the player's cooldown counters to use (-1, 0, or 1).
 
-### public virtual void OnHitPlayer(Projectile projectile, Player target, int damage, bool crit)
+### public virtual void OnHitPlayer(Player target, int damage, bool crit)
 
 Allows you to create special effects when this hostile projectile hits a player.
