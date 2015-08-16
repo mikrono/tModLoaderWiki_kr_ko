@@ -62,6 +62,10 @@ Changes the hitbox of a melee weapon when it is used.
 
 Allows you to give melee weapons special effects, such as creating light or dust.
 
+### public virtual bool? CanHitNPC(Item item, Player player, NPC target)
+
+Allows you to determine whether a melee weapon can hit the given NPC when swung. Return true to allow hitting the target, return false to block the weapon from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
+
 ### public virtual void ModifyHitNPC(Item item, Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
 
 Allows you to modify the damage, knockbac, etc., that a melee weapon does to an NPC.
@@ -69,6 +73,10 @@ Allows you to modify the damage, knockbac, etc., that a melee weapon does to an 
 ### public virtual void OnHitNPC(Item item, Player player, NPC target, int damage, float knockBack, bool crit)
 
 Allows you to create special effects when a melee weapon hits an NPC (for example how the Pumpkin Sword creates pumpkin heads).
+
+### public virtual bool CanHitPvp(Item item, Player player, Player target)
+
+Allows you to determine whether a melee weapon can hit the given opponent player when swung. Return false to block the weapon from hitting the target. Returns true by default.
 
 ### public virtual void ModifyHitPvp(Item item, Player player, Player target, ref int damage, ref bool crit)
 
