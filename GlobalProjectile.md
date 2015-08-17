@@ -85,3 +85,7 @@ Allows you to modify the damage, etc., that a hostile projectile does to a playe
 ### public virtual void OnHitPlayer(Projectile projectile, Player target, int damage, bool crit)
 
 Allows you to create special effects when a hostile projectile hits a player.
+
+### public virtual bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
+
+Allows you to use custom collision detection between a projectile and a player or NPC that the projectile can damage. Useful for things like diagonal lasers, projectiles that leave a trail behind them, etc.
