@@ -50,9 +50,9 @@ Allows you to determine whether or not the NPC will drop anything at all. Return
 
 Allows you to add drops to an NPC when it dies.
 
-### public virtual bool CanHitPlayer(NPC npc, Player target)
+### public virtual bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
 
-Allows you to determine whether an NPC can hit the given player. Return false to block the NPC from hitting the target. Returns true by default.
+Allows you to determine whether an NPC can hit the given player. Return false to block the NPC from hitting the target. Returns true by default. CooldownSlot determines which of the player's cooldown counters to use (-1, 0, or 1), and defaults to -1.
 
 ### public virtual void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
 
