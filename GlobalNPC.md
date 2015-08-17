@@ -97,3 +97,7 @@ Allows you to modify the damage, knockback, etc., that an NPC takes from a proje
 ### public virtual void OnHitByProjectile(NPC npc, Projectile projectile, int damage, float knockback, bool crit)
 
 Allows you to create special effects when an NPC is hit by a projectile.
+
+### public virtual bool StrikeNPC(NPC npc, ref double damage, ref float knockback, int hitDirection, ref bool crit)
+
+Allows you to use a custom damage formula for when an NPC takes damage from any source. For example, you can change the way defense works or use a different crit multiplier. Return false to stop the game from running the vanilla damage formula; returns true by default.
