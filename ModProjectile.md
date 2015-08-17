@@ -84,13 +84,13 @@ Allows you to modify the damage, etc., that this projectile does to an opponent 
 
 Allows you to create special effects when this projectile hits an opponent player.
 
-### public virtual bool CanHitPlayer(Player target)
+### public virtual bool CanHitPlayer(Player target, ref int cooldownSlot)
 
-Allows you to determine whether this hostile projectile can hit the given player. Return false to block this projectile from hitting the target. Returns true by default.
+Allows you to determine whether this hostile projectile can hit the given player. Return false to block this projectile from hitting the target. Returns true by default. CooldownSlot determines which of the player's cooldown counters to use (-1, 0, or 1), and defaults to -1.
 
-### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit, ref int cooldownCounter)
+### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 
-Allows you to modify the damage, etc., that this hostile projectile does to a player. CooldownCounter determines which of the player's cooldown counters to use (-1, 0, or 1).
+Allows you to modify the damage, etc., that this hostile projectile does to a player.
 
 ### public virtual void OnHitPlayer(Player target, int damage, bool crit)
 
