@@ -91,3 +91,27 @@ Allows you to modify the damage, knockback, etc., that this NPC does to a friend
 ### public virtual void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 
 Allows you to create special effects when this NPC hits a friendly NPC.
+
+### public virtual bool? CanBeHitByItem(Player player, Item item)
+
+Allows you to determine whether this NPC can be hit by the given melee weapon when swung. Return true to allow hitting the NPC, return false to block hitting the NPC, and return null to use the vanilla code for whether the NPC can be hit. Returns null by default.
+
+### public virtual void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that this NPC takes from a melee weapon.
+
+### public virtual void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+
+Allows you to create special effects when this NPC is hit by a melee weapon.
+
+### public virtual bool? CanBeHitByProjectile(Projectile projectile)
+
+Allows you to determine whether this NPC can be hit by the given projectile. Return true to allow hitting the NPC, return false to block hitting the NPC, and return null to use the vanilla code for whether the NPC can be hit. Returns null by default.
+
+### public virtual void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that this NPC takes from a projectile.
+
+### public virtual void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+
+Allows you to create special effects when this NPC is hit by a projectile.
