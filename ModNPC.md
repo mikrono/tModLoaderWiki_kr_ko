@@ -68,9 +68,9 @@ Allows you to make things happen when this NPC dies (for example, dropping items
 
 Allows you to customize what happens when this boss dies, such as which name is displayed in the defeat message and what type of potion it drops.
 
-### public virtual bool CanHitPlayer(Player target)
+### public virtual bool CanHitPlayer(Player target, ref int cooldownSlot)
 
-Allows you to determine whether this NPC can hit the given player. Return false to block this NPC from hitting the target. Returns true by default.
+Allows you to determine whether this NPC can hit the given player. Return false to block this NPC from hitting the target. Returns true by default. CooldownSlot determines which of the player's cooldown counters to use (-1, 0, or 1), and defaults to -1.
 
 ### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 
