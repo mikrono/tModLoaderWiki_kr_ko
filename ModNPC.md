@@ -56,14 +56,38 @@ Allows you to modify the frame from this NPC's texture that is drawn, which is n
 
 Allows you to make things happen whenever this NPC is hit, such as creating dust or gores.
 
-### public virtual bool PreNPCLoot(NPC npc)
+### public virtual bool PreNPCLoot()
 
 Allows you to determine whether or not this NPC will drop anything at all. Return false to stop the NPC from dropping anything. Returns true by default.
 
-### public virtual void NPCLoot(NPC npc)
+### public virtual void NPCLoot()
 
 Allows you to make things happen when this NPC dies (for example, dropping items).
 
 ### public virtual void BossLoot(ref string name, ref int potionType)
 
 Allows you to customize what happens when this boss dies, such as which name is displayed in the defeat message and what type of potion it drops.
+
+### public virtual bool CanHitPlayer(Player target)
+
+Allows you to determine whether this NPC can hit the given player. Return false to block this NPC from hitting the target. Returns true by default.
+
+### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that this NPC does to a player.
+
+### public virtual void OnHitPlayer(Player target, int damage, bool crit)
+
+Allows you to create special effects when this NPC hits a player (for example, inflicting debuffs).
+
+### public virtual bool? CanHitNPC(NPC target)
+
+Allows you to determine whether this NPC can hit the given friendly NPC. Return true to allow hitting the target, return false to block this NPC from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
+
+### public virtual void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that this NPC does to a friendly NPC.
+
+### public virtual void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+
+Allows you to create special effects when this NPC hits a friendly NPC.
