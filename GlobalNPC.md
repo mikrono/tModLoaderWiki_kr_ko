@@ -49,3 +49,27 @@ Allows you to determine whether or not the NPC will drop anything at all. Return
 ### public virtual void NPCLoot(NPC npc)
 
 Allows you to add drops to an NPC when it dies.
+
+### public virtual bool CanHitPlayer(NPC npc, Player target)
+
+Allows you to determine whether an NPC can hit the given player. Return false to block the NPC from hitting the target. Returns true by default.
+
+### public virtual void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that an NPC does to a player.
+
+### public virtual void OnHitPlayer(NPC npc, Player target, int damage, bool crit)
+
+Allows you to create special effects when an NPC hits a player (for example, inflicting debuffs).
+
+### public virtual bool? CanHitNPC(NPC npc, NPC target)
+
+Allows you to determine whether an NPC can hit the given friendly NPC. Return true to allow hitting the target, return false to block the NPC from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
+
+### public virtual void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that an NPC does to a friendly NPC.
+
+### public virtual void OnHitNPC(NPC npc, NPC target, int damage, float knockback, bool crit)
+
+Allows you to create special effects when an NPC hits a friendly NPC.
