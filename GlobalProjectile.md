@@ -89,3 +89,15 @@ Allows you to create special effects when a hostile projectile hits a player.
 ### public virtual bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
 
 Allows you to use custom collision detection between a projectile and a player or NPC that the projectile can damage. Useful for things like diagonal lasers, projectiles that leave a trail behind them, etc.
+
+### public virtual Color? GetAlpha(Projectile projectile, Color lightColor)
+
+Allows you to determine the color and transparency in which a projectile is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
+
+### public virtual bool PreDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
+
+Allows you to draw things behind a projectile, or to modify the way the projectile is drawn. Return false to stop the game from drawing the projectile (useful if you're manually drawing the projectile). Returns true by default.
+
+### public virtual void PostDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
+
+Allows you to draw things in front of a projectile. This method is called even if PreDraw returns false.
