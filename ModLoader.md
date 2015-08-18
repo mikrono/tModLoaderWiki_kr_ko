@@ -27,5 +27,10 @@ The file path in which .dll files referenced by mods should be stored.
 Gets the instance of the Mod with the specified name.
 
 ### public static Texture2D GetTexture(string name)
-Gets the texture with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithoutExtension".
+
+Gets the texture with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithoutExtension". Throws an ArgumentException if the texture does not exist.
 Note: Texture2D is in the Microsoft.Xna.Framework.Graphics namespace.
+
+### public static bool TextureExists(string name)
+
+Returns whether or not a texture with the specified name exists.
