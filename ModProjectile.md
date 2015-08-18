@@ -22,6 +22,18 @@ The internal name of this ModProjectile.
 
 Determines which type of vanilla projectile this ModProjectile will copy the behavior (AI) of. Leave as 0 to not copy any behavior. Defaults to 0.
 
+### public int drawOffsetX
+
+How far to the right of its position this projectile should be drawn. Defaults to 0.
+
+### public int drawOriginOffsetY
+
+The vertical origin offset from the projectile's center when it is drawn. The origin is essentially the point of rotation. This field will also determine the vertical drawing offset of the projectile.
+
+### public float drawOriginOffsetX
+
+The horizontal origin offset from the projectile's center when it is drawn.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
@@ -99,3 +111,15 @@ Allows you to create special effects when this hostile projectile hits a player.
 ### public virtual bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 
 Allows you to use custom collision detection between this projectile and a player or NPC that this projectile can damage. Useful for things like diagonal lasers, projectiles that leave a trail behind them, etc.
+
+### public virtual Color? GetAlpha(Color lightColor)
+
+Allows you to determine the color and transparency in which this projectile is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
+
+### public virtual bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+
+Allows you to draw things behind this projectile, or to modify the way this projectile is drawn. Return false to stop the game from drawing the projectile (useful if you're manually drawing the projectile). Returns true by default.
+
+### public virtual void PostDraw(SpriteBatch spriteBatch, Color lightColor)
+
+Allows you to draw things in front of this projectile. This method is called even if PreDraw returns false.
