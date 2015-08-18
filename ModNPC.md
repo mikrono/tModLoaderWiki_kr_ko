@@ -32,6 +32,10 @@ The item type of the boss bag that is dropped when DropBossBags is called for th
 
 Allows you to automatically load an NPC instead of using Mod.AddNPC. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, and texture is initialized to the namespace and overriding class name with periods replaced with slashes. Use this method to either force or stop an autoload, or to change the default display name and texture path.
 
+### public virtual void AutoloadHead(ref string headTexture, ref string bossHeadTexture)
+
+Allows you to control the path to this NPC's head texture when it is autoloaded. The headTexture defaults to the default NPC texture plus "_Head", and the bossHeadTexture defaults to the default headTexture plus "_Head_Boss". If the textures don't exist, the NPC will not be given a head texture. The headTexture should be used for town NPCs, and the bossHeadTexture should be used for any non-town NPC that you want to display on the map.
+
 ### public virtual void SetDefaults()
 
 Allows you to set all your NPC's properties, such as width, damage, aiStyle, lifeMax, etc.
