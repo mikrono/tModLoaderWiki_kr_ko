@@ -146,6 +146,14 @@ Adds the given GlobalNPC instance to this mod with the provided name.
 
 Gets the GlobalNPC instance with the given name from this mod.
 
+### public void AddNPCHeadTexture(int npcType, string texture)
+
+Assigns a head texture to the given town NPC type.
+
+### public void AddBossHeadTexture(string texture)
+
+Assigns a head texture that can be used by NPCs on the map.
+
 ### public void AddGore(string name, ModGore gore, string texture)
 
 Adds a type of Gore to the game with the specified name and texture.
