@@ -154,4 +154,4 @@ Allows you to draw things behind this NPC, or to modify the way this NPC is draw
 
 ### public virtual void PostDraw(SpriteBatch spriteBatch, Color drawColor)
 
-Allows you to draw things in front of this item. This method is called even if PreDraw returns false.
+Allows you to draw things in front of this NPC. This method is called even if PreDraw returns false.
