@@ -101,3 +101,15 @@ Allows you to create special effects when an NPC is hit by a projectile.
 ### public virtual bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 
 Allows you to use a custom damage formula for when an NPC takes damage from any source. For example, you can change the way defense works or use a different crit multiplier. Return false to stop the game from running the vanilla damage formula; returns true by default.
+
+### public virtual void BossHeadSlot(NPC npc, ref int index)
+
+Allows you to customize the boss head texture used by an NPC based on its state.
+
+### public virtual void BossHeadRotation(NPC npc, ref float rotation)
+
+Allows you to customize the rotation of an NPC's boss head icon on the map.
+
+### public virtual void BossHeadSpriteEffects(NPC npc, ref SpriteEffects spriteEffects)
+
+Allows you to flip an NPC's boss head icon on the map.
