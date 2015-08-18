@@ -26,6 +26,14 @@ Determines which type of vanilla NPC this ModNPC will copy the animation (FindFr
 
 The item type of the boss bag that is dropped when DropBossBags is called for this NPC.
 
+### public int music
+
+The ID of the music that plays when this NPC is on or near the screen. Defaults to -1, which means music plays normally.
+
+### public float drawOffsetY
+
+The vertical offset used for drawing this NPC. Defaults to 0.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
@@ -135,3 +143,15 @@ Allows you to customize the rotation of this NPC's boss head icon on the map.
 ### public virtual void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
 
 Allows you to flip this NPC's boss head icon on the map.
+
+### public virtual Color? GetAlpha(Color drawColor)
+
+Allows you to determine the color and transparency in which this NPC is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
+
+### public virtual bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+
+Allows you to draw things behind this NPC, or to modify the way this NPC is drawn. Return false to stop the game from drawing the NPC (useful if you're manually drawing the NPC). Returns true by default.
+
+### public virtual void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+
+Allows you to draw things in front of this item. This method is called even if PreDraw returns false.
