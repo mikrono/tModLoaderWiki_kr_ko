@@ -113,3 +113,15 @@ Allows you to customize the rotation of an NPC's boss head icon on the map.
 ### public virtual void BossHeadSpriteEffects(NPC npc, ref SpriteEffects spriteEffects)
 
 Allows you to flip an NPC's boss head icon on the map.
+
+### public virtual Color? GetAlpha(NPC npc, Color drawColor)
+
+Allows you to determine the color and transparency in which an NPC is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
+
+### public virtual bool PreDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
+
+Allows you to draw things behind an NPC, or to modify the way the NPC is drawn. Return false to stop the game from drawing the NPC (useful if you're manually drawing the NPC). Returns true by default.
+
+### public virtual void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
+
+Allows you to draw things in front of this NPC. This method is called even if PreDraw returns false.
