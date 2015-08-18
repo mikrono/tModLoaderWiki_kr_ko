@@ -116,6 +116,6 @@ Allows you to modify the damage, knockback, etc., that this NPC takes from a pro
 
 Allows you to create special effects when this NPC is hit by a projectile.
 
-### public virtual bool StrikeNPC(ref double damage, ref float knockback, int hitDirection, ref bool crit)
+### public virtual bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 
 Allows you to use a custom damage formula for when this NPC takes damage from any source. For example, you can change the way defense works or use a different crit multiplier. Return false to stop the game from running the vanilla damage formula; returns true by default.
