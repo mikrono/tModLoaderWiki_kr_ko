@@ -122,7 +122,7 @@ Allows you to determine what happens when the tile at the given coordinates is k
 
 This hook is called exactly once whenever a block encompassing multiple tiles is destroyed. You can use it to make your multi-tile block drop a single item, for example.
 
-### public virtual void NearbyEffects(int i, int j, int type, bool closer)
+### public virtual void NearbyEffects(int i, int j, bool closer)
 
 Allows you to make things happen when this tile is within a certain range of the player (around the same range water fountains and music boxes work). The closer parameter is whether or not the tile is within the range at which things like campfires and banners work.
 
