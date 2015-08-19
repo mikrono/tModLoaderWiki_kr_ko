@@ -122,6 +122,10 @@ Allows you to determine what happens when the tile at the given coordinates is k
 
 This hook is called exactly once whenever a block encompassing multiple tiles is destroyed. You can use it to make your multi-tile block drop a single item, for example.
 
+### public virtual void NearbyEffects(int i, int j, int type, bool closer)
+
+Allows you to make things happen when this tile is within a certain range of the player (around the same range water fountains and music boxes work). The closer parameter is whether or not the tile is within the range at which things like campfires and banners work.
+
 ### public virtual void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 
 Allows you to determine how much light this block emits. Make sure you set Main.tileLighted[Type] to true in SetDefaults for this to work.
