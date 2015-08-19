@@ -54,6 +54,10 @@ Allows you to determine whether or not the tile at the given coordinates can be 
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
 
+### public virtual void NearbyEffects(int i, int j, int type, bool closer)
+
+Allows you to make things happen when the tile is within a certain range of the player (around the same range water fountains and music boxes work). The closer parameter is whether or not the tile is within the range at which things like campfires and banners work.
+
 ### public virtual void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
 
 Allows you to determine how much light the block emits. Make sure you set Main.tileLighted[type] to true in SetDefaults for this to work.
