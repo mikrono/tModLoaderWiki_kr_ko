@@ -56,6 +56,14 @@ Allows you to determine how this projectile behaves. This will only be called if
 
 Allows you to determine how this projectile behaves. This will be called regardless of what PreAI returns.
 
+### public virtual void SendExtraAI(BinaryWriter writer)
+
+If you are storing AI information outside of the projectile.ai array, use this to send that AI information between clients and servers.
+
+### public virtual void ReceiveExtraAI(BinaryReader reader)
+
+Use this to receive information that was sent in SendExtraAI.
+
 ### public virtual void TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
 
 Allows you to determine how this projectile interacts with tiles. Width and height determine the projectile's hitbox for tile collision, and default to -1. Leave them as -1 to use the projectile's real size. Fallthrough determines whether the projectile can fall through platforms, etc., and defaults to true.
