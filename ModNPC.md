@@ -60,6 +60,14 @@ Allows you to determine how this NPC behaves. This will only be called if PreAI 
 
 Allows you to determine how this NPC behaves. This will be called regardless of what PreAI returns.
 
+### public virtual void SendExtraAI(BinaryWriter writer)
+
+If you are storing AI information outside of the npc.ai array, use this to send that AI information between clients and servers.
+
+### public virtual void ReceiveExtraAI(BinaryReader reader)
+
+Use this to receive information that was sent in SendExtraAI.
+
 ### public virtual void FindFrame(int frameHeight)
 
 Allows you to modify the frame from this NPC's texture that is drawn, which is necessary in order to animate NPCs.
