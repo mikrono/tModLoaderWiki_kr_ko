@@ -48,6 +48,10 @@ Allows you to control the path to this NPC's head texture when it is autoloaded.
 
 Allows you to set all your NPC's properties, such as width, damage, aiStyle, lifeMax, etc.
 
+### public virtual void ScaleExpertStats(int numPlayers, float bossLifeScale)
+
+Allows you to customize this NPC's stats in expert mode. This is useful because expert mode's doubling of damage and life might be too much sometimes (for example, with bosses). Also useful for scaling life with the number of players in the world.
+
 ### public virtual bool PreAI()
 
 Allows you to determine how this NPC behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
@@ -163,3 +167,11 @@ Allows you to draw things behind this NPC, or to modify the way this NPC is draw
 ### public virtual void PostDraw(SpriteBatch spriteBatch, Color drawColor)
 
 Allows you to draw things in front of this NPC. This method is called even if PreDraw returns false.
+
+### public virtual float CanSpawn(NPCSpawnInfo spawnInfo)
+
+Whether or not this NPC can spawn with the given spawning conditions. Return the weight for the chance of this NPC to spawn compared to vanilla mobs. Vanilla mobs have a weight of 1. Returns 0 by default, which disables natural spawning.
+
+### public virtual int SpawnNPC(int tileX, int tileY)
+
+Allows you to customize how this NPC is created when it naturally spawns (for example, its position or ai array). Return the return value of NPC.NewNPC. By default this method spawns this NPC on top of the tile at the given coordinates.
