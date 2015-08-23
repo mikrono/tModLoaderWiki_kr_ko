@@ -138,7 +138,7 @@ Allows you to modify the chance of NPCs spawning around the given player and the
 
 Allows you to modify the range at which NPCs can spawn around the given player. The spawnRanges determine that maximum distance NPCs can spawn from the player, and the safeRanges determine the minimum distance.
 
-### public virtual void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+### public virtual void EditSpawnPool(IDictionary\<int, float\> pool, NPCSpawnInfo spawnInfo)
 
 Allows you to control which NPCs can spawn and how likely each one is to spawn. The pool parameter maps NPC types to their spawning weights (likelihood to spawn compared to other NPCs). A type of 0 in the pool represents the default vanilla NPC spawning.
 
