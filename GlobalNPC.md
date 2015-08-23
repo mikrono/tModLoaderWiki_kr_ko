@@ -22,6 +22,10 @@ Allows you to automatically load a GlobalNPC instead of using Mod.AddGlobalNPC. 
 
 Allows you to set the properties of any and every NPC that gets created.
 
+### public virtual void ScaleExpertStats(NPC npc, int numPlayers, float bossLifeScale)
+
+Allows you to customize an NPC's stats in expert mode.
+
 ### public virtual bool PreAI(NPC npc)
 
 Allows you to determine how any NPC behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
@@ -125,3 +129,19 @@ Allows you to draw things behind an NPC, or to modify the way the NPC is drawn. 
 ### public virtual void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
 
 Allows you to draw things in front of this NPC. This method is called even if PreDraw returns false.
+
+### public virtual void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+
+Allows you to modify the chance of NPCs spawning around the given player and the maximum number of NPCs that can spawn around the player. Lower spawnRates mean a higher chance for NPCs to spawn.
+
+### public virtual void EditSpawnRange(Player player, ref int spawnRangeX, ref int spawnRangeY, ref int safeRangeX, ref int safeRangeY)
+
+Allows you to modify the range at which NPCs can spawn around the given player. The spawnRanges determine that maximum distance NPCs can spawn from the player, and the safeRanges determine the minimum distance.
+
+### public virtual void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+
+Allows you to control which NPCs can spawn and how likely each one is to spawn. The pool parameter maps NPC types to their spawning weights (likelihood to spawn compared to other NPCs). A type of 0 in the pool represents the default vanilla NPC spawning.
+
+### public virtual void SpawnNPC(int npc, int tileX, int tileY)
+
+Allows you to customize an NPC (for example, its position or ai array) after it naturally spawns and before it is synced between servers and clients.
