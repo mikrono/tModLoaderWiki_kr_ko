@@ -17,24 +17,28 @@ Note that this documentation will usually be ahead of the current released versi
 - [GlobalItem](https://github.com/bluemagic123/tModLoader/wiki/GlobalItem)
 - [EquipType](https://github.com/bluemagic123/tModLoader/wiki/EquipType)
 - [EquipLoader](https://github.com/bluemagic123/tModLoader/wiki/EquipLoader)
+- [Vanilla Item IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
 
 **Tiles**
 
 - [TileLoader](https://github.com/bluemagic123/tModLoader/wiki/TileLoader)
 - [ModTile](https://github.com/bluemagic123/tModLoader/wiki/ModTile)
 - [GlobalTile](https://github.com/bluemagic123/tModLoader/wiki/GlobalTile)
+- [Vanilla Tile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
 
 **Walls**
 
 - [WallLoader](https://github.com/bluemagic123/tModLoader/wiki/WallLoader)
 - [ModWall](https://github.com/bluemagic123/tModLoader/wiki/ModWall)
 - [GlobalWall](https://github.com/bluemagic123/tModLoader/wiki/GlobalWall)
+- [Vanilla Wall IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Wall-IDs)
 
 **Projectiles**
 
 - [ProjectileLoader](https://github.com/bluemagic123/tModLoader/wiki/ProjectileLoader)
 - [ModProjectile](https://github.com/bluemagic123/tModLoader/wiki/ModProjectile)
 - [GlobalProjectile](https://github.com/bluemagic123/tModLoader/wiki/GlobalProjectile)
+- [Vanilla Projectile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-IDs)
 
 **NPCs**
 
@@ -43,6 +47,7 @@ Note that this documentation will usually be ahead of the current released versi
 - [GlobalNPC](https://github.com/bluemagic123/tModLoader/wiki/GlobalNPC)
 - [NPCHeadLoader](https://github.com/bluemagic123/tModLoader/wiki/NPCHeadLoader)
 - [NPCSpawnInfo](https://github.com/bluemagic123/tModLoader/wiki/NPCSpawnInfo)
+- [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
 
 **Others**
 
