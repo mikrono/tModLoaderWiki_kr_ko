@@ -42,6 +42,7 @@ Note that this documentation will usually be ahead of the current released versi
 - [ModNPC](https://github.com/bluemagic123/tModLoader/wiki/ModNPC)
 - [GlobalNPC](https://github.com/bluemagic123/tModLoader/wiki/GlobalNPC)
 - [NPCHeadLoader](https://github.com/bluemagic123/tModLoader/wiki/NPCHeadLoader)
+- [NPCSpawnInfo](https://github.com/bluemagic123/tModLoader/wiki/NPCSpawnInfo)
 
 **Others**
 
