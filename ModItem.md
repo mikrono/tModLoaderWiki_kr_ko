@@ -12,6 +12,12 @@ The item object that this ModItem controls.
 
 The mod that added this ModItem.
 
+## Fields
+
+### public int bossBagNPC
+
+The type of NPC that drops this boss bag. Used to determine how many coins this boss bag contains. Defaults to 0, which means this isn't a boss bag.
+
 ## Methods
 
 ### public void AddTooltip(string tooltip)
@@ -137,6 +143,10 @@ Returns whether or not this item does something when it is right-clicked in the 
 ### public virtual void RightClick(Player player)
 
 Allows you to make things happen when this item is right-clicked in the inventory. Useful for goodie bags.
+
+### public virtual void OpenBossBag(Player player)
+
+Allows you to give items to the given player when this item is right-clicked in the inventory if the bossBagNPC field has been set to a positive number. This ignores the CanRightClick and RightClick hooks.
 
 ### public virtual void DrawHair(ref bool drawHair, ref bool drawAltHair)
 
