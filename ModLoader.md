@@ -34,3 +34,7 @@ Note: Texture2D is in the Microsoft.Xna.Framework.Graphics namespace.
 ### public static bool TextureExists(string name)
 
 Returns whether or not a texture with the specified name exists.
+
+### public static void AddTexture(string name, Texture2D texture)
+
+Adds the given texture with the specified name to the game so that it can be retrieved with GetTexture.
