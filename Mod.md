@@ -165,3 +165,7 @@ Gets the ModGore of this mod corresponding to the given name. Returns null if no
 ### public int GoreType(string name)
 
 Gets the type of the ModGore of this mod with the given name. Returns 0 if no ModGore with the given name is found.
+
+### public virtual void ChatInput(string text)
+
+Allows you to make anything happen whenever the player for this game inputs a message into the chat.
