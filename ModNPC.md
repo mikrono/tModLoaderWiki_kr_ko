@@ -34,6 +34,14 @@ The ID of the music that plays when this NPC is on or near the screen. Defaults 
 
 The vertical offset used for drawing this NPC. Defaults to 0.
 
+### public int banner
+
+The type of NPC that this NPC will be considered as when determining banner drops and banner bonuses. By default this will be 0, which means this NPC is not associated with any banner. To give your NPC its own banner, set this field to the NPC's type.
+
+### public int bannerItem
+
+The type of the item this NPC drops for every 50 times it is defeated. For any ModNPC whose banner field is set to the type of this NPC, that ModNPC will drop this banner.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
