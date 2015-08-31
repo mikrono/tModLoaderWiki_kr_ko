@@ -26,6 +26,14 @@ The file path in which .dll files referenced by mods should be stored.
 
 Gets the instance of the Mod with the specified name.
 
+### public static byte[] GetFileBytes(string name)
+
+Gets the byte representation of the file with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithExtension". Throws an ArgumentException if the file does not exist.
+
+### public static bool FileExists(string name)
+
+Returns whether or not a file with the specified name exists.
+
 ### public static Texture2D GetTexture(string name)
 
 Gets the texture with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithoutExtension". Throws an ArgumentException if the texture does not exist.
@@ -38,3 +46,11 @@ Returns whether or not a texture with the specified name exists.
 ### public static void AddTexture(string name, Texture2D texture)
 
 Adds the given texture with the specified name to the game so that it can be retrieved with GetTexture.
+
+### public static SoundEffect GetSound(string name)
+
+Gets the sound with the specified name. The name is in the same format as for texture names. Throws an ArgumentException if the sound does not exist. Note: SoundEffect is in the Microsoft.Xna.Framework.Audio namespace.
+
+### public static bool SoundExists(string name)
+
+Returns whether or not a sound with the specified name exists.
