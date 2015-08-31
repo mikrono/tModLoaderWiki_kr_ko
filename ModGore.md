@@ -1,6 +1,6 @@
 # ModGore
 
-This class represents a type of gore that is added by a mod. Only one instance of this class will ever exist for each type of gore you add.
+This class allows you to customize the behavior of a custom gore. Create a new instance of this and pass it as a parameter to Mod.AddGore to customize the gore you are adding. If you are autoloading gore, then give it the same name as the gore texture.
 
 ## Methods
 
