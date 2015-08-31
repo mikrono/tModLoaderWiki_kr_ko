@@ -49,10 +49,16 @@ Note that this documentation will usually be ahead of the current released versi
 - [NPCSpawnInfo](https://github.com/bluemagic123/tModLoader/wiki/NPCSpawnInfo)
 - [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
 
+**Resources**
+
+- [ModGore](https://github.com/bluemagic123/tModLoader/wiki/ModGore)
+- [SoundType](https://github.com/bluemagic123/tModLoader/wiki/SoundType)
+- [SoundLoader](https://github.com/bluemagic123/tModLoader/wiki/SoundLoader)
+- [ModSound](https://github.com/bluemagic123/tModLoader/wiki/ModSound)
+
 **Others**
 
 - [ModRecipe](https://github.com/bluemagic123/tModLoader/wiki/ModRecipe)
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
-- [ModGore](https://github.com/bluemagic123/tModLoader/wiki/ModGore)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
