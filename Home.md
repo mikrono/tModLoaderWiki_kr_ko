@@ -49,6 +49,12 @@ Note that this documentation will usually be ahead of the current released versi
 - [NPCSpawnInfo](https://github.com/bluemagic123/tModLoader/wiki/NPCSpawnInfo)
 - [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
 
+**Players**
+
+- [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
+- [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
+- [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
+
 **Resources**
 
 - [ModGore](https://github.com/bluemagic123/tModLoader/wiki/ModGore)
