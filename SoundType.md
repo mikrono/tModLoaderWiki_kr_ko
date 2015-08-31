@@ -4,7 +4,7 @@ This is an enum of the types of sound you can add to the game. This is used for 
 
 ## Values
 
--Custom
--Item
--NPCHit
--NPCKilled
+- Custom
+- Item
+- NPCHit
+- NPCKilled
