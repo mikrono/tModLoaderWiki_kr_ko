@@ -32,4 +32,4 @@ Allows you to set the properties of this type of mount.
 
 ### public virtual void UpdateEffects(Player player)
 
-Currently not used.
+Allows  you to make things happen when mount is used (creating dust etc.)
