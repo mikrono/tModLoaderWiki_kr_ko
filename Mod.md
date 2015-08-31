@@ -154,17 +154,65 @@ Assigns a head texture to the given town NPC type.
 
 Assigns a head texture that can be used by NPCs on the map.
 
-### public void AddGore(string name, ModGore gore, string texture)
+### public void AddGore(string texture, ModGore modGore = null)
 
-Adds a type of Gore to the game with the specified name and texture.
+Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
 
-### public ModGore GetGore(string name)
+### public void AddSound(SoundType type, string soundPath, ModSound modSound = null)
 
-Gets the ModGore of this mod corresponding to the given name. Returns null if no ModGore with the given name is found.
+Adds the given sound file to the game as the given type of sound and with the given custom sound playing. If no ModSound instance is provided, the custom sound will play in a similar manner as the default vanilla ones.
 
-### public int GoreType(string name)
+### public void AddMount(string name, ModMountData mount, string texture, IDictionary\<MountTextureType, string\> extraTextures = null)
 
-Gets the type of the ModGore of this mod with the given name. Returns 0 if no ModGore with the given name is found.
+Adds the given mount to the game with the given name and texture. The extraTextures dictionary should optionally map types of mount textures to the texture paths you want to include.
+
+### public ModMountData GetMount(string name)
+
+Gets the ModMountData instance of this mod corresponding to the given name. Returns null if no ModMountData has the given name.
+
+### public int MountType(string name)
+
+Gets the ID of the ModMountData instance corresponding to the given name. Returns 0 if no ModMountData has the given name.
+
+### public int GetGoreSlot(string name)
+
+Shorthand for calling ModGore.GetGoreSlot(this.FileName(name)).
+
+### public int public int GetSoundSlot(SoundType type, string name)
+
+Shorthand for calling SoundLoader.GetSoundSlot(type, this.FileName(name)).
+
+### public string FileName(string fileName)
+
+Shorthand for this.Name + "/" + fileName.
+
+### public byte[] GetFileBytes(string name)
+
+Shorthand for calling ModLoader.GetFileBytes(this.FileName(name)).
+
+### public bool FileExists(string name)
+
+Shorthand for calling ModLoader.FileExists(this.FileName(name)).
+
+### public Texture2D GetTexture(string name)
+
+Shorthand for calling ModLoader.GetTexture(this.FileName(name)).
+
+### public bool TextureExists(string name)
+
+Shorthand for calling ModLoader.TextureExists(this.FileName(name)).
+
+### public void AddTexture(string name, Texture2D texture)
+
+Shorthand for calling ModLoader.AddTexture(this.FileName(name), texture).
+
+### public SoundEffect GetSound(string name)
+
+Shorthand for calling ModLoader.GetSound(this.FileName(name)).
+
+### public bool SoundExists(string name)
+
+Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
 
 ### public virtual void ChatInput(string text)
 
