@@ -199,3 +199,16 @@ Allows you to give this town NPC any name when it spawns. By default returns som
 ### public virtual string GetChat()
 
 Allows you to give this town NPC a chat message when a player talks to it. By default returns something embarrassing.
+
+### public virtual void SetChatButtons(ref string button, ref string button2)
+
+Allows you to set the text for the buttons that appear on this town NPC's chat window. A parameter left as an empty string will not be included as a button on the chat window.
+
+### public virtual void OnChatButtonClicked(bool firstButton, ref bool shop)
+
+Allows you to make something happen whenever a button is clicked on this town NPC's chat window. The firstButton parameter tells whether the first button or second button (button and button2 from SetChatButtons) was clicked.
+Set the shop parameter to true to open this NPC's shop.
+
+### public virtual void SetupShop(Chest shop, ref int nextSlot)
+
+Allows you to add items to this town NPC's shop. Add an item by setting the defaults of shop.item[nextSlot] then incrementing nextSlot. In the end, nextSlot must have a value of 1 greater than the highest index in shop.item that contains an item.
