@@ -183,3 +183,19 @@ Whether or not this NPC can spawn with the given spawning conditions. Return the
 ### public virtual int SpawnNPC(int tileX, int tileY)
 
 Allows you to customize how this NPC is created when it naturally spawns (for example, its position or ai array). Return the return value of NPC.NewNPC. By default this method spawns this NPC on top of the tile at the given coordinates.
+
+### public virtual bool CanTownNPCSpawn(int numTownNPCs, int money)
+
+Whether or not the conditions have been met for this town NPC to be able to move into town. For example, the Demolitionist requires that any player has an explosive.
+
+### public virtual bool CheckConditions(int left, int right, int top, int bottom)
+
+Allows you to define special conditions required for this town NPC's house. For example, Truffle requires the house to be in an aboveground mushroom biome.
+
+### public virtual string TownNPCName()
+
+Allows you to give this town NPC any name when it spawns. By default returns something embarrassing.
+
+### public virtual string GetChat()
+
+Allows you to give this town NPC a chat message when a player talks to it. By default returns something embarrassing.
