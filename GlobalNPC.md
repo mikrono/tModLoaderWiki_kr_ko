@@ -145,3 +145,7 @@ Allows you to control which NPCs can spawn and how likely each one is to spawn. 
 ### public virtual void SpawnNPC(int npc, int tileX, int tileY)
 
 Allows you to customize an NPC (for example, its position or ai array) after it naturally spawns and before it is synced between servers and clients.
+
+### public virtual void GetChat(NPC npc, ref string chat)
+
+Allows you to modify the chat message of any town NPC that the player talks to.
