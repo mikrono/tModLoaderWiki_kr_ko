@@ -149,3 +149,11 @@ Allows you to customize an NPC (for example, its position or ai array) after it 
 ### public virtual void GetChat(NPC npc, ref string chat)
 
 Allows you to modify the chat message of any town NPC that the player talks to.
+
+### public virtual void SetupShop(int type, Chest shop, ref int nextSlot)
+
+Allows you to add items to a town NPC's shop. The type parameter is the type of the NPC that this shop belongs to. Add an item by setting the defaults of shop.item[nextSlot] then incrementing nextSlot. In the end, nextSlot must have a value of 1 greater than the highest index in shop.item that contains an item. If you want to remove an item, you will have to be familiar with programming.
+
+### public virtual void SetupTravelShop(int[] shop, ref int nextSlot)
+
+Allows you to add items to the travelling merchant's shop. Add an item by setting shop[nextSlot] to the ID of the item you are adding then incrementing nextSlot. In the end, nextSlot must have a value of 1 greater than the highest index in shop that represents an item ID. If you want to remove an item, you will have to be familiar with programming.
