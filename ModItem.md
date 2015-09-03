@@ -164,6 +164,10 @@ Allows you to modify the speeds at which you rise and fall when these wings are 
 
 Allows you to modify these wing's horizontal flight speed and acceleration.
 
+### public virtual void WingUpdate(Item item, Player player, bool inUse)
+
+Allows for Wings to do various things while in use. "inUse" is whether or not the jump button is currently pressed. Called if Item is a wing in a social slot, or if in a regular accessory slot and no other wings are in social slots. Use to animate wings, create dusts, invoke sounds, and create lights.
+
 ### public virtual void Update(ref float gravity, ref float maxFallSpeed)
 
 Allows you to customize this item's movement when lying in the world.
