@@ -32,4 +32,8 @@ Allows you to set the properties of this type of mount.
 
 ### public virtual void UpdateEffects(Player player)
 
-Allows  you to make things happen when mount is used (creating dust etc.)
+Allows you to make things happen when mount is used (creating dust etc.) Can also be used for mount special abilities.
+
+### public virtual bool UpdateFrame(Player mountedPlayer, int state, Vector2 velocity)
+
+Allows for manual updating of mount frame. Return false to stop the default frame behavior. Returns true by default.
