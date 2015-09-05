@@ -157,3 +157,7 @@ Allows you to add items to a town NPC's shop. The type parameter is the type of 
 ### public virtual void SetupTravelShop(int[] shop, ref int nextSlot)
 
 Allows you to add items to the travelling merchant's shop. Add an item by setting shop[nextSlot] to the ID of the item you are adding then incrementing nextSlot. In the end, nextSlot must have a value of 1 greater than the highest index in shop that represents an item ID. If you want to remove an item, you will have to be familiar with programming.
+
+### public virtual void BuffTownNPC(ref float damageMult, ref int defense)
+
+Allows you to modify the stats of town NPCs. Useful for buffing town NPCs when certain bosses are defeated, etc.
