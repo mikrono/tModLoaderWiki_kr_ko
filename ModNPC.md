@@ -239,4 +239,4 @@ Allows you to control the brightness of the light emitted by this town NPC's aur
 
 ### public virtual void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
 
-Allows you to determine the width and height of the item this NPC swings when it attacks, which controls the range of this NPC's swung weapon. Only used when the town NPC has an attack type of 3 (swinging).
+Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon. Only used when the town NPC has an attack type of 3 (swinging).
