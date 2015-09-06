@@ -212,3 +212,31 @@ Set the shop parameter to true to open this NPC's shop.
 ### public virtual void SetupShop(Chest shop, ref int nextSlot)
 
 Allows you to add items to this town NPC's shop. Add an item by setting the defaults of shop.item[nextSlot] then incrementing nextSlot. In the end, nextSlot must have a value of 1 greater than the highest index in shop.item that contains an item.
+
+### public virtual void TownNPCAttackStrength(ref int damage, ref float knockback)
+
+Allows you to determine the damage and knockback of this town NPC's attack before the damage is scaled. (More information on scaling in GlobalNPC.BuffTownNPCs.)
+
+### public virtual void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)
+
+Allows you to determine the cooldown between each of this town NPC's attack. The cooldown will be a number greater than or equal to the first parameter, and less then the sum of the two parameters.
+
+### public virtual void TownNPCAttackProj(ref int projType, ref int attackDelay)
+
+Allows you to determine the projectile type of this town NPC's attack, and how long it takes for the projectile to actually appear. This hook is only used when the town NPC has an attack type of 0 (throwing), 1 (shooting), or 2 (magic).
+
+### public virtual void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
+
+Allows you to determine the speed at which this town NPC throws a projectile when it attacks. Multiplier is the speed of the projectile, gravityCorrection is how much extra the projectile gets thrown upwards, and randomOffset allows you to randomize the projectile's velocity in a square centered around the original velocity. This hook is only used when the town NPC has an attack type of 0 (throwing), 1 (shooting), or 2 (magic).
+
+### public virtual void TownNPCAttackShoot(ref bool inBetweenShots)
+
+Allows you to tell the game that this town NPC has already created a projectile and will still create more projectiles as part of a single attack so that the game can animate the NPC's attack properly. Only used when the town NPC has an attack type of 1 (shooting).
+
+### public virtual void TownNPCAttackMagic(ref float auraLightMultiplier)
+
+Allows you to control the brightness of the light emitted by this town NPC's aura when it performs a magic attack. Only used when the town NPC has an attack type of 2 (magic)
+
+### public virtual void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
+
+Allows you to determine the width and height of the item this NPC swings when it attacks, which controls the range of this NPC's swung weapon. Only used when the town NPC has an attack type of 3 (swinging).
