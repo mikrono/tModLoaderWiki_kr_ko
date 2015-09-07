@@ -240,3 +240,11 @@ Allows you to control the brightness of the light emitted by this town NPC's aur
 ### public virtual void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
 
 Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon. Only used when the town NPC has an attack type of 3 (swinging).
+
+### public virtual void DrawTownAttackGun(ref float scale, ref int item, ref int closeness)
+
+Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
+
+### public virtual void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)
+
+Allows you to customize how this town NPC's weapon is drawn when this NPC is swining it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox (the same values for TownNPCAttackSwing), scale is the multiplier for the item's drawing size, and offset is the offset from which to draw the item from its normal position.
