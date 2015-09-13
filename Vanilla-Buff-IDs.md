@@ -3,9 +3,7 @@
 The following is a list of constants found in the Terraria.ID.BuffID class.
 
 public const int ObsidianSkin = 1;
-
 public const int Regeneration = 2;
-
 public const int Swiftness = 3;
 public const int Gills = 4;
 public const int Ironskin = 5;
