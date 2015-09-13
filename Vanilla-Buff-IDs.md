@@ -1,3 +1,5 @@
+# Vanilla Buff IDs
+
 The following is a list of constants found in the Terraria.ID.BuffID class.
 
 public const int ObsidianSkin = 1;
