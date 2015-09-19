@@ -22,6 +22,10 @@ Override this method in order to give your mod a name and set its properties.
 
 Override this method to add most of your content to your mod. Here you will call other methods such as AddItem.
 
+### public virtual void Unload()
+
+This is called whenever this mod is unloaded from the game. Use it to undo changes that you've made in Load that aren't automatically handled (for example, modifying the texture of a vanilla item).
+
 ### public virtual void AddCraftGroups()
 
 Override this method to add craft groups to this mod. You must add craft groups by calling the AddCraftGroup method here.
