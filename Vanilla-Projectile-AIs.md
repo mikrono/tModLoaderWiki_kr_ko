@@ -1,4 +1,4 @@
-This is a reference for vanilla AIs to the aiStlye used.
+This is a reference for vanilla AIs to the aiStyle used.
 
 Projectile ID | aiStyle
 ------------ | -------
