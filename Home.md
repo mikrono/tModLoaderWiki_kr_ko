@@ -39,6 +39,7 @@ Note that this documentation will usually be ahead of the current released versi
 - [ModProjectile](https://github.com/bluemagic123/tModLoader/wiki/ModProjectile)
 - [GlobalProjectile](https://github.com/bluemagic123/tModLoader/wiki/GlobalProjectile)
 - [Vanilla Projectile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-IDs)
+- [Vanilla Projectile AIs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-AIs)
 
 **NPCs**
 
