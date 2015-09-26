@@ -78,7 +78,7 @@ A convenient method for adding this tile's Type to the given array. This can be 
 
 Adds an entry to the minimap for this tile with the given color and display name. This should be called in SetDefaults.
 
-### public void AddMapEntry(Color color, string name, Func<string, int, int, string> nameFunc)
+### public void AddMapEntry(Color color, string name, Func\<string, int, int, string\> nameFunc)
 
 Adds an entry to the minimap for this tile with the given color, default display name, and display name function. The parameters for the function are the default display name, x-coordinate, and y-coordinate. This should be called in SetDefaults.
 
