@@ -36,15 +36,15 @@ The default type of dust made when this wall is hit. Defaults to 0.
 
 The default type of item dropped when this wall is killed. Defaults to 0, which means no item.
 
-### public Color? mapColor
-
-The color this wall will display in on the map by default. Set to null to use the background color on the map. This field defaults to null.
-
-### public string mapName
-
-The display name of this wall for maps. Leave as an empty string to display no name (all vanilla walls do this). Defaults to the empty string.
-
 ## Methods
+
+### public void AddMapEntry(Color color, string name = "")
+
+Adds an entry to the minimap for this wall with the given color and display name. This should be called in SetDefaults.
+
+### public void AddMapEntry(Color color, string name, Func\<string, int, int, string\> nameFunc)
+
+Adds an entry to the minimap for this wall with the given color, default display name, and display name function. The parameters for the function are the default display name, x-coordinate, and y-coordinate. This should be called in SetDefaults.
 
 ### public virtual bool Autoload(ref string name, ref string texture)
 
@@ -74,9 +74,9 @@ Allows you to customize which items the wall at the given coordinates drops. Ret
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a hammer. Fail determines whether the tile is mined (whether it is killed).
 
-### public virtual Color? MapColor(int i, int j)
+### public virtual ushort GetMapOption(int i, int j)
 
-Allows you to customize this wall's map color based on the given coordinates. See the mapColor field for more information. Returns the mapColor field by default.
+Allows you to choose which minimap entry the wall at the given coordinates will use. 0 is the first entry added by AddMapEntry, 1 is the second entry, etc. Returns 0 by default.
 
 ### public virtual void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
 
