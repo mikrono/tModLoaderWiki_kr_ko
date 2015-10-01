@@ -68,6 +68,10 @@ The default name of this chest that is displayed when this chest is open. Defaul
 
 Whether or not this tile is a valid spawn point. Defaults to false. If you set this to true, you will still have to manually set the spawn yourself in the RightClick hook.
 
+### public bool platform
+
+Whether or not this tile behaves like a platform. This is important in order to make the tile slope properly like a platform.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
@@ -89,6 +93,10 @@ Allows you to modify the name and texture path of this tile when it is autoloade
 ### public virtual void SetDefaults()
 
 Allows you to set the properties of this tile. Many properties are stored as arrays throughout Terraria's code.
+
+### public virtual void PostSetDefaults()
+
+Allows you to override some default properties of this tile, such as Main.tileNoSunLight and Main.tileObsidianKill.
 
 ### public virtual bool KillSound(int i, int j)
 
