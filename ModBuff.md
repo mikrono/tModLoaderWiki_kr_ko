@@ -18,9 +18,9 @@ The sprite sheet that this buff uses to display the buff icon while in use.
 
 ## Methods
 
-### public virtual bool Autoload(ref string name, ref string texture, IList\<EquipType\> equips)
+### public virtual bool Autoload(ref string name, ref string texture)
 
-Allows you to automatically load a buff instead of using Mod.AddBuff. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name and texture is initialized to the namespace and overriding class name with periods replaced with slashes. Use this method to either force or stop an autoload and change the default display name and texture path.
+Allows you to automatically load a buff instead of using Mod.AddBuff. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name and texture is initialized to the namespace and overriding class name with periods replaced with slashes. Use this method to either force or stop an autoload, and to change the default display name and texture path.
 
 ### public virtual void SetDefaults()
 
