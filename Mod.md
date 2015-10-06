@@ -70,6 +70,14 @@ Adds an equipment texture of the specified type to your mod. You can then get th
 
 Adds a type of dust to your mod with the specified name. Create an instance of ModDust normally, preferably through the constructor of an overriding class. Leave the texture as an empty string to use the vanilla dust sprite sheet.
 
+### public ModDust GetDust(string name)
+
+Gets the ModDust of this mod corresponding to the given name. Returns null if no ModDust with the given name is found.
+
+### public int DustType(string name)
+
+Gets the type of the ModDust of this mod with the given name. Returns 0 if no ModDust with the given name is found.
+
 ### public void AddTile(string name, ModTile tile, string texture)
 
 Adds a type of tile to the game with the specified name and texture.
