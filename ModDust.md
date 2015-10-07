@@ -16,15 +16,29 @@ The sprite sheet that this type of dust uses. Normally a sprite sheet will consi
 
 The mod that added this type of dust.
 
+### public int Type
+
+The ID of this type of dust.
+
+## Fields
+
+### public int updateType
+
+Allows you to choose a type of dust for this type of dust to copy the behavior of. Defaults to -1, which means that no behavior is copied.
+
 ## Methods
 
-### public static int NewDust(Vector2 Position, int Width, int Height, Mod mod, string name, float SpeedX = 0f, float SpeedY = 0f, int Alpha = 0, Color newColor = default(Color), float Scale = 1f)
+### public static ModDust GetDust(int type)
 
-Creates a new modded dust. The parameters are the same as Terraria.Dust.NewDust, except instead of specifying the type, you must specify the mod and internal name. Note that Position, Width, and Height make up a rectangle which is the range of positions that dust can spawn in.
+Gets the ModDust instance with the given type. Returns null if no ModDust with the given type exists.
 
 ### public virtual bool Autoload(ref string name, ref string texture)
 
 Allows you to automatically add a type of dust without having to use Mod.AddDust. By default returns the mod's Autoload property. Return true to automatically add the dust. Name will be initialized to the dust's class name, and Texture will be initialized to the dust's namespace and overriding class name with periods replaced with slashes. The name parameter determines the internal name and the texture parameter determines the texture path.
+
+### public virtual void SetDefaults()
+
+Allows you to set this ModDust's updateType field and modify the Terraria.GameContent.ChildSafety.SafeDust array.
 
 ### public virtual void OnSpawn(Dust dust)
 
