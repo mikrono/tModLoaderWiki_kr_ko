@@ -120,7 +120,23 @@ Allows you to determine whether the player is wearing an armor set, and return a
 
 ### public virtual void UpdateArmorSet(Player player, string set)
 
-Allows you to give set bonuses to your armor set with the given name. The name will be the same as returned by IsArmorSet.
+Allows you to give set bonuses to your armor set with the given name. The set name will be the same as returned by IsArmorSet.
+
+### public virtual string IsVanitySet(Item head, Item body, Item legs)
+
+Returns whether or not the head armor, body armor, and leg armor make up a set. This hook is used for the PreUpdateVanitySet, UpdateVanitySet, and ArmorSetShadow hooks, and will use items in the social slots if they exist. By default this will return the same value as the IsArmorSet hook, so you will not have to use this hook unless you want vanity effects to be entirely separate from armor sets.
+
+### public virtual void PreUpdateVanitySet(Player player, string set)
+
+Allows you to create special effects (such as the necro armor's hurt noise) when the player wears this item's armor set. This hook is called regardless of whether the player is frozen in any way.
+
+### public virtual void UpdateVanitySet(Player player, string set)
+
+Allows you to create special effects (such as dust) when the player wears this item's armor set. This hook will only be called if the player is not frozen in any way.
+
+### public virtual void ArmorSetShadows(Player player, string set, ref bool longTrail, ref bool smallPulse, ref bool largePulse, ref bool shortTrail)
+
+Allows you to determine special visual effects this armor set has on the player without having to code them yourself.
 
 ### public virtual bool CanRightClick(Item item)
 
