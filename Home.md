@@ -18,6 +18,7 @@ Note that this documentation will usually be ahead of the current released versi
 - [EquipType](https://github.com/bluemagic123/tModLoader/wiki/EquipType)
 - [EquipLoader](https://github.com/bluemagic123/tModLoader/wiki/EquipLoader)
 - [Vanilla Item IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
+- [Vanilla Item Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-Field-Values)
 
 **Tiles**
 
