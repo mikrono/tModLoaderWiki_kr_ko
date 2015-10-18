@@ -1,4 +1,4 @@
-All Item Field Values for Vanilla items. Use arrow keys to navigate left and right. 
+All Item Field Values for Vanilla items. Click on table and use arrow keys to navigate left and right to explore. 
 
 |type|stack|name|width|height|value|useStyle|useAnimation|useTime|maxStack|consumable|useTurn|autoReuse|rare|createTile|toolTip|useSound|damage|knockBack|shoot|placeStyle|shootSpeed|noMelee|defense|melee|scale|headSlot|accessory|noUseGraphic|ranged|toolTip2|vanity|buffType|bodySlot|legSlot|buffTime|createWall|ammo|channel|useAmmo|holdStyle|alpha|mana|magic|flame|noWet|axe|healLife|potion|pick|hammer|thrown|healMana|color|waistSlot|handOnSlot|shoeSlot|notAmmo|crit|tileBoost|handOffSlot|wingSlot|shieldSlot|faceSlot|balloonSlot|makeNPC|lifeRegen|reuseDelay
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
