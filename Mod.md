@@ -18,13 +18,17 @@ Stores the properties of the mod.
 
 Override this method in order to give your mod a name and set its properties.
 
-### public abstract void Load()
+### public virtual void Load()
 
-Override this method to add most of your content to your mod. Here you will call other methods such as AddItem.
+Override this method to add most of your content to your mod. Here you will call other methods such as AddItem. This is guaranteed to be called after all content has been autoloaded.
+
+### public virtual void PostSetupContent()
+
+Allows you to load things in your mod after its content has been setup (arrays have been resized to fit the content, etc).
 
 ### public virtual void Unload()
 
-This is called whenever this mod is unloaded from the game. Use it to undo changes that you've made in Load that aren't automatically handled (for example, modifying the texture of a vanilla item).
+This is called whenever this mod is unloaded from the game. Use it to undo changes that you've made in Load that aren't automatically handled (for example, modifying the texture of a vanilla item). Mods are guaranteed to be unloaded in the reverse order they were loaded in.
 
 ### public virtual void AddCraftGroups()
 
@@ -174,6 +178,10 @@ Adds the given texture to the game as a custom gore, with the given custom gore 
 
 Adds the given sound file to the game as the given type of sound and with the given custom sound playing. If no ModSound instance is provided, the custom sound will play in a similar manner as the default vanilla ones.
 
+### public void AddMusicBox(int musicSlot, int itemType, int tileType, int tileFrameY = 0)
+
+Allows you to tie a music ID, and item ID, and a tile ID together to form a music box. When music with the given ID is playing, equipped music boxes have a chance to change their ID to the given item type. When an item with the given item type is equipped, it will play the music that has musicSlot as its ID. When a tile with the given type and Y-frame is nearby, if its X-frame is >= 36, it will play the music that has musicSlot as its ID. This method must be called in the PostSetupContent hook.
+
 ### public void AddMount(string name, ModMountData mount, string texture, IDictionary\<MountTextureType, string\> extraTextures = null)
 
 Adds the given mount to the game with the given name and texture. The extraTextures dictionary should optionally map types of mount textures to the texture paths you want to include.
@@ -229,3 +237,7 @@ Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
 ### public virtual void ChatInput(string text)
 
 Allows you to make anything happen whenever the player for this game inputs a message into the chat.
+
+### public virtual void UpdateMusic(ref int music)
+
+Allows you to determine what music should currently play.
