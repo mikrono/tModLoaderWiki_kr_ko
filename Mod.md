@@ -180,7 +180,7 @@ Adds the given sound file to the game as the given type of sound and with the gi
 
 ### public void AddMusicBox(int musicSlot, int itemType, int tileType, int tileFrameY = 0)
 
-Allows you to tie a music ID, and item ID, and a tile ID together to form a music box. When music with the given ID is playing, equipped music boxes have a chance to change their ID to the given item type. When an item with the given item type is equipped, it will play the music that has musicSlot as its ID. When a tile with the given type and Y-frame is nearby, if its X-frame is >= 36, it will play the music that has musicSlot as its ID. This method must be called in the PostSetupContent hook.
+Allows you to tie a music ID, and item ID, and a tile ID together to form a music box. When music with the given ID is playing, equipped music boxes have a chance to change their ID to the given item type. When an item with the given item type is equipped, it will play the music that has musicSlot as its ID. When a tile with the given type and Y-frame is nearby, if its X-frame is >= 36, it will play the music that has musicSlot as its ID.
 
 ### public void AddMount(string name, ModMountData mount, string texture, IDictionary\<MountTextureType, string\> extraTextures = null)
 
