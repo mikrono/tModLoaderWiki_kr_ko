@@ -224,6 +224,10 @@ Allows you to draw things in front of this item in the inventory. This method is
 
 Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
 
+### public virtual ModItem Clone()
+
+Returns a clone of this ModItem. Allows you to decide which fields of your ModItem class are copied over when an item stack is split or something similar happens. By default all fields that you make will be automatically copied for you.
+
 ### public virtual void SaveCustomData(BinaryWriter writer)
 
 Allows you to save custom data for this item. You are only able to save up to 64 KB of information per item (I don't imagine anyone will ever need more than that).
