@@ -170,6 +170,10 @@ Assigns a head texture to the given town NPC type.
 
 Assigns a head texture that can be used by NPCs on the map.
 
+### public void AddPlayer(string name, ModPlayer player)
+
+Adds a type of ModPlayer to this mod. All ModPlayer types will be newly created and attached to each player that is loaded.
+
 ### public void AddGore(string texture, ModGore modGore = null)
 
 Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
