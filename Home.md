@@ -53,6 +53,7 @@ Note that this documentation will usually be ahead of the current released versi
 
 **Players**
 
+- [ModPlayer](https://github.com/bluemagic123/tModLoader/wiki/ModPlayer)
 - [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
 - [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
@@ -72,3 +73,4 @@ Note that this documentation will usually be ahead of the current released versi
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
+- [Vanilla Interface Changes](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Class-Changes)
