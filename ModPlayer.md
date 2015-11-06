@@ -19,3 +19,15 @@ The Player instance that this ModPlayer instance is attached to.
 ### public virtual bool Autoload(ref string name)
 
 Allows you to automatically add a ModPlayer instead of using Mod.AddPlayer. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this to either force or stop an autoload, or change the name that identifies this type of ModPlayer.
+
+### public virtual void ResetEffects()
+
+This is where you reset any fields you add to your ModPlayer subclass to their default states. This is necessary in order to reset your fields if they are conditionally set by a tick update but the condition is no longer satisfied.
+
+### public virtual void SaveCustomData(BinaryWriter writer)
+
+Allows you to save custom data for this player. You are only able to save up to 64 KB of information (I don't imagine anyone will ever need more than that).
+
+### public virtual void LoadCustomData(BinaryReader reader)
+
+Allows you to load custom data you have saved for this player.
