@@ -31,3 +31,23 @@ Allows you to save custom data for this player. You are only able to save up to 
 ### public virtual void LoadCustomData(BinaryReader reader)
 
 Allows you to load custom data you have saved for this player.
+
+### public virtual void OnHitNPC(float x, float y, NPC target)
+
+Allows you to make things happen when an NPC is hit. x and y are where the NPC was hit.
+
+### public virtual bool CanHitNPC(NPC npc)
+
+Allows you to determine whether the specified NPC can be hit by the player.
+
+### public virtual void UpdateBiomes()
+
+Allows you to make things happen when the player enters a biome. Biome List here: (to be added soon)
+
+### public virtual void UpdateBiomeVisuals(string biomeName, bool inZone, Vector2 activationSource)
+
+Allows you to make visual things happen when UpdateBiome is called.
+
+### public virtual void UpdateDead()
+
+Allows you to make things happen when the player dies.
