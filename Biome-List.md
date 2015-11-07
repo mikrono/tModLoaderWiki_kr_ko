@@ -8,7 +8,7 @@ Crimson is ZoneCrimson
 Water Candle is ZoneWaterCandle
 Dungeon is ZoneDungeon
 Peace Candle is ZonePeaceCandle
-The lunar event tower zones are ZoneTower[Tower_name] (e.g. ZoneTowerSolar for solar tower)
+The lunar event tower zones are ZoneTower<Tower_name> (e.g. ZoneTowerSolar for solar tower)
 Desert is ZoneDesert
 Glowing Mushroom is ZoneGlowshroom
 Underground Desert is ZoneUndergroundDesert
