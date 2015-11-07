@@ -42,7 +42,7 @@ Allows you to determine whether the specified NPC can be hit by the player.
 
 ### public virtual void UpdateBiomes()
 
-Allows you to make things happen when the player enters a biome. Biome List here: (https://github.com/bluemagic123/tModLoader/wiki/Biome-List)
+Allows you to make things happen when the player enters a biome. Biome List here: [BiomeList]
 
 ### public virtual void UpdateBiomeVisuals(string biomeName, bool inZone, Vector2 activationSource)
 
