@@ -50,6 +50,7 @@ Note that this documentation will usually be ahead of the current released versi
 - [NPCHeadLoader](https://github.com/bluemagic123/tModLoader/wiki/NPCHeadLoader)
 - [NPCSpawnInfo](https://github.com/bluemagic123/tModLoader/wiki/NPCSpawnInfo)
 - [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
+- [Vanilla NPC Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-Field-Values)
 
 **Players**
 
