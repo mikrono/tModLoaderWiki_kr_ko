@@ -60,7 +60,6 @@ Note that this documentation will usually be ahead of the current released versi
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
 - [ModBuff](https://github.com/bluemagic123/tModLoader/wiki/ModBuff)
 - [Vanilla Buff IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Buff-IDs)
-- [Biome List and their names](https://github.com/bluemagic123/tModLoader/wiki/Biome-List)
 
 **Resources**
 
