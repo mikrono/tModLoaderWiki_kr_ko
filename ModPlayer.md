@@ -24,6 +24,10 @@ Allows you to automatically add a ModPlayer instead of using Mod.AddPlayer. Retu
 
 This is where you reset any fields you add to your ModPlayer subclass to their default states. This is necessary in order to reset your fields if they are conditionally set by a tick update but the condition is no longer satisfied.
 
+### public virtual void UpdateDead()
+
+Similar to UpdateDead, except this is only called when the player is dead. If this is called, then ResetEffects will not be called.
+
 ### public virtual void SaveCustomData(BinaryWriter writer)
 
 Allows you to save custom data for this player. You are only able to save up to 64 KB of information (I don't imagine anyone will ever need more than that).
@@ -31,3 +35,7 @@ Allows you to save custom data for this player. You are only able to save up to 
 ### public virtual void LoadCustomData(BinaryReader reader)
 
 Allows you to load custom data you have saved for this player.
+
+### public virtual void SetupStartInventory(IList\<Item\> items)
+
+Allows you to modify the inventory newly created players or killed mediumcore players will start with. To add items to the player's inventory, create a new Item, call its SetDefaults method for whatever ID you want, call its Prefix method with a parameter of -1 if you want to give it a random prefix, then add it to the items list parameter.
