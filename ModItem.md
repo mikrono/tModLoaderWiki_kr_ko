@@ -36,6 +36,10 @@ Allows you to automatically load an item instead of using Mod.AddItem. Return tr
 
 This method is called when Autoload adds an equipment type. This allows you to specify equipment texture paths that differ from the defaults. Texture will be initialized to the item texture followed by an underscore and equip.ToString(), armTexture will be initialized to the item texture followed by "_Arms", and femaleTexture will be initialized to the item texture followed by "_FemaleBody".
 
+### public virtual void AutoloadFlame(ref string texture)
+
+Allows you to specify a texture path to the flame texture for this item when it is autoloaded. The flame texture is used when the player is holding this item and its "flame" field is set to true. At the moment torches are the only use of flame textures. By default the parameter will be set to the item texture followed by "_Flame". If the texture does not exist, then this item will not be given a flame texture.
+
 ### public virtual DrawAnimation GetAnimation()
 
 Override this method to create an animation for your item. In general you will return a new Terraria.DataStructures.DrawAnimationVertical(int frameDuration, int frameCount).
@@ -186,7 +190,11 @@ Allows for Wings to do various things while in use. "inUse" is whether or not th
 
 ### public virtual void Update(ref float gravity, ref float maxFallSpeed)
 
-Allows you to customize this item's movement when lying in the world.
+Allows you to customize this item's movement when lying in the world. Note that this will not be called if this item is currently being grabbed by a player.
+
+### public virtual void PostUpdate()
+
+Allows you to make things happen when this item is lying in the world. This will always be called, even when it is being grabbed by a player. This hook should be used for adding light, or for increasing the age of less valuable items.
 
 ### public virtual void GrabRange(Player player, ref int grabRange)
 
