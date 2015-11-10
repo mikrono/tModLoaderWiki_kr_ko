@@ -48,6 +48,10 @@ A multiplier describing how much this block resists harvesting. Higher values wi
 
 The minimum pickaxe power required for pickaxes to mine this block. Defaults to 0.
 
+### public bool disableSmartCursor
+
+Whether or not the smart cursor function is disabled when the cursor hovers above this tile. Defaults to false.
+
 ### public int[] adjTiles
 
 An array of the IDs of tiles that this tile can be considered as when looking for crafting stations.
@@ -71,6 +75,10 @@ Whether or not this tile is a valid spawn point. Defaults to false. If you set t
 ### public bool platform
 
 Whether or not this tile behaves like a platform. This is important in order to make the tile slope properly like a platform.
+
+### public bool torch
+
+Whether or not this tile behaves like a torch. If you are making a torch tile, then setting this to true is necessary in order for tile placement, tile framing, and the item's smart selection to work properly.
 
 ## Methods
 
@@ -142,6 +150,10 @@ Allows you to determine how much light this block emits. Make sure you set Main.
 
 Allows you to determine whether or not the tile will draw itself flipped in the world.
 
+### public virtual void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+
+Allows you to customize the position in which this tile is drawn. Width refers to the width of one frame of the tile, offsetY refers to how many pixels below its actual position the tile should be drawn, and height refers to the height of one frame of the tile. By default the values will be set to the values you give this tile's TileObjectData. If this tile has no TileObjectData then they will default to 16, 0, and 16, respectively.
+
 ### public virtual void AnimateTile(ref int frame, ref int frameCounter)
 
 Allows you to animate your tile. Use frameCounter to keep track of how long the current frame has been active, and use frame to change the current frame.
@@ -177,6 +189,10 @@ Allows you to make something happen when this tile is right-clicked by the playe
 ### public virtual void MouseOver(int i, int j)
 
 Allows you to make something happen when the mouse hovers over this tile. Useful for showing item icons or text on the mouse.
+
+### public virtual bool AutoSelect(int i, int j, Item item)
+
+Allows you to determine whether the given item can become selected when the cursor is hovering over this tile and the auto selection hotkey is pressed.
 
 ### public virtual void HitWire(int i, int j)
 
