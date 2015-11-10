@@ -172,7 +172,11 @@ Allows you to modify the horizontal flight speed and acceleration of wings.
 
 ### public virtual void Update(Item item, ref float gravity, ref float maxFallSpeed)
 
-Allows you to customize an item's movement when lying in the world.
+Allows you to customize an item's movement when lying in the world. Note that this will not be called if the item is currently being grabbed by a player.
+
+### public virtual void PostUpdate(Item item)
+
+Allows you to make things happen when an item is lying in the world. This will always be called, even when the item is being grabbed by a player. This hook should be used for adding light, or for increasing the age of less valuable items.
 
 ### public virtual void GrabRange(Item item, Player player, ref int grabRange)
 
