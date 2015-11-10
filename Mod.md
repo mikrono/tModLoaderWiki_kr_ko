@@ -70,6 +70,10 @@ Gets the GlobalItem instance with the given name from this mod.
 
 Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
 
+### public void AddFlameTexture(ModItem item, string texture)
+
+Assigns a flame texture to the given item added by your mod. Flame textures are drawn when held by the player if the item's "flame" field is set to true. Flame textures are currently only used for torches.
+
 ### public void AddDust(string name, ModDust dust, string texture = "")
 
 Adds a type of dust to your mod with the specified name. Create an instance of ModDust normally, preferably through the constructor of an overriding class. Leave the texture as an empty string to use the vanilla dust sprite sheet.
