@@ -59,3 +59,35 @@ Allows you to increase the player's life regeneration based on its state. This c
 ### public virtual void NaturalLifeRegen(ref float regen)
 
 Allows you to modify the power of the player's natural life regeneration. This can be done by multiplying the regen parameter by any number. For example, campfires multiply it by 1.1, while walking multiplies it by 0.5.
+
+### public virtual void PreUpdate()
+
+This is called at the beginning of every tick update for this player, after checking whether the player exists.
+
+### public virtual void SetControls()
+
+Use this to modify the control inputs that the player receives. For example, the Confused debuff swaps the values of player.controlLeft and player.controlRight. This is called sometime after PreUpdate is called.
+
+### public virtual void PreUpdateBuffs()
+
+This is called sometime after SetControls is called, and right before all the buffs update on this player. This hook can be used to add buffs to the player based on the player's state (for example, the Campfire buff is added if the player is near a Campfire).
+
+### public virtual void PostUpdateBuffs()
+
+This is called right after all of this player's buffs update on the player. This can be used to modify the effects that the buff updates had on this player, and can also be used for general update tasks.
+
+### public virtual void PostUpdateEquips()
+
+This is called right after all of this player's equipment and armor sets update on the player, which is sometime after PostUpdateBuffs is called. This can be used to modify the effects that the equipment had on this player, and can also be used for general update tasks.
+
+### public virtual void PostUpdateMiscEffects()
+
+This is called after miscellaneous update code is called in Player.Update, which is sometime after PostUpdateEquips is called. This can be used for general update tasks.
+
+### public virtual void PostUpdateRunSpeeds()
+
+This is called after the player's horizontal speeds are modified, which is sometime after PostUpdateMiscEffects is called, and right before the player's horizontal position is updated. Use this to modify maxRunSpeed, accRunSpeed, runAcceleration, and similar variables before the player moves forwards/backwards.
+
+### public virtual void PostUpdate()
+
+This is called at the very end of the Player.Update method. Final general update tasks can be placed here.
