@@ -91,3 +91,7 @@ This is called after the player's horizontal speeds are modified, which is somet
 ### public virtual void PostUpdate()
 
 This is called at the very end of the Player.Update method. Final general update tasks can be placed here.
+
+### public virtual void FrameEffects()
+
+Allows you to modify the armor and accessories that visually appear on the player. In addition, you can create special effects around this character, such as creating dust.
