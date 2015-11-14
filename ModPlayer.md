@@ -95,3 +95,27 @@ This is called at the very end of the Player.Update method. Final general update
 ### public virtual void FrameEffects()
 
 Allows you to modify the armor and accessories that visually appear on the player. In addition, you can create special effects around this character, such as creating dust.
+
+### public virtual bool Shoot(Vector2 position, float speedX, float speedY, int type, int damage, float knockback)
+
+Allows you to make things happen when the player shoots. Return false to stop the player from shooting. Returns true by default.
+
+### public virtual void OnHitAnything(float x, float y, Entity victim)
+
+Allow you to do things when the player hits an entity. Entities are Items, NPCs, Players and Projectiles.
+
+### public virtual bool CanBeHitByNPC(NPC npc)
+
+Allows you to decide if an npc can hit the player or not. Return true to allow. Returns true by default.
+
+### public virtual int GetWeaponDamage(Item sItem)
+
+Allows you to set the damage of a weapon. Return the desired damage amount. returns the item's default damage by default.
+
+### public virtual bool ConsumeAmmo(Item item)
+
+Allows you to decide if the player uses up ammo. return false to disable ammo consumption. returns true by default
+
+### public override void ModifyHitByNPC(NPC npc, int damage, bool crit)
+
+Allows you to modify how getting hit by an NPC affects the player.
