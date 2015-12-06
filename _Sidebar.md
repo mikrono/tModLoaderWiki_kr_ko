@@ -1,4 +1,4 @@
-[Home](https://github.com/bluemagic123/tModLoader/wiki/Home)
+[**Home**](https://github.com/bluemagic123/tModLoader/wiki/Home)
 
 **Mods**
 
