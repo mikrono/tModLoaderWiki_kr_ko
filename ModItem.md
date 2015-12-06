@@ -237,6 +237,30 @@ Allows you to draw things in front of this item in the inventory. This method is
 
 Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
 
+### public virtual void ExtractinatorUse(ref int resultType, ref int resultStack)
+
+Allows you to modify what item, and in what quantity, is obtained when this item is fed into the Extractinator. By default the parameters will be set to the output of feeding Silt/Slush into the Extractinator.
+
+### public virtual void AutoLightSelect(ref bool dryTorch, ref bool wetTorch, ref bool glowstick)
+
+Allows you to tell the game whether this item is a torch that cannot be placed in liquid, a torch that can be placed in liquid, or a glowstick. This information is used for when the player is holding down the auto-select hotkey.
+
+### public virtual void CaughtFishStack(ref int stack)
+
+Allows you to determine how many of this item a player obtains when the player fishes this item.
+
+### public virtual bool IsQuestFish()
+
+Whether or not the Angler can ever randomly request this type of item for his daily quest. Returns false by default.
+
+### public virtual bool IsAnglerQuestAvailable()
+
+Whether or not specific conditions have been satisfied for the Angler to be able to request this item. (For example, Hardmode.) Returns true by default.
+
+### public virtual void AnglerQuestChat(ref string description, ref string catchLocation)
+
+Allows you to set what the Angler says when he requests for this item. The description parameter is his dialogue, and catchLocation should be set to "\n(Caught at [location])".
+
 ### public virtual ModItem Clone()
 
 Returns a clone of this ModItem. Allows you to decide which fields of your ModItem class are copied over when an item stack is split or something similar happens. By default all fields that you make will be automatically copied for you.
