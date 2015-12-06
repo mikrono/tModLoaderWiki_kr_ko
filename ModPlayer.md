@@ -96,26 +96,18 @@ This is called at the very end of the Player.Update method. Final general update
 
 Allows you to modify the armor and accessories that visually appear on the player. In addition, you can create special effects around this character, such as creating dust.
 
-### public virtual bool Shoot(Vector2 position, float speedX, float speedY, int type, int damage, float knockback)
+### public virtual void CatchFish(Item fishingRod, Item bait, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
 
-Allows you to make things happen when the player shoots. Return false to stop the player from shooting. Returns true by default.
+Allows you to change the item the player gains from catching a fish. The fishingRod and bait parameters refer to the said items in the player's inventory. The liquidType parameter is 0 if the player is fishing in water, 1 for lava, and 2 for honey. The poolSize parameter is the tile size of the pool the player is fishing in. The worldLayer parameter is 0 if the player is in the sky, 1 if the player is on the surface, 2 if the player is underground, 3 if the player is in the caverns, and 4 if the player is in the underworld. The questFish parameter is the item ID for the day's Angler quest. Modify the caughtType parameter to change the item the player catches. The junk parameter is whether the player catches junk; you can set this to true if you make the player catch a junk item, and is mostly used to pass information (has no effect on the game).
 
-### public virtual void OnHitAnything(float x, float y, Entity victim)
+### public virtual void GetFishingLevel(Item fishingRod, Item bait, ref int fishingLevel)
 
-Allow you to do things when the player hits an entity. Entities are Items, NPCs, Players and Projectiles.
+Allows you to modify the player's fishing power. As an example of the type of stuff that should go here, the phase of the moon can influence fishing power.
 
-### public virtual bool CanBeHitByNPC(NPC npc)
+### public virtual void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
 
-Allows you to decide if an npc can hit the player or not. Return true to allow. Returns true by default.
+Allows you to add to, change, or remove from the items the player earns when finishing an Angler quest. The rareMultiplier is a number between 0.15 and 1 inclusively; the lower it is the higher chance there should be for the player to earn rare items.
 
-### public virtual int GetWeaponDamage(Item sItem)
+### public virtual void GetDyeTraderReward(List<int> rewardPool)
 
-Allows you to set the damage of a weapon. Return the desired damage amount. returns the item's default damage by default.
-
-### public virtual bool ConsumeAmmo(Item item)
-
-Allows you to decide if the player uses up ammo. return false to disable ammo consumption. returns true by default
-
-### public override void ModifyHitByNPC(NPC npc, int damage, bool crit)
-
-Allows you to modify how getting hit by an NPC affects the player.
+Allows you to modify what items are possible for the player to earn when giving a Strange Plant to the Dye Trader.
