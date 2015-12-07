@@ -218,3 +218,19 @@ Allows you to draw things in front of an item in the inventory. This method is c
 ### public virtual bool CanEquipAccessory(Item item, Player player, int slot)
 
 Allows you to disallow the player from equipping an accessory. Return false to disallow equipping the accessory. Returns true by default.
+
+### public virtual void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
+
+Allows you to modify what item, and in what quantity, is obtained when an item of the given type is fed into the Extractinator. An extractType of 0 represents the default extraction (Silt and Slush). By default the parameters will be set to the output of feeding Silt/Slush into the Extractinator.
+
+### public virtual void CaughtFishStack(int type, ref int stack)
+
+Allows you to modify how many of an item a player obtains when the player fishes that item.
+
+### public virtual bool IsAnglerQuestAvailable(int type)
+
+Whether or not specific conditions have been satisfied for the Angler to be able to request the given item. (For example, Hardmode.) Returns true by default.
+
+### public virtual void AnglerChat(bool turningInFish, bool anglerQuestFinished, int type, ref string chat, ref string catchLocation)
+
+Allows you to set what the Angler says when the Quest button is clicked in his chat. The turningInFish parameter is whether the player is turning in the quest fish at that moment. The anglerQuestFinished parameter is whether the player has already turned in the quest fish earlier that day. The chat parameter is his dialogue, and catchLocation should be set to "\n(Caught at [location])" for the given type.
