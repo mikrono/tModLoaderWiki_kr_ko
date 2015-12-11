@@ -12,10 +12,14 @@
 - [ItemLoader](https://github.com/bluemagic123/tModLoader/wiki/ItemLoader)
 - [ModItem](https://github.com/bluemagic123/tModLoader/wiki/ModItem)
 - [GlobalItem](https://github.com/bluemagic123/tModLoader/wiki/GlobalItem)
-- [EquipType](https://github.com/bluemagic123/tModLoader/wiki/EquipType)
-- [EquipLoader](https://github.com/bluemagic123/tModLoader/wiki/EquipLoader)
 - [Vanilla Item IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
 - [Vanilla Item Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-Field-Values)
+
+**Equipment**
+
+- [EquipType](https://github.com/bluemagic123/tModLoader/wiki/EquipType)
+- [EquipLoader](https://github.com/bluemagic123/tModLoader/wiki/EquipLoader)
+- [EquipTexture](https://github.com/bluemagic123/tModLoader/wiki/EquipTexture)
 
 **Tiles**
 
