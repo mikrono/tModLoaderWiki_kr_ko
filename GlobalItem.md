@@ -122,9 +122,9 @@ Allows you to determine whether the player is wearing an armor set, and return a
 
 Allows you to give set bonuses to your armor set with the given name. The set name will be the same as returned by IsArmorSet.
 
-### public virtual string IsVanitySet(Item head, Item body, Item legs)
+### public virtual string IsVanitySet(int head, int body, int legs)
 
-Returns whether or not the head armor, body armor, and leg armor make up a set. This hook is used for the PreUpdateVanitySet, UpdateVanitySet, and ArmorSetShadow hooks, and will use items in the social slots if they exist. By default this will return the same value as the IsArmorSet hook, so you will not have to use this hook unless you want vanity effects to be entirely separate from armor sets.
+Returns whether or not the head armor, body armor, and leg armor textures make up a set. This hook is used for the PreUpdateVanitySet, UpdateVanitySet, and ArmorSetShadow hooks, and will use items in the social slots if they exist. By default this will return the same value as the IsArmorSet hook, so you will not have to use this hook unless you want vanity effects to be entirely separate from armor sets.
 
 ### public virtual void PreUpdateVanitySet(Player player, string set)
 
