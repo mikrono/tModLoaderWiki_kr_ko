@@ -74,6 +74,18 @@ Adds an equipment texture of the specified type, internal name, and associated i
 
 Adds an equipment texture of the specified type, internal name, and associated item to your mod. This method is different from the other AddEquipTexture in that you can specify the class of the equipment texture, thus allowing you to override EquipmentTexture's hooks. All other parameters are the same as the other AddEquipTexture.
 
+### public EquipTexture GetEquipTexture(string name)
+
+Gets the EquipTexture instance corresponding to the name. Returns null if no EquipTexture with the given name is found.
+
+### public int GetEquipSlot(string name)
+
+Gets the slot/ID of the equipment texture corresponding to the given name. Returns 0 if no EquipTexture with the given name is found.
+
+### public sbyte GetAccessorySlot(string name)
+
+Same as GetEquipSlot, except returns the number as an sbyte for your convenience.
+
 ### public void AddFlameTexture(ModItem item, string texture)
 
 Assigns a flame texture to the given item added by your mod. Flame textures are drawn when held by the player if the item's "flame" field is set to true. Flame textures are currently only used for torches.
