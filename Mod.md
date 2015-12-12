@@ -66,9 +66,13 @@ Adds the given GlobalItem instance to this mod with the provided name.
 
 Gets the GlobalItem instance with the given name from this mod.
 
-### public int AddEquipTexture(ModItem item, EquipType type, string texture, string armTexture = "", string femaleTexture = "")
+### public int AddEquipTexture(ModItem item, EquipType type, string name, string texture, string armTexture = "", string femaleTexture = "")
 
-Adds an equipment texture of the specified type to your mod. You can then get the ID for your texture by calling EquipLoader.GetEquipSlot. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
+Adds an equipment texture of the specified type, internal name, and associated item to your mod. (The item parameter may be null if you don't want to associate an item with the texture.) You can then get the ID for your texture by calling EquipLoader.GetEquipTexture, and using the EquipTexture's Slot property. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
+
+### public int AddEquipTexture(EquipTexture equipTexture, ModItem item, EquipType type, string name, string texture, string armTexture = "", string femaleTexture = "")
+
+Adds an equipment texture of the specified type, internal name, and associated item to your mod. This method is different from the other AddEquipTexture in that you can specify the class of the equipment texture, thus allowing you to override EquipmentTexture's hooks. All other parameters are the same as the other AddEquipTexture.
 
 ### public void AddFlameTexture(ModItem item, string texture)
 
