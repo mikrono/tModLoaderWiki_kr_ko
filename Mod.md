@@ -80,11 +80,11 @@ Gets the EquipTexture instance corresponding to the name. Returns null if no Equ
 
 ### public int GetEquipSlot(string name)
 
-Gets the slot/ID of the equipment texture corresponding to the given name. Returns 0 if no EquipTexture with the given name is found.
+Gets the slot/ID of the equipment texture corresponding to the given name. Returns -1 if no EquipTexture with the given name is found.
 
 ### public sbyte GetAccessorySlot(string name)
 
-Same as GetEquipSlot, except returns the number as an sbyte for your convenience.
+Same as GetEquipSlot, except returns the number as an sbyte (signed byte) for your convenience.
 
 ### public void AddFlameTexture(ModItem item, string texture)
 
