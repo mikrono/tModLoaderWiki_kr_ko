@@ -132,6 +132,10 @@ Allows you to give effects to this armor or accessory, such as increased damage.
 
 Allows you to give effects to this accessory. Frankly, this is just a more limited version of UpdateEquip, but I included this hook to be more in-line with the mysterious source code.
 
+### public virtual void UpdateVanity(Player player, EquipType type)
+
+Allows you to create special effects (such as dust) when this item's equipment texture of the given equipment type is displayed on the player. Note that this hook is only ever called through this item's associated equipment texture.
+
 ### public virtual bool IsArmorSet(Item head, Item body, Item legs)
 
 Returns whether or not the head armor, body armor, and leg armor make up a set. If this returns true, then this item's UpdateArmorSet method will be called. Returns false by default.
@@ -140,21 +144,21 @@ Returns whether or not the head armor, body armor, and leg armor make up a set. 
 
 Allows you to give set bonuses to the armor set that this armor is in.
 
-### public virtual bool IsVanitySet(Item head, Item body, Item legs)
+### public virtual bool IsVanitySet(int head, int body, int legs)
 
-Returns whether or not the head armor, body armor, and leg armor make up a set. This hook is used for the PreUpdateVanitySet, UpdateVanitySet, and ArmorSetShadow hooks, and will use items in the social slots if they exist. By default this will return the same value as the IsArmorSet hook, so you will not have to use this hook unless you want vanity effects to be entirely separate from armor sets.
+Returns whether or not the head armor, body armor, and leg armor textures make up a set. This hook is used for the PreUpdateVanitySet, UpdateVanitySet, and ArmorSetShadow hooks. By default, this will return the same value as the IsArmorSet hook (passing the equipment textures' associated items as parameters), so you will not have to use this hook unless you want vanity effects to be entirely separate from armor sets. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void PreUpdateVanitySet(Player player)
 
-Allows you to create special effects (such as the necro armor's hurt noise) when the player wears this item's armor set. This hook is called regardless of whether the player is frozen in any way.
+Allows you to create special effects (such as the necro armor's hurt noise) when the player wears this item's vanity set. This hook is called regardless of whether the player is frozen in any way. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void UpdateVanitySet(Player player)
 
-Allows you to create special effects (such as dust) when the player wears this item's armor set. This hook will only be called if the player is not frozen in any way.
+Allows you to create special effects (such as dust) when the player wears this item's vanity set. This hook will only be called if the player is not frozen in any way. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void ArmorSetShadows(Player player, ref bool longTrail, ref bool smallPulse, ref bool largePulse, ref bool shortTrail)
 
-Allows you to determine special visual effects this armor set has on the player without having to code them yourself.
+Allows you to determine special visual effects this vanity set has on the player without having to code them yourself. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void SetMatch(ref int equipSlot, ref bool robes)
 
