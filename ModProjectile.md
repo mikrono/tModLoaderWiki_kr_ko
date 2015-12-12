@@ -22,6 +22,10 @@ The internal name of this ModProjectile.
 
 Determines which type of vanilla projectile this ModProjectile will copy the behavior (AI) of. Leave as 0 to not copy any behavior. Defaults to 0.
 
+### public int cooldownSlot
+
+Determines which of the player's cooldown counters to use (-1, 0, or 1) when this projectile damages it. Defaults to -1.
+
 ### public int drawOffsetX
 
 How far to the right of its position this projectile should be drawn. Defaults to 0.
@@ -104,9 +108,9 @@ Allows you to modify the damage, etc., that this projectile does to an opponent 
 
 Allows you to create special effects when this projectile hits an opponent player.
 
-### public virtual bool CanHitPlayer(Player target, ref int cooldownSlot)
+### public virtual bool CanHitPlayer(Player target)
 
-Allows you to determine whether this hostile projectile can hit the given player. Return false to block this projectile from hitting the target. Returns true by default. CooldownSlot determines which of the player's cooldown counters to use (-1, 0, or 1), and defaults to -1.
+Allows you to determine whether this hostile projectile can hit the given player. Return false to block this projectile from hitting the target. Returns true by default.
 
 ### public virtual void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
 
