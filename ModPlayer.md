@@ -98,11 +98,23 @@ Allows you to modify the armor and accessories that visually appear on the playe
 
 ### public virtual bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref string deathText)
 
-This hook is called before every time the player takes damage. The pvp parameter is whether the damage was from another player. The quiet parameter determines whether the damage will be communicated to the server. The damage, hitDirection, and crit parameters can be modified. Set the customDamage parameter to true if you want to use your own damage formula (this parameter will disable automatically subtracting the player's defense from the damage). Set the playSound parameter to false to disable the player's hurt sound, and the genGore parameter to false to disable the dust particles that spawn. The deathText parameter can be modified to change the player's death message if the player dies. Return false to stop the player from taking damage. Returns true by default.
+This hook is called before every time the player takes damage. The pvp parameter is whether the damage was from another player. The quiet parameter determines whether the damage will be communicated to the server. The damage, hitDirection, and crit parameters can be modified. Set the customDamage parameter to true if you want to use your own damage formula (this parameter will disable automatically subtracting the player's defense from the damage). Set the playSound parameter to false to disable the player's hurt sound, and the genGore parameter to false to disable the dust particles that spawn. (These are useful for creating your own sound or gore.) The deathText parameter can be modified to change the player's death message if the player dies. Return false to stop the player from taking damage. Returns true by default.
 
 ### public virtual void Hurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
 
 Allows you to make anything happen right before damage is subtracted from the player's health.
+
+### public virtual void PostHurt(bool pvp, bool quiet, double damage, int hitDirection, bool crit)
+
+Allows you to make anything happen when the player takes damage.
+
+### public virtual bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref string deathText)
+
+This hook is called whenever the player is about to be killed after reaching 0 health. Set the playSound parameter to false to stop the death sound from playing. Set the genGore parameter to false to stop the gore and dust from being created. (These are useful for creating your own sound or gore.) Return false to stop the player from being killed. Only return false if you know what you are doing! Returns true by default.
+
+### public virtual void Kill(double damage, int hitDirection, bool pvp, string deathText)
+
+Allows you to make anything happen when the player dies.
 
 ### public virtual void CatchFish(Item fishingRod, Item bait, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
 
