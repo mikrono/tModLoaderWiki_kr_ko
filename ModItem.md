@@ -14,6 +14,10 @@ The mod that added this ModItem.
 
 ## Fields
 
+### public bool projOnSwing
+
+Setting this to true makes it so that this weapon can shoot projectiles only at the beginning of its animation. Set this to true if you want a sword and its projectile creation to be in sync (for example, the Terra Blade). Defaults to false.
+
 ### public int bossBagNPC
 
 The type of NPC that drops this boss bag. Used to determine how many coins this boss bag contains. Defaults to 0, which means this isn't a boss bag.
