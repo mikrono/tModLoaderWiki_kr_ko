@@ -64,6 +64,14 @@ Allows you to modify the location and rotation of this item when the player is h
 
 Allows you to make things happen when the player is holding this item (for example, torches make light and water candles increase spawn rate).
 
+### public virtual void GetWeaponDamage(Player player, ref int damage)
+
+Allows you to temporarily modify this weapon's damage based on player buffs, etc. This is useful for creating new classes of damage, or for making subclasses of damage (for example, Shroomite armor set boosts).
+
+### public virtual void GetWeaponKnockback(Player player, ref float knockback)
+
+Allows you to temporarily modify this weapon's knockback based on player buffs, etc. This allows you to customize knockback beyond the Player class's limited fields.
+
 ### public virtual bool ConsumeAmmo(Player player)
 
 Whether or not ammo will be consumed upon usage. Called both by the gun and by the ammo; if at least one returns false then the ammo will not be used. By default returns true.
