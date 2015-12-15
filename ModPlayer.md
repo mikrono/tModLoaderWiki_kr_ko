@@ -144,6 +144,58 @@ This is called before this player's weapon creates a projectile. You can use it 
 
 Allows you to give this player's melee weapon special effects, such as creating light or dust.
 
+### public virtual void OnHitAnything(float x, float y, Entity victim)
+
+This hook is called when a player damages anything, whether it be an NPC or another player, using anything, whether it be a melee weapon or a projectile. The x and y parameters are the coordinates of the victim parameter's center.
+
+### public virtual bool? CanHitNPC(Item item, NPC target)
+
+Allows you to determine whether a player can hit the given NPC by swinging a melee weapon. Return true to allow hitting the target, return false to block this player from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
+
+### public virtual void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that this player does to an NPC by swinging a melee weapon.
+
+### public virtual void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+
+Allows you to create special effects when this player hits an NPC by swinging a melee weapon (for example how the Pumpkin Sword creates pumpkin heads).
+
+### public virtual bool? CanHitNPCWithProj(Projectile proj, NPC target)
+
+Allows you to determine whether a projectile created by this player can hit the given NPC. Return true to allow hitting the target, return false to block this projectile from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
+
+### public virtual void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit)
+
+Allows you to modify the damage, knockback, etc., that a projectile created by this player does to an NPC.
+
+### public virtual void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+
+Allows you to create special effects when a projectile created by this player hits an NPC (for example, inflicting debuffs).
+
+### public virtual bool CanHitPvp(Item item, Player target)
+
+Allows you to determine whether a melee weapon swung by this player can hit the given opponent player. Return false to block this weapon from hitting the target. Returns true by default.
+
+### public virtual void ModifyHitPvp(Item item, Player target, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that a melee weapon swung by this player does to an opponent player.
+
+### public virtual void OnHitPvp(Item item, Player target, int damage, bool crit)
+
+Allows you to create special effects when this player's melee weapon hits an opponent player.
+
+### public virtual bool CanHitPvpWithProj(Projectile proj, Player target)
+
+Allows you to determine whether a projectile created by this player can hit the given opponent player. Return false to block the projectile from hitting the target. Returns true by default.
+
+### public virtual void ModifyHitPvpWithProj(Projectile proj, Player target, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that a projectile created by this player does to an opponent player.
+
+### public virtual void OnHitPvpWithProj(Projectile proj, Player target, int damage, bool crit)
+
+Allows you to create special effects when a projectile created by this player hits an opponent player.
+
 ### public virtual void CatchFish(Item fishingRod, Item bait, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
 
 Allows you to change the item the player gains from catching a fish. The fishingRod and bait parameters refer to the said items in the player's inventory. The liquidType parameter is 0 if the player is fishing in water, 1 for lava, and 2 for honey. The poolSize parameter is the tile size of the pool the player is fishing in. The worldLayer parameter is 0 if the player is in the sky, 1 if the player is on the surface, 2 if the player is underground, 3 if the player is in the caverns, and 4 if the player is in the underworld. The questFish parameter is the item ID for the day's Angler quest. Modify the caughtType parameter to change the item the player catches. The junk parameter is whether the player catches junk; you can set this to true if you make the player catch a junk item, and is mostly used to pass information (has no effect on the game).
