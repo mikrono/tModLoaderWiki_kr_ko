@@ -196,6 +196,30 @@ Allows you to modify the damage, etc., that a projectile created by this player 
 
 Allows you to create special effects when a projectile created by this player hits an opponent player.
 
+### public virtual bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
+
+Allows you to determine whether the given NPC can hit this player. Return false to block this player from being hit by the NPC. Returns true by default. CooldownSlot determines which of the player's cooldown counters to use (-1, 0, or 1), and defaults to -1.
+
+### public virtual void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that an NPC does to this player.
+
+### public virtual void OnHitByNPC(NPC npc, int damage, bool crit)
+
+Allows you to create special effects when an NPC hits this player (for example, inflicting debuffs).
+
+### public virtual bool CanBeHitByProjectile(Projectile proj)
+
+Allows you to determine whether the given hostile projectile can hit this player. Return false to block this player from being hit. Returns true by default.
+
+### public virtual void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+
+Allows you to modify the damage, etc., that a hostile projectile does to this player.
+
+### public virtual void OnHitByProjectile(Projectile proj, int damage, bool crit)
+
+Allows you to create special effects when a hostile projectile hits this player.
+
 ### public virtual void CatchFish(Item fishingRod, Item bait, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
 
 Allows you to change the item the player gains from catching a fish. The fishingRod and bait parameters refer to the said items in the player's inventory. The liquidType parameter is 0 if the player is fishing in water, 1 for lava, and 2 for honey. The poolSize parameter is the tile size of the pool the player is fishing in. The worldLayer parameter is 0 if the player is in the sky, 1 if the player is on the surface, 2 if the player is underground, 3 if the player is in the caverns, and 4 if the player is in the underworld. The questFish parameter is the item ID for the day's Angler quest. Modify the caughtType parameter to change the item the player catches. The junk parameter is whether the player catches junk; you can set this to true if you make the player catch a junk item, and is mostly used to pass information (has no effect on the game).
