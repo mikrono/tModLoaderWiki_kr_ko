@@ -66,6 +66,10 @@ Allows you to determine how much light the block emits. Make sure you set Main.t
 
 Allows you to determine whether or not a tile will draw itself flipped in the world.
 
+### public virtual void AnimateTile()
+
+Allows animating tiles that were previously static. Loading a new texture for the tile is required first. Use Main.tileFrameCounter to count game frames and Main.tileFrame to change animation frames.
+
 ### public virtual bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
 Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
@@ -113,7 +117,3 @@ Allows you to make something happen when a wire current passes through any tile.
 ### public virtual bool Slope(int i, int j, int type)
 
 Allows you to control how hammers slope any tile. Return true to allow the tile to slope normally. Returns true by default.
-
-### public virtual void AnimateTile()
-
-Allows animating tiles that were previously static. Loading a new texture for the tile is required first. Use Main.tileFrameCounter to count game frames and Main.tileFrame to change animation frames.
