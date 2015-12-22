@@ -190,6 +190,10 @@ Allows you to make something happen when this tile is right-clicked by the playe
 
 Allows you to make something happen when the mouse hovers over this tile. Useful for showing item icons or text on the mouse.
 
+### public virtual void MouseOverFar(int i, int j)
+
+Allows you to make something happen when the mouse hovers over this tile, even when the player is far away. Useful for showing what's written on signs, etc.
+
 ### public virtual bool AutoSelect(int i, int j, Item item)
 
 Allows you to determine whether the given item can become selected when the cursor is hovering over this tile and the auto selection hotkey is pressed.
@@ -201,3 +205,11 @@ Allows you to make something happen when a wire current passes through this tile
 ### public virtual bool Slope(int i, int j)
 
 Allows you to control how hammers slope this tile. Return true to allow it to slope normally. Returns true by default.
+
+### public virtual bool HasWalkDust()
+
+Whether or not this tile creates dust when the player walks on it. Returns false by default.
+
+### public virtual void WalkDust(ref int dustType, ref bool makeDust, ref Color color)
+
+Allows you to modify the dust created when the player walks on this tile. The makeDust parameter is whether or not to make dust; you can randomly set this to false to reduce the amount of dust produced.
