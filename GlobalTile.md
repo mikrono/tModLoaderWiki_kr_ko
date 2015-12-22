@@ -98,6 +98,10 @@ Allows you to make something happen when any tile is right-clicked by the player
 
 Allows you to make something happen when the mouse hovers over any tile. Useful for showing item icons or text on the mouse.
 
+### public virtual void MouseOverFar(int i, int j, int type)
+
+Allows you to make something happen when the mouse hovers over any tile, even when the player is far away. Useful for showing what's written on signs, etc.
+
 ### public virtual bool AutoSelect(int i, int j, int type, Item item)
 
 Allows you to determine whether the given item can become selected when the cursor is hovering over a tile and the auto selection hotkey is pressed.
