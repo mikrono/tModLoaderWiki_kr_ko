@@ -46,6 +46,14 @@ Allows you to modify the frame from an NPC's texture that is drawn, which is nec
 
 Allows you to make things happen whenever an NPC is hit, such as creating dust or gores.
 
+### public virtual bool CheckActive(NPC npc)
+
+Whether or not to run the code for checking whether an NPC will remain active. Return false to stop the NPC from being despawned and to stop the NPC from counting towards the limit for how many NPCs can exist near a player. Returns true by default.
+
+### public virtual bool CheckDead(NPC npc)
+
+Whether or not an NPC should be killed when it reaches 0 health. You may program extra effects in this hook (for example, how Golem's head lifts up for the second phase of its fight). Return false to stop the NPC from being killed. Returns true by default.
+
 ### public virtual bool PreNPCLoot(NPC npc)
 
 Allows you to determine whether or not the NPC will drop anything at all. Return false to stop the NPC from dropping anything. Returns true by default.
