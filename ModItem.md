@@ -249,6 +249,14 @@ Allows you to draw things behind this item in the inventory. Return false to sto
 
 Allows you to draw things in front of this item in the inventory. This method is called even if PreDrawInInventory returns false.
 
+### public virtual Vector2? HoldoutOffset()
+
+Allows you to determine the offset of this item's sprite when used by the player. This is only used for items with a useStyle of 5 that aren't staves. Return null to use the vanilla holdout offset; returns null by default.
+
+### public virtual Vector2? HoldoutOrigin()
+
+Allows you to determine the point on this item's sprite that the player holds onto when using this item. The origin is from the bottom left corner of the sprite. This is only used for staves with a useStyle of 5. Return null to use the vanilla holdout origin (zero); returns null by default.
+
 ### public virtual bool CanEquipAccessory(Player player, int slot)
 
 Allows you to disallow the player from equipping this accessory. Return false to disallow equipping this accessory. Returns true by default.
