@@ -130,7 +130,7 @@ Allows you to determine the color and transparency in which this projectile is d
 
 ### public virtual bool PreDrawExtras(SpriteBatch spriteBatch)
 
-Allows you to draw things behind this projectile. Returns false to stop the game from drawing extras textures related to the projectile (for example, then chains for grappling hooks), useful if you're manually drawing the extras. Returns true by default.
+Allows you to draw things behind this projectile. Returns false to stop the game from drawing extras textures related to the projectile (for example, the chains for grappling hooks), useful if you're manually drawing the extras. Returns true by default.
 
 ### public virtual bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 
