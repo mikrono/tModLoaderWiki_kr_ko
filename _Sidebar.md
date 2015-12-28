@@ -42,6 +42,7 @@
 - [GlobalProjectile](https://github.com/bluemagic123/tModLoader/wiki/GlobalProjectile)
 - [Vanilla Projectile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-IDs)
 - [Vanilla Projectile AIs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-AIs)
+- [Vanilla Projectile Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-Field-Values)
 
 **NPCs**
 
