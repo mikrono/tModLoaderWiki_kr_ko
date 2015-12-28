@@ -94,6 +94,10 @@ Allows you to use custom collision detection between a projectile and a player o
 
 Allows you to determine the color and transparency in which a projectile is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
 
+### public virtual bool PreDrawExtras(Projectile projectile, SpriteBatch spriteBatch)
+
+Allows you to draw things behind a projectile. Returns false to stop the game from drawing extras textures related to the projectile (for example, the chains for grappling hooks), useful if you're manually drawing the extras. Returns true by default.
+
 ### public virtual bool PreDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
 
 Allows you to draw things behind a projectile, or to modify the way the projectile is drawn. Return false to stop the game from drawing the projectile (useful if you're manually drawing the projectile). Returns true by default.
@@ -101,3 +105,15 @@ Allows you to draw things behind a projectile, or to modify the way the projecti
 ### public virtual void PostDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
 
 Allows you to draw things in front of a projectile. This method is called even if PreDraw returns false.
+
+## Grappling-Related Methods
+
+### public virtual bool? CanUseGrapple(int type, Player player)
+
+### public virtual bool? SingleGrappleHook(int type, Player player)
+
+### public virtual void UseGrapple(Player player, ref int type)
+
+### public virtual void NumGrappleHooks(Projectile projectile, Player player, ref int numHooks)
+
+### public virtual void GrappleRetreatSpeed(Projectile projectile, Player player, ref float speed)
