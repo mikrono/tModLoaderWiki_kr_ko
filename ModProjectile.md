@@ -144,12 +144,24 @@ Allows you to draw things in front of this projectile. This method is called eve
 
 ### public virtual bool? CanUseGrapple(Player player)
 
+Whether or not a grappling hook that shoots this type of projectile can be used by the given player. Return null to use the default code (whether or not the player is in the middle of firing the grappling hook). Returns null by default.
+
 ### public virtual bool? SingleGrappleHook(Player player)
+
+Whether or not this grappling hook can only have one hook per player in the world at a time. Return null to use the default code (false). Returns null by default.
 
 ### public virtual void UseGrapple(Player player, ref int type)
 
+This code is called whenever the player uses a grappling hook that shoots this type of projectile. Use it to change what kind of hook is fired (for example, the Dual Hook does this), to kill old hook projectiles, etc.
+
 ### public virtual float GrappleRange()
+
+How far away this grappling hook can travel away from its player before it retracts.
 
 ### public virtual void NumGrappleHooks(Player player, ref int numHooks)
 
+How many of this type of grappling hook the given player can latch onto blocks before the hooks start disappearing. Change the numHooks parameter to determine this; by default it will be 3.
+
 ### public virtual void GrappleRetreatSpeed(Player player, ref float speed)
+
+Use this to change the speed to grappling hook retracts back towards the player when it travels too far without finding a block.
