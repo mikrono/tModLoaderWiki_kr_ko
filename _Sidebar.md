@@ -60,6 +60,10 @@
 - [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
 - [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
+
+**Buffs**
+
+- [BuffLoader](https://github.com/bluemagic123/tModLoader/wiki/BuffLoader)
 - [ModBuff](https://github.com/bluemagic123/tModLoader/wiki/ModBuff)
 - [Vanilla Buff IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Buff-IDs)
 
