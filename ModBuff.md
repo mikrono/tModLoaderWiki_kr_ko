@@ -35,4 +35,4 @@ This is where all buff related assignments go. Examples:
 
 ### public virtual void Update(Player player, ref int buffIndex)
 
-Called while Buff is active. Used to maintain buff related effects and projectiles.
+Allows you to make this buff give certain effects to the given player. If you remove the buff from the player, make sure the decrement the buffIndex parameter by 1.
