@@ -164,4 +164,4 @@ How many of this type of grappling hook the given player can latch onto blocks b
 
 ### public virtual void GrappleRetreatSpeed(Player player, ref float speed)
 
-Use this to change the speed to grappling hook retracts back towards the player when it travels too far without finding a block.
+Use this to change the speed with which this grappling hook retracts back towards the player when it travels too far without finding a block.
