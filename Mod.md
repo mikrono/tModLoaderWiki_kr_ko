@@ -194,6 +194,18 @@ Assigns a head texture that can be used by NPCs on the map.
 
 Adds a type of ModPlayer to this mod. All ModPlayer types will be newly created and attached to each player that is loaded.
 
+### public void AddBuff(string name, ModBuff buff, string texture)
+
+Adds a type of buff to the game with the specified internal name and texture.
+
+### public ModBuff GetBuff(string name)
+
+Gets the ModBuff of this mod corresponding to the given name. Returns null if no ModBuff with the given name is found.
+
+### public int BuffType(string name)
+
+Gets the type of the ModBuff of this mod corresponding to the given name. Returns 0 if no ModBuff with the given name is found.
+
 ### public void AddGore(string texture, ModGore modGore = null)
 
 Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
@@ -257,6 +269,8 @@ Shorthand for calling ModLoader.GetSound(this.FileName(name)).
 ### public bool SoundExists(string name)
 
 Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
+
+## Hooks
 
 ### public virtual void ChatInput(string text)
 
