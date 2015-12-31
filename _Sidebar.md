@@ -65,6 +65,7 @@
 
 - [BuffLoader](https://github.com/bluemagic123/tModLoader/wiki/BuffLoader)
 - [ModBuff](https://github.com/bluemagic123/tModLoader/wiki/ModBuff)
+- [GlobalBuff](https://github.com/bluemagic123/tModLoader/wiki/GlobalBuff)
 - [Vanilla Buff IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Buff-IDs)
 
 **Resources**
