@@ -92,6 +92,10 @@ Allows you to modify the frame from this NPC's texture that is drawn, which is n
 
 Allows you to make things happen whenever this NPC is hit, such as creating dust or gores.
 
+### public virtual void UpdateLifeRegen(ref int damage)
+
+Allows you to make the NPC either regenerate health or take damage over time by setting npc.lifeRegen. Regeneration or damage will occur at a rate of half of npc.lifeRegen per second. The damage parameter is the number that appears above the NPC's head if it takes damage over time.
+
 ### public virtual bool CheckActive()
 
 Whether or not to run the code for checking whether this NPC will remain active. Return false to stop this NPC from being despawned and to stop this NPC from counting towards the limit for how many NPCs can exist near a player. Returns true by default.
