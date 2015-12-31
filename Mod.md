@@ -206,6 +206,14 @@ Gets the ModBuff of this mod corresponding to the given name. Returns null if no
 
 Gets the type of the ModBuff of this mod corresponding to the given name. Returns 0 if no ModBuff with the given name is found.
 
+### public void AddGlobalBuff(string name, GlobalBuff globalBuff)
+
+Adds the given GlobalBuff instance to this mod using the provided name.
+
+### public GlobalBuff GetGlobalBuff(string name)
+
+Gets the GlobalBuff with the given name from this mod.
+
 ### public void AddGore(string texture, ModGore modGore = null)
 
 Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
