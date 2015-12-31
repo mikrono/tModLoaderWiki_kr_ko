@@ -36,3 +36,7 @@ This is where all buff related assignments go. Examples:
 ### public virtual void Update(Player player, ref int buffIndex)
 
 Allows you to make this buff give certain effects to the given player. If you remove the buff from the player, make sure the decrement the buffIndex parameter by 1.
+
+### public virtual void Update(NPC npc, ref int buffIndex)
+
+Allows you to make this buff give certain effects to the given NPC. If you remove the buff from the NPC, make sure to decrement the buffIndex parameter by 1.
