@@ -26,6 +26,10 @@ Allows you to set the properties of any and every NPC that gets created.
 
 Allows you to customize an NPC's stats in expert mode.
 
+### public virtual void ResetEffects(NPC npc)
+
+This is where you reset any fields you add to your subclass to their default states. This is necessary in order to reset your fields if they are conditionally set by a tick update but the condition is no longer satisfied.
+
 ### public virtual bool PreAI(NPC npc)
 
 Allows you to determine how any NPC behaves. Return false to stop the vanilla AI and the AI hook from being run. Returns true by default.
