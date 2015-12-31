@@ -6,6 +6,12 @@
 
 The ModItem instance that controls the behavior of this item. This property is null if this is not a modded item.
 
+## Methods
+
+### public void CloneDefaults(int type)
+
+Allows you to copy the defaults of a different type of item.
+
 # Projectile
 
 ## Properties
@@ -14,6 +20,12 @@ The ModItem instance that controls the behavior of this item. This property is n
 
 The ModProjectile instance that controls the behavior of this projectile. This property is null if this is not a modded projectile.
 
+## Methods
+
+### public void CloneDefaults(int type)
+
+Allows you to copy the defaults of another type of projectile.
+
 # NPC
 
 ## Properties
@@ -21,6 +33,12 @@ The ModProjectile instance that controls the behavior of this projectile. This p
 ### public ModNPC modNPC
 
 The ModNPC instance that controls the behavior of this NPC. This property is null if this is not a modded NPC.
+
+## Methods
+
+### public void CloneDefaults(int type)
+
+Allows you to copy the defaults of another type of NPC.
 
 # Player
 
