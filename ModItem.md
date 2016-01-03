@@ -191,11 +191,11 @@ Allows you to give items to the given player when this item is right-clicked in 
 
 ### public virtual void DrawHair(ref bool drawHair, ref bool drawAltHair)
 
-Allows you to determine whether the player's hair or alt (hat) hair draws when this head armor is worn. By default both flags will be false.
+Allows you to determine whether the player's hair or alt (hat) hair draws when this head armor is worn. By default both flags will be false. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual bool DrawHead()
 
-Return false to hide the player's head when this head armor is worn. Returns true by default.
+Return false to hide the player's head when this head armor is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void VerticalWingSpeeds(ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
@@ -205,9 +205,9 @@ Allows you to modify the speeds at which you rise and fall when these wings are 
 
 Allows you to modify these wing's horizontal flight speed and acceleration.
 
-### public virtual void WingUpdate(Item item, Player player, bool inUse)
+### public virtual void WingUpdate(Player player, bool inUse)
 
-Allows for Wings to do various things while in use. "inUse" is whether or not the jump button is currently pressed. Called if Item is a wing in a social slot, or if in a regular accessory slot and no other wings are in social slots. Use to animate wings, create dusts, invoke sounds, and create lights.
+Allows for Wings to do various things while in use. "inUse" is whether or not the jump button is currently pressed. Called when these wings visually appear on the player. Use to animate wings, create dusts, invoke sounds, and create lights. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void Update(ref float gravity, ref float maxFallSpeed)
 
