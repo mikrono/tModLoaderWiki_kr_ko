@@ -164,37 +164,67 @@ Calls all GlobalItem.OpenVanillaBag hooks.
 
 ### public static void DrawHair(Player player, ref bool drawHair, ref bool drawAltHair)
 
-
+Calls the item's head equipment texture's DrawHair hook, then all GlobalItem.DrawHair hooks.
 
 ### public static bool DrawHead(Player player)
 
+Calls the item's head equipment texture's DrawHead hook, then all GlobalItem.DrawHead hooks, until one of them returns false. Returns true if none of them return false.
+
 ### public static Item GetWing(Player player, bool social = false)
+
+Returns the wing item that the player is functionally using. If player.wingsLogic has been modified, so no equipped wing can be found to match what the player is using, this creates a new Item object to return.
 
 ### public static void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
+If the player is using wings, this uses the result of GetWing, and calls ModItem.VerticalWingSpeeds then all GlobalItem.VerticalWingSpeeds hooks.
+
 ### public static void HorizontalWingSpeeds(Player player)
+
+If the player is using wings, this uses the result of GetWing, and calls ModItem.HorizontalWingSpeeds then all GlobalItem.HorizontalWingSpeeds hooks.
 
 ### public static void WingUpdate(Player player, bool inUse)
 
+If wings can be seen on the player, calls the player's wing's equipment texture's WingUpdate and all GlobalItem.WingUpdate hooks.
+
 ### public static void Update(Item item, ref float gravity, ref float maxFallSpeed)
+
+Calls ModItem.Update, then all GlobalItem.Update hooks.
 
 ### public static void PostUpdate(Item item)
 
+Calls ModItem.PostUpdate and all GlobalItem.PostUpdate hooks.
+
 ### public static void GrabRange(Item item, Player player, ref int grabRange)
+
+Calls ModItem.GrabRange, then all GlobalItem.GrabRange hooks.
 
 ### public static bool GrabStyle(Item item, Player player)
 
+Calls all GlobalItem.GrabStyle hooks then ModItem.GrabStyle, until one of them returns true. Returns whether any of the hooks returned true.
+
 ### public static bool OnPickup(Item item, Player player)
+
+Calls all GlobalItem.OnPickup hooks then ModItem.OnPickup, until one of the returns false. Returns true if all of the hooks return true.
 
 ### public static Color? GetAlpha(Item item, Color lightColor)
 
+Calls all GlobalItem.GetAlpha hooks then ModItem.GetAlpha, until one of them returns a color, and returns that color. Returns null if all of the hooks return null.
+
 ### public static bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale)
+
+Returns the "and" operator on the results of ModItem.PreDrawInWorld and all GlobalItem.PreDrawInWorld hooks.
 
 ### public static void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale)
 
+Calls ModItem.PostDrawInWorld, then all GlobalItem.PostDrawInWorld hooks.
+
 ### public static bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
 
+Returns the "and" operator on the results of all GlobalItem.PreDrawInInventory hooks and ModItem.PreDrawInInventory.
+
 ### public static void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+
+Calls ModItem.PostDrawInInventory, then all GlobalItem.PostDrawInInventory hooks.
 
 ### public static void HoldoutOffset(float gravDir, int type, ref Vector2 offset)
 
