@@ -152,11 +152,19 @@ Returns whether ModItem.bossBagNPC is greater than 0. Returns false if item is n
 
 ### public static void OpenBossBag(int type, Player player, ref int npc)
 
+If the item is a modded item and ModItem.bossBagNPC is greater than 0, calls ModItem.OpenBossBag and sets npc to ModItem.bossBagNPC.
+
 ### public static bool PreOpenVanillaBag(string context, Player player, int arg)
+
+Calls each GlobalItem.PreOpenVanillaBag hook until one of them returns false. Returns true if all of them returned true.
 
 ### public static void OpenVanillaBag(string context, Player player, int arg)
 
+Calls all GlobalItem.OpenVanillaBag hooks.
+
 ### public static void DrawHair(Player player, ref bool drawHair, ref bool drawAltHair)
+
+
 
 ### public static bool DrawHead(Player player)
 
