@@ -66,6 +66,10 @@ Adds the given GlobalItem instance to this mod with the provided name.
 
 Gets the GlobalItem instance with the given name from this mod.
 
+### public void AddItemInfo(string name, ItemInfo info)
+
+Adds the given type of item information storage to the game, using the provided name.
+
 ### public int AddEquipTexture(ModItem item, EquipType type, string name, string texture, string armTexture = "", string femaleTexture = "")
 
 Adds an equipment texture of the specified type, internal name, and associated item to your mod. (The item parameter may be null if you don't want to associate an item with the texture.) You can then get the ID for your texture by calling EquipLoader.GetEquipTexture, and using the EquipTexture's Slot property. If the EquipType is EquipType.Body, make sure that you also provide an armTexture and a femaleTexture. Returns the ID / slot that is assigned to the equipment texture.
@@ -162,6 +166,10 @@ Adds the given GlobalProjectile instance to this mod with the provided name.
 
 Gets the GlobalProjectile instance with the given name from this mod.
 
+### public void AddProjectileInfo(string name, ProjectileInfo info)
+
+Adds the given type of projectile information storage to the game, using the provided name.
+
 ### public void AddNPC(string name, ModNPC npc, string texture)
 
 Adds a type of NPC to the game with the specified name and texture.
@@ -181,6 +189,10 @@ Adds the given GlobalNPC instance to this mod with the provided name.
 ### public GlobalNPC GetGlobalNPC(string name)
 
 Gets the GlobalNPC instance with the given name from this mod.
+
+### public void AddNPCInfo(string name, NPCInfo info)
+
+Adds the given type of NPC information storage to the game, using the provided name.
 
 ### public void AddNPCHeadTexture(int npcType, string texture)
 
