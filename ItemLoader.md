@@ -136,12 +136,70 @@ Calls ModItem.CanRightClick, then all GlobalItem.CanRightClick hooks, until one 
 
 ### public static void RightClick(Item item, Player player)
 
-If Main.mouseRightRelease is true, the following steps are taken:
-1. Call ModItem.RightClick
-2. Calls all GlobalItem.RightClick hooks
-3. Decrements the item's stack
-4. Sets the item's type to 0 if the item's stack is 0
-5. Plays the item-grabbing sound
-6. Sets Main.stackSplit to 30
-7. Sets Main.mouseRightRelease to false
+If Main.mouseRightRelease is true, the following steps are taken:  
+1. Call ModItem.RightClick  
+2. Calls all GlobalItem.RightClick hooks  
+3. Decrements the item's stack  
+4. Sets the item's type to 0 if the item's stack is 0  
+5. Plays the item-grabbing sound  
+6. Sets Main.stackSplit to 30  
+7. Sets Main.mouseRightRelease to false  
 8. Calls Recipe.FindRecipes.
+
+### public static bool IsModBossBag(Item item)
+
+Returns whether ModItem.bossBagNPC is greater than 0. Returns false if item is not a modded item.
+
+### public static void OpenBossBag(int type, Player player, ref int npc)
+
+### public static bool PreOpenVanillaBag(string context, Player player, int arg)
+
+### public static void OpenVanillaBag(string context, Player player, int arg)
+
+### public static void DrawHair(Player player, ref bool drawHair, ref bool drawAltHair)
+
+### public static bool DrawHead(Player player)
+
+### public static Item GetWing(Player player, bool social = false)
+
+### public static void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+
+### public static void HorizontalWingSpeeds(Player player)
+
+### public static void WingUpdate(Player player, bool inUse)
+
+### public static void Update(Item item, ref float gravity, ref float maxFallSpeed)
+
+### public static void PostUpdate(Item item)
+
+### public static void GrabRange(Item item, Player player, ref int grabRange)
+
+### public static bool GrabStyle(Item item, Player player)
+
+### public static bool OnPickup(Item item, Player player)
+
+### public static Color? GetAlpha(Item item, Color lightColor)
+
+### public static bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale)
+
+### public static void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale)
+
+### public static bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+
+### public static void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+
+### public static void HoldoutOffset(float gravDir, int type, ref Vector2 offset)
+
+### public static void HoldoutOrigin(Player player, ref Vector2 origin)
+
+### public static bool CanEquipAccessory(Item item, int slot)
+
+### public static void ExtractinatorUse(ref int resultType, ref int resultStack, int extractType)
+
+### public static void AutoLightSelect(Item item, ref bool dryTorch, ref bool wetTorch, ref bool glowstick)
+
+### public static void CaughtFishStack(Item item)
+
+### public static void IsAnglerQuestAvailable(int itemID, ref bool notAvailable)
+
+### public static void AnglerChat(bool turningInFish, bool anglerQuestFinished, int type, ref string chat, ref string catchLocation)
