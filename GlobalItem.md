@@ -167,11 +167,11 @@ Allows you to make vanilla bags drop your own items and stop the default items f
 
 Allows you to make vanilla bags drop your own items in addition to the default items. This method will not be called if any other GlobalItem returns false for PreOpenVanillaBag. Context will either be "present", "bossBag", "crate", "lockBox", "herbBag", or "goodieBag". For boss bags and crates, arg will be set to the type of the item being opened.
 
-### public virtual void DrawHair(Item item, ref bool drawHair, ref bool drawAltHair)
+### public virtual void DrawHair(int head, ref bool drawHair, ref bool drawAltHair)
 
 Allows you to determine whether the player's hair or alt (hat) hair will be drawn when a head armor is worn.
 
-### public virtual bool DrawHead(Item item)
+### public virtual bool DrawHead(int head)
 
 Return false to hide the player's head when a head armor is worn. Returns true by default.
 
@@ -182,6 +182,10 @@ Allows you to modify the speeds at which you rise and fall when wings are equipp
 ### public virtual void HorizontalWingSpeeds(Item item, ref float speed, ref float acceleration)
 
 Allows you to modify the horizontal flight speed and acceleration of wings.
+
+### public virtual void WingUpdate(int wings, Player player, bool inUse)
+
+Allows for Wings to do various things while in use. "inUse" is whether or not the jump button is currently pressed. Called when wings visually appear on the player. Use to animate wings, create dusts, invoke sounds, and create lights.
 
 ### public virtual void Update(Item item, ref float gravity, ref float maxFallSpeed)
 
