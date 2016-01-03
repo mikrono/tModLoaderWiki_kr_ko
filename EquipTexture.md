@@ -49,3 +49,15 @@ Allows you to create special effects (such as dust) when the player wears this e
 ### public virtual void ArmorSetShadows(Player player, ref bool longTrail, ref bool smallPulse, ref bool largePulse, ref bool shortTrail)
 
 Allows you to determine special visual effects this vanity set has on the player without having to code them yourself. By default this will call the associated ModItem's ArmorSetShadows if there is an associated ModItem.
+
+### public virtual void DrawHair(ref bool drawHair, ref bool drawAltHair)
+
+Allows you to determine whether the player's hair or alt (hat) hair draws when this head equipment texture is worn. By default both flags will be false. If there is an associated ModItem, by default this will call that ModItem's DrawHair.
+
+### public virtual bool DrawHead()
+
+Return false to hide the player's head when this head equipment texture is worn. By default this will return the associated ModItem's DrawHead, or true if there is no associated ModItem.
+
+### public virtual void WingUpdate(Player player, bool inUse)
+
+Allows for wing textures to do various things while in use. "inUse" is whether or not the jump button is currently pressed. Called when this wing texture visually appears on the player. Use to animate wings, create dusts, invoke sounds, and create lights. By default this will call the associated ModItem's WingUpdate if there is an associated ModItem.
