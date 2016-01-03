@@ -54,6 +54,10 @@
 - [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
 - [Vanilla NPC Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-Field-Values)
 
+**Non-Player Entities**
+
+- [EntityInfo](https://github.com/bluemagic123/tModLoader/wiki/EntityInfo)
+
 **Players**
 
 - [ModPlayer](https://github.com/bluemagic123/tModLoader/wiki/ModPlayer)
