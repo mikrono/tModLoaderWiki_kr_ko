@@ -8,6 +8,10 @@ The ModItem instance that controls the behavior of this item. This property is n
 
 ## Methods
 
+### public ItemInfo GetModInfo(Mod mod, string name)
+
+Gets the ItemInfo instance (with the given name and added by the given mod) associated with this item instance.
+
 ### public void CloneDefaults(int type)
 
 Allows you to copy the defaults of a different type of item.
@@ -22,6 +26,10 @@ The ModProjectile instance that controls the behavior of this projectile. This p
 
 ## Methods
 
+### public ProjectileInfo GetProjectileInfo(Mod mod, string name)
+
+Gets the ProjectileInfo instance (with the given name and added by the given mod) associated with this projectile instance.
+
 ### public void CloneDefaults(int type)
 
 Allows you to copy the defaults of another type of projectile.
@@ -35,6 +43,10 @@ Allows you to copy the defaults of another type of projectile.
 The ModNPC instance that controls the behavior of this NPC. This property is null if this is not a modded NPC.
 
 ## Methods
+
+### public NPCInfo GetModInfo(Mod mod, string name)
+
+Gets the NPCInfo instance (with the given name and added by the given mod) associated with this NPC instance.
 
 ### public void CloneDefaults(int type)
 
