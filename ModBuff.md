@@ -16,6 +16,16 @@ The internal name of this type of buff.
 
 The sprite sheet that this buff uses to display the buff icon while in use.
 
+## Fields
+
+### public bool longerExpertDebuff
+
+If this buff is a debuff, setting this to true will make this buff last twice as long on players in expert mode. Defaults to false.
+
+### public bool canBeCleared
+
+Whether or not it is always safe to call Player.DelBuff on this buff. Setting this to false will prevent the nurse from being able to remove this debuff. Defaults to true.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
@@ -40,3 +50,11 @@ Allows you to make this buff give certain effects to the given player. If you re
 ### public virtual void Update(NPC npc, ref int buffIndex)
 
 Allows you to make this buff give certain effects to the given NPC. If you remove the buff from the NPC, make sure to decrement the buffIndex parameter by 1.
+
+### public virtual bool ReApply(Player player, int time, int buffIndex)
+
+Allows to you make special things happen when adding this buff to a player when the player already has this buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time.
+
+### public virtual bool ReApply(NPC npc, int time, int buffIndex)
+
+Allows to you make special things happen when adding this buff to an NPC when the NPC already has this buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time.
