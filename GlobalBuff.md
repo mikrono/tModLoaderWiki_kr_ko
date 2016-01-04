@@ -27,3 +27,11 @@ Allows you to make the buff with the given ID give certain effects to a player. 
 ### public virtual void Update(int type, NPC npc, ref int buffIndex)
 
 Allows you to make the buff with the given ID give certain effects to an NPC. If you remove the buff from the NPC, make sure to decrement the buffIndex parameter by 1.
+
+### public virtual bool ReApply(int type, Player player, int time, int buffIndex)
+
+Allows to you make special things happen when adding the given type of buff to a player when the player already has that buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time. (For Mana Sickness, the vanilla re-apply code adds the "time" argument to the current buff time.)
+
+### public virtual bool ReApply(int type, NPC npc, int time, int buffIndex)
+
+Allows to you make special things happen when adding the given buff type to an NPC when the NPC already has that buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time.
