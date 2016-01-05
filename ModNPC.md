@@ -194,7 +194,7 @@ Allows you to draw things in front of this NPC. This method is called even if Pr
 
 ### public virtual float CanSpawn(NPCSpawnInfo spawnInfo)
 
-Whether or not this NPC can spawn with the given spawning conditions. Return the weight for the chance of this NPC to spawn compared to vanilla mobs. Vanilla mobs have a weight of 1. Returns 0 by default, which disables natural spawning.
+Whether or not this NPC can spawn with the given spawning conditions. Return the weight for the chance of this NPC to spawn compared to vanilla mobs. All vanilla mobs combined have a total weight of 1. Returns 0 by default, which disables natural spawning.
 
 ### public virtual int SpawnNPC(int tileX, int tileY)
 
