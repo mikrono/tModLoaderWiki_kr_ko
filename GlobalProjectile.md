@@ -50,7 +50,7 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 
 Allows you to control what happens when a projectile is killed (for example, creating dust or making sounds).
 
-### public virtual bool ContactMinionDamage(Projectile projectile)
+### public virtual bool MinionContactDamage(Projectile projectile)
 
 Whether or not a minion can damage NPCs by touching them. Returns false by default. Note that this will only be used if the projectile is considered a pet.
 
