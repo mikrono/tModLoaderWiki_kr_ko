@@ -30,6 +30,8 @@ Gets the ModProjectile instance corresponding to the specified type.
 
 ### public static void Kill(Projectile projectile, int timeLeft)
 
+### public static bool MinionContactDamage(Projectile projectile)
+
 ### public static bool? CanHitNPC(Projectile projectile, NPC target)
 
 ### public static void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit)
