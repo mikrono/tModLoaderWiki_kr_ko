@@ -235,3 +235,7 @@ Allows you to add to, change, or remove from the items the player earns when fin
 ### public virtual void GetDyeTraderReward(List<int> rewardPool)
 
 Allows you to modify what items are possible for the player to earn when giving a Strange Plant to the Dye Trader.
+
+### public virtual void ModifyDrawHeadLayers(List<PlayerHeadLayer> layers)
+
+Allows you to modify the drawing of the player head on the minimap. This is done by removing from, adding to, or rearranging the list, by setting some of the layers' visible field to false, etc.
