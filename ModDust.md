@@ -48,6 +48,10 @@ Allows you to modify a dust's fields when it is created.
 
 Allows you to customize how you want this type of dust to behave. Return true to allow for vanilla dust updating to also take place; will return true by default. Normally you will want this to return false.
 
+### public virtual bool MidUpdate(Dust dust)
+
+Allows you to add behavior to this dust on top of the default dust behavior. Return true if you're applying your own behavior; return false to make the dust slow down by itself. Normally you will want this to return true.
+
 ### public virtual Color? GetAlpha(Dust dust, Color lightColor)
 
 Allows you to override the color this dust will draw in. Return null to draw it in the normal light color; returns null by default. Note that the dust.noLight field makes the dust ignore lighting and draw in full brightness, and can be set in OnSpawn instead of having to return Color.White here.
