@@ -184,6 +184,10 @@ Allows you to flip this NPC's boss head icon on the map.
 
 Allows you to determine the color and transparency in which this NPC is drawn. Return null to use the default color (normally light and buff color). Returns null by default.
 
+### public virtual void DrawEffects(ref Color drawColor)
+
+Allows you to add special visual effects to this NPC (such as creating dust), and modify the color in which the NPC is drawn.
+
 ### public virtual bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
 
 Allows you to draw things behind this NPC, or to modify the way this NPC is drawn. Return false to stop the game from drawing the NPC (useful if you're manually drawing the NPC). Returns true by default.
