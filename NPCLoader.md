@@ -84,6 +84,8 @@ Gets the ModNPC instance corresponding to the specified type.
 
 ### public static Color? GetAlpha(NPC npc, Color lightColor)
 
+### public static void DrawEffects(NPC npc, ref Color drawColor)
+
 ### public static bool PreDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
 
 ### public static void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
