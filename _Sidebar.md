@@ -60,7 +60,10 @@
 
 **Players**
 
+- [PlayerHooks](https://github.com/bluemagic123/tModLoader/wiki/PlayerHooks)
 - [ModPlayer](https://github.com/bluemagic123/tModLoader/wiki/ModPlayer)
+- [DrawLayer](https://github.com/bluemagic123/tModLoader/wiki/DrawLayer)
+- [DrawInfo](https://github.com/bluemagic123/tModLoader/wiki/DrawInfo)
 - [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
 - [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
