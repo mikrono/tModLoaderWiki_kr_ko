@@ -167,6 +167,10 @@ Allows you to make vanilla bags drop your own items and stop the default items f
 
 Allows you to make vanilla bags drop your own items in addition to the default items. This method will not be called if any other GlobalItem returns false for PreOpenVanillaBag. Context will either be "present", "bossBag", "crate", "lockBox", "herbBag", or "goodieBag". For boss bags and crates, arg will be set to the type of the item being opened.
 
+### public virtual void DrawHands(int body, ref bool drawHands, ref bool drawArms)
+
+Allows you to determine whether the skin/shirt on the player's arms and hands are drawn when a body armor is worn. Note that if drawHands is false, the arms will not be drawn either.
+
 ### public virtual void DrawHair(int head, ref bool drawHair, ref bool drawAltHair)
 
 Allows you to determine whether the player's hair or alt (hat) hair will be drawn when a head armor is worn.
@@ -174,6 +178,18 @@ Allows you to determine whether the player's hair or alt (hat) hair will be draw
 ### public virtual bool DrawHead(int head)
 
 Return false to hide the player's head when a head armor is worn. Returns true by default.
+
+### public virtual bool DrawBody(int body)
+
+Return false to hide the player's body when a body armor is worn. Returns true by default.
+
+### public virtual bool DrawLegs(int legs, int shoes)
+
+Return false to hide the player's legs when a leg armor or shoe accessory is worn. Returns true by default.
+
+### public virtual void DrawArmorColor(EquipType type, int slot, ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+
+Allows you to modify the colors in which the player's armor and their surrounding accessories are drawn, in addition to which glow masks and in what colors are drawn. The armGlowMask and armGlowMaskColor parameters will only do anything when the type parameter is EquipType.Body.
 
 ### public virtual void VerticalWingSpeeds(Item item, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
