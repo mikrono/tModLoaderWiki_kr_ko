@@ -52,6 +52,8 @@ Gets the ModProjectile instance corresponding to the specified type.
 
 ### public static bool? Colliding(Projectile projectile, Rectangle projHitbox, Rectangle targetHitbox)
 
+### public static void DrawHeldProjInFrontOfHeldItemAndArms(Projectile projectile, ref bool flag)
+
 ### public static Color? GetAlpha(Projectile projectile, Color lightColor)
 
 ### public static void DrawOffset(Projectile projectile, ref int offsetX, ref int offsetY, ref float originX)
