@@ -236,7 +236,7 @@ Allows you to add to, change, or remove from the items the player earns when fin
 
 Allows you to modify what items are possible for the player to earn when giving a Strange Plant to the Dye Trader.
 
-### public virtual void DrawEffects(ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+### public virtual void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
 
 Allows you to create special effects when this player is drawn, such as creating dust, modifying the color the player is drawn in, etc. The fullBright parameter makes it so that the drawn player ignores the modified color and lighting. Note that the fullBright parameter only works if r, g, b, and/or a is not equal to 1. Make sure to add the indexes of any dusts you create to Main.playerDrawDust, and the idnexes of any gore you create to Main.playerDrawGore.
 
