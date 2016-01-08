@@ -162,6 +162,10 @@ Calls each GlobalItem.PreOpenVanillaBag hook until one of them returns false. Re
 
 Calls all GlobalItem.OpenVanillaBag hooks.
 
+### public static void DrawHands(Player player, ref bool drawHands, ref bool drawArms)
+
+Calls the item's body equipment texture's DrawHands hook, then all GlobalItem.DrawHands hooks.
+
 ### public static void DrawHair(Player player, ref bool drawHair, ref bool drawAltHair)
 
 Calls the item's head equipment texture's DrawHair hook, then all GlobalItem.DrawHair hooks.
@@ -169,6 +173,18 @@ Calls the item's head equipment texture's DrawHair hook, then all GlobalItem.Dra
 ### public static bool DrawHead(Player player)
 
 Calls the item's head equipment texture's DrawHead hook, then all GlobalItem.DrawHead hooks, until one of them returns false. Returns true if none of them return false.
+
+### public static bool DrawBody(Player player)
+
+Calls the item's body equipment texture's DrawBody hook, then all GlobalItem.DrawBody hooks, until one of them returns false. Returns true if none of them return false.
+
+### public static bool DrawLegs(Player player)
+
+Calls the item's leg equipment texture's DrawLegs hook, then the item's shoe equipment texture's DrawLegs hook, then all GlobalItem.DrawLegs hooks, until one of them returns false. Returns true if none of them return false.
+
+### public static void DrawArmorColor(EquipType type, int slot, ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+
+Calls the item's equipment texture's DrawArmorColor hook, then all GlobalItem.DrawArmorColor hooks.
 
 ### public static Item GetWing(Player player, bool social = false)
 
