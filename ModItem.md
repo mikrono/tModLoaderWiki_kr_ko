@@ -189,6 +189,10 @@ Allows you to make things happen when this item is right-clicked in the inventor
 
 Allows you to give items to the given player when this item is right-clicked in the inventory if the bossBagNPC field has been set to a positive number. This ignores the CanRightClick and RightClick hooks.
 
+### public virtual void DrawHands(ref bool drawHands, ref bool drawArms)
+
+Allows you to determine whether the skin/shirt on the player's arms and hands are drawn when this body armor is worn. By default both flags will be false. Note that if drawHands is false, the arms will not be drawn either. Also note that this hook is only ever called through this item's associated equipment texture.
+
 ### public virtual void DrawHair(ref bool drawHair, ref bool drawAltHair)
 
 Allows you to determine whether the player's hair or alt (hat) hair draws when this head armor is worn. By default both flags will be false. Note that this hook is only ever called through this item's associated equipment texture.
@@ -196,6 +200,18 @@ Allows you to determine whether the player's hair or alt (hat) hair draws when t
 ### public virtual bool DrawHead()
 
 Return false to hide the player's head when this head armor is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
+
+### public virtual bool DrawBody()
+
+Return false to hide the player's body when this body armor is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
+
+### public virtual bool DrawLegs()
+
+Return false to hide the player's legs when this leg armor is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
+
+### public virtual void DrawArmorColor(ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+
+Allows you to modify the colors in which this armor and surrounding accessories are drawn, in addition to which glow mask and in what color is drawn. The armGlowMask and armGlowMaskColor parameters will only do anything for body armor. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void VerticalWingSpeeds(ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
