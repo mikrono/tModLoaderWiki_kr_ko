@@ -38,6 +38,10 @@ The vertical origin offset from the projectile's center when it is drawn. The or
 
 The horizontal origin offset from the projectile's center when it is drawn.
 
+### public bool drawHeldProjInFrontOfHeldItemAndArms
+
+If this projectile is held by the player, determines whether it is drawn in front of or behind the player's arms. Defaults to false.
+
 ## Methods
 
 ### public virtual bool Autoload(ref string name, ref string texture)
