@@ -112,7 +112,7 @@ This is where all ModPlayer hooks are gathered and called.
 
 ### public static void GetDyeTraderReward(Player player, List<int> rewardPool)
 
-### public static void DrawEffects(Player player, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+### public static void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
 
 ### public static List<PlayerLayer> GetDrawLayers(Player drawPlayer)
 
