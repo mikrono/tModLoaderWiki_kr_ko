@@ -207,7 +207,7 @@ Return false to hide the player's body when this body armor is worn. Returns tru
 
 ### public virtual bool DrawLegs()
 
-Return false to hide the player's legs when this leg armor is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
+Return false to hide the player's legs when this leg armor or shoe accessory is worn. Returns true by default. Note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void DrawArmorColor(ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
 
