@@ -132,6 +132,10 @@ Allows you to modify the player's animation when this item is being used. Return
 
 Allows you to modify the player's animation when the player is holding this item. Return true if you modify the player's animation. Returns false by default.
 
+### public virtual bool AltFunctionUse(Player player)
+
+Allows you to make this item usable by right-clicking. Returns false by default. When this item is used by right-clicking, player.altFunctionUse will be set to 2.
+
 ### public virtual void UpdateInventory(Player player)
 
 Allows you to make things happen when this item is in the player's inventory (for example, how the cell phone makes information display).
