@@ -16,8 +16,24 @@ The display name of this crafting group in recipes.
 
 A list of the items that make up this crafting group. Normally the first item in the list will be the one displayed in recipes.
 
-## Methods
+## Static Properties
 
-### public static CraftGroup GetVanillaGroup(string name)
+### public static CraftGroup Wood
 
-Gets the vanilla crafting group with the given name. Useful if you want to add modded items to vanilla crafting groups. The current vanilla crafting groups are "Wood", "IronBar", "Sand", "PressurePlate", and "Fragment".
+Initially consists of all types of wood in vanilla.
+
+### public static CraftGroup IronBar
+
+Initially consists of Iron Bar and Lead Bar.
+
+### public static CraftGroup PressurePlate
+
+Initially consists of all types of pressure plates in vanilla.
+
+### public static CraftGroup Sand
+
+Initially consists of Sand, Ebonsand, Pearlsand, and Crimsand.
+
+### public static CraftGroup Fragment
+
+Initially consists of the four types of lunar fragments.
