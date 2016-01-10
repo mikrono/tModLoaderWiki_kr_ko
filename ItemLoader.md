@@ -94,6 +94,10 @@ Calls ModItem.UseItemFrame, then all GlobalItem.UseItemFrame hooks, until one of
 
 Calls ModItem.HoldItemFrame, then all GlobalItem.HoldItemFrame hooks, until one of them returns true. Returns whether any of the hooks returned true.
 
+### public static bool AltFunctionUse(Item item, Player player)
+
+Calls ModItem.AltFunctionUse, then all GlobalItem.AltFunctionUse hooks, until one of them returns true. Returns whether any of the hooks returned true.
+
 ### public static void UpdateInventory(Item item, Player player)
 
 Calls ModItem.UpdateInventory and all GlobalItem.UpdateInventory hooks.
