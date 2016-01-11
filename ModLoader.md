@@ -26,6 +26,10 @@ The file path in which .dll files referenced by mods should be stored.
 
 Gets the instance of the Mod with the specified name.
 
+### public static string[] GetLoadedMods()
+
+Returns an array containing the names of all loaded mods. The array entries will be in the reverse order in which the mods were loaded.
+
 ### public static byte[] GetFileBytes(string name)
 
 Gets the byte representation of the file with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithExtension". Throws an ArgumentException if the file does not exist.
