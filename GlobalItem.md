@@ -191,9 +191,13 @@ Return false to hide the player's body when a body armor is worn. Returns true b
 
 Return false to hide the player's legs when a leg armor or shoe accessory is worn. Returns true by default.
 
-### public virtual void DrawArmorColor(EquipType type, int slot, ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+### public virtual void DrawArmorColor(EquipType type, int slot, Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 
-Allows you to modify the colors in which the player's armor and their surrounding accessories are drawn, in addition to which glow masks and in what colors are drawn. The armGlowMask and armGlowMaskColor parameters will only do anything when the type parameter is EquipType.Body.
+Allows you to modify the colors in which the player's armor and their surrounding accessories are drawn, in addition to which glow mask and in what color is drawn.
+
+### public virtual void ArmorArmGlowMask(int slot, Player drawPlayer, float shadow, ref int glowMask, ref Color color)
+
+Allows you to modify which glow mask and in what color is drawn on the player's arms. Note that this is only called for body armor.
 
 ### public virtual void VerticalWingSpeeds(Item item, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
