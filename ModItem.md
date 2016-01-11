@@ -219,7 +219,7 @@ Allows you to modify the colors in which this armor and surrounding accessories 
 
 ### public virtual void ArmorArmGlowMask(Player drawPlayer, float shadow, ref int glowMask, ref Color color)
 
-Allows you to modify which glow mask and in what color is drawn on the player's arms. Note that this hook is only ever called through this item's associated equipment texture.
+Allows you to modify which glow mask and in what color is drawn on the player's arms. Note that this is only called for body armor. Also note that this hook is only ever called through this item's associated equipment texture.
 
 ### public virtual void VerticalWingSpeeds(ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 
