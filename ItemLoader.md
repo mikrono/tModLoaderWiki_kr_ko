@@ -186,9 +186,13 @@ Calls the item's body equipment texture's DrawBody hook, then all GlobalItem.Dra
 
 Calls the item's leg equipment texture's DrawLegs hook, then the item's shoe equipment texture's DrawLegs hook, then all GlobalItem.DrawLegs hooks, until one of them returns false. Returns true if none of them return false.
 
-### public static void DrawArmorColor(EquipType type, int slot, ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+### public static void DrawArmorColor(EquipType type, int slot, Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 
 Calls the item's equipment texture's DrawArmorColor hook, then all GlobalItem.DrawArmorColor hooks.
+
+### public static void ArmorArmGlowMask(int slot, Player drawPlayer, float shadow, ref int glowMask, ref Color color)
+
+Calls the item's body equipment texture's ArmorArmGlowMask, then all GlobalItem.ArmorArmGlowMask hooks.
 
 ### public static Item GetWing(Player player, bool social = false)
 
