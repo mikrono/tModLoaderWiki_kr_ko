@@ -192,7 +192,7 @@ Calls the item's equipment texture's DrawArmorColor hook, then all GlobalItem.Dr
 
 ### public static void ArmorArmGlowMask(int slot, Player drawPlayer, float shadow, ref int glowMask, ref Color color)
 
-Calls the item's body equipment texture's ArmorArmGlowMask, then all GlobalItem.ArmorArmGlowMask hooks.
+Calls the item's body equipment texture's ArmorArmGlowMask hook, then all GlobalItem.ArmorArmGlowMask hooks.
 
 ### public static Item GetWing(Player player, bool social = false)
 
