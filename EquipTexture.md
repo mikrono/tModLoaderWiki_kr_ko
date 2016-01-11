@@ -70,9 +70,13 @@ Return false to hide the player's body when this body equipment texture is worn.
 
 Return false to hide the player's legs when this leg or shoe equipment texture is worn. By default this will return the associated ModItem's DrawLegs, or true if there is no associated ModItem.
 
-### public virtual void DrawArmorColor(ref Color color, ref int glowMask, ref Color glowMaskColor, ref int armGlowMask, ref Color armGlowMaskColor)
+### public virtual void DrawArmorColor(Player drawPlayer, float shadow, ref Color color, ref int glowMask, ref Color glowMaskColor)
 
-Allows you to modify the colors in which this armor texture and surrounding accessories are drawn, in addition to which glow mask and in what color is drawn. The armGlowMask and armGlowMaskColor parameters will only do anything for body armor. By default this will call the associated ModItem's DrawArmorColor if there is an associated ModItem.
+Allows you to modify the colors in which this armor texture and surrounding accessories are drawn, in addition to which glow mask and in what color is drawn. By default this will call the associated ModItem's DrawArmorColor if there is an associated ModItem.
+
+### public virtual void ArmorArmGlowMask(Player drawPlayer, float shadow, ref int glowMask, ref Color color)
+
+Allows you to modify which glow mask and in what color is drawn on the player's arms. Note that this is only called for body equipment textures. By default this will call the associated ModItem's ArmorArmGlowMask if there is an associated ModItem.
 
 ### public virtual void WingUpdate(Player player, bool inUse)
 
