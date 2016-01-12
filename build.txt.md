@@ -19,6 +19,8 @@ modReferences - A list of mods that your mod depends on. Name them by their file
 
 noCompile - Whether this mod should compile source code when being built or use dll files pre-compiled by the mod maker. By default this will be false if you do not include this property. If this is set to true, make sure to name your mod file "All.dll" if it does not use Microsoft.Xna.Framework. If it does use Microsoft.Xna.Framework, you will need two dll files: "Windows.dll" must reference Microsoft.Xna.Framework.dll and the Windows version of Terraria.exe, while "Other.dll" must reference FNA.dll and a non-Windows version of Terraria.exe.
 
+homepage - A link to a website with your mod's information.
+
 hideCode - If true, the unpacked mod that results from using tModReader will not include .dll files. These files are the compiled mod. Defaults to true.
 
 hideResources - If true, the unpacked mod that results from using tModReader will not include resource files, such as .png files and .wav files. Use this if you would like to have your sounds and images freely available to other modders. Defaults to true.
