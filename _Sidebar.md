@@ -6,6 +6,7 @@
 - [Mod](https://github.com/bluemagic123/tModLoader/wiki/Mod)
 - [ModProperties](https://github.com/bluemagic123/tModLoader/wiki/ModProperties)
 - [build.txt](https://github.com/bluemagic123/tModLoader/wiki/build.txt)
+- [description.txt](https://github.com/bluemagic123/tModLoader/wiki/description.txt)
 
 **Items**
 
