@@ -122,9 +122,9 @@ Allows you to make things happen when an item is in the player's inventory (for 
 
 Allows you to give effects to armors and accessories, such as increased damage.
 
-### public virtual void UpdateAccessory(Item item, Player player)
+### public virtual void UpdateAccessory(Item item, Player player, bool hideVisual)
 
-Allows you to give effects to accessories. Frankly, this is just a more limited version of UpdateEquip, but I included this hook to be more in-line with the mysterious source code.
+Allows you to give effects to accessories. The hideVisual parameter is whether the player has marked the accessory slot to be hidden from being drawn on the player.
 
 ### public virtual string IsArmorSet(Item head, Item body, Item legs)
 
