@@ -106,7 +106,7 @@ Calls ModItem.UpdateInventory and all GlobalItem.UpdateInventory hooks.
 
 Calls ModItem.UpdateEquip and all GlobalItem.UpdateEquip hooks.
 
-### public static void UpdateAccessory(Item item, Player player)
+### public static void UpdateAccessory(Item item, Player player, bool hideVisual)
 
 Calls ModItem.UpdateAccessory and all GlobalItem.UpdateAccessory hooks.
 
