@@ -48,6 +48,8 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 
 ### public static void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
 
+### public static bool Dangersense(int i, int j, int type, Player player)
+
 ### public static void SetSpriteEffects(int i, int j, int type, ref SpriteEffects spriteEffects)
 
 ### public static void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
