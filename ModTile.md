@@ -146,6 +146,10 @@ Allows you to make things happen when this tile is within a certain range of the
 
 Allows you to determine how much light this block emits. Make sure you set Main.tileLighted[Type] to true in SetDefaults for this to work.
 
+### public virtual bool Dangersense(int i, int j, Player player)
+
+Allows you to determine whether this block glows red when the given player has the Dangersense buff.
+
 ### public virtual void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
 
 Allows you to determine whether or not the tile will draw itself flipped in the world.
