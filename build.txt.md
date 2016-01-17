@@ -27,4 +27,4 @@ hideResources - If true, the unpacked mod that results from using tModReader wil
 
 includeSource - If true, the the unpacked mod that results from using tModReader will include .cs files. Use this if you would like to share your code freely. Defaults to false.
 
-buildIgnore = A list of file patterns to ignore for building the mod. Useful for reducing .tmod file size. Use to ignore version control files, reference images, failed code experiments, and other files. Here are some examples: ``.git\*, referenceImages\*.png, .gitattributes, *.csproj. ``
+buildIgnore = A list of file patterns to ignore for building the mod. Useful for reducing .tmod file size. Use to ignore version control files, reference images, failed code experiments, and other files. Here are some examples: ``.git\*, referenceImages\*.png, .gitattributes, *.csproj``
