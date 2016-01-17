@@ -26,3 +26,5 @@ hideCode - If true, the unpacked mod that results from using tModReader will not
 hideResources - If true, the unpacked mod that results from using tModReader will not include resource files, such as .png files and .wav files. Use this if you would like to have your sounds and images freely available to other modders. Defaults to true.
 
 includeSource - If true, the the unpacked mod that results from using tModReader will include .cs files. Use this if you would like to share your code freely. Defaults to false.
+
+buildIgnore = A list of file patterns to ignore for building the mod. Useful for reducing .tmod file size. Use to ignore version control files, reference images, failed code experiments, and other files. Here are some examples: .git\*, referenceImages\*.png, .gitattributes, *.csproj. 
