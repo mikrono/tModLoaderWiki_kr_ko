@@ -4,8 +4,8 @@ The following is a list of the names of the world generation steps in order. Use
 
 **Don't count the steps and use that hard-coded index to modify world generation, other mods that execute before your mod might have already modified the list and the index could be off.**
 
-Here is an image album showing vanilla world generation after each step: http://imgur.com/a/EoXWh
-Here is an image album of the same steps that highlight what each step does: http://imgur.com/a/WHrZ0
+Here is an image album showing vanilla world generation after each step: http://imgur.com/a/EoXWh  
+Here is an image album of the same steps that highlight what each step does: http://imgur.com/a/WHrZ0  
 
 Reset                                      
 Terrain                                    
