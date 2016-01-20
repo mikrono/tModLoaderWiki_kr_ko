@@ -4,9 +4,9 @@ The following is a list of the names of the world generation steps in order. Use
 
 **Don't count the steps and use that hard-coded index to modify world generation, other mods that execute before your mod might have already modified the list and the index could be off.**
 
-Reset
-Terrain
-Tunnels
+  Reset
+  Terrain
+  Tunnels
 Sand
 Mount Caves
 Dirt Wall Backgrounds
