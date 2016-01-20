@@ -69,6 +69,11 @@
 - [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
 
+**World**
+
+- [ModWorld](https://github.com/bluemagic123/tModLoader/wiki/ModWorld)
+- [Vanilla World Generation Steps](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-World-Generation-Steps)
+
 **Buffs**
 
 - [BuffLoader](https://github.com/bluemagic123/tModLoader/wiki/BuffLoader)
@@ -89,6 +94,5 @@
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
-- [ModWorld](https://github.com/bluemagic123/tModLoader/wiki/ModWorld)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
 - [Vanilla Interface Changes](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Class-Changes)
