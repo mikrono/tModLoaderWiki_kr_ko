@@ -8,8 +8,8 @@ The following is a list of the names of the world generation steps in order. Use
   Terrain
   Tunnels
 Sand
-Mount Caves
-Dirt Wall Backgrounds
+Mount Caves  
+Dirt Wall Backgrounds  
 Rocks In Dirt
 Dirt In Rocks
 Clay
