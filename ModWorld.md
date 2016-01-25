@@ -36,4 +36,6 @@ Use this method to place tiles in the world after world generation is complete.
 
 A more advanced option to PostWorldGen, this method allows you modify the list of Generation Passes before a new world begins to be generated. For example, removing the "Planting Trees" pass will cause a world to generate without trees. Placing a new Generation Pass before the "Dungeon" pass will prevent the the mod's pass from cutting into the dungeon.
 
+### public virtual void PostUpdate()
 
+Use this method to have things happen in the world. In vanilla Terraria, a good example of code suitable for this hook is how Falling Stars fall to the ground during the night. This hook is called every frame.
