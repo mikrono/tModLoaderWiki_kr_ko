@@ -110,6 +110,10 @@ Allows you to draw things behind a projectile, or to modify the way the projecti
 
 Allows you to draw things in front of a projectile. This method is called even if PreDraw returns false.
 
+### public virtual void DrawBehind(Projectile projectile, int index, List\<int\> drawCacheProjsBehindNPCsAndTiles, List\<int\> drawCacheProjsBehindNPCs, List\<int\> drawCacheProjsBehindProjectiles)
+
+When used in conjunction with "projectile.hide = true", allows you to specify that this projectile should be drawn behind certain elements. Add the index to one and only one of the lists. For example, the Nebula Arcanum projectile draws behind NPCs and tiles.
+
 ## Grappling-Related Methods
 
 ### public virtual bool? CanUseGrapple(int type, Player player)
