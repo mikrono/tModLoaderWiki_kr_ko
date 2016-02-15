@@ -148,7 +148,7 @@ Allows you to draw things behind this projectile, or to modify the way this proj
 
 Allows you to draw things in front of this projectile. This method is called even if PreDraw returns false.
 
-### public virtual void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles)
+### public virtual void DrawBehind(int index, List\<int\> drawCacheProjsBehindNPCsAndTiles, List\<int\> drawCacheProjsBehindNPCs, List\<int\> drawCacheProjsBehindProjectiles)
 
 When used in conjunction with "projectile.hide = true", allows you to specify that this projectile should be drawn behind certain elements. Add the index to one and only one of the lists. For example, the Nebula Arcanum projectile draws behind NPCs and tiles.
 
