@@ -40,7 +40,7 @@ Returns whether or not a file with the specified name exists.
 
 ### public static Texture2D GetTexture(string name)
 
-Gets the texture with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithoutExtension". Throws an ArgumentException if the texture does not exist.
+Gets the texture with the specified name. The name is in the format of "ModFolder/OtherFolders/FileNameWithoutExtension". Throws an ArgumentException if the texture does not exist. If a vanilla texture is desired, the format "Terraria/FileNameWithoutExtension" will reference an image from the "terraria/Content/Images" folder.
 Note: Texture2D is in the Microsoft.Xna.Framework.Graphics namespace.
 
 ### public static bool TextureExists(string name)
