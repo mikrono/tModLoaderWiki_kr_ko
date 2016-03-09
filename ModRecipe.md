@@ -1,6 +1,6 @@
 # ModRecipe
 
-This class extends Terraria.Recipe, meaning you can use it in a similar manner to vanilla recipes. However, it provides methods that simply recipe creation. Recipes are added by creating new instances of ModRecipe, then calling the AddRecipe method.
+This class extends Terraria.Recipe, meaning you can use it in a similar manner to vanilla recipes. However, it provides methods that simplify recipe creation. Recipes are added by creating new instances of ModRecipe, then calling the AddRecipe method.
 
 ## Fields inherited from Terraria.Recipe
 
