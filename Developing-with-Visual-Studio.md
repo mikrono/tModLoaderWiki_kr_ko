@@ -28,7 +28,7 @@ If you want to use the Microsoft Xna Framework (you probably do) you need to add
 If you already have several source files, and are having difficulty adding them, try dragging and dropping them into the Solution Explorer window.
 
 # Building with Visual Studio
-This will let you build your mod from within Visual Studio, so you don't have to rebuild from within the game, or have your sources in the Mod Sources folder.
+This will let you build your mod from within Visual Studio, so you don't have to rebuild from within the game, or have your sources in the Mod Sources folder
 
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Build Events tab
@@ -36,7 +36,7 @@ This will let you build your mod from within Visual Studio, so you don't have to
 `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"`
 
 # Debugging
-This will let you set breakpoints in your mod and inspect variables in visual studio
+This will let you set breakpoints in your mod and inspect variables in Visual Studio
 
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Debug tab
@@ -47,7 +47,7 @@ This will let you set breakpoints in your mod and inspect variables in visual st
 The `includePDB = true` line will not only enable debugging, but also line numbers in exception stack traces. However it will increase the size of your mod and can be omitted from release builds.
 
 # Edit and Continue
-This will let you edit the source code of your mod while at a breakpoint without restarting the game.
+This will let you edit the source code of your mod while at a breakpoint without restarting the game
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
