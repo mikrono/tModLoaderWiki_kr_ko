@@ -12,7 +12,7 @@ This will let you use Visual Studio's code editing and Intellisense
 1. Go to the Solution Explorer tab, right click on Solution -> ModName -> References and click Add Reference...
 1. Click Browse... and select the tModLoader executable (most likely C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe)
 1. Add the line `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
-1. Create a class extending Terraria.ModLoader.Mod and begin developing
+1. Create a class extending `Terraria.ModLoader.Mod` and begin developing
 
 If you want to use the Microsoft Xna Framework (you probably do) you need to add the DLLs as references. Unfortunately they're hard to find. Fortunately, there's a trick.
 
