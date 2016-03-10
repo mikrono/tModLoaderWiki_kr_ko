@@ -7,6 +7,7 @@
 - [ModProperties](https://github.com/bluemagic123/tModLoader/wiki/ModProperties)
 - [build.txt](https://github.com/bluemagic123/tModLoader/wiki/build.txt)
 - [description.txt](https://github.com/bluemagic123/tModLoader/wiki/description.txt)
+- [Developing with Visual Studio](https://github.com/bluemagic123/tModLoader/wiki/Developing-with-Visual-Studio)
 
 **Items**
 
