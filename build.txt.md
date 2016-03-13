@@ -30,3 +30,5 @@ includeSource - If true, the unpacked mod that results from using tModReader wil
 buildIgnore = A list of file patterns to ignore for building the mod. Useful for reducing .tmod file size. Use to ignore version control files, reference images, failed code experiments, and other files. Here are some examples: ``.git\*, referenceImages\*.png, .gitattributes, *.csproj``
 
 includePDB = If true, line numbers in exceptions and stack traces will appear if the mod experiences problems. Also, Edit and Continue using Visual Studio is possible.
+
+languageVersion = A number from 4 to 6 indicating the C# language version to use.
