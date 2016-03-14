@@ -297,3 +297,11 @@ Allows you to make anything happen whenever the player for this game inputs a me
 ### public virtual void UpdateMusic(ref int music)
 
 Allows you to determine what music should currently play.
+
+### public void RegisterHotKey(string name, string defaultKey)
+
+Registers a hotkey with a name and defaultKey.
+
+### public virtual void HotKeyPressed(string name)
+
+Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed.
