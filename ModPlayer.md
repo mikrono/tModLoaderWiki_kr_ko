@@ -20,6 +20,10 @@ The Player instance that this ModPlayer instance is attached to.
 
 Allows you to automatically add a ModPlayer instead of using Mod.AddPlayer. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this to either force or stop an autoload, or change the name that identifies this type of ModPlayer.
 
+### public virtual void Initialize()
+
+Called whenever the player is loaded (on the player selection screen). This can be used to initialize data structures, etc.
+
 ### public virtual void ResetEffects()
 
 This is where you reset any fields you add to your ModPlayer subclass to their default states. This is necessary in order to reset your fields if they are conditionally set by a tick update but the condition is no longer satisfied.
