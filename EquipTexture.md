@@ -52,8 +52,8 @@ Allows you to determine special visual effects this vanity set has on the player
 
 ### public virtual void SetMatch(bool male, ref int equipSlot, ref bool robes)
 
-Allows you to modify the equipment that the player appears to be wearing. This hook will only be called for body textures and leg textures. Note that equipSlot is not the same as the item type of the armor the player will appear to be wearing. Worn equipment has a separate set of IDs. You can find the vanilla equipment IDs by looking at the headSlot, bodySlot, and legSlot fields for items, and modded equipment IDs by looking at EquipLoader.
-If this hook is called on body armor, equipSlot allows you to modify the leg armor the player appears to be wearing. If you modify it, make sure to set robes to true. If this hook is called on leg armor, equipSlot allows you to modify the leg armor the player appears to be wearing, and the robes parameter is useless.
+Allows you to modify the equipment that the player appears to be wearing. This hook will only be called for body textures and leg textures. Note that equipSlot is not the same as the item type of the armor the player will appear to be wearing. Worn equipment has a separate set of IDs. You can find the vanilla equipment IDs by looking at the headSlot, bodySlot, and legSlot fields for items, and modded equipment IDs by looking at EquipLoader.   
+If this hook is called on body armor, equipSlot allows you to modify the leg armor the player appears to be wearing. If you modify it, make sure to set robes to true. If this hook is called on leg armor, equipSlot allows you to modify the leg armor the player appears to be wearing, and the robes parameter is useless.   
 By default, if there is an associated ModItem, this will call that ModItem's SetMatch.
 
 ### public virtual void DrawHands(ref bool drawHands, ref bool drawArms)
