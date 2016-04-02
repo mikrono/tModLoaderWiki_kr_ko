@@ -4,19 +4,15 @@ Mod is an abstract class that you will override. It serves as a central place fr
 
 ## Properties
 
-### public string Name
+### public virtual string Name
 
-Stores the name of the mod. This name serves as the mod's identification, and also helps with saving everything your mod adds.
+Stores the name of the mod. This name serves as the mod's identification, and also helps with saving everything your mod adds. By default this returns the name of the folder that contains all your code and stuff.
 
 ### public ModProperties Properties
 
 Stores the properties of the mod.
 
 ## Methods
-
-### public abstract void SetModInfo(out string name, ref ModProperties properties)
-
-Override this method in order to give your mod a name and set its properties.
 
 ### public virtual void Load()
 
