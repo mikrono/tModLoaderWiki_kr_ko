@@ -35,3 +35,7 @@ Allows to you make special things happen when adding the given type of buff to a
 ### public virtual bool ReApply(int type, NPC npc, int time, int buffIndex)
 
 Allows to you make special things happen when adding the given buff type to an NPC when the NPC already has that buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time.
+
+### public virtual void ModifyBuffTip(int type, ref string tip, ref int rare)
+
+Allows you to modify the tooltip that displays when the mouse hovers over the buff icon, as well as the color the buff's name is drawn in.
