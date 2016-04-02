@@ -54,6 +54,10 @@ Allows you to determine whether or not the tile at the given coordinates can be 
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a pickaxe. Fail determines whether the tile is mined, effectOnly makes it so that only dust is created, and noItem stops items from dropping.
 
+### public virtual bool CanExplode(int i, int j, int type)
+
+Whether or not the tile at the given coordinates can be killed by an explosion (ie. bombs). Returns true by default; return false to stop an explosion from destroying it.
+
 ### public virtual void NearbyEffects(int i, int j, int type, bool closer)
 
 Allows you to make things happen when the tile is within a certain range of the player (around the same range water fountains and music boxes work). The closer parameter is whether or not the tile is within the range at which things like campfires and banners work.
@@ -77,6 +81,10 @@ Allows animating tiles that were previously static. Loading a new texture for th
 ### public virtual bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
 Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
+
+### public virtual void DrawEffects(int i, int j, int type, SpriteBatch spriteBatch, ref Color drawColor)
+
+Allows you to make stuff happen whenever the tile at the given coordinates is drawn. For example, creating dust or changing the color the tile is drawn in.
 
 ### public virtual void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
