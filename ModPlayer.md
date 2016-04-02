@@ -16,6 +16,12 @@ The name of this ModPlayer. Used for distinguishing between multiple ModPlayers 
 
 The Player instance that this ModPlayer instance is attached to.
 
+### public virtual bool CloneNewInstances
+
+Whether each player gets a ModPlayer by cloning the ModPlayer added to the Mod or by creating a new ModPlayer object with the same type as the ModPlayer added to the Mod. The accessor returns true by default. Return false if you want to assign fields through the constructor.
+
+## Methods
+
 ### public virtual bool Autoload(ref string name)
 
 Allows you to automatically add a ModPlayer instead of using Mod.AddPlayer. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this to either force or stop an autoload, or change the name that identifies this type of ModPlayer.
@@ -51,6 +57,10 @@ Allows you to set biome variables in your ModPlayer class based on tile counts. 
 ### public virtual void UpdateBiomeVisuals()
 
 Allows you to create special visual effects in the area around the player. For example, the blood moon's red filter on the screen or the slime rain's falling slime in the background. You must create classes that override Terraria.Graphics.Shaders.ScreenShaderData or Terraria.Graphics.Effects.CustomSky, add them in your mod's Load hook, then call Player.ManageSpecialBiomeVisuals. See the ExampleMod if you do not have access to the source code.
+
+### public virtual Texture2D GetMapBackgroundImage()
+
+Allows you to change the background that displays when viewing the map. Return null if you do not want to change the background. Returns null by default.
 
 ### public virtual void UpdateBadLifeRegen()
 
