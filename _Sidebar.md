@@ -92,6 +92,7 @@
 **Others**
 
 - [ModRecipe](https://github.com/bluemagic123/tModLoader/wiki/ModRecipe)
+- [GlobalRecipe](https://github.com/bluemagic123/tModLoader/wiki/GlobalRecipe)
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
