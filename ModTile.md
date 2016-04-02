@@ -138,6 +138,10 @@ Allows you to determine what happens when the tile at the given coordinates is k
 
 This hook is called exactly once whenever a block encompassing multiple tiles is destroyed. You can use it to make your multi-tile block drop a single item, for example.
 
+### public virtual bool CanExplode(int i, int j)
+
+Whether or not the tile at the given coordinates can be killed by an explosion (ie. bombs). Returns true by default; return false to stop an explosion from destroying it.
+
 ### public virtual void NearbyEffects(int i, int j, bool closer)
 
 Allows you to make things happen when this tile is within a certain range of the player (around the same range water fountains and music boxes work). The closer parameter is whether or not the tile is within the range at which things like campfires and banners work.
@@ -165,6 +169,10 @@ Allows you to animate your tile. Use frameCounter to keep track of how long the 
 ### public virtual bool PreDraw(int i, int j, SpriteBatch spriteBatch)
 
 Allows you to draw things behind the tile at the given coordinates. Return false to stop the game from drawing the tile normally. Returns true by default.
+
+### public virtual void DrawEffects(int i, int j, SpriteBatch spriteBatch, ref Color drawColor)
+
+Allows you to make stuff happen whenever the tile at the given coordinates is drawn. For example, creating dust or changing the color the tile is drawn in.
 
 ### public virtual void PostDraw(int i, int j, SpriteBatch spriteBatch)
 
