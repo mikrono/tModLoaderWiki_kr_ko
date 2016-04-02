@@ -86,6 +86,14 @@ Adds a required crafting station to this recipe with the given tile name from th
 
 Adds a required crafting station to this recipe of the given type of tile.
 
+### public virtual bool RecipeAvailable()
+
+Whether or not the conditions are met for this recipe to be available for the player to use. This hook can be used for conditions unrelated to items or tiles (for example, biome or time).
+
+### public virtual void OnCraft(Item item)
+
+Allows you to make anything happen when the player uses this recipe. The item parameter is the item the player has just crafted.
+
 ### public virtual int ConsumeItem(int type, int numRequired)
 
 Allows you to determine how many of a certain ingredient is consumed when this recipe is used. Return the number of ingredients that will actually be consumed. By default returns numRequired.
