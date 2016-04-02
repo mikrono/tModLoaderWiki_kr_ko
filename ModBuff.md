@@ -58,3 +58,7 @@ Allows to you make special things happen when adding this buff to a player when 
 ### public virtual bool ReApply(NPC npc, int time, int buffIndex)
 
 Allows to you make special things happen when adding this buff to an NPC when the NPC already has this buff. Return true to block the vanilla re-apply code from being called; returns false by default. The vanilla re-apply code sets the buff time to the "time" argument if that argument is larger than the current buff time.
+
+### public virtual void ModifyBuffTip(ref string tip, ref int rare)
+
+Allows you to modify the tooltip that displays when the mouse hovers over the buff icon, as well as the color the buff's name is drawn in.
