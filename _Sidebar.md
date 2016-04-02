@@ -72,6 +72,7 @@
 
 **World**
 
+- [WorldHooks](https://github.com/bluemagic123/tModLoader/wiki/WorldHooks)
 - [ModWorld](https://github.com/bluemagic123/tModLoader/wiki/ModWorld)
 - [Vanilla World Generation Steps](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-World-Generation-Steps)
 
