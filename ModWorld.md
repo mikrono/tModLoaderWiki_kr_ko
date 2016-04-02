@@ -47,3 +47,7 @@ Use this to reset any fields you set in any of your ModTile.NearbyEffects hooks 
 ### public virtual void PostUpdate()
 
 Use this method to have things happen in the world. In vanilla Terraria, a good example of code suitable for this hook is how Falling Stars fall to the ground during the night. This hook is called every frame.
+
+### public virtual void TileCountsAvailable(int[] tileCounts)
+
+Allows you to store information about how many of each tile is nearby the player. This is useful for counting how many tiles of a certain custom biome there are. The tileCounts parameter stores the tile count indexed by tile type.
