@@ -44,6 +44,8 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 
 ### public static void KillMultiTile(int i, int j, int frameX, int frameY, int type)
 
+### public static bool CanExplode(int i, int j)
+
 ### public static void NearbyEffects(int i, int j, int type, bool closer)
 
 ### public static void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
@@ -59,6 +61,8 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 ### public static void SetAnimationFrame(int type, ref int frameY)
 
 ### public static bool PreDraw(int i, int j, int type, SpriteBatch spriteBatch)
+
+### public static void DrawEffects(int i, int j, int type, SpriteBatch spriteBatch, ref Color drawColor)
 
 ### public static void PostDraw(int i, int j, int type, SpriteBatch spriteBatch)
 
