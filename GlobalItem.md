@@ -150,7 +150,7 @@ Allows you to create special effects (such as dust) when the player wears the va
 
 Allows you to determine special visual effects a vanity has on the player without having to code them yourself.
 
-### public virtual void SetMatch(int type, ref int equipSlot, ref bool robes)
+### public virtual void SetMatch(int type, bool male, ref int equipSlot, ref bool robes)
 
 Allows you to modify the equipment that the player appears to be wearing. This hook will only be called for body armor and leg armor. The type parameter is the equipment type of the item that the player is wearing. Note that type and equipSlot are *not* the same as the item type of the armor the player will appear to be wearing. Worn equipment has a separate set of IDs. You can find the vanilla equipment IDs by looking at the headSlot, bodySlot, and legSlot fields for items, and modded equipment IDs by looking at EquipLoader.   
 If this hook is called on body armor, equipSlot allows you to modify the leg armor the player appears to be wearing. If you modify it, make sure to set robes to true. If this hook is called on leg armor, equipSlot allows you to modify the leg armor the player appears to be wearing, and the robes parameter is useless.
@@ -278,3 +278,7 @@ Whether or not specific conditions have been satisfied for the Angler to be able
 ### public virtual void AnglerChat(bool turningInFish, bool anglerQuestFinished, int type, ref string chat, ref string catchLocation)
 
 Allows you to set what the Angler says when the Quest button is clicked in his chat. The turningInFish parameter is whether the player is turning in the quest fish at that moment. The anglerQuestFinished parameter is whether the player has already turned in the quest fish earlier that day. The chat parameter is his dialogue, and catchLocation should be set to "\n(Caught at [location])" for the given type.
+
+### public virtual void OnCraft(Item item, Recipe recipe)
+
+Allows you to make anything happen when the player crafts the given item using the given recipe.
