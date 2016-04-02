@@ -176,7 +176,7 @@ Allows you to create special effects (such as dust) when the player wears this i
 
 Allows you to determine special visual effects this vanity set has on the player without having to code them yourself. Note that this hook is only ever called through this item's associated equipment texture.
 
-### public virtual void SetMatch(ref int equipSlot, ref bool robes)
+### public virtual void SetMatch(bool male, ref int equipSlot, ref bool robes)
 
 Allows you to modify the equipment that the player appears to be wearing. This hook will only be called for body armor and leg armor. Note that equipSlot is *not* the same as the item type of the armor the player will appear to be wearing. Worn equipment has a separate set of IDs. You can find the vanilla equipment IDs by looking at the headSlot, bodySlot, and legSlot fields for items, and modded equipment IDs by looking at EquipLoader.   
 If this hook is called on body armor, equipSlot allows you to modify the leg armor the player appears to be wearing. If you modify it, make sure to set robes to true. If this hook is called on leg armor, equipSlot allows you to modify the leg armor the player appears to be wearing, and the robes parameter is useless.
@@ -324,3 +324,7 @@ Allows you to load custom data that you have saved for this item.
 ### public virtual void AddRecipes()
 
 This is essentially the same as Mod.AddRecipes. Do note that this will be called for every instance of the overriding ModItem class that is added to the game. This allows you to avoid clutter in your overriding Mod class by adding recipes for which this item is the result.
+
+### public virtual void OnCraft(Recipe recipe)
+
+Allows you to make anything happen when the player crafts this item using the given recipe.
