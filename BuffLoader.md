@@ -19,3 +19,5 @@ Gets the ModBuff instance with the given type. If no ModBuff with the given type
 ### public static bool LongerExpertDebuff(int buff)
 
 ### public static bool CanBeCleared(int buff)
+
+### public static void ModifyBuffTip(int buff, ref string tip, ref int rare)
