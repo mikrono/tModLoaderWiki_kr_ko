@@ -18,6 +18,8 @@ This is where all ModPlayer hooks are gathered and called.
 
 ### public static void UpdateBiomeVisuals(Player player)
 
+### public static Texture2D GetMapBackgroundImage(Player player)
+
 ### public static void UpdateBadLifeRegen(Player player)
 
 ### public static void UpdateLifeRegen(Player player)
