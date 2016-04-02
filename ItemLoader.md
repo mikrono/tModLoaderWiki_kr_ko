@@ -130,7 +130,7 @@ If the player's head texture's IsVanitySet returns true, calls the equipment tex
 
 If the player's head texture's IsVanitySet returns true, calls the equipment texture's ArmorSetShadows. This is then repeated for the player's body, then the legs. Then for each GlobalItem, if GlobalItem.IsVanitySet returns a non-empty string, calls GlobalItem.ArmorSetShadows, using player.head, player.body, and player.legs.
 
-### public static void SetMatch(int type, bool male, ref int equipSlot, ref bool robes)
+### public static void SetMatch(int armorSlot, int type, bool male, ref int equipSlot, ref bool robes)
 
 Calls ModItem.SetMatch, then all GlobalItem.SetMatch hooks.
 
