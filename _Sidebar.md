@@ -89,12 +89,16 @@
 - [SoundLoader](https://github.com/bluemagic123/tModLoader/wiki/SoundLoader)
 - [ModSound](https://github.com/bluemagic123/tModLoader/wiki/ModSound)
 
-**Others**
+**Recipes**
 
+- [RecipeHooks](https://github.com/bluemagic123/tModLoader/wiki/RecipeHooks)
 - [ModRecipe](https://github.com/bluemagic123/tModLoader/wiki/ModRecipe)
 - [GlobalRecipe](https://github.com/bluemagic123/tModLoader/wiki/GlobalRecipe)
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
+
+**Others**
+
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
 - [Vanilla Interface Changes](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Class-Changes)
