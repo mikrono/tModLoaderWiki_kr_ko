@@ -2,7 +2,7 @@
 
 The following is a list of constants found in the Terraria.ID.TileID class.
 
-public const ushort Dirt = 0;
+public const ushort Dirt = 0;  
 public const ushort Stone = 1;
 public const ushort Grass = 2;
 public const ushort Plants = 3;
