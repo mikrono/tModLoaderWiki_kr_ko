@@ -191,4 +191,5 @@ public const int StardustGuardianMinion = 187;
 public const int StardustDragonMinion = 188;  
 public const int Daybreak = 189;  
 public const int SuspiciousTentacle = 190;  
-public const int Count = 191;
+public const int CompanionCube = 191;  
+public const int Count = 192;  
