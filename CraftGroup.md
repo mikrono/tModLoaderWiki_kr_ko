@@ -1,5 +1,7 @@
 # CraftGroup
 
+**This has been removed as of v0.8.1. Use the vanilla RecipeGroup instead (see ExampleMod for usage).**
+
 This class represents a "group" of crafting items; in other words, a list of items that can be used interchangeably in a crafting recipe. To add a crafting group, call Mod.AddCraftGroup in the Mod.AddCraftGroups hook.
 
 ## Fields
