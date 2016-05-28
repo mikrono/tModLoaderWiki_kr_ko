@@ -74,6 +74,8 @@ Whether or not this tile is a valid spawn point. Defaults to false. If you set t
 
 ### public bool platform
 
+**This has been removed as of v0.8.1. Use TileID.Sets.Platforms instead.**
+
 Whether or not this tile behaves like a platform. This is important in order to make the tile slope properly like a platform.
 
 ### public bool torch
