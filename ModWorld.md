@@ -36,7 +36,7 @@ Allows a mod to run code before a world is generated.
 
 Use this method to place tiles in the world after world generation is complete. 
 	
-### public virtual void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+### public virtual void ModifyWorldGenTasks(List\<GenPass\> tasks, ref float totalWeight)
 
 A more advanced option to PostWorldGen, this method allows you modify the list of Generation Passes before a new world begins to be generated. For example, removing the "Planting Trees" pass will cause a world to generate without trees. Placing a new Generation Pass before the "Dungeon" pass will prevent the the mod's pass from cutting into the dungeon.
 
