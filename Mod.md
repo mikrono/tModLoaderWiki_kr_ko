@@ -318,6 +318,10 @@ Registers a hotkey with a name and defaultKey.
 
 Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed.
 
+### public ModPacket GetPacket(int capacity = 256)
+
+Creates a ModPacket object that you can write to and then send between servers and clients.
+
 ### public virtual void HandlePacket(BinaryReader reader, int whoAmI)
 
 Called whenever a net message / packet is received from a client (if this is a server) or the server (if this is a client). whoAmI is the ID of whomever sent the packet (equivalent to the Main.myPlayer of the sender), and reader is used to read the binary data of the packet.
