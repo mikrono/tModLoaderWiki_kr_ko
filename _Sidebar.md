@@ -101,5 +101,7 @@
 **Others**
 
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
+- [ModSide](https://github.com/bluemagic123/tModLoader/wiki/ModSide)
+- [ModPacket](https://github.com/bluemagic123/tModLoader/wiki/ModPacket)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
 - [Vanilla Interface Changes](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Class-Changes)
