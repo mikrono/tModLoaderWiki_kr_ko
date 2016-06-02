@@ -32,3 +32,5 @@ buildIgnore = A list of file patterns to ignore for building the mod. Useful for
 includePDB = If true, line numbers in exceptions and stack traces will appear if the mod experiences problems. Also, Edit and Continue using Visual Studio is possible.
 
 languageVersion = A number from 4 to 6 indicating the C# language version to use.
+
+side - The ModSide that controls how this mod is synced between client and server. See [ModSide](https://github.com/bluemagic123/tModLoader/wiki/ModSide) for more information. Defaults to Both.
