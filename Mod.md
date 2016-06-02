@@ -4,13 +4,37 @@ Mod is an abstract class that you will override. It serves as a central place fr
 
 ## Properties
 
+### public TmodFile File
+
+The TmodFile object created when tModLoader reads this mod.
+
+### public Assembly Code
+
+The assembly code this is loaded when tModLoader loads this mod.
+
 ### public virtual string Name
 
 Stores the name of the mod. This name serves as the mod's identification, and also helps with saving everything your mod adds. By default this returns the name of the folder that contains all your code and stuff.
 
+### public Version tModLoaderVersion
+
+The version of tModLoader that was being used when this mod was built.
+
+### public Version Version
+
+This version number of this mod.
+
 ### public ModProperties Properties
 
 Stores the properties of the mod.
+
+### public ModSide Side
+
+The ModSide that controls how this mod is synced between client and server.
+
+### public string DisplayName
+
+The display name of this mod in the Mods menu.
 
 ## Methods
 
@@ -26,17 +50,9 @@ Allows you to load things in your mod after its content has been setup (arrays h
 
 This is called whenever this mod is unloaded from the game. Use it to undo changes that you've made in Load that aren't automatically handled (for example, modifying the texture of a vanilla item). Mods are guaranteed to be unloaded in the reverse order they were loaded in.
 
-### public virtual void AddCraftGroups()
+### public virtual void AddRecipeGroups()
 
-Override this method to add craft groups to this mod. You must add craft groups by calling the AddCraftGroup method here.
-
-### public void AddCraftGroup(string name, string displayName, params int[] items)
-
-Adds a craft group to this mod with the specified internal name, display name, and items.
-
-### public CraftGroup GetCraftGroup(string name)
-
-Gets the CraftGroup object of this mod with the corresponding internal name.
+Override this method to add recipe groups to this mod. You must add recipe groups by calling the RecipeGroup.RegisterGroup method here. A recipe group is a set of items that can be used interchangeably in the same recipe.
 
 ### public virtual void AddRecipes()
 
@@ -301,3 +317,15 @@ Registers a hotkey with a name and defaultKey.
 ### public virtual void HotKeyPressed(string name)
 
 Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed.
+
+### public virtual void HandlePacket(BinaryReader reader, int whoAmI)
+
+Called whenever a net message / packet is received from a client (if this is a server) or the server (if this is a client). whoAmI is the ID of whomever sent the packet (equivalent to the Main.myPlayer of the sender), and reader is used to read the binary data of the packet.
+
+### public virtual bool HijackGetData(ref byte messageType, ref BinaryReader reader, int playerNumber)
+
+Allows you to modify net message / packet information that is received before the game can act on it.
+
+### public virtual Matrix ModifyTransformMatrix(Matrix Transform)
+
+Allows you to set the transformation of the screen that is drawn. (Translations, rotations, scales, etc.)
