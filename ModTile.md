@@ -66,7 +66,19 @@ The ID of the tile that this door transforms into when it is opened. Defaults to
 
 ### public string chest
 
-The default name of this chest that is displayed when this chest is open. Defaults to the empty string, which means that this tile isn't a chest. Setting this field will make the tile behave like a chest (meteors will avoid it, tiles underneath cannot be mined, etc.), but you will have to manually give it storage capabilities yourself. (See the example mod in the forums thread for something you can copy/paste.)
+The default name of this chest that is displayed when this 2x2 chest is open. Defaults to the empty string, which means that this tile isn't a chest. Setting this field will make the tile behave like a chest (meteors will avoid it, tiles underneath cannot be mined, etc.), but you will have to manually give it storage capabilities yourself. (See the ExampleMod for something you can copy/paste.)
+
+### public int chestDrop
+
+The ID of the item that drops when this chest is destroyed. Defaults to 0. Honestly, this is only really used when the chest limit is reached on a server.
+
+### public string dresser
+
+Same as chest, except use this if your block is a dresser (has a size of 3x2 instead of 2x2).
+
+### public int dresserDrop
+
+The ID of the item that drops when this dresser is destroyed. Defaults to 0. Honestly, this is only really used when the chest limit is reached on a server.
 
 ### public bool bed
 
