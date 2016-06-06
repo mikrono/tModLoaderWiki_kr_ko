@@ -12,6 +12,10 @@ The NPC object that this ModNPC controls.
 
 The mod that added this ModNPC.
 
+### public virtual bool CloneNewInstances
+
+Whether instances of this ModNPC are created through a memberwise clone or its constructor. Defaults to false.
+
 ## Fields
 
 ### public int aiType
