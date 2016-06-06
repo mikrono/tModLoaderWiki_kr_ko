@@ -12,7 +12,7 @@ The ModItem instance that controls the behavior of this item. This property is n
 
 Gets the ItemInfo instance (with the given name and added by the given mod) associated with this item instance.
 
-### public T GetModInfo<T>(Mod mod) where T : ItemInfo
+### public T GetModInfo\<T\>(Mod mod) where T : ItemInfo
 
 Same as the other GetModInfo, but assumes that the class name and internal name are the same.
 
@@ -34,7 +34,7 @@ The ModProjectile instance that controls the behavior of this projectile. This p
 
 Gets the ProjectileInfo instance (with the given name and added by the given mod) associated with this projectile instance.
 
-### public T GetModInfo<T>(Mod mod) where T : ProjectileInfo
+### public T GetModInfo\<T\>(Mod mod) where T : ProjectileInfo
 
 Same as the other GetModInfo, but assumes that the class name and internal name are the same.
 
@@ -56,7 +56,7 @@ The ModNPC instance that controls the behavior of this NPC. This property is nul
 
 Gets the NPCInfo instance (with the given name and added by the given mod) associated with this NPC instance.
 
-### public T GetModInfo<T>(Mod mod) where T : NPCInfo
+### public T GetModInfo\<T\>(Mod mod) where T : NPCInfo
 
 Same as the other GetModInfo, but assumes that the class name and internal name are the same.
 
@@ -72,7 +72,7 @@ Allows you to copy the defaults of another type of NPC.
 
 Gets the ModPlayer instance (with the given name and added by the given mod) associated with this player instance.
 
-### public T GetModPlayer<T>(Mod mod) where T : ModPlayer
+### public T GetModPlayer\<T\>(Mod mod) where T : ModPlayer
 
 Same as the other GetModPlayer, but assumes that the class name and internal name are the same.
 
