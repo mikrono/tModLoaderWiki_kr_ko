@@ -16,6 +16,10 @@ The mod that added this ModProjectile.
 
 The internal name of this ModProjectile.
 
+### public virtual bool CloneNewInstances
+
+Whether instances of this ModProjectile are created through a memberwise clone or its constructor. Defaults to false.
+
 ## Fields
 
 ### public int aiType
