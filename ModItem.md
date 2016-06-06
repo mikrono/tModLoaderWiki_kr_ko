@@ -12,6 +12,10 @@ The item object that this ModItem controls.
 
 The mod that added this ModItem.
 
+### public virtual bool CloneNewInstances
+
+Whether instances of this ModItem are created through its Clone hook or its constructor. Defaults to false.
+
 ## Fields
 
 ### public bool projOnSwing
