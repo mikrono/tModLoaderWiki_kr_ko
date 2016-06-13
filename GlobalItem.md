@@ -282,3 +282,15 @@ Allows you to set what the Angler says when the Quest button is clicked in his c
 ### public virtual void OnCraft(Item item, Recipe recipe)
 
 Allows you to make anything happen when the player crafts the given item using the given recipe.
+
+### public virtual bool NeedsCustomSaving(Item item)
+
+Whether or not the given item needs to save custom data. Returning false will save on the memory used in saving an item, but returning true is necessary in order to save data across all items or vanilla items. Returns false by default. Note that the return value of this hook _must_ be deterministic (randomness is not allowed).
+
+### public virtual void SaveCustomData(Item item, BinaryWriter writer)
+
+Allows you to save custom data for the given item. Only called when NeedsCustomSaving returns true. You are only able to save up to 64 KB of information per item (I don't imagine anyone will ever need more than that).
+
+### public virtual void LoadCustomData(Item item, BinaryReader reader)
+
+Allows you to load custom data that you have saved for the given item.
