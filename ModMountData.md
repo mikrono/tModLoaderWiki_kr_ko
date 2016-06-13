@@ -37,3 +37,19 @@ Allows you to make things happen when mount is used (creating dust etc.) Can als
 ### public virtual bool UpdateFrame(Player mountedPlayer, int state, Vector2 velocity)
 
 Allows for manual updating of mount frame. Return false to stop the default frame behavior. Returns true by default.
+
+### public virtual void UseAbility(Player player, Vector2 mousePosition, bool toggleOn)
+
+Allows you to make things happen when the mouse is clicked while the mount is active.
+
+### public virtual bool AimAbility(Player player, Vector2 mousePosition)
+
+Allows you to make things happen when the mount ability is aiming (while charging).
+
+### public virtual bool StartAbilityCharge(Player player)
+
+Called when the mount ability starts charging.
+
+### public virtual void StopAbilityCharge()
+
+Called when the mount ability stops charging.
