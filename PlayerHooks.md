@@ -16,6 +16,14 @@ This is where all ModPlayer hooks are gathered and called.
 
 ### public static void UpdateBiomes(Player player)
 
+### public static bool CustomBiomesMatch(Player player, Player other)
+
+### public static void CopyCustomBiomesTo(Player player, Player other)
+
+### public static void SendCustomBiomes(Player player, BinaryWriter writer)
+
+### public static void ReceiveCustomBiomes(Player player, BinaryReader reader)
+
 ### public static void UpdateBiomeVisuals(Player player)
 
 ### public static Texture2D GetMapBackgroundImage(Player player)
