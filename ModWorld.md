@@ -28,6 +28,14 @@ Allows you to save custom data for this world. Useful for things like saving wor
 
 Allows you to load custom data you have saved for this player.
 
+### public virtual void SendCustomData(BinaryWriter writer)
+
+Allows you to send custom data between clients and server. This is useful for syncing information such as bosses that have been defeated.
+
+### public virtual void ReceiveCustomData(BinaryReader reader)
+
+Allows you to do things with custom data that is received between clients and server.
+
 ### public virtual void PreWorldGen()
 
 Allows a mod to run code before a world is generated. 
