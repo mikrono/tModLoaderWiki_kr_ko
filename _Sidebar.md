@@ -71,7 +71,7 @@
 - [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
 - [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
-
+- [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 
 **World**
 
