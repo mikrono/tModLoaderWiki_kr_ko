@@ -54,6 +54,22 @@ Allows you to modify the inventory newly created players or killed mediumcore pl
 
 Allows you to set biome variables in your ModPlayer class based on tile counts. This hook honestly won't be that useful until ModWorld is added.
 
+### public virtual bool CustomBiomesMatch(Player other)
+
+Whether or not this player and the other player parameter have the same custom biome variables. This hook is used to help with client/server syncing. Returns true by default.
+
+### public virtual void CopyCustomBiomesTo(Player other)
+
+In this hook, you should copy the custom biome variables from this player to the other player parameter. This hook is used to help with client/server syncing.
+
+### public virtual void SendCustomBiomes(BinaryWriter writer)
+
+Allows you to send custom biome information between client and server.
+
+### public virtual void ReceiveCustomBiomes(BinaryReader reader)
+
+Allows you to do things with the custom biome information you send between client and server.
+
 ### public virtual void UpdateBiomeVisuals()
 
 Allows you to create special visual effects in the area around the player. For example, the blood moon's red filter on the screen or the slime rain's falling slime in the background. You must create classes that override Terraria.Graphics.Shaders.ScreenShaderData or Terraria.Graphics.Effects.CustomSky, add them in your mod's Load hook, then call Player.ManageSpecialBiomeVisuals. See the ExampleMod if you do not have access to the source code.
