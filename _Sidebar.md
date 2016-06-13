@@ -66,9 +66,12 @@
 - [ModPlayer](https://github.com/bluemagic123/tModLoader/wiki/ModPlayer)
 - [DrawLayer](https://github.com/bluemagic123/tModLoader/wiki/DrawLayer)
 - [DrawInfo](https://github.com/bluemagic123/tModLoader/wiki/DrawInfo)
+
+**Mounts**
 - [MountLoader](https://github.com/bluemagic123/tModLoader/wiki/MountLoader)
-- [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
 - [ModMountData](https://github.com/bluemagic123/tModLoader/wiki/ModMountData)
+- [MountTextureType](https://github.com/bluemagic123/tModLoader/wiki/MountTextureType)
+
 
 **World**
 
