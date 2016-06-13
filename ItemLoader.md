@@ -267,3 +267,7 @@ Calls ModItem.PostDrawInInventory, then all GlobalItem.PostDrawInInventory hooks
 ### public static void AnglerChat(bool turningInFish, bool anglerQuestFinished, int type, ref string chat, ref string catchLocation)
 
 ### public static void OnCraft(Item item, Recipe recipe)
+
+### public static int NeedsGlobalCustomSaving(Item item)
+
+### public static bool NeedsModSaving(Item item)
