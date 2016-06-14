@@ -333,3 +333,7 @@ This is essentially the same as Mod.AddRecipes. Do note that this will be called
 ### public virtual void OnCraft(Recipe recipe)
 
 Allows you to make anything happen when the player crafts this item using the given recipe.
+
+### public virtual void ModifyTooltips(List\<TooltipLine\> tooltips)
+
+Allows you to modify all the tooltips that display for this item. See [TooltipLine](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about ToolTipLine.
