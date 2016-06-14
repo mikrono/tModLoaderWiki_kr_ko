@@ -285,7 +285,7 @@ Allows you to make anything happen when the player crafts the given item using t
 
 ### public virtual void ModifyTooltips(Item item, List\<TooltipLine\> tooltips)
 
-Allows you to modify all the tooltips that display for the given item. See [TooltipLine](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about ToolTipLine.
+Allows you to modify all the tooltips that display for the given item. See [here](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about TooltipLine.
 
 ### public virtual bool NeedsCustomSaving(Item item)
 
