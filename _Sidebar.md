@@ -14,6 +14,7 @@
 - [ItemLoader](https://github.com/bluemagic123/tModLoader/wiki/ItemLoader)
 - [ModItem](https://github.com/bluemagic123/tModLoader/wiki/ModItem)
 - [GlobalItem](https://github.com/bluemagic123/tModLoader/wiki/GlobalItem)
+- [TooltipLine](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine)
 - [Vanilla Item IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
 - [Vanilla Item Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-Field-Values)
 
