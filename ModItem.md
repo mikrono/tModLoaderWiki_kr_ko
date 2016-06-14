@@ -336,4 +336,4 @@ Allows you to make anything happen when the player crafts this item using the gi
 
 ### public virtual void ModifyTooltips(List\<TooltipLine\> tooltips)
 
-Allows you to modify all the tooltips that display for this item. See [TooltipLine](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about ToolTipLine.
+Allows you to modify all the tooltips that display for this item. See [here](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about TooltipLine.
