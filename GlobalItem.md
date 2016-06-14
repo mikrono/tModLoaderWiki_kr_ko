@@ -283,6 +283,10 @@ Allows you to set what the Angler says when the Quest button is clicked in his c
 
 Allows you to make anything happen when the player crafts the given item using the given recipe.
 
+### public virtual void ModifyTooltips(Item item, List\<TooltipLine\> tooltips)
+
+Allows you to modify all the tooltips that display for the given item. See [TooltipLine](https://github.com/bluemagic123/tModLoader/wiki/TooltipLine) for information about ToolTipLine.
+
 ### public virtual bool NeedsCustomSaving(Item item)
 
 Whether or not the given item needs to save custom data. Returning false will save on the memory used in saving an item, but returning true is necessary in order to save data across all items or vanilla items. Returns false by default. Note that the return value of this hook _must_ be deterministic (randomness is not allowed).
