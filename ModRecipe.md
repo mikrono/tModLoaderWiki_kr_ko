@@ -68,13 +68,9 @@ Adds an ingredient to this recipe with the given item name from the given mod, a
 
 Adds an ingredient to this recipe of the given type of item and stack size.
 
-### public void AddCraftGroup(CraftGroup group, int stack = 1)
+### public void AddRecipeGroup(string name, int stack = 1)
 
-Adds a craft group ingredient to this recipe with the given stack size.
-
-### public void AddCraftGroup(Mod mod, string name, int stack = 1)
-
-Adds a craft group ingredient from the given mod and with the given internal name to this recipe.
+Adds a recipe group ingredient to this recipe with the given RecipeGroup name and stack size.
 
 ### public void AddTile(int tileID)
 
