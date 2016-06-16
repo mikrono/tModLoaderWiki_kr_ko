@@ -99,6 +99,8 @@
 - [RecipeHooks](https://github.com/bluemagic123/tModLoader/wiki/RecipeHooks)
 - [ModRecipe](https://github.com/bluemagic123/tModLoader/wiki/ModRecipe)
 - [GlobalRecipe](https://github.com/bluemagic123/tModLoader/wiki/GlobalRecipe)
+- [RecipeFinder](https://github.com/bluemagic123/tModLoader/wiki/RecipeFinder)
+- [RecipeEditor](https://github.com/bluemagic123/tModLoader/wiki/RecipeEditor)
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
 - [CraftGroup](https://github.com/bluemagic123/tModLoader/wiki/CraftGroup)
 
