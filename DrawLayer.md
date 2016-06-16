@@ -1,4 +1,4 @@
-# public abstract class DrawLayer<InfoType>
+# public abstract class DrawLayer\<InfoType\>
 
 This class represents a layer of the drawing of an object, using a certain type of InfoType to help with its drawing.
 
@@ -12,11 +12,11 @@ The name of the mod to which this DrawLayer belongs.
 
 The name which identifies this DrawLayer.
 
-### public readonly DrawLayer<InfoType> parent
+### public readonly DrawLayer\<InfoType\> parent
 
 The parent of this DrawLayer. If the parent is not drawn, this layer will not be drawn either. Defaults to null, which skips the parent check.
 
-### public readonly Action<InfoType> layer
+### public readonly Action\<InfoType\> layer
 
 The delegate of this method, which can either do the actual drawing or add draw data, depending on what kind of layer this is.
 
@@ -26,11 +26,11 @@ Whether or not this DrawLayer should be drawn. For vanilla layers, this will be 
 
 ## Constructors
 
-### public DrawLayer(string mod, string name, Action<InfoType> layer)
+### public DrawLayer(string mod, string name, Action\<InfoType\> layer)
 
 Creates a DrawLayer with the given mod name, identifier name, and drawing action.
 
-### public DrawLayer(string mod, string name, DrawLayer<InfoType> parent, Action<InfoType> layer)
+### public DrawLayer(string mod, string name, DrawLayer\<InfoType\> parent, Action\<InfoType\> layer)
 
 Creates a DrawLayer with the given mod name, identifier name, parent layer, and drawing action.
 
@@ -38,23 +38,23 @@ Creates a DrawLayer with the given mod name, identifier name, parent layer, and 
 
 ### public bool ShouldDraw(object layerList)
 
-Whether or not this layer should be drawn. Returns false if visible is false. If layerList is of type List<DrawLayer<InfoType>> and parent is not null, this will also return false if the parent is not drawn.
+Whether or not this layer should be drawn. Returns false if visible is false. If layerList is of type List\<DrawLayer\<InfoType\>\> and parent is not null, this will also return false if the parent is not drawn.
 
 ### public void Draw(InfoType drawInfo)
 
 Invokes this DrawLayer's layer action.
 
-# public class PlayerLayer : DrawLayer<PlayerDrawInfo>
+# public class PlayerLayer : DrawLayer\<PlayerDrawInfo\>
 
 This class represents a DrawLayer for the player, and uses PlayerDrawInfo as its InfoType. Drawing should be done by adding Terraria.DataStructures.DrawData objects to Main.playerDrawData.
 
 ## Constructors
 
-### public PlayerLayer(string mod, string name, Action<PlayerDrawInfo> layer)
+### public PlayerLayer(string mod, string name, Action\<PlayerDrawInfo\> layer)
 
 Creates a PlayerLayer with the given mod name, identifier name, and drawing action.
 
-### public PlayerLayer(string mod, string name, PlayerLayer parent, Action<PlayerDrawInfo> layer)
+### public PlayerLayer(string mod, string name, PlayerLayer parent, Action\<PlayerDrawInfo\> layer)
 
 Creates a PlayerLayer with the given mod name, identifier name, parent layer, and drawing action.
 
