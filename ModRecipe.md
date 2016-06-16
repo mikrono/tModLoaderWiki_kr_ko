@@ -24,6 +24,8 @@ The mod which created this recipe.
 
 ### public int RecipeIndex
 
+_Deprecated_ - Ever since v0.8.2 with RecipeEditor.DeleteRecipe, this will not always be accurate.
+
 The index in Main.recipe in which this recipe is stored.
 
 ## Constructors
