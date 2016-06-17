@@ -200,6 +200,10 @@ Allows you to draw things behind this NPC, or to modify the way this NPC is draw
 
 Allows you to draw things in front of this NPC. This method is called even if PreDraw returns false.
 
+### public virtual bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+
+Allows you to control how the health bar for this NPC is drawn. The hbPosition parameter is the same as Main.hbPosition; it determines whether the health bar gets drawn above or below the NPC by default. The scale parameter is the health bar's size. By default, it will be the normal 1f; most bosses set this to 1.5f. Return null to let the normal vanilla health-bar-drawing code to run. Return false to stop the health bar from being drawn. Return true to draw the health bar in the position specified by the position parameter (note that this is the world position, not screen position).
+
 ### public virtual float CanSpawn(NPCSpawnInfo spawnInfo)
 
 Whether or not this NPC can spawn with the given spawning conditions. Return the weight for the chance of this NPC to spawn compared to vanilla mobs. All vanilla mobs combined have a total weight of 1. Returns 0 by default, which disables natural spawning.
