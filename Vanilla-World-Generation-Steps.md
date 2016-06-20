@@ -90,14 +90,15 @@ Weeds
 Mud Caves To Grass                         
 Jungle Plants                              
 Vines                                      
-Fiowers                                    
+Flowers                                    
 Mushrooms                                  
 Stalac                                     
 Gems In Ice Biome                          
 Random Gems                                
 Moss Grass                                 
 Muds Walls In Jungle                      
-Larva                                      
+Larva           
+Settle Liquids Again                             
 Tile Cleanup                               
 Lihzahrd Altars                            
 Micro Biomes                               
