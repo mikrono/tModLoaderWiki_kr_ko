@@ -266,7 +266,7 @@ Gets the ID of the ModMountData instance corresponding to the given name. Return
 
 Shorthand for calling ModGore.GetGoreSlot(this.FileName(name)).
 
-### public int public int GetSoundSlot(SoundType type, string name)
+### public int GetSoundSlot(SoundType type, string name)
 
 Shorthand for calling SoundLoader.GetSoundSlot(type, this.FileName(name)).
 
