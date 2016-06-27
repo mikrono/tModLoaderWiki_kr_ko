@@ -198,6 +198,14 @@ Allows you to make things happen when this item is right-clicked in the inventor
 
 Allows you to give items to the given player when this item is right-clicked in the inventory if the bossBagNPC field has been set to a positive number. This ignores the CanRightClick and RightClick hooks.
 
+### public virtual void PreReforge()
+
+This hooks gets called immediately before an item gets reforged by the Goblin Tinkerer. Useful for storing custom data, since reforging erases custom data. Note that, because the ModItem instance will change, the data must be backed up elsewhere, such as in static fields.
+
+### public virtual void PostReforge()
+
+This hook gets called immediately after an item gets reforged by the Goblin Tinkerer. Useful for restoring custom data that you saved in PreReforge.
+
 ### public virtual void DrawHands(ref bool drawHands, ref bool drawArms)
 
 Allows you to determine whether the skin/shirt on the player's arms and hands are drawn when this body armor is worn. By default both flags will be false. Note that if drawHands is false, the arms will not be drawn either. Also note that this hook is only ever called through this item's associated equipment texture.
