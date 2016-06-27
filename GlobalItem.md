@@ -171,6 +171,14 @@ Allows you to make vanilla bags drop your own items and stop the default items f
 
 Allows you to make vanilla bags drop your own items in addition to the default items. This method will not be called if any other GlobalItem returns false for PreOpenVanillaBag. Context will either be "present", "bossBag", "crate", "lockBox", "herbBag", or "goodieBag". For boss bags and crates, arg will be set to the type of the item being opened.
 
+### public virtual void PreReforge(Item item)
+
+This hooks gets called immediately before an item gets reforged by the Goblin Tinkerer. Useful for storing custom data, since reforging erases custom data.
+
+### public virtual void PostReforge(Item item)
+
+This hook gets called immediately after an item gets reforged by the Goblin Tinkerer. Useful for restoring custom data that you saved in PreReforge.
+
 ### public virtual void DrawHands(int body, ref bool drawHands, ref bool drawArms)
 
 Allows you to determine whether the skin/shirt on the player's arms and hands are drawn when a body armor is worn. Note that if drawHands is false, the arms will not be drawn either.
