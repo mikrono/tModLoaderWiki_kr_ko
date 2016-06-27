@@ -21,3 +21,7 @@ Gets the ModBuff instance with the given type. If no ModBuff with the given type
 ### public static bool CanBeCleared(int buff)
 
 ### public static void ModifyBuffTip(int buff, ref string tip, ref int rare)
+
+### public static void CustomBuffTipSize(string buffTip, List\<Vector2\> sizes)
+
+### public static void DrawCustomBuffTip(string buffTip, SpriteBatch spriteBatch, int originX, int originY)
