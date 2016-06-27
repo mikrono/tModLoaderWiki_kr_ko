@@ -166,6 +166,14 @@ Calls each GlobalItem.PreOpenVanillaBag hook until one of them returns false. Re
 
 Calls all GlobalItem.OpenVanillaBag hooks.
 
+### public static void PreReforge(Item item)
+
+Calls ModItem.PreReforge, then all GlobalItem.PreReforge hooks.
+
+### public static void PostReforge(Item item)
+
+Calls ModItem.PostReforge, then all GlobalItem.PostReforge hooks.
+
 ### public static void DrawHands(Player player, ref bool drawHands, ref bool drawArms)
 
 Calls the item's body equipment texture's DrawHands hook, then all GlobalItem.DrawHands hooks.
