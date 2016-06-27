@@ -39,3 +39,11 @@ Allows to you make special things happen when adding the given buff type to an N
 ### public virtual void ModifyBuffTip(int type, ref string tip, ref int rare)
 
 Allows you to modify the tooltip that displays when the mouse hovers over the buff icon, as well as the color the buff's name is drawn in.
+
+### public virtual void CustomBuffTipSize(string buffTip, List\<Vector2\> sizes)
+
+If you are using the DrawCustomBuffTip hook, then you must use this hook as well. Calculate the location (relative to the origin) of the bottom-right corner of everything you will draw, and add that location to the sizes parameter.
+
+### public virtual void DrawCustomBuffTip(string buffTip, SpriteBatch spriteBatch, int originX, int originY)
+
+Allows you to draw whatever you want when a buff tooltip is drawn. The originX and originY parameters are the top-left corner of everything that's drawn; you should add these to the position argument passed to SpriteBatch.Draw.
