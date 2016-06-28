@@ -22,6 +22,8 @@ Gets the ModProjectile instance corresponding to the specified type.
 
 ### public static void ReceiveExtraAI(Projectile projectile, byte[] extraAI)
 
+### public static bool ShouldUpdatePosition(Projectile projectile)
+
 ### public static void TileCollideStyle(Projectile projectile, ref int width, ref int height, ref bool fallThrough)
 
 ### public static bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
@@ -29,6 +31,8 @@ Gets the ModProjectile instance corresponding to the specified type.
 ### public static bool PreKill(Projectile projectile, int timeLeft)
 
 ### public static void Kill(Projectile projectile, int timeLeft)
+
+### public static bool CanDamage(Projectile projectile)
 
 ### public static bool MinionContactDamage(Projectile projectile)
 
