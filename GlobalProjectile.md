@@ -34,6 +34,10 @@ Allows you to determine how any projectile behaves. This will only be called if 
 
 Allows you to determine how any projectile behaves. This will be called regardless of what PreAI returns.
 
+### public virtual bool ShouldUpdatePosition(Projectile projectile)
+
+Whether or not the given projectile should update its position based on factors such as its velocity, whether it is in liquid, etc. Return false to make its velocity have no effect on its position. Returns true by default.
+
 ### public virtual void TileCollideStyle(Projectile projectile, ref int width, ref int height, ref bool fallThrough)
 
 Allows you to determine how a projectile interacts with tiles. Width and height determine the projectile's hitbox for tile collision, and default to -1. Leave them as -1 to use the projectile's real size. Fallthrough determines whether the projectile can fall through platforms, etc., and defaults to true.
@@ -49,6 +53,10 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 ### public virtual void Kill(Projectile projectile, int timeLeft)
 
 Allows you to control what happens when a projectile is killed (for example, creating dust or making sounds).
+
+### public virtual bool CanDamage(Projectile projectile)
+
+Whether or not the given projectile is capable of killing tiles (such as grass) and damaging NPCs/players. Return false to prevent it from doing any sort of damage. Returns true by default.
 
 ### public virtual bool MinionContactDamage(Projectile projectile)
 
