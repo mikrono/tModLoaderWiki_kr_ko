@@ -76,6 +76,10 @@ If you are storing AI information outside of the projectile.ai array, use this t
 
 Use this to receive information that was sent in SendExtraAI.
 
+### public virtual bool ShouldUpdatePosition()
+
+Whether or not this projectile should update its position based on factors such as its velocity, whether it is in liquid, etc. Return false to make its velocity have no effect on its position. Returns true by default.
+
 ### public virtual void TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
 
 Allows you to determine how this projectile interacts with tiles. Width and height determine the projectile's hitbox for tile collision, and default to -1. Leave them as -1 to use the projectile's real size. Fallthrough determines whether the projectile can fall through platforms, etc., and defaults to true.
@@ -91,6 +95,10 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 ### public virtual void Kill(int timeLeft)
 
 Allows you to control what happens when this projectile is killed (for example, creating dust or making sounds).
+
+### public virtual bool CanDamage()
+
+Whether or not this projectile is capable of killing tiles (such as grass) and damaging NPCs/players. Return false to prevent it from doing any sort of damage. Returns true by default.
 
 ### public virtual bool MinionContactDamage()
 
