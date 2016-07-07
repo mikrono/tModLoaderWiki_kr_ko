@@ -127,3 +127,7 @@ This is where all ModPlayer hooks are gathered and called.
 ### public static List<PlayerLayer> GetDrawLayers(Player drawPlayer)
 
 ### public static List<PlayerHeadLayer> GetDrawHeadLayers(Player drawPlayer)
+
+### public static void ModifyScreenPosition(Player player)
+
+### public static void ModifyZoom(Player player, ref float zoom)
