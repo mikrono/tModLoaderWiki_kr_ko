@@ -277,3 +277,11 @@ Allows you to modify the drawing of the player. This is done by removing from, a
 ### public virtual void ModifyDrawHeadLayers(List\<PlayerHeadLayer\> layers)
 
 Allows you to modify the drawing of the player head on the minimap. This is done by removing from, adding to, or rearranging the list, by setting some of the layers' visible field to false, etc.
+
+### public virtual void ModifyScreenPosition()
+
+Use this hook to modify Main.screenPosition after weapon zoom and camera lerp have taken place.
+		
+### public virtual void ModifyZoom(ref float zoom)
+
+Use this to modify the zoom factor for the player. The zoom correlates to the percentage of half the screen size the zoom can reach. A value of -1 passed in means no vanilla scope is in effect. A value of 1.0 means the scope can zoom half a screen width/height away, putting the player on the edge of the game screen. Vanilla values include .8, .6666, and .5.
