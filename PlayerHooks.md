@@ -124,6 +124,8 @@ This is where all ModPlayer hooks are gathered and called.
 
 ### public static void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
 
+### public static void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
+
 ### public static List<PlayerLayer> GetDrawLayers(Player drawPlayer)
 
 ### public static List<PlayerHeadLayer> GetDrawHeadLayers(Player drawPlayer)
