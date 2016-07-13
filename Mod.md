@@ -302,6 +302,22 @@ Shorthand for calling ModLoader.GetSound(this.FileName(name)).
 
 Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
 
+### public void AddBackgroundTexture(string texture)
+
+Adds a texture to the list of background textures and assigns it a background texture slot.
+
+### public int GetBackgroundSlot(string name)
+
+Gets the texture slot corresponding to the specified texture name.
+
+### public void AddUndergroundBackgroundStyle(string styleName)
+
+Registers a style with the name given as a possible undergound background.
+
+### public int GetUndergroundBackgroundStyle(string styleName)
+
+Returns the underground background style number corresponding to the name of the style given.
+
 ### public virtual void ChatInput(string text)
 
 Allows you to make anything happen whenever the player for this game inputs a message into the chat.
