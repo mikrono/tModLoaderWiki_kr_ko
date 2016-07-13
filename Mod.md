@@ -333,3 +333,15 @@ Allows you to modify net message / packet information that is received before th
 ### public virtual Matrix ModifyTransformMatrix(Matrix Transform)
 
 Allows you to set the transformation of the screen that is drawn. (Translations, rotations, scales, etc.)
+
+### public virtual void PostDrawInterface(SpriteBatch spriteBatch)
+
+Called after interface is drawn but right before mouse and mouse hover text is drawn. Allows for drawing interface.
+
+### public virtual void PostDrawFullscreenMap(ref string mouseText)
+
+Called while the fullscreen map is active. Allows custom drawing to the map.
+
+### public virtual void PostUpdateInput()
+
+Called after the input keys are polled. Allows for modifying things like scroll wheel if your custom drawing should capture that.
