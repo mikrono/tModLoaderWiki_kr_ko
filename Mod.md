@@ -345,3 +345,11 @@ Called while the fullscreen map is active. Allows custom drawing to the map.
 ### public virtual void PostUpdateInput()
 
 Called after the input keys are polled. Allows for modifying things like scroll wheel if your custom drawing should capture that.
+
+### public virtual void FillUndergroundBackgroundArray(int backgroundStyle, int[] textureSlots)
+
+Use this to specify the background textures used with the given background style. Index 0 is the texture on the border of the ground and sky layers. Index 1 is the texture drawn between rock and ground layers. Index 2 is the texture on the border of ground and rock layers. Index 3 is the texture drawn in the rock layer. The border images are 160x16 pixels, and the others are 160x96, but it seems like the right 32 pixels of each is a duplicate of the far left 32 pixels. See Example Mod.
+
+### public virtual void ChooseUndergroundBackgroundStyle(ref int backgroundStyle)
+
+Use this to change the underground background style. 
