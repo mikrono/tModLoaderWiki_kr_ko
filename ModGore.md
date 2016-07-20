@@ -2,6 +2,12 @@
 
 This class allows you to customize the behavior of a custom gore. Create a new instance of this and pass it as a parameter to Mod.AddGore to customize the gore you are adding. If you are autoloading gore, then give it the same name as the gore texture.
 
+## Fields
+
+### public int updateType
+
+Allows you to copy the Update behavior of a different type of gore. This defaults to 0, which means no behavior is copied.
+
 ## Methods
 
 ### public static int GetGoreSlot(string texture)
