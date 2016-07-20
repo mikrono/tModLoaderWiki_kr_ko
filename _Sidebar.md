@@ -89,6 +89,13 @@
 - [ModSurfaceBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModSurfaceBgStyle)
 - [GlobalBgStyle](https://github.com/bluemagic123/tModLoader/wiki/GlobalBgStyle)
 
+**Water Styles**
+
+- [WaterStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/WaterStyleLoader)
+- [WaterfallStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/WaterfallStyleLoader)
+- [ModWaterStyle](https://github.com/bluemagic123/tModLoader/wiki/ModWaterStyle)
+- [ModWaterfallStyle](https://github.com/bluemagic123/tModLoader/wiki/ModWaterfallStyle)
+
 **Buffs**
 
 - [BuffLoader](https://github.com/bluemagic123/tModLoader/wiki/BuffLoader)
