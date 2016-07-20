@@ -85,7 +85,7 @@
 - [UgBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/UgBgStyleLoader)
 - [SurfaceBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/SurfaceBgStyleLoader)
 - [ModUgBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModUgBgStyle)
-- [ModSurfaceBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModUgSurfaceStyle)
+- [ModSurfaceBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModSurfaceBgStyle)
 - [GlobalBgStyle](https://github.com/bluemagic123/tModLoader/wiki/GlobalBgStyle)
 
 **Buffs**
