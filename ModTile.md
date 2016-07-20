@@ -239,3 +239,7 @@ Whether or not this tile creates dust when the player walks on it. Returns false
 ### public virtual void WalkDust(ref int dustType, ref bool makeDust, ref Color color)
 
 Allows you to modify the dust created when the player walks on this tile. The makeDust parameter is whether or not to make dust; you can randomly set this to false to reduce the amount of dust produced.
+
+### public virtual void ChangeWaterfallStyle(ref int style)
+
+Allows you to change the style of waterfall that passes through or over this type of tile.
