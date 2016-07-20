@@ -238,14 +238,6 @@ Adds the given GlobalBuff instance to this mod using the provided name.
 
 Gets the GlobalBuff with the given name from this mod.
 
-### public void AddGore(string texture, ModGore modGore = null)
-
-Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
-
-### public void AddSound(SoundType type, string soundPath, ModSound modSound = null)
-
-Adds the given sound file to the game as the given type of sound and with the given custom sound playing. If no ModSound instance is provided, the custom sound will play in a similar manner as the default vanilla ones.
-
 ### public void AddMusicBox(int musicSlot, int itemType, int tileType, int tileFrameY = 0)
 
 Allows you to tie a music ID, and item ID, and a tile ID together to form a music box. When music with the given ID is playing, equipped music boxes have a chance to change their ID to the given item type. When an item with the given item type is equipped, it will play the music that has musicSlot as its ID. When a tile with the given type and Y-frame is nearby, if its X-frame is >= 36, it will play the music that has musicSlot as its ID.
@@ -298,13 +290,45 @@ Adds the given global background style with the given name to this mod.
 
 Returns the global background style corresponding to the given name.
 
+### public void AddWaterStyle(string name, ModWaterStyle waterStyle, string texture, string blockTexture)
+
+Adds the given water style to the game with the given name, texture path, and block texture path.
+
+### public ModWaterStyle GetWaterStyle(string name)
+
+Returns the water style with the given name from this mod.
+
+### public void AddWaterfallStyle(string name, ModWaterfallStyle waterfallStyle, string texture)
+
+Adds the given waterfall style to the game with the given name and texture path.
+
+### public ModWaterfallStyle GetWaterfallStyle(string name)
+
+Returns the waterfall style with the given name from this mod.
+
+### public void AddGore(string texture, ModGore modGore = null)
+
+Adds the given texture to the game as a custom gore, with the given custom gore behavior. If no custom gore behavior is provided, the custom gore will have the default vanilla behavior.
+
 ### public int GetGoreSlot(string name)
 
 Shorthand for calling ModGore.GetGoreSlot(this.Name + '/' + name).
 
+### public void AddSound(SoundType type, string soundPath, ModSound modSound = null)
+
+Adds the given sound file to the game as the given type of sound and with the given custom sound playing. If no ModSound instance is provided, the custom sound will play in a similar manner as the default vanilla ones.
+
 ### public int GetSoundSlot(SoundType type, string name)
 
 Shorthand for calling SoundLoader.GetSoundSlot(type, this.Name + '/' + name).
+
+### public void AddBackgroundTexture(string texture)
+
+Adds a texture to the list of background textures and assigns it a background texture slot.
+
+### public int GetBackgroundSlot(string name)
+
+Gets the texture slot corresponding to the specified texture name. Shorthand for calling BackgroundTextureLoader.GetBackgroundSlot(this.Name + '/' + name).
 
 ### public byte[] GetFileBytes(string name)
 
@@ -333,14 +357,6 @@ Shorthand for calling ModLoader.GetSound(this.FileName(name)).
 ### public bool SoundExists(string name)
 
 Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
-
-### public void AddBackgroundTexture(string texture)
-
-Adds a texture to the list of background textures and assigns it a background texture slot.
-
-### public int GetBackgroundSlot(string name)
-
-Gets the texture slot corresponding to the specified texture name. Shorthand for calling BackgroundTextureLoader.GetBackgroundSlot(this.Name + '/' + name).
 
 ### public virtual void ChatInput(string text)
 
