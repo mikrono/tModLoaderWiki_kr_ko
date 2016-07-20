@@ -59,3 +59,7 @@ Use this method to have things happen in the world. In vanilla Terraria, a good 
 ### public virtual void TileCountsAvailable(int[] tileCounts)
 
 Allows you to store information about how many of each tile is nearby the player. This is useful for counting how many tiles of a certain custom biome there are. The tileCounts parameter stores the tile count indexed by tile type.
+
+### public virtual void ChooseWaterStyle(ref int style)
+
+Allows you to change the water style (determines water color) that is currently being used.
