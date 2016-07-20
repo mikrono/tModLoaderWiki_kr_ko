@@ -80,6 +80,14 @@
 - [ModWorld](https://github.com/bluemagic123/tModLoader/wiki/ModWorld)
 - [Vanilla World Generation Steps](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-World-Generation-Steps)
 
+**Backgrounds**
+
+- [UgBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/UgBgStyleLoader)
+- [SurfaceBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/SurfaceBgStyleLoader)
+- [ModUgBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModUgBgStyle)
+- [ModSurfaceBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModUgSurfaceStyle)
+- [GlobalBgStyle](https://github.com/bluemagic123/tModLoader/wiki/GlobalBgStyle)
+
 **Buffs**
 
 - [BuffLoader](https://github.com/bluemagic123/tModLoader/wiki/BuffLoader)
