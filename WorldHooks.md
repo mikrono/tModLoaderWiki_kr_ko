@@ -19,3 +19,5 @@ This is where all ModWorld hooks are gathered and called.
 ### public static void PostUpdate()
 
 ### public static void TileCountsAvailable(int[] tileCounts)
+
+### public static void ChooseWaterStyle(ref int style)
