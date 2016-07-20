@@ -262,17 +262,49 @@ Gets the ModMountData instance of this mod corresponding to the given name. Retu
 
 Gets the ID of the ModMountData instance corresponding to the given name. Returns 0 if no ModMountData has the given name.
 
+### public void AddModWorld(string name, ModWorld modWorld)
+
+Adds a ModWorld to this mod with the given name.
+
+### public ModWorld GetModWorld(string name)
+
+Gets the ModWorld instance with the given name from this mod.
+
+### public void AddUgBgStyle(string name, ModUgBgStyle ugBgStyle)
+
+Adds the given underground background style with the given name to this mod.
+
+### public ModUgBgStyle GetUgBgStyle(string name)
+
+Returns the underground background style corresponding to the given name.
+
+### public void AddSurfaceBgStyle(string name, ModSurfaceBgStyle surfaceBgStyle)
+
+Adds the given surface background style with the given name to this mod.
+
+### public ModSurfaceBgStyle GetSurfaceBgStyle(string name)
+
+Returns the surface background style corresponding to the given name.
+
+### public int GetSurfaceBgStyleSlot(string name)
+
+Returns the Slot of the surface background style corresponding to the given name.
+
+### public void AddGlobalBgStyle(string name, GlobalBgStyle globalBgStyle)
+
+Adds the given global background style with the given name to this mod.
+
+### public GlobalBgStyle GetGlobalBgStyle(string name)
+
+Returns the global background style corresponding to the given name.
+
 ### public int GetGoreSlot(string name)
 
-Shorthand for calling ModGore.GetGoreSlot(this.FileName(name)).
+Shorthand for calling ModGore.GetGoreSlot(this.Name + '/' + name).
 
 ### public int GetSoundSlot(SoundType type, string name)
 
-Shorthand for calling SoundLoader.GetSoundSlot(type, this.FileName(name)).
-
-### public string FileName(string fileName)
-
-Shorthand for this.Name + "/" + fileName.
+Shorthand for calling SoundLoader.GetSoundSlot(type, this.Name + '/' + name).
 
 ### public byte[] GetFileBytes(string name)
 
@@ -308,15 +340,7 @@ Adds a texture to the list of background textures and assigns it a background te
 
 ### public int GetBackgroundSlot(string name)
 
-Gets the texture slot corresponding to the specified texture name.
-
-### public void AddUndergroundBackgroundStyle(string styleName)
-
-Registers a style with the name given as a possible undergound background.
-
-### public int GetUndergroundBackgroundStyle(string styleName)
-
-Returns the underground background style number corresponding to the name of the style given.
+Gets the texture slot corresponding to the specified texture name. Shorthand for calling BackgroundTextureLoader.GetBackgroundSlot(this.Name + '/' + name).
 
 ### public virtual void ChatInput(string text)
 
@@ -361,11 +385,3 @@ Called while the fullscreen map is active. Allows custom drawing to the map.
 ### public virtual void PostUpdateInput()
 
 Called after the input keys are polled. Allows for modifying things like scroll wheel if your custom drawing should capture that.
-
-### public virtual void FillUndergroundBackgroundArray(int backgroundStyle, int[] textureSlots)
-
-Use this to specify the background textures used with the given background style. Index 0 is the texture on the border of the ground and sky layers. Index 1 is the texture drawn between rock and ground layers. Index 2 is the texture on the border of ground and rock layers. Index 3 is the texture drawn in the rock layer. The border images are 160x16 pixels, and the others are 160x96, but it seems like the right 32 pixels of each is a duplicate of the far left 32 pixels. See Example Mod.
-
-### public virtual void ChooseUndergroundBackgroundStyle(ref int backgroundStyle)
-
-Use this to change the underground background style. 
