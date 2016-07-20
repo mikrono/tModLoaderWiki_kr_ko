@@ -82,6 +82,7 @@
 
 **Backgrounds**
 
+- [BackgroundTextureLoader](https://github.com/bluemagic123/tModLoader/wiki/BackgroundTextureLoader)
 - [UgBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/UgBgStyleLoader)
 - [SurfaceBgStyleLoader](https://github.com/bluemagic123/tModLoader/wiki/SurfaceBgStyleLoader)
 - [ModUgBgStyle](https://github.com/bluemagic123/tModLoader/wiki/ModUgBgStyle)
