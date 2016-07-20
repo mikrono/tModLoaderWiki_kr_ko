@@ -129,3 +129,7 @@ Allows you to make something happen when a wire current passes through any tile.
 ### public virtual bool Slope(int i, int j, int type)
 
 Allows you to control how hammers slope any tile. Return true to allow the tile to slope normally. Returns true by default.
+
+### public virtual void ChangeWaterfallStyle(int type, ref int style)
+
+Allows you to change the style of waterfall that passes through or over any tile.
