@@ -74,6 +74,18 @@ Allows you to do things with the custom biome information you send between clien
 
 Allows you to create special visual effects in the area around the player. For example, the blood moon's red filter on the screen or the slime rain's falling slime in the background. You must create classes that override Terraria.Graphics.Shaders.ScreenShaderData or Terraria.Graphics.Effects.CustomSky, add them in your mod's Load hook, then call Player.ManageSpecialBiomeVisuals. See the ExampleMod if you do not have access to the source code.
 
+### public virtual void clientClone(ModPlayer clientClone)
+
+Allows you to copy information about this player to the clientClone parameter. You should copy information that you intend to sync between server and client. This hook is called in the Player.clientClone method. See SendClientChanges for more info.
+
+### public virtual void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+
+Allows you to sync information about this player between server and client. The toWho and fromWho parameters correspond to the remoteClient and ignoreClient arguments of NetMessage.SendData, respectively. The newPlayer parameter is whether or not the player is joining the server.
+
+### public virtual void SendClientChanges(ModPlayer clientPlayer)
+
+Allows you to sync any information that has changed between the server and client. Here, you should check the information you have copied in the clientClone parameter; if they differ between this player and the clientPlayer parameter, then you should send that information using NetMessage.SendData.
+
 ### public virtual Texture2D GetMapBackgroundImage()
 
 Allows you to change the background that displays when viewing the map. Return null if you do not want to change the background. Returns null by default.
