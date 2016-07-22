@@ -26,6 +26,12 @@ This is where all ModPlayer hooks are gathered and called.
 
 ### public static void UpdateBiomeVisuals(Player player)
 
+### public static void clientClone(Player player, Player clientClone)
+
+### public static void SyncPlayer(Player player, int toWho, int fromWho, bool newPlayer)
+
+### public static void SendClientChanges(Player player, Player clientPlayer)
+
 ### public static Texture2D GetMapBackgroundImage(Player player)
 
 ### public static void UpdateBadLifeRegen(Player player)
