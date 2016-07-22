@@ -80,11 +80,11 @@ Allows you to copy information about this player to the clientClone parameter. Y
 
 ### public virtual void SyncPlayer(int toWho, int fromWho, bool newPlayer)
 
-Allows you to sync information about this player between server and client. The toWho and fromWho parameters correspond to the remoteClient and ignoreClient arguments of NetMessage.SendData, respectively. The newPlayer parameter is whether or not the player is joining the server.
+Allows you to sync information about this player between server and client. The toWho and fromWho parameters correspond to the remoteClient/toClient and ignoreClient arguments, respectively, of NetMessage.SendData/ModPacket.Send. The newPlayer parameter is whether or not the player is joining the server.
 
 ### public virtual void SendClientChanges(ModPlayer clientPlayer)
 
-Allows you to sync any information that has changed between the server and client. Here, you should check the information you have copied in the clientClone parameter; if they differ between this player and the clientPlayer parameter, then you should send that information using NetMessage.SendData.
+Allows you to sync any information that has changed between the server and client. Here, you should check the information you have copied in the clientClone parameter; if they differ between this player and the clientPlayer parameter, then you should send that information using NetMessage.SendData or ModPacket.Send.
 
 ### public virtual Texture2D GetMapBackgroundImage()
 
