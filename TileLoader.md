@@ -113,3 +113,19 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 ### public static Texture2D GetTreeTopTextures(int type)
 
 ### public static Texture2D GetTreeBranchTextures(int type)
+
+### public static bool CanGrowModPalmTree(int type)
+
+### public static void PalmTreeDust(Tile tile, ref int dust)
+
+### public static void PalmTreeGrowthFXGore(int type, ref int gore)
+
+### public static void DropPalmTreeWood(int type, ref int wood)
+
+### public static Texture2D GetPalmTreeTexture(Tile tile)
+
+### public static Texture2D GetPalmTreeTopTextures(int type)
+
+### public static bool CanGrowModCactus(int type)
+
+### public static Texture2D GetCactusTexture(int type)
