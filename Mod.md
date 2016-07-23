@@ -182,9 +182,9 @@ Gets the GlobalProjectile instance with the given name from this mod.
 
 Adds the given type of projectile information storage to the game, using the provided name.
 
-### public void AddNPC(string name, ModNPC npc, string texture)
+### public void AddNPC(string name, ModNPC npc, string texture, string[] altTextures = null)
 
-Adds a type of NPC to the game with the specified name and texture.
+Adds a type of NPC to the game with the specified name and texture. Also allows you to give the NPC alternate textures.
 
 ### public ModNPC GetNPC(string name)
 
