@@ -108,6 +108,18 @@ Adds an entry to the minimap for this tile with the given color and display name
 
 Adds an entry to the minimap for this tile with the given color, default display name, and display name function. The parameters for the function are the default display name, x-coordinate, and y-coordinate. This should be called in SetDefaults.
 
+### public void SetModTree(ModTree tree)
+
+Allows this tile to grow the given modded tree.
+
+### public void SetModPalmTree(ModPalmTree palmTree)
+
+Allows this tile to grow the given modded palm tree.
+
+### public void SetModCactus(ModCactus cactus)
+
+Allows this tile to grow the given modded cactus.
+
 ### public virtual bool Autoload(ref string name, ref string texture)
 
 Allows you to modify the name and texture path of this tile when it is autoloaded. Return true to autoload this tile. When a tile is autoloaded, that means you do not need to manually call Mod.AddTile. By default returns the mod's autoload property.
