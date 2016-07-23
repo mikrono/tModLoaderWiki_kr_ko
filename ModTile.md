@@ -94,6 +94,10 @@ Whether or not this tile behaves like a platform. This is important in order to 
 
 Whether or not this tile behaves like a torch. If you are making a torch tile, then setting this to true is necessary in order for tile placement, tile framing, and the item's smart selection to work properly.
 
+### public bool sapling
+
+Whether or not this tile is a sapling, which can grow into a modded tree or palm tree.
+
 ## Methods
 
 ### public void AddToArray(ref int[] array)
