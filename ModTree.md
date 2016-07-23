@@ -1,6 +1,6 @@
 # ModTree
 
-This class represents a type of modded tree. The tree will share a tile ID with the vanilla trees (5), so that the trees can freely convert between each other if the soil below is converted. This class encapsulates several functions that distinguish each type of tree from each other.
+This class represents a type of modded tree. The tree will share a tile ID with the vanilla trees (5), so that the trees can freely convert between each other if the soil below is converted. This class encapsulates several functions that distinguish each type of tree from each other. Use ModTile.SetModTree or GlobalTile.AddModTree to make a tile able to grow this kind of tree.
 
 ## Methods
 
