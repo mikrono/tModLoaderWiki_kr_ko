@@ -104,6 +104,8 @@ Gets the ModNPC instance corresponding to the specified type.
 
 ### public static string TownNPCName(int type)
 
+### public static bool UsesPartyHat(NPC npc)
+
 ### public static void GetChat(NPC npc, ref string chat)
 
 ### public static void SetChatButtons(ref string button, ref string button2)
