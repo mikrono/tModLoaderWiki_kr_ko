@@ -259,3 +259,7 @@ Allows you to modify the dust created when the player walks on this tile. The ma
 ### public virtual void ChangeWaterfallStyle(ref int style)
 
 Allows you to change the style of waterfall that passes through or over this type of tile.
+
+### public virtual int SaplingGrowthType(ref int style)
+
+Allows this tile to support a sapling that can eventually grow into a tree. The type of the sapling should be returned here. Returns -1 by default. The style parameter will determine which sapling is chosen if multiple sapling types share the same ID; even if you only have a single sapling in an ID, you must still set this to 0.
