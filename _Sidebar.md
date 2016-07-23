@@ -30,6 +30,8 @@
 - [ModTile](https://github.com/bluemagic123/tModLoader/wiki/ModTile)
 - [GlobalTile](https://github.com/bluemagic123/tModLoader/wiki/GlobalTile)
 - [ModTree](https://github.com/bluemagic123/tModLoader/wiki/ModTree)
+- [ModPalmTree](https://github.com/bluemagic123/tModLoader/wiki/ModPalmTree)
+- [ModCactus](https://github.com/bluemagic123/tModLoader/wiki/ModCactus)
 - [Vanilla Tile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
 
 **Walls**
