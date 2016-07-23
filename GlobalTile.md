@@ -18,6 +18,18 @@ The name of this GlobalTile instance.
 
 A convenient method for adding an integer to the end of an array. This can be used with the arrays in TileID.Sets.RoomNeeds.
 
+### public void AddModTree(int soilType, ModTree tree)
+
+Allows the given type of tile to grow the given modded tree.
+
+### public void AddModPalmTree(int soilType, ModPalmTree palmTree)
+
+Allows the given type of tile to grow the given modded palm tree.
+
+### public void AddModCactus(int soilType, ModCactus cactus)
+
+Allows the given type of tile to grow the given modded cactus.
+
 ### public virtual bool Autoload(ref string name)
 
 Allows you to automatically load a GlobalTile instead of using Mod.AddGlobalTile. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name. Use this method to either force or stop an autoload or to control the internal name.
