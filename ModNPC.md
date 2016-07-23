@@ -224,6 +224,10 @@ Allows you to define special conditions required for this town NPC's house. For 
 
 Allows you to give this town NPC any name when it spawns. By default returns something embarrassing.
 
+### public virtual bool UsesPartyHat()
+
+Allows you to determine whether this town NPC wears a party hat during a party. Returns true by default.
+
 ### public virtual string GetChat()
 
 Allows you to give this town NPC a chat message when a player talks to it. By default returns something embarrassing.
