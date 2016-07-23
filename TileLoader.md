@@ -26,6 +26,8 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 
 ### public static bool IsTorch(int type)
 
+### public static bool IsSapling(int type)
+
 ### public static bool IsModMusicBox(Tile tile)
 
 ### public static bool KillSound(int i, int j, int type)
@@ -93,3 +95,21 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 ### public static bool HasWalkDust(int type)
 
 ### public static void WalkDust(int type, ref int dustType, ref bool makeDust, ref Color color)
+
+### public static bool SaplingGrowthType(int type, ref int saplingType, ref int style)
+
+### public static bool CanGrowModTree(int type)
+
+### public static void TreeDust(Tile tile, ref int dust)
+
+### public static void TreeGrowthFXGore(int type, ref int gore)
+
+### public static bool CanDropAcorn(int type)
+
+### public static void DropTreeWood(int type, ref int wood)
+
+### public static Texture2D GetTreeTexture(int type)
+
+### public static Texture2D GetTreeTopTextures(int type)
+
+### public static Texture2D GetTreeBranchTextures(int type)
