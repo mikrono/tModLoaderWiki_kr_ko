@@ -48,9 +48,9 @@ The type of the item this NPC drops for every 50 times it is defeated. For any M
 
 ## Methods
 
-### public virtual bool Autoload(ref string name, ref string texture)
+### public virtual bool Autoload(ref string name, ref string texture, ref string[] altTextures)
 
-Allows you to automatically load an NPC instead of using Mod.AddNPC. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, and texture is initialized to the namespace and overriding class name with periods replaced with slashes. Use this method to either force or stop an autoload, or to change the default display name and texture path.
+Allows you to automatically load an NPC instead of using Mod.AddNPC. Return true to allow autoloading; by default returns the mod's autoload property. Name is initialized to the overriding class name, texture is initialized to the namespace and overriding class name with periods replaced with slashes, and altTextures is initialized to null. Use this method to either force or stop an autoload, to change the default display name and texture path, or to give the NPC alternate textures.
 
 ### public virtual void AutoloadHead(ref string headTexture, ref string bossHeadTexture)
 
