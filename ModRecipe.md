@@ -70,7 +70,7 @@ Adds an ingredient to this recipe of the given type of item and stack size.
 
 ### public void AddRecipeGroup(string name, int stack = 1)
 
-Adds a recipe group ingredient to this recipe with the given RecipeGroup name and stack size.
+Adds a recipe group ingredient to this recipe with the given RecipeGroup name and stack size. Vanilla recipe groups consist of "Wood", "IronBar", "PresurePlate", "Sand", and "Fragment".
 
 ### public void AddTile(int tileID)
 
