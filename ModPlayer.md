@@ -52,7 +52,7 @@ Allows you to modify the inventory newly created players or killed mediumcore pl
 
 ### public virtual void UpdateBiomes()
 
-Allows you to set biome variables in your ModPlayer class based on tile counts. This hook honestly won't be that useful until ModWorld is added.
+Allows you to set biome variables in your ModPlayer class based on tile counts.
 
 ### public virtual bool CustomBiomesMatch(Player other)
 
