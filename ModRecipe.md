@@ -7,6 +7,7 @@ This class extends Terraria.Recipe, meaning you can use it in a similar manner t
 - public bool needsHoney
 - public bool needsWater
 - public bool needsLava
+- public bool needSnowBiome
 - public bool anyWood
 - public bool anyIronBar
 - public bool anyPressurePlate
