@@ -31,7 +31,8 @@ Adds a buff to an NPC. Example: `Main.npc[i].AddBuff(BuffID.Ichor, 60);`
 ###public int HasBuff(int type)
 Returns -1 if the NPC doesn't have the buff, and an index (0 to 4) if the NPC does. Example: `if (npc.HasBuff(BuffID.Cursed) >= 0){...}`
 
-Main  
-public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
-public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255, bool force = false)
-
+##Main  
+###public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
+Plays a sound. Type is the category and style is the sound within that category. x and y give the sound a position, but can be left as -1 for center.
+###public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255, bool force = false)
+Prints text messages to the console.
