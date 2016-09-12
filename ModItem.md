@@ -324,7 +324,7 @@ Allows you to set what the Angler says when he requests for this item. The descr
 
 ### public virtual ModItem Clone()
 
-Returns a clone of this ModItem. Allows you to decide which fields of your ModItem class are copied over when an item stack is split or something similar happens. By default all fields that you make will be automatically copied for you.
+Returns a clone of this ModItem. Allows you to decide which fields of your ModItem class are copied over when an item stack is split or something similar happens. By default all fields that you make will be automatically copied for you. Only called if CloneNewInstances is set to true.
 
 ### public virtual void SaveCustomData(BinaryWriter writer)
 
