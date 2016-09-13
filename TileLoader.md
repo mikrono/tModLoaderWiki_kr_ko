@@ -110,9 +110,9 @@ Gets the ModTile instance with the given type. If no ModTile with the given type
 
 ### public static Texture2D GetTreeTexture(int type)
 
-### public static Texture2D GetTreeTopTextures(int type)
+### public static Texture2D GetTreeTopTextures(int type, int i, int j, ref int frame,
 
-### public static Texture2D GetTreeBranchTextures(int type)
+### public static Texture2D GetTreeBranchTextures(int type, int i, int j, int trunkOffset, ref int frame)
 
 ### public static bool CanGrowModPalmTree(int type)
 
