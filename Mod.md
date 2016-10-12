@@ -390,9 +390,15 @@ Allows you to modify net message / packet information that is received before th
 
 Allows you to set the transformation of the screen that is drawn. (Translations, rotations, scales, etc.)
 
+### public virtual void ModifyInterfaceLayers(List\<MethodSequenceListItem\> layers)
+
+Allows you to modify the elements of the in-game interface that get drawn. MethodSequenceListItem can be found in the Terraria.DataStructures namespace.
+
 ### public virtual void PostDrawInterface(SpriteBatch spriteBatch)
 
 Called after interface is drawn but right before mouse and mouse hover text is drawn. Allows for drawing interface.
+
+**Note:** This hook should no longer be used. It is better to use the ModifyInterfaceLayers hook.
 
 ### public virtual void PostDrawFullscreenMap(ref string mouseText)
 
