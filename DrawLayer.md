@@ -26,21 +26,21 @@ Whether or not this DrawLayer should be drawn. For vanilla layers, this will be 
 
 ## Constructors
 
-### public DrawLayer(string mod, string name, Action\<InfoType\> layer)
+### protected DrawLayer(string mod, string name, Action\<InfoType\> layer)
 
 Creates a DrawLayer with the given mod name, identifier name, and drawing action.
 
-### public DrawLayer(string mod, string name, DrawLayer\<InfoType\> parent, Action\<InfoType\> layer)
+### protected DrawLayer(string mod, string name, DrawLayer\<InfoType\> parent, Action\<InfoType\> layer)
 
 Creates a DrawLayer with the given mod name, identifier name, parent layer, and drawing action.
 
 ## Methods
 
-### public bool ShouldDraw(object layerList)
+### public bool ShouldDraw\<T\>(IList\<T\> layers) where T : DrawLayer\<InfoType\>
 
 Whether or not this layer should be drawn. Returns false if visible is false. If layerList is of type List\<DrawLayer\<InfoType\>\> and parent is not null, this will also return false if the parent is not drawn.
 
-### public void Draw(InfoType drawInfo)
+### public virtual void Draw(ref InfoType drawInfo)
 
 Invokes this DrawLayer's layer action.
 
