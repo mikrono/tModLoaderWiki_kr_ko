@@ -118,6 +118,10 @@ This is called sometime after SetControls is called, and right before all the bu
 
 This is called right after all of this player's buffs update on the player. This can be used to modify the effects that the buff updates had on this player, and can also be used for general update tasks.
 
+### public virtual void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
+
+Called after Update Accessories. 
+
 ### public virtual void PostUpdateEquips()
 
 This is called right after all of this player's equipment and armor sets update on the player, which is sometime after PostUpdateBuffs is called. This can be used to modify the effects that the equipment had on this player, and can also be used for general update tasks.
