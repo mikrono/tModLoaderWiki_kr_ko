@@ -1,4 +1,4 @@
-This is a list of the vanilla interface layers stored in the layers parameter in the Mod.ModifyInterfaceLayers(List<MethodSequenceListItem> layers).
+This is a list of the vanilla interface layers stored in the layers parameter in the Mod.ModifyInterfaceLayers(List<MethodSequenceListItem> layers), in the order that they appear.
 
 * Vanilla: Interface Logic 1
 * Vanilla: Emote Bubbles
