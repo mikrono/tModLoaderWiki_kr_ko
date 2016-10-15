@@ -130,3 +130,4 @@
 - [ModPacket](https://github.com/bluemagic123/tModLoader/wiki/ModPacket)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
 - [Vanilla Interface Changes](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Class-Changes)
+- [Vanilla Interface layers values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Interface-layers-values)
