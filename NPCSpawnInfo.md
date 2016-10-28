@@ -16,6 +16,32 @@ The y-coordinate of the tile the NPC will spawn above.
 
 The player that this NPC is spawning around.
 
+For convenience, here are the player zones, which are also useful for determining NPC spawn:
+> ZoneDungeon  
+> ZoneCorrupt  
+> ZoneHoly  
+> ZoneMeteor
+> ZoneJungle  
+> ZoneSnow  
+> ZoneCrimson  
+> ZoneWaterCandle  
+> ZonePeaceCandle  
+> ZoneTowerSolar  
+> ZoneTowerVortex  
+> ZoneTowerNebula  
+> ZoneTowerStardust  
+> ZoneDesert  
+> ZoneGlowshroom  
+> ZoneUndergroundDesert  
+> ZoneSkyHeight  
+> ZoneOverworldHeight  
+> ZoneDirtLayerHeight  
+> ZoneRockLayerHeight  
+> ZoneUnderworldHeight  
+> ZoneBeach  
+> ZoneRain  
+> ZoneSandstorm  
+
 ### public int playerFloorX
 
 The x-coordinate of the tile the player is standing on.
