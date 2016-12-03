@@ -94,7 +94,7 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 
 ### public virtual void Kill(int timeLeft)
 
-Allows you to control what happens when this projectile is killed (for example, creating dust or making sounds).
+Allows you to control what happens when this projectile is killed (for example, creating dust or making sounds). Also useful for creating retrievable ammo. 
 
 ### public virtual bool CanDamage()
 
