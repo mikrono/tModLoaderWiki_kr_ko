@@ -139,3 +139,9 @@ This is where all ModPlayer hooks are gathered and called.
 ### public static void ModifyScreenPosition(Player player)
 
 ### public static void ModifyZoom(Player player, ref float zoom)
+
+### public static void PlayerConnect(int playerIndex)
+
+### public static void PlayerDisconnect(int playerIndex)
+
+### public static void OnEnterWorld(int playerIndex)
