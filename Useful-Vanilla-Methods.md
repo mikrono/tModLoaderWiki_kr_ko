@@ -20,7 +20,7 @@ Spawns an item right on a player, a simple alternative to Item.NewItem.
 Determines if the player has the specified item in their inventory. Example: `if(player.HasItem(mod.ItemType("SpectreGun"))){...}`
 ### public void AddBuff(int type, int time1, bool quiet = true)
 Adds a buff to a player.
-### public int HasBuff(int type)
+### public int FindBuffIndex(int type)
 Returns -1 if the player doesn't have the buff, and an index (0 to 21) if the player does.
 
 ##NPC
@@ -28,8 +28,8 @@ Returns -1 if the player doesn't have the buff, and an index (0 to 21) if the pl
 Spawns an NPC in the world. Example: `NPC.NewNPC(i, j, mod.NPCType("PuritySpirit"));`
 ###public void AddBuff(int type, int time, bool quiet = false)
 Adds a buff to an NPC. Example: `Main.npc[i].AddBuff(BuffID.Ichor, 60);`
-###public int HasBuff(int type)
-Returns -1 if the NPC doesn't have the buff, and an index (0 to 4) if the NPC does. Example: `if (npc.HasBuff(BuffID.Cursed) >= 0){...}`
+###public int FindBuffIndex(int type)
+Returns -1 if the NPC doesn't have the buff, and an index (0 to 4) if the NPC does. Example: `if (npc.FindBuffIndex(BuffID.Cursed) >= 0){...}`
 
 ##Main  
 ###public static void PlaySound(int type, int x = -1, int y = -1, int Style = 1)
