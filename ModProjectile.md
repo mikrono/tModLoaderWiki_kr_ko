@@ -90,6 +90,8 @@ Allows you to determine what happens when this projectile collides with a tile. 
 
 ### public virtual bool? CanCutTiles()
 
+Return true or false to specify if the projectile can cut tiles, like vines. Return null for vanilla decision.
+
 ### public virtual bool PreKill(int timeLeft)
 
 Allows you to determine whether the vanilla code for Kill and the Kill hook will be called. Return false to stop them from being called. Returns true by default. Note that this does _not_ stop the projectile from dying.
