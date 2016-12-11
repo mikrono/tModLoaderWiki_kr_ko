@@ -322,6 +322,10 @@ Adds the given sound file to the game as the given type of sound and with the gi
 
 Shorthand for calling SoundLoader.GetSoundSlot(type, this.Name + '/' + name).
 
+### public LegacySoundStyle GetLegacySoundSlot(SoundType type, string name)
+
+Shorthand for calling SoundLoader.GetLegacySoundSlot(type, this.Name + '/' + name).
+
 ### public void AddBackgroundTexture(string texture)
 
 Adds a texture to the list of background textures and assigns it a background texture slot.
