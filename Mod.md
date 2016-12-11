@@ -122,6 +122,10 @@ Gets the ModDust of this mod corresponding to the given name. Returns null if no
 
 Gets the type of the ModDust of this mod with the given name. Returns 0 if no ModDust with the given name is found.
 
+### public int DustType\<T\>() where T : ModDust 
+
+Same as the other DustType, but assumes that the class name and internal name are the same.
+
 ### public void AddTile(string name, ModTile tile, string texture)
 
 Adds a type of tile to the game with the specified name and texture.
@@ -157,6 +161,10 @@ Gets the ModWall of this mod corresponding to the given name. Returns null if no
 ### public int WallType(string name)
 
 Gets the type of the ModWall of this mod with the given name. Returns 0 if no ModWall with the given name is found.
+
+### public int WallType\<T\>() where T : ModWall 
+
+Same as the other WallType, but assumes that the class name and internal name are the same.
 
 ### public void AddGlobalWall(string name, GlobalWall globalWall)
 
@@ -206,7 +214,7 @@ Gets the ModNPC of this mod corresponding to the given name. Returns null if no 
 
 Gets the type of the ModNPC of this mod with the given name. Returns 0 if no ModNPC with the given name is found.
 
-### public int ProjectNPCType\<T\>() where T : ModNPC 
+### public int NPCType\<T\>() where T : ModNPC 
 
 Same as the other NPCType, but assumes that the class name and internal name are the same.
 
@@ -246,6 +254,10 @@ Gets the ModBuff of this mod corresponding to the given name. Returns null if no
 
 Gets the type of the ModBuff of this mod corresponding to the given name. Returns 0 if no ModBuff with the given name is found.
 
+### public int BuffType\<T\>() where T : ModBuff 
+
+Same as the other BuffType, but assumes that the class name and internal name are the same.
+
 ### public void AddGlobalBuff(string name, GlobalBuff globalBuff)
 
 Adds the given GlobalBuff instance to this mod using the provided name.
@@ -269,6 +281,10 @@ Gets the ModMountData instance of this mod corresponding to the given name. Retu
 ### public int MountType(string name)
 
 Gets the ID of the ModMountData instance corresponding to the given name. Returns 0 if no ModMountData has the given name.
+
+### public int MountType\<T\>() where T : ModMountData
+
+Same as the other MountType, but assumes that the class name and internal name are the same.
 
 ### public void AddModWorld(string name, ModWorld modWorld)
 
@@ -333,6 +349,10 @@ Adds the given texture to the game as a custom gore, with the given custom gore 
 ### public int GetGoreSlot(string name)
 
 Shorthand for calling ModGore.GetGoreSlot(this.Name + '/' + name).
+
+### public int GetGoreSlot\<T\>() where T : ModGore
+
+Same as the other GetGoreSlot, but assumes that the class name and internal name are the same.
 
 ### public void AddSound(SoundType type, string soundPath, ModSound modSound = null)
 
