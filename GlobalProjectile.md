@@ -54,6 +54,8 @@ Allows you to determine whether the vanilla code for Kill and the Kill hook will
 
 Allows you to control what happens when a projectile is killed (for example, creating dust or making sounds).
 
+### public virtual bool? CanCutTiles(Projectile projectile)
+
 ### public virtual bool CanDamage(Projectile projectile)
 
 Whether or not the given projectile is capable of killing tiles (such as grass) and damaging NPCs/players. Return false to prevent it from doing any sort of damage. Returns true by default.
