@@ -106,6 +106,10 @@ Allows you to modify the power of the player's natural life regeneration. This c
 
 This is called at the beginning of every tick update for this player, after checking whether the player exists.
 
+### public virtual  void ProcessTriggers(TriggersSet triggersSet)
+
+Use this to check on hotkeys you have registered. While SetControls is set even while in text entry mode, this hook is only called during gameplay. 
+
 ### public virtual void SetControls()
 
 Use this to modify the control inputs that the player receives. For example, the Confused debuff swaps the values of player.controlLeft and player.controlRight. This is called sometime after PreUpdate is called.
