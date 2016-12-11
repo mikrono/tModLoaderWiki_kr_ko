@@ -402,6 +402,10 @@ Shorthand for calling ModLoader.GetSound(this.FileName(name)).
 
 Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
 
+### public SpriteFont GetFont(string name)
+
+Gets a SpriteFont loaded from the specified path.
+
 ### public virtual void ChatInput(string text)
 
 Allows you to make anything happen whenever the player for this game inputs a message into the chat.
