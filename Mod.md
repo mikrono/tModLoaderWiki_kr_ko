@@ -70,6 +70,10 @@ Gets the ModItem instance corresponding to the name. Because this method is in t
 
 Gets the internal ID / type of the ModItem corresponding to the name. Returns 0 if no ModItem with the given name is found.
 
+### public int ItemType\<T\>() where T : ModItem 
+
+Same as the other ItemType, but assumes that the class name and internal name are the same.
+
 ### public void AddGlobalItem(string name, GlobalItem globalItem)
 
 Adds the given GlobalItem instance to this mod with the provided name.
@@ -130,6 +134,10 @@ Gets the ModTile of this mod corresponding to the given name. Returns null if no
 
 Gets the type of the ModTile of this mod with the given name. Returns 0 if no ModTile with the given name is found.
 
+### public int TileType\<T\>() where T : ModTile 
+
+Same as the other TileType, but assumes that the class name and internal name are the same.
+
 ### public void AddGlobalTile(string name, GlobalTile globalTile)
 
 Adds the given GlobalTile instance to this mod with the provided name.
@@ -170,6 +178,10 @@ Gets the ModProjectile of this mod corresponding to the given name. Returns null
 
 Gets the type of the ModProjectile of this mod with the given name. Returns 0 if no ModProjectile with the given name is found.
 
+### public int ProjectileType\<T\>() where T : ModProjectile 
+
+Same as the other ProjectileType, but assumes that the class name and internal name are the same.
+
 ### public void AddGlobalProjectile(string name, GlobalProjectile globalProjectile)
 
 Adds the given GlobalProjectile instance to this mod with the provided name.
@@ -193,6 +205,10 @@ Gets the ModNPC of this mod corresponding to the given name. Returns null if no 
 ### public int NPCType(string name)
 
 Gets the type of the ModNPC of this mod with the given name. Returns 0 if no ModNPC with the given name is found.
+
+### public int ProjectNPCType\<T\>() where T : ModNPC 
+
+Same as the other NPCType, but assumes that the class name and internal name are the same.
 
 ### public void AddGlobalNPC(string name, GlobalNPC globalNPC)
 
@@ -261,6 +277,10 @@ Adds a ModWorld to this mod with the given name.
 ### public ModWorld GetModWorld(string name)
 
 Gets the ModWorld instance with the given name from this mod.
+
+### public T GetModWorld\<T\>() where T : ModWorld 
+
+Same as the other GetModWorld, but assumes that the class name and internal name are the same.
 
 ### public void AddUgBgStyle(string name, ModUgBgStyle ugBgStyle)
 
