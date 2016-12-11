@@ -145,3 +145,5 @@ This is where all ModPlayer hooks are gathered and called.
 ### public static void PlayerDisconnect(int playerIndex)
 
 ### public static void OnEnterWorld(int playerIndex)
+
+### public static void ProcessTriggers(Player player, TriggersSet triggersSet)
