@@ -52,6 +52,10 @@ A more advanced option to PostWorldGen, this method allows you modify the list o
 
 Use this to reset any fields you set in any of your ModTile.NearbyEffects hooks back to their default values.
 
+### public virtual void PreUpdate()
+
+See below.
+
 ### public virtual void PostUpdate()
 
 Use this method to have things happen in the world. In vanilla Terraria, a good example of code suitable for this hook is how Falling Stars fall to the ground during the night. This hook is called every frame.
