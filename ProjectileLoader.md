@@ -68,6 +68,8 @@ Gets the ModProjectile instance corresponding to the specified type.
 
 ### public static void PostDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
 
+### public virtual bool? CanCutTiles()
+
 ### public static bool? CanUseGrapple(int type, Player player)
 
 ### public static bool? SingleGrappleHook(int type, Player player)
