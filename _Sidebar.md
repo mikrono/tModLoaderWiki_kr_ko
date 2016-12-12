@@ -112,6 +112,7 @@
 - [SoundType](https://github.com/bluemagic123/tModLoader/wiki/SoundType)
 - [SoundLoader](https://github.com/bluemagic123/tModLoader/wiki/SoundLoader)
 - [ModSound](https://github.com/bluemagic123/tModLoader/wiki/ModSound)
+- [Vanilla Sound IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Sound-IDs)
 
 **Recipes**
 
