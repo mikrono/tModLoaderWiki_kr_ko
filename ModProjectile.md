@@ -112,7 +112,7 @@ Whether or not this minion can damage NPCs by touching them. Returns false by de
 
 Allows you to determine whether this projectile can hit the given NPC. Return true to allow hitting the target, return false to block this projectile from hitting the target, and return null to use the vanilla code for whether the target can be hit. Returns null by default.
 
-### public virtual void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit)
+### public virtual void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 
 Allows you to modify the damage, knockback, etc., that this projectile does to an NPC.
 
