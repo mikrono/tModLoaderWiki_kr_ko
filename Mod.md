@@ -414,13 +414,13 @@ Allows you to make anything happen whenever the player for this game inputs a me
 
 Allows you to determine what music should currently play.
 
-### public void RegisterHotKey(string name, string defaultKey)
+### public ModHotKey RegisterHotKey(string name, string defaultKey)
 
-Registers a hotkey with a name and defaultKey.
+Registers a hotkey with a name and defaultKey. Use the returned ModHotKey to detect when buttons are pressed. Do this in a ModPlayer.ProcessTriggers.
 
 ### public virtual void HotKeyPressed(string name)
 
-Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed.
+Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed. (Using the ModHotKey is more recommended.)
 
 ### public ModPacket GetPacket(int capacity = 256)
 
