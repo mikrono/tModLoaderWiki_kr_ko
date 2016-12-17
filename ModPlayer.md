@@ -218,7 +218,7 @@ Allows you to determine whether a projectile created by this player can hit the 
 
 Allows you to modify the damage, knockback, etc., that a projectile created by this player does to an NPC.
 
-### public virtual void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+### public virtual void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit, ref int hitDirection)
 
 Allows you to create special effects when a projectile created by this player hits an NPC (for example, inflicting debuffs).
 
