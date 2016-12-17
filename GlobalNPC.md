@@ -110,7 +110,7 @@ Allows you to create special effects when an NPC is hit by a melee weapon.
 
 Allows you to determine whether an NPC can be hit by the given projectile. Return true to allow hitting the NPC, return false to block hitting the NPC, and return null to use the vanilla code for whether the NPC can be hit. Returns null by default.
 
-### public virtual void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit)
+### public virtual void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 
 Allows you to modify the damage, knockback, etc., that an NPC takes from a projectile.
 
