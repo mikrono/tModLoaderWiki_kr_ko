@@ -127,6 +127,7 @@
 **Others**
 
 - [ModDust](https://github.com/bluemagic123/tModLoader/wiki/ModDust)
+- [TagCompound](https://github.com/bluemagic123/tModLoader/wiki/TagCompound)
 - [ModSide](https://github.com/bluemagic123/tModLoader/wiki/ModSide)
 - [ModPacket](https://github.com/bluemagic123/tModLoader/wiki/ModPacket)
 - [ErrorLogger](https://github.com/bluemagic123/tModLoader/wiki/ErrorLogger)
