@@ -406,9 +406,9 @@ Shorthand for calling ModLoader.SoundExists(this.FileName(name)).
 
 Gets a SpriteFont loaded from the specified path.
 
-### public virtual void ChatInput(string text)
+### public virtual void ChatInput(string text, ref bool broadcast)
 
-Allows you to make anything happen whenever the player for this game inputs a message into the chat.
+Allows you to make anything happen whenever the player for this game inputs a message into the chat. Set the broadcast parameter to false to stop the message from appearing in chat.
 
 ### public virtual void UpdateMusic(ref int music)
 
