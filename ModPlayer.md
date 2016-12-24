@@ -38,13 +38,21 @@ This is where you reset any fields you add to your ModPlayer subclass to their d
 
 Similar to UpdateDead, except this is only called when the player is dead. If this is called, then ResetEffects will not be called.
 
-### public virtual void SaveCustomData(BinaryWriter writer)
+### public virtual void PreSaveCustomData()
 
-Allows you to save custom data for this player. You are only able to save up to 64 KB of information (I don't imagine anyone will ever need more than that).
+Currently never gets called, so this is useless.
 
-### public virtual void LoadCustomData(BinaryReader reader)
+### public virtual TagCompound Save()
+
+Allows you to save custom data for this player. Returns null by default.
+
+### public virtual void Load(TagCompound tag)
 
 Allows you to load custom data you have saved for this player.
+
+### public virtual void LoadLegacy(BinaryReader reader)
+
+Allows you to load pre-v0.9 custom data you have saved for this player.
 
 ### public virtual void SetupStartInventory(IList\<Item\> items)
 
@@ -321,3 +329,5 @@ Called when a player disconnects.
 ### public static void OnEnterWorld(int playerIndex)
 
 Called when a player enters the world.
+
+### public virtual void ProcessTriggers(TriggersSet triggersSet)
