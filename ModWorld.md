@@ -20,19 +20,23 @@ Allows you to automatically add a ModWorld instead of using Mod.AddModWorld. Ret
 
 Called whenever the world is loaded. This can be used to initialize data structures, etc.
 
-### public virtual void SaveCustomData(BinaryWriter writer)
+### public virtual TagCompound Save()
 
-Allows you to save custom data for this world. Useful for things like saving world specific flags. For example, if your mod adds a boss and you want certain NPC to only spawn once it has been defeated, this is where you would store the information that that boss has been defeated in this world. You are only able to save up to 64 KB of information (I don't imagine anyone will ever need more than that).
+Allows you to save custom data for this world. Useful for things like saving world specific flags. For example, if your mod adds a boss and you want certain NPC to only spawn once it has been defeated, this is where you would store the information that that boss has been defeated in this world. Returns null by default.
 
-### public virtual void LoadCustomData(BinaryReader reader)
+### public virtual void Load(TagCompound tag)
 
-Allows you to load custom data you have saved for this player.
+Allows you to load custom data you have saved for this world.
 
-### public virtual void SendCustomData(BinaryWriter writer)
+### public virtual void LoadLegacy(BinaryReader reader)
+
+Allows you to load pre-v0.9 custom data you have saved for this world.
+
+### public virtual void NetSend(BinaryWriter writer)
 
 Allows you to send custom data between clients and server. This is useful for syncing information such as bosses that have been defeated.
 
-### public virtual void ReceiveCustomData(BinaryReader reader)
+### public virtual void NetReceive(BinaryReader reader)
 
 Allows you to do things with custom data that is received between clients and server.
 
