@@ -74,6 +74,10 @@ Allows you to customize which items the wall at the given coordinates drops. Ret
 
 Allows you to determine what happens when the tile at the given coordinates is killed or hit with a hammer. Fail determines whether the tile is mined (whether it is killed).
 
+### public virtual bool CanExplode(int i, int j)
+
+Whether or not the wall at the given coordinates can be killed by an explosion (ie. bombs). Returns true by default; return false to stop an explosion from destroying it.
+
 ### public virtual ushort GetMapOption(int i, int j)
 
 Allows you to choose which minimap entry the wall at the given coordinates will use. 0 is the first entry added by AddMapEntry, 1 is the second entry, etc. Returns 0 by default.
