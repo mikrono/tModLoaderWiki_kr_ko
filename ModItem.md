@@ -326,13 +326,25 @@ Allows you to set what the Angler says when he requests for this item. The descr
 
 Returns a clone of this ModItem. Allows you to decide which fields of your ModItem class are copied over when an item stack is split or something similar happens. By default all fields that you make will be automatically copied for you. Only called if CloneNewInstances is set to true.
 
-### public virtual void SaveCustomData(BinaryWriter writer)
+### public virtual TagCompound Save()
 
-Allows you to save custom data for this item. You are only able to save up to 64 KB of information per item (I don't imagine anyone will ever need more than that).
+Allows you to save custom data for this item. Returns null by default.
 
-### public virtual void LoadCustomData(BinaryReader reader)
+### public virtual void Load(TagCompound tag)
 
 Allows you to load custom data that you have saved for this item.
+
+### public virtual void LoadLegacy(BinaryReader reader)
+
+Allows you to load pre-v0.9 custom data that you have saved for this item.
+
+### public virtual void NetSend(BinaryWriter writer)
+
+Allows you to send custom data for this item between client and server.
+
+### public virtual void NetRecieve(BinaryReader reader)
+
+Receives the custom data sent in the NetSend hook.
 
 ### public virtual void AddRecipes()
 
