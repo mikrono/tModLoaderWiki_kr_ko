@@ -329,5 +329,3 @@ Called when a player disconnects.
 ### public static void OnEnterWorld(int playerIndex)
 
 Called when a player enters the world.
-
-### public virtual void ProcessTriggers(TriggersSet triggersSet)
