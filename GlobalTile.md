@@ -134,6 +134,10 @@ Allows you to make something happen when the mouse hovers over any tile, even wh
 
 Allows you to determine whether the given item can become selected when the cursor is hovering over a tile and the auto selection hotkey is pressed.
 
+### public virtual bool PreHitWire(int i, int j, int type)
+
+Whether or not the vanilla HitWire code and the HitWire hook is allowed to run. Useful for overriding vanilla behavior by returning false. Returns true by default.
+
 ### public virtual void HitWire(int i, int j, int type)
 
 Allows you to make something happen when a wire current passes through any tile.
