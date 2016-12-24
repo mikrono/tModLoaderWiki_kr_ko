@@ -29,6 +29,7 @@
 - [TileLoader](https://github.com/bluemagic123/tModLoader/wiki/TileLoader)
 - [ModTile](https://github.com/bluemagic123/tModLoader/wiki/ModTile)
 - [GlobalTile](https://github.com/bluemagic123/tModLoader/wiki/GlobalTile)
+- [ModTileEntity](https://github.com/bluemagic123/tModLoader/wiki/ModTileEntity)
 - [ModTree](https://github.com/bluemagic123/tModLoader/wiki/ModTree)
 - [ModPalmTree](https://github.com/bluemagic123/tModLoader/wiki/ModPalmTree)
 - [ModCactus](https://github.com/bluemagic123/tModLoader/wiki/ModCactus)
