@@ -42,6 +42,10 @@ Allows you to customize which items the wall at the given coordinates drops. Ret
 
 Allows you to determine what happens when the wall at the given coordinates is killed or hit with a hammer. Fail determines whether the wall is mined (whether it is killed).
 
+### public virtual bool CanExplode(int i, int j, int type)
+
+Whether or not the wall at the given coordinates can be killed by an explosion (ie. bombs). Returns true by default; return false to stop an explosion from destroying it.
+
 ### public virtual void ModifyLight(int i, int j, int type, ref float r, ref float g, ref float b)
 
 Allows you to determine how much light the wall emits. This can also let you light up the block in front of the wall.
