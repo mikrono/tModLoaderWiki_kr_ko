@@ -150,6 +150,18 @@ Adds the given GlobalTile instance to this mod with the provided name.
 
 Gets the GlobalTile instance with the given name from this mod.
 
+### public void AddTileEntity(string name, ModTileEntity entity)
+
+Adds a type of tile entity to the game with the specified name.
+
+### public ModTileEntity GetTileEntity(string name)
+
+Gets the ModTileEntity of this mod corresponding to the given name. Returns null if no ModTileEntity with the given name is found.
+
+### public int TileEntityType(string name)
+
+Gets the type of the ModTileEntity of this mod with the given name. Returns -1 if no ModTileEntity with the given name is found.
+
 ### public void AddWall(string name, ModWall wall, string texture)
 
 Adds a type of wall to the game with the specified name and texture.
