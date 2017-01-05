@@ -68,6 +68,7 @@ These are the names of the vanilla tooltip lines, in the order in which they app
 - "Material" - Tells if the item can be used to craft something.
 - "Tooltip" - The tooltip field of the item.
 - "Tooltip2" - The tooltip2 field of the item.
+- "EtherianManaWarning" - Warning about how the item can't be used without Etherian Mana until the Eternia Crystal has been defeated.
 - "WellFedExpert" - In expert mode, tells that food increases life renegeration.
 - "BuffTime" - Tells how long the item's buff lasts.
 - "OneDropLogo" - The One Drop logo for yoyos. This is a specially-marked tooltip line that has no text.
@@ -86,3 +87,5 @@ These are the names of the vanilla tooltip lines, in the order in which they app
 - "PrefixAccMeleeSpeed" - The melee speed modifier of the accessory prefix.
 - "SetBonus" - The set bonus description of the armor set.
 - "Expert" - Tells whether the item is from expert-mode.
+- "SpecialPrice" - Tells the alternate currency price of an item.
+- "Price" - Tells the price of an item.
