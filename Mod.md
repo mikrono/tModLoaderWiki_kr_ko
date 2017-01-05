@@ -434,6 +434,10 @@ Registers a hotkey with a name and defaultKey. Use the returned ModHotKey to det
 
 Called when a hotkey is pressed. Check against the name to verify particular hotkey that was pressed. (Using the ModHotKey is more recommended.)
 
+### public virtual object Call(params object[] args)
+
+Used for weak inter-mod communication. This allows you to interact with other mods without having to reference their types or namespaces, provided that they have implemented this method.
+
 ### public ModPacket GetPacket(int capacity = 256)
 
 Creates a ModPacket object that you can write to and then send between servers and clients.
