@@ -178,7 +178,7 @@ Allows you to create special effects (such as dust) when the player wears this i
 
 ### public virtual void ArmorSetShadows(Player player)
 
-Allows you to determine special visual effects this vanity set has on the player without having to code them yourself. Note that this hook is only ever called through this item's associated equipment texture.
+Allows you to determine special visual effects this vanity set has on the player without having to code them yourself. Note that this hook is only ever called through this item's associated equipment texture. Use the player.armorEffectDraw bools to activate the desired effects.
 
 ### public virtual void SetMatch(bool male, ref int equipSlot, ref bool robes)
 
