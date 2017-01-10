@@ -154,7 +154,7 @@ Allows you to modify the chance the tile at the given coordinates has of spawnin
 
 ### public virtual bool Drop(int i, int j)
 
-Allows you to customize which items the tile at the given coordinates drops. Return false to stop the game from dropping the tile's default item. Returns true by default.
+Allows you to customize which items the tile at the given coordinates drops. Return false to stop the game from dropping the tile's default item. Returns true by default. **Please note that this hook currently only works for 1x1 tiles.**
 
 ### public virtual bool CanKillTile(int i, int j, ref bool blockDamaged)
 
