@@ -58,6 +58,10 @@ Allows you to control what happens when a projectile is killed (for example, cre
 
 Return true or false to specify if the projectile can cut tiles, like vines. Return null for vanilla decision.
 
+### public virtual void CutTiles(Projectile projectile)
+
+Code ran when the projectile cuts tiles. Only runs if CanCutTiles() returns true. Useful when programming lasers and such.
+
 ### public virtual bool CanDamage(Projectile projectile)
 
 Whether or not the given projectile is capable of killing tiles (such as grass) and damaging NPCs/players. Return false to prevent it from doing any sort of damage. Returns true by default.
