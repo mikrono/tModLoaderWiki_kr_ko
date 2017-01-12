@@ -146,7 +146,7 @@ Allows you to create special effects (such as the necro armor's hurt noise) when
 
 Allows you to create special effects (such as dust) when the player wears the vanity set with the given name returned by IsVanitySet. This hook will only be called if the player is not frozen in any way.
 
-### public virtual void ArmorSetShadows(Player player, string set, ref bool longTrail, ref bool smallPulse, ref bool largePulse, ref bool shortTrail)
+### public virtual void ArmorSetShadows(Player player, string set)
 
 Allows you to determine special visual effects a vanity has on the player without having to code them yourself.
 
