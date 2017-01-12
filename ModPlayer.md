@@ -170,7 +170,7 @@ Allows you to make anything happen when the player takes damage.
 
 This hook is called whenever the player is about to be killed after reaching 0 health. Set the playSound parameter to false to stop the death sound from playing. Set the genGore parameter to false to stop the gore and dust from being created. (These are useful for creating your own sound or gore.) Return false to stop the player from being killed. Only return false if you know what you are doing! Returns true by default.
 
-### public virtual void Kill(double damage, int hitDirection, bool pvp, string deathText)
+### public virtual void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
 
 Allows you to make anything happen when the player dies.
 
