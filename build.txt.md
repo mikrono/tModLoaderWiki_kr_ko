@@ -17,6 +17,8 @@ dllReferences - A list of dll references your mod has. You must place the dll fi
 
 modReferences - A list of mods that your mod depends on. Name them by their file name without the extension.
 
+weakReferences - A list of mods that your mod will build against, and can natively interact with, but doesn't necessarily have to be enabled. Basically optional modReferences, but require the modder to be a little more careful in programming to avoid binding errors.
+
 noCompile - Whether this mod should compile source code when being built or use dll files pre-compiled by the mod maker. By default this will be false if you do not include this property. If this is set to true, make sure to name your mod file "All.dll" if it does not use Microsoft.Xna.Framework. If it does use Microsoft.Xna.Framework, you will need two dll files: "Windows.dll" must reference Microsoft.Xna.Framework.dll and the Windows version of Terraria.exe, while "Mono.dll" must reference FNA.dll and a non-Windows version of Terraria.exe.
 
 homepage - A link to a website with your mod's information.
