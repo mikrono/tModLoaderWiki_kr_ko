@@ -11,7 +11,7 @@ displayName - The name your mod will display in on the mods menu
 
 author - The author, which will be displayed on the mods menu
 
-version - The version, which will be displayed on the mods menu
+version - The version, which will be displayed on the mods menu. Must be 2 to 4 numbers separated by periods. 
 
 dllReferences - A list of dll references your mod has. You must place the dll files in the dllReferences folder both to build this mod and to load this mod. Name them by their file name without the extension.
 
