@@ -50,6 +50,7 @@
 - [Vanilla Projectile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-IDs)
 - [Vanilla Projectile AIs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-AIs)
 - [Vanilla Projectile Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-Field-Values)
+- [Vanilla Ammo IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Ammo-IDs)
 
 **NPCs**
 
