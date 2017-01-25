@@ -318,14 +318,14 @@ Use this hook to modify Main.screenPosition after weapon zoom and camera lerp ha
 
 Use this to modify the zoom factor for the player. The zoom correlates to the percentage of half the screen size the zoom can reach. A value of -1 passed in means no vanilla scope is in effect. A value of 1.0 means the scope can zoom half a screen width/height away, putting the player on the edge of the game screen. Vanilla values include .8, .6666, and .5.
 
-### public static void PlayerConnect(int playerIndex)
+### public virtual void PlayerConnect(int playerIndex)
 
 Called on clients when a player connects.
 
-### public static void PlayerDisconnect(int playerIndex)
+### public virtual void PlayerDisconnect(int playerIndex)
 
 Called when a player disconnects.
 
-### public static void OnEnterWorld(int playerIndex)
+### public virtual void OnEnterWorld(int playerIndex)
 
 Called when a player enters the world.
