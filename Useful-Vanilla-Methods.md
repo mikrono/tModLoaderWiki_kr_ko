@@ -13,6 +13,10 @@ Spawns a projectile in the world. The owner variable should pretty much always b
 ###public static int NewDust(Vector2 Position, int Width, int Height, int Type, float SpeedX = 0f, float SpeedY = 0f, int Alpha = 0, Color newColor = default(Color), float Scale = 1f)
 Spawns a dust in the world. 
 
+##Lighting  
+###public static void AddLight(int i, int j, float R, float G, float B)
+Adds light to the world at the tile coordinates provided. 
+
 ## Player  
 ### public void QuickSpawnItem(int item, int stack = 1)
 Spawns an item right on a player, a simple alternative to Item.NewItem.
