@@ -8,6 +8,8 @@
 - [build.txt](https://github.com/bluemagic123/tModLoader/wiki/build.txt)
 - [description.txt](https://github.com/bluemagic123/tModLoader/wiki/description.txt)
 - [Developing with Visual Studio](https://github.com/bluemagic123/tModLoader/wiki/Developing-with-Visual-Studio)
+- [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-526#post-1001200)
+- [Documentation](http://bluemagic123.github.io/tModLoader/html/index.html)
 
 **Items**
 
