@@ -1,3 +1,5 @@
+If you run into problems, see the [Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)  
+
 # Installing tModLoader
 1. Download the latest tModLoader: [Download Page](https://github.com/bluemagic123/tModLoader/releases/latest)
 2. Extract the folder you downloaded.
