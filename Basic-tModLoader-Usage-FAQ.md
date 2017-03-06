@@ -11,6 +11,11 @@ Solution: You didn't run the installer, or you are trying to run tModLoader from
 ### "A Mod is crashing when I try to open tModLoader"
 Open up the tModLoader save directory and delete the offending .tmod file: `Documents\My Games\Terraria\ModLoader\Mods`
 
+# Players/Worlds
+### "HELP, all my players and worlds are gone!"
+tModLoader saves are kept separate from vanilla Terraria saves. You can copy back and forth between save locations, but be aware that you will lose Modded Tile and Items if you use tModloader worlds/characters in vanilla.
+Solutions: Copy from `Documents\My Games\Terraria` to `Documents\My Games\Terraria\Modding`
+
 # Mod Browser
 ### "Mod Browser Offline", "I can't download mods"
 If you are on Mac or Linux, the Mod Browser doesn't work yet.  
