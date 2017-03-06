@@ -2,7 +2,7 @@
 
 **Guides**
 - [Basic tModLoader Usage Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
-- Basic tModLoader Usage FAQ
+- [Basic tModLoader Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)
 
 **Mods**
 
