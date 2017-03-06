@@ -15,3 +15,5 @@ Open up the tModLoader save directory and delete the offending .tmod file: `Docu
 ### "Mod Browser Offline", "I can't download mods"
 If you are on Mac or Linux, the Mod Browser doesn't work yet.  
 Otherwise, the Mod Browser is out of bandwidth. Visit Mod Homepages for alternate download. DO NOT post in the forums asking when the Mod Browser will be back, it's annoying and useless.
+Most Mods are found here: [Terraria Community Forums](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/)
+Web-based Mod Browser for Mac/Linux users: [Mod Browser](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php)
