@@ -1,5 +1,8 @@
 [**Home**](https://github.com/bluemagic123/tModLoader/wiki/Home)
 
+**Guides**
+- [Basic tModLoader Usage Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
+
 **Mods**
 
 - [ModLoader](https://github.com/bluemagic123/tModLoader/wiki/ModLoader)
