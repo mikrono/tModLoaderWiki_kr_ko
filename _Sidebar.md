@@ -1,8 +1,13 @@
 [**Home**](https://github.com/bluemagic123/tModLoader/wiki/Home)
 
-**Guides**
+**Getting Started Guides**
 - [Basic tModLoader Usage Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
 - [Basic tModLoader Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)
+- [Basic tModLoader Modding Starter Guide]() - Start here if you want to make a mod.
+- [Basic tModLoader Modding FAQ]() - 
+
+**Basic Modding Guides**
+- [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
 
 **Mods**
 
