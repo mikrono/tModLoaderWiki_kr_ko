@@ -18,3 +18,6 @@ Seeing the error, the novice modder will take the following steps:
 - Keep .cs filenames, classnames, and .png filenames consistent. 
 - Make sure your base namespace and Mod Sources folder are equal
 - Make sure your namespace and folder structure match: ExampleMod.Items.Weapons becomes `\Mod Sources\ExampleMod\Items\Weapons\`
+
+### "Sequence contains no matching element" error
+This means your Mod doesn't contain any class extending from Mod. See ??? for more information.
