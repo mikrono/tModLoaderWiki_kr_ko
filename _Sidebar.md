@@ -7,6 +7,7 @@
 - [Basic tModLoader Modding FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-FAQ)
 
 **Basic Modding Guides**
+- [Recipes](https://github.com/bluemagic123/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
 
 **tModLoader References**
