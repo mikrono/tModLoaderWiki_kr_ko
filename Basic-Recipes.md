@@ -3,7 +3,7 @@ Recipes can be added to the game in 2 places. In Mod.AddRecipes and in ModItem.A
 
 Recipes consist of Ingredients (Items consumed to craft the result), Tiles (Tiles you need to stand by), and Results (Item created).
 ## Basic Recipe Structure
-First, make sure you have `using Terraria.ModLoader` at the top of your .cs file so you can use the ModRecipe class.
+First, make sure you have `using Terraria.ModLoader` at the top of your .cs file so you can use the ModRecipe class. You will also want `using Terraria.ID` as well if you plan to use any vanilla tiles or ingredients.
 
 To start a recipe we create an instance of the ModRecipe class:
 
