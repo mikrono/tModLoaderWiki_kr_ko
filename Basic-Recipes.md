@@ -66,6 +66,13 @@ You can name your variables recipe1, recipe2, and so on, but a cleaner approach 
     // other code
     recipe = new ModRecipe(mod);
     // other code
+
+
+## Making an "upgraded" vanilla tile
+As an aside, you may want your ModTile to count as, say, a workbench or anvil. To do this, add the following to your ModTile.SetDefaults:
+
+    adjTiles = new int[]{ TileID.WorkBenches };
+
 ## Complete Example
     using Terraria;
     using Terraria.ID;
@@ -108,11 +115,6 @@ Read `Multiple Recipes` above.
 Check that your AddRecipes method has override not virtual.
 ### No suitable method to override
 Make sure you are only overriding AddRecipes in Mod or ModItem.
-
-## Making an "upgraded" vanilla tile
-As an aside, you may want your ModTile to count as, say, a workbench or anvil. To do this, add the following to your ModTile.SetDefaults:
-
-    adjTiles = new int[]{ TileID.WorkBenches };
 
 ## Relevant References
 * [Vanilla ItemIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
