@@ -3,15 +3,16 @@
 **Getting Started Guides**
 - [Basic tModLoader Usage Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
 - [Basic tModLoader Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)
-- [Basic tModLoader Modding Starter Guide]() - Start here if you want to make a mod.
+- [Basic tModLoader Modding Starter Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
 - [Basic tModLoader Modding FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-FAQ)
 
 **Basic Modding Guides**
-- [Recipes](https://github.com/bluemagic123/tModLoader/wiki/Basic-Recipes)
+- [Basic Guide Prerequisites](https://github.com/bluemagic123/tModLoader/wiki/Basic-Prerequisites)
+- [Basic Recipes](https://github.com/bluemagic123/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
 
 **Intermediate Modding Guides**
-- [Recipes](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Intermediate Recipes](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 
 **Advanced Modding Guides**
 
