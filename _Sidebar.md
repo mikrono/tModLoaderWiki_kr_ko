@@ -16,6 +16,8 @@
 
 **Advanced Modding Guides**
 
+**Expert Modding Guides**
+
 **Uncategorized Guides**
 - [Tutorial: [1] Your first mod!](https://forums.terraria.org/index.php?threads/tutorial-1-your-first-mod.44817/)
 - [Tutorial: [2] Recipes](https://forums.terraria.org/index.php?threads/tutorial-2-recipes.44822/)
@@ -28,8 +30,6 @@
 **Youtube Tutorials**
 - [Al0n37](https://www.youtube.com/user/Al0n37/videos)
 - [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ)
-
-**Expert Modding Guides**
 
 **tModLoader References**
 
