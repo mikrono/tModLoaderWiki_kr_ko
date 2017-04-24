@@ -16,6 +16,19 @@
 
 **Advanced Modding Guides**
 
+**Uncategorized Guides**
+- [Tutorial: [1] Your first mod!](https://forums.terraria.org/index.php?threads/tutorial-1-your-first-mod.44817/)
+- [Tutorial: [2] Recipes](https://forums.terraria.org/index.php?threads/tutorial-2-recipes.44822/)
+- [Tutorial: [3] Items](https://forums.terraria.org/index.php?threads/tutorial-3-items.44842/)
+- [Tutorial: [4] Projectiles](https://forums.terraria.org/index.php?threads/tutorial-4-projectiles.44857/)
+- [Projectile Guide and Implementation](https://forums.terraria.org/index.php?threads/tutorial-projectile-guide-and-implementation-tmodloader-edition.40062/)
+- [Custom Bosses - NPC AI and Server Syncing](https://forums.terraria.org/index.php?threads/tutorial-custom-bosses-npc-ai-and-server-syncing.10474/)
+- [Creating Simple UI: Custom Resource Bars](https://forums.terraria.org/index.php?threads/tutorial-creating-simple-ui-custom-resource-bars.53417/)
+
+**Youtube Tutorials**
+- [Al0n37](https://www.youtube.com/user/Al0n37/videos)
+- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ)
+
 **Expert Modding Guides**
 
 **tModLoader References**
