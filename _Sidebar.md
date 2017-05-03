@@ -63,3 +63,4 @@
 
 - [TagCompound](https://github.com/bluemagic123/tModLoader/wiki/TagCompound)
 - [Mount Data Parameters](https://github.com/bluemagic123/tModLoader/wiki/MountDataParameters)
+- [Open Source Mods](https://github.com/bluemagic123/tModLoader/wiki/Open-Source-Mods)
