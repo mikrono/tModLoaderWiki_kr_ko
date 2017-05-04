@@ -47,6 +47,7 @@
 - [Vanilla Item IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
 - [Vanilla NPC Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-Field-Values)
 - [Vanilla NPC IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-NPC-IDs)
+- [BannerToNPC Conversions](https://github.com/bluemagic123/tModLoader/wiki/BannerTtoNPC-Conversions)
 - [Vanilla Projectile AIs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-AIs)
 - [Vanilla Projectile IDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-IDs)
 - [Vanilla Projectile Field Values](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Projectile-Field-Values)
