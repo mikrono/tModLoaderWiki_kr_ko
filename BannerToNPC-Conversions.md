@@ -2,7 +2,7 @@
 When making a banner, different values are used for enemies. Say for example you wanted to create a banner that gave you buffs for blue and green slimes. If you used their actual IDs, you would instead be buffed for completely different enemies. That's because the ID value is passed through to this function, which returns a different value based on which ID you use.
 
 ## The List ##  
-This is the list of conversions made found in Terraria.Item.BannerToNPC. Below this one is the list for NPCToBanner, which is useful for npcs with negative IDs.
+This is the list of conversions made found in Terraria.Item.BannerToNPC. Below this is a second list, containing the code from Terraria.Item.NPCToBanner. It may prove useful.
 
     // Terraria.Item
     public static int BannerToNPC(int i)
