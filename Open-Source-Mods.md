@@ -29,7 +29,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Shader Lib](https://github.com/gamrguy/ShaderLib) -- Messing with shaders
 * [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor)
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
-* [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode-related "hacks", options system with JSON, integration with Cheat Sheet.
+* [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
 
 ## Too Advanced/Specific
 These mods are probably too specific or advanced to learn anything from.
