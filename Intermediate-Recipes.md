@@ -92,6 +92,21 @@ Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGr
     	}
     }
 
+## Editing Vanilla RecipeGroups
+In some situations you might want to add your own items to existing RecipeGroups. In this example, we will add another wood type to the "Wood" RecipeGroup.
+
+    public override void AddRecipeGroups()
+    {
+    	if(RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
+    	{
+    		int index = RecipeGroup.recipeGroupIDs["Wood"];
+    		RecipeGroup group = RecipeGroup.recipeGroups[index];
+    		group.ValidItems.Add(ItemType("MyWood"));
+    	}
+    }
+
+Note that checking `if(RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not necessary, but it will prevent errors if some other mod completely removes that RecipeGroup for some reason.
+
 # Editing Vanilla Recipes
 We can edit vanilla recipes from within out AddRecipes methods. Basically, we use the RecipeFinder class to act as search parameters, then go through the results and act on them. From the results of RecipeFinder, we can construct a RecipeEditor to modify ingredients, tiles, or even delete vanilla recipes.
 
