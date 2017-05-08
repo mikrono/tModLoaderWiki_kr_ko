@@ -39,7 +39,7 @@ This is actually not too bad, but imagine you have 10 or 20 similar items that y
     	});
     	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
     }
-As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Lang.misc[37] is just the word "any" in the selected language. The syntax here is a little difficult for newcomers, so please follow it exactly.
+As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Lang.misc[37] is just the word "any" in the selected language. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
 
 Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGroups, except our RecipeGroup's name will be different:
 
