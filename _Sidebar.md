@@ -12,6 +12,7 @@
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
 
 **Intermediate Modding Guides**
+- [Intermediate Guide Prerequisites](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Prerequisites)
 - [Intermediate Recipes](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 
 **Advanced Modding Guides**
