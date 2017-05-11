@@ -30,6 +30,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor)
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
 * [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
+* [Eternal Mods](https://github.com/Itorius/Eternal-Mods) -- A lot of UI, Tile Entity and data saving code
 
 ## Too Advanced/Specific
 These mods are probably too specific or advanced to learn anything from.
