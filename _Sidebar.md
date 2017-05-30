@@ -3,7 +3,6 @@
 **Getting Started Guides**
 - [Basic tModLoader Usage Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
 - [Basic tModLoader Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)
-- [Basic tModLoader Usage FAQ for 1.3.5](https://github.com/bluemagic123/tModLoader/wiki/1.3.5-FAQ)
 - [Basic tModLoader Modding Starter Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
 - [Basic tModLoader Modding FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-FAQ)
 
