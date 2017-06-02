@@ -51,3 +51,9 @@ This will let you edit the source code of your mod while at a breakpoint without
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
+# FAQ
+## Autocomplete isn't doing anything for me.
+1. Check that the tModLoader executable file is in your references. Make sure it's modded not vanilla.    
+![](http://i.imgur.com/HvodIHV.png)
+2. Check that your .cs files are actually in the project, and that you are opening the project not just individual .cs files. You can use the show all files toggle and then right click -> include in project to add missing source files to the project.    
+![](http://i.imgur.com/dNMyROY.png)
