@@ -10,6 +10,7 @@
 - [Basic Guide Prerequisites](https://github.com/bluemagic123/tModLoader/wiki/Basic-Prerequisites)
 - [Basic Recipes](https://github.com/bluemagic123/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
+- [Basic Ammo](https://github.com/bluemagic123/tModLoader/wiki/Basic-Ammo)
 
 **Intermediate Modding Guides**
 - [Intermediate Guide Prerequisites](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Prerequisites)
