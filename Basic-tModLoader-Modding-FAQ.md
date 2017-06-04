@@ -33,3 +33,7 @@ This is because the computer doesn't know what the Player class is. You need to 
 ### Error CS0103: The name 'ItemID' (or ProjectileID, NPCId, etc) does not exist in the current context
 
 This is because the computer doesn't know what the ItemID class is. You need to tell the computer where ItemID is found. Do this by adding "using Terraria.ID;" to the top of the file so the computer knows how to find the ItemID class.
+
+### Error CS0161: 'ExampleItem.UseItem(Player)' (or some other hook): not all code paths return a value
+
+Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://bluemagic123.github.io/tModLoader/html/index.html) to know what value to return.
