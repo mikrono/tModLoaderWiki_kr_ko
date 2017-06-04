@@ -25,3 +25,11 @@ This means your Mod doesn't contain any class extending from Mod. See ??? for mo
 ### "error CS0234: The type or namespace name 'X' does not exist in the namespace 'Y' (are you missing an assembly reference?)"
 
 This usually happens when your code has namespaces or classes that conflict with vanilla Terraria classes or namespaces. For example, if you happen to have a namespace named Projectile, and try to use Projectile.NewProjectile, the computer will be confused if you are referring to the Terraria.Projectile class or something in your Projectile namespace. The easiest solution is to not name your namespaces the same as vanilla classes. For example, ExampleMod has namespaces named Dusts, Projectiles, and Items as to not conflict with vanilla classes of Dust, Projectile, and Item.
+
+### Error CS0246: The type or namespace name 'Player' (or Item, Projectile, etc) could not be found (are you missing a using directive or an assembly reference?)
+
+This is because the computer doesn't know what the Player class is. You need to tell the computer where Player is found. Do this by adding "using Terraria;" to the top of the file so the computer knows how to find the Player class.
+
+### Error CS0103: The name 'ItemID' (or ProjectileID, NPCId, etc) does not exist in the current context
+
+This is because the computer doesn't know what the ItemID class is. You need to tell the computer where ItemID is found. Do this by adding "using Terraria.ID;" to the top of the file so the computer knows how to find the ItemID class.
