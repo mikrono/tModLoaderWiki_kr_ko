@@ -28,7 +28,7 @@ This usually happens when your code has namespaces or classes that conflict with
 
 ### Error CS0246: The type or namespace name 'Player' (or Item, Projectile, etc) could not be found (are you missing a using directive or an assembly reference?)
 
-This is because the computer doesn't know what the Player class is. You need to tell the computer where Player is found. Do this by adding "using Terraria;" to the top of the file so the computer knows how to find the Player class.
+This is because the computer doesn't know what the Player class is. You need to tell the computer where Player is found. Do this by adding "using Terraria;" to the top of the file so the computer knows how to find the Player class. (Another common one is Vector2, which needs "using Microsoft.Xna.Framework;")
 
 ### Error CS0103: The name 'ItemID' (or ProjectileID, NPCId, etc) does not exist in the current context
 
