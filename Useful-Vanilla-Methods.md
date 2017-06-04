@@ -30,9 +30,9 @@ Returns -1 if the player doesn't have the buff, and an index (0 to 21) if the pl
 ## NPC
 ### public static int NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
 Spawns an NPC in the world. Example: `NPC.NewNPC(i, j, mod.NPCType("PuritySpirit"));`
-###public void AddBuff(int type, int time, bool quiet = false)
+### public void AddBuff(int type, int time, bool quiet = false)
 Adds a buff to an NPC. Example: `Main.npc[i].AddBuff(BuffID.Ichor, 60);`
-###public int FindBuffIndex(int type)
+### public int FindBuffIndex(int type)
 Returns -1 if the NPC doesn't have the buff, and an index (0 to 4) if the NPC does. Example: `if (npc.FindBuffIndex(BuffID.Cursed) >= 0){...}`
 
 ## Main  
