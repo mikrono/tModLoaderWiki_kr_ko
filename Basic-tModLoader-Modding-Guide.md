@@ -18,7 +18,7 @@ Now go in game, make a workbench and mine 10 dirt blocks, and you should see tha
 
 ![](http://i.imgur.com/UQb3tXq.png)
 
-Wow! Amazing. But 50 damage isn't enough. We will now do our first actual coding. Open up the "Mod Sources\TutorialMod\Items\TutorialSword.cs" file in Notepad++. Find the line with `item.damage = 50;` and change 50 to 100. Also at this time, let's change `Tooltip.SetDefault("This is a modded sword.");;` just for fun. Remember not to mess up the syntax that you learned in the Basic Prerequisites lesson. Now, save the file! Next, go in game, once again build and reload the mod and acquire the sword again. You should see the new damage and the new tooltip. Congratulations.
+Wow! Amazing. But 50 damage isn't enough. We will now do our first actual coding. Open up the "Mod Sources\TutorialMod\Items\TutorialSword.cs" file in Notepad++. Find the line with `item.damage = 50;` and change 50 to 100. Also at this time, let's change `Tooltip.SetDefault("This is a modded sword.");` just for fun. Remember not to mess up the syntax that you learned in the Basic Prerequisites lesson. Now, save the file! Next, go in game, once again build and reload the mod and acquire the sword again. You should see the new damage and the new tooltip. Congratulations.
 
 ## Experiment a little
 
