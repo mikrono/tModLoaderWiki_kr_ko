@@ -1,5 +1,3 @@
-### This information is only valid for tModLoader 0.8+ (or the latest version from the github)
-
 # Creating a Project
 This will let you use Visual Studio's code editing and Intellisense
 
