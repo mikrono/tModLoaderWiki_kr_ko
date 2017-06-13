@@ -5,7 +5,7 @@ Before consulting any of the Basic-level guides, please read below so you are pr
 The Basic guides don't require too much programming knowledge, but they do require a basic understanding of c# syntax. Please read and internalize the following.
 * [C# Syntax Tutorial](https://www.tutorialspoint.com/csharp/csharp_basic_syntax.htm)
 
-Some common modding pitfalse
+Some common modding pitfalls
 
 ## Text Editor
 Another thing you will need is a text editor. Your operating system comes with one, but there are better ones available. Below is a list of included text editors and suggested replacements. 
