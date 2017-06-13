@@ -55,3 +55,6 @@ This will let you edit the source code of your mod while at a breakpoint without
 ![](http://i.imgur.com/HvodIHV.png)
 2. Check that your .cs files are actually in the project, and that you are opening the project not just individual .cs files. You can use the show all files toggle and then right click -> include in project to add missing source files to the project.    
 ![](http://i.imgur.com/dNMyROY.png)
+
+## CS5001 Program does not contain a static 'Main' method suitable for an entry point
+Make sure "Output type" is set to "Class Library" in the project properties.
