@@ -37,3 +37,7 @@ This is because the computer doesn't know what the ItemID class is. You need to 
 ### Error CS0161: 'ExampleItem.UseItem(Player)' (or some other hook): not all code paths return a value
 
 Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://bluemagic123.github.io/tModLoader/html/index.html) to know what value to return.
+
+### TileObjectData.AddTile Issues
+
+Make sure you call `TileObjectData.AddTile` after all of your statements regarding `TileObjectData.newTile`. Misordered code involving these statements will break Terraria.
