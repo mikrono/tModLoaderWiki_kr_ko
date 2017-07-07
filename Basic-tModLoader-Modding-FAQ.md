@@ -20,7 +20,7 @@ Seeing the error, the novice modder will take the following steps:
 - Make sure your namespace and folder structure match: ExampleMod.Items.Weapons becomes `\Mod Sources\ExampleMod\Items\Weapons\`
 
 ### "Sequence contains no matching element" error
-This means your Mod doesn't contain any class extending from Mod. If you went through the [Basic Modding Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-Guide) you should notice that one of the files has `class MyMod : Mod`. Make sure you 1 and only 1 of these classes in your mod.
+This means your Mod doesn't contain any class extending from Mod. If you went through the [Basic Modding Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-Guide) you should notice that one of the files has `class MyMod : Mod`. Make sure you have 1 and only 1 of these classes in your mod.
 
 ### "error CS0234: The type or namespace name 'X' does not exist in the namespace 'Y' (are you missing an assembly reference?)"
 
