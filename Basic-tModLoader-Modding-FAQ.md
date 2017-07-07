@@ -1,5 +1,5 @@
 ### "Terraria.ModLoader.Mod.GetTexture(String name)" error
-This error means that tModLoader can't find the Texture that you have specified. You may be thinking, "Where did I specify the Texture to use?", and to answer that, you should read the [Autoload]() page.  
+This error means that tModLoader can't find the Texture that you have specified. You may be thinking, "Where did I specify the Texture to use?", and to answer that, you should read the [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) page.  
 
 Now that you read about Autoloading, you now know that the texture is derived from the namespace and classname of the class. If you don't know what namespace and classname are: [Google](http://www.google.com)
 
