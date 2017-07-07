@@ -5,8 +5,8 @@ This is a collection of vanilla methods that are useful when modding. This list 
 Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. 
 Example: `Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));`
 
-##Projectile  
-###public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
+## Projectile  
+### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
 
 ## Dust  
@@ -40,3 +40,10 @@ Returns -1 if the NPC doesn't have the buff, and an index (0 to 4) if the NPC do
 Plays a sound. Type is the category and style is the sound within that category. x and y give the sound a position, but can be left as -1 for center.
 ### public static void NewText(string newText, byte R = 255, byte G = 255, byte B = 255, bool force = false)
 Prints text messages to the console.
+
+## WorldGen
+### public static void TileRunner(int i, int j, double strength, int steps, int type, bool addTile = false, float speedX = 0f, float speedY = 0f, bool noYChange = false, bool overRide = true)
+Useful for spawning ores during worldgen. This method has a lot of vanilla tile specific code, but should still work. i and j are coordinates, type is the tile to place. 
+
+### public static void OreRunner(int i, int j, double strength, int steps, ushort type)
+A safer version of TileRunner. Vanilla uses this method for the hardmode ores. Only tiles in the TileID.Sets.CanBeClearedDuringOreRunner or Main.tileMoss arrays will be replaced, keeping chests, trees, and special tiles safe from being overwritten. 
