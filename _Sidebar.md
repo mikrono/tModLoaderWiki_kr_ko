@@ -8,6 +8,7 @@
 
 **Basic Modding Guides**
 - [Basic Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Basic-Prerequisites)
+- [Basic Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload)
 - [Basic Recipes](https://github.com/blushiemagic/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-239#post-840809)
 - [Basic Ammo](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo)
