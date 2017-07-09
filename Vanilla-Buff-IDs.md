@@ -2,209 +2,211 @@
 
 The following is a list of constants found in the Terraria.ID.BuffID class.
 
-public const int ObsidianSkin = 1;    
-public const int Regeneration = 2;    
-public const int Swiftness = 3;    
-public const int Gills = 4;    
-public const int Ironskin = 5;    
-public const int ManaRegeneration = 6;    
-public const int MagicPower = 7;    
-public const int Featherfall = 8;    
-public const int Spelunker = 9;    
-public const int Invisibility = 10;    
-public const int Shine = 11;    
-public const int NightOwl = 12;    
-public const int Battle = 13;    
-public const int Thorns = 14;    
-public const int WaterWalking = 15;    
-public const int Archery = 16;    
-public const int Hunter = 17;    
-public const int Gravitation = 18;    
-public const int ShadowOrb = 19;    
-public const int Poisoned = 20;    
-public const int PotionSickness = 21;    
-public const int Darkness = 22;    
-public const int Cursed = 23;    
-public const int OnFire = 24;    
-public const int Tipsy = 25;    
-public const int WellFed = 26;    
-public const int FairyBlue = 27;    
-public const int Werewolf = 28;    
-public const int Clairvoyance = 29;    
-public const int Bleeding = 30;    
-public const int Confused = 31;    
-public const int Slow = 32;    
-public const int Weak = 33;    
-public const int Merfolk = 34;    
-public const int Silenced = 35;    
-public const int BrokenArmor = 36;    
-public const int Horrified = 37;    
-public const int TheTongue = 38;    
-public const int CursedInferno = 39;    
-public const int PetBunny = 40;    
-public const int BabyPenguin = 41;    
-public const int PetTurtle = 42;    
-public const int PaladinsShield = 43;    
-public const int Frostburn = 44;    
-public const int BabyEater = 45;    
-public const int Chilled = 46;    
-public const int Frozen = 47;    
-public const int Honey = 48;    
-public const int Pygmies = 49;    
-public const int BabySkeletronHead = 50;    
-public const int BabyHornet = 51;    
-public const int TikiSpirit = 52;    
-public const int PetLizard = 53;    
-public const int PetParrot = 54;    
-public const int BabyTruffle = 55;    
-public const int PetSapling = 56;    
-public const int Wisp = 57;    
-public const int RapidHealing = 58;    
-public const int ShadowDodge = 59;    
-public const int LeafCrystal = 60;    
-public const int BabyDinosaur = 61;    
-public const int IceBarrier = 62;    
-public const int Panic = 63;    
-public const int BabySlime = 64;    
-public const int EyeballSpring = 65;    
-public const int BabySnowman = 66;    
-public const int Burning = 67;    
-public const int Suffocation = 68;    
-public const int Ichor = 69;    
-public const int Venom = 70;    
-public const int WeaponImbueVenom = 71;    
-public const int Midas = 72;    
-public const int WeaponImbueCursedFlames = 73;    
-public const int WeaponImbueFire = 74;    
-public const int WeaponImbueGold = 75;    
-public const int WeaponImbueIchor = 76;    
-public const int WeaponImbueNanites = 77;    
-public const int WeaponImbueConfetti = 78;    
-public const int WeaponImbuePoison = 79;    
-public const int Blackout = 80;    
-public const int PetSpider = 81;    
-public const int Squashling = 82;    
-public const int Ravens = 83;    
-public const int BlackCat = 84;    
-public const int CursedSapling = 85;    
-public const int WaterCandle = 86;    
-public const int Campfire = 87;    
-public const int ChaosState = 88;    
-public const int HeartLamp = 89;    
-public const int Rudolph = 90;    
-public const int Puppy = 91;    
-public const int BabyGrinch = 92;    
-public const int AmmoBox = 93;    
-public const int ManaSickness = 94;    
-public const int BeetleEndurance1 = 95;    
-public const int BeetleEndurance2 = 96;    
-public const int BeetleEndurance3 = 97;    
-public const int BeetleMight1 = 98;    
-public const int BeetleMight2 = 99;    
-public const int BeetleMight3 = 100;    
-public const int FairyRed = 101;    
-public const int FairyGreen = 102;    
-public const int Wet = 103;    
-public const int Mining = 104;    
-public const int Heartreach = 105;    
-public const int Calm = 106;    
-public const int Builder = 107;    
-public const int Titan = 108;    
-public const int Flipper = 109;    
-public const int Summoning = 110;    
-public const int Dangersense = 111;    
-public const int AmmoReservation = 112;    
-public const int Lifeforce = 113;    
-public const int Endurance = 114;    
-public const int Rage = 115;    
-public const int Inferno = 116;    
-public const int Wrath = 117;    
-public const int MinecartLeft = 118;    
-public const int Lovestruck = 119;    
-public const int Stinky = 120;    
-public const int Fishing = 121;    
-public const int Sonar = 122;    
-public const int Crate = 123;    
-public const int Warmth = 124;    
-public const int HornetMinion = 125;    
-public const int ImpMinion = 126;    
-public const int ZephyrFish = 127;    
-public const int BunnyMount = 128;    
-public const int PigronMount = 129;    
-public const int SlimeMount = 130;    
-public const int TurtleMount = 131;    
-public const int BeeMount = 132;    
-public const int SpiderMinion = 133;    
-public const int TwinEyesMinion = 134;    
-public const int PirateMinion = 135;    
-public const int MiniMinotaur = 136;    
-public const int Slimed = 137;    
-public const int MinecartRight = 138;    
-public const int SharknadoMinion = 139;    
-public const int UFOMinion = 140;    
-public const int UFOMount = 141;    
-public const int DrillMount = 142;    
-public const int ScutlixMount = 143;    
-public const int Electrified = 144;    
-public const int MoonLeech = 145;    
-public const int Sunflower = 146;    
-public const int MonsterBanner = 147;    
-public const int Rabies = 148;    
-public const int Webbed = 149;    
-public const int Bewitched = 150;    
-public const int SoulDrain = 151;    
-public const int MagicLantern = 152;    
-public const int ShadowFlame = 153;    
-public const int BabyFaceMonster = 154;    
-public const int CrimsonHeart = 155;    
-public const int Stoned = 156;    
-public const int PeaceCandle = 157;    
-public const int StarInBottle = 158;    
-public const int Sharpened = 159;    
-public const int Dazed = 160;    
-public const int DeadlySphere = 161;    
-public const int UnicornMount = 162;    
-public const int Obstructed = 163;    
-public const int VortexDebuff = 164;    
-public const int DryadsWard = 165;    
-public const int MinecartRightMech = 166;    
-public const int MinecartLeftMech = 167;    
-public const int CuteFishronMount = 168;    
-public const int BoneJavelin = 169;    
-public const int SolarShield1 = 170;    
-public const int SolarShield2 = 171;    
-public const int SolarShield3 = 172;    
-public const int NebulaUpLife1 = 173;    
-public const int NebulaUpLife2 = 174;    
-public const int NebulaUpLife3 = 175;    
-public const int NebulaUpMana1 = 176;    
-public const int NebulaUpMana2 = 177;    
-public const int NebulaUpMana3 = 178;    
-public const int NebulaUpDmg1 = 179;    
-public const int NebulaUpDmg2 = 180;    
-public const int NebulaUpDmg3 = 181;    
-public const int StardustMinion = 182;    
-public const int StardustMinionBleed = 183;    
-public const int MinecartLeftWood = 184;    
-public const int MinecartRightWood = 185;    
-public const int DryadsWardDebuff = 186;    
-public const int StardustGuardianMinion = 187;    
-public const int StardustDragonMinion = 188;    
-public const int Daybreak = 189;    
-public const int SuspiciousTentacle = 190;    
-public const int CompanionCube = 191;    
-public const int SugarRush = 192;    
-public const int BasiliskMount = 193;    
-public const int WindPushed = 194;    
-public const int WitheredArmor = 195;    
-public const int WitheredWeapon = 196;    
-public const int OgreSpit = 197;    
-public const int ParryDamageBuff = 198;    
-public const int NoBuilding = 199;    
-public const int PetDD2Gato = 200;    
-public const int PetDD2Ghost = 201;    
-public const int PetDD2Dragon = 202;    
-public const int BetsysCurse = 203;    
-public const int Oiled = 204;    
-public const int BallistaPanic = 205;    
-public const int Count = 206;
+| Buff	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+| :-- 	| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+| ObsidianSkin | 1 |
+| Regeneration | 2 |
+| Swiftness | 3 |
+| Gills | 4 |
+| Ironskin | 5 |
+| ManaRegeneration | 6 |
+| MagicPower | 7 |
+| Featherfall | 8 |
+| Spelunker | 9 |
+| Invisibility | 10 |
+| Shine | 11 |
+| NightOwl | 12 |
+| Battle | 13 |
+| Thorns | 14 |
+| WaterWalking | 15 |
+| Archery | 16 |
+| Hunter | 17 |
+| Gravitation | 18 |
+| ShadowOrb | 19 |
+| Poisoned | 20 |
+| PotionSickness | 21 |
+| Darkness | 22 |
+| Cursed | 23 |
+| OnFire | 24 |
+| Tipsy | 25 |
+| WellFed | 26 |
+| FairyBlue | 27 |
+| Werewolf | 28 |
+| Clairvoyance | 29 |
+| Bleeding | 30 |
+| Confused | 31 |
+| Slow | 32 |
+| Weak | 33 |
+| Merfolk | 34 |
+| Silenced | 35 |
+| BrokenArmor | 36 |
+| Horrified | 37 |
+| TheTongue | 38 |
+| CursedInferno | 39 |
+| PetBunny | 40 |
+| BabyPenguin | 41 |
+| PetTurtle | 42 |
+| PaladinsShield | 43 |
+| Frostburn | 44 |
+| BabyEater | 45 |
+| Chilled | 46 |
+| Frozen | 47 |
+| Honey | 48 |
+| Pygmies | 49 |
+| BabySkeletronHead | 50 |
+| BabyHornet | 51 |
+| TikiSpirit | 52 |
+| PetLizard | 53 |
+| PetParrot | 54 |
+| BabyTruffle | 55 |
+| PetSapling | 56 |
+| Wisp | 57 |
+| RapidHealing | 58 |
+| ShadowDodge | 59 |
+| LeafCrystal | 60 |
+| BabyDinosaur | 61 |
+| IceBarrier | 62 |
+| Panic | 63 |
+| BabySlime | 64 |
+| EyeballSpring | 65 |
+| BabySnowman | 66 |
+| Burning | 67 |
+| Suffocation | 68 |
+| Ichor | 69 |
+| Venom | 70 |
+| WeaponImbueVenom | 71 |
+| Midas | 72 |
+| WeaponImbueCursedFlames | 73 |
+| WeaponImbueFire | 74 |
+| WeaponImbueGold | 75 |
+| WeaponImbueIchor | 76 |
+| WeaponImbueNanites | 77 |
+| WeaponImbueConfetti | 78 |
+| WeaponImbuePoison | 79 |
+| Blackout | 80 |
+| PetSpider | 81 |
+| Squashling | 82 |
+| Ravens | 83 |
+| BlackCat | 84 |
+| CursedSapling | 85 |
+| WaterCandle | 86 |
+| Campfire | 87 |
+| ChaosState | 88 |
+| HeartLamp | 89 |
+| Rudolph | 90 |
+| Puppy | 91 |
+| BabyGrinch | 92 |
+| AmmoBox | 93 |
+| ManaSickness | 94 |
+| BeetleEndurance1 | 95 |
+| BeetleEndurance2 | 96 |
+| BeetleEndurance3 | 97 |
+| BeetleMight1 | 98 |
+| BeetleMight2 | 99 |
+| BeetleMight3 | 100 |
+| FairyRed | 101 |
+| FairyGreen | 102 |
+| Wet | 103 |
+| Mining | 104 |
+| Heartreach | 105 |
+| Calm | 106 |
+| Builder | 107 |
+| Titan | 108 |
+| Flipper | 109 |
+| Summoning | 110 |
+| Dangersense | 111 |
+| AmmoReservation | 112 |
+| Lifeforce | 113 |
+| Endurance | 114 |
+| Rage | 115 |
+| Inferno | 116 |
+| Wrath | 117 |
+| MinecartLeft | 118 |
+| Lovestruck | 119 |
+| Stinky | 120 |
+| Fishing | 121 |
+| Sonar | 122 |
+| Crate | 123 |
+| Warmth | 124 |
+| HornetMinion | 125 |
+| ImpMinion | 126 |
+| ZephyrFish | 127 |
+| BunnyMount | 128 |
+| PigronMount | 129 |
+| SlimeMount | 130 |
+| TurtleMount | 131 |
+| BeeMount | 132 |
+| SpiderMinion | 133 |
+| TwinEyesMinion | 134 |
+| PirateMinion | 135 |
+| MiniMinotaur | 136 |
+| Slimed | 137 |
+| MinecartRight | 138 |
+| SharknadoMinion | 139 |
+| UFOMinion | 140 |
+| UFOMount | 141 |
+| DrillMount | 142 |
+| ScutlixMount | 143 |
+| Electrified | 144 |
+| MoonLeech | 145 |
+| Sunflower | 146 |
+| MonsterBanner | 147 |
+| Rabies | 148 |
+| Webbed | 149 |
+| Bewitched | 150 |
+| SoulDrain | 151 |
+| MagicLantern | 152 |
+| ShadowFlame | 153 |
+| BabyFaceMonster | 154 |
+| CrimsonHeart | 155 |
+| Stoned | 156 |
+| PeaceCandle | 157 |
+| StarInBottle | 158 |
+| Sharpened | 159 |
+| Dazed | 160 |
+| DeadlySphere | 161 |
+| UnicornMount | 162 |
+| Obstructed | 163 |
+| VortexDebuff | 164 |
+| DryadsWard | 165 |
+| MinecartRightMech | 166 |
+| MinecartLeftMech | 167 |
+| CuteFishronMount | 168 |
+| BoneJavelin | 169 |
+| SolarShield1 | 170 |
+| SolarShield2 | 171 |
+| SolarShield3 | 172 |
+| NebulaUpLife1 | 173 |
+| NebulaUpLife2 | 174 |
+| NebulaUpLife3 | 175 |
+| NebulaUpMana1 | 176 |
+| NebulaUpMana2 | 177 |
+| NebulaUpMana3 | 178 |
+| NebulaUpDmg1 | 179 |
+| NebulaUpDmg2 | 180 |
+| NebulaUpDmg3 | 181 |
+| StardustMinion | 182 |
+| StardustMinionBleed | 183 |
+| MinecartLeftWood | 184 |
+| MinecartRightWood | 185 |
+| DryadsWardDebuff | 186 |
+| StardustGuardianMinion | 187 |
+| StardustDragonMinion | 188 |
+| Daybreak | 189 |
+| SuspiciousTentacle | 190 |
+| CompanionCube | 191 |
+| SugarRush | 192 |
+| BasiliskMount | 193 |
+| WindPushed | 194 |
+| WitheredArmor | 195 |
+| WitheredWeapon | 196 |
+| OgreSpit | 197 |
+| ParryDamageBuff | 198 |
+| NoBuilding | 199 |
+| PetDD2Gato | 200 |
+| PetDD2Ghost | 201 |
+| PetDD2Dragon | 202 |
+| BetsysCurse | 203 |
+| Oiled | 204 |
+| BallistaPanic | 205 |
+| Count | 206 |
