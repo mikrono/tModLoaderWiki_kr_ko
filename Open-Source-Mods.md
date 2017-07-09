@@ -5,14 +5,14 @@ The following is a list of Open Source Mods. These mods' sources are available f
 2. The second reason I have listed these mods is because there are still a lot of things the tutorials and ExampleMod do not cover. Search these mods and look for code that might help you. Remember, just because a Mod is Open Source, that doesn't mean you can copy all the code and call it your own. Read the licence the code is licenced under for details. For the most part, however, you should be using Open Source mods as a guide for learning how to structure your mod. (You'll be shunned in the modding community if your mod is just a copy/paste conglomeration of other mods' code.)
 
 ## Content Mods
-These mods are mods that add normal things like items, enemies, and bosses
+These mods are mods that add _a lot_ of common things such as items, enemies, and bosses
 * [Example Mod](https://github.com/bluemagic123/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Cave Story](https://github.com/JavidPack/CaveStory) -- Very open to contributions. 
 * [Bluemagic's Mod](https://github.com/bluemagic123/ElementalUnleash) -- Good resource for learning how to code Boss AI
 * [Magic Storage](https://github.com/bluemagic123/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.
-* [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet.
+* [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
@@ -31,9 +31,13 @@ These mods cover everything except mods that are primarily about new content. So
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
 * [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
 * [Eternal Mods](https://github.com/Itorius/Eternal-Mods) -- A lot of UI, Tile Entity and data saving code
+* [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
+* [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support (FK's Mod Settings Configurator))
+* [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual
+* [The Deconstructor](https://github.com/Jofairden/TheDeconstructor) -- Deconstruct _any_ item back into its recipe (showcases custom UI, sound effects and more)
 
 ## Too Advanced/Specific
-These mods are probably too specific or advanced to learn anything from.
+These mods are _probably_ too specific or advanced to for most modders.
 * [Alternate Dimensions](https://github.com/JavidPack/AlternateDimensions) -- An incomplete implementation of alternate dimensions. Knowledgeable and determined modders are encouraged to discuss a suitable implementation.
 * [WorldGenPreviewer](https://github.com/JavidPack/WorldGenPreviewer) -- Hijacking the WorldGen screen, Reflection
 * [Emoji Support](https://github.com/JavidPack/EmojiSupport) -- Add a Chat Tag Handler
