@@ -1,5 +1,3 @@
-# build.txt
-
 You can create a build.txt file in the top level of your mod's source
 directory to give it build properties. The file should be in the
 format of:
