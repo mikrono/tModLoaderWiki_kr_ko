@@ -7,17 +7,20 @@ This will let you use Visual Studio's code editing and Intellisense
 1. Uncheck "Create directory for solution"
 1. Click OK
 ![New Project Dialog](http://i.imgur.com/tQIfA3g.png)
-1. Go to the Solution Explorer tab, right click on Solution -> ModName -> References and click Add Reference...
+1. Go to the Solution Explorer tab, right click on Solution -> ModName -> References and click Add Reference... ([example](https://i.imgur.com/oM30lfT.png))
 1. Click Browse... and select the tModLoader executable (most likely C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe)
 1. Add the line `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
 1. Create a class extending `Terraria.ModLoader.Mod` and begin developing
 
-If you want to use the Microsoft Xna Framework (you probably do) you need to add the DLLs as references. Unfortunately they're hard to find. Fortunately, there's a trick.
+You will also need to add the XNA library .dlls as references to your project. You can (most of the time) find these files here: `search-ms:displayname=Search%20Results%20in%20GAC_32&crumb=filename%3A~<Microsoft.XNA%20OR%20System.Generic.String%3AMicrosoft.XNA&crumb=fileextension%3A~<Microsoft.XNA*.dll%20filename%3A~<Microsoft.XNA*.dll%20OR%20System.Generic.String%3AMicrosoft.XNA*.dll&crumb=location:C%3A%5CWindows%5CMicrosoft.NET%5Cassembly%5CGAC_32` (Windows)
+Paste this weird search string in your file browser pathbar like so 
+![](https://i.imgur.com/zQo6j1X.png)
 
-1. Open the csproj file in a text editor (like Notepad++)
-1. Find the reference section and add the lines
+It is recommended to **copy** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
 
-|
+If you can't find the .dlls or you couldn't succeed in added them as a reference, there's a neat trick to do it without much effort: 
+1. Open the csproj file in a text editor (like [Notepad++](https://notepad-plus-plus.org/))
+1. Find the reference section and add these lines
 
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
@@ -58,3 +61,6 @@ This will let you edit the source code of your mod while at a breakpoint without
 
 ## CS5001 Program does not contain a static 'Main' method suitable for an entry point
 Make sure "Output type" is set to "Class Library" in the project properties.
+
+## References to other classes stopped working! (such as : ModItem, : ModProjectile etc.)
+Simply restart Visual Studio and it should fix itself.
