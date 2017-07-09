@@ -1,236 +1,236 @@
-# Vanilla Wall IDs
-
 The following is a list of constants found in the Terraria.ID.WallID class.
 
-public const byte None = 0;    
-public const byte Stone = 1;    
-public const byte DirtUnsafe = 2;    
-public const byte EbonstoneUnsafe = 3;    
-public const byte Wood = 4;    
-public const byte GrayBrick = 5;    
-public const byte RedBrick = 6;    
-public const byte BlueDungeonUnsafe = 7;    
-public const byte GreenDungeonUnsafe = 8;    
-public const byte PinkDungeonUnsafe = 9;    
-public const byte GoldBrick = 10;    
-public const byte SilverBrick = 11;    
-public const byte CopperBrick = 12;    
-public const byte HellstoneBrickUnsafe = 13;    
-public const byte ObsidianBrickUnsafe = 14;    
-public const byte MudUnsafe = 15;    
-public const byte Dirt = 16;    
-public const byte BlueDungeon = 17;    
-public const byte GreenDungeon = 18;    
-public const byte PinkDungeon = 19;    
-public const byte ObsidianBrick = 20;    
-public const byte Glass = 21;    
-public const byte PearlstoneBrick = 22;    
-public const byte IridescentBrick = 23;    
-public const byte MudstoneBrick = 24;    
-public const byte CobaltBrick = 25;    
-public const byte MythrilBrick = 26;    
-public const byte Planked = 27;    
-public const byte PearlstoneBrickUnsafe = 28;    
-public const byte CandyCane = 29;    
-public const byte GreenCandyCane = 30;    
-public const byte SnowBrick = 31;    
-public const byte AdamantiteBeam = 32;    
-public const byte DemoniteBrick = 33;    
-public const byte SandstoneBrick = 34;    
-public const byte EbonstoneBrick = 35;    
-public const byte RedStucco = 36;    
-public const byte YellowStucco = 37;    
-public const byte GreenStucco = 38;    
-public const byte Gray = 39;    
-public const byte SnowWallUnsafe = 40;    
-public const byte Ebonwood = 41;    
-public const byte RichMaogany = 42;    
-public const byte Pearlwood = 43;    
-public const byte RainbowBrick = 44;    
-public const byte TinBrick = 45;    
-public const byte TungstenBrick = 46;    
-public const byte PlatinumBrick = 47;    
-public const byte AmethystUnsafe = 48;    
-public const byte TopazUnsafe = 49;    
-public const byte SapphireUnsafe = 50;    
-public const byte EmeraldUnsafe = 51;    
-public const byte RubyUnsafe = 52;    
-public const byte DiamondUnsafe = 53;    
-public const byte CaveUnsafe = 54;    
-public const byte Cave2Unsafe = 55;    
-public const byte Cave3Unsafe = 56;    
-public const byte Cave4Unsafe = 57;    
-public const byte Cave5Unsafe = 58;    
-public const byte Cave6Unsafe = 59;    
-public const byte LivingLeaf = 60;    
-public const byte Cave7Unsafe = 61;    
-public const byte SpiderUnsafe = 62;    
-public const byte GrassUnsafe = 63;    
-public const byte JungleUnsafe = 64;    
-public const byte FlowerUnsafe = 65;    
-public const byte Grass = 66;    
-public const byte Jungle = 67;    
-public const byte Flower = 68;    
-public const byte CorruptGrassUnsafe = 69;    
-public const byte HallowedGrassUnsafe = 70;    
-public const byte IceUnsafe = 71;    
-public const byte Cactus = 72;    
-public const byte Cloud = 73;    
-public const byte Mushroom = 74;    
-public const byte Bone = 75;    
-public const byte Slime = 76;    
-public const byte Flesh = 77;    
-public const byte LivingWood = 78;    
-public const byte ObsidianBackUnsafe = 79;    
-public const byte MushroomUnsafe = 80;    
-public const byte CrimsonGrassUnsafe = 81;    
-public const byte DiscWall = 82;    
-public const byte CrimstoneUnsafe = 83;    
-public const byte IceBrick = 84;    
-public const byte Shadewood = 85;    
-public const byte HiveUnsafe = 86;    
-public const byte LihzahrdBrickUnsafe = 87;    
-public const byte PurpleStainedGlass = 88;    
-public const byte YellowStainedGlass = 89;    
-public const byte BlueStainedGlass = 90;    
-public const byte GreenStainedGlass = 91;    
-public const byte RedStainedGlass = 92;    
-public const byte RainbowStainedGlass = 93;    
-public const byte BlueDungeonSlabUnsafe = 94;    
-public const byte BlueDungeonTileUnsafe = 95;    
-public const byte PinkDungeonSlabUnsafe = 96;    
-public const byte PinkDungeonTileUnsafe = 97;    
-public const byte GreenDungeonSlabUnsafe = 98;    
-public const byte GreenDungeonTileUnsafe = 99;    
-public const byte BlueDungeonSlab = 100;    
-public const byte BlueDungeonTile = 101;    
-public const byte PinkDungeonSlab = 102;    
-public const byte PinkDungeonTile = 103;    
-public const byte GreenDungeonSlab = 104;    
-public const byte GreenDungeonTile = 105;    
-public const byte WoodenFence = 106;    
-public const byte MetalFence = 107;    
-public const byte Hive = 108;    
-public const byte PalladiumColumn = 109;    
-public const byte BubblegumBlock = 110;    
-public const byte TitanstoneBlock = 111;    
-public const byte LihzahrdBrick = 112;    
-public const byte Pumpkin = 113;    
-public const byte Hay = 114;    
-public const byte SpookyWood = 115;    
-public const byte ChristmasTreeWallpaper = 116;    
-public const byte OrnamentWallpaper = 117;    
-public const byte CandyCaneWallpaper = 118;    
-public const byte FestiveWallpaper = 119;    
-public const byte StarsWallpaper = 120;    
-public const byte SquigglesWallpaper = 121;    
-public const byte SnowflakeWallpaper = 122;    
-public const byte KrampusHornWallpaper = 123;    
-public const byte BluegreenWallpaper = 124;    
-public const byte GrinchFingerWallpaper = 125;    
-public const byte FancyGrayWallpaper = 126;    
-public const byte IceFloeWallpaper = 127;    
-public const byte MusicWallpaper = 128;    
-public const byte PurpleRainWallpaper = 129;    
-public const byte RainbowWallpaper = 130;    
-public const byte SparkleStoneWallpaper = 131;    
-public const byte StarlitHeavenWallpaper = 132;    
-public const byte BubbleWallpaper = 133;    
-public const byte CopperPipeWallpaper = 134;    
-public const byte DuckyWallpaper = 135;    
-public const byte Waterfall = 136;    
-public const byte Lavafall = 137;    
-public const byte EbonwoodFence = 138;    
-public const byte RichMahoganyFence = 139;    
-public const byte PearlwoodFence = 140;    
-public const byte ShadewoodFence = 141;    
-public const byte WhiteDynasty = 142;    
-public const byte BlueDynasty = 143;    
-public const byte ArcaneRunes = 144;    
-public const byte IronFence = 145;    
-public const byte CopperPlating = 146;    
-public const byte StoneSlab = 147;    
-public const byte Sail = 148;    
-public const byte BorealWood = 149;    
-public const byte BorealWoodFence = 150;    
-public const byte PalmWood = 151;    
-public const byte PalmWoodFence = 152;    
-public const byte AmberGemspark = 153;    
-public const byte AmethystGemspark = 154;    
-public const byte DiamondGemspark = 155;    
-public const byte EmeraldGemspark = 156;    
-public const byte AmberGemsparkOff = 157;    
-public const byte AmethystGemsparkOff = 158;    
-public const byte DiamondGemsparkOff = 159;    
-public const byte EmeraldGemsparkOff = 160;    
-public const byte RubyGemsparkOff = 161;    
-public const byte SapphireGemsparkOff = 162;    
-public const byte TopazGemsparkOff = 163;    
-public const byte RubyGemspark = 164;    
-public const byte SapphireGemspark = 165;    
-public const byte TopazGemspark = 166;    
-public const byte TinPlating = 167;    
-public const byte Confetti = 168;    
-public const byte ConfettiBlack = 169;    
-public const byte CaveWall = 170;    
-public const byte CaveWall2 = 171;    
-public const byte Honeyfall = 172;    
-public const byte ChlorophyteBrick = 173;    
-public const byte CrimtaneBrick = 174;    
-public const byte ShroomitePlating = 175;    
-public const byte MartianConduit = 176;    
-public const byte HellstoneBrick = 177;    
-public const byte MarbleUnsafe = 178;    
-public const byte MarbleBlock = 179;    
-public const byte GraniteUnsafe = 180;    
-public const byte GraniteBlock = 181;    
-public const byte MeteoriteBrick = 182;    
-public const byte Marble = 183;    
-public const byte Granite = 184;    
-public const byte Cave8Unsafe = 185;    
-public const byte Crystal = 186;    
-public const byte Sandstone = 187;    
-public const byte CorruptionUnsafe1 = 188;    
-public const byte CorruptionUnsafe2 = 189;    
-public const byte CorruptionUnsafe3 = 190;    
-public const byte CorruptionUnsafe4 = 191;    
-public const byte CrimsonUnsafe1 = 192;    
-public const byte CrimsonUnsafe2 = 193;    
-public const byte CrimsonUnsafe3 = 194;    
-public const byte CrimsonUnsafe4 = 195;    
-public const byte DirtUnsafe1 = 196;    
-public const byte DirtUnsafe2 = 197;    
-public const byte DirtUnsafe3 = 198;    
-public const byte DirtUnsafe4 = 199;    
-public const byte HallowUnsafe1 = 200;    
-public const byte HallowUnsafe2 = 201;    
-public const byte HallowUnsafe3 = 202;    
-public const byte HallowUnsafe4 = 203;    
-public const byte JungleUnsafe1 = 204;    
-public const byte JungleUnsafe2 = 205;    
-public const byte JungleUnsafe3 = 206;    
-public const byte JungleUnsafe4 = 207;    
-public const byte LavaUnsafe1 = 208;    
-public const byte LavaUnsafe2 = 209;    
-public const byte LavaUnsafe3 = 210;    
-public const byte LavaUnsafe4 = 211;    
-public const byte RocksUnsafe1 = 212;    
-public const byte RocksUnsafe2 = 213;    
-public const byte RocksUnsafe3 = 214;    
-public const byte RocksUnsafe4 = 215;    
-public const byte HardenedSand = 216;    
-public const byte CorruptHardenedSand = 217;    
-public const byte CrimsonHardenedSand = 218;    
-public const byte HallowHardenedSand = 219;    
-public const byte CorruptSandstone = 220;    
-public const byte CrimsonSandstone = 221;    
-public const byte HallowSandstone = 222;    
-public const byte DesertFossil = 223;    
-public const byte LunarBrickWall = 224;    
-public const byte CogWall = 225;    
-public const byte SandFall = 226;    
-public const byte SnowFall = 227;    
-public const byte SillyBalloonPinkWall = 228;    
-public const byte SillyBalloonPurpleWall = 229;    
-public const byte SillyBalloonGreenWall = 230;    
-public const byte Count = 231;    
+| Wall	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| :-- 			| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| None | 0 |    
+| Stone | 1 |    
+| DirtUnsafe | 2 |    
+| EbonstoneUnsafe | 3 |    
+| Wood | 4 |    
+| GrayBrick | 5 |    
+| RedBrick | 6 |    
+| BlueDungeonUnsafe | 7 |    
+| GreenDungeonUnsafe | 8 |    
+| PinkDungeonUnsafe | 9 |    
+| GoldBrick | 10 |    
+| SilverBrick | 11 |    
+| CopperBrick | 12 |    
+| HellstoneBrickUnsafe | 13 |    
+| ObsidianBrickUnsafe | 14 |    
+| MudUnsafe | 15 |    
+| Dirt | 16 |    
+| BlueDungeon | 17 |    
+| GreenDungeon | 18 |    
+| PinkDungeon | 19 |    
+| ObsidianBrick | 20 |    
+| Glass | 21 |    
+| PearlstoneBrick | 22 |    
+| IridescentBrick | 23 |    
+| MudstoneBrick | 24 |    
+| CobaltBrick | 25 |    
+| MythrilBrick | 26 |    
+| Planked | 27 |    
+| PearlstoneBrickUnsafe | 28 |    
+| CandyCane | 29 |    
+| GreenCandyCane | 30 |    
+| SnowBrick | 31 |    
+| AdamantiteBeam | 32 |    
+| DemoniteBrick | 33 |    
+| SandstoneBrick | 34 |    
+| EbonstoneBrick | 35 |    
+| RedStucco | 36 |    
+| YellowStucco | 37 |    
+| GreenStucco | 38 |    
+| Gray | 39 |    
+| SnowWallUnsafe | 40 |    
+| Ebonwood | 41 |    
+| RichMaogany | 42 |    
+| Pearlwood | 43 |    
+| RainbowBrick | 44 |    
+| TinBrick | 45 |    
+| TungstenBrick | 46 |    
+| PlatinumBrick | 47 |    
+| AmethystUnsafe | 48 |    
+| TopazUnsafe | 49 |    
+| SapphireUnsafe | 50 |    
+| EmeraldUnsafe | 51 |    
+| RubyUnsafe | 52 |    
+| DiamondUnsafe | 53 |    
+| CaveUnsafe | 54 |    
+| Cave2Unsafe | 55 |    
+| Cave3Unsafe | 56 |    
+| Cave4Unsafe | 57 |    
+| Cave5Unsafe | 58 |    
+| Cave6Unsafe | 59 |    
+| LivingLeaf | 60 |    
+| Cave7Unsafe | 61 |    
+| SpiderUnsafe | 62 |    
+| GrassUnsafe | 63 |    
+| JungleUnsafe | 64 |    
+| FlowerUnsafe | 65 |    
+| Grass | 66 |    
+| Jungle | 67 |    
+| Flower | 68 |    
+| CorruptGrassUnsafe | 69 |    
+| HallowedGrassUnsafe | 70 |    
+| IceUnsafe | 71 |    
+| Cactus | 72 |    
+| Cloud | 73 |    
+| Mushroom | 74 |    
+| Bone | 75 |    
+| Slime | 76 |    
+| Flesh | 77 |    
+| LivingWood | 78 |    
+| ObsidianBackUnsafe | 79 |    
+| MushroomUnsafe | 80 |    
+| CrimsonGrassUnsafe | 81 |    
+| DiscWall | 82 |    
+| CrimstoneUnsafe | 83 |    
+| IceBrick | 84 |    
+| Shadewood | 85 |    
+| HiveUnsafe | 86 |    
+| LihzahrdBrickUnsafe | 87 |    
+| PurpleStainedGlass | 88 |    
+| YellowStainedGlass | 89 |    
+| BlueStainedGlass | 90 |    
+| GreenStainedGlass | 91 |    
+| RedStainedGlass | 92 |    
+| RainbowStainedGlass | 93 |    
+| BlueDungeonSlabUnsafe | 94 |    
+| BlueDungeonTileUnsafe | 95 |    
+| PinkDungeonSlabUnsafe | 96 |    
+| PinkDungeonTileUnsafe | 97 |    
+| GreenDungeonSlabUnsafe | 98 |    
+| GreenDungeonTileUnsafe | 99 |    
+| BlueDungeonSlab | 100 |    
+| BlueDungeonTile | 101 |    
+| PinkDungeonSlab | 102 |    
+| PinkDungeonTile | 103 |    
+| GreenDungeonSlab | 104 |    
+| GreenDungeonTile | 105 |    
+| WoodenFence | 106 |    
+| MetalFence | 107 |    
+| Hive | 108 |    
+| PalladiumColumn | 109 |    
+| BubblegumBlock | 110 |    
+| TitanstoneBlock | 111 |    
+| LihzahrdBrick | 112 |    
+| Pumpkin | 113 |    
+| Hay | 114 |    
+| SpookyWood | 115 |    
+| ChristmasTreeWallpaper | 116 |    
+| OrnamentWallpaper | 117 |    
+| CandyCaneWallpaper | 118 |    
+| FestiveWallpaper | 119 |    
+| StarsWallpaper | 120 |    
+| SquigglesWallpaper | 121 |    
+| SnowflakeWallpaper | 122 |    
+| KrampusHornWallpaper | 123 |    
+| BluegreenWallpaper | 124 |    
+| GrinchFingerWallpaper | 125 |    
+| FancyGrayWallpaper | 126 |    
+| IceFloeWallpaper | 127 |    
+| MusicWallpaper | 128 |    
+| PurpleRainWallpaper | 129 |    
+| RainbowWallpaper | 130 |    
+| SparkleStoneWallpaper | 131 |    
+| StarlitHeavenWallpaper | 132 |    
+| BubbleWallpaper | 133 |    
+| CopperPipeWallpaper | 134 |    
+| DuckyWallpaper | 135 |    
+| Waterfall | 136 |    
+| Lavafall | 137 |    
+| EbonwoodFence | 138 |    
+| RichMahoganyFence | 139 |    
+| PearlwoodFence | 140 |    
+| ShadewoodFence | 141 |    
+| WhiteDynasty | 142 |    
+| BlueDynasty | 143 |    
+| ArcaneRunes | 144 |    
+| IronFence | 145 |    
+| CopperPlating | 146 |    
+| StoneSlab | 147 |    
+| Sail | 148 |    
+| BorealWood | 149 |    
+| BorealWoodFence | 150 |    
+| PalmWood | 151 |    
+| PalmWoodFence | 152 |    
+| AmberGemspark | 153 |    
+| AmethystGemspark | 154 |    
+| DiamondGemspark | 155 |    
+| EmeraldGemspark | 156 |    
+| AmberGemsparkOff | 157 |    
+| AmethystGemsparkOff | 158 |    
+| DiamondGemsparkOff | 159 |    
+| EmeraldGemsparkOff | 160 |    
+| RubyGemsparkOff | 161 |    
+| SapphireGemsparkOff | 162 |    
+| TopazGemsparkOff | 163 |    
+| RubyGemspark | 164 |    
+| SapphireGemspark | 165 |    
+| TopazGemspark | 166 |    
+| TinPlating | 167 |    
+| Confetti | 168 |    
+| ConfettiBlack | 169 |    
+| CaveWall | 170 |    
+| CaveWall2 | 171 |    
+| Honeyfall | 172 |    
+| ChlorophyteBrick | 173 |    
+| CrimtaneBrick | 174 |    
+| ShroomitePlating | 175 |    
+| MartianConduit | 176 |    
+| HellstoneBrick | 177 |    
+| MarbleUnsafe | 178 |    
+| MarbleBlock | 179 |    
+| GraniteUnsafe | 180 |    
+| GraniteBlock | 181 |    
+| MeteoriteBrick | 182 |    
+| Marble | 183 |    
+| Granite | 184 |    
+| Cave8Unsafe | 185 |    
+| Crystal | 186 |    
+| Sandstone | 187 |    
+| CorruptionUnsafe1 | 188 |    
+| CorruptionUnsafe2 | 189 |    
+| CorruptionUnsafe3 | 190 |    
+| CorruptionUnsafe4 | 191 |    
+| CrimsonUnsafe1 | 192 |    
+| CrimsonUnsafe2 | 193 |    
+| CrimsonUnsafe3 | 194 |    
+| CrimsonUnsafe4 | 195 |    
+| DirtUnsafe1 | 196 |    
+| DirtUnsafe2 | 197 |    
+| DirtUnsafe3 | 198 |    
+| DirtUnsafe4 | 199 |    
+| HallowUnsafe1 | 200 |    
+| HallowUnsafe2 | 201 |    
+| HallowUnsafe3 | 202 |    
+| HallowUnsafe4 | 203 |    
+| JungleUnsafe1 | 204 |    
+| JungleUnsafe2 | 205 |    
+| JungleUnsafe3 | 206 |    
+| JungleUnsafe4 | 207 |    
+| LavaUnsafe1 | 208 |    
+| LavaUnsafe2 | 209 |    
+| LavaUnsafe3 | 210 |    
+| LavaUnsafe4 | 211 |    
+| RocksUnsafe1 | 212 |    
+| RocksUnsafe2 | 213 |    
+| RocksUnsafe3 | 214 |    
+| RocksUnsafe4 | 215 |    
+| HardenedSand | 216 |    
+| CorruptHardenedSand | 217 |    
+| CrimsonHardenedSand | 218 |    
+| HallowHardenedSand | 219 |    
+| CorruptSandstone | 220 |    
+| CrimsonSandstone | 221 |    
+| HallowSandstone | 222 |    
+| DesertFossil | 223 |    
+| LunarBrickWall | 224 |    
+| CogWall | 225 |    
+| SandFall | 226 |    
+| SnowFall | 227 |    
+| SillyBalloonPinkWall | 228 |    
+| SillyBalloonPurpleWall | 229 |    
+| SillyBalloonGreenWall | 230 |    
+| Count | 231 |    
