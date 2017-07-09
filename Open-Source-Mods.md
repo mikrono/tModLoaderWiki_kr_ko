@@ -6,10 +6,10 @@ The following is a list of Open Source Mods. These mods' sources are available f
 
 ## Content Mods
 These mods are mods that add _a lot_ of common things such as items, enemies, and bosses
-* [Example Mod](https://github.com/bluemagic123/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
+* [Example Mod](https://github.com/blushiemagic/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Cave Story](https://github.com/JavidPack/CaveStory) -- Very open to contributions. 
 * [Bluemagic's Mod](https://github.com/bluemagic123/ElementalUnleash) -- Good resource for learning how to code Boss AI
-* [Magic Storage](https://github.com/bluemagic123/MagicStorage) -- A lot of UI, inheritance, and networking.
+* [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
@@ -22,7 +22,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication
 * [HEROs Mod](https://github.com/JavidPack/HEROsMod) -- A lot of networking code. (Do not consult for UI)
 * [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
-* [AutoTrash](https://github.com/JavidPack/AutoTrash) -- UI
+* [AutoTrash](https://github.com/JavidPack/AutoTrash) -- UI, a slot that auto trashes items you pick up.
 * [Shorter Respawn](https://github.com/JavidPack/ShorterRespawn) -- Integrating with other mods through Call. (Cheat Sheet and HEROs Mod)
 * [Item Checklist](https://github.com/JavidPack/ItemChecklist) -- UI, TagCompound, saving Items in TagCompounds.
 * [Item Customizer](https://github.com/gamrguy/ItemCustomizer) -- Messing with shaders
