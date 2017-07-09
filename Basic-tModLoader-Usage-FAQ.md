@@ -18,6 +18,8 @@ Solutions: Copy from `%UserProfile%\Documents\My Games\Terraria` to `Documents\M
 
 # Mod Browser
 ### "Mod Browser Offline", "I can't download mods"
+![](https://i.imgur.com/JTtOMbq.png)
+
 If you are on Mac or Linux, the Mod Browser doesn't work yet.  
 Otherwise, the Mod Browser is out of bandwidth. Visit Mod Homepages for alternate download. DO NOT post in the forums asking when the Mod Browser will be back, it's annoying and useless.
 Most Mods are found here: [Terraria Community Forums](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/)
