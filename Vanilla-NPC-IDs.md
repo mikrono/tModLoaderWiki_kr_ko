@@ -1,650 +1,650 @@
-# Vanilla NPC IDs
-
 The following is a list of constants found in the Terraria.ID.NPCID class.
 
-public const short BigHornetStingy = -65;    
-public const short LittleHornetStingy = -64;    
-public const short BigHornetSpikey = -63;    
-public const short LittleHornetSpikey = -62;    
-public const short BigHornetLeafy = -61;    
-public const short LittleHornetLeafy = -60;    
-public const short BigHornetHoney = -59;    
-public const short LittleHornetHoney = -58;    
-public const short BigHornetFatty = -57;    
-public const short LittleHornetFatty = -56;    
-public const short BigRainZombie = -55;    
-public const short SmallRainZombie = -54;    
-public const short BigPantlessSkeleton = -53;    
-public const short SmallPantlessSkeleton = -52;    
-public const short BigMisassembledSkeleton = -51;    
-public const short SmallMisassembledSkeleton = -50;    
-public const short BigHeadacheSkeleton = -49;    
-public const short SmallHeadacheSkeleton = -48;    
-public const short BigSkeleton = -47;    
-public const short SmallSkeleton = -46;    
-public const short BigFemaleZombie = -45;    
-public const short SmallFemaleZombie = -44;    
-public const short DemonEye2 = -43;    
-public const short PurpleEye2 = -42;    
-public const short GreenEye2 = -41;    
-public const short DialatedEye2 = -40;    
-public const short SleepyEye2 = -39;    
-public const short CataractEye2 = -38;    
-public const short BigTwiggyZombie = -37;    
-public const short SmallTwiggyZombie = -36;    
-public const short BigSwampZombie = -35;    
-public const short SmallSwampZombie = -34;    
-public const short BigSlimedZombie = -33;    
-public const short SmallSlimedZombie = -32;    
-public const short BigPincushionZombie = -31;    
-public const short SmallPincushionZombie = -30;    
-public const short BigBaldZombie = -29;    
-public const short SmallBaldZombie = -28;    
-public const short BigZombie = -27;    
-public const short SmallZombie = -26;    
-public const short BigCrimslime = -25;    
-public const short LittleCrimslime = -24;    
-public const short BigCrimera = -23;    
-public const short LittleCrimera = -22;    
-public const short GiantMossHornet = -21;    
-public const short BigMossHornet = -20;    
-public const short LittleMossHornet = -19;    
-public const short TinyMossHornet = -18;    
-public const short BigStinger = -17;    
-public const short LittleStinger = -16;    
-public const short HeavySkeleton = -15;    
-public const short BigBoned = -14;    
-public const short ShortBones = -13;    
-public const short BigEater = -12;    
-public const short LittleEater = -11;    
-public const short JungleSlime = -10;    
-public const short YellowSlime = -9;    
-public const short RedSlime = -8;    
-public const short PurpleSlime = -7;    
-public const short BlackSlime = -6;    
-public const short BabySlime = -5;    
-public const short Pinky = -4;    
-public const short GreenSlime = -3;    
-public const short Slimer2 = -2;    
-public const short Slimeling = -1;    
-public const short None = 0;    
-public const short BlueSlime = 1;    
-public const short DemonEye = 2;    
-public const short Zombie = 3;    
-public const short EyeofCthulhu = 4;    
-public const short ServantofCthulhu = 5;    
-public const short EaterofSouls = 6;    
-public const short DevourerHead = 7;    
-public const short DevourerBody = 8;    
-public const short DevourerTail = 9;    
-public const short GiantWormHead = 10;    
-public const short GiantWormBody = 11;    
-public const short GiantWormTail = 12;    
-public const short EaterofWorldsHead = 13;    
-public const short EaterofWorldsBody = 14;    
-public const short EaterofWorldsTail = 15;    
-public const short MotherSlime = 16;    
-public const short Merchant = 17;    
-public const short Nurse = 18;    
-public const short ArmsDealer = 19;    
-public const short Dryad = 20;    
-public const short Skeleton = 21;    
-public const short Guide = 22;    
-public const short MeteorHead = 23;    
-public const short FireImp = 24;    
-public const short BurningSphere = 25;    
-public const short GoblinPeon = 26;    
-public const short GoblinThief = 27;    
-public const short GoblinWarrior = 28;    
-public const short GoblinSorcerer = 29;    
-public const short ChaosBall = 30;    
-public const short AngryBones = 31;    
-public const short DarkCaster = 32;    
-public const short WaterSphere = 33;    
-public const short CursedSkull = 34;    
-public const short SkeletronHead = 35;    
-public const short SkeletronHand = 36;    
-public const short OldMan = 37;    
-public const short Demolitionist = 38;    
-public const short BoneSerpentHead = 39;    
-public const short BoneSerpentBody = 40;    
-public const short BoneSerpentTail = 41;    
-public const short Hornet = 42;    
-public const short ManEater = 43;    
-public const short UndeadMiner = 44;    
-public const short Tim = 45;    
-public const short Bunny = 46;    
-public const short CorruptBunny = 47;    
-public const short Harpy = 48;    
-public const short CaveBat = 49;    
-public const short KingSlime = 50;    
-public const short JungleBat = 51;    
-public const short DoctorBones = 52;    
-public const short TheGroom = 53;    
-public const short Clothier = 54;    
-public const short Goldfish = 55;    
-public const short Snatcher = 56;    
-public const short CorruptGoldfish = 57;    
-public const short Piranha = 58;    
-public const short LavaSlime = 59;    
-public const short Hellbat = 60;    
-public const short Vulture = 61;    
-public const short Demon = 62;    
-public const short BlueJellyfish = 63;    
-public const short PinkJellyfish = 64;    
-public const short Shark = 65;    
-public const short VoodooDemon = 66;    
-public const short Crab = 67;    
-public const short DungeonGuardian = 68;    
-public const short Antlion = 69;    
-public const short SpikeBall = 70;    
-public const short DungeonSlime = 71;    
-public const short BlazingWheel = 72;    
-public const short GoblinScout = 73;    
-public const short Bird = 74;    
-public const short Pixie = 75;    
-public const short None2 = 76;    
-public const short ArmoredSkeleton = 77;    
-public const short Mummy = 78;    
-public const short DarkMummy = 79;    
-public const short LightMummy = 80;    
-public const short CorruptSlime = 81;    
-public const short Wraith = 82;    
-public const short CursedHammer = 83;    
-public const short EnchantedSword = 84;    
-public const short Mimic = 85;    
-public const short Unicorn = 86;    
-public const short WyvernHead = 87;    
-public const short WyvernLegs = 88;    
-public const short WyvernBody = 89;    
-public const short WyvernBody2 = 90;    
-public const short WyvernBody3 = 91;    
-public const short WyvernTail = 92;    
-public const short GiantBat = 93;    
-public const short Corruptor = 94;    
-public const short DiggerHead = 95;    
-public const short DiggerBody = 96;    
-public const short DiggerTail = 97;    
-public const short SeekerHead = 98;    
-public const short SeekerBody = 99;    
-public const short SeekerTail = 100;    
-public const short Clinger = 101;    
-public const short AnglerFish = 102;    
-public const short GreenJellyfish = 103;    
-public const short Werewolf = 104;    
-public const short BoundGoblin = 105;    
-public const short BoundWizard = 106;    
-public const short GoblinTinkerer = 107;    
-public const short Wizard = 108;    
-public const short Clown = 109;    
-public const short SkeletonArcher = 110;    
-public const short GoblinArcher = 111;    
-public const short VileSpit = 112;    
-public const short WallofFlesh = 113;    
-public const short WallofFleshEye = 114;    
-public const short TheHungry = 115;    
-public const short TheHungryII = 116;    
-public const short LeechHead = 117;    
-public const short LeechBody = 118;    
-public const short LeechTail = 119;    
-public const short ChaosElemental = 120;    
-public const short Slimer = 121;    
-public const short Gastropod = 122;    
-public const short BoundMechanic = 123;    
-public const short Mechanic = 124;    
-public const short Retinazer = 125;    
-public const short Spazmatism = 126;    
-public const short SkeletronPrime = 127;    
-public const short PrimeCannon = 128;    
-public const short PrimeSaw = 129;    
-public const short PrimeVice = 130;    
-public const short PrimeLaser = 131;    
-public const short BaldZombie = 132;    
-public const short WanderingEye = 133;    
-public const short TheDestroyer = 134;    
-public const short TheDestroyerBody = 135;    
-public const short TheDestroyerTail = 136;    
-public const short IlluminantBat = 137;    
-public const short IlluminantSlime = 138;    
-public const short Probe = 139;    
-public const short PossessedArmor = 140;    
-public const short ToxicSludge = 141;    
-public const short SantaClaus = 142;    
-public const short SnowmanGangsta = 143;    
-public const short MisterStabby = 144;    
-public const short SnowBalla = 145;    
-public const short None3 = 146;    
-public const short IceSlime = 147;    
-public const short Penguin = 148;    
-public const short PenguinBlack = 149;    
-public const short IceBat = 150;    
-public const short Lavabat = 151;    
-public const short GiantFlyingFox = 152;    
-public const short GiantTortoise = 153;    
-public const short IceTortoise = 154;    
-public const short Wolf = 155;    
-public const short RedDevil = 156;    
-public const short Arapaima = 157;    
-public const short VampireBat = 158;    
-public const short Vampire = 159;    
-public const short Truffle = 160;    
-public const short ZombieEskimo = 161;    
-public const short Frankenstein = 162;    
-public const short BlackRecluse = 163;    
-public const short WallCreeper = 164;    
-public const short WallCreeperWall = 165;    
-public const short SwampThing = 166;    
-public const short UndeadViking = 167;    
-public const short CorruptPenguin = 168;    
-public const short IceElemental = 169;    
-public const short PigronCorruption = 170;    
-public const short PigronHallow = 171;    
-public const short RuneWizard = 172;    
-public const short Crimera = 173;    
-public const short Herpling = 174;    
-public const short AngryTrapper = 175;    
-public const short MossHornet = 176;    
-public const short Derpling = 177;    
-public const short Steampunker = 178;    
-public const short CrimsonAxe = 179;    
-public const short PigronCrimson = 180;    
-public const short FaceMonster = 181;    
-public const short FloatyGross = 182;    
-public const short Crimslime = 183;    
-public const short SpikedIceSlime = 184;    
-public const short SnowFlinx = 185;    
-public const short PincushionZombie = 186;    
-public const short SlimedZombie = 187;    
-public const short SwampZombie = 188;    
-public const short TwiggyZombie = 189;    
-public const short CataractEye = 190;    
-public const short SleepyEye = 191;    
-public const short DialatedEye = 192;    
-public const short GreenEye = 193;    
-public const short PurpleEye = 194;    
-public const short LostGirl = 195;    
-public const short Nymph = 196;    
-public const short ArmoredViking = 197;    
-public const short Lihzahrd = 198;    
-public const short LihzahrdCrawler = 199;    
-public const short FemaleZombie = 200;    
-public const short HeadacheSkeleton = 201;    
-public const short MisassembledSkeleton = 202;    
-public const short PantlessSkeleton = 203;    
-public const short SpikedJungleSlime = 204;    
-public const short Moth = 205;    
-public const short IcyMerman = 206;    
-public const short DyeTrader = 207;    
-public const short PartyGirl = 208;    
-public const short Cyborg = 209;    
-public const short Bee = 210;    
-public const short BeeSmall = 211;    
-public const short PirateDeckhand = 212;    
-public const short PirateCorsair = 213;    
-public const short PirateDeadeye = 214;    
-public const short PirateCrossbower = 215;    
-public const short PirateCaptain = 216;    
-public const short CochinealBeetle = 217;    
-public const short CyanBeetle = 218;    
-public const short LacBeetle = 219;    
-public const short SeaSnail = 220;    
-public const short Squid = 221;    
-public const short QueenBee = 222;    
-public const short ZombieRaincoat = 223;    
-public const short FlyingFish = 224;    
-public const short UmbrellaSlime = 225;    
-public const short FlyingSnake = 226;    
-public const short Painter = 227;    
-public const short WitchDoctor = 228;    
-public const short Pirate = 229;    
-public const short GoldfishWalker = 230;    
-public const short HornetFatty = 231;    
-public const short HornetHoney = 232;    
-public const short HornetLeafy = 233;    
-public const short HornetSpikey = 234;    
-public const short HornetStingy = 235;    
-public const short JungleCreeper = 236;    
-public const short JungleCreeperWall = 237;    
-public const short BlackRecluseWall = 238;    
-public const short BloodCrawler = 239;    
-public const short BloodCrawlerWall = 240;    
-public const short BloodFeeder = 241;    
-public const short BloodJelly = 242;    
-public const short IceGolem = 243;    
-public const short RainbowSlime = 244;    
-public const short Golem = 245;    
-public const short GolemHead = 246;    
-public const short GolemFistLeft = 247;    
-public const short GolemFistRight = 248;    
-public const short GolemHeadFree = 249;    
-public const short AngryNimbus = 250;    
-public const short Eyezor = 251;    
-public const short Parrot = 252;    
-public const short Reaper = 253;    
-public const short ZombieMushroom = 254;    
-public const short ZombieMushroomHat = 255;    
-public const short FungoFish = 256;    
-public const short AnomuraFungus = 257;    
-public const short MushiLadybug = 258;    
-public const short FungiBulb = 259;    
-public const short GiantFungiBulb = 260;    
-public const short FungiSpore = 261;    
-public const short Plantera = 262;    
-public const short PlanterasHook = 263;    
-public const short PlanterasTentacle = 264;    
-public const short Spore = 265;    
-public const short BrainofCthulhu = 266;    
-public const short Creeper = 267;    
-public const short IchorSticker = 268;    
-public const short RustyArmoredBonesAxe = 269;    
-public const short RustyArmoredBonesFlail = 270;    
-public const short RustyArmoredBonesSword = 271;    
-public const short RustyArmoredBonesSwordNoArmor = 272;    
-public const short BlueArmoredBones = 273;    
-public const short BlueArmoredBonesMace = 274;    
-public const short BlueArmoredBonesNoPants = 275;    
-public const short BlueArmoredBonesSword = 276;    
-public const short HellArmoredBones = 277;    
-public const short HellArmoredBonesSpikeShield = 278;    
-public const short HellArmoredBonesMace = 279;    
-public const short HellArmoredBonesSword = 280;    
-public const short RaggedCaster = 281;    
-public const short RaggedCasterOpenCoat = 282;    
-public const short Necromancer = 283;    
-public const short NecromancerArmored = 284;    
-public const short DiabolistRed = 285;    
-public const short DiabolistWhite = 286;    
-public const short BoneLee = 287;    
-public const short DungeonSpirit = 288;    
-public const short GiantCursedSkull = 289;    
-public const short Paladin = 290;    
-public const short SkeletonSniper = 291;    
-public const short TacticalSkeleton = 292;    
-public const short SkeletonCommando = 293;    
-public const short AngryBonesBig = 294;    
-public const short AngryBonesBigMuscle = 295;    
-public const short AngryBonesBigHelmet = 296;    
-public const short BirdBlue = 297;    
-public const short BirdRed = 298;    
-public const short Squirrel = 299;    
-public const short Mouse = 300;    
-public const short Raven = 301;    
-public const short SlimeMasked = 302;    
-public const short BunnySlimed = 303;    
-public const short HoppinJack = 304;    
-public const short Scarecrow1 = 305;    
-public const short Scarecrow2 = 306;    
-public const short Scarecrow3 = 307;    
-public const short Scarecrow4 = 308;    
-public const short Scarecrow5 = 309;    
-public const short Scarecrow6 = 310;    
-public const short Scarecrow7 = 311;    
-public const short Scarecrow8 = 312;    
-public const short Scarecrow9 = 313;    
-public const short Scarecrow10 = 314;    
-public const short HeadlessHorseman = 315;    
-public const short Ghost = 316;    
-public const short DemonEyeOwl = 317;    
-public const short DemonEyeSpaceship = 318;    
-public const short ZombieDoctor = 319;    
-public const short ZombieSuperman = 320;    
-public const short ZombiePixie = 321;    
-public const short SkeletonTopHat = 322;    
-public const short SkeletonAstonaut = 323;    
-public const short SkeletonAlien = 324;    
-public const short MourningWood = 325;    
-public const short Splinterling = 326;    
-public const short Pumpking = 327;    
-public const short PumpkingBlade = 328;    
-public const short Hellhound = 329;    
-public const short Poltergeist = 330;    
-public const short ZombieXmas = 331;    
-public const short ZombieSweater = 332;    
-public const short SlimeRibbonWhite = 333;    
-public const short SlimeRibbonYellow = 334;    
-public const short SlimeRibbonGreen = 335;    
-public const short SlimeRibbonRed = 336;    
-public const short BunnyXmas = 337;    
-public const short ZombieElf = 338;    
-public const short ZombieElfBeard = 339;    
-public const short ZombieElfGirl = 340;    
-public const short PresentMimic = 341;    
-public const short GingerbreadMan = 342;    
-public const short Yeti = 343;    
-public const short Everscream = 344;    
-public const short IceQueen = 345;    
-public const short SantaNK1 = 346;    
-public const short ElfCopter = 347;    
-public const short Nutcracker = 348;    
-public const short NutcrackerSpinning = 349;    
-public const short ElfArcher = 350;    
-public const short Krampus = 351;    
-public const short Flocko = 352;    
-public const short Stylist = 353;    
-public const short WebbedStylist = 354;    
-public const short Firefly = 355;    
-public const short Butterfly = 356;    
-public const short Worm = 357;    
-public const short LightningBug = 358;    
-public const short Snail = 359;    
-public const short GlowingSnail = 360;    
-public const short Frog = 361;    
-public const short Duck = 362;    
-public const short Duck2 = 363;    
-public const short DuckWhite = 364;    
-public const short DuckWhite2 = 365;    
-public const short ScorpionBlack = 366;    
-public const short Scorpion = 367;    
-public const short TravellingMerchant = 368;    
-public const short Angler = 369;    
-public const short DukeFishron = 370;    
-public const short DetonatingBubble = 371;    
-public const short Sharkron = 372;    
-public const short Sharkron2 = 373;    
-public const short TruffleWorm = 374;    
-public const short TruffleWormDigger = 375;    
-public const short SleepingAngler = 376;    
-public const short Grasshopper = 377;    
-public const short ChatteringTeethBomb = 378;    
-public const short CultistArcherBlue = 379;    
-public const short CultistArcherWhite = 380;    
-public const short BrainScrambler = 381;    
-public const short RayGunner = 382;    
-public const short MartianOfficer = 383;    
-public const short ForceBubble = 384;    
-public const short GrayGrunt = 385;    
-public const short MartianEngineer = 386;    
-public const short MartianTurret = 387;    
-public const short MartianDrone = 388;    
-public const short GigaZapper = 389;    
-public const short ScutlixRider = 390;    
-public const short Scutlix = 391;    
-public const short MartianSaucer = 392;    
-public const short MartianSaucerTurret = 393;    
-public const short MartianSaucerCannon = 394;    
-public const short MartianSaucerCore = 395;    
-public const short MoonLordHead = 396;    
-public const short MoonLordHand = 397;    
-public const short MoonLordCore = 398;    
-public const short MartianProbe = 399;    
-public const short MoonLordFreeEye = 400;    
-public const short MoonLordLeechBlob = 401;    
-public const short StardustWormHead = 402;    
-public const short StardustWormBody = 403;    
-public const short StardustWormTail = 404;    
-public const short StardustCellBig = 405;    
-public const short StardustCellSmall = 406;    
-public const short StardustJellyfishBig = 407;    
-public const short StardustJellyfishSmall = 408;    
-public const short StardustSpiderBig = 409;    
-public const short StardustSpiderSmall = 410;    
-public const short StardustSoldier = 411;    
-public const short SolarCrawltipedeHead = 412;    
-public const short SolarCrawltipedeBody = 413;    
-public const short SolarCrawltipedeTail = 414;    
-public const short SolarDrakomire = 415;    
-public const short SolarDrakomireRider = 416;    
-public const short SolarSroller = 417;    
-public const short SolarCorite = 418;    
-public const short SolarSolenian = 419;    
-public const short NebulaBrain = 420;    
-public const short NebulaHeadcrab = 421;    
-public const short NebulaBeast = 423;    
-public const short NebulaSoldier = 424;    
-public const short VortexRifleman = 425;    
-public const short VortexHornetQueen = 426;    
-public const short VortexHornet = 427;    
-public const short VortexLarva = 428;    
-public const short VortexSoldier = 429;    
-public const short ArmedZombie = 430;    
-public const short ArmedZombieEskimo = 431;    
-public const short ArmedZombiePincussion = 432;    
-public const short ArmedZombieSlimed = 433;    
-public const short ArmedZombieSwamp = 434;    
-public const short ArmedZombieTwiggy = 435;    
-public const short ArmedZombieCenx = 436;    
-public const short CultistTablet = 437;    
-public const short CultistDevote = 438;    
-public const short CultistBoss = 439;    
-public const short CultistBossClone = 440;    
-public const short GoldBird = 442;    
-public const short GoldBunny = 443;    
-public const short GoldButterfly = 444;    
-public const short GoldFrog = 445;    
-public const short GoldGrasshopper = 446;    
-public const short GoldMouse = 447;    
-public const short GoldWorm = 448;    
-public const short BoneThrowingSkeleton = 449;    
-public const short BoneThrowingSkeleton2 = 450;    
-public const short BoneThrowingSkeleton3 = 451;    
-public const short BoneThrowingSkeleton4 = 452;    
-public const short SkeletonMerchant = 453;    
-public const short CultistDragonHead = 454;    
-public const short CultistDragonBody1 = 455;    
-public const short CultistDragonBody2 = 456;    
-public const short CultistDragonBody3 = 457;    
-public const short CultistDragonBody4 = 458;    
-public const short CultistDragonTail = 459;    
-public const short Butcher = 460;    
-public const short CreatureFromTheDeep = 461;    
-public const short Fritz = 462;    
-public const short Nailhead = 463;    
-public const short CrimsonBunny = 464;    
-public const short CrimsonGoldfish = 465;    
-public const short Psycho = 466;    
-public const short DeadlySphere = 467;    
-public const short DrManFly = 468;    
-public const short ThePossessed = 469;    
-public const short CrimsonPenguin = 470;    
-public const short GoblinSummoner = 471;    
-public const short ShadowFlameApparition = 472;    
-public const short BigMimicCorruption = 473;    
-public const short BigMimicCrimson = 474;    
-public const short BigMimicHallow = 475;    
-public const short BigMimicJungle = 476;    
-public const short Mothron = 477;    
-public const short MothronEgg = 478;    
-public const short MothronSpawn = 479;    
-public const short Medusa = 480;    
-public const short GreekSkeleton = 481;    
-public const short GraniteGolem = 482;    
-public const short GraniteFlyer = 483;    
-public const short EnchantedNightcrawler = 484;    
-public const short Grubby = 485;    
-public const short Sluggy = 486;    
-public const short Buggy = 487;    
-public const short TargetDummy = 488;    
-public const short BloodZombie = 489;    
-public const short Drippler = 490;    
-public const short PirateShip = 491;    
-public const short PirateShipCannon = 492;    
-public const short LunarTowerStardust = 493;    
-public const short Crawdad = 494;    
-public const short Crawdad2 = 495;    
-public const short GiantShelly = 496;    
-public const short GiantShelly2 = 497;    
-public const short Salamander = 498;    
-public const short Salamander2 = 499;    
-public const short Salamander3 = 500;    
-public const short Salamander4 = 501;    
-public const short Salamander5 = 502;    
-public const short Salamander6 = 503;    
-public const short Salamander7 = 504;    
-public const short Salamander8 = 505;    
-public const short Salamander9 = 506;    
-public const short LunarTowerNebula = 507;    
-public const short LunarTowerVortex = 422;    
-public const short TaxCollector = 441;    
-public const short WalkingAntlion = 508;    
-public const short FlyingAntlion = 509;    
-public const short DuneSplicerHead = 510;    
-public const short DuneSplicerBody = 511;    
-public const short DuneSplicerTail = 512;    
-public const short TombCrawlerHead = 513;    
-public const short TombCrawlerBody = 514;    
-public const short TombCrawlerTail = 515;    
-public const short SolarFlare = 516;    
-public const short LunarTowerSolar = 517;    
-public const short SolarSpearman = 518;    
-public const short SolarGoop = 519;    
-public const short MartianWalker = 520;    
-public const short AncientCultistSquidhead = 521;    
-public const short AncientLight = 522;    
-public const short AncientDoom = 523;    
-public const short DesertGhoul = 524;    
-public const short DesertGhoulCorruption = 525;    
-public const short DesertGhoulCrimson = 526;    
-public const short DesertGhoulHallow = 527;    
-public const short DesertLamiaLight = 528;    
-public const short DesertLamiaDark = 529;    
-public const short DesertScorpionWalk = 530;    
-public const short DesertScorpionWall = 531;    
-public const short DesertBeast = 532;    
-public const short DesertDjinn = 533;    
-public const short DemonTaxCollector = 534;    
-public const short SlimeSpiked = 535;    
-public const short TheBride = 536;    
-public const short SandSlime = 537;    
-public const short SquirrelRed = 538;    
-public const short SquirrelGold = 539;    
-public const short PartyBunny = 540;    
-public const short SandElemental = 541;    
-public const short SandShark = 542;    
-public const short SandsharkCorrupt = 543;    
-public const short SandsharkCrimson = 544;    
-public const short SandsharkHallow = 545;    
-public const short Tumbleweed = 546;    
-public const short DD2AttackerTest = 547;    
-public const short DD2EterniaCrystal = 548;    
-public const short DD2LanePortal = 549;    
-public const short DD2Bartender = 550;    
-public const short DD2Betsy = 551;    
-public const short DD2GoblinT1 = 552;    
-public const short DD2GoblinT2 = 553;    
-public const short DD2GoblinT3 = 554;    
-public const short DD2GoblinBomberT1 = 555;    
-public const short DD2GoblinBomberT2 = 556;    
-public const short DD2GoblinBomberT3 = 557;    
-public const short DD2WyvernT1 = 558;    
-public const short DD2WyvernT2 = 559;    
-public const short DD2WyvernT3 = 560;    
-public const short DD2JavelinstT1 = 561;    
-public const short DD2JavelinstT2 = 562;    
-public const short DD2JavelinstT3 = 563;    
-public const short DD2DarkMageT1 = 564;    
-public const short DD2DarkMageT3 = 565;    
-public const short DD2SkeletonT1 = 566;    
-public const short DD2SkeletonT3 = 567;    
-public const short DD2WitherBeastT2 = 568;    
-public const short DD2WitherBeastT3 = 569;    
-public const short DD2DrakinT2 = 570;    
-public const short DD2DrakinT3 = 571;    
-public const short DD2KoboldWalkerT2 = 572;    
-public const short DD2KoboldWalkerT3 = 573;    
-public const short DD2KoboldFlyerT2 = 574;    
-public const short DD2KoboldFlyerT3 = 575;    
-public const short DD2OgreT2 = 576;    
-public const short DD2OgreT3 = 577;    
-public const short DD2LightningBugT3 = 578;    
-public const short BartenderUnconscious = 579;    
-public const short Count = 580;    
+| NPC	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| :-- 	| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| BigHornetStingy | -65 |    
+| LittleHornetStingy | -64 |    
+| BigHornetSpikey | -63 |    
+| LittleHornetSpikey | -62 |    
+| BigHornetLeafy | -61 |    
+| LittleHornetLeafy | -60 |    
+| BigHornetHoney | -59 |    
+| LittleHornetHoney | -58 |    
+| BigHornetFatty | -57 |    
+| LittleHornetFatty | -56 |    
+| BigRainZombie | -55 |    
+| SmallRainZombie | -54 |    
+| BigPantlessSkeleton | -53 |    
+| SmallPantlessSkeleton | -52 |    
+| BigMisassembledSkeleton | -51 |    
+| SmallMisassembledSkeleton | -50 |    
+| BigHeadacheSkeleton | -49 |    
+| SmallHeadacheSkeleton | -48 |    
+| BigSkeleton | -47 |    
+| SmallSkeleton | -46 |    
+| BigFemaleZombie | -45 |    
+| SmallFemaleZombie | -44 |    
+| DemonEye2 | -43 |    
+| PurpleEye2 | -42 |    
+| GreenEye2 | -41 |    
+| DialatedEye2 | -40 |    
+| SleepyEye2 | -39 |    
+| CataractEye2 | -38 |    
+| BigTwiggyZombie | -37 |    
+| SmallTwiggyZombie | -36 |    
+| BigSwampZombie | -35 |    
+| SmallSwampZombie | -34 |    
+| BigSlimedZombie | -33 |    
+| SmallSlimedZombie | -32 |    
+| BigPincushionZombie | -31 |    
+| SmallPincushionZombie | -30 |    
+| BigBaldZombie | -29 |    
+| SmallBaldZombie | -28 |    
+| BigZombie | -27 |    
+| SmallZombie | -26 |    
+| BigCrimslime | -25 |    
+| LittleCrimslime | -24 |    
+| BigCrimera | -23 |    
+| LittleCrimera | -22 |    
+| GiantMossHornet | -21 |    
+| BigMossHornet | -20 |    
+| LittleMossHornet | -19 |    
+| TinyMossHornet | -18 |    
+| BigStinger | -17 |    
+| LittleStinger | -16 |    
+| HeavySkeleton | -15 |    
+| BigBoned | -14 |    
+| ShortBones | -13 |    
+| BigEater | -12 |    
+| LittleEater | -11 |    
+| JungleSlime | -10 |    
+| YellowSlime | -9 |    
+| RedSlime | -8 |    
+| PurpleSlime | -7 |    
+| BlackSlime | -6 |    
+| BabySlime | -5 |    
+| Pinky | -4 |    
+| GreenSlime | -3 |    
+| Slimer2 | -2 |    
+| Slimeling | -1 |    
+| None | 0 |    
+| BlueSlime | 1 |    
+| DemonEye | 2 |    
+| Zombie | 3 |    
+| EyeofCthulhu | 4 |    
+| ServantofCthulhu | 5 |    
+| EaterofSouls | 6 |    
+| DevourerHead | 7 |    
+| DevourerBody | 8 |    
+| DevourerTail | 9 |    
+| GiantWormHead | 10 |    
+| GiantWormBody | 11 |    
+| GiantWormTail | 12 |    
+| EaterofWorldsHead | 13 |    
+| EaterofWorldsBody | 14 |    
+| EaterofWorldsTail | 15 |    
+| MotherSlime | 16 |    
+| Merchant | 17 |    
+| Nurse | 18 |    
+| ArmsDealer | 19 |    
+| Dryad | 20 |    
+| Skeleton | 21 |    
+| Guide | 22 |    
+| MeteorHead | 23 |    
+| FireImp | 24 |    
+| BurningSphere | 25 |    
+| GoblinPeon | 26 |    
+| GoblinThief | 27 |    
+| GoblinWarrior | 28 |    
+| GoblinSorcerer | 29 |    
+| ChaosBall | 30 |    
+| AngryBones | 31 |    
+| DarkCaster | 32 |    
+| WaterSphere | 33 |    
+| CursedSkull | 34 |    
+| SkeletronHead | 35 |    
+| SkeletronHand | 36 |    
+| OldMan | 37 |    
+| Demolitionist | 38 |    
+| BoneSerpentHead | 39 |    
+| BoneSerpentBody | 40 |    
+| BoneSerpentTail | 41 |    
+| Hornet | 42 |    
+| ManEater | 43 |    
+| UndeadMiner | 44 |    
+| Tim | 45 |    
+| Bunny | 46 |    
+| CorruptBunny | 47 |    
+| Harpy | 48 |    
+| CaveBat | 49 |    
+| KingSlime | 50 |    
+| JungleBat | 51 |    
+| DoctorBones | 52 |    
+| TheGroom | 53 |    
+| Clothier | 54 |    
+| Goldfish | 55 |    
+| Snatcher | 56 |    
+| CorruptGoldfish | 57 |    
+| Piranha | 58 |    
+| LavaSlime | 59 |    
+| Hellbat | 60 |    
+| Vulture | 61 |    
+| Demon | 62 |    
+| BlueJellyfish | 63 |    
+| PinkJellyfish | 64 |    
+| Shark | 65 |    
+| VoodooDemon | 66 |    
+| Crab | 67 |    
+| DungeonGuardian | 68 |    
+| Antlion | 69 |    
+| SpikeBall | 70 |    
+| DungeonSlime | 71 |    
+| BlazingWheel | 72 |    
+| GoblinScout | 73 |    
+| Bird | 74 |    
+| Pixie | 75 |    
+| None2 | 76 |    
+| ArmoredSkeleton | 77 |    
+| Mummy | 78 |    
+| DarkMummy | 79 |    
+| LightMummy | 80 |    
+| CorruptSlime | 81 |    
+| Wraith | 82 |    
+| CursedHammer | 83 |    
+| EnchantedSword | 84 |    
+| Mimic | 85 |    
+| Unicorn | 86 |    
+| WyvernHead | 87 |    
+| WyvernLegs | 88 |    
+| WyvernBody | 89 |    
+| WyvernBody2 | 90 |    
+| WyvernBody3 | 91 |    
+| WyvernTail | 92 |    
+| GiantBat | 93 |    
+| Corruptor | 94 |    
+| DiggerHead | 95 |    
+| DiggerBody | 96 |    
+| DiggerTail | 97 |    
+| SeekerHead | 98 |    
+| SeekerBody | 99 |    
+| SeekerTail | 100 |    
+| Clinger | 101 |    
+| AnglerFish | 102 |    
+| GreenJellyfish | 103 |    
+| Werewolf | 104 |    
+| BoundGoblin | 105 |    
+| BoundWizard | 106 |    
+| GoblinTinkerer | 107 |    
+| Wizard | 108 |    
+| Clown | 109 |    
+| SkeletonArcher | 110 |    
+| GoblinArcher | 111 |    
+| VileSpit | 112 |    
+| WallofFlesh | 113 |    
+| WallofFleshEye | 114 |    
+| TheHungry | 115 |    
+| TheHungryII | 116 |    
+| LeechHead | 117 |    
+| LeechBody | 118 |    
+| LeechTail | 119 |    
+| ChaosElemental | 120 |    
+| Slimer | 121 |    
+| Gastropod | 122 |    
+| BoundMechanic | 123 |    
+| Mechanic | 124 |    
+| Retinazer | 125 |    
+| Spazmatism | 126 |    
+| SkeletronPrime | 127 |    
+| PrimeCannon | 128 |    
+| PrimeSaw | 129 |    
+| PrimeVice | 130 |    
+| PrimeLaser | 131 |    
+| BaldZombie | 132 |    
+| WanderingEye | 133 |    
+| TheDestroyer | 134 |    
+| TheDestroyerBody | 135 |    
+| TheDestroyerTail | 136 |    
+| IlluminantBat | 137 |    
+| IlluminantSlime | 138 |    
+| Probe | 139 |    
+| PossessedArmor | 140 |    
+| ToxicSludge | 141 |    
+| SantaClaus | 142 |    
+| SnowmanGangsta | 143 |    
+| MisterStabby | 144 |    
+| SnowBalla | 145 |    
+| None3 | 146 |    
+| IceSlime | 147 |    
+| Penguin | 148 |    
+| PenguinBlack | 149 |    
+| IceBat | 150 |    
+| Lavabat | 151 |    
+| GiantFlyingFox | 152 |    
+| GiantTortoise | 153 |    
+| IceTortoise | 154 |    
+| Wolf | 155 |    
+| RedDevil | 156 |    
+| Arapaima | 157 |    
+| VampireBat | 158 |    
+| Vampire | 159 |    
+| Truffle | 160 |    
+| ZombieEskimo | 161 |    
+| Frankenstein | 162 |    
+| BlackRecluse | 163 |    
+| WallCreeper | 164 |    
+| WallCreeperWall | 165 |    
+| SwampThing | 166 |    
+| UndeadViking | 167 |    
+| CorruptPenguin | 168 |    
+| IceElemental | 169 |    
+| PigronCorruption | 170 |    
+| PigronHallow | 171 |    
+| RuneWizard | 172 |    
+| Crimera | 173 |    
+| Herpling | 174 |    
+| AngryTrapper | 175 |    
+| MossHornet | 176 |    
+| Derpling | 177 |    
+| Steampunker | 178 |    
+| CrimsonAxe | 179 |    
+| PigronCrimson | 180 |    
+| FaceMonster | 181 |    
+| FloatyGross | 182 |    
+| Crimslime | 183 |    
+| SpikedIceSlime | 184 |    
+| SnowFlinx | 185 |    
+| PincushionZombie | 186 |    
+| SlimedZombie | 187 |    
+| SwampZombie | 188 |    
+| TwiggyZombie | 189 |    
+| CataractEye | 190 |    
+| SleepyEye | 191 |    
+| DialatedEye | 192 |    
+| GreenEye | 193 |    
+| PurpleEye | 194 |    
+| LostGirl | 195 |    
+| Nymph | 196 |    
+| ArmoredViking | 197 |    
+| Lihzahrd | 198 |    
+| LihzahrdCrawler | 199 |    
+| FemaleZombie | 200 |    
+| HeadacheSkeleton | 201 |    
+| MisassembledSkeleton | 202 |    
+| PantlessSkeleton | 203 |    
+| SpikedJungleSlime | 204 |    
+| Moth | 205 |    
+| IcyMerman | 206 |    
+| DyeTrader | 207 |    
+| PartyGirl | 208 |    
+| Cyborg | 209 |    
+| Bee | 210 |    
+| BeeSmall | 211 |    
+| PirateDeckhand | 212 |    
+| PirateCorsair | 213 |    
+| PirateDeadeye | 214 |    
+| PirateCrossbower | 215 |    
+| PirateCaptain | 216 |    
+| CochinealBeetle | 217 |    
+| CyanBeetle | 218 |    
+| LacBeetle | 219 |    
+| SeaSnail | 220 |    
+| Squid | 221 |    
+| QueenBee | 222 |    
+| ZombieRaincoat | 223 |    
+| FlyingFish | 224 |    
+| UmbrellaSlime | 225 |    
+| FlyingSnake | 226 |    
+| Painter | 227 |    
+| WitchDoctor | 228 |    
+| Pirate | 229 |    
+| GoldfishWalker | 230 |    
+| HornetFatty | 231 |    
+| HornetHoney | 232 |    
+| HornetLeafy | 233 |    
+| HornetSpikey | 234 |    
+| HornetStingy | 235 |    
+| JungleCreeper | 236 |    
+| JungleCreeperWall | 237 |    
+| BlackRecluseWall | 238 |    
+| BloodCrawler | 239 |    
+| BloodCrawlerWall | 240 |    
+| BloodFeeder | 241 |    
+| BloodJelly | 242 |    
+| IceGolem | 243 |    
+| RainbowSlime | 244 |    
+| Golem | 245 |    
+| GolemHead | 246 |    
+| GolemFistLeft | 247 |    
+| GolemFistRight | 248 |    
+| GolemHeadFree | 249 |    
+| AngryNimbus | 250 |    
+| Eyezor | 251 |    
+| Parrot | 252 |    
+| Reaper | 253 |    
+| ZombieMushroom | 254 |    
+| ZombieMushroomHat | 255 |    
+| FungoFish | 256 |    
+| AnomuraFungus | 257 |    
+| MushiLadybug | 258 |    
+| FungiBulb | 259 |    
+| GiantFungiBulb | 260 |    
+| FungiSpore | 261 |    
+| Plantera | 262 |    
+| PlanterasHook | 263 |    
+| PlanterasTentacle | 264 |    
+| Spore | 265 |    
+| BrainofCthulhu | 266 |    
+| Creeper | 267 |    
+| IchorSticker | 268 |    
+| RustyArmoredBonesAxe | 269 |    
+| RustyArmoredBonesFlail | 270 |    
+| RustyArmoredBonesSword | 271 |    
+| RustyArmoredBonesSwordNoArmor | 272 |    
+| BlueArmoredBones | 273 |    
+| BlueArmoredBonesMace | 274 |    
+| BlueArmoredBonesNoPants | 275 |    
+| BlueArmoredBonesSword | 276 |    
+| HellArmoredBones | 277 |    
+| HellArmoredBonesSpikeShield | 278 |    
+| HellArmoredBonesMace | 279 |    
+| HellArmoredBonesSword | 280 |    
+| RaggedCaster | 281 |    
+| RaggedCasterOpenCoat | 282 |    
+| Necromancer | 283 |    
+| NecromancerArmored | 284 |    
+| DiabolistRed | 285 |    
+| DiabolistWhite | 286 |    
+| BoneLee | 287 |    
+| DungeonSpirit | 288 |    
+| GiantCursedSkull | 289 |    
+| Paladin | 290 |    
+| SkeletonSniper | 291 |    
+| TacticalSkeleton | 292 |    
+| SkeletonCommando | 293 |    
+| AngryBonesBig | 294 |    
+| AngryBonesBigMuscle | 295 |    
+| AngryBonesBigHelmet | 296 |    
+| BirdBlue | 297 |    
+| BirdRed | 298 |    
+| Squirrel | 299 |    
+| Mouse | 300 |    
+| Raven | 301 |    
+| SlimeMasked | 302 |    
+| BunnySlimed | 303 |    
+| HoppinJack | 304 |    
+| Scarecrow1 | 305 |    
+| Scarecrow2 | 306 |    
+| Scarecrow3 | 307 |    
+| Scarecrow4 | 308 |    
+| Scarecrow5 | 309 |    
+| Scarecrow6 | 310 |    
+| Scarecrow7 | 311 |    
+| Scarecrow8 | 312 |    
+| Scarecrow9 | 313 |    
+| Scarecrow10 | 314 |    
+| HeadlessHorseman | 315 |    
+| Ghost | 316 |    
+| DemonEyeOwl | 317 |    
+| DemonEyeSpaceship | 318 |    
+| ZombieDoctor | 319 |    
+| ZombieSuperman | 320 |    
+| ZombiePixie | 321 |    
+| SkeletonTopHat | 322 |    
+| SkeletonAstonaut | 323 |    
+| SkeletonAlien | 324 |    
+| MourningWood | 325 |    
+| Splinterling | 326 |    
+| Pumpking | 327 |    
+| PumpkingBlade | 328 |    
+| Hellhound | 329 |    
+| Poltergeist | 330 |    
+| ZombieXmas | 331 |    
+| ZombieSweater | 332 |    
+| SlimeRibbonWhite | 333 |    
+| SlimeRibbonYellow | 334 |    
+| SlimeRibbonGreen | 335 |    
+| SlimeRibbonRed | 336 |    
+| BunnyXmas | 337 |    
+| ZombieElf | 338 |    
+| ZombieElfBeard | 339 |    
+| ZombieElfGirl | 340 |    
+| PresentMimic | 341 |    
+| GingerbreadMan | 342 |    
+| Yeti | 343 |    
+| Everscream | 344 |    
+| IceQueen | 345 |    
+| SantaNK1 | 346 |    
+| ElfCopter | 347 |    
+| Nutcracker | 348 |    
+| NutcrackerSpinning | 349 |    
+| ElfArcher | 350 |    
+| Krampus | 351 |    
+| Flocko | 352 |    
+| Stylist | 353 |    
+| WebbedStylist | 354 |    
+| Firefly | 355 |    
+| Butterfly | 356 |    
+| Worm | 357 |    
+| LightningBug | 358 |    
+| Snail | 359 |    
+| GlowingSnail | 360 |    
+| Frog | 361 |    
+| Duck | 362 |    
+| Duck2 | 363 |    
+| DuckWhite | 364 |    
+| DuckWhite2 | 365 |    
+| ScorpionBlack | 366 |    
+| Scorpion | 367 |    
+| TravellingMerchant | 368 |    
+| Angler | 369 |    
+| DukeFishron | 370 |    
+| DetonatingBubble | 371 |    
+| Sharkron | 372 |    
+| Sharkron2 | 373 |    
+| TruffleWorm | 374 |    
+| TruffleWormDigger | 375 |    
+| SleepingAngler | 376 |    
+| Grasshopper | 377 |    
+| ChatteringTeethBomb | 378 |    
+| CultistArcherBlue | 379 |    
+| CultistArcherWhite | 380 |    
+| BrainScrambler | 381 |    
+| RayGunner | 382 |    
+| MartianOfficer | 383 |    
+| ForceBubble | 384 |    
+| GrayGrunt | 385 |    
+| MartianEngineer | 386 |    
+| MartianTurret | 387 |    
+| MartianDrone | 388 |    
+| GigaZapper | 389 |    
+| ScutlixRider | 390 |    
+| Scutlix | 391 |    
+| MartianSaucer | 392 |    
+| MartianSaucerTurret | 393 |    
+| MartianSaucerCannon | 394 |    
+| MartianSaucerCore | 395 |    
+| MoonLordHead | 396 |    
+| MoonLordHand | 397 |    
+| MoonLordCore | 398 |    
+| MartianProbe | 399 |    
+| MoonLordFreeEye | 400 |    
+| MoonLordLeechBlob | 401 |    
+| StardustWormHead | 402 |    
+| StardustWormBody | 403 |    
+| StardustWormTail | 404 |    
+| StardustCellBig | 405 |    
+| StardustCellSmall | 406 |    
+| StardustJellyfishBig | 407 |    
+| StardustJellyfishSmall | 408 |    
+| StardustSpiderBig | 409 |    
+| StardustSpiderSmall | 410 |    
+| StardustSoldier | 411 |    
+| SolarCrawltipedeHead | 412 |    
+| SolarCrawltipedeBody | 413 |    
+| SolarCrawltipedeTail | 414 |    
+| SolarDrakomire | 415 |    
+| SolarDrakomireRider | 416 |    
+| SolarSroller | 417 |    
+| SolarCorite | 418 |    
+| SolarSolenian | 419 |    
+| NebulaBrain | 420 |    
+| NebulaHeadcrab | 421 |    
+| NebulaBeast | 423 |    
+| NebulaSoldier | 424 |    
+| VortexRifleman | 425 |    
+| VortexHornetQueen | 426 |    
+| VortexHornet | 427 |    
+| VortexLarva | 428 |    
+| VortexSoldier | 429 |    
+| ArmedZombie | 430 |    
+| ArmedZombieEskimo | 431 |    
+| ArmedZombiePincussion | 432 |    
+| ArmedZombieSlimed | 433 |    
+| ArmedZombieSwamp | 434 |    
+| ArmedZombieTwiggy | 435 |    
+| ArmedZombieCenx | 436 |    
+| CultistTablet | 437 |    
+| CultistDevote | 438 |    
+| CultistBoss | 439 |    
+| CultistBossClone | 440 |    
+| GoldBird | 442 |    
+| GoldBunny | 443 |    
+| GoldButterfly | 444 |    
+| GoldFrog | 445 |    
+| GoldGrasshopper | 446 |    
+| GoldMouse | 447 |    
+| GoldWorm | 448 |    
+| BoneThrowingSkeleton | 449 |    
+| BoneThrowingSkeleton2 | 450 |    
+| BoneThrowingSkeleton3 | 451 |    
+| BoneThrowingSkeleton4 | 452 |    
+| SkeletonMerchant | 453 |    
+| CultistDragonHead | 454 |    
+| CultistDragonBody1 | 455 |    
+| CultistDragonBody2 | 456 |    
+| CultistDragonBody3 | 457 |    
+| CultistDragonBody4 | 458 |    
+| CultistDragonTail | 459 |    
+| Butcher | 460 |    
+| CreatureFromTheDeep | 461 |    
+| Fritz | 462 |    
+| Nailhead | 463 |    
+| CrimsonBunny | 464 |    
+| CrimsonGoldfish | 465 |    
+| Psycho | 466 |    
+| DeadlySphere | 467 |    
+| DrManFly | 468 |    
+| ThePossessed | 469 |    
+| CrimsonPenguin | 470 |    
+| GoblinSummoner | 471 |    
+| ShadowFlameApparition | 472 |    
+| BigMimicCorruption | 473 |    
+| BigMimicCrimson | 474 |    
+| BigMimicHallow | 475 |    
+| BigMimicJungle | 476 |    
+| Mothron | 477 |    
+| MothronEgg | 478 |    
+| MothronSpawn | 479 |    
+| Medusa | 480 |    
+| GreekSkeleton | 481 |    
+| GraniteGolem | 482 |    
+| GraniteFlyer | 483 |    
+| EnchantedNightcrawler | 484 |    
+| Grubby | 485 |    
+| Sluggy | 486 |    
+| Buggy | 487 |    
+| TargetDummy | 488 |    
+| BloodZombie | 489 |    
+| Drippler | 490 |    
+| PirateShip | 491 |    
+| PirateShipCannon | 492 |    
+| LunarTowerStardust | 493 |    
+| Crawdad | 494 |    
+| Crawdad2 | 495 |    
+| GiantShelly | 496 |    
+| GiantShelly2 | 497 |    
+| Salamander | 498 |    
+| Salamander2 | 499 |    
+| Salamander3 | 500 |    
+| Salamander4 | 501 |    
+| Salamander5 | 502 |    
+| Salamander6 | 503 |    
+| Salamander7 | 504 |    
+| Salamander8 | 505 |    
+| Salamander9 | 506 |    
+| LunarTowerNebula | 507 |    
+| LunarTowerVortex | 422 |    
+| TaxCollector | 441 |    
+| WalkingAntlion | 508 |    
+| FlyingAntlion | 509 |    
+| DuneSplicerHead | 510 |    
+| DuneSplicerBody | 511 |    
+| DuneSplicerTail | 512 |    
+| TombCrawlerHead | 513 |    
+| TombCrawlerBody | 514 |    
+| TombCrawlerTail | 515 |    
+| SolarFlare | 516 |    
+| LunarTowerSolar | 517 |    
+| SolarSpearman | 518 |    
+| SolarGoop | 519 |    
+| MartianWalker | 520 |    
+| AncientCultistSquidhead | 521 |    
+| AncientLight | 522 |    
+| AncientDoom | 523 |    
+| DesertGhoul | 524 |    
+| DesertGhoulCorruption | 525 |    
+| DesertGhoulCrimson | 526 |    
+| DesertGhoulHallow | 527 |    
+| DesertLamiaLight | 528 |    
+| DesertLamiaDark | 529 |    
+| DesertScorpionWalk | 530 |    
+| DesertScorpionWall | 531 |    
+| DesertBeast | 532 |    
+| DesertDjinn | 533 |    
+| DemonTaxCollector | 534 |    
+| SlimeSpiked | 535 |    
+| TheBride | 536 |    
+| SandSlime | 537 |    
+| SquirrelRed | 538 |    
+| SquirrelGold | 539 |    
+| PartyBunny | 540 |    
+| SandElemental | 541 |    
+| SandShark | 542 |    
+| SandsharkCorrupt | 543 |    
+| SandsharkCrimson | 544 |    
+| SandsharkHallow | 545 |    
+| Tumbleweed | 546 |    
+| DD2AttackerTest | 547 |    
+| DD2EterniaCrystal | 548 |    
+| DD2LanePortal | 549 |    
+| DD2Bartender | 550 |    
+| DD2Betsy | 551 |    
+| DD2GoblinT1 | 552 |    
+| DD2GoblinT2 | 553 |    
+| DD2GoblinT3 | 554 |    
+| DD2GoblinBomberT1 | 555 |    
+| DD2GoblinBomberT2 | 556 |    
+| DD2GoblinBomberT3 | 557 |    
+| DD2WyvernT1 | 558 |    
+| DD2WyvernT2 | 559 |    
+| DD2WyvernT3 | 560 |    
+| DD2JavelinstT1 | 561 |    
+| DD2JavelinstT2 | 562 |    
+| DD2JavelinstT3 | 563 |    
+| DD2DarkMageT1 | 564 |    
+| DD2DarkMageT3 | 565 |    
+| DD2SkeletonT1 | 566 |    
+| DD2SkeletonT3 | 567 |    
+| DD2WitherBeastT2 | 568 |    
+| DD2WitherBeastT3 | 569 |    
+| DD2DrakinT2 | 570 |    
+| DD2DrakinT3 | 571 |    
+| DD2KoboldWalkerT2 | 572 |    
+| DD2KoboldWalkerT3 | 573 |    
+| DD2KoboldFlyerT2 | 574 |    
+| DD2KoboldFlyerT3 | 575 |    
+| DD2OgreT2 | 576 |    
+| DD2OgreT3 | 577 |    
+| DD2LightningBugT3 | 578 |    
+| BartenderUnconscious | 579 |    
+| Count | 580 |    
