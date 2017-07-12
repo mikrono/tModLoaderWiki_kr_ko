@@ -23,7 +23,7 @@ ___
 **Advanced Modding Guides**
 
 **Expert Modding Guides**
-
+- [Expert Cross Mod Content](https://github.com/blushiemagic/tModLoader/wiki/Expert-Cross-Mod-Content): Call, weakReferences, modReferences, recipes
 ___
 **Uncategorized Guides**
 - [Tutorial: [1] Getting started with tModLoader](https://forums.terraria.org/index.php?threads/.44817/)
