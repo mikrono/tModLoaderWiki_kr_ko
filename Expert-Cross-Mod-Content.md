@@ -45,8 +45,59 @@ Mod.Call is very useful, and is a very easy way for mods to communicate with eac
 
 # Strong References, aka modReferences (Expert)
 
-TODO
+Strong references are easy, but prevent your mod from being loaded if the referenced mod isn't loaded. Strong References represent a hierarchy of mods where it would make no sense for the referencing mod to be enabled without the referenced mod. To begin, let's imagine we want to reference ExampleMod. First, add a line of "modReferences = ExampleMod" to your build.txt. Second, make sure ExampleMod is downloaded and enabled. Third, we can code as normal, doing whatever you want. As an example, let's make a hotkey that sets Abomination and Purity spirit to defeated. First, we should add a using statement: `using ExampleMod;`. Next, in our ModPlayer.ProcessTriggers, where hotkeys should be processed, we can do this:
+
+    public override void ProcessTriggers(TriggersSet triggersSet)
+    {
+        if (MyMod.ToggleChecklistHotKey.JustPressed)
+        {
+             ExampleMod.ExampleWorld.downedAbomination = true;
+             ExampleMod.ExampleWorld.downedPuritySpirit = true;
+        // ...
+
+This example is extremely simple, but all manner of things can be done with a mod reference. Calling methods, accessing public variables, using the generic versions of ItemType and NPCType, and so on.
+
+Note: To properly code in Visual Studio, VS needs a reference to the .dll file contained within the .tmod file. Use the menus in tModLoader to extract the mod and find the .dll files. If no .dll file is extracted, the mod author has chosen not to allow it to be unpacked, so ask them nicely for it. Add the reference just like how you added the reference to tModLoader's exe. 
 
 # Weak References, aka weakReferences (Expert)
 
-TODO
+Weak References have the same capabilities as Strong references, but they don't have the restriction that the referenced mod must be enabled to work. They do, however, necessitate much more careful programming. The process is largely the same, but instead of a "modReferences = ExampleMod" line in build.txt there is a "weakReferences = ExampleMod@0.10" line. The 0.10 thing there is the minimum version that you expect your code to work. For example, in 0.10, a new field might have been added. If you reference this in your mod, but the loaded version is 0.9, the game will crash. This version portion of the weakReference prevents your mod from loading with older versions of the mod. 
+
+Weak References necessitate careful programming. For example, if you have the code "ExampleMod.ExampleWorld.downedAbomination = true;" in a method that is called, but ExampleMod isn't loaded, the game will crash. With Weak References, you have to make sure that variables and classes that might not be loaded are never seen by the virtual machine as it runs the c# code. Some examples:
+
+    shop.item[nextSlot].SetDefaults(mod.ItemType("ExampleItem"));
+    nextSlot++;
+
+    // now for a cross-content item
+    if (BossChecklist.instance.thoriumLoaded)
+    {
+        if (ThoriumMod.ThoriumWorld.downedScout)
+        {
+            shop.item[nextSlot].SetDefaults(ItemID.Gel);
+            nextSlot++;
+        }
+    }
+
+In this example, the game will crash. You might think that the check for thoriumLoaded being true would prevent the game from crashing, but what happens is the .Net runtime will try to understand all the code as this method is invoked, and since it can't make sense of ThoriumMod.ThoriumWorld.downedScout, it will crash.
+
+Here is a solution that does work, moving the potentially unresolvable code to a property, effectively preventing the runtime from ever having to know about ThoriumMod.ThoriumWorld.downedScout:
+
+    if (BossChecklist.instance.thoriumLoaded)
+    {
+        if (ThoriumModDownedScout)
+        {
+            shop.item[nextSlot].SetDefaults(ItemID.Gel);
+            nextSlot++;
+        }
+    }
+
+    public bool ThoriumModDownedScout
+    {
+        get { return ThoriumMod.ThoriumWorld.downedScout; }
+    }
+
+Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I suggest this:
+
+    thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
+
+Weak References are hard, but neat to do. Many things, however, are much better off as Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
