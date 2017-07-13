@@ -78,9 +78,9 @@ Weak References necessitate careful programming. For example, if you have the co
         }
     }
 
-In this example, the game will crash. You might think that the check for thoriumLoaded being true would prevent the game from crashing, but what happens is the .Net runtime will try to understand all the code as this method is invoked, and since it can't make sense of ThoriumMod.ThoriumWorld.downedScout, it will crash.
+In this example, the game will crash. You might think that the check for thoriumLoaded being true would prevent the game from crashing, but what happens is the .Net runtime will try to understand all the code mentioned in this method as it is invoked, and since it can't make sense of ThoriumMod.ThoriumWorld.downedScout, it will crash.
 
-Here is a solution that does work, moving the potentially unresolvable code to a property, effectively preventing the runtime from ever having to know about ThoriumMod.ThoriumWorld.downedScout:
+Here is a solution that does work, moving the potentially unresolvable code to a property, effectively preventing the runtime from ever having to know about ThoriumMod.ThoriumWorld.downedScout unless that mod is actually loaded:
 
     if (BossChecklist.instance.thoriumLoaded)
     {
@@ -96,8 +96,8 @@ Here is a solution that does work, moving the potentially unresolvable code to a
         get { return ThoriumMod.ThoriumWorld.downedScout; }
     }
 
-Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I suggest this:
+Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I suggest setting that static bool like this:
 
     thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
 
-Weak References are hard, but neat to do. Many things, however, are much better off as Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
+Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
