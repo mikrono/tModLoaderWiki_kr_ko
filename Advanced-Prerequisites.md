@@ -1,4 +1,4 @@
-# Expert Prerequisites
+# Advanced Prerequisites
 Basically all the previous prerequisites. See Beginner and Intermediate prerequisite guides first. 
 
 ## tModLoader Source code
