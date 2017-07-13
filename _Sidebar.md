@@ -23,6 +23,7 @@ ___
 **Advanced Modding Guides**
 
 **Expert Modding Guides**
+- [Expert Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Expert-Prerequisites)
 - [Expert Cross Mod Content](https://github.com/blushiemagic/tModLoader/wiki/Expert-Cross-Mod-Content): Call, weakReferences, modReferences, recipes
 ___
 **Uncategorized Guides**
