@@ -21,6 +21,8 @@ ___
 - [Intermediate Recipes](https://github.com/blushiemagic/tModLoader/wiki/Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 
 **Advanced Modding Guides**
+- [Advanced Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites)
+- [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption)
 
 **Expert Modding Guides**
 - [Expert Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Expert-Prerequisites)
