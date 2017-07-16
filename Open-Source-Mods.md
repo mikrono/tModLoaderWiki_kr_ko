@@ -16,6 +16,7 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
+* [Tremor](https://github.com/Jofairden/Tremor) -- No comment.
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
