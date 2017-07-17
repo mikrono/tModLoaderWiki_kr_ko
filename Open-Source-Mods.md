@@ -36,6 +36,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support (FK's Mod Settings Configurator))
 * [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual
 * [The Deconstructor](https://github.com/Jofairden/TheDeconstructor) -- Deconstruct _any_ item back into its recipe (showcases custom UI, sound effects and more)
+* [hamstar's mods](https://github.com/hamstar0) -- A set of 11 open source mods adding significant original gameplay elements or minor content additions.
 
 ## Too Advanced/Specific
 These mods are _probably_ too specific or advanced to for most modders.
