@@ -11,6 +11,7 @@ Simply download from the above link and run the downloaded file to install. Duri
 
 ### IntelliSense
 TODO
+Video: https://gfycat.com/PowerlessEqualFeline
 
 ### Usage
 To use Visual Studio, open the .csproj file that was included when we made our first mod in the Basic Guide. To make a new mod project, please see [Developing with Visual Studio](https://github.com/bluemagic123/tModLoader/wiki/Developing-with-Visual-Studio)
