@@ -14,7 +14,6 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
-* [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
 * [Tremor](https://github.com/Jofairden/Tremor) -- No comment.
 
@@ -30,7 +29,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Shader Lib](https://github.com/gamrguy/ShaderLib) -- Messing with shaders
 * [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor)
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
-* [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
+* [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
 * [Eternal Mods](https://github.com/Itorius/Eternal-Mods) -- A lot of UI, Tile Entity and data saving code
 * [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
 * [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support (FK's Mod Settings Configurator))
@@ -43,4 +42,5 @@ These mods are _probably_ too specific or advanced to for most modders.
 * [Alternate Dimensions](https://github.com/JavidPack/AlternateDimensions) -- An incomplete implementation of alternate dimensions. Knowledgeable and determined modders are encouraged to discuss a suitable implementation.
 * [WorldGenPreviewer](https://github.com/JavidPack/WorldGenPreviewer) -- Hijacking the WorldGen screen, Reflection
 * [Emoji Support](https://github.com/JavidPack/EmojiSupport) -- Add a Chat Tag Handler
+* [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
 
