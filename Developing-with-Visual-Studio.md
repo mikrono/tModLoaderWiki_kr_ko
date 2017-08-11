@@ -22,9 +22,9 @@ If you can't find the .dlls or you couldn't succeed in added them as a reference
 1. Open the csproj file in a text editor (like [Notepad++](https://notepad-plus-plus.org/))
 1. Find the reference section and add these lines
 
-    <Reference Include="Microsoft.Xna.Framework" />
-    <Reference Include="Microsoft.Xna.Framework.Game" />
-    <Reference Include="Microsoft.Xna.Framework.Graphics" />
+`<Reference Include="Microsoft.Xna.Framework" />`  
+`<Reference Include="Microsoft.Xna.Framework.Game" />`  
+`<Reference Include="Microsoft.Xna.Framework.Graphics" />`  
 
 If you already have several source files, and are having difficulty adding them, try dragging and dropping them into the Solution Explorer window.
 
