@@ -59,6 +59,12 @@ This will let you edit the source code of your mod while at a breakpoint without
 2. Check that your .cs files are actually in the project, and that you are opening the project not just individual .cs files. You can use the show all files toggle and then right click -> include in project to add missing source files to the project.    
 ![](http://i.imgur.com/dNMyROY.png)
 
+## Error CS0246 The type or namespace name 'ReLogic' could not be found
+You can download the dll file from [here](https://github.com/blushiemagic/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
+
+## Error CS0246 The type or namespace name 'Mod' (or 'ModLoader', 'ModItem', etc) could not be found
+You have added a reference to the vanilla Terraria.exe, remove it and add a correct reference to the modded Terraria.exe.
+
 ## CS5001 Program does not contain a static 'Main' method suitable for an entry point
 Make sure "Output type" is set to "Class Library" in the project properties.
 
