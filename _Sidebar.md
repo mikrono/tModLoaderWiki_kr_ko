@@ -68,6 +68,7 @@ ___
 - [Vanilla Tile IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Tile-IDs)
 - [Vanilla Wall IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Wall-IDs)
 - [Vanilla World Generation Steps](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-World-Generation-Steps)
+- [Useful Vanilla Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields)
 - [Useful Vanilla Methods](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Methods)
 - [Vanilla Interface layers values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Interface-layers-values)
 - [Vanilla Interface Changes](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Class-Changes)
