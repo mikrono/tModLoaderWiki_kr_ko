@@ -14,6 +14,26 @@ For example, this is the variable that Life Hearts increase. It is permanent and
 
 The temporary max health of the player. 
 For example, this is used for things like accessories or potions. It is temporary and resets upon world load.
+
+* int statManaMax;
+
+Similar to statLifeMax, but modifies mana instead.
+
+* int statManaMax2;
+
+Similar to statLifeMax2, but modifies mana instead.
+
+* int moveSpeed;
+
+The player's movement speed. Caps at 1.6.
+
+* int maxRunSpeed;
+
+The maximum movement speed that the player can accelerate to.
+
+* int runAcceleration
+
+The speed at which the player achieves their maximum movement speed.
 * 
 * 
 
