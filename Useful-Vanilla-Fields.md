@@ -1,5 +1,13 @@
 This is a quick list of the most common vanilla fields and a small description to what it does when changed.
 
+Index|
+-----|
+[Item Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#item-fields)|
+[Main Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#main-fields)|
+[NPC Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#npc-fields)|
+[Player Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#player-fields)|
+[Projectile Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#projectile-fields)|
+
 # Item Fields
 
 # Main Fields
