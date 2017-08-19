@@ -44,4 +44,36 @@ Similar to statLifeMax, but modifies mana instead.
 
 Similar to statLifeMax2, but modifies mana instead.
 
+* endurance; float
+
+Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 1 damage taken).
+
+* maxMinions; int
+
+The maximum allowed number of minions, default value is 1.
+
+* numMinions; int
+
+The current number of minions. Set via projectiles flagged as minion.
+
+* slotsMinions; float
+
+The current filled slots of minions. Set via projectiles flagged as minion. Some minion projectiles only count as half a minion slot (think Retanimini and Spazmamini).
+
+* wings; int
+
+Set to the wingSlot value of the currently equipped wing item. Mainly used for visual wing feedback (dust spawning, etc).
+
+* wingsLogic; int
+
+Set to the wingSlot value of the currently equipped wing item. Used to determine wingTimeMax and additional wing mechanics.
+
+* wingTime; int
+
+The current wing time. Is substracted from when the player uses their wings. Defaults to wingTimeMax when grounded or grappled.
+
+* wingTimeMax; int
+
+Determines the player's max flight time with wings when not mounted. Defaults to 0.
+
 # Projectile Fields
