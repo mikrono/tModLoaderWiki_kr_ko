@@ -2,6 +2,12 @@ This is a quick list of the most common vanilla fields and a small description t
 
 # Item Fields
 
+# Main Fields
+
+* expertMode; bool
+
+If true, means that the world is in expert mode.
+
 # NPC Fields
 
 # Player Fields
