@@ -30,6 +30,14 @@ If true, Skeletron has been killed in that world.
 
 If true, at least one mech boss has been killed in that world.
 
+* downedPlantBoss; bool
+
+If true, Plantera has been defeated in that world.
+
+* downedGolemBoss; bool
+
+If true, the Golem has been defeated in that world.
+
 # Player Fields
 
 * dash; int
