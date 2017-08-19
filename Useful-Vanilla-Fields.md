@@ -8,7 +8,27 @@ This is a quick list of the most common vanilla fields and a small description t
 
 If true, means that the world is in expert mode.
 
+* hardMode; bool
+
+If true, the world is currently in hardmode.
+
 # NPC Fields
+
+* downedBoss1; bool
+
+If true, the Eye of Cthulhu has been killed in that world.
+
+* downedBoss2; bool
+
+If true, the Brain of Cthulhu/Eater of Worlds has been killed in that world.
+
+* downedBoss3; bool
+
+If true, Skeletron has been killed in that world.
+
+* downedMechBossAny; bool
+
+If true, at least one mech boss has been killed in that world.
 
 # Player Fields
 
