@@ -57,6 +57,7 @@ Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 
 Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
 
 * magicCrit; int
+
 The player's magic critical chance.
 
 * magicDamage; float (%)
@@ -84,6 +85,7 @@ The player's melee damage.
 The player's melee swinging speed.
 
 * minionDamage; float (%)
+
 The player's minions damage.
 
 * minionKB; float (%)
@@ -99,6 +101,7 @@ The player's movement speed. Caps at 1.6.
 The current number of minions. Set via projectiles flagged as minion.
 
 * rangedCrit; int
+
 The player's ranged critical chance.
 
 * rangedDamage; float (%)
@@ -136,6 +139,7 @@ Similar to statLifeMax, but modifies mana instead.
 Similar to statLifeMax2, but modifies mana instead.
 
 * thrownCrit; int
+
 The player's throwing critical chance.
 
 * thrownDamage; float (%)
