@@ -48,17 +48,62 @@ If true, the Golem has been defeated in that world.
 
 # Player Fields
 
+* endurance; float
+
+Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 1 damage taken).
+
 * dash; int
 
 Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
+
+* magicCrit; int
+The player's magic critical chance.
+
+* magicDamage; float (%)
+
+The player's magic damage.
+
+* maxMinions; int
+
+The maximum allowed number of minions, default value is 1.
 
 * maxRunSpeed; float
 
 The maximum movement speed that the player can accelerate to.
 
+* meleeCrit; int
+
+The player's melee critical chance.
+
+* meleeDamage; float (%)
+
+The player's melee damage.
+
+* meleeSpeed; float (%)
+
+The player's melee swinging speed.
+
+* minionDamage; float (%)
+The player's minions damage.
+
+* minionKB; float (%)
+
+The player's minions knockback strength.
+
 * moveSpeed; float
 
 The player's movement speed. Caps at 1.6.
+
+* numMinions; int
+
+The current number of minions. Set via projectiles flagged as minion.
+
+* rangedCrit; int
+The player's ranged critical chance.
+
+* rangedDamage; float (%)
+
+The player's ranged damage.
 
 * runAcceleration; float
 
@@ -67,6 +112,10 @@ The speed at which the player achieves their maximum movement speed.
 * runSlowdown; float
 
 The speed at which the player slowdowns when they stop moving.
+
+* slotsMinions; float
+
+The current filled slots of minions. Set via projectiles flagged as minion. Some minion projectiles only count as half a minion slot (think Retanimini and Spazmamini).
 
 * statLifeMax; int
 
@@ -86,21 +135,12 @@ Similar to statLifeMax, but modifies mana instead.
 
 Similar to statLifeMax2, but modifies mana instead.
 
-* endurance; float
+* thrownCrit; int
+The player's throwing critical chance.
 
-Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 1 damage taken).
+* thrownDamage; float (%)
 
-* maxMinions; int
-
-The maximum allowed number of minions, default value is 1.
-
-* numMinions; int
-
-The current number of minions. Set via projectiles flagged as minion.
-
-* slotsMinions; float
-
-The current filled slots of minions. Set via projectiles flagged as minion. Some minion projectiles only count as half a minion slot (think Retanimini and Spazmamini).
+The player's throwing damage.
 
 * wings; int
 
