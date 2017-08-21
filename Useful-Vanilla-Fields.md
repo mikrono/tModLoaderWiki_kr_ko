@@ -58,11 +58,11 @@ Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 
 
 * immune; bool
 
-Gives the player immunity. He cannot be hurt.
+Gives the player immunity. He cannot be hurt by being hit.
 
-* immuneNoBlink; bool
+* immuneAlpha; int
 
-Gives the player immunity. He cannot be hurt. Doesn't have the visual effect of being immune.
+Set to 0 to prevent blinking when immune.
 
 * magicCrit; int
 
