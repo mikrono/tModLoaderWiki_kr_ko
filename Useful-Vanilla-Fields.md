@@ -48,13 +48,21 @@ If true, the Golem has been defeated in that world.
 
 # Player Fields
 
+* dash; int
+
+Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
+
 * endurance; float
 
 Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 1 damage taken).
 
-* dash; int
+* immune; bool
 
-Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
+Gives the player immunity. He cannot be hurt.
+
+* immuneNoBlink; bool
+
+Gives the player immunity. He cannot be hurt. Doesn't have the visual effect of being immune.
 
 * magicCrit; int
 
