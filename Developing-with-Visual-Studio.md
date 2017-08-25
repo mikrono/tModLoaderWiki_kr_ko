@@ -12,9 +12,7 @@ This will let you use Visual Studio's code editing and Intellisense
 1. Add the line `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
 1. Create a class extending `Terraria.ModLoader.Mod` and begin developing
 
-You will also need to add the XNA library .dlls as references to your project.   
-**This requires the [XNA Framework Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=20914) to be installed! Without it, you will not have the required DLLs. **  
-
+You will also need to add the XNA library .dlls as references to your project.   This requires the [XNA Framework Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=20914) to be installed! Without it, you will not have the required DLLs.  
 You can (most of the time) find these files here: `search-ms:displayname=Search%20Results%20in%20GAC_32&crumb=filename%3A~<Microsoft.XNA%20OR%20System.Generic.String%3AMicrosoft.XNA&crumb=fileextension%3A~<Microsoft.XNA*.dll%20filename%3A~<Microsoft.XNA*.dll%20OR%20System.Generic.String%3AMicrosoft.XNA*.dll&crumb=location:C%3A%5CWindows%5CMicrosoft.NET%5Cassembly%5CGAC_32` (Windows)
 Paste this weird search string in your file browser pathbar like so 
 ![](https://i.imgur.com/zQo6j1X.png)
