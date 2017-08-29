@@ -187,3 +187,7 @@ The current wing time. Is substracted from when the player uses their wings. Def
 Determines the player's max flight time with wings when not mounted. Defaults to 0.
 
 # Projectile Fields
+
+* ignoreWater; bool
+
+The projectile will not be affected by water.
