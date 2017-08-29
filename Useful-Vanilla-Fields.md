@@ -116,7 +116,7 @@ The player's movement speed. Caps at 1.6.
 
 If true, the player isn't affected by knockback.
 
-* noFallDamage; bool
+* noFallDmg; bool
 
 If true, the player isn't affected by fall damage.
 
