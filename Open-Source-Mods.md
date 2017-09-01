@@ -16,7 +16,7 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
 * [Tremor](https://github.com/Jofairden/Tremor) -- No comment.
-* [Enigma](https://forums.terraria.org/index.php?threads/the-enigma-mod.60046/) Adds a new level-up system, a few bosses, weapons, and accessories. Use tModReader to get the code!
+* [Enigma](https://forums.terraria.org/index.php?threads/the-enigma-mod.60046/) -- Adds a new level-up system, a few bosses, weapons, and accessories. Use tModReader to get the code!
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
