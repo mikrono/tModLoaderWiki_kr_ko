@@ -72,6 +72,14 @@ Gives the player immunity. He cannot be hurt by being hit.
 
 Set to 0 to prevent blinking when immune.
 
+* lifeRegen; int
+
+Increases the player's life regen.
+
+* lifeRegenTime; int
+
+Increases the player's life regen, but in a different way.
+
 * magicCrit; int
 
 The player's magic critical chance.
@@ -83,6 +91,14 @@ The player's magic damage.
 * manaCost; float (%)
 
 Lower the value to lower the mana cost of spells. You can augment it too to make them cost more mana.
+
+* manaRegen; int
+
+Increases the amount of mana the player regenerates.
+
+* manaRegenBonus; int
+
+Increases the speed at which the player regenerates mana.
 
 * maxMinions; int
 
