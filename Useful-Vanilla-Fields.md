@@ -80,6 +80,10 @@ The player's magic critical chance.
 
 The player's magic damage.
 
+* manaCost; float (%)
+
+Lower the value to lower the mana cost of spells. You can augment it too to make them cost more mana.
+
 * maxMinions; int
 
 The maximum allowed number of minions, default value is 1.
