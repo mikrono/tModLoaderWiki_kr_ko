@@ -20,6 +20,9 @@ Seeing the error, the novice modder will take the following steps:
 - Make sure your base namespace and Mod Sources folder are equal
 - Make sure your namespace and folder structure match: ExampleMod.Items.Weapons becomes `\Mod Sources\ExampleMod\Items\Weapons\`
 
+A visual explanation:  
+![](https://i.imgur.com/XLeNQCs.png)
+
 ### "Sequence contains no matching element" error
 ___
 This means your Mod doesn't contain any class extending from Mod. If you went through the [Basic Modding Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-Guide) you should notice that one of the files has `class MyMod : Mod`. Make sure you have 1 and only 1 of these classes in your mod.
