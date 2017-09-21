@@ -53,6 +53,8 @@ This will let you edit the source code of your mod while at a breakpoint without
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
+You may now edit your mod's code while tModLoader is running by pressing Ctrl+Alt+Break (Break All) in Visual Studio. Press F5 (Continue) when done to return to the game.
+
 # FAQ
 ## Autocomplete isn't doing anything for me.
 1. Check that the tModLoader executable file is in your references. Make sure it's modded not vanilla.    
