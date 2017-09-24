@@ -23,6 +23,7 @@ ___
 - [Basic Recipes](https://github.com/blushiemagic/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
 - [Basic Ammo](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo)
+- [Basic Sounds](https://github.com/blushiemagic/tModLoader/wiki/Basic-Sounds)
 
 ___
 **Intermediate Modding Guides**
