@@ -58,7 +58,7 @@ There are several methods we can use with various parameters. Read above for the
 
 The simplest way to play vanilla sounds is as follows:
 
-   Main.PlaySound(SoundID.Item59); // piggy bank oink
+    Main.PlaySound(SoundID.Item59); // piggy bank oink
 
 You will notice that we omit the optional parameters of the 2nd method signature. If that confuses you, Google it. What even are x and y? x and y represent the position in world space that the sound should play. Most of the time, however, we want to specify that. Here are a couple examples of ways to do that:
 
@@ -80,11 +80,11 @@ Replace style with the results from mod.GetSoundSlot in cases where you put both
 
 Examples:
 
-   Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/WatchOut"));
-   Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
-   item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
-   npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
-   Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
+    Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/WatchOut"));
+    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
+    item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
+    npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
+    Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
 
 ## Additional Tricks
 
