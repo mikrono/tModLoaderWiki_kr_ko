@@ -7,6 +7,7 @@ ___
 - [description.txt](https://github.com/blushiemagic/tModLoader/wiki/description.txt)
 - [Developing with Visual Studio](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio)
 - [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-526#post-1001200)
+- [Mod Browser](https://github.com/blushiemagic/tModLoader/wiki/Mod-Browser)
 
 ___
 **Getting Started Guides**
