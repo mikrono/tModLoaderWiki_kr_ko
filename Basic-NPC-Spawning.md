@@ -113,10 +113,10 @@ Each of the following examples will be as if they were inside a ModNPC.SpawnChan
     // or
     return SpawnCondition.SolarEclipse.Chance * 0.05f; // Remember to test this value for balance
 ### Player standing on Sunplate tile
-    // Here I show off 2 ways of converting a boolean to an int, which is implicitly converted to float when returned. (False is 0, True is 1)
-    return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate).ToInt();
+    // Here I show off 2 ways of converting a boolean to an int. (False is 0, True is 1)
+    return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate).ToInt() * 0.2f;
     // or
-    return Convert.ToInt32(Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate); // using System;
+    return Convert.ToInt32(Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate) * 0.2f; // using System;
 
 # Combining Snippets
 Just like in Examples above, we combine pieces of logic to construct our final decision. See !, &&, and || above.
