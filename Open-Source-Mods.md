@@ -31,7 +31,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor)
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
 * [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
-* [Eternal Mods](https://github.com/Itorius/Eternal-Mods) -- A lot of UI, Tile Entity and data saving code
+* [Eternal Mods](https://github.com/Eternal-Team) -- Tile Entities, UI and a bunch of framework stuff.
 * [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
 * [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support (FK's Mod Settings Configurator))
 * [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual
