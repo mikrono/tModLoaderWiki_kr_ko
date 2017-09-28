@@ -42,6 +42,14 @@ If true, the Brain of Cthulhu/Eater of Worlds has been killed in that world.
 
 If true, Skeletron has been killed in that world.
 
+* downedQueenBee; bool
+
+If true, Queen Bee has been killed in that world.
+
+* downedSlimeKing; bool
+
+If true, Slime King has been killed in that world.
+
 * downedMechBossAny; bool
 
 If true, at least one mech boss has been killed in that world.
@@ -53,6 +61,23 @@ If true, Plantera has been defeated in that world.
 * downedGolemBoss; bool
 
 If true, the Golem has been defeated in that world.
+
+* downedGoblins; bool
+* downedFrost; bool
+* downedPirates; bool
+* downedMartians; bool
+
+Self Explanatory.
+
+* savedTaxCollector; bool
+* savedGoblin; bool
+* savedWizard; bool
+* savedMech; bool
+* savedAngler; bool
+* savedStylist; bool
+* savedBartender; bool
+
+If the named NPC has been rescued in this world yet.
 
 # Player Fields
 
