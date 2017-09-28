@@ -67,7 +67,7 @@ If true, the Golem has been defeated in that world.
 * downedPirates; bool
 * downedMartians; bool
 
-Self Explanatory.
+If various events have been completed.
 
 * savedTaxCollector; bool
 * savedGoblin; bool
