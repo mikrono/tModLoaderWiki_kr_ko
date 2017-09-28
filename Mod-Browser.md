@@ -15,7 +15,7 @@ The first time you attempt to publish a mod by pressing the `Publish Mod` button
 Publishing a mod is simple, after making sure your mod is ready for release, you just press the `Publish` button in the `Mod Sources` menu. Before publishing, however, do the following:
 
 ### Set a Version
-Set a version in your build.txt. Something like `0.1` is good for an initial release.
+Set a version in your build.txt. Something like `0.1` is good for an initial release. Please use semantic versioning: `major.minor.patch` You are not allowed to use letters for the version
 
 ### Fill out description.txt
 This is the description that potential users will read when deciding if they will download, make it good.
