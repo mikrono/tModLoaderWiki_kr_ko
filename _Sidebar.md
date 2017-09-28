@@ -19,6 +19,7 @@ ___
 **Basic Modding Guides**
 - [Basic Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Basic-Prerequisites)
 - [Basic Item](https://github.com/blushiemagic/tModLoader/wiki/Basic-Item)
+- [Basic NPC Spawning](https://github.com/blushiemagic/tModLoader/wiki/Basic-NPC-Spawning)
 - [Basic Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload)
 - [Basic Recipes](https://github.com/blushiemagic/tModLoader/wiki/Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
