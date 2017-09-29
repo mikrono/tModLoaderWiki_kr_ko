@@ -13,11 +13,11 @@ Client Command Line Argument
 Useful for modders who wish to quickly test their mod. This flag will automatically select the 1st player and world in the list, allowing the modder to launch directly into the game. Very useful when building and launching from Visual Studio.
 
 ### build [pathToModSource]
-Server Client Command Line Argument
+Server Client Command Line Argument  
 Builds the mod specified by the folder from source, useful for modders.
 
 ### eac
-Server Client Command Line Argument (Windows Only)
+Server Client Command Line Argument (Windows Only)  
 Enables Edit and Continue, useful for modders.
 
 # Usage
