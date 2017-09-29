@@ -42,7 +42,7 @@ public static void DrawItemGlowmaskWorld(SpriteBatch spriteBatch, Item item, Tex
 	);
 }
 ```
-You don't _have to_ to use this code, generally there is just a few steps you need to follow when drawing a glowmask:
+You don't _have to_ use this code, generally there is just a few steps you need to follow when drawing a glowmask:
 * Make sure you draw the glowmask sprite, not the original sprite
 * Make sure to draw with Color.White or at least a color that is fully opaque
   * Achieve opaqueness by increasing the alpha channel closer to 255. (lowering closer to 0 will achieve transparency) Remember that XNA Colors take _bytes_ for their RGBA channels, so the values range between 0 and 255
