@@ -1,44 +1,44 @@
-[**Home**](https://github.com/bluemagic123/tModLoader/wiki/Home)
+[**Home**](Home)
 
 ___
 **tModLoader References**
 - [Documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
-- [build.txt](https://github.com/blushiemagic/tModLoader/wiki/build.txt)
-- [description.txt](https://github.com/blushiemagic/tModLoader/wiki/description.txt)
-- [Developing with Visual Studio](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio)
+- [build.txt](build.txt)
+- [description.txt](description.txt)
+- [Developing with Visual Studio](Developing-with-Visual-Studio)
 - [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-526#post-1001200)
-- [Mod Browser](https://github.com/blushiemagic/tModLoader/wiki/Mod-Browser)
+- [Mod Browser](Mod-Browser)
 
 ___
 **Getting Started Guides**
-- [Basic tModLoader Usage Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Usage-Guide)
-- [Basic tModLoader Usage FAQ](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)
-- [Basic tModLoader Modding Starter Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
-- [Basic tModLoader Modding FAQ](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-FAQ)
+- [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide)
+- [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
+- [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
+- [Basic tModLoader Modding FAQ](Basic-tModLoader-Modding-FAQ)
 
 ___
 **Basic Modding Guides**
-- [Basic Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Basic-Prerequisites)
-- [Basic Item](https://github.com/blushiemagic/tModLoader/wiki/Basic-Item)
-- [Basic NPC Spawning](https://github.com/blushiemagic/tModLoader/wiki/Basic-NPC-Spawning)
-- [Basic Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload)
-- [Basic Recipes](https://github.com/blushiemagic/tModLoader/wiki/Basic-Recipes)
+- [Basic Guide Prerequisites](Basic-Prerequisites)
+- [Basic Item](Basic-Item)
+- [Basic NPC Spawning](Basic-NPC-Spawning)
+- [Basic Autoload](Basic-Autoload)
+- [Basic Recipes](Basic-Recipes)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
-- [Basic Ammo](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo)
-- [Basic Sounds](https://github.com/blushiemagic/tModLoader/wiki/Basic-Sounds)
+- [Basic Ammo](Basic-Ammo)
+- [Basic Sounds](Basic-Sounds)
 
 ___
 **Intermediate Modding Guides**
-- [Intermediate Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Intermediate-Prerequisites)
-- [Intermediate Recipes](https://github.com/blushiemagic/tModLoader/wiki/Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
+- [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 
 **Advanced Modding Guides**
-- [Advanced Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites)
-- [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption)
+- [Advanced Guide Prerequisites](Advanced-Prerequisites)
+- [Advanced Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
 
 **Expert Modding Guides**
-- [Expert Guide Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Expert-Prerequisites)
-- [Expert Cross Mod Content](https://github.com/blushiemagic/tModLoader/wiki/Expert-Cross-Mod-Content): Call, weakReferences, modReferences, recipes
+- [Expert Guide Prerequisites](Expert-Prerequisites)
+- [Expert Cross Mod Content](Expert-Cross-Mod-Content): Call, weakReferences, modReferences, recipes
 ___
 **Uncategorized Guides**
 - [Tutorial: [1] Getting started with tModLoader](https://forums.terraria.org/index.php?threads/.44817/)
@@ -56,29 +56,29 @@ ___
 
 ___
 **Vanilla Refereces**
-- [Vanilla Ammo IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Ammo-IDs)
-- [Vanilla Buff IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Buff-IDs)
-- [Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values)
-- [Vanilla Item IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-IDs)
-- [Vanilla NPC Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-NPC-Field-Values)
-- [Vanilla NPC IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-NPC-IDs)
-- [BannerToNPC Conversions](https://github.com/blushiemagic/tModLoader/wiki/BannerToNPC-Conversions)
-- [Vanilla Projectile AIs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-AIs)
-- [Vanilla Projectile IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-IDs)
-- [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values)
+- [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
+- [Vanilla Buff IDs](Vanilla-Buff-IDs)
+- [Vanilla Item Field Values](Vanilla-Item-Field-Values)
+- [Vanilla Item IDs](Vanilla-Item-IDs)
+- [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
+- [Vanilla NPC IDs](Vanilla-NPC-IDs)
+- [BannerToNPC Conversions](BannerToNPC-Conversions)
+- [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
+- [Vanilla Projectile IDs](Vanilla-Projectile-IDs)
+- [Vanilla Projectile Field Values](Vanilla-Projectile-Field-Values)
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
-- [Vanilla Sound IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Sound-IDs)
-- [Vanilla Tile IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Tile-IDs)
-- [Vanilla Wall IDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Wall-IDs)
-- [Vanilla World Generation Steps](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-World-Generation-Steps)
-- [Useful Vanilla Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields)
-- [Useful Vanilla Methods](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Methods)
-- [Vanilla Interface layers values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Interface-layers-values)
-- [Vanilla Interface Changes](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Class-Changes)
+- [Vanilla Sound IDs](Vanilla-Sound-IDs)
+- [Vanilla Tile IDs](Vanilla-Tile-IDs)
+- [Vanilla Wall IDs](Vanilla-Wall-IDs)
+- [Vanilla World Generation Steps](Vanilla-World-Generation-Steps)
+- [Useful Vanilla Fields](Useful-Vanilla-Fields)
+- [Useful Vanilla Methods](Useful-Vanilla-Methods)
+- [Vanilla Interface layers values](Vanilla-Interface-layers-values)
+- [Vanilla Interface Changes](Vanilla-Class-Changes)
 
 ___
 **Other**
-- [TagCompound](https://github.com/blushiemagic/tModLoader/wiki/TagCompound)
-- [Mount Data Parameters](https://github.com/blushiemagic/tModLoader/wiki/MountDataParameters)
-- [Open Source Mods](https://github.com/blushiemagic/tModLoader/wiki/Open-Source-Mods)
-- [Command Line Arguments and Server Config](https://github.com/blushiemagic/tModLoader/wiki/Command-Line)
+- [TagCompound](TagCompound)
+- [Mount Data Parameters](MountDataParameters)
+- [Open Source Mods](Open-Source-Mods)
+- [Command Line Arguments and Server Config](Command-Line)
