@@ -1,4 +1,3 @@
-# Basic guide for glowmasks
 In this guide we will go over glowmasks, what they are and how to apply them.
 
 ## What is 'masking', and how is it used in Terraria?
