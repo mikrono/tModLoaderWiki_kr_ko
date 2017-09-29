@@ -19,13 +19,13 @@ A glowmask can be applied to virtually anything you want: be it an npc, projecti
 Vanilla has its own 'system' for glowmasks in place, however you can **not** make use of this system as it does not accommodate for modded content. Also, the word 'apply' should be loosely taken as you don't really apply your glowmask to the original sprite, instead we will be drawing the glowmask separately from the original sprite.
 
 ### How do I draw my glowmask?
-For drawing your glowmask on top of the original sprite, you will want to use the appropiate **Post**Draw hook. This will ensure the glowmask draws on top of the original sprite. You can also opt for complete manual drawing by overriding the appropiate **Pre**Draw hook, this requires more manual work however and is not recommended unless required because of something else. Here is an example of a helper method that will draw a glowmask for an item that is dropped in the world: 
+For drawing your glowmask on top of the original sprite, you will want to use the appropriate **Post**Draw hook. This will ensure the glowmask draws on top of the original sprite. You can also opt for complete manual drawing by overriding the appropiate **Pre**Draw hook, this requires more manual work however and is not recommended unless required because of something else. It is common to suffix sprite names with _Glow or _Glowmask as a naming convention. Here is an example of using PostDraw to draw a glowmask for an item that is dropped in the world: 
 ```csharp
-public static void DrawItemGlowmaskWorld(SpriteBatch spriteBatch, Item item, Texture2D texture, float rotation, float scale)
+public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float  scale, int whoAmI) 	
 {
 	Main.spriteBatch.Draw
 	(
-		texture,
+		mod.GetTexture("items/MyItem_Glowmask"),
 		new Vector2
 		(
 			item.position.X - Main.screenPosition.X + item.width * 0.5f,
@@ -36,8 +36,8 @@ public static void DrawItemGlowmaskWorld(SpriteBatch spriteBatch, Item item, Tex
 		rotation,
 		texture.Size() * 0.5f,
 		scale, 
-        SpriteEffects.None, 
-        0f
+		SpriteEffects.None, 
+		0f
 	);
 }
 ```
