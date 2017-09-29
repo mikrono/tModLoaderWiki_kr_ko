@@ -23,10 +23,10 @@ ___
 - [Basic NPC Spawning](Basic-NPC-Spawning)
 - [Basic Autoload](Basic-Autoload)
 - [Basic Recipes](Basic-Recipes)
-- [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
+- [Basic Glowmasks](Basic-glowmask-guide)
 - [Basic Ammo](Basic-Ammo)
 - [Basic Sounds](Basic-Sounds)
-
+- [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
 ___
 **Intermediate Modding Guides**
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
