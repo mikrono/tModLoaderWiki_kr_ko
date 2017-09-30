@@ -2,9 +2,9 @@
 
 ___
 **tModLoader References**
-- [Documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
-- [build.txt](build.txt)
-- [description.txt](description.txt)
+- [Source Documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
+- [Information: build.txt](build.txt)
+- [Information: description.txt](description.txt)
 - [Developing with Visual Studio](Developing-with-Visual-Studio)
 - [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-526#post-1001200)
 - [Mod Browser](Mod-Browser)
@@ -52,7 +52,13 @@ ___
 ___
 **Youtube Tutorials**
 - [Al0n37](https://www.youtube.com/user/Al0n37/videos)
-- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ)
+- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ) - Recommended
+
+**Youtube content creators covering modded content**
+- [Pedguin](https://www.youtube.com/user/PedguinGames)
+- [ChippyGaming](https://www.youtube.com/user/ChippyGaming)
+- [HappyDays](https://www.youtube.com/user/happydaysgames)
+- [PythonGB](https://www.youtube.com/user/PythonGB)
 
 ___
 **Vanilla Refereces**
