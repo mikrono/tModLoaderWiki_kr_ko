@@ -2,7 +2,7 @@
 Basically all the previous prerequisites. See Beginner, Intermediate, and Advanced prerequisite guides first. 
 
 ## IDE is absolutely required
-Without an IDE, your chances of success in these tutorials is slim. Once again, we recommend installing the latest [Visual Studio Community](https://www.visualstudio.com/vs/community/). It is free and fully featured.
+Without an IDE, your chances of success in these tutorials is slim. Once again, we recommend installing the latest [Visual Studio Community](https://www.visualstudio.com/vs/community/). It is free and fully featured. Visual Studio Code is also possible, and can also provide Intellisense and debugging functionalities.
 
 ## Debugging
 You must know your way around the debugger. You need to know how to use breakpoints and inspecting values in break mode. The guide for setting up Visual Studio correctly is [here](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio). The very best setup for debugging is when you also have the tModLoader source, this way you can step through the code as it shifts between tModLoader code and your mod's code.
