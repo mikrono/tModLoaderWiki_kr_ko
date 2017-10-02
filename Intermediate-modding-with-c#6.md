@@ -42,6 +42,29 @@ Please do check the linked article above which explains everything in great deta
 ## Is it possible to compile in c#7?
 Although version 7 is already available, it is not (yet) possible to compile with this version. It _may_ become possible, but no guarantees.
 
+## Most notable code improvements with c#6 for modders
+### Expression-bodied function members
+Any method you have, for example an overridden hook that only returns some value, can now be shortened as an expression-bodied function members (pointer like functions) eg.
+```csharp
+public override bool SomeHook() 
+{
+   return something() ? true : somethingAgain() : false;
+}
+```
+Can be shortened to
+```csharp
+public override bool SomeHook() => something() ? true : somethingAgain() : false
+```
+
+### String interpolation
+You no longer have to use string.Format, instead use the new string interpolation:
+```csharp
+string s = string.Format("Hello {0}, how are you on {1}?", user.name, DateTime.Now);
+```
+Can be shortened to
+```csharp
+string s = $"Hello {user.name}, how are you on {DateTime.Now}?";
+```
 ## Long list of issues when compiling with c#6
 
 ### Before you move on, read this!
