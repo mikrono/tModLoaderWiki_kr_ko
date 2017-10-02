@@ -43,6 +43,8 @@ ___
 - [Expert Cross Mod Content](Expert-Cross-Mod-Content): Call, weakReferences, modReferences, recipes
 ___
 **Uncategorized Guides**
+
+Note: tutorial [x] are likely outdated, it is recommended you use contents on this wiki instead
 - [Tutorial: [1] Getting started with tModLoader](https://forums.terraria.org/index.php?threads/.44817/)
 - [Tutorial: [2] Recipes](https://forums.terraria.org/index.php?threads/.44822/)
 - [Tutorial: [3] Items](https://forums.terraria.org/index.php?threads/.44842/)
