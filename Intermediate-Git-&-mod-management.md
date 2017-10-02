@@ -73,7 +73,7 @@ Use pull requests to discuss code changes with your team before merging them int
 Your team can configure Visual Studio Team Services to enforce consistent workflows and process across your team. [Set up branch policies](https://docs.microsoft.com/en-us/vsts/git/branch-policies) to ensure that pull requests meet your requirements before completion. Branch policies protect your important branches by preventing direct pushes, requiring reviewers, and ensuring clean builds. Use [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates) for more streamlined issues and PR content.
 
 ## Get a free website for your project
-GitHub allows you to upload a website for free for your project. Check the [GitHub-pages](https://pages.github.com/) system for more information.
+GitHub allows you to upload a website for free for your project. Check the [GitHub-pages](https://pages.github.com/) system for more information. For tModLoader we utilize this system by providing source documentation using doxygen: [http://blushiemagic.github.io/tModLoader/html/index.html](http://blushiemagic.github.io/tModLoader/html/index.html)
 
 ## License your work
 When you use Git, you can properly license your work. If you have no clue what license to use, check [Choose an open source license](https://choosealicense.com/)
