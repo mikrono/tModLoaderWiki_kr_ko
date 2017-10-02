@@ -1,14 +1,16 @@
 # Creating a Project
 This will let you use Visual Studio's code editing and Intellisense
 
+(Alternatively, use [Jopojelly's Mod Generator tool](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) which sets everything up for you, **however: it is recommended you follow these steps so you know what's going on and how to do it**)
+
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
-1. Choose a name for the mod. This is the internal name (and file name), not the display name. It is recommended that internal names have no spaces eg. "ExampleMod"
+1. Choose a name for the mod. This is the internal name (and file name), not the display name. Do not use whitespaces eg. Example Mod -> "ExampleMod", if you really want to signify spaces then use hyphens eg. Example Mod -> "Example_Mod"
 1. Uncheck "Create directory for solution"
 1. Click OK
 ![New Project Dialog](http://i.imgur.com/tQIfA3g.png)
 1. Go to the Solution Explorer tab, right click on Solution -> ModName -> References and click Add Reference... ([example](https://i.imgur.com/oM30lfT.png))
-1. Click Browse... and select the tModLoader executable (most likely C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe)
+1. Click Browse... and select the tModLoader executable (likely: `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe`)
 1. Add the line `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
 1. Create a class extending `Terraria.ModLoader.Mod` and begin developing
 
@@ -17,10 +19,10 @@ You can (most of the time) find these files here: `search-ms:displayname=Search%
 Paste this weird search string in your file browser pathbar like so 
 ![](https://i.imgur.com/zQo6j1X.png)
 
-It is recommended to **copy** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
+It is recommended to ** !! copy !! (please COPY and paste, do not cut and paste)** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
 
-If you can't find the .dlls or you couldn't succeed in added them as a reference, there's a neat trick to do it without much effort: 
-1. Open the csproj file in a text editor (like [Notepad++](https://notepad-plus-plus.org/))
+If you can't find the .dlls or you couldn't succeed in added them as a reference, there's a neat trick you can try which will reference them automatically: 
+1. Open the csproj file in a good text editor (like [Notepad++](https://notepad-plus-plus.org/))
 1. Find the reference section and add these lines
 
 `<Reference Include="Microsoft.Xna.Framework" />`  
