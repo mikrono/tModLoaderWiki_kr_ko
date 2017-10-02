@@ -1,18 +1,19 @@
 # Prerequisites 
-* [Basic Recipes](https://github.com/bluemagic123/tModLoader/wiki/Basic-Recipes)
+* [Basic Recipes](Basic-Recipes)
 
 # RecipeGroups
 RecipeGroups allow you create a recipe that accepts items from a group of similar ingredients. For example, all varieties of Wood are in the vanilla "Wood" Group. Instead of creating 8 separate recipes to use wood, we would create 1 recipe that uses the "Wood" recipe group. Mods can also add RecipeGroups to simplify their recipes.
 
 ## Using Existing RecipeGroups
 Vanilla groups consist of: "Wood", "IronBar", "PresurePlate", "Sand", "Fragment", "Birds", "Scorpions", "Squirrels", "Bugs", "Ducks", "Butterflies", "Fireflies", and "Snails". To use a vanilla RecipeGroup, simply add the following instead of a similar AddIngredient line:
-
-    recipe.AddRecipeGroup("Wood", 5);
+```csharp
+recipe.AddRecipeGroup("Wood", 5);
+```
 Note that, like with AddIngredient, there is an optional parameter for specifying a stack of more than 1.
 
 ## New RecipeGroups
 You may have noticed that aside from "Wood" and "IronBar", there aren't many useful vanilla RecipeGroups. Luckily, we can make our own RecipeGroups. Let's imagine we want to make a recipe that used a Magic Mirror or Ice Mirror as an ingredient. Without RecipeGroups, we would have to do this:
-
+```csharp
     ModRecipe recipe = new ModRecipe(mod);
     recipe.AddIngredient(ItemID.MagicMirror);
     recipe.AddIngredient(ItemID.Gel, 10);
@@ -28,8 +29,9 @@ You may have noticed that aside from "Wood" and "IronBar", there aren't many use
     recipe.AddTile(TileID.Tables);
     recipe.SetResult(this);
     recipe.AddRecipe();
+```
 This is actually not too bad, but imagine you have 10 or 20 similar items that you'd like to use for your recipe, it would get unmanageable very quickly. To solve this, first we must add a new RecipeGroup. We do this in our Mod class by overriding the AddRecipeGroups method:
-
+```csharp
     public override void AddRecipeGroups()
     {
     	RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Magic Mirror", new int[]
@@ -39,13 +41,15 @@ This is actually not too bad, but imagine you have 10 or 20 similar items that y
     	});
     	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
     }
+```
 As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Lang.misc[37] is just the word "any" in the selected language. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
 
 Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGroups, except our RecipeGroup's name will be different:
-
+```csharp
     recipe.AddRecipeGroup("SummonersAssociation:MagicMirrors");
-
+```
 ## Complete Example
+```csharp
     using Terraria;
     using Terraria.ID;
     using Terraria.ModLoader;
@@ -91,10 +95,10 @@ Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGr
     		}
     	}
     }
-
+```
 ## Editing Vanilla RecipeGroups
 In some situations you might want to add your own items to existing RecipeGroups. In this example, we will add another wood type to the "Wood" RecipeGroup.
-
+```csharp
     public override void AddRecipeGroups()
     {
     	if(RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
@@ -104,7 +108,7 @@ In some situations you might want to add your own items to existing RecipeGroups
     		group.ValidItems.Add(ItemType("MyWood"));
     	}
     }
-
+```
 Note that checking `if(RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not necessary, but it will prevent errors if some other mod completely removes that RecipeGroup for some reason.
 
 # Editing Vanilla Recipes
@@ -112,7 +116,7 @@ We can edit vanilla recipes from within out AddRecipes methods. Basically, we us
 
 ## Complete Example
 This code removes the ingredient Chain from all vanilla recipes. The second half of this example finds and deletes an exact recipe and deletes the whole recipe.
-
+```csharp
     public override void AddRecipes()
     {
     	RecipeFinder finder = new RecipeFinder();
@@ -134,7 +138,7 @@ This code removes the ingredient Chain from all vanilla recipes. The second half
     		editor.DeleteRecipe();
     	}
     }
-
+```
 # Common Errors
 
 # Relevant References
