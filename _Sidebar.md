@@ -27,7 +27,7 @@ ___
 - [Basic Ammo](Basic-Ammo)
 - [Basic Sounds](Basic-Sounds)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
-- [Basic guide for JSON & ModConfigs](Basic-guide-for-JSON-&-ModConfigs)
+- [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
 ___
 **Intermediate Modding Guides**
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
