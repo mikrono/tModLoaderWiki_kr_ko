@@ -77,3 +77,13 @@ GitHub allows you to upload a website for free for your project. Check the [GitH
 
 ## License your work
 When you use Git, you can properly license your work. If you have no clue what license to use, check [Choose an open source license](https://choosealicense.com/)
+
+# tModLoader mod management with Git
+## Team development
+It is common that mods are created by a bunch of people rather than one. Git makes working together on your mod much easier and can provide a more streamlined development process for the team.
+
+## tModLoader GitHub integration
+Using GitHub allows you to link your mod to your git repository, you can reap many benefits by doing this. Check the [Mod-Browser (GitHub integration)](https://github.com/blushiemagic/tModLoader/wiki/Mod-Browser#github-integration) page for more information.
+
+## Easy release tracking
+With Git, it becomes much easier to track your releases of your mod. If you use Git from the start, you will be able to go back to any release you ever made and check out the code you had at that time. Useful for mods that live for a long time.
