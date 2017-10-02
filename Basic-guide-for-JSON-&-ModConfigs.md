@@ -1,3 +1,6 @@
+# Note!
+ModConfigs are not yet released/available. Once they are, this guide will be expanded to cover ModConfigs more.
+
 ## Introduction
 Before we begin, it's important that you understand what a config is and how a 'ModConfig' is handled. First of all, config stands for 'configuration' and with that we often mean a 'configuration file'. There are many formats for configuration files, in tModLoader we use a language called JSON for ModConfigs. JSON stands for JavaScript-Object-Notation and we will delve a bit deeper into the meaning and heritance of this name.
 
