@@ -49,3 +49,31 @@ Many people are afraid of branches, don't be! They are the most amazing thing ev
 
 ## Use branches and pull requests for code review
 It is very useful if you make use of the _awesome_ tools Git/GitHub provides you. This is something we often use for tModLoader development, but you can use it as well if you develop your product with multiple people. You can make a new branch and commit your changes to it, then create a new pull request to master from that branch. With  the new pull request, you can ask for feedback and code review from other collaborators!
+
+# Benefits of using Git/GitHub
+## Simultaneous development
+Everyone has their own local copy of code and can work simultaneously on their own branches. Git works when you’re offline since almost every operation is local. This means Git makes it much and much easier to work on mods with multiple people simultaneously,
+
+## Faster releases
+Branches allow for flexible and simultaneous development. The main branch contains stable, high-quality code from which you release. Feature branches contain work in progress, which you merge into the main branch upon completion. By separating your release branch from development in progress, you can manage your stable code better and ship updates more quickly.
+
+## Built-in integration
+Due to its popularity, Git is integrated into most tools and products. Every major IDE (like Visual Studio) has built-in Git support, and many tools that allow you to manage continuous integration, continuous deployment, automated testing, work item tracking, metrics, and reporting feature integration with Git. This integration simplifies your day to day workflow.
+
+## Strong community support
+Git is open-source and has become the de facto standard for version control, and there is no shortage of tools and resources available for you to leverage. The volume of community support for Git compared to other version control systems makes it easy to get help when you need it.
+
+## Git works with your team
+Using Git with a source code management tool can increase your team’s productivity by encouraging collaboration, enforcing policies, automating processes, and improving visibility and traceability of work. You may choose individual tools for version control, work item tracking, and continuous integration and deployment. Or, you can choose a solution like Visual Studio Team Services that lets you manage all of these tasks in one place.
+
+## Pull requests
+Use pull requests to discuss code changes with your team before merging them into your main branch. The discussions you have in pull requests are invaluable to ensuring code quality and increase knowledge across your team. Visual Studio Team Services offers a rich pull request experience where you can browse file changes, leave comments, inspect commits, view builds, and vote to approve the code.
+
+## Development policies
+Your team can configure Visual Studio Team Services to enforce consistent workflows and process across your team. [Set up branch policies](https://docs.microsoft.com/en-us/vsts/git/branch-policies) to ensure that pull requests meet your requirements before completion. Branch policies protect your important branches by preventing direct pushes, requiring reviewers, and ensuring clean builds. Use [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates) for more streamlined issues and PR content.
+
+## Get a free website for your project
+GitHub allows you to upload a website for free for your project. Check the [GitHub-pages](https://pages.github.com/) system for more information.
+
+## License your work
+When you use Git, you can properly license your work. If you have no clue what license to use, check [Choose an open source license](https://choosealicense.com/)
