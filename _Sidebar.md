@@ -33,6 +33,7 @@ ___
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
 - [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 - [Intermediate modding with c#6](Intermediate-modding-with-c%236)
+- [Intermediate Git & mod management](Intermediate-Git-&-mod-management)
 
 **Advanced Modding Guides**
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
