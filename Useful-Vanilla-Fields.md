@@ -50,6 +50,18 @@ If true, Queen Bee has been killed in that world.
 
 If true, Slime King has been killed in that world.
 
+* downedMechBoss1; bool
+
+The Destroyer
+
+* downedMechBoss2; bool
+
+The Twins
+
+* downedMechBoss3; bool
+
+Skeletron Prime
+
 * downedMechBossAny; bool
 
 If true, at least one mech boss has been killed in that world.
