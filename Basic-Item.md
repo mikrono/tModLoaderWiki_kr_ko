@@ -48,6 +48,13 @@ Value is the number of copper coins the item is worth (aka, cost to buy from a m
     item.value = Item.buyPrice(0, 1, 4, 62);
 
 ## useStyle (int)
+The use style of your item, 
+1 for swinging, 
+2 for drinking, 
+3 act like shortsword, 
+4 for use like life crystal, 
+5 for use staffs or guns
+
 ## useTurn (bool)
 ## autoReuse (bool)
 ## holdStyle
@@ -72,6 +79,8 @@ Value is the number of copper coins the item is worth (aka, cost to buy from a m
 ## creatWall
 
 ## UseSound
+The sound that your item makes when used.
+Ex: `item.UseSound = SoundID.Item1;`
 
 ## damage
 ## knockBack
@@ -84,6 +93,8 @@ Value is the number of copper coins the item is worth (aka, cost to buy from a m
 ## accessory (bool)
 
 ## melee (bool)
+Determines weather or not item  is a melee weapon
+
 ## magic (bool)
 ## ranged (bool)
 ## thrown (bool)
