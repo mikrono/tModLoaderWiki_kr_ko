@@ -58,15 +58,13 @@ The use style of your item,
 ## useTurn (bool)
 ## autoReuse (bool)
 ## holdStyle
-
 ## useAnimation (int)
 ## useTime (int)
 ## reuseDelay
-
 ## consumable (bool)
-
-## rare
-
+## rare (int)
+Range from -1 to 13. 
+Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity
 
 ## maxStack
 
