@@ -49,47 +49,56 @@ Value is the number of copper coins the item is worth (aka, cost to buy from a m
 
 ## useStyle (int)
 The use style of your item, 
-1 for swinging, 
-2 for drinking, 
-3 act like shortsword, 
-4 for use like life crystal, 
-5 for use staffs or guns
+1 for swinging,   
+2 for drinking,   
+3 act like shortsword,   
+4 for use like life crystal,   
+5 for use staffs or guns  
 
 ## useTurn (bool)
 ## autoReuse (bool)
-## holdStyle
+Whether the item is in continuous use while the mouse button is held down.
+
+## holdStyle (int)
 ## useAnimation (int)
+The time span of the using animation for the weapon. Recommended to be the same at useTime as this is only the animation.
+
 ## useTime (int)
-## reuseDelay
+The time span of using the weapon in frames. Note: Terraria runs at 60 frames per second.
+
+## reuseDelay (int)
 ## consumable (bool)
 ## rare (int)
 Range from -1 to 13. 
 Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity
 
-## maxStack
+## maxStack (int)
+The maximum number of items that can be contained within a single stack.
 
-## width
-## height
+## width (int)
+The width of the item's texture in pixels.
+
+## height (int)
+The height of the item's texture in pixels.
+
 ## scale
-
 ## createTile
 ## placeStyle
 ## creatWall
-
 ## UseSound
 The sound that your item makes when used.
 Ex: `item.UseSound = SoundID.Item1;`
 
-## damage
-## knockBack
+## damage (int)
+The base damage inflicted by the item.
+
+## knockBack (int)
+The force of the knock back. Max value is 20. 
 
 ## shoot
 ## shootSpeed
-
 ## noMelee
-
 ## accessory (bool)
-
 ## melee (bool)
 Determines weather or not item  is a melee weapon
 
@@ -100,18 +109,12 @@ Determines weather or not item  is a melee weapon
 The type of damage this item deals, if it is a weapon. Setting more than one is useless.
 
 ## defense
-
 ## crit
-
 ## noUseGraphic
-
 ## useAmmo
 ## ammo
-
 ## mana
-
 ## channel
-
 ## axe
 ## pick
 ## hammer
@@ -121,7 +124,6 @@ These 3 correspond to the power, but axe power is multiplied by 5, so adjust acc
 ## healLife
 ## healMana
 ## buffType
-
 ## expert
 Signifies that this item is an expert mode item.
 
