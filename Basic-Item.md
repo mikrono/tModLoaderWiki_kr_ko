@@ -48,7 +48,7 @@ Value is the number of copper coins the item is worth (aka, cost to buy from a m
     item.value = Item.buyPrice(0, 1, 4, 62);
 
 ## useStyle (int)
-The use style of your item, 
+The use style of your item:   
 1 for swinging,   
 2 for drinking,   
 3 act like shortsword,   
