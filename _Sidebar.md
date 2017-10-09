@@ -13,6 +13,7 @@ ___
 **Getting Started Guides**
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide)
 - [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
+- [Debugging Multiplayer Issues](Debugging-Multiplayer-Issues)
 - [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
 - [Basic tModLoader Modding FAQ](Basic-tModLoader-Modding-FAQ)
 
