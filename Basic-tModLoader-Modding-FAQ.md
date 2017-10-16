@@ -43,6 +43,13 @@ This is because the computer doesn't know what the ItemID class is. You need to 
 ___
 Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://bluemagic123.github.io/tModLoader/html/index.html) to know what value to return.
 
+### C# 6 issues: "An attempt was made to load an assembly from a network location..."
+This is related to Windows blocking downloaded files. What happens is the downloaded tModLoader zip file is marked as "blocked" or "downloaded from the internet", and when you use the default windows unzipping process, all unzipped files are also marked as well. Those files need to be unblocked to properly function. The easiest way to do this is to first unblock the tModLoader download and then install tModLoader again. Do this by pressing selecting the zip file in the file explorer and pressing the shortcut "alt-enter" or right clicking on the file and selecting Properties. Then simply click unblock and then press Ok. Windows 7 and 8 might look different:  
+
+![](https://i.imgur.com/5IaE5U8.png)
+
+Since installing over a previous installation is very easy, this is the recommended process. If you'd rather do it manually, open your Terraria install folder and view the properties of all the files tModLoader installs and unblock each file. This includes the Terraria.exe and all the files in the Mod Compile folder.
+
 ### TileObjectData.AddTile Issues
 ___
 Make sure you call `TileObjectData.AddTile` after all of your statements regarding `TileObjectData.newTile`. Misordered code involving these statements will break Terraria.
