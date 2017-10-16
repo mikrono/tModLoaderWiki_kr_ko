@@ -8,6 +8,9 @@ Solution: You didn't unzip the files prior to installation. Don't know how to un
 Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file.
 
 # Load Mod
+### "Failed to resolve assembly: 'Terraria, Version=1.3.5.1, Culture=neutral, PublicKeyToken=null'"
+This seems to happen when users rename the tModLoader exe to something other than Terraria.exe. Rename it back to Terraria.exe and it should still work.
+
 ### "A Mod is crashing when I try to open tModLoader"
 Open up the tModLoader save directory and delete the offending .tmod file: `%UserProfile%\Documents\My Games\Terraria\ModLoader\Mods` (Windows)
 
