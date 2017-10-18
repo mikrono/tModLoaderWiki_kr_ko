@@ -17,7 +17,7 @@ Open up the tModLoader save directory and delete the offending .tmod file: `%Use
 # Players/Worlds
 ### "HELP, all my players and worlds are gone!"
 tModLoader saves are kept separate from vanilla Terraria saves. You can copy back and forth between save locations, but be aware that you will lose Modded Tile and Items if you use tModloader worlds/characters in vanilla.
-Solutions: Copy from `%UserProfile%\Documents\My Games\Terraria` to `Documents\My Games\Terraria\Modding` (Windows)
+Solutions: Copy from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\ModLoader` (Windows)
 
 # Mod Browser
 ### "Mod Browser Offline", "I can't download mods"
