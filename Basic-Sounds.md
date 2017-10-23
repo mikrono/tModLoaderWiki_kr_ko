@@ -107,6 +107,12 @@ For something like Harp, consult source code.
 Add `using Terraria.ID;` to the top of your source file.
 ### No sound plays with custom sounds
 Check the spelling and try again.
+### "Ensure that the specified stream contains valid PCM mono or stereo wave data."
+Run your .wav through [Audacity](http://www.audacityteam.org/download/) using `File->Export Audio->Wav (Microsoft) signed 16-bit PCM`. For reference, the following are the allowed parameters for Wav files:
+1. Must be a PCM wave file
+2. Can only be mono or stereo
+3. Must be 8 or 16 bit
+4. Sample rate must be between 8,000 Hz and 48,000 Hz
 
 ## Relevant References
 * [Vanilla SoundIDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Sound-IDs)
