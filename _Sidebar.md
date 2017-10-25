@@ -39,6 +39,7 @@ ___
 **Advanced Modding Guides**
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
 - [Advanced Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
+- [Advanced Angular velocity and Linear velocity](Advanced-Angular-velocity-and-Linear-velocity)
 
 **Expert Modding Guides**
 - [Expert Guide Prerequisites](Expert-Prerequisites)
