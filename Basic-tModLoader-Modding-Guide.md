@@ -33,6 +33,10 @@ Continue reading to learn more about tModLoader and how to get better.
 
 Firstly, they are technically not hooks. We simply call them hooks because it is easy. A 'hook' is a function you can use as a modder. Which hooks are available depends on the class you're working in. For example your Mod class has a **[Load Hook](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html#afbcbdc176a60f3da809842f683ff2e75)**, which is a function special to the Mod class. Every one of these functions is `virtual`, this means the function has a basic implementation but can be overridden by the modder if desired. This means when you want to use a hook, you _override_ it, this is why the word `virtual` is replaced with `override`. Since the _virtual_ (partial) implementation is overridden, that implementation will be lost. To see the standard implementation of hooks you should see the **[source documentation](http://blushiemagic.github.io/tModLoader/html/annotated.html)**.
 
+# How are modded classes setup?
+
+tModLoader provides a number of classes you can use to create your own mod content. You will base your own classes off of these by using what's called `class derivation` or `class inheritance`. To keep this simple, it basically means your class will use one of ours as its base. For example, your items will be based on ModItem: `MyItemClass : ModItem`, where the `: ModItem` denotes it inherits from the ModItem class, which is present in the Terraria.ModLoader namespace. This means everything we made for ModItem becomes available to you in your class, such as the [SetDefaults](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a6d9fbbb1dec7e25959a345a9e4f78428) hook. Note that you can only derive from one class, so a ModItem cannot be a ModProjectile and so forth. 
+
 # Learning from Example Mod
 
 Example Mod is a mod made by the tModLoader developers to show off various modding capabilities. It would be wise to enable Example Mod and play around with it for a while. Use a mod like [Cheat Sheet](https://github.com/JavidPack/CheatSheet) to spawn in its various items and find something it does that you want to learn. Next, download the [Example Mod sourcecode](https://github.com/bluemagic123/tModLoader/releases) and place it in the Mod Sources folder as you did with TutorialMod. Find the thing you are interested and try to understand it. Hopefully it is easy to understand. You can also change things in Example Mod and build Example Mod in game.
@@ -58,3 +62,20 @@ If you are new to modding, you are probably also new to programming itself and p
 ## Slowly learning
 
 There is many resources available so you can become a better modder. First of all, this wiki. On the right side of this page you can find the wiki menu, which houses links to various different tutorials and guides that you can use. These are all separated into their own difficulty level, from basic being the easiest and expert being the hardest. Secondly, a great source of information is the [modding section on TCF](https://forums.terraria.org/index.php?forums/general-mod-discussion.121/). And lastly, a variety of helpful tools and guides is available on the [homepage](Home) of this wiki.
+
+## Modding tips and guidelines
+### Naming convention
+Internal names do not support whitespaces, this means you need to name `My Super Sword` without spaces. People commonly just omit the spaces: `MySuperSword` but sometimes you'll also see `My_Super_Sword`. Remember to use short and descriptive names; if you are making a sword it is likely you should use 'Sword' in the name.
+
+### Keeping code tidy and organized
+Though this is a more advanced topic, it is useful to make sure you abstract your code properly. More on this in the code abstraction guide. For beginners, take this tip: after you've programmed something and it is finished, look at your code and ask yourself what is happening in every place. Now you should ask if the code is tidy. Try to find repeating parts of code and give it a dedicated method. Next, try to separate parts of your code by their logic and give them their own method as well, providing a useful descriptive name (see the previous tip) so it becomes easy to identify what that part of code is doing.
+
+### Comment your code
+It is not always obvious what code is doing, or sometimes you wish to make a note for yourself or other modders working with your code. You can make single line comments like this `// this is a comment`, or you can make entire comment blocks like this: 
+```cs
+/*
+ * This is a comment block
+ * And has multiple lines!
+*/
+```
+For beginners, it is highly advised to add as many comments as possible, even for things you think you already understand well. This will help you in the long run, you might come back to code months later and have forgotten how it works. For experienced modders, the challenge is to use as little comments as possible; your code should be evident in its behavior for others just by looking at it.
