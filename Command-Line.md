@@ -32,7 +32,11 @@ Make a shortcut to the tModLoader exe file by either copy and then paste shortcu
 See picture:
 ![](https://i.imgur.com/N8FM1ba.png)
 ## Dedicated Host
-Edit the server config file that the dedicated host is using. Not every host is the same. You'll need to make sure that tModLoaderServer is being launched with either the command line argument or the server config line for the path to Mods folder. If you wish to use a Mods folder in the same folder as the tModLoaderServer executable, I belive you can use a relative path like "modpath=./Mods".
+Edit the server config file that the dedicated host is using. Not every host is the same. You'll need to make sure that tModLoaderServer is being launched with either the command line argument or the server config line for the path to Mods folder. If you wish to use a Mods folder in the same folder as the tModLoaderServer executable, I believe you can use a relative path like "modpath=./Mods". You'll also need to set savedirectory since some mods store mod specific data in the save directory. (savedirectory is a command line only parameter.) Add `-savedirectory ./` to the command that launches the server, which can be found usually on the website for your host.
+
+### Dedicated Hosts known to work
+GameServers - Add `-savedirectory ./` to server command line
+
 ## Visual Studio
 ### Build/Edit/Test mods
 Setting the Post Build event to `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"` will allow you to easily build and run your mod in Edit and Continue mode, facilitating efficient tweaking, modding, and testing. Add -skipselect so you don't have to go through the menus for an even easier time. See [Developing with Visual Studio](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio) for more information.
