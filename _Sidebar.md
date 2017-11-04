@@ -68,7 +68,7 @@ ___
 - [PythonGB](https://www.youtube.com/user/PythonGB)
 
 ___
-**Vanilla Refereces**
+**Vanilla References**
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
 - [Vanilla Buff IDs](Vanilla-Buff-IDs)
 - [Vanilla Item Field Values](Vanilla-Item-Field-Values)
