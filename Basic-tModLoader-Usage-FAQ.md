@@ -19,6 +19,12 @@ This seems to happen when users rename the tModLoader exe to something other tha
 ### "A Mod is crashing when I try to open tModLoader"
 Open up the tModLoader save directory and delete the offending .tmod file: `%UserProfile%\Documents\My Games\Terraria\ModLoader\Mods` (Windows)
 
+### OutOfMemoryException
+This error means that tModLoader does not have enough RAM to load all the mods that you are trying to load. Large mods that add lots of items are the main culprit. You may have to cut down on the number of large mods you are trying to load at the same time. You can also try loading Small or Medium worlds instead of Large. Another possibility is that you have other large 32 bit programs running. If you can close them, do so. Press Ctrl+Shift+Escape to bring up the Task Manager. In the Task Manager's Processes tab, look for processes that take up a large amount of memory that also have "*32" at the end of their name. Anything taking more than 100,000 K is a good candidate. Also make sure that you are on 64 bit Windows and that you actually have more than 4 GB of RAM.
+
+Technical Explanation: 
+On Windows, Terraria is a 32 bit process, meaning it has to share up to 4GB of Ram with all other 32 bit programs that are running. Since this memory is shared, any way you can free up memory helps. Note that the so-called "4GB" patch is already applied, do not tell people to apply it, it does nothing. Also, if you are on 32 bit Windows, there isn't much you can do.
+
 # Players/Worlds
 ### "HELP, all my players and worlds are gone!"
 tModLoader saves are kept separate from vanilla Terraria saves. You can copy back and forth between save locations, but be aware that you will lose Modded Tile and Items if you use tModloader worlds/characters in vanilla.
