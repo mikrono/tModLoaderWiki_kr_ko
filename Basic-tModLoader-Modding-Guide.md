@@ -35,7 +35,7 @@ Firstly, they are technically not hooks. We simply call them hooks because it is
 
 # How are modded classes setup?
 
-tModLoader provides a number of classes you can use to create your own mod content. You will base your own classes off of these by using what's called `class derivation` or `class inheritance`. To keep this simple, it basically means your class will use one of ours as its base. For example, your items will be based on ModItem: `MyItemClass : ModItem`, where the `: ModItem` denotes it inherits from the ModItem class, which is present in the Terraria.ModLoader namespace. This means everything we made for ModItem becomes available to you in your class, such as the [SetDefaults](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a6d9fbbb1dec7e25959a345a9e4f78428) hook. Note that you can only derive from one class, so a ModItem cannot be a ModProjectile and so forth. 
+tModLoader provides a number of classes you can use to create your own mod content. You will base your own classes off of these by using what's called `class derivation` or `class inheritance`. To keep this simple, it basically means your class will use one of ours as its base. For example, your items will be based on ModItem: `MyItemClass : ModItem`, where the `: ModItem` denotes it inherits from the ModItem class, which is present in the Terraria.ModLoader namespace. (if you come from Java, this is the same as `extends ModItem`)This means everything we made for ModItem becomes available to you in your class, such as the [SetDefaults](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a6d9fbbb1dec7e25959a345a9e4f78428) hook. Note that you can only derive from one class, so a ModItem cannot be a ModProjectile and so forth. 
 
 # Learning from Example Mod
 
@@ -48,7 +48,7 @@ If you can handle modifying simple things in Example Mod or Tutorial Mod, you sh
 If you are new to modding, you are probably also new to programming itself and possibly the c# language. It is recommended to start with easy things and work your way up the ladder of difficulty. One of the easiest things to do would be a sword that can be swung to deal damage as shown above, and one of the hardest would be to create a fully functional boss fight. Here is a few suggestions to get started:
 * First, try to familiarize yourself with how tModLoader works. Read the section 'How do tModLoader 'hooks' work?'
 * Next, try modifying the tutorial sword to deal more damage, have more knockback, faster speed etc. You can also make it shoot things by setting `item.shoot`, and control the speed with `item.shootSpeed`
-* You need to understand that modding is programming, it is c# and it is being familiar with the vanilla code. This means you should definitely follow free online courses to get a better understanding of the c# language or programming itself. A useful resource might also be the [Quick Terraria-specific C# crash course](https://docs.google.com/document/d/1xRz3kFNbewb8DI29AKXuyi6O327IcxlgihZ7sdK_IuE/edit?usp=sharing). To get more familiar with the vanilla code, use our vanilla description pages (WIP)
+* You need to understand that modding is programming, it is c# and it is being familiar with the vanilla code. This means you should definitely follow free online courses to get a better understanding of the c# language or programming itself. A useful resource might also be the [Quick Terraria-specific C# crash course](https://docs.google.com/document/d/1xRz3kFNbewb8DI29AKXuyi6O327IcxlgihZ7sdK_IuE/edit?usp=sharing). To get more familiar with the vanilla code, use our [Advanced Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption) guide.
 * If you feel confident enough, try making your own projectile and having your sword interact with it.
 * With more confidence, you can start trying other things, such as making an enemy NPC.
 
@@ -65,17 +65,17 @@ There is many resources available so you can become a better modder. First of al
 
 ## Modding tips and guidelines
 ### Naming convention
-Internal names do not support whitespaces, this means you need to name `My Super Sword` without spaces. People commonly just omit the spaces: `MySuperSword` but sometimes you'll also see `My_Super_Sword`. Remember to use short and descriptive names; if you are making a sword it is likely you should use 'Sword' in the name.
+Internal names do not support whitespaces, this means you need to name `My Super Sword` without spaces. People commonly just omit the spaces: `MySuperSword` but sometimes you'll also see `My_Super_Sword`. The former is called `pascal case` and the latter is called `snake case` Remember to use short and descriptive names; if you are making a sword it is likely you should use 'Sword' in the name. Naming convention mostly depends on who your work with/for (if you are employed etc.), if you work on your own it is obviously down to your personal preference. Good to note that `camel case` is similar to `pascal case`, but often you'll find with camel case that the first letter may be lowercase or capitalized and each subsequent concatenated word is capitalized such as backColor and timeUtc. 
 
 ### Keeping code tidy and organized
-Though this is a more advanced topic, it is useful to make sure you abstract your code properly. More on this in the code abstraction guide. For beginners, take this tip: after you've programmed something and it is finished, look at your code and ask yourself what is happening in every place. Now you should ask if the code is tidy. Try to find repeating parts of code and give it a dedicated method. Next, try to separate parts of your code by their logic and give them their own method as well, providing a useful descriptive name (see the previous tip) so it becomes easy to identify what that part of code is doing.
+Though this is a more advanced topic (part of design patterns, which might be covered in expert tutorials later), it is useful to make sure you abstract your code properly. More on this in the code abstraction guide. For beginners, take this tip: after you've programmed something and it is finished, look at your code and ask yourself what is happening in every place. Now you should ask if the code is tidy. Try to find repeating parts of code and give it a dedicated method. Next, try to separate parts of your code by their logic and give them their own method as well, providing a useful descriptive name (see the previous tip) so it becomes easy to identify what that part of code is doing. This is a brief summary of a part of code abstraction.
 
 ### Comment your code
 It is not always obvious what code is doing, or sometimes you wish to make a note for yourself or other modders working with your code. You can make single line comments like this `// this is a comment`, or you can make entire comment blocks like this: 
 ```cs
 /*
  * This is a comment block
- * And has multiple lines!
+ * And spans multiple lines!
 */
 ```
-For beginners, it is highly advised to add as many comments as possible, even for things you think you already understand well. This will help you in the long run, you might come back to code months later and have forgotten how it works. For experienced modders, the challenge is to use as little comments as possible; your code should be evident in its behavior for others just by looking at it.
+For beginners, it is highly advised to add as many comments as possible, even for things you think you already understand well. This will help you in the long run, you might come back to code months later and have forgotten how it works. For experienced modders, the challenge is to use as little comments as possible; your code should be evident in its behavior for others just by looking at it. Note many languages use different notations for comments, such as `::` and `#`, for c# use what's shown above.
