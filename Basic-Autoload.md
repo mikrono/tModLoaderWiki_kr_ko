@@ -7,7 +7,7 @@ This is the pattern:
 Take the Mod Sources path: 
 `C:\Documents\My Games\Terraria\ModLoader\Mod Sources`
 
-Add the Namespace of the class, replacing '.' with '\': 
+Add the Namespace of the class, replacing '.' with '\\': 
 `namespace ExampleMod.NPCs`
 `C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod\NPCs`
 
