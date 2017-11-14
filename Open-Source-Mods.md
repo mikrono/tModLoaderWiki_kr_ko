@@ -17,8 +17,10 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
-* [Tremor](https://github.com/Jofairden/Tremor) -- No comment.
+* [Tremor](https://github.com/Jofairden/Tremor) -- Please be advised that the code in Tremor is mostly very sub-optimal, though slowly being improved by Jofairden and collaborators. If you are looking for example, try to use Tremor as a last resort instead of a first
 * [Enigma](https://github.com/Laugic/Laugicality) -- Adds a new level-up system, a few bosses, weapons, and accessories. 
+* [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
+
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
@@ -35,7 +37,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
 * [Eternal Mods](https://github.com/Eternal-Team) -- Tile Entities, UI and a bunch of framework stuff.
 * [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
-* [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support (FK's Mod Settings Configurator))
+* [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support with FK's Mod Settings Configurator)
 * [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual
 * [The Deconstructor](https://github.com/Jofairden/TheDeconstructor) -- Deconstruct _any_ item back into its recipe (showcases custom UI, sound effects and more)
 * [hamstar's mods](https://github.com/hamstar0) -- A set of 11 open source mods adding significant original gameplay elements or minor content additions.
