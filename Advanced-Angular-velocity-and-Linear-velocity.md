@@ -20,18 +20,18 @@ In physics, the angular velocity of an object is the rate of change of its angul
 We can use angular velocity to accurately spin an object by its velocity, when implemented well it will work perfectly. You can also in fact spin non spherical objects by angular velocity if you wanted to, but you'd have to use an imaginable sphere as the base. Because the outcome is considered a scalar, it can be easily applied in any sort of speed.
 
 ## Setting up
-Before we start spinning, we should setup a helper property for our angular velocity. Remember that our angular velocity is our revolutions per second, meaning the total amount of spins around the center per second. To relate this to our velocity, we need to find a way to make use of our velocity vector. We can do this by taking the magnitude (length) of our velocity. The magnitude is basically the 'size' of our vector, which is a scalar. If we multiply our magnitude with the total angular displacement of a full spin, we end up with: `2π * magnitude`. This defines our angular speed. Let's implement: (note that this showcases c#7 getters)
+Before we start spinning, we should setup a helper property for our angular velocity. Remember that our angular velocity is our revolutions per second, meaning the total amount of spins around the center per second. To relate this to our velocity, we need to find a way to make use of our velocity vector. We can do this by taking the magnitude (length) of our velocity. The magnitude is basically the 'size' of our vector, which is a scalar. If we multiply our magnitude with the total angular displacement of a full spin, we end up with: `2π * magnitude`. This defines our angular speed. Let's implement: (_note that this showcases c#7 getters_)
 ```cs
 double AngularVelocity
 {
-  get => Math.PI * 2 * this.velocity.length();
+  get => Math.PI * 2 * velocity.Length;
 }
 ```
 Because Terraria has useful helpers, you can replace 2π with `MathHelper.TwoPi` for a constant value, which is much faster compared to continuously calculating: 
 ```cs
 double AngularVelocity
 {
-  get => MathHelper.TwoPi * this.velocity.length();
+  get => MathHelper.TwoPi * velocity.Length;
 }
 ```
 
