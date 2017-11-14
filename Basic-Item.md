@@ -84,7 +84,7 @@ The height of the item's texture in pixels.
 ## scale
 ## createTile
 ## placeStyle
-## creatWall
+## createWall
 ## UseSound
 The sound that your item makes when used.
 Ex: `item.UseSound = SoundID.Item1;`
