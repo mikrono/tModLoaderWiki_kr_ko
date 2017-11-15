@@ -1,4 +1,4 @@
-# Basic NPC Drops / NPCLoot
+# Basic NPC Drops and Loot
 This guide will teach the basics of dropping items when enemies are killed. 
 
 ## Basics
