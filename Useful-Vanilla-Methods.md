@@ -5,6 +5,10 @@ This is a collection of vanilla methods that are useful when modding. This list 
 Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. 
 Example: `Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));`
 
+### public static int NewItem(Rectangle rectangle, int Type, int Stack = 1, bool noBroadcast = false, int prefixGiven = 0, bool noGrabDelay = false, bool reverseLookup = false)
+This alternate method signature can simplify code.  
+Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
+
 ## Projectile  
 ### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
