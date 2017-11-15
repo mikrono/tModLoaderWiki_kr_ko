@@ -22,6 +22,7 @@ ___
 - [Basic Guide Prerequisites](Basic-Prerequisites)
 - [Basic Item](Basic-Item)
 - [Basic NPC Spawning](Basic-NPC-Spawning)
+- [Basic NPC Drops/NPCLoot](Basic-NPC-DropsLoot)
 - [Basic Autoload](Basic-Autoload)
 - [Basic Recipes](Basic-Recipes)
 - [Basic Glowmasks](Basic-glowmask-guide)
