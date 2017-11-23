@@ -23,10 +23,9 @@ For drawing your glowmask on top of the original sprite, you will want to use th
 ```csharp
 public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float  scale, int whoAmI) 	
 {
-        Texture2D texture = mod.GetTexture("items/MyItem_Glowmask");
 	spriteBatch.Draw
 	(
-		texture,
+		mod.GetTexture("items/MyItem_Glowmask"),
 		new Vector2
 		(
 			item.position.X - Main.screenPosition.X + item.width * 0.5f,
