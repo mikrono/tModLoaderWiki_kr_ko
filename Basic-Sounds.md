@@ -14,19 +14,20 @@ Knowing that there are 2 separate ways to specify a particular sound is good to 
 
 We can specify sounds for when certain things happen in the game. We can specify Item.UseSound, NPC.HitSound, and NPC.DeathSound. We will do these in ModItem.SetDefaults and ModNPC.SetDefaults. Below are some examples:
 
-    public override void SetDefaults()
-    {
-        // other code
-        item.UseSound = SoundID.Item1;  // sword swing sound
-    }
+```c#
+public override void SetDefaults()
+{
+	// other code
+	item.UseSound = SoundID.Item1;  // sword swing sound
+}
 
-    public override void SetDefaults()
-    {
-        // other code
-        npc.HitSound = SoundID.NPCHit24; // Giant Tortoise hit sound
-        npc.DeathSound = SoundID.NPCDeath4; // Bat death sound
-    }
-
+public override void SetDefaults()
+{
+	// other code
+	npc.HitSound = SoundID.NPCHit24; // Giant Tortoise hit sound
+	npc.DeathSound = SoundID.NPCDeath4; // Bat death sound
+}
+```
 ModTiles have a ModTile.soundType and ModTile.soundStyle that specify the sound that is played when the tile is hit. Note that these aren't LegacySoundStyle objects, but rather ints. 
 
 ## How to listen to vanilla sounds and find the one I want?
@@ -52,18 +53,23 @@ Not all sounds played in Terraria are just UseSound, HitSound, or DeathSound dat
 ## How to play sounds manually?
 There are several methods we can use with various parameters. Read above for the 2 ways sounds are represented. Here are the method signatures, all in the Terraria.Main class:
 
-    public static SoundEffectInstance PlaySound(LegacySoundStyle type, Vector2 position)
-    public static SoundEffectInstance PlaySound(LegacySoundStyle type, int x = -1, int y = -1)
-    public static SoundEffectInstance PlaySound(int type, int x = -1, int y = -1, int Style = 1, float volumeScale = 1f, float pitchOffset = 0f)
+```c#
+public static SoundEffectInstance PlaySound(LegacySoundStyle type, Vector2 position){}
+public static SoundEffectInstance PlaySound(LegacySoundStyle type, int x = -1, int y = -1){}
+public static SoundEffectInstance PlaySound(int type, int x = -1, int y = -1, int Style = 1, float volumeScale = 1f, float pitchOffset = 0f){}
+```
 
 The simplest way to play vanilla sounds is as follows:
-
-    Main.PlaySound(SoundID.Item59); // piggy bank oink
+```c#
+Main.PlaySound(SoundID.Item59); // piggy bank oink
+```
 
 You will notice that we omit the optional parameters of the 2nd method signature. If that confuses you, Google it. What even are x and y? x and y represent the position in world space that the sound should play. Most of the time, however, we want to specify that. Here are a couple examples of ways to do that:
 
-    Main.PlaySound(SoundID.Item56, player.Center.X); // Boing
-    Main.PlaySound(SoundID.Item56, (int)player.Center.X, (int)player.Center.Y); // Boing
+```c#
+Main.PlaySound(SoundID.Item56, player.Center.X); // Boing
+Main.PlaySound(SoundID.Item56, (int)player.Center.X, (int)player.Center.Y); // Boing
+```
 
 Here we are using the 1st and 2nd method signatures, this time providing either a valid Vector2 (player.Center) or 2 ints (X and Y) as parameters. By passing in a position, we can give our sounds a position which will affect the pan and volume appropriately.
 
@@ -79,28 +85,32 @@ Replace LegacySoundStyles in method arguments from SoundID with mod.GetLegacySou
 Replace style with the results from mod.GetSoundSlot in cases where you put both type and style.
 
 Examples:
-
-    Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/WatchOut"));
-    Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
-    item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
-    npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
-    Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
-
+```c#
+Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/WatchOut"));
+Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
+item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
+npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
+Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
+```
 ## Additional Tricks
 
 ### Adjust Volume
 We can use either LegacySoundStyle methods or PlaySound parameters to affect volume:
-    
-    Main.PlaySound(SoundID.Item59.WithVolume(.5f));
-    Main.PlaySound(2, -1, -1, 59, .5f);
+```c#  
+Main.PlaySound(SoundID.Item59.WithVolume(.5f));
+Main.PlaySound(2, -1, -1, 59, .5f);
+```
 ### Adjust Pitch
 Same for random pitch:
+```c#  
+Main.PlaySound(SoundID.Item59.WithPitchVariance(.2f)); // randomly up or down at most .2f pitch
+```
 
-    Main.PlaySound(SoundID.Item59.WithPitchVariance(.2f)); // randomly up or down at most .2f pitch
 For specific pitch:
-    
-    Main.PlaySound(2, -1, -1, 59, 1f, -.2f); // down a few notes
-For something like Harp, consult source code.
+```c#
+Main.PlaySound(2, -1, -1, 59, 1f, -.2f); // down a few notes
+```
+For something like Harp, consult the source code.
 
 ## Common Errors
 ### The name SoundID doesn't exist in the current context
