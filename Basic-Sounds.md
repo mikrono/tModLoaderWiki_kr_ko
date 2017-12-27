@@ -28,6 +28,13 @@ public override void SetDefaults()
 	npc.DeathSound = SoundID.NPCDeath4; // Bat death sound
 }
 ```
+We can also use sounds other than Item, NPCHit, or NPCDeath sounds if you create a LegacySoundStyle object:
+```c#
+	item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.Coins, 0); // Coin sound. SoundID.Coins is equal to 18.
+	item.UseSound = SoundID.DD2_MonkStaffSwing; // This LegacySoundStyle already exists. Check SoundID.cs for more.
+	// or
+	npc.DeathSound = new Terraria.Audio.LegacySoundStyle(SoundID.Splash, 0); // Splash
+```
 ModTiles have a ModTile.soundType and ModTile.soundStyle that specify the sound that is played when the tile is hit. Note that these aren't LegacySoundStyle objects, but rather ints. 
 
 ## How to listen to vanilla sounds and find the one I want?
@@ -64,10 +71,10 @@ The simplest way to play vanilla sounds is as follows:
 Main.PlaySound(SoundID.Item59); // piggy bank oink
 ```
 
-You will notice that we omit the optional parameters of the 2nd method signature. If that confuses you, Google it. What even are x and y? x and y represent the position in world space that the sound should play. Most of the time, however, we want to specify that. Here are a couple examples of ways to do that:
+You will notice that we omit the optional parameters of the 2nd method signature. If that confuses you, Google it. What even are x and y? x and y represent the position in world space that the sound should play. With -1, the default values, the sound will play centered on the screen. Most of the time, however, we want to specify that. Here are a couple examples of ways to do that:
 
 ```c#
-Main.PlaySound(SoundID.Item56, player.Center.X); // Boing
+Main.PlaySound(SoundID.Item56, player.Center); // Boing
 Main.PlaySound(SoundID.Item56, (int)player.Center.X, (int)player.Center.Y); // Boing
 ```
 
@@ -128,5 +135,5 @@ Run your .wav through [Audacity](http://www.audacityteam.org/download/) using `F
 * [Vanilla SoundIDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Sound-IDs)
 
 ## Not covered in Basic level
-ModSound -- A way to allow overlapping sounds and other advanced things.
+ModSound -- A way to allow overlapping sounds and other advanced things.    
 Music -- Music is handled in a separate manner.
