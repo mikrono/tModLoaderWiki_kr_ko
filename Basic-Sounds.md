@@ -30,10 +30,9 @@ public override void SetDefaults()
 ```
 We can also use sounds other than Item, NPCHit, or NPCDeath sounds if you create a LegacySoundStyle object:
 ```c#
-	item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.Coins, 0); // Coin sound. SoundID.Coins is equal to 18.
-	item.UseSound = SoundID.DD2_MonkStaffSwing; // This LegacySoundStyle already exists. Check SoundID.cs for more.
-	// or
-	npc.DeathSound = new Terraria.Audio.LegacySoundStyle(SoundID.Splash, 0); // Splash
+item.UseSound = new Terraria.Audio.LegacySoundStyle(SoundID.Coins, 0); // Coin sound. SoundID.Coins is equal to 18.
+item.UseSound = SoundID.DD2_MonkStaffSwing; // This LegacySoundStyle already exists. Check SoundID.cs for more.
+npc.DeathSound = new Terraria.Audio.LegacySoundStyle(SoundID.Splash, 0); // Splash
 ```
 ModTiles have a ModTile.soundType and ModTile.soundStyle that specify the sound that is played when the tile is hit. Note that these aren't LegacySoundStyle objects, but rather ints. 
 
