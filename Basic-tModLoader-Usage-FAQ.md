@@ -12,6 +12,10 @@ Solution: You didn't run the installer, or you are trying to run tModLoader from
 Solution: You tried to launch tModLoader 0.10+ with Terraria 1.3.4.4 or earlier files. Please use Steam to Verify game integrity (so that your Terraria is updated to 1.3.5+) and then reinstall the latest tModLoader.
 [Video of how to verify game integrity](https://gfycat.com/PlaintiveFickleCamel)
 
+### System.EntryPointNotFoundException: Unable to find an entry point named 'InitSafe' in DLL 'CSteamworks'.
+![](https://i.imgur.com/rZoXMGi.png)  
+Solution: Same as above. (Don't try to install other things such as other stand alone mods.)
+
 # Load Mod
 ### "Failed to resolve assembly: 'Terraria, Version=1.3.5.1, Culture=neutral, PublicKeyToken=null'"
 This seems to happen when users rename the tModLoader exe to something other than Terraria.exe. Rename it back to Terraria.exe and it should still work.
