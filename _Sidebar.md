@@ -6,7 +6,7 @@ ___
 - [Information: build.txt](build.txt)
 - [Information: description.txt](description.txt)
 - [Developing with Visual Studio](Developing-with-Visual-Studio)
-- [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-526#post-1001200)
+- [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-525#post-1001200)
 - [Mod Browser](Mod-Browser)
 
 ___
