@@ -14,7 +14,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-```
+```c#
 namespace ModNamespaceHere
 {
     public class NameHere : ModProjectile
