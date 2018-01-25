@@ -40,3 +40,18 @@ namespace ModNamespaceHere
     }
 }
 ```
+
+# SetDefaults
+
+Setting variables in SetDefaults can allow you to develop the identity of a projectile.
+## width/height
+
+The dimensions of the projectile in pixels.
+
+## friendly/hostile
+
+Whether the projectile is friendly or hostile. Set the intended value to `true`.
+
+## melee/ranged/magic/thrown
+
+The damage type of the projectile. Used to calculate crit and the like. Set the intended value to `true`
