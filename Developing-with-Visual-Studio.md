@@ -63,6 +63,10 @@ You may now edit your mod's code while tModLoader is running by pressing Ctrl+Al
 ![](http://i.imgur.com/HvodIHV.png)
 2. Check that your .cs files are actually in the project, and that you are opening the project not just individual .cs files. You can use the show all files toggle and then right click -> include in project to add missing source files to the project.    
 ![](http://i.imgur.com/dNMyROY.png)
+3. Make sure you aren't opening .cs files from the File Explorer. You should always open the .csproj (or .sln) file and then once Visual Studio is open, open your .cs source files from the Solution Explorer. If you don't, you'll notice that the top left area says Miscellaneous Files, meaning the file doesn't belong to a project. If you see Miscellaneous Files, check step 2 again.    
+![](https://i.imgur.com/bw41Wt4.png)    
+After fixing:    
+![](https://i.imgur.com/RY456Nb.png)
 
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
 You can download the dll file from [here](https://github.com/blushiemagic/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
