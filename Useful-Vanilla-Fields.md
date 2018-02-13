@@ -74,6 +74,14 @@ If true, Plantera has been defeated in that world.
 
 If true, the Golem has been defeated in that world.
 
+* downedAncientCultist; bool
+
+If true, the Lunatic Cultist has been defeated in that world.
+
+* downedMoonlord; bool
+
+If true, the Moon Lord has been defeated in that world.
+
 * downedGoblins; bool
 * downedFrost; bool
 * downedPirates; bool
