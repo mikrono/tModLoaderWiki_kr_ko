@@ -67,12 +67,14 @@ string s = $"Hello {user.name}, how are you on {DateTime.Now}?";
 ```
 ## Long list of issues when compiling with c#6
 
-### Before you move on, read this!
-You need to include System.Core in some way or form in your code to avoid a bug. Paste this code somewhere and it should work:
-```csharp
-using System.Linq;
+### !! IMPORTANT !! Possible issues
+**Note: most, if not all, of these issues have been solved since [v0.10.1.2](https://github.com/blushiemagic/tModLoader/releases/tag/v0.10.1.1). If for some reason you are still on an older version, you can see below for various issues and possible fixes.**
 
-public static void RedundantFunc()
+You need to include System.Core in some way or form in your code to avoid a bug.
+```csharp
+using System.Linq; // explicity use
+
+public static void RedundantFunc() // try something like this if the using directive isn't enough
 {
         var something = System.Linq.Enumerable.Range(1, 10);
 }
