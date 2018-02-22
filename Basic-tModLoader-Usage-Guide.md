@@ -21,7 +21,7 @@ Use the Mods menu to set the mods you wish to use, then click reload.
 
 # Playing with non-tModLoader users
 tModloader will not connect to non-tModLoader Terraria servers
-If you would like to play "vanilla" Terraria, you should have a "Terraria v1.3.4.4.exe" in `C:\Program Files (x86)\Steam\steamapps\common\Terraria` (The path can be different depending on where you installed Terraria) You can launch this to play vanilla. Make a desktop shortcut if you wish for easy access. Mac/Linux users need to manually rename the .exe files for the time being.
+If you would like to play "vanilla" Terraria, you should have a "Terraria v1.3.5.3.exe" in `C:\Program Files (x86)\Steam\steamapps\common\Terraria` (The path can be different depending on where you installed Terraria) You can launch this to play vanilla. Make a desktop shortcut if you wish for easy access. Mac/Linux users need to manually rename the .exe files for the time being.
 
 # Server
 For the most part, launching a tModLoader server is the exact same as launching a Terraia server. 
