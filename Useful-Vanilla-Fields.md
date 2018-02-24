@@ -209,6 +209,10 @@ The speed at which the player slowdowns when they stop moving.
 
 The current filled slots of minions. Set via projectiles flagged as minion. Some minion projectiles only count as half a minion slot (think Retanimini and Spazmamini).
 
+* statDefense; int
+
+The player's defense.
+
 * statLifeMax; int
 
 The base amount of max health. Do not change it unless you know what you're doing, Use statLifeMax2 instead.
