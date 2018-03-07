@@ -105,7 +105,7 @@ If the named NPC has been rescued in this world yet.
 
 Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
 
-* endurance; float
+* endurance; float (%)
 
 Damage reduction modifier. 0 means no reduction, 1 is max reduction (minimum of 1 damage taken).
 
