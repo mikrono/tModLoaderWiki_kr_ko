@@ -7,6 +7,7 @@ Index|
 [NPC Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#npc-fields)|
 [Player Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#player-fields)|
 [Projectile Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#projectile-fields)|
+[WorldGen Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#worldgen-fields)|
 
 # Item Fields
 
@@ -27,6 +28,10 @@ If true, means that the world is in expert mode.
 * hardMode; bool
 
 If true, the world is currently in hardmode.
+
+* rain; bool
+
+If true, is is currently raining in the world.
 
 # NPC Fields
 
@@ -260,3 +265,9 @@ Determines the player's max flight time with wings when not mounted. Defaults to
 * ignoreWater; bool
 
 The projectile will not be affected by water.
+
+# Worldgen Fields
+
+* crimson; bool
+
+If true, crimson was generated for the world. Check if false for corruption instead.
