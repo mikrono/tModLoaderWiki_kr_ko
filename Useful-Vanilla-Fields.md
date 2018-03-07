@@ -119,7 +119,7 @@ Set to 0 to prevent blinking when immune.
 
 * lifeRegen; int
 
-Increases the player's life regen.
+Increases the player's life regen. The number is applied over 2 seconds.
 
 * lifeRegenTime; int
 
@@ -139,7 +139,7 @@ Lower the value to lower the mana cost of spells. You can augment it too to make
 
 * manaRegen; int
 
-Increases the amount of mana the player regenerates.
+Increases the amount of mana the player regenerates. The amount is added over 2 seconds.
 
 * manaRegenBonus; int
 
