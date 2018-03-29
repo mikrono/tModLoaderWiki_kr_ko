@@ -128,6 +128,7 @@ namespace ExampleMod.Items
 {
 	class ShadowbeamStaffClone : ModItem
 	{
+		// Remove this and the item.color line in SetDefaults once you make your own sprite.
 		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
 
 		public override void SetStaticDefaults()
