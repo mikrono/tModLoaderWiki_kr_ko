@@ -53,6 +53,9 @@ Water, Honey, and Lava are not technically Tiles, so to make a recipe require st
     recipe.needLava = true;
 Note that needWater is also satisfied by Sinks, so don't add the Sink tile separately. Also note that there is a needSnowBiome you can also set, but anything more advanced would utilize ModRecipe.RecipeAvailable.
 
+## Alchemy
+Use recipe.AddTile(TileID.Bottles); for alchemy recipes. 
+
 ## Multiple Recipes
 With multiple ModRecipes in the same AddRecipes, make sure not to redeclare your variable name. The following will cause errors: 
 
