@@ -45,23 +45,25 @@ Shadowbeam is a pretty neat weapon that shoots a projectile that bounces several
 ### Weaker Shadowbeam Staff clone
 The first step in our journey is cloning the vanilla item. This is seen a few times in ExampleMod, but below is the code.
 
-    using Microsoft.Xna.Framework;
-    using Terraria.ID;
-    using Terraria.ModLoader;
-    
-    namespace ExampleMod.Items
-    {
-    	class ShadowbeamStaffClone : ModItem
-    	{
-    		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
-    
-    		public override void SetDefaults()
-    		{
-    			item.CloneDefaults(ItemID.ShadowbeamStaff);
-    			item.color = Color.Purple;
-    		}
-    	}
-    }
+```cs
+using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod.Items
+{
+	class ShadowbeamStaffClone : ModItem
+	{
+		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
+
+		public override void SetDefaults()
+		{
+			item.CloneDefaults(ItemID.ShadowbeamStaff);
+			item.color = Color.Purple; // This just tweaks the weapon sprite in inventory, just so we know which ShadowBeam Staff is ours and not vanillas
+		}
+	}
+}
+```
 
 ![](https://i.imgur.com/ADBy27n.png)    
 Huh, something is off, the staff isn't held right. Lets find the value of `ItemID.ShadowbeamStaff` in ItemID.cs. We find that it is 1444. Lets now search the source for 1444.
@@ -70,30 +72,32 @@ Out of these matching results, we see an NPC loot drop, prefix assignment, SetDe
 ![](https://i.imgur.com/864MpVV.png)    
 Ahah! We forgot to set Item.staff to true. If you studied ExampleMod's ExampleStaff, you would have already known about this. Lets add this to our code in SetStaticDefaults and also take this opportunity to reduce the damage of our weapon:
 
-    using Microsoft.Xna.Framework;
-    using Terraria;
-    using Terraria.ID;
-    using Terraria.ModLoader;
-    
-    namespace ExampleMod.Items
-    {
-    	class ShadowbeamStaffClone : ModItem
-    	{
-    		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
-    
-    		public override void SetStaticDefaults()
-    		{
-    			Item.staff[item.type] = true;
-    		}
-    
-    		public override void SetDefaults()
-    		{
-    			item.CloneDefaults(ItemID.ShadowbeamStaff);
-    			item.color = Color.Purple;
-    			item.damage = 8; // Down from 53
-    		}
-    	}
-    }
+```cs
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod.Items
+{
+	class ShadowbeamStaffClone : ModItem
+	{
+		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
+
+		public override void SetStaticDefaults()
+		{
+			Item.staff[item.type] = true;
+		}
+
+		public override void SetDefaults()
+		{
+			item.CloneDefaults(ItemID.ShadowbeamStaff);
+			item.color = Color.Purple; // This just tweaks the weapon sprite in inventory, just so we know which ShadowBeam Staff is ours and not vanillas
+			item.damage = 8; // Down from 53
+		}
+	}
+}
+```
 
 Now we have a working clone of Shadowbeam Staff that is weaker. Feel free to adjust item.mana and other fields to your liking.
 
@@ -128,7 +132,7 @@ namespace ExampleMod.Items
 {
 	class ShadowbeamStaffClone : ModItem
 	{
-		// Remove this and the item.color line in SetDefaults once you make your own sprite.
+		// Remove this and the item.color line in SetDefaults once you make your own sprite/texture.
 		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
 
 		public override void SetStaticDefaults()
@@ -139,7 +143,7 @@ namespace ExampleMod.Items
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.ShadowbeamStaff);
-			item.color = Color.Purple;
+			item.color = Color.Purple; // This just tweaks the weapon sprite in inventory, just so we know which ShadowBeam Staff is ours and not vanillas. Remove this line once you have your own sprite/texture
 			item.damage = 8; // Down from 53
 			// Very important!
 			item.shoot = mod.ProjectileType<ShadowbeamStaffCloneProjectile>();
