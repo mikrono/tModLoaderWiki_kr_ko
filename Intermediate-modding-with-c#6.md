@@ -88,3 +88,6 @@ To fix this issue, go to your \ModCompile\ folder and look for the `FNA.dll` fil
 
 ### An error mentioning something about ReLogic.dll not being found or able to be accessed
 Go to your Terraria folder and look for `ReLogic.Native.dll` and _**copy**_ this file to your \ModCompile\ folder, then rename it to `ReLogic.dll` If it now starts mentioning Mac/Linux, copy the file twice more and name them to `ReLogicMac.dll` and `ReLogicLinux.dll`
+
+### C# 6 issues: "An attempt was made to load an assembly from a network location..."
+[Click here.](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-FAQ#c-6-issues-an-attempt-was-made-to-load-an-assembly-from-a-network-location)
