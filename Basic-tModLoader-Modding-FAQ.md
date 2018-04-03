@@ -31,6 +31,10 @@ This means your Mod doesn't contain any class extending from Mod. If you went th
 ___
 This usually happens when your code has namespaces or classes that conflict with vanilla Terraria classes or namespaces. For example, if you happen to have a namespace named Projectile, and try to use Projectile.NewProjectile, the computer will be confused if you are referring to the Terraria.Projectile class or something in your Projectile namespace. The easiest solution is to not name your namespaces the same as vanilla classes. For example, ExampleMod has namespaces named Dusts, Projectiles, and Items as to not conflict with vanilla classes of Dust, Projectile, and Item.
 
+### Error CS0103: The name 'X' does not exist in the current context
+___
+This means you have a variable name that the computer doesn't understand. Basically you invented something and the computer has no idea what you are talking about. Imagine your friend said "Hand me the Flobulizer", but you have no idea what that is and have never heard that word before. It is the same with the computer. You might tell the computer to "give player the Chilled debuff", but the computer has no idea what "player" is. To fix: google some tutorials on c# variables and learn how variables work, then make sure to declare the variable before attempting to use. 
+
 ### Error CS0246: The type or namespace name 'Player' (or Item, Projectile, etc) could not be found (are you missing a using directive or an assembly reference?)
 ___
 This is because the computer doesn't know what the Player class is. You need to tell the computer where Player is found. Do this by adding "using Terraria;" to the top of the file so the computer knows how to find the Player class. (Another common one is Vector2, which needs "using Microsoft.Xna.Framework;")
