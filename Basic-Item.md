@@ -43,9 +43,8 @@ Now that you have a .cs file, bring in your texture file (a .png image file that
 The most important part of an Item is the SetDefaults. SetDefaults is where you set values for the item, things like what ammo does the item use, how big is the item, and which tile the item places. Below common properties set in SetDefaults are explained.
 
 ## value (int)
-Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values:
-
-`    item.value = Item.buyPrice(0, 1, 4, 62);`
+Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values: `item.value = Item.buyPrice(0, 1, 4, 62);`
+You can also use the `Item.sellPrice()` method if you would rather think about an items value the other way.  Both `Item.buyPrice(0, 0, 10, 55)` and `Item.sellPrice(0, 0, 2, 11)` would set the value to 1055.
 
 ## useStyle (int)
 The use style of your item:   
