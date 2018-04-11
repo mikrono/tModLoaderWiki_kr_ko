@@ -265,12 +265,15 @@ Before:
 After:   
 ![](https://i.imgur.com/hd3iXFx.png)   
 
-Find and Replace:
-![](https://i.imgur.com/ekINkM2.png)
-![](https://i.imgur.com/0f9wFM3.png)
+Find and Replace:    
+![](https://i.imgur.com/ekINkM2.png)    
+![](https://i.imgur.com/0f9wFM3.png)    
 
 You'll probably notice that there are a lot of NPC type specific sections of code. If you want, you can clean up the code further by deleting sections of the code that would only run for other NPC, but if not, just leave it. Many errors will show up. Most of them can be solved simply by letting Visual Studio add the suggested using statements to our code. If you aren't using Visual Studio or you aren't seeing suggestions or errors, you need to fix that. Read the [FAQ](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#faq) if you don't see suggestions. One error in this particular piece of code is `NPC.gravity`, just change those to 0.3f:    
-![](https://i.imgur.com/qdegobF.png) ![](https://i.imgur.com/3jGCdYb.png)
+Before:    
+![](https://i.imgur.com/qdegobF.png)    
+After:    
+![](https://i.imgur.com/3jGCdYb.png)    
 
 If you test in game now, you'll notice that they behave very odd. This is because all the code that use to dictate Hoplite specific behavior is now inaccessible because npc.type does not equal 481 any more. Lets fix this. Use find to find all and replace checks for `npc.type == 481` with `(npc.type == 481 || true)`. Doing this will keep 481 around which will make it easier to find in the next sections. 
 ![](https://i.imgur.com/XATbFHQ.png)    
