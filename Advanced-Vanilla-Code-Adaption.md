@@ -298,7 +298,7 @@ Ahah, using the VS hotkey of `ctrl+shift+space` or `ctrl+K, P`, we see that `num
 Lets test in game:    
 ![](https://i.imgur.com/kPfkhCs.png)    
 
-Well, it all works.
+Well, it all works. Results [video.](https://gfycat.com/UnsteadyAcrobaticCurassow)
 
 ### Change Throw Distance, Accuracy, and Aim
 Looking at the Projectile.NewProjectile code, we can find that num147 and num149 refer to SpeedX and SpeedY:    
