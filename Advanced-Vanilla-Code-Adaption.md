@@ -215,5 +215,95 @@ If you've been following along without just copying the code above, you would ha
 
 Well, we've done it, we've investigated and cloned a vanilla projectile AI. We've also done some very basic editing to the AI to change the color of the trail. We can do the same for other projectiles as well, search the source code, identify code we wish to customize, then copy and then edit the vanilla code into a new ModProjectile.
 
-### Custom Flail
+## Example: NPC: NPC clone with modified projectile (Hoplite)
+
+### Exact Clone
+
+To start, lets make a basic clone of an NPC as seen in Party Zombie. Lets clone the Hoplite. After some searching, we discover `GreekSkeleton = 481;` in NPCID and use that for our basic clone. For simplicity, I will make sure to set `languageVersion = 6` in build.txt so I can use the `=>` functionality ([Read about =>](https://msdn.microsoft.com/en-us/magazine/dn802602.aspx))
+
+The following is the code:
+
+```using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod.NPCs
+{
+	class SuperHoplite : ModNPC
+	{
+		public override string Texture => "Terraria/NPC_" + NPCID.GreekSkeleton;
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Super Hoplite");
+			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.GreekSkeleton];
+		}
+
+		public override void SetDefaults()
+		{
+			npc.CloneDefaults(NPCID.GreekSkeleton);
+			aiType = NPCID.GreekSkeleton;
+			animationType = NPCID.GreekSkeleton;
+		}
+	}
+}
+```  
+
+Go in game and then use a mod with an NPC spawner like Cheat Sheet or Heros Mod and spawn your NPC. You'll notice that the sprite and behavior is the same as the original Hoplite. (Feel free to change the sprite later the normal way.) While underground, you'll notice that our Hoplite clone attacks with that javelin as normal. The goal of the rest of this tutorial is to change that projectile and other behaviors.
+
+### Preparatory work for modifications
+
+Unfortunately, there is no easy way to change the projectile that is shot by our clone. Our clone, as seen in our SetDefaults method, simply clones the vanilla AI code. The projectile the vanilla AI will spawn to attack the player is hard-coded into the AI method. The first thing we need is the [decompiled Terraria source code](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites#tmodloader-source-code). Once you have that, now we must find the AI code to copy. Find NPCID.GreekSkeleton and see that its value is 481, now search for 481. The first result we need to find is result in the SetDefaults method so we can find out which aiStyle GreekSkeleton/Hoplite is using:    
+![](https://i.imgur.com/mcDqzru.png)    
+Great, we now know to search the source code for `aiStyle == 3`:     
+![](https://i.imgur.com/kGTeWrw.png)      
+Now follow the code into the AI_003_Fighters method and copy all the code and paste it into an AI method in our own ModNPC class. (Be careful not to mess up the `{ }` pairs) We will also set `npc.aiStyle = 0;` in SetDefaults (since the CloneDefaults method would set that to 3) and delete `aiType = NPCID.GreekSkeleton;` since we don't want both our copy of the AI code and the vanilla code to run. Once we have copied the code into our AI method, we need to do the usual cleanup: Change `base.` and `this.` to `npc.` everywhere they appear in the method:
+
+Before:    
+![](https://i.imgur.com/FGLIGWO.png)  
+
+After:   
+![](https://i.imgur.com/hd3iXFx.png)   
+
+Find and Replace:
+![](https://i.imgur.com/ekINkM2.png)
+![](https://i.imgur.com/0f9wFM3.png)
+
+You'll probably notice that there are a lot of NPC type specific sections of code. If you want, you can clean up the code further by deleting sections of the code that would only run for other NPC, but if not, just leave it. Many errors will show up. Most of them can be solved simply by letting Visual Studio add the suggested using statements to our code. If you aren't using Visual Studio or you aren't seeing suggestions or errors, you need to fix that. Read the [FAQ](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#faq) if you don't see suggestions. One error in this particular piece of code is `NPC.gravity`, just change those to 0.3f:    
+![](https://i.imgur.com/qdegobF.png) ![](https://i.imgur.com/3jGCdYb.png)
+
+If you test in game now, you'll notice that they behave very odd. This is because all the code that use to dictate Hoplite specific behavior is now inaccessible because npc.type does not equal 481 any more. Lets fix this. Use find to find all and replace checks for `npc.type == 481` with `(npc.type == 481 || true)`. Doing this will keep 481 around which will make it easier to find in the next sections. 
+![](https://i.imgur.com/XATbFHQ.png)    
+
+Save and rebuild, then go in game. It works!...almost. Comparing Hoplite and our Hoplite clone, our clone has a little bit different behavior. Search again in the AI code we copied over for 481 and you'll find `npc.type != 481`. This is falsely evaluating to true, so lets replace this with `false`. Now test, and our clone is perfect. 
+
+Now that we have laid the groundwork, we can now start modifying the AI code.
+
+### Change Projectile
+
+Now lets change the projectile. First, make a hostile projectile or find some other projectile that you wish to use. Now we need to search the AI code to find how the code decides to spawn that javelin for Hoplite. This code being almost 4000 lines of code, we don't want to search blindly. Lets again search for `481` and look for code that seems to either be spawning projectiles or deciding on a projectile to spawn. Most likely to have the results we need are lines with `if (npc.type == 481)` on them. Lets look at the first result:    
+![](https://i.imgur.com/mikBCBp.png)    
+Ok, this is setting some local int to 100, but if you look later where that variable is used, it doesn't seem to be related to projectile spawning. Also, the ProjectileID of 100 is called `DeathLaser`, so this is likely wrong.     
+![](https://i.imgur.com/FvS9gol.png)    
+The next few results are assigning float values, so they are likely not related.    
+![](https://i.imgur.com/ueQGlEw.png)    
+Finally, we come to a result that is setting a couple int variables. Looking up 508 in ProjectileID.cs, we find `JavelinHostile = 508;`, which definitely sounds correct! Great! Lets change that to some hostile projectile and then use Visual Studio to "Find all References" so we can figure out what `num151` is:    
+![](https://i.imgur.com/qbD8jcy.png)    
+![](https://i.imgur.com/sCz0ujk.png)    
+Ahah, using the VS hotkey of `ctrl+shift+space` or `ctrl+K, P`, we see that `num151` is passed in as the damage parameter of NewProjectile. Feel free to change that line as well.
+
+Lets test in game:    
+![](https://i.imgur.com/kPfkhCs.png)    
+
+Well, it all works.
+
+### Change Throw Distance, Accuracy, and Aim
+Looking at the Projectile.NewProjectile code, we can find that num147 and num149 refer to SpeedX and SpeedY:    
+![](https://i.imgur.com/vvZkdK2.png)    
+Lets use `F2` to quickly make the source code more readable by renaming those variables, then search source for 481 again to find code specific to the original Hoplite. Going through the Find results again, you'll notice that one of the results seems to signify the NPC aiming above the head of the player, another seems to determine throw strength, and another seems to tweak the speedX and speedY to make the projectile a little inaccurate. I'll leave this as an exercise to the reader. Use `F2` to rename variables as you figure out their purpose to begin to understand little pieces of the AI code.
+
+### Change Animation
+This guide will be done later if anyone expresses interest.
+
+## Custom Flail
 Making a flail, you might have noticed that the range of the flail is hard to customize. (TODO)
