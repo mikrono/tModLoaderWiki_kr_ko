@@ -7,3 +7,6 @@ You may need to decompile tModLoader to understand the correct way to do somethi
 A simpler way is to download [ilspy](https://github.com/icsharpcode/ILSpy/releases/download/v3.0.1/ILSpy_binaries_Net46_Win_3.0.1.3459.zip), open it up, open up the tModLoader exe in it, and then press the save code button. This will take 20 minutes or so depending on your computer.
 
 ![](http://i.imgur.com/ZeXH2p5.png)
+
+## But wait, I found the code on Google!
+No. That code is bad and will not work. It has tens of thousands of decompilation errors. Just decompile it yourself.
