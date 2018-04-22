@@ -17,8 +17,8 @@ Solution: You tried to launch tModLoader 0.10+ with Terraria 1.3.4.4 or earlier 
 Solution: Same as above. (Don't try to install other things such as other stand alone mods.)
 
 ### Host and Play: The system cannot find the file specified
-![](https://i.imgur.com/Vm2b78X.png)
-Simply put, you didn't follow the install instructions. 
+![](https://i.imgur.com/Vm2b78X.png)    
+Simply put, you didn't follow the install instructions. Check the install directory, usually "C:\Program Files (x86)\Steam\steamapps\common\Terraria" (NOT "C:\Documents\My Games\Terraria\ModLoader"!), and make sure that tModLoaderServer.exe has been copied into the folder. If not, take the file from the tModLoader zip file and place it there.
 
 # Load Mod
 ### "Failed to resolve assembly: 'Terraria, Version=1.3.5.1, Culture=neutral, PublicKeyToken=null'"
