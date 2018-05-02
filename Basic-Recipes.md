@@ -45,6 +45,13 @@ Finally, we need to tell tModLoader that our ModRecipe is complete and add it to
 
     recipe.AddRecipe();
 
+### Using Vanilla vs Modded Ingredients and Tiles
+As a recap, vanilla items and tiles use the TileID and ItemID classes, while modded items and items use the TileType and ItemType methods:
+
+    recipe.AddTile(TileID.WorkBenches); // Vanilla Tile
+    recipe.AddTile(mod.TileType("ExampleWorkbench")); // Modded Tile
+    recipe.AddIngredient(ItemID.Meowmere); // Vanilla Item
+    recipe.AddIngredient(mod.ItemType("ExampleItem>")); // Modded Item
 ## Water, Honey, Lava
 Water, Honey, and Lava are not technically Tiles, so to make a recipe require standing next to those, use one of the following:
 
