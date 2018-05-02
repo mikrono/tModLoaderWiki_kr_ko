@@ -38,7 +38,7 @@ Next, we can specify up to 14 crafting stations. This follows the same patterns 
 Next, we need to set the result for the ModRecipe, what the recipe creates. There can only be 1 result per ModRecipe. This is done similar to AddIngredient as well. There is also an optional stack parameter here as well:
 
     recipe.SetResult(mod.ItemType<Items.ExampleItem>());
-    recipe.SetResult(mod.ItemType("ExampleItem>"));
+    recipe.SetResult(mod.ItemType("ExampleItem"));
     recipe.SetResult(ItemID.Meowmere);
     recipe.SetResult(this, 999);
 Finally, we need to tell tModLoader that our ModRecipe is complete and add it to the game:
