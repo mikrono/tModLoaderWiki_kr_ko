@@ -31,10 +31,10 @@ Alright, we are now in business. To recap, what we have done is made a copy of t
 ## Add Translations
 Look for .lang files in the repository. They might be anywhere or non-existent. If you see a folder called Localization, they are probably in it. (If you search for `filename:.lang` you can quickly search the mod for files with `.lang` in the filename. Unfortunately, you need to do this search on the original repository since GitHub doesn't support searching on Forks currently.) By the way, `.lang` is the file extension used by tModLoader for translation files. You can open `.lang` files in any text editor, but we will be doing our work directly on GitHub for the convenience of this tutorial.
 
-If you find .lang files, great, just click on it to open it in your browser, then click the edit button on the top right.
+If you find .lang files, great, just click on it to open it in your browser, then click the edit button on the top right.    
 ![](https://i.imgur.com/FoPruy5.png)    
 
-If you do not find a .lang file for the language you are localizing to, we will need to create a new file. The file name needs to be exact. The filenames are as follows: English ("en-US.lang"), German ("de-DE.lang"), Italian ("it-IT.lang"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU.lang"), Chinese ("zh-Hans.lang"), Portuguese ("pt-BR.lang"), and Polish ("pl-PL.lang"). Below we see the process creating the file:
+If you do not find a .lang file for the language you are localizing to, we will need to create a new file. The file name needs to be exact. The filenames are as follows: English ("en-US.lang"), German ("de-DE.lang"), Italian ("it-IT.lang"), French ("fr-FR.lang"), Spanish ("es-ES.lang"), Russian ("ru-RU.lang"), Chinese ("zh-Hans.lang"), Portuguese ("pt-BR.lang"), and Polish ("pl-PL.lang"). Below we see the process creating the file:
 
 ![](https://i.imgur.com/59DLyZy.png)     
 ![](https://i.imgur.com/OAliVHo.png)   
