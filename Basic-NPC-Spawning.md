@@ -16,18 +16,22 @@ The ModNPC.SpawnChance hook returns a float. Google that is you don't understand
 ## ModNPC.SpawnChance
 This is the main focus of this guide. All naturally spawning non-boss, non-townNPC ModNPC classes should override this hook:
 
-    public override float SpawnChance(NPCSpawnInfo spawnInfo)
-    {
-    	// Code goes here
-    }
+```c#
+public override float SpawnChance(NPCSpawnInfo spawnInfo)
+{
+	// Code goes here
+}
+```
 
 ## ModNPC.CanTownNPCSpawn
 Only for townNPC ModNPC. Note that this class returns a bool not a float. Use this to let your townNPC spawn after certain conditions, such as defeating bosses, have been met.
 
-    public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-    {
-    	// Code goes here
-    }
+```c#
+public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+{
+	// Code goes here
+}
+```
 
 ## Conditionals (if-else)
 Spawning NPC boils down to making a decision whether or not to spawn our ModNPC. Read up on if-else [here](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/if-else).
@@ -45,14 +49,16 @@ Read up on [&&](https://docs.microsoft.com/en-us/dotnet/csharp/language-referenc
 ### Ternary
 A more compact version of an if-else conditional is a ternary. Read up on it [here](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator). Basically it changes: 
 
-    if (condition)
-    {
-    	return .1f;
-    }
-    else
-    {
-    	return 0f;
-    }
+```c#
+if (condition)
+{
+	return .1f;
+}
+else
+{
+	return 0f;
+}
+```
 To this:
 
     return condition ? .1f : 0f;
@@ -72,8 +78,12 @@ When worlds are generated, a few values are saved with the world to specify vari
 ![](https://i.imgur.com/9rIgSMt.png)
 
 On the right side of the image we see the Zones that are predefined for us, and on the right we see the math that drives those zones. For example, the following are equivalent:    
-`if(spawnInfo.player.ZoneRockLayerHeight)`   
-`if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > Main.rockLayer)`   
+```c#
+if(spawnInfo.player.ZoneRockLayerHeight)
+```   
+```c#
+if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > Main.rockLayer)
+```
 
 We can use simple math to make more precise Height-based spawn conditions. For example `if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > (Main.rockLayer + Main.maxTilesY - 200) / 2)` could be used to specify a spawn condition of the lower half of the ZoneRockLayerHeight as seen above. The predefined height based zones are easy to use, but remember that you can use math for more specific behavior. Also remember that the Y coordinates start at 0 in the sky and increase in value as you go down in the world. Do not be fooled by WorldGen.lavaLine, WorldGen.waterLine, WorldGen.worldSurfaceHigh, and other values not mentioned here, they are not saved in the world file and will not be applicable to NPC spawning.
 
@@ -96,13 +106,13 @@ In addition to NPCSpawnInfo, we can also use other fields in our SpawnChance log
 
 # SpawnCondition
 SpawnCondition is a class that contains a set of ready-to-use fields that mimic the logic of various Vanilla NPC spawn conditions. See [Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_spawn_condition.html) for available SpawnConditions. Using SpawnCondition fields can simplify you SpawnChance logic. For example, a daytime slime can easily be implemented like this:
-
-    return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
-
+```c#
+return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
+```
 as opposed to
-
-    return Main.dayTime && info.spawnTileY <= Main.worldSurface ? 0.1f : 0f;
-
+```c#
+return Main.dayTime && info.spawnTileY <= Main.worldSurface ? 0.1f : 0f;
+```
 # Examples
 Each of the following examples will be as if they were inside a ModNPC.SpawnChance method:
 
