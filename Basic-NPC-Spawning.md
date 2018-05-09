@@ -67,6 +67,16 @@ Use the player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer
 
     if(spawnInfo.player.GetModPlayer<ExamplePlayer>().ZoneExample) // Mod Biome
 
+## Heights
+When worlds are generated, a few values are saved with the world to specify various heights. Main.worldSurface is a few tiles below spawn, and Main.rockLayer is below that where rock becomes more prevalent than dirt. Main.maxTilesY is the max value for Y in the world, the lowest point. We can use these values and math to drive our spawn conditions. We can also use predefined Zones as seen in the image below rather than messing with math.    
+![](https://i.imgur.com/9rIgSMt.png)
+
+On the right side of the image we see the Zones that are predefined for us, and on the right we see the math that drives those zones. For example, the following are equivalent:    
+`if(spawnInfo.player.ZoneRockLayerHeight)`   
+`if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > Main.rockLayer)`   
+
+We can use simple math to make more precise Height-based spawn conditions. For example `if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > (Main.rockLayer + Main.maxTilesY - 200) / 2)` could be used to specify a spawn condition of the lower half of the ZoneRockLayerHeight as seen above. The predefined height based zones are easy to use, but remember that you can use math for more specific behavior. Also remember that the Y coordinates start at 0 in the sky and increase in value as you go down in the world. Do not be fooled by WorldGen.lavaLine, WorldGen.waterLine, WorldGen.worldSurfaceHigh, and other values not mentioned here, they are not saved in the world file and will not be applicable to NPC spawning.
+
 # Other Values
 In addition to NPCSpawnInfo, we can also use other fields in our SpawnChance logic:
 * `Main.dayTime` - true during the day, false at night
