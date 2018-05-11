@@ -79,11 +79,12 @@ Now have it inherit the class `Mod`, start typing `: Mod` and the intellisense s
 The first class shown is correct. Simply press tab to insert the edits. If tab doesn't work, you can try ALT + ENTER
 
 ## Setting up mod compilation, debugging and eac
-To setup mod compilation, navigate to the Configuration dropdown, likely displaying 'Not configured' Drop it down and click 'Edit configurations'
+To setup mod compilation, navigate to the Configuration dropdown, likely displaying 'Not configured' Drop it down and click 'Edit configurations'. If you wish to skip these steps you can alternatively download the premade run configuration [here (zip file)](https://cdn.discordapp.com/attachments/426125688148328469/444630048125747200/runConfigurations.zip). If you do, unzip it. You need to move the 'runConfigurations' folder to `Path/To/Project/.idea/.idea.MyModName/.idea/` Once done, follow the below steps (or simply open the configuration) and change the paths to match yours.
 
 ![](https://i.imgur.com/76EHBrN.png)
 
 A new window pops up. Click the green plus sign and make a new '.NET Executable'. Name it 'tML compile' and make sure to uncheck 'Single instance only'
+
 ![](https://i.imgur.com/fopcCfX.png)
 
 In the 'Exe path', put the path to your Terraria.exe
@@ -103,13 +104,13 @@ Set the settings like so:
 * Set name to: `tML Server Compile`
 * Set description to: `Compiles the mod using the server`
 * Set program to the path to tModLoaderServer.exe
-* Set the arguments to the following: `-build "$ProjectFileDir$" -eac " $ProjectFileDir$\bin\Debug\MyModName.dll "`
-    * **Make sure to change MyModName at the end to your mod name! Also make sure to keep the spaces in the eac argument!!**
+* Set the arguments to the following: `-build "$ProjectFileDir$" -eac " $ProjectFileDir$\bin\Debug\$ProjectName$.dll "`
+    * **Make sure to keep the spaces in the eac argument!!**
 * Set working directory to your Terraria directory, where the server .exe is located.
 
 The window should end up as shown:
 
-![](https://i.imgur.com/UYNGszR.png)
+![](https://i.imgur.com/R98SJgr.png)
 
 Add this external tool. In the before launch section, **make sure 'Build Solution' goes before the external tool** as shown:
 
