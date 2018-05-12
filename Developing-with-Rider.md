@@ -9,21 +9,26 @@ Rider is an IDE similar to Visual Studio, for C# (and other languages) The softw
   * [Creating a new Rider project](#creating-a-new-rider-project)
   * [Adding project references](#adding-project-references)
   * [Setting up the mod class](#setting-up-the-mod-class)
-  * [Setting up mod compilation, debugging and eac](#setting-up-mod-compilation--debugging-and-eac)
+  * [Setting up mod compilation, debugging and eac](#setting-up-mod-compilation-debugging-and-eac)
   * [Custom MSBuild steps](#custom-msbuild-steps)
   * [Viewing file structure](#viewing-file-structure)
   * [Optimal view setup](#optimal-view-setup)
   * [Keeping track of TODOs](#keeping-track-of-todos)
   * [No distraction mode](#no-distraction-mode)
-  * [Code analysis, inspection settings](#code-analysis--inspection-settings)
+  * [Code analysis, inspection settings](#code-analysis-inspection-settings)
   * [Using the right MSBuild version](#using-the-right-msbuild-version)
+  * [Split view: working on multiple files simultaneously](#split-view-working-on-multiple-files-simultaneously)
 
 ## Start
 First, install Rider. Unlike VS, Rider is a paid product, but a free 30 day trial is available. Download here: https://www.jetbrains.com/rider/
 
+[Back to TOC](#table-of-contents)
+
 ## Opening an existing VS project
 This one is easy. In the main menu, press 'Open Solution or Project' and simply open either the .csproj or .sln file.
 If you don't know how to setup the solution, it is recommended to use the [mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html)
+
+[Back to TOC](#table-of-contents)
 
 ## Creating a new Rider project
 In the main menu, press 'New Solution'. Firstly, you need to select the right type of application. On the left hand menu, look for .NET (**NOT .NET CORE**) and select 'Class Library'.
@@ -73,6 +78,8 @@ Since tML does not support C#7 yet, it is recommended to set the language level 
 
 Now that your initial setup is done. We can proceed to adding the references.
 
+[Back to TOC](#table-of-contents)
+
 ## Adding project references
 In your solution explorer, navigate to 'References' and right click, then press on 'Add reference'. This opens a new window. Press on the button below 'Add From...'. Now navigate to your Terraria install directory, and proceed to add Terraria.exe (tModLoader modified .exe!)
 
@@ -86,6 +93,8 @@ With a little luck, the XNA references are found as shown:
 
 It is important that you **do not move or delete these files**. Instead, select all of them, and COPY them. It is recommended to copy them to a safe location you will use to reference these files in your mod projects. Once you've placed them in a safe location you can proceed adding them like the previous reference. 
 
+[Back to TOC](#table-of-contents)
+
 ## Setting up the mod class
 Next up, locate `Class1.cs` in the Solution Explorer and rename it to 'MyModName.cs'
 Now in the class file, also rename Class1 to MyModName
@@ -94,6 +103,8 @@ Now have it inherit the class `Mod`, start typing `: Mod` and the intellisense s
 ![](https://i.imgur.com/IqeE0Ix.png)
 
 The first class shown is correct. Simply press tab to insert the edits. If tab doesn't work, you can try ALT + ENTER
+
+[Back to TOC](#table-of-contents)
 
 ## Setting up mod compilation, debugging and eac
 To setup mod compilation, navigate to the Configuration dropdown, likely displaying 'Not configured' Drop it down and click 'Edit configurations'. If you wish to skip these steps you can alternatively download the premade run configuration [here (zip file)](https://cdn.discordapp.com/attachments/426125688148328469/444630048125747200/runConfigurations.zip). If you do, unzip it. You need to move the 'runConfigurations' folder to `Path/To/Project/.idea/.idea.MyModName/.idea/` Once done, follow the below steps (or simply open the configuration) and change the paths to match yours.
@@ -135,8 +146,12 @@ Add this external tool. In the before launch section, **make sure 'Build Solutio
 
 Now click apply and then OK. Now in the same dropdown, select your new configuration. When you debug, it will build the solution and your .tmod file automatically using the server, and then start debugging your mod.
 
+[Back to TOC](#table-of-contents)
+
 ## Custom MSBuild steps
 .... TODO ....
+
+[Back to TOC](#table-of-contents)
 
 ## Viewing file structure
 To view file structure lik in VS studio (dropdowns for methods etc.)
@@ -147,8 +162,12 @@ This opens a structure view window as shown:
 
 Clicking on any method or field will make your editor scroll to it.
 
+[Back to TOC](#table-of-contents)
+
 ## Optimal view setup
 If you plan on working on large code, like tMLs, it is recommended to enable the 'View whitespaces' and 'Use soft wrap' options. Go to View -> Active Editor and enable these options. Viewing whitespaces (indents) is important to ensure you don't use whitespaces but tabs of width 4.
+
+[Back to TOC](#table-of-contents)
 
 ## Keeping track of TODOs
 Rider has a useful window that can find things marked TODO in comments or throwing NotImplementedException()
@@ -157,12 +176,16 @@ This opens a new window as shown:
 
 ![](https://i.imgur.com/JU5DiOX.png)
 
+[Back to TOC](#table-of-contents)
+
 ## No distraction mode
 This is a useful tip when you want to write code without being distracted.
 To use this mode, navigate to View -> Enter Distraction Free Mode
 This gets rid of pretty much any side windows as shown:
 
 ![](https://i.imgur.com/JMLXqOx.png)
+
+[Back to TOC](#table-of-contents)
 
 ## Code analysis, inspection settings
 For your own benefits, it is recommend to enable code analysis and propagate code annotations.
@@ -191,9 +214,24 @@ If you are also annoyed by the 'Invert if to reduce nesting`, it can be disabled
 
 ![](https://i.imgur.com/537R8dV.png)
 
+[Back to TOC](#table-of-contents)
+
 ## Using the right MSBuild version
 It is recommended to use MSBuild 15.0
 
 If for some reason the wrong version is used, you can navigate to the Settings (CTRL + ALT + S) and go to: 'Build, Execution, Deployment' -> 'Toolset and Build'. Inside the menu, find 'Use MSBuild version:' and select version 15.0
 
 ![](https://i.imgur.com/Qnc3rnP.png)
+
+[Back to TOC](#table-of-contents)
+
+## Split view: working on multiple files simultaneously
+Another useful feature in Rider is split views.
+
+It can look something like the following:
+
+![](https://i.imgur.com/gKgf9aa.png) 
+
+To enable this feature navigate to Window -> Editor Tabs -> Split Vertically
+
+[Back to TOC](#table-of-contents)
