@@ -1,3 +1,4 @@
+
 # Introductory
 
 Rider is an IDE similar to Visual Studio, for C# (and other languages) The software is made by JetBrains, whereas Visual Studio is made by Microsoft. Rider is more lightweight than VS, but also features intellisense and code debugging. It also allows opening an existing VS project.
@@ -68,7 +69,8 @@ Your final window should look similar to this: (except the "Solution directory a
 ![](https://i.imgur.com/IRfMWrq.png)
 
 Now press create which will create the new project.
-If you've selected to create a GIT repository, a window will pop up asking to add files to git. **Uncked all of these files, and check 'Remember, don't ask again'**
+If you've selected to create a GIT repository, a window will pop up asking to add files to git. 
+**Uncked all of these files, and check 'Remember, don't ask again'** 
 
 ![](https://i.imgur.com/2dtJ122.png)
 
@@ -107,17 +109,18 @@ The first class shown is correct. Simply press tab to insert the edits. If tab d
 [Back to TOC](#table-of-contents)
 
 ## Setting up mod compilation, debugging and eac
+**Notice! You should follow along this part, but this configuration will change slightly in the next section; it is important that you understand how it works. The modified setup is explained in the next section: ['Custom MSBuild steps'](#custom-msbuild-steps)**
+
 To setup mod compilation, navigate to the Configuration dropdown, likely displaying 'Not configured' Drop it down and click 'Edit configurations'. If you wish to skip these steps you can alternatively download the premade run configuration [here (zip file)](https://cdn.discordapp.com/attachments/426125688148328469/444630048125747200/runConfigurations.zip). If you do, unzip it. You need to move the 'runConfigurations' folder to `Path/To/Project/.idea/.idea.MyModName/.idea/` Once done, follow the below steps (or simply open the configuration) and change the paths to match yours.
 
 ![](https://i.imgur.com/76EHBrN.png)
 
-A new window pops up. Click the green plus sign and make a new '.NET Executable'. Name it 'tML compile' and make sure to uncheck 'Single instance only'
+A new window pops up. Click the green plus sign and make a new '.NET Executable'. Name it 'tML compile' and make sure to uncheck 'Single instance only', unless you want only one instance of debugging to be up at once.
 
 ![](https://i.imgur.com/fopcCfX.png)
 
-In the 'Exe path', put the path to your Terraria.exe
-
-Leave Program arguments empty. In working directory, set it to the directory your Terraria.exe belongs to (it might have done so automatically)
+1. In 'Exe Path', set it to the path to your Terraria.exe (tModLoader)
+2. In 'Working directory', set it to that folder. It should do so automatically.
 
 ![](https://i.imgur.com/DmxJOsF.png)
 
@@ -131,9 +134,9 @@ Set the settings like so:
 
 * Set name to: `tML Server Compile`
 * Set description to: `Compiles the mod using the server`
-* Set program to the path to tModLoaderServer.exe
-* Set the arguments to the following: `-build "$ProjectFileDir$" -eac " $ProjectFileDir$\bin\Debug\$ProjectName$.dll "`
-    * **Make sure to keep the spaces in the eac argument!!**
+* Set program to the path to `tModLoaderServer.exe`
+* Set the arguments to the following: `-build "$ProjectFileDir$"`
+    * If you wish to enable eac, set it to the following:  `-build "$ProjectFileDir$" -eac " $ProjectFileDir$\bin\Debug\$ProjectName$.dll "` **Make sure to keep the spaces in the eac argument!!**
 * Set working directory to your Terraria directory, where the server .exe is located.
 
 The window should end up as shown:
@@ -146,16 +149,44 @@ Add this external tool. In the before launch section, **make sure 'Build Solutio
 
 Now click apply and then OK. Now in the same dropdown, select your new configuration. When you debug, it will build the solution and your .tmod file automatically using the server, and then start debugging your mod.
 
+**To actually debug, make sure to press the debug icon (F5) instead of the regular start icon! Otherwise you will not debug!**
+
+![](https://i.imgur.com/VEMlSa1.png)
+
+**In this configuration, your .tmod is not yet built if you use the regular Build task (CTRL + SHIFT + B). This is setup in the next section.**
+
 [Back to TOC](#table-of-contents)
 
 ## Custom MSBuild steps
-.... TODO ....
+Since Rider simply uses MSBuild, we can provide custom MSBuild steps and events.
+Unfortunately Rider does not feature a GUI for Pre/Post-build events, so we have to edit them in manually.
+Locate your .csproj and open it in a rich text editor, like notepad++ or alternatively open it in Rider directly by double clicking it. Navigate towards the end of the file.
+
+Now to have Rider actually build our .tmod file if we use Build task and not just debug, we need to create an "AfterBuild" target. We need to input an 'exec' property, which will execute a specified command in our shell. The following exec property will make the server build the .tmod file when we use Build (CTRL + B). Put this new property right before the project closing tag `</Project>`
+```csproj
+  <Target Name="AfterBuild">
+	<Exec Command='D:\Apps\Steam\steamapps\common\Terraria\tModLoaderServer.exe -build "$([System.IO.Path]::GetFullPath("$(MSBuildProjectDirectory)"))"' />
+  </Target>
+```
+
+![](https://i.imgur.com/DhMBqql.png)
+
+The only important part is that you change the path to the server exe. It is important we pass the `"` quotation marks in the shell arguments, otherwise we will get errors. Therefore we use `'` to encapsulate the value. You do not have to worry about the build path, as it will find the correct path using the MSBuild Reserved property.
+
+To explain the macro part a bit, here is what it does:
+The `[System.IO.Path]::GetFullPath("path")` part basically tells MSBuild to call the function `GetFullPath` in the `System.IO.Path` namespace. This will get the appropriate path. We pass "`$(MSBuildProjectDirectory)`" as the value, this is a macro and reserved MSBuild property that corresponds to the absolute path of the directory where the project file is located, excluding the final backslash (which is want we want!!)
+
+If you've added this AfterBuild target, we no should no longer want to build the project before launching the external tool, as we now have the AfterBuild target. Navigate to your existing configuration, and remove the build launch before the external tool. Leave the rest of the settings as-is, as shown:
+
+![](https://i.imgur.com/WlNzvkS.png)
+
+This will prevent the regular Build  task from happening. Instead, it compiles our mod using the server (like before) with eac support. Note eac is only supported on Windows. This new setup allows the mod to be built even when using the regular Build task, but avoids the mod being built twice when debugging.
 
 [Back to TOC](#table-of-contents)
 
 ## Viewing file structure
 To view file structure lik in VS studio (dropdowns for methods etc.)
-Go to View -> Tool Windows -> Structure
+Go to `View -> Tool Windows -> Structure`
 This opens a structure view window as shown:
 
 ![](https://i.imgur.com/nwrPOGa.png)
@@ -165,13 +196,13 @@ Clicking on any method or field will make your editor scroll to it.
 [Back to TOC](#table-of-contents)
 
 ## Optimal view setup
-If you plan on working on large code, like tMLs, it is recommended to enable the 'View whitespaces' and 'Use soft wrap' options. Go to View -> Active Editor and enable these options. Viewing whitespaces (indents) is important to ensure you don't use whitespaces but tabs of width 4.
+If you plan on working on large code, like tMLs, it is recommended to enable the 'View whitespaces' and 'Use soft wrap' options. Go to `View -> Active Editor`  and enable these options. Viewing whitespaces (indents) is important to ensure you don't use whitespaces but tabs of width 4.
 
 [Back to TOC](#table-of-contents)
 
 ## Keeping track of TODOs
 Rider has a useful window that can find things marked TODO in comments or throwing NotImplementedException()
-To open this window, go to View -> Tool Windows -> TODO
+To open this window, go to `View -> Tool Windows -> TODO`
 This opens a new window as shown:
 
 ![](https://i.imgur.com/JU5DiOX.png)
@@ -180,7 +211,7 @@ This opens a new window as shown:
 
 ## No distraction mode
 This is a useful tip when you want to write code without being distracted.
-To use this mode, navigate to View -> Enter Distraction Free Mode
+To use this mode, navigate to `View -> Enter Distraction Free Mode`
 This gets rid of pretty much any side windows as shown:
 
 ![](https://i.imgur.com/JMLXqOx.png)
@@ -190,36 +221,37 @@ This gets rid of pretty much any side windows as shown:
 ## Code analysis, inspection settings
 For your own benefits, it is recommend to enable code analysis and propagate code annotations.
 
-Open the settings, by going to File -> Settings or using the CTRL + ALT + S shortcut.
+Open the settings, by going to `File -> Settings` or using the `CTRL + ALT + S` shortcut.
 
-Navigate to Editor -> Inspection Settings
+Navigate to `Editor -> Inspection Settings`
 
-On Inspection Settings, tick to enable 'Enable code analysis' and 'Enable solution-wide analysis'
+On Inspection Settings, tick to enable `'Enable code analysis'` and `'Enable solution-wide analysis'`
 
 ![](https://i.imgur.com/is9hLMi.png)
 
-Next, to enable code annotations propagation navigate to 'Code Annotations' in the same dropdown, and tick 'Automatically propagate annotations' as shown:
+Next, to enable code annotations propagation navigate to `'Code Annotations'` in the same dropdown, and tick `'Automatically propagate annotations'` as shown:
 
 ![](https://i.imgur.com/zeaXVWe.png)
 
-You probably also want to disable the 'use 'var' (builtin types)' hint, which can be annoying.
+You probably also want to disable the `'use 'var' (builtin types)'` hint, which can be annoying.
 
-Navigate to Inspection Severity -> C#
+Navigate to `Inspection Severity -> C#`
 
 Type in the search bar `Use preferred 'var'` and uncheck it as shown:
 
 ![](https://i.imgur.com/XxnqDJG.png)
 
-If you are also annoyed by the 'Invert if to reduce nesting`, it can be disabled as well:
+If you are also annoyed by the `'Invert if to reduce nesting'`, it can be disabled as well:
 
 ![](https://i.imgur.com/537R8dV.png)
 
 [Back to TOC](#table-of-contents)
 
 ## Using the right MSBuild version
-It is recommended to use MSBuild 15.0
+It is recommended to use `MSBuild 15.0`
 
-If for some reason the wrong version is used, you can navigate to the Settings (CTRL + ALT + S) and go to: 'Build, Execution, Deployment' -> 'Toolset and Build'. Inside the menu, find 'Use MSBuild version:' and select version 15.0
+If for some reason the wrong version is used, you can navigate to the Settings (`CTRL + ALT + S`) and go to: `'Build, Execution, Deployment' -> 'Toolset and Build'`
+ Inside the menu, find `'Use MSBuild version:'` and select version 15.0
 
 ![](https://i.imgur.com/Qnc3rnP.png)
 
@@ -232,6 +264,6 @@ It can look something like the following:
 
 ![](https://i.imgur.com/gKgf9aa.png) 
 
-To enable this feature navigate to Window -> Editor Tabs -> Split Vertically
+To enable this feature navigate to `Window -> Editor Tabs -> Split Vertically`
 
 [Back to TOC](#table-of-contents)
