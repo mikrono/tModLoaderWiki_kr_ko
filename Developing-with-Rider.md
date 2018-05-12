@@ -2,8 +2,23 @@
 
 Rider is an IDE similar to Visual Studio, for C# (and other languages) The software is made by JetBrains, whereas Visual Studio is made by Microsoft. Rider is more lightweight than VS, but also features intellisense and code debugging. It also allows opening an existing VS project.
 
+## Table of Contents
+- [Introductory](#introductory)
+  * [Start](#start)
+  * [Opening an existing VS project](#opening-an-existing-vs-project)
+  * [Creating a new Rider project](#creating-a-new-rider-project)
+  * [Adding project references](#adding-project-references)
+  * [Setting up the mod class](#setting-up-the-mod-class)
+  * [Setting up mod compilation, debugging and eac](#setting-up-mod-compilation--debugging-and-eac)
+  * [Custom MSBuild steps](#custom-msbuild-steps)
+  * [Viewing file structure](#viewing-file-structure)
+  * [Optimal view setup](#optimal-view-setup)
+  * [Keeping track of TODOs](#keeping-track-of-todos)
+  * [No distraction mode](#no-distraction-mode)
+  * [Code analysis, inspection settings](#code-analysis--inspection-settings)
+  * [Using the right MSBuild version](#using-the-right-msbuild-version)
 
-# Start
+## Start
 First, install Rider. Unlike VS, Rider is a paid product, but a free 30 day trial is available. Download here: https://www.jetbrains.com/rider/
 
 ## Opening an existing VS project
