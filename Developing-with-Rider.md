@@ -120,3 +120,22 @@ Now click apply and then OK. Now in the same dropdown, select your new configura
 
 ## Custom MSBuild steps
 .... TODO ....
+
+## Viewing file structure
+To view file structure lik in VS studio (dropdowns for methods etc.)
+Go to View -> Tool Windows -> Structure
+This opens a structure view window as shown:
+
+![](https://i.imgur.com/nwrPOGa.png)
+
+Clicking on any method or field will make your editor scroll to it.
+
+## Optimal view setup
+If you plan on working on large code, like tMLs, it is recommended to enable the 'View whitespaces' and 'Use soft wrap' options. Go to View -> Active Editor and enable these options. Viewing whitespaces (indents) is important to ensure you don't use whitespaces but tabs of width 4.
+
+## Keeping track of TODOs
+Rider has a useful window that can find things marked TODO in comments or throwing NotImplementedException()
+To open this window, go to View -> Tool Windows -> TODO
+This opens a new window as shown:
+
+![](https://i.imgur.com/JU5DiOX.png)
