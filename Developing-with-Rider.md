@@ -1,5 +1,7 @@
 # Introductory
+
 Rider is an IDE similar to Visual Studio, for C# (and other languages) The software is made by JetBrains, whereas Visual Studio is made by Microsoft. Rider is more lightweight than VS, but also features intellisense and code debugging. It also allows opening an existing VS project.
+
 
 # Start
 First, install Rider. Unlike VS, Rider is a paid product, but a free 30 day trial is available. Download here: https://www.jetbrains.com/rider/
@@ -139,3 +141,44 @@ To open this window, go to View -> Tool Windows -> TODO
 This opens a new window as shown:
 
 ![](https://i.imgur.com/JU5DiOX.png)
+
+## No distraction mode
+This is a useful tip when you want to write code without being distracted.
+To use this mode, navigate to View -> Enter Distraction Free Mode
+This gets rid of pretty much any side windows as shown:
+
+![](https://i.imgur.com/JMLXqOx.png)
+
+## Code analysis, inspection settings
+For your own benefits, it is recommend to enable code analysis and propagate code annotations.
+
+Open the settings, by going to File -> Settings or using the CTRL + ALT + S shortcut.
+
+Navigate to Editor -> Inspection Settings
+
+On Inspection Settings, tick to enable 'Enable code analysis' and 'Enable solution-wide analysis'
+
+![](https://i.imgur.com/is9hLMi.png)
+
+Next, to enable code annotations propagation navigate to 'Code Annotations' in the same dropdown, and tick 'Automatically propagate annotations' as shown:
+
+![](https://i.imgur.com/zeaXVWe.png)
+
+You probably also want to disable the 'use 'var' (builtin types)' hint, which can be annoying.
+
+Navigate to Inspection Severity -> C#
+
+Type in the search bar `Use preferred 'var'` and uncheck it as shown:
+
+![](https://i.imgur.com/XxnqDJG.png)
+
+If you are also annoyed by the 'Invert if to reduce nesting`, it can be disabled as well:
+
+![](https://i.imgur.com/537R8dV.png)
+
+## Using the right MSBuild version
+It is recommended to use MSBuild 15.0
+
+If for some reason the wrong version is used, you can navigate to the Settings (CTRL + ALT + S) and go to: 'Build, Execution, Deployment' -> 'Toolset and Build'. Inside the menu, find 'Use MSBuild version:' and select version 15.0
+
+![](https://i.imgur.com/Qnc3rnP.png)
