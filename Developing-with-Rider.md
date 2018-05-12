@@ -41,9 +41,9 @@ You should leave the 'Type' field as 'Class Library' and the 'Language' field as
 
 ![](https://i.imgur.com/peWz7bN.png)
 
-Your final window should look similar to this:
+Your final window should look similar to this: (except the "Solution directory already exists")
 
-![](https://i.imgur.com/hF2Pw4V.png)
+![](https://i.imgur.com/IRfMWrq.png)
 
 Now press create which will create the new project.
 If you've selected to create a GIT repository, a window will pop up asking to add files to git. **Uncked all of these files, and check 'Remember, don't ask again'**
