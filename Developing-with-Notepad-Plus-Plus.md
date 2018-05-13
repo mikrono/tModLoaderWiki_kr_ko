@@ -34,7 +34,7 @@ You'll need to change settings inside the run_build script once. Open up `COMPIL
 * **compile_with_eac** --- whether to compile with eac instructions
 * **make_logs** --- whether to write info to log files
 
-Note: an easier setup is possible having 1 superscript and calling it from within your mod source folder. However, this requires batch scripting knowledge so I didn't opt for it. 
+Note: an easier setup is possible having 1 superscript and calling it from within your mod source folder. However, this requires that the user knows batch scripting so I didn't opt for it. 
 
 To run the compile script and build the mod, right click the `COMPILE_run_build.bat` script in the directory tree and click 'Run by system' as shown:
 
