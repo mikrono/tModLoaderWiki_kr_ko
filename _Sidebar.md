@@ -7,6 +7,7 @@ ___
 - [Information: description.txt](description.txt)
 - [Developing with Visual Studio](Developing-with-Visual-Studio)
 - [Developing with Rider](Developing-with-Rider)
+- [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
 - [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-525#post-1001200)
 - [Mod Browser](Mod-Browser)
 
