@@ -1050,6 +1050,9 @@ The following is a list of constants found in the Terraria.ID.ItemID class. Simp
 | Extractinator | 997 |
 | Solidifier | 998 |
 | Amber | 999 |
+
+| Item	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+| :-- 	| :--     
 | ConfettiGun | 1000 |
 | ChlorophyteMask | 1001 |
 | ChlorophyteHelmet | 1002 |
@@ -2050,6 +2053,9 @@ The following is a list of constants found in the Terraria.ID.ItemID class. Simp
 | UlyssesButterfly | 1997 |
 | SulphurButterfly | 1998 |
 | TreeNymphButterfly | 1999 |
+
+| Item	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+| :-- 	| :--     
 | ZebraSwallowtailButterfly | 2000 |
 | JuliaButterfly | 2001 |
 | Worm | 2002 |
@@ -3050,6 +3056,9 @@ The following is a list of constants found in the Terraria.ID.ItemID class. Simp
 | WormholePotion | 2997 |
 | SummonerEmblem | 2998 |
 | BewitchingTable | 2999 |
+
+| Item	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+| :-- 	| :--     
 | AlchemyTable | 3000 |
 | StrangeBrew | 3001 |
 | SpelunkerGlowstick | 3002 |
