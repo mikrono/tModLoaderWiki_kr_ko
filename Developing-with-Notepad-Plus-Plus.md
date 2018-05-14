@@ -24,7 +24,7 @@ First, have np++ installed. I recommend 64 bit if your computer can handle it. N
 ## Compile scripts
 I've written a few batch scripts that can compile your mod source against the server similarly in Rider and Visual studio. You will have two files: `COMPILE_run_build.bat` and `COMPILE_do_build.bat`. Both rely on each other, so you need both. Don't worry though, you'll only ever be manually calling run_build.
 
-Download a .zip of the files [here](https://cdn.discordapp.com/attachments/426125688148328469/445178344947056642/NP_CompileFiles.zip).
+Download a .zip of the files [here](https://cdn.discordapp.com/attachments/426125688148328469/445603458951806986/NP_CompileFiles.zip).
 As shown above, it contains two files. Place these files wherever you want, but inside your mod source is preferred.
 
 You'll need to change settings inside the run_build script once. Open up `COMPILE_run_build.bat` in np++ and see the first setup sections. It comes with 5 settings that can be configured. Read the instructions thoroughly and change the settings accordingly. The settings include:
