@@ -11,7 +11,7 @@ It is hard to guess a good value for the return of ModNPC.SpawnChance. We don't 
 Terraria spawns NPC by first deciding on a position to spawn the NPC, and then asking each NPC if they would like to spawn at that position. Each time Terraria decides to spawn an NPC, it will be in conjunction with a Player object (NPCSpawnInfo.player). In Multiplayer, the server handles all spawning decisions. If you make a custom biome in your mod and notice that spawning doesn't work correctly in multiplayer, your ModPlayer.SendCustomBiomes and related hooks need to be implemented correctly so the server knows the correct values of the custom biome booleans, so that it can make the correct decisions.
 
 ## Return values
-The ModNPC.SpawnChance hook returns a float. Google that is you don't understand. The ModNPC.CanTownNPCSpawn hook returns a bool.
+The ModNPC.SpawnChance hook returns a float. Google that if you don't understand. The ModNPC.CanTownNPCSpawn hook returns a bool.
 
 ## ModNPC.SpawnChance
 This is the main focus of this guide. All naturally spawning non-boss, non-townNPC ModNPC classes should override this hook:
