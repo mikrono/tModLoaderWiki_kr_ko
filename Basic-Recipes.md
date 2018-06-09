@@ -130,6 +130,8 @@ namespace ExampleMod
 {
 	public class ExampleMod : Mod
 	{
+		// Other methods and fields here...
+
 		public override void AddRecipes()
 		{
 			// Here is an example of a recipe.
