@@ -83,7 +83,10 @@ As an aside, you may want your ModTile to count as, say, a workbench or anvil. T
 
     adjTiles = new int[]{ TileID.WorkBenches };
 
-## Complete Example
+## Complete Examples
+Here are 2 complete examples, one showing recipes added in a ModItem class more suitable for recipes involving that ModItem, and the other showing adding recipes in a Mod class more suitable for recipes involving vanilla items. Technically the recipes can go in either location, but for organization purposes it is sometimes nice to have recipes in ModItem classes. Also pay attention to `this` and `mod`, as they refer to different things depending on which class they occur in.
+### ModItem Example
+```cs
     using Terraria;
     using Terraria.ID;
     using Terraria.ModLoader;
@@ -115,6 +118,35 @@ As an aside, you may want your ModTile to count as, say, a workbench or anvil. T
     		}
     	}
     }
+```
+
+### Mod Example
+Notice how the word `this` refers to the `mod` not a particular item as in the ModItem example.
+```cs
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod
+{
+	public class ExampleMod : Mod
+	{
+		public override void AddRecipes()
+		{
+			// Here is an example of a recipe.
+			ModRecipe recipe = new ModRecipe(this);
+			recipe.AddIngredient(null, "ExampleItem");
+			recipe.SetResult(ItemID.Wood, 999);
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.BlueBerries, 20);
+			recipe.AddTile(TileID.WorkBenches);
+			recipe.SetResult(ItemID.PumpkinPie, 2);
+			recipe.AddRecipe();
+		}
+	}
+}
+```
 
 ## Common Errors
 ### Error CS0117 'ItemID' (or TileID) does not contain a definition for 'MyModItem'
