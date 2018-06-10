@@ -23,6 +23,7 @@ If you have suggestions, tips, or have found things such as spelling errors or g
 ## Utilities/Other
 
 * [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) (by @jopojelly)
+* [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) -- Quickly create armor animation sprites
 * [Item name updater](https://cdn.discordapp.com/attachments/103110554649894912/321756918609870858/Item_Name_Updater_Fixed.zip) (SetDefaults to SetStaticDefaults) (for migration to 0.10) (by @imkSushi)
 * [Terraria Tile Generator](https://forums.terraria.org/index.php?threads/terraria-tile-generator.70088/) (Quickly makes tile textures for ores.)
 * [Official mod migration guide to 0.10](https://docs.google.com/document/d/1GY6Jyj0IkqfvQlXJUwXg60d2V8tIzumoNVgh5OWzGIc/edit?usp=sharing)
