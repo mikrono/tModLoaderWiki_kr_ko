@@ -25,3 +25,6 @@ If you would like to play vanilla Terraria, you should have a "Terraria v1.3.5.3
 
 # Server
 For the most part, launching a tModLoader server is the exact same as launching a Terraria server. 
+
+## Setting Up a Hosted Server
+TODO
