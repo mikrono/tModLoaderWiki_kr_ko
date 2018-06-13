@@ -20,7 +20,7 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [Tremor](https://github.com/Jofairden/Tremor) -- Please be advised that the code in Tremor is mostly very sub-optimal, though slowly being improved by Jofairden and collaborators. If you are looking for example, try to use Tremor as a last resort instead of a first
 * [Enigma](https://github.com/Laugic/Laugicality) -- Adds a new level-up system, a few bosses, weapons, and accessories. 
 * [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
-* [Dragon Ball T](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
+* [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
 
 
 ## Other Mods
