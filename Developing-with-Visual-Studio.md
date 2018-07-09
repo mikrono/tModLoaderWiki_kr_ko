@@ -1,3 +1,8 @@
+# Prerequisites
+1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). It is free. Don't download Visual Studio Code, that isn't the same thing and not what this tutorial is about.
+2. During install, check .Net Framework workload. Nothing else needs to be checked.
+![](https://i.imgur.com/ZfFjwDt.png)
+
 # Creating a Project
 This will let you use Visual Studio's code editing and Intellisense
 
