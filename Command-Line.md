@@ -4,6 +4,10 @@ In addition to all the Command Line and Server Config settings available in [van
 Server and Client Command Line Argument    
 Specifies the save directory. The save directory will usually be `%UserProfile%\Documents\My Games\Terraria\ModLoader​` on Windows, `/Users/account/Library/Application Support/Terraria/ModLoader` on Mac, and `~/.local/share/Terraria/ModLoader` OR `$XDG_DATA_HOME/Terraria/ModLoader` on Linux. The directory `/ModLoader` will automatically be appended to the provided path. Use this argument to specify a different save directory. The save directory is the parent directory of the worlds directory and mods directory, so you can use only this parameter rather than both of those.
 
+### tmlsavedirectory [pathToSaveDirectoryFolder]
+Server and Client Command Line Argument    
+Same as savedirectory above except `/ModLoader` won't automatically be appended to the provided path.
+
 ### modpack [modpackname]
 Server and Client Command Line Argument, Server Config.  
 Specifies a modpack to use by name. Omit the .json extension. The mods specified in the modpack (and only them) will be loaded. Useful for quickly launching a specified set of mods for people who might be doing multiple concurrent play-throughs with different sets of mods.
