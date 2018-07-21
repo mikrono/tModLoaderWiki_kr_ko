@@ -2,7 +2,7 @@
 This page will hopefully convince you to abandon making mods in Notepad. Be sure to click the links below to watch the videos. All info presented corresponds to Visual Studio, but other IDEs have similar functionality.
 
 # Syntax Error Checking    
-When you make a syntax error, you'll see red underlines under the bad code, similar to a spell check.
+When you make a syntax error, you'll see red underlines under the bad code, similar to a spell check.    
 ![](https://i.imgur.com/dwskGkr.png)    
 You can hover over the error to see an explanation.    
 ![](https://i.imgur.com/a80jrK8.png)    
