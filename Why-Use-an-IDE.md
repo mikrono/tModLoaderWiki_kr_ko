@@ -86,6 +86,7 @@ Did you know that `3/2` in c# is `1` not `1.5`? Sometimes you might want to expe
 ![](https://i.imgur.com/F6YABM2.png)    
 
 # Debug
+TODO: Some examples of discovering bad code via inspecting at an exception or breakpoint.
 
 # Edit And Continue
 With Edit And Continue, you can edit code and see the effect of your edits in game without having to rebuild your mod. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this extremely useful feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading. 
