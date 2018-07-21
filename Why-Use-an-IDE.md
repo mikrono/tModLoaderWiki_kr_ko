@@ -61,9 +61,6 @@ Imagine you name a variable or class something stupid and want to change it. Wit
 Some Terraria methods have many many parameters. It can be hard to remember the order and types of those parameters. If you'd like to see the parameters of something like Item.NewItem or Projectile.NewProjectile, simeply place your cursor inside the method and press `Ctrl-Shift-Space`. You can navigate left and right and watch the bold parameter change. Press up and down to switch between overloads of the same method. [Watch this in action.](https://gfycat.com/BarrenShorttermAsianpiedstarling)    
 ![](https://i.imgur.com/D0f2NM6.png)    
 
-
-# Goto Brace (Ctrl-])
-
 # Goto (Ctrl-,)
 An extremely useful shortcut, Goto allows you to quickly navigate to and class, method, or field in your code. Simply type `Ctrl-,` and the Go to All window will pop up. Type the name or part of the name and select the item to quickly navigate to the code. You can also type the first letter of each word in a name to find it. For example, typing `eqf` will suggest `ExampleQuestFish`. Visual Studio will smartly handle misspellings and partial matches as well. The video shows just how quick this feature can be and how easy it is to quickly navigate to other places in your code. [Watch this in action.](https://gfycat.com/AromaticLazyFrogmouth)    
 ![](https://i.imgur.com/TUthjgE.png)    
@@ -73,6 +70,12 @@ Sometimes, especially in Projectile and NPC AI, you might get lost within your c
 ![](https://i.imgur.com/nVR628X.png)    
 
 # Code Folding
+Folding code by pressing the `-` or `+` buttons can be useful if you need a wider perspective on your code.    
+![](https://i.imgur.com/BcgwF5H.png)    
+
+# Goto Brace (Ctrl-])
+Using this hotkey is useful when navigating vanilla code with large blocks of code within braces. 
+[Watch this in action.](https://gfycat.com/RaggedScarceHochstettersfrog)   
 
 # Debug
 
