@@ -20,11 +20,26 @@ Clicking the first option adds the appropriate using statement to our code. We c
 
 # Autocomplete / Intellisense
 
-## Field and Method names
+## Field names
+A common problem with new modders is that they don't know all the Terraria variable names or method names. For example, the various biomes/zones have names that aren't always what you might expect. You'll still need a little experience to know which class to look for these variables, but Intellisense helps immensely. In the video below, we see Intellisense suggesting the available Zones and downed bosses. Notice how Plantera being defeated is `downedPlantBoss`. This is why Intellisense is so valuable to a self-sufficient modder. [Watch this in action.](https://gfycat.com/UnitedFaintGrouper)    
+![](https://i.imgur.com/CkGOuta.png)
+
+### ItemIDs, NPCIDs, ProjectilesIDs, etc...
+While you can waste your time looking up various vanilla IDs in our [reference pages](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-IDs), it is much easier to just let Autocomplete do the work for us! Simply start typing your guess for the ID name and you will quickly see suggestions. You can select a suggestion to autocomplete it. How nice is that?    
+![](https://i.imgur.com/8VpUJFF.png)
+
+## Method names and parameters
+Method names are also suggested in the same way. In addition, you can see the method parameters, both their names and types. For example, I'd like to add a buff to an enemy when I hit him with my sword. Typing `target.AddBuff(` will bring up the parameters, helping me complete my call to the AddBuff method. [Watch this in action.](https://gfycat.com/UnknownQuarterlyChamois)      
+![](https://i.imgur.com/Oml4sUU.png)     
+
 
 ## Override
 An extremely common task when making mods is to override various hooks such as SetDefaults or UpdateAccessory. Remembering the parameters to these hooks is sometimes hard to do. By using Visual Studio, you can easily write "override" followed by a space, followed by a few letters of the method you want to override, and then enter to easily override hooks. As a bonus, any missing using references will automatically be added to your code.
-[Watch this in action.](https://gfycat.com/AdorableFluidDunlin)
+[Watch this in action.](https://gfycat.com/AdorableFluidDunlin)     
+Before:    
+![](https://i.imgur.com/uOQMDHx.png)    
+After:    
+![](https://i.imgur.com/KpQARfo.png)     
 
 # Documentation
 Hover over any tModLoader hook and you can see documentation for that method.
