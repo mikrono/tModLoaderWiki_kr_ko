@@ -8,6 +8,10 @@ You can hover over the error to see an explanation.
 ![](https://i.imgur.com/a80jrK8.png)    
 Seeing the explanation above, we can fix the code easily by changing `20.5f` to just `20`.
 
+## Simple Misspellings
+Visual Studio can fix simple misspellings as well. 
+[Watch this in action.](https://gfycat.com/DemandingFeminineArthropods)    
+
 ## Show Potential Fixes
 Sometimes Visual Studio can guess how to fix your error. For example, below we forget to add `using Terraria.ID;` to our ModItem class.    
 ![](https://i.imgur.com/dq7v87C.png)    
