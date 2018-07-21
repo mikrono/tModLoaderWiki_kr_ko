@@ -93,3 +93,5 @@ With Edit And Continue, you can edit code and see the effect of your edits in ga
 ## Simple Example
 In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
 
+# Visual Studio Live Share
+This feature lets you invite someone into your project and collaboratively work on the code. Useful for mentoring other coders on your mod team or getting help on a tricky problem. Pair with Discord chat for voice chat.
