@@ -84,3 +84,8 @@ Using this hotkey is useful when navigating vanilla code with large blocks of co
 # Debug
 
 # Edit And Continue
+With Edit And Continue, you can edit code and see the effect of your edits in game without having to rebuild your mod. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this extremely useful feature. Note that things like ModItem.SetStaticDefaults, ModTile.SetDefaults, or other code might only run when the mod is loading. 
+
+## Simple Example
+In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
+
