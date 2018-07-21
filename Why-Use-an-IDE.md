@@ -38,6 +38,17 @@ By clicking on a variable or classname, you can press F12 and Visual Studio will
 Imagine you name a variable or class something stupid and want to change it. Without an IDE, you would have to manually check each file the variable is used in and edit the text. Even something like "Find and Replace" would be error prone if you use similar names for other variables. Using the Rename function, you can easily rename classes and variables. Be aware that if you are using methods like `mod.ItemType("Name")` rather than `mod.ItemType<Name>()`, this won't work. This is also a great reason to use the <> type methods for ItemType and NPCType, it is much easier to maintain. In the video, we rename a variable called `examplePet` to something better, `airplanePet`. 
 [Watch this in action.](https://gfycat.com/SphericalUnsteadyDutchsmoushond)
 
+# Parameter Info (Ctrl-Shift-Space)
+
+# Goto Brace (Ctrl-])
+
+# Goto (Ctrl-,)
+
+# Structure Guide Lines
+Sometimes, especially in Projectile and NPC AI, you might get lost within your code. This is especially true with nested if statements. Hover over the dotted lines to quickly see where you currently are in your code. For example, here I easily see at a glance where in the logic of my AI I currently am.         
+![](https://i.imgur.com/nVR628X.png)    
+# Code Folding
+
 # Debug
 
 # Edit And Continue
