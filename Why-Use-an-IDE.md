@@ -81,6 +81,10 @@ Folding code by pressing the `-` or `+` buttons can be useful if you need a wide
 Using this hotkey is useful when navigating vanilla code with large blocks of code within braces. 
 [Watch this in action.](https://gfycat.com/RaggedScarceHochstettersfrog)   
 
+# C# Interactive
+Did you know that `3/2` in c# is `1` not `1.5`? Sometimes you might want to experiment with some c# syntax, but don't want to make a mod just to test the code. The c# interactive window is very useful for this. You can do whatever you want in the c# interactive, each command will execute it after you press enter. `Alt-UpArrow` can be used to bring up previous statements. [Watch this in action.](https://gfycat.com/FarDismalGordonsetter)   
+![](https://i.imgur.com/F6YABM2.png)    
+
 # Debug
 
 # Edit And Continue
