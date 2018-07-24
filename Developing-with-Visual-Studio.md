@@ -26,7 +26,7 @@ Paste this weird search string in your file browser pathbar like so
 
 It is recommended to ** !! copy !! (please COPY and paste, do not cut and paste)** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
 
-If you can't find the .dlls or you couldn't succeed in added them as a reference, there's a neat trick you can try which will reference them automatically: 
+If you can't find the .dlls or you couldn't succeed in adding them as a reference, there's a neat trick you can try which will reference them automatically: 
 1. Open the csproj file in a good text editor (like [Notepad++](https://notepad-plus-plus.org/))
 1. Find the reference section and add these lines
 
