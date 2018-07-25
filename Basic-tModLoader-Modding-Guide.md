@@ -9,6 +9,17 @@ Click the `Generate Mod Skeleton` button and you should see a .zip file download
 
 ![](http://i.imgur.com/0zH7w65.png)
 
+### Mod Skeleton Contents
+The Skeleton contains 7 files. Here is an explanation of each:    
+1. **[ModName].cs** - This is the `Mod` class. It is the central file to any mod. One and only one `Mod` class can exist in every mod. For simple mods this file will be very sparse, but in this class various global things can happen such as modifying music.     
+2. **description.txt** - Contains text for the description of the mod. Click the `More Info` button in the Mod menu to view in game.    
+3. **build.txt** - Contains the version, author, and display name of your mod. Can contain other [values](https://github.com/blushiemagic/tModLoader/wiki/build.txt). Necessary.  
+4. **[ModName].csproj** - A project file for Visual Studio set up for debugging your Mod. Debugging is extremely useful but a takes a bit of learning, don't delete.  
+5. **[ModName].csproj.user** - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
+6. **Items/[ItemName].cs** - A simple Sword item. Use this as an example as you learn to make additional ModItem classes.  
+7. **Items/[ItemName].png** - The corresponding sprite.  
+
+## Learn how to Build the Mod
 We now have a ready-made mod ready to be built. Start up tModLoader and click on the Mod Sources menu item. Now click the build and reload button.
 
 ![](http://i.imgur.com/jbCpSYc.png)
