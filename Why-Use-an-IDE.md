@@ -69,6 +69,9 @@ Some Terraria methods have many many parameters. It can be hard to remember the 
 An extremely useful shortcut, Goto allows you to quickly navigate to and class, method, or field in your code. Simply type `Ctrl-,` and the Go to All window will pop up. Type the name or part of the name and select the item to quickly navigate to the code. You can also type the first letter of each word in a name to find it. For example, typing `eqf` will suggest `ExampleQuestFish`. Visual Studio will smartly handle misspellings and partial matches as well. The video shows just how quick this feature can be and how easy it is to quickly navigate to other places in your code. [Watch this in action.](https://gfycat.com/AromaticLazyFrogmouth)    
 ![](https://i.imgur.com/TUthjgE.png)    
 
+# Format Document (Ctrl-E, D or Edit->Advanced->Format Document)
+Properly formatted code is key for readability. Make sure to run this command before asking for help with your code as nothing is more annoying that poorly formatted code. [Watch this in action.](https://gfycat.com/DearZanyComet)    
+
 # Structure Guide Lines
 Sometimes, especially in Projectile and NPC AI, you might get lost within your code. This is especially true with nested if statements. Hover over the dotted lines to quickly see where you currently are in your code. For example, here I easily see at a glance where in the logic of my AI I currently am.         
 ![](https://i.imgur.com/nVR628X.png)    
