@@ -8,5 +8,13 @@ A simpler way is to download [ilspy](https://github.com/icsharpcode/ILSpy/releas
 
 ![](http://i.imgur.com/ZeXH2p5.png)
 
+### ilspy notes
+You may get things like this in your decompiled code:    
+```cs
+ref x = red npc.ai[1];
+x += 1f;
+```    
+This isn't correct c# syntax and will result in an error. This happens in the ilspy 3.0+ versions. You can change the code to `npc.ai[1] += 1f;`, but it might be easier to use an older but slower ilspy, [version 2.3.1](https://github.com/icsharpcode/ILSpy/releases/tag/2.3.1).
+
 ## But wait, I found the code on Google!
 No. That code is bad and will not work. It has tens of thousands of decompilation errors. Just decompile it yourself.
