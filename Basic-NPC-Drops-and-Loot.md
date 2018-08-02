@@ -101,6 +101,19 @@ if (Main.hardMode && !npc.boss && npc.lifeMax > 1 && npc.damage > 0 && !npc.frie
 ### Custom Biome
 Replace `.ZoneHoly` in the above example with `.GetModPlayer<ExamplePlayer>().ZoneExample`.
 
+### Player who killed NPC
+Sometimes we want to do something for the player who attacked the NPC last. NPC has a lastInteraction field that will default to 255, meaning no player has damaged the npc. It is possible for an NPC to die with lastInteraction still being 255 if townNPC or traps deal all the damage to the NPC. Because of this, usually code meant to reward or affect the player who killed the NPC might look something like this, falling back on FindClosestPlayer if needed:
+
+```c#
+int playerIndex = npc.lastInteraction;
+if (!Main.player[playerIndex].active || Main.player[playerIndex].dead)
+{
+	playerIndex = npc.FindClosestPlayer(); // Since lastInteraction might be an invalid player fall back to closest player.
+}
+Player player = Main.player[playerIndex];
+// Other code affecting the player. Might need ModPackets if relevant.
+```
+
 ## Random Choice
 Many times we want to drop a random item from a set of choices. There is the naive way and a better way.
 
