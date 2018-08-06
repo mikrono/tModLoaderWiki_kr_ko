@@ -32,6 +32,7 @@ ___
 - [Basic Ammo](Basic-Ammo)
 - [Basic Sounds](Basic-Sounds)
 - [Basic Dust](Basic-Dust)
+- [Basic Tile](Basic-Tile)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
 - [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
 ___
