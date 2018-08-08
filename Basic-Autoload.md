@@ -19,3 +19,6 @@ In more concise terms, look for the .png file with filename matching the classna
 
 Basically, just make sure the .cs file and .png file exist in the same directory and that the class in the .cs file matches the filename of the .png file. It is a good idea to also make sure the .cs file matches the classname and .png filename as well. Also, you must make sure that the folder path from the Mod Sources folder matches the namespace (with 
 '.' becoming '\\' in the folder structure.)
+
+A visual explanation:  
+![](https://i.imgur.com/XLeNQCs.png)
