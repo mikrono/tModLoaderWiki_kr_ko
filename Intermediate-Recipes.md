@@ -144,10 +144,10 @@ This code removes the ingredient Chain from all vanilla recipes. The second half
 # Relevant References
 * [Vanilla ItemIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
 * [Vanilla TileIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
-* [ModRecipe Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
-* [RecipeFinder Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_recipe_finder.html)
-* [RecipeEditor Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_recipe_editor.html)
-* [Mod Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html)
+* [ModRecipe Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
+* [RecipeFinder Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_recipe_finder.html)
+* [RecipeEditor Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_recipe_editor.html)
+* [Mod Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html)
 
 # Not covered in Intermediate level
 There are other aspects of ModRecipes that will be covered in more advanced guides:
