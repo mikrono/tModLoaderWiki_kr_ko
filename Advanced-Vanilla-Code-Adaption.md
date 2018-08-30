@@ -223,7 +223,8 @@ To start, lets make a basic clone of an NPC as seen in Party Zombie. Lets clone 
 
 The following is the code:
 
-```using Terraria;
+```cs
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
