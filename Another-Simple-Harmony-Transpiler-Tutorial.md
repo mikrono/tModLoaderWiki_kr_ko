@@ -1,5 +1,5 @@
 ## About
-This guide is yet another Harmony Transplier Tutorial. This guide will use Terraria as the target game and will touch lightly upon Labels, Extension Methods, and AccessTools. If you'd like, you can skip right to the bottom and see these sections directly. Read the guide from start to finish if you'd like to follow the thought process of developing this Transplier.
+This guide is yet another Harmony Transpiler Tutorial. This guide will use Terraria as the target game and will touch lightly upon Labels, Extension Methods, and AccessTools. If you'd like, you can skip right to the bottom and see these sections directly. Read the guide from start to finish if you'd like to follow the thought process of developing this Transpiler.
 
 ## Prerequisites
 * This guide assumes you have gone through the [original tutorial](https://gist.github.com/pardeike/c02e29f9e030e6a016422ca8a89eefc9).
@@ -15,7 +15,7 @@ Here is how Bee weapons currently work ([video](https://gfycat.com/MagnificentLi
 Notice how about half of the bees spawn as GiantBees.
 
 ## Original Method
-Lets first look at the original method to see what changes we'll want to make to the IL code. Start up dnSpy and add the exe by going to File->Open and then browsing to Terraria.exe. Expand the tabs for Terraria, Terraria.exe, Terraria, and finally Player. Scroll down and click on the `beeType()` method. How did I know this was where I need to look? Experience. By now you should see this:    
+Lets first look at the original method to see what changes we'll want to make to the IL code. Start up dnSpy and add the exe by going to File->Open and then browsing to Terraria.exe. Expand the tabs for Terraria, Terraria.exe, Terraria, and finally Player. Scroll down and click on the `beeType()` method. How did I know this was where I need to look? Experience. I followed the logic of the bee weapons in decompiled code and found that beeType is the method that makes the decisions I want to modify. If you are reading this, you probably have already identified a method that you wish to change since you are resorting to Transpiling. By now you should see this:      
 ```cs
 public int beeType()
 {
@@ -141,7 +141,7 @@ public int beeType()
 	return 566;
 }
 ```    
-Do not worry, however, as our approach for this transplier is to find the `return 566` in the instructions and add our instructions right before that. This can still be done even though the instructions have moved around a little in our temporarily modified copy of the instructions. Switching back to the IL view, lets find the code between `this.makeStrongBee = true;` and `return 566`. This code now contains the instructions for our if statement and returning 183. Lets annotate these instructions now:    
+Do not worry, however, as our approach for this transpiler is to find the `return 566` in the instructions and add our instructions right before that. This can still be done even though the instructions have moved around a little in our temporarily modified copy of the instructions. Switching back to the IL view, lets find the code between `this.makeStrongBee = true;` and `return 566`. This code now contains the instructions for our if statement and returning 183. Lets annotate these instructions now:    
 ```cs
 // push Player instance onto stack
 IL_0015: ldarg.0
@@ -172,7 +172,7 @@ IL_0035: ret
 By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on Harmony code. Finally!    
 
 ## Harmony Patch
-If you skipped to here, note that we now know what instructions we want to add and where. Now we will make the Transplier code. We'll begin with the basic framework, annotating our static class with `HarmonyPatch` Attributes to specify the target method:     
+If you skipped to here, note that we now know what instructions we want to add and where. Now we will make the Transpiler code. We'll begin with the basic framework, annotating our static class with `HarmonyPatch` Attributes to specify the target method:     
 ```cs
 /// <summary>
 /// Patches Player.beeType to return a Beenade 10% of the time if Player.strongBees is true
@@ -191,7 +191,7 @@ public class Player_beeType_Patcher
 	}
 }
 ```
-We now need to decide where to put our code. Since other patches might occur in this same method, we need to be careful to preserve functionality. We also need to be aware that updates to the game we are patching, Terraria, might also change the specific instructions our patch will see as input to the Transplier. We are fairly confident that GiantBee won't change from 566, so lets use the return of 566 as our way of finding a suitable location to insert our additional logic. Using a for loop and checking opcodes and operands, we can easily find this location:    
+We now need to decide where to put our code. Since other patches might occur in this same method, we need to be careful to preserve functionality. We also need to be aware that updates to the game we are patching, Terraria, might also change the specific instructions our patch will see as input to the Transpiler. We are fairly confident that GiantBee won't change from 566, so lets use the return of 566 as our way of finding a suitable location to insert our additional logic. Using a for loop and checking opcodes and operands, we can easily find this location:    
 ```cs
 int insertionIndex = -1;
 for (int i = 0; i < code.Count - 1; i++) // -1 since we will be checking i + 1
@@ -239,7 +239,7 @@ if (insertionIndex != -1)
 }
 return code;
 ```
-Now lets talk about Labels. You might assume that you'll have to do some math to calculate instruction sizes and edit the values of the jumps in various branching statements. Luckily, this is not the case. This is a case where Harmony augments the instructions provided to the Transplier to simplify things. Each CodeInstruction that has code jumping to it contains an entry in its CodeInstruction.labels for each CodeInstruction jumping to it. Using this `Label` class, we can modify where jumps jump to without calculating resulting instruction indexes. For our example, we need to jump to the `return 183` code, but no Label currently points to that line of IL Code.
+Now lets talk about Labels. You might assume that you'll have to do some math to calculate instruction sizes and edit the values of the jumps in various branching statements. Luckily, this is not the case. This is a case where Harmony augments the instructions provided to the Transpiler to simplify things. Each CodeInstruction that has code jumping to it contains an entry in its CodeInstruction.labels for each CodeInstruction jumping to it. Using this `Label` class, we can modify where jumps jump to without calculating resulting instruction indexes. For our example, we need to jump to the `return 183` code, but no Label currently points to that line of IL Code.
 The first step is adding `ILGenerator il` to our Transpiler method parameters. After this, we can make a new label by calling `Label return566Label = il.DefineLabel();` We then need to add this label to the instruction that we want to jump to later. In our code, this will be the `code[i].labels.Add(return566Label);` line. Finally, we can use this label as the operand to our `Brfalse_S` opcode from before: `instructionsToInsert.Add(new CodeInstruction(OpCodes.Brfalse_S, return566Label));`     
 
 Here is the final result:    
@@ -299,4 +299,4 @@ AccessTools provides easy access to FieldInfo and MethodInfo. If you are familia
 You might assume that the IL code to call an extension method would need a MethodInfo from the extended class, but remember that it is the class that adds the extension method that contains the MethodInfo. The first parameter will be the original class. 
 
 ### Labels
-Labels are a Harmony abstraction that simplifies jumps in branching code. This abstraction serves to simplify the work patches need to do to jump to the correct label. Since patches insert and delete IL Code, it would be very hard to properly maintain the jumps in branching code. With Harmony, the operand of branching opcodes are in fact replaced with Label instances. These Labels are swapped in in the place of the operands and are also added to the targeted CodeInstruction's `labels` field. Make sure to add `ILGenerator il` as a parameter to your Transplier method so you can utilize `Label myLabel = il.DefineLabel();` to create a new Label. After creating a new Label, you need to add it to both the source and target CodeInstruction instances. For the CodeInstruction with the branching opcode, use the Label as the operand. For the CodeInstruction the opcode is branching to, be sure to add it to the labels field: `code[i].labels.Add(myLabel);`. After the Transplier method executes, Harmony will swap the Labels out and calculate correct values for branching opcodes.
+Labels are a Harmony abstraction that simplifies jumps in branching code. This abstraction serves to simplify the work patches need to do to jump to the correct label. Since patches insert and delete IL Code, it would be very hard to properly maintain the jumps in branching code. With Harmony, the operand of branching opcodes are in fact replaced with Label instances. These Labels are swapped in in the place of the operands and are also added to the targeted CodeInstruction's `labels` field. Make sure to add `ILGenerator il` as a parameter to your Transpiler method so you can utilize `Label myLabel = il.DefineLabel();` to create a new Label. After creating a new Label, you need to add it to both the source and target CodeInstruction instances. For the CodeInstruction with the branching opcode, use the Label as the operand. For the CodeInstruction the opcode is branching to, be sure to add it to the labels field: `code[i].labels.Add(myLabel);`. After the Transpiler method executes, Harmony will swap the Labels out and calculate correct values for branching opcodes.
