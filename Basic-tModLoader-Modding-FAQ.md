@@ -43,6 +43,10 @@ This is because the computer doesn't know what the Player class is. You need to 
 ___
 This is because the computer doesn't know what the ItemID class is. You need to tell the computer where ItemID is found. Do this by adding "using Terraria.ID;" to the top of the file so the computer knows how to find the ItemID class.
 
+### You must add a reference to assembly 'Relogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+___
+If you are using Visual Studio, you might need to add a [reference to Relogic.dll](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#error-cs0246-the-type-or-namespace-name-relogic-could-not-be-found)
+
 ### Error CS0161: 'ExampleItem.UseItem(Player)' (or some other hook): not all code paths return a value
 ___
 Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://bluemagic123.github.io/tModLoader/html/index.html) to know what value to return.
