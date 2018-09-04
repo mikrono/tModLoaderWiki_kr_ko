@@ -288,7 +288,7 @@ public class Player_beeType_Patcher
 Lets watch a Bee weapon in action after applying our patch ([video](https://gfycat.com/QuerulousParchedJaguar)):    
 ![](https://thumbs.gfycat.com/QuerulousParchedJaguar-size_restricted.gif)    
 
-As a reminder, this is how it use to act ([video](https://gfycat.com/MagnificentLividHuia)):    
+As a reminder, this is how it used to act ([video](https://gfycat.com/MagnificentLividHuia)):    
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    
 
 ## Recap
