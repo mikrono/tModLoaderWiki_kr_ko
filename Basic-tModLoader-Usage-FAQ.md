@@ -32,7 +32,7 @@ This seems to happen when users rename the tModLoader exe to something other tha
 Open up the tModLoader save directory and delete the offending .tmod file: `%UserProfile%\Documents\My Games\Terraria\ModLoader\Mods` (Windows)
 
 ### Begin cannot be called again until End has been successfully called
-(Also applies to "Cannot access a disposed object")    
+(Also applies to "Cannot access a disposed object" errors)    
 ![](https://i.imgur.com/jzbyghT.png)    
 This error is an error usually caused by an unhandled error in a mod. This makes it hard for users to know which mod is broken. Much of the time this error will only happen after reloading mods (improperly unloaded Texture2D references), but it can happen due to other errors (for example, dividing by zero.) As a user of mods, it can be hard to figure out which mod is causing the issue. To determine the broken mod, follow these steps: In Settings->tModLoader Settings, make sure "Always log exceptions" is true. After that, reload mods. After that, enter the game and proceed to play until the error happens again. When this happens, open `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\Logs.txt` and look at the file. Scroll down to the very bottom and you should hopefully see this error as the last entry. Right above that is hopefully another error. Look for the name of any mod you are using in this 2nd to last error message. If you find one, that is likely the mod causing the error. If in doubt, ask in #support on the [tModLoader discord](http://www.discord.me/tModLoader). As a last resort, use the [flowchart](#flowchart).
 
