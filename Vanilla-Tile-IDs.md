@@ -1,5 +1,12 @@
 The following is a list of constants found in the Terraria.ID.TileID class. Simply use your browsers find function (ctrl-f) to find the correct TileID . Most tile ids will be the English name of the tile, but there are exceptions. If you can't find the tile here, look them up on the [official Terraria wiki](https://terraria.gamepedia.com/Tile_IDs) and then find the TileID entry below. 
 
+As a reminder you use these values either by writing `TileID.Name` or just `Number`, do NOT write `TileID.Number`:
+```cs
+recipe.AddTile(TileID.WorkBenches);     // Good
+recipe.AddTile(18);                     // Good
+recipe.AddTile(TileID.18);              // Wrong
+```
+
 | Sound	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | :-- 			| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Dirt | 0 |    
