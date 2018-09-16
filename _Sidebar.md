@@ -1,6 +1,5 @@
-![Logo](https://i.imgur.com/XMRajB4.png)
-
-[**Home**](Home)
+<a href="https://tmodloader.net"><img src="https://i.imgur.com/XMRajB4.png" width="100" height="100"/></a> 
+ [**Home**](Home)
 
 ___
 **tModLoader References**
