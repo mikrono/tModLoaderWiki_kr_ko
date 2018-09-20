@@ -9,7 +9,8 @@ ___
 - [Developing with Visual Studio](Developing-with-Visual-Studio)
 - [Developing with Rider](Developing-with-Rider)
 - [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
-- [Developing on Mac or Linux](https://forums.terraria.org/index.php?threads/.23726/page-525#post-1001200)
+- [Developing on Mac or Linux](Developing-on-Mac-or-Linux)
+- [Developing on Mac or Linux (Old)](https://forums.terraria.org/index.php?threads/.23726/page-525#post-1001200)
 - [Why Use an IDE](Why-Use-an-IDE)
 - [Mod Browser](Mod-Browser)
 
