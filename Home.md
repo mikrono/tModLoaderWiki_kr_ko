@@ -23,6 +23,7 @@ If you have suggestions, tips, or have found things such as spelling errors or g
 ## Utilities/Other
 
 * [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) (by @jopojelly)
+* [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) -- Extract images and sounds from Terraria. Useful for viewing various sprites.
 * [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) -- Quickly create armor animation sprites
 * [Item name updater](https://cdn.discordapp.com/attachments/103110554649894912/321756918609870858/Item_Name_Updater_Fixed.zip) (SetDefaults to SetStaticDefaults) (for migration to 0.10) (by @imkSushi)
 * [Terraria Tile Generator](https://forums.terraria.org/index.php?threads/terraria-tile-generator.70088/) (Quickly makes tile textures for ores.)
