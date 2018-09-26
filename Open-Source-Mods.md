@@ -26,6 +26,7 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
+* [Even More Modifiers](https://github.com/Jofairden/EvenMoreModifiers) -- A mod to add custom effects to the game that can affect weapons, accessories and armors. Showcases hacking armor items to allow them to be reforged as accessories. Also showcases UI. Has a solid open-ended framework designed so other mods can add their own content to its system. Is fully documented and showcases lots of abstraction and design practices. Showcases MP compatibility. Showcases use of glowmasks and shaders, also showcases optional hard-references (support with other mods) Showcases various uses for Attributes.
 * [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication
 * [HEROs Mod](https://github.com/JavidPack/HEROsMod) -- A lot of networking code. (Do not consult for UI)
 * [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
