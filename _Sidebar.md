@@ -65,9 +65,9 @@ Note: tutorial [x] are likely outdated, it is recommended you use contents on th
 - [Creating Simple UI: Custom Resource Bars](https://forums.terraria.org/index.php?threads/.53417/)
 
 ___
-**Youtube Tutorials**
+**Youtube Tutorials (Not Recommended)**
 - [Al0n37](https://www.youtube.com/user/Al0n37/videos)
-- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ) - Recommended
+- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ) 
 
 **Youtube content creators covering modded content**
 - [Pedguin](https://www.youtube.com/user/PedguinGames)
