@@ -1,16 +1,16 @@
 Please check the [prerequisites](Intermediate-Prerequisites) before following this guide.
 
-## What is c#6?
-c#6 stands for version 6 of the c-sharp language. By default, you will be compiling your mod using c-sharp version 5. However, it is possible to compile your mod using c-sharp version 6. In this guide we will go over how to compile using version 6, and which benefits it may include.
+## What is C#6?
+C36 stands for version 6 of the c-sharp language. By default, you will be compiling your mod using c-sharp version 4. However, it is possible to compile your mod using c-sharp version 6. In this guide we will go over how to compile using version 6, and which benefits it may include.
 
-## How to compile in c#6
+## How to compile in C#6
 To enable version 6 compile, set languageVersion to 6 in your build.txt file:
 `languageVersion = 6`
 
 ### Ways to compile 
 It is recommended to use your IDE to compile and debug your mod. You can view the [Developing with Visual Studio guide](Developing-with-Visual-Studio) on how to set this up. You can also compile using the in-game menu, but sometimes this can introduce additional problems you won't have when compiling from your IDE directly. We will go over these issues later on in the guide.
 
-## Why should I use c#6?
+## Why should I use C#6?
 In general, it is usually best to use the latest version of something. Our language version is not an exception, version 6 comes with many improvements over the old version. It is advised to check [the official Microsoft article covering c#6 notes](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-6) to see all the goodies. In general, c#6 has some neat QoL improvements we will cover below. Here is a full list of what c#6 introduced:
 * Read-only Auto-properties:
     * You can create read-only auto-properties that can be set only in constructors.
@@ -39,10 +39,10 @@ In general, it is usually best to use the latest version of something. Our langu
 
 Please do check the linked article above which explains everything in great detail. Many of these QoL will shorten your code, and/or make it more readable (as well as easier to work with!)
 
-## Is it possible to compile in c#7?
-Although version 7 is already available, it is not (yet) possible to compile with this version. It _may_ become possible, but no guarantees.
+## Is it possible to compile in C#7?
+Compiling with C#7 is possible with releases _after version v0.10.1.5_. To learn more about it, see the [C#7 specific page](Intermediate-modding-with-c%237)
 
-## Most notable code improvements with c#6 for modders
+## Most notable code improvements with C#6 for modders
 ### Expression-bodied function members
 Any method you have, for example an overridden hook that only returns some value, can now be shortened as an expression-bodied function members (pointer like functions) eg.
 ```csharp
@@ -68,7 +68,7 @@ string s = $"Hello {user.name}, how are you on {DateTime.Now}?";
 ## Long list of issues when compiling with c#6
 
 ### !! IMPORTANT !! Possible issues
-**Note: most, if not all, of these issues have been solved since [v0.10.1.2](https://github.com/blushiemagic/tModLoader/releases/tag/v0.10.1.1). If for some reason you are still on an older version, you can see below for various issues and possible fixes.**
+**Note: most, if not all, of these issues have been solved since [v0.10.1.2](https://github.com/blushiemagic/tModLoader/releases/tag/v0.10.1.2). If for some reason you are still on an older version, you can see below for various issues and possible fixes.**
 
 You need to include System.Core in some way or form in your code to avoid a bug.
 ```csharp
@@ -89,5 +89,5 @@ To fix this issue, go to your \ModCompile\ folder and look for the `FNA.dll` fil
 ### An error mentioning something about ReLogic.dll not being found or able to be accessed
 Go to your Terraria folder and look for `ReLogic.Native.dll` and _**copy**_ this file to your \ModCompile\ folder, then rename it to `ReLogic.dll` If it now starts mentioning Mac/Linux, copy the file twice more and name them to `ReLogicMac.dll` and `ReLogicLinux.dll`
 
-### C# 6 issues: "An attempt was made to load an assembly from a network location..."
-[Click here.](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-FAQ#c-6-issues-an-attempt-was-made-to-load-an-assembly-from-a-network-location)
+### C#6 issues: "An attempt was made to load an assembly from a network location..."
+[See this page](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-FAQ#c-6-issues-an-attempt-was-made-to-load-an-assembly-from-a-network-location).
