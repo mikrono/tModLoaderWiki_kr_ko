@@ -39,3 +39,25 @@ Some popular mods have their own wikis. Use the links below to find information 
 * [Tremor Mod](https://tremormod.gamepedia.com/)
 
 [Here is a list of other useful mod specific pages](http://terrariamods.gamepedia.com/index.php?title=Special:AllPages&hideredirects=1) hosted on the Terraria mods wiki.
+
+## Uncategorized Guides
+
+Note: tutorial [x] are likely outdated, it is recommended you use contents on this wiki instead
+- [Tutorial: [1] Getting started with tModLoader](https://forums.terraria.org/index.php?threads/.44817/)
+- [Tutorial: [2] Recipes](https://forums.terraria.org/index.php?threads/.44822/)
+- [Tutorial: [3] Items](https://forums.terraria.org/index.php?threads/.44842/)
+- [Tutorial: [4] Projectiles](https://forums.terraria.org/index.php?threads/.44857/)
+- [Projectile Guide and Implementation](https://forums.terraria.org/index.php?threads/.40062/)
+- [Custom Bosses - NPC AI and Server Syncing](https://forums.terraria.org/index.php?threads/.10474/)
+- [Creating Simple UI: Custom Resource Bars](https://forums.terraria.org/index.php?threads/.53417/)
+
+## Youtube Tutorials
+Note that following youtube tutorials isn't recommended, because they are often outdated.
+- [Al0n37](https://www.youtube.com/user/Al0n37/videos)
+- [Lynx](https://www.youtube.com/playlist?list=PLYaXRYIpx67Hc3JJ3ZcCbzYwDAko9Q_lJ) 
+
+**Youtube content creators covering modded content**
+- [Pedguin](https://www.youtube.com/user/PedguinGames)
+- [ChippyGaming](https://www.youtube.com/user/ChippyGaming)
+- [HappyDays](https://www.youtube.com/user/happydaysgames)
+- [PythonGB](https://www.youtube.com/user/PythonGB)
