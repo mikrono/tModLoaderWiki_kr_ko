@@ -8,11 +8,11 @@ ___
 - [Source documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
 - [Mod Browser guide](Mod-Browser)
 ___
-- [Getting started Guides](./wiki#getting-started)
-- [Development guides](./wiki#development)
-- [Easy guides](./wiki#easy-guides)
-- [Intermediate guides](./wiki#intermediate-guides)
-- [Advanced guides](./wiki#advanced-guides)
-- [Expert guides](./wiki#expert-guides)
-- [Other pages](./wiki#other-pages)
+- [Getting started Guides](./home#getting-started)
+- [Development guides](./home#development)
+- [Easy guides](./home#easy-guides)
+- [Intermediate guides](./home#intermediate-guides)
+- [Advanced guides](./home#advanced-guides)
+- [Expert guides](./home#expert-guides)
+- [Other pages](./home#other-pages)
 ___
