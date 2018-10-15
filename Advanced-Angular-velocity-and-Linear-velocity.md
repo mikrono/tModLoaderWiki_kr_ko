@@ -1,5 +1,7 @@
 Read the [Advanced-Prerequisites](Advanced-Prerequisites) page before continuing.
-WIP
+
+# What is angular velocity used for?
+We can use angular velocity to accurately spin an object by its velocity, when implemented well it will work perfectly. You can also in fact spin non spherical objects by angular velocity if you wanted to, but you'd have to use an imaginable sphere as the base. Because the outcome is considered a scalar, it can be easily applied in any sort of speed.
 
 # Angular velocity
 First, let's go over things you need to have some understanding of before continuing:
@@ -14,10 +16,13 @@ It _may_ be useful to understand what a **psuedo vector** is, since the angular 
 We will start with angular velocity, then move to linear velocity.
 
 ## What is angular velocity?
-In physics, the angular velocity of an object is the rate of change of its angular displacement with respect to time. I suppose these words are too fancy for some, so let's break it down. You just need to understand the words `angular velocity`. Image a spherical object like a ball, when this object moves it is also spinning or orbiting around its center. The angular velocity basically is a measurement between the relation of the spherical object's velocity and spinning around its center. These rotations around the center are often called a `revolution`, so one revolution being a full spin around the center. We can look at the SI unit of angular velocity to make some more sense out of this, which is `radians per second`. We know a full circle is 2π, equaling 360 degrees. Because a revolution is a full spin, we can visualize this as: `x revs/sec * 2π radians/rev`. If this looks confusing, think about the following: we have _x_ amount of revolutions per second, every revolution equals 2π. This must mean we have 2π radians per revolution. So, this can be rewritten as the revolutions cancel each other out: `x * 2π radians/sec`, which I hope makes sense to you intuitively. To give an example before we move on, imagine doing 5 revolutions per second. We know a full spin is 2π radians, so 1 revolution is 2π radians. Meaning for every revolution, we are spinning 2π radians, so with 5 revolutions per second we're spinning 10π radians per second. This measurement of _how fast we are spinning around the center point_ is what we call _angular velocity_, sometimes it's also called _angular speed_. The angular velocity here being `10π rad/sec` and the angular speed being `10π`.
+In physics, the angular velocity of an object is the rate of change of its angular displacement with respect to time. I suppose these words are too fancy for some, so let's break it down. You just need to understand the words `angular velocity`. 
 
-## What can we use angular velocity for?
-We can use angular velocity to accurately spin an object by its velocity, when implemented well it will work perfectly. You can also in fact spin non spherical objects by angular velocity if you wanted to, but you'd have to use an imaginable sphere as the base. Because the outcome is considered a scalar, it can be easily applied in any sort of speed.
+Imagine a spherical object like a ball, when this object moves it is also spinning or orbiting around its center. The angular velocity is a measurement between the relation of the spherical object's velocity and the spinning around its center. These rotations around the center are often called a `revolution`, one revolution being a full spin around the center. 
+
+We can look at the SI unit of angular velocity to make some more sense out of this, which is `radians per second`. We know a full circle is 2π, or 360 degrees. Because a revolution is a full spin, we can visualize this as: `x revolutions/sec * 2π radians/revolution`. If this looks confusing, think about the following: we have _x_ amount of revolutions per second, every revolution equals 2π. This must mean we have 2π radians per revolution. So, this can be rewritten as the revolutions cancel each other out: `x * 2π radians/sec`, which I hope makes sense to you intuitively. 
+
+To give an example before we move on, imagine doing 5 revolutions per second. We know a full spin is 2π radians, so 1 revolution is 2π radians. Meaning for every revolution, we are spinning 2π radians, so with 5 revolutions per second we're spinning 10π radians per second. This measurement of _how fast we are spinning around the center point_ is what we call _angular velocity_, sometimes it's also called _angular speed_. The angular velocity here being `10π radians/sec` and the angular speed being `10π`.
 
 ## Setting up
 Before we start spinning, we should setup a helper property for our angular velocity. Remember that our angular velocity is our revolutions per second, meaning the total amount of spins around the center per second. To relate this to our velocity, we need to find a way to make use of our velocity vector. We can do this by taking the magnitude (length) of our velocity. The magnitude is basically the 'size' of our vector, which is a scalar. If we multiply our magnitude with the total angular displacement of a full spin, we end up with: `2π * magnitude`. This defines our angular speed. Let's implement: (_note that this showcases c#7 getters_)
@@ -27,7 +32,7 @@ double AngularVelocity
   get => Math.PI * 2 * velocity.Length;
 }
 ```
-Because Terraria has useful helpers, you can replace 2π with `MathHelper.TwoPi` for a constant value, which is much faster compared to continuously calculating: 
+Because Terraria has useful helpers, you can replace 2π with `MathHelper.TwoPi` for a constant value, which is much faster compared to continuously calculating (because TwoPi is a constant)
 ```cs
 double AngularVelocity
 {
@@ -40,7 +45,7 @@ You can apply the angular velocity in many different ways, as you can apply rota
 
 If you work with something else, it is likely you should store your own angle variable. Then in any sort of update call, you can apply the same behavior as above.
 
-With custom draw code, you should pass the displaced angle to draw with. The following example assumes you have already applied above behavior somewhere. This means you've applied the angular displacement: `rotation += angularVelocity. 
+With custom draw code, you should pass the displaced angle to draw with. The following example assumes you have already applied above behavior somewhere. This means you've applied the angular displacement: `rotation += angularVelocity`. 
 ```cs
 spriteBatch.Draw
 (
