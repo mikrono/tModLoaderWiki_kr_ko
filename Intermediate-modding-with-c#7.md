@@ -3,7 +3,7 @@
 C#7 is the seventh (\`\`7´´) version of the c-sharp language. It builds on the sixth (\`\`6´´) version of the compiler, Roselyn. To learn more about C#6, see the [specific page about it](Intermediate-modding-with-c%236).
 
 # How to build with C#7?
-Because internally there are no changes in compiler, you do not need to set languageVersion to a different version. Instead, if you've set it to `6` (\`\`six´´) you can begin using language-level-7 features.
+**To build with C#7, you need a tML version that is _above v0.10.1.5_.** Because internally there are no changes in compiler, you do not need to set languageVersion to a different version. Instead, if you've set it to `6` (\`\`six´´) you can begin using language-level-7 features.
 ```
 languageVersion = 6
 ```
