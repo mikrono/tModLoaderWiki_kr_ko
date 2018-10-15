@@ -36,7 +36,6 @@ While you can waste your time looking up various vanilla IDs in our [reference p
 Method names are also suggested in the same way. In addition, you can see the method parameters, both their names and types. For example, I'd like to add a buff to an enemy when I hit him with my sword. Typing `target.AddBuff(` will bring up the parameters, helping me complete my call to the AddBuff method. [Watch this in action.](https://gfycat.com/UnknownQuarterlyChamois)      
 ![](https://i.imgur.com/Oml4sUU.png)     
 
-
 ## Override
 An extremely common task when making mods is to override various hooks such as SetDefaults or UpdateAccessory. Remembering the parameters to these hooks is sometimes hard to do. By using Visual Studio, you can easily write "override" followed by a space, followed by a few letters of the method you want to override, and then enter to easily override hooks. As a bonus, any missing using references will automatically be added to your code.
 [Watch this in action.](https://gfycat.com/AdorableFluidDunlin)     
@@ -46,7 +45,8 @@ After:
 ![](https://i.imgur.com/KpQARfo.png)     
 
 # Documentation
-Hover over any tModLoader hook and you can see documentation for that method.
+If you have the tML XMLdoc file, you can see documentation for a method when you hover it.
+To get the XMLdoc, generate it yourself or ask ask a developer/modder in the Discord server.
 
 # Find All References (Ctrl-K, R)
 Find all references makes it easy to locate all usages of a variable in your whole project. Simply right click on a variable and click `Find all references`. This is very useful to see where you assign and use your variables.
@@ -89,13 +89,13 @@ Did you know that `3/2` in c# is `1` not `1.5`? Sometimes you might want to expe
 ![](https://i.imgur.com/F6YABM2.png)    
 
 # Debug
-TODO: Some examples of discovering bad code via inspecting at an exception or breakpoint.
+With an IDE, such as VS, you can debug your mod. Debugging is the best way to pinpoint issues in your mod and solve them. While debugging, you can set 'breakpoints' which will make the application 'stop' and pause itself when it gets to that point. During this pause you can inspect what is happening, by for example looking at the values of variables in scope. You can quickly resume the application, or step over code to try to find the cause of a problem. To learn more about debugging, see its [own guide](Learn-How-To-Debug).
 
-# Edit And Continue
-With Edit And Continue, you can edit code and see the effect of your edits in game without having to rebuild your mod. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this extremely useful feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading. 
+## Edit And Continue
+With Edit And Continue (or eac) you can edit code after you've hit a breakpoint and see the effect of your edits in game immediately, rather than having to rebuild your mod manually. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading, so they cannot benefit from eac.
 
-## Simple Example
+### Simple Example
 In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
 
 # Visual Studio Live Share
-This feature lets you invite someone into your project and collaboratively work on the code. Useful for mentoring other coders on your mod team or getting help on a tricky problem. Pair with Discord chat for voice chat.
+This feature lets you invite someone into your project and collaboratively work on the code. Useful for mentoring other developers on your mod team or getting help on a tricky problem. Pair with Discord chat for voice chat.
