@@ -37,6 +37,7 @@ ___
 - [Basic Tile](Basic-Tile)
 - [ModTile/TileObjectData](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
 - [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
+- [Basic Logging](Logging)
 ___
 **Intermediate Modding Guides**
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
