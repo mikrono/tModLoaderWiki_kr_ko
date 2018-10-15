@@ -12,7 +12,6 @@ languageVersion = 6
 Below is a list of features C#7 has to offer that are most useful when modding.
 
 ## Nested functions ( Local functions )
-With C#7, you can create nested functions.
 ```c#
 public void MyMethod() {
     void MyNestedFunc() {
@@ -39,6 +38,7 @@ p.GetCoordinates(out var x, out _); // I only care about x
 ```
 
 ## Pattern Matching
+Pattern matching is especially useful with [polymorphism](Polymorphism). You can identify objects using their inheritance-tree, this means you can identify them by parent-types as well.
 ### Constant patterns
 E.g:
 ```cs
@@ -65,6 +65,7 @@ modItem.item.damage = ....
 ```
 
 ### Patterns in switch statements
+More information is available [here](https://visualstudiomagazine.com/articles/2017/02/01/pattern-matching.aspx).
 ```cs
 switch(modItem)
 {
@@ -86,6 +87,7 @@ switch(modItem)
 ```
 
 ## Tuple types and literals
+New tuple types and literals are extremely useful and have you avoid defining your own tuples (in the form of Tuple<x,y,z> and accessing by myType.Item1... Item2... etc.) or structs and instead use literals that are easily defined and can be deconstructed.
 ```cs
 (int, float, int) GetItemInfo(Item item) // tuple return type
 {
@@ -93,6 +95,7 @@ switch(modItem)
 }
 .....
 
+// deconstruction
 var itemInfo = GetItemInfo(myItem);
 mod.Logger.Info(itemInfo.dmg.ToString());
 // itemInfo.kb .... itemInfo.proj
