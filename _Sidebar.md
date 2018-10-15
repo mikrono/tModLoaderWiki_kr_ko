@@ -1,6 +1,6 @@
-<a href="https://tmodloader.net"><img src="https://i.imgur.com/XMRajB4.png" width="100" height="100"/></a> 
- [**Home**](Home)
-
+<a href="https://tmodloader.net"><img src="https://i.imgur.com/XMRajB4.png" width="100" height="100" style="float:left;"/></a>
+- [**Home**](Home)
+- [Useful Resources](Useful-resources)
 ___
 **tModLoader References**
 - [Source Documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
