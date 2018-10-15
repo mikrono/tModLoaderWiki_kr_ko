@@ -1,8 +1,7 @@
-# Mod Browser
 The Mod Browser is an online component of tModLoader where Mod Makers can publish their mods. Users are able to easily find, download, and install mods they are interested in directly from tModLoader. It is highly recommended that you visit the website and/or read the description of mods you want to download.
 
 ### Direct Download
-If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `Terraria/ModLoader/Mods/`
+If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `%userprofile%/Documents/My Games/Terraria/ModLoader/Mods/`
 
 ***
 **Modders wishing to publish their mod to the Mod Browser should continue reading.**
@@ -24,7 +23,7 @@ This is the description that potential users will read when deciding if they wil
 A lot. You don't want your mod to be quickly judged to be bad because of a poor first release. 
 
 ### Make a Website
-Most mods make a thread on the [Terraria Community Forum](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/) Making a thread provides a great way to interact with your users. They can give bug reports and criticism/praise. Once you have a thread, copy the URL and paste it into your build.txt on the `homepage` line. See ExampleMod if you are unclear on the layout of the build.txt file. Save build.txt.
+Most mods make a thread on the [Terraria Community Forums](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/) Making a thread provides a great way to interact with your users. They can give bug reports and criticism or praise. Once you have a thread, copy the URL and paste it into your build.txt on the `homepage` property. See ExampleMod if you are unclear on the layout of the build.txt file. Save build.txt.
 
 ### Build
 Save all your files and Build the mod in the Mod Sources menu.
