@@ -9,3 +9,70 @@ If you have suggestions, tips, or have found things such as spelling errors or g
 
 A list of useful resources can be found **[here](Useful-Resources)**
 
+Below is a structured list of wiki pages that you can use to learn more about the API.
+
+If you wish to contribute, please view our [contribution guidelines](Contribution-guidelines) beforehand.
+
+## Informative pages
+These pages tend to describe certain files or folders.
+- [Information about build.txt](build.txt)
+- [Information about description.txt](description.txt)
+
+## Getting started
+- [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide)
+- [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
+- [Debugging Multiplayer Usage Issues](Debugging-Multiplayer-Usage-Issues)
+- [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
+- [Basic tModLoader Modding FAQ](Basic-tModLoader-Modding-FAQ)
+
+## Development
+These pages aim to aid you to learn how to develop mods properly, how to setup your developing environment etc.
+- [Developing with Visual Studio](Developing-with-Visual-Studio)
+- [Developing with Rider](Developing-with-Rider)
+- [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
+- [Developing on Mac or Linux](Developing-on-Mac-or-Linux)
+- [Why Use an IDE](Why-Use-an-IDE)
+
+## Easy guides
+These guides are easy and should be used if you are new to the API. Their goal is to get you familiar with tML and help you learn certain classes.
+- [Basic Guide Prerequisites](Basic-Prerequisites)
+- [Basic ModItem](Basic-Item)
+- [About NPC Spawning](Basic-NPC-Spawning)
+- [About NPC Drops and Loot](Basic-NPC-Drops-and-Loot)
+- [Autoloading guide](Basic-Autoload)
+- [ModRecipe guide](Basic-Recipes)
+- [Making a basic ammo](Basic-Ammo)
+- [Sounds guide](Basic-Sounds)
+- [ModDust guide](Basic-Dust)
+- [ModTile guide](Basic-Tile)
+- [ModTile/TileObjectData guide](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
+- [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
+- [Basic Logging](Logging)
+- [Basic Glowmasks](Basic-glowmask-guide)
+
+## Intermediate guides
+The following guides are more advanced than the easy ones, but not advanced or expert level.
+- [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
+- [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Modding with C#6](Intermediate-modding-with-c%236)
+- [Modding with C#7](Intermediate-modding-with-c%237)
+- [Git & mod management](Intermediate-Git-&-mod-management)
+
+## Advanced guides
+The following guides are considered advanced, and should only be attempted if the intermediate level is mastered.
+- [Advanced Guide Prerequisites](Advanced-Prerequisites)
+- [Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
+- [Angular velocity and Linear velocity](Advanced-Angular-velocity-and-Linear-velocity)
+
+## Expert guides
+Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
+- [Expert Guide Prerequisites](Expert-Prerequisites)
+- [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
+
+## Other pages
+These are pages that we have so far failed to categorize or simply do not belong in one.
+- [TagCompound](TagCompound)
+- [Mount Data Parameters](MountDataParameters)
+- [Open Source Mods](Open-Source-Mods)
+- [Command Line Arguments and Server Config](Command-Line)
+- [Contributing Localization](Contributing-Localization)
