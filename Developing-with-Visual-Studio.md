@@ -1,5 +1,5 @@
 # Prerequisites
-1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). It is free. Don't download Visual Studio Code, that isn't the same thing and not what this tutorial is about.
+1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). It is free. If you want to use Visual Studio Code (it isn't the same), see the [specific guide about VS Code](Developing-with-Visual-Studio-Code)
 2. During install, check the `.NET desktop development` workload. Nothing else needs to be checked.
 ![](https://i.imgur.com/ZfFjwDt.png)
 
@@ -10,7 +10,7 @@ This will let you use Visual Studio's code editing and Intellisense
 
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
-1. Choose a name for the mod. This is the internal name (and file name), not the display name. Do not use whitespaces eg. Example Mod -> "ExampleMod", if you really want to signify spaces then use hyphens eg. Example Mod -> "Example_Mod"
+1. Choose a name for the mod. This is the internal name (and file name), not the display name. Do not use whitespaces eg. Example Mod -> "ExampleMod", if you really want to signify spaces then use hyphens eg. Example Mod -> "Example_Mod" (**this however isn't recommended in C#!**)
 1. Uncheck "Create directory for solution"
 1. Click OK
 ![New Project Dialog](http://i.imgur.com/tQIfA3g.png)
@@ -25,7 +25,7 @@ Paste this weird search string in your file browser pathbar like so
 ![](https://i.imgur.com/zQo6j1X.png)    
 [Video of finding XNA dll files](https://gfycat.com/CleanLastLeveret)
 
-It is recommended to ** !! copy !! (please COPY and paste, do not cut and paste)** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
+It is recommended to **!! copy !! (please COPY and paste, do not cut and paste)** these files some place safe and easily accessible. You can then add them as references by right clicking your references (in the solution explorer) and clicking 'Add reference' ([example](https://i.imgur.com/oM30lfT.png))
 
 If you can't find the .dlls or you couldn't succeed in adding them as a reference, there's a neat trick you can try which will reference them automatically: 
 1. Open the csproj file in a good text editor (like [Notepad++](https://notepad-plus-plus.org/))
@@ -45,8 +45,10 @@ This will let you build your mod from within Visual Studio, so you don't have to
 1. Add the following to the Post-build event command line
 `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"`
 
+**Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. So, before you release your mod, ALWAYS build using the in-game menu.**
+
 # Debugging
-This will let you set breakpoints in your mod and inspect variables in Visual Studio
+This will let you set breakpoints in your mod and inspect variables in Visual Studio.
 
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Debug tab
@@ -54,10 +56,10 @@ This will let you set breakpoints in your mod and inspect variables in Visual St
 1. Set the Working directory to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`
 1. Add the line `includePDB = true` to your build.txt
 
-The `includePDB = true` line will not only enable debugging, but also line numbers in exception stack traces. However it will increase the size of your mod and can be omitted from release builds.
+The `includePDB = true` line will not only enable debugging, but also line numbers in exception stack traces. However it will increase the size of your mod _and should be omitted from release builds_.
 
 # Edit and Continue
-This will let you edit the source code of your mod while at a breakpoint without restarting the game
+This will let you edit the source code of your mod while at a breakpoint without restarting the game.
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
