@@ -18,7 +18,7 @@ Any further ammo would have `item.useAmmo = mod.ItemType("Wisp")` and any other 
 # How can I make a new ammo class out of vanilla items?
 Use a GlobalItem class to set `item.ammo` and item.shoot to a new projectile that you've made.
 
-```
+```cs
 public class CopperShortsword : GlobalItem
 {
 	public override void SetDefaults(Item item)
