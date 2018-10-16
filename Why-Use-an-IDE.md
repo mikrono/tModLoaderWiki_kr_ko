@@ -44,6 +44,15 @@ Before:
 After:    
 ![](https://i.imgur.com/KpQARfo.png)     
 
+# Debug
+With an IDE, such as VS, you can debug your mod. Debugging is the best way to pinpoint issues in your mod and solve them. While debugging, you can set 'breakpoints' which will make the application 'stop' and pause itself when it gets to that point. During this pause you can inspect what is happening, by for example looking at the values of variables in scope. You can quickly resume the application, or step over code to try to find the cause of a problem. To learn more about debugging, see its [own guide](Learn-How-To-Debug).
+
+## Edit And Continue
+With Edit And Continue (or eac) you can edit code after you've hit a breakpoint and see the effect of your edits in game immediately, rather than having to rebuild your mod manually. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading, so they cannot benefit from eac.
+
+### Simple Example
+In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
+
 # Documentation
 If you have the tML XMLdoc file, you can see documentation for a method when you hover it.
 To get the XMLdoc, generate it yourself or ask ask a developer/modder in the Discord server.
@@ -87,15 +96,6 @@ Using this hotkey is useful when navigating vanilla code with large blocks of co
 # C# Interactive
 Did you know that `3/2` in c# is `1` not `1.5`? Sometimes you might want to experiment with some c# syntax, but don't want to make a mod just to test the code. The c# interactive window is very useful for this. You can do whatever you want in the c# interactive, each command will execute it after you press enter. `Alt-UpArrow` can be used to bring up previous statements. [Watch this in action.](https://gfycat.com/FarDismalGordonsetter)   
 ![](https://i.imgur.com/F6YABM2.png)    
-
-# Debug
-With an IDE, such as VS, you can debug your mod. Debugging is the best way to pinpoint issues in your mod and solve them. While debugging, you can set 'breakpoints' which will make the application 'stop' and pause itself when it gets to that point. During this pause you can inspect what is happening, by for example looking at the values of variables in scope. You can quickly resume the application, or step over code to try to find the cause of a problem. To learn more about debugging, see its [own guide](Learn-How-To-Debug).
-
-## Edit And Continue
-With Edit And Continue (or eac) you can edit code after you've hit a breakpoint and see the effect of your edits in game immediately, rather than having to rebuild your mod manually. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading, so they cannot benefit from eac.
-
-### Simple Example
-In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
 
 # Visual Studio Live Share
 This feature lets you invite someone into your project and collaboratively work on the code. Useful for mentoring other developers on your mod team or getting help on a tricky problem. Pair with Discord chat for voice chat.
