@@ -7,7 +7,7 @@ Index|
 [Methods](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#methods)|
 
 # Fields and Properties
-You can assign these fields to give your ModItem various values. Typically you'll want to refer to this page when writing code for ModItem.SetDefaults.
+You can assign these fields to give your ModItem various values. Typically you'll want to refer to this page when writing code for ModItem.SetDefaults. Be sure to visit [Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values) to see what values vanilla items use for these fields.
 
 ## value (int)
 Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values: `item.value = Item.buyPrice(0, 1, 4, 62);`
