@@ -72,6 +72,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 # Vanilla References
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
 - [Vanilla Buff IDs](Vanilla-Buff-IDs)
+- [Item Class Documentation](Item-Class-Documentation)
 - [Vanilla Item Field Values](Vanilla-Item-Field-Values)
 - [Vanilla Item IDs](Vanilla-Item-IDs)
 - [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
