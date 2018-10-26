@@ -69,6 +69,27 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Expert Guide Prerequisites](Expert-Prerequisites)
 - [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
 
+# Vanilla References
+- [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
+- [Vanilla Buff IDs](Vanilla-Buff-IDs)
+- [Vanilla Item Field Values](Vanilla-Item-Field-Values)
+- [Vanilla Item IDs](Vanilla-Item-IDs)
+- [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
+- [Vanilla NPC IDs](Vanilla-NPC-IDs)
+- [BannerToNPC Conversions](BannerToNPC-Conversions)
+- [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
+- [Vanilla Projectile IDs](Vanilla-Projectile-IDs)
+- [Vanilla Projectile Field Values](Vanilla-Projectile-Field-Values)
+- [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
+- [Vanilla Sound IDs](Vanilla-Sound-IDs)
+- [Vanilla Tile IDs](Vanilla-Tile-IDs)
+- [Vanilla Wall IDs](Vanilla-Wall-IDs)
+- [Vanilla World Generation Steps](Vanilla-World-Generation-Steps)
+- [Useful Vanilla Fields](Useful-Vanilla-Fields)
+- [Useful Vanilla Methods](Useful-Vanilla-Methods)
+- [Vanilla Interface layers values](Vanilla-Interface-layers-values)
+- [Vanilla Interface Changes](Vanilla-Class-Changes)
+
 ## Other pages
 These are pages that we have so far failed to categorize or simply do not belong in one.
 - [TagCompound](TagCompound)
