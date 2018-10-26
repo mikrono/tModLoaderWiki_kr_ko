@@ -1,7 +1,7 @@
 Please check the [prerequisites](Intermediate-Prerequisites) before following this guide.
 
 ## What is C#6?
-C36 stands for version 6 of the c-sharp language. By default, you will be compiling your mod using c-sharp version 4. However, it is possible to compile your mod using c-sharp version 6. In this guide we will go over how to compile using version 6, and which benefits it may include.
+C#6 stands for version 6 of the c-sharp language. By default, you will be compiling your mod using c-sharp version 4. However, it is possible to compile your mod using c-sharp version 6. In this guide we will go over how to compile using version 6, and which benefits it may include.
 
 ## How to compile in C#6
 To enable version 6 compile, set languageVersion to 6 in your build.txt file:
