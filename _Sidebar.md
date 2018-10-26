@@ -2,7 +2,7 @@
 ___
 - [**Home**](Home)
 - [Useful resources](Useful-resources)
-- [Vanilla references](Vanilla-references)
+- [Vanilla references](./home#Vanilla-references)
 - [Information about build.txt](build.txt)
 - [Information about description.txt](description.txt)
 - [Source documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
