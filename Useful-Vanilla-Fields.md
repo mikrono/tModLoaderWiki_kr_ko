@@ -11,13 +11,7 @@ Index|
 
 # Item Fields
 
-* useAnimation; int
-
-Changing this modifies the speed of the animation for using the item. Default is 15 for blocks.
-
-* useTime; int
-
-Changing this modifies the speed at which an item is used. Default is 10 for blocks.
+See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation)
 
 # Main Fields
 
