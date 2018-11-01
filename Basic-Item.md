@@ -7,35 +7,35 @@ It is important to be aware of the distinction between Items, Projectiles, and T
 # Making an Item
 To add an item to Terraria, we must first create a "class" that "inherits" from ModItem. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your item and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
 ```cs
-    using Terraria;
-    using Terraria.ID;
-    using Terraria.ModLoader;
-    
-    namespace ModNamespaceHere
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ModNamespaceHere
+{
+    public class NameHere : ModItem
     {
-        public class NameHere : ModItem
+        public override void SetStaticDefaults()
         {
-            public override void SetStaticDefaults()
-            {
-                Tooltip.SetDefault("This is a modded item.");
-            }
-    
-            public override void SetDefaults()
-            {
-                item.width = 20;
-                item.height = 20;
-                item.maxStack = 999;
-                item.value = 100;
-                item.rare = 1;
-                // Set other item.X values here
-            }
-    
-            public override void AddRecipes()
-            {
-                // Recipes here. See Basic Recipe Guide
-            }
+            Tooltip.SetDefault("This is a modded item.");
+        }
+
+        public override void SetDefaults()
+        {
+            item.width = 20;
+            item.height = 20;
+            item.maxStack = 999;
+            item.value = 100;
+            item.rare = 1;
+            // Set other item.X values here
+        }
+
+        public override void AddRecipes()
+        {
+            // Recipes here. See Basic Recipe Guide
         }
     }
+}
 ```
 Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
