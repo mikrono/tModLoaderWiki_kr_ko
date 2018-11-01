@@ -62,7 +62,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [alpha](#alpha)<a name="alpha"></a>| int|0 |  |
 | [buy](#buy)<a name="buy"></a>| bool|false |  |
 | [cartTrack](#carttrack)<a name="carttrack"></a>| bool|false |  |
-| [color](#color)<a name="color"></a>| Color| default(Color)<br>(Color.<br>Transparent) | Draws the item sprite with a colored tint. Gel and Sharkfin use this to spawn different colored items from the same ItemID. `NetMessage.SendData(88, ...` needs to be used to sync this if not done in SetDefaults.  |
+| [color](#color)<a name="color"></a>| Color|Transparent| Draws the item sprite with a colored tint. Gel and Sharkfin use this to spawn different colored items from the same ItemID. `NetMessage.SendData(88, ...` needs to be used to sync this if not done in SetDefaults.  |
 | [dye](#dye)<a name="dye"></a>|byte |0 |  |
 | [expertOnly](#expertonly)<a name="expertonly"></a>| bool|false |  |
 | [favorited](#favorited)<a name="favorited"></a>| bool|false    | If the item has been marked as favorited in the inventory. |
