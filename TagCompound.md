@@ -1,14 +1,17 @@
 # What is TagCompound
 
-TagCompound is the data format for custom data saved using tModLoader. We use TagCompound in ModWorld, ModItem, ModPlayer, GlobalItem, and ModTileEntity. If you are familiar with the concepts, thinking of TagCompound as a nestable dictionary or JSON comes pretty close. Like a dictionary, we provide string keys and values of any supported type.
+`TagCompound` is the data format for custom data saved using tModLoader. We use `TagCompound` in `ModWorld`, `ModItem`, `ModPlayer`, `GlobalItem`, and `ModTileEntity`. If you are familiar with the concepts, thinking of `TagCompound` as a nestable dictionary or JSON comes pretty close. Like a dictionary, we provide string keys and values of any supported type.
 
-Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2.7.6.-win) to visualize TagCompounds by opening .twld or .tplr files with it.
+Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2.7.6.-win) to visualize TagCompounds by opening .twld or .tplr files with it. It can be very helpful to view the data in this manner to verify that data is being saved in a manner that makes sense.
 
 # Key Ideas
-Below are some things to keep in mind as you use TagCompound.
+Below are some things to keep in mind as you use `TagCompound`.
+
+## Compatible Data Types
+All primitive data types are supported as well as byte[], int[] and Lists of other supported data types. Usually we use the methods like `GetInt` or `GetBool`, but we can use `Get<Type>` for Types without specific methods defined. See the [TagCompound documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_i_o_1_1_tag_compound.html) or rely on your IDEs [autocomplete](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) to find the method you want. In addition to the types suggested by the method names, `ushort`, `uint`, `ulong`, `Vector2`, `Vector3`, `Item`, `Color`, `Point16`, and `Rectangle` are also supported. Additional support can be implemented either by implementing `TagSerializable` or by nesting `TagCompound`s manually.
 
 ## Mod Version Updates
-Using TagCompound helps modders update mods smoothly. For example, if v1.0 of a mod saves only `a`, but v2.0 saves both `a` and `b`, the modder doesn't need to make extra checks validating the value or presence of `b` for most situations. They'd only need to do extra effort if `b` has a non-default value. For example, `b = tag.GetInt("b");` will return the default value of int if the value does not exist in the TagCompound, and the default value of int is 0. If 0 is the value the mod would expect for a missing entry, this works out well. If a non-default value is what the mod expects for a missing entry, the following approach can be used:
+Using `TagCompound` helps modders update mods smoothly. For example, if v1.0 of a mod saves only `a`, but v2.0 saves both `a` and `b`, the modder doesn't need to make extra checks validating the value or presence of `b` for most situations. They'd only need to do extra effort if `b` has a non-default value. For example, `b = tag.GetInt("b");` will return the default value of int if the value does not exist in the `TagCompound`, and the default value of int is 0. If 0 is the value the mod would expect for a missing entry, this works out well. If a non-default value is what the mod expects for a missing entry, the following approach can be used:
 
 ```cs
 public override void Initialize()
@@ -26,7 +29,7 @@ public override void Load(TagCompound tag)
 Notice how initialize sets the value to 10, the default value our mod expects. We then check that the tag has an entry for "QuestsLeft", and if it does, we retrieve that value. Without this check, `tag.GetInt` would return 0 if the key did not exist. Designing your variables such that the default values correspond to the expected default values might be useful if you wish to avoid checking `ContainsKey`.
 
 ## Initialize
-Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because Load will not be called if no TagCompound has previously been saved for this entity. For example, always make sure to reset `ModWorld` values in `ModWorld.Initialize`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
+Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because Load will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModWorld` values in `ModWorld.Initialize`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
 
 ```cs
 internal class MyModWorld : ModWorld
@@ -52,7 +55,17 @@ internal class MyModWorld : ModWorld
 }
 ```
 
-In the above example, we make sure to set `MySpecialBool` to false in `ModWorld.Initialize`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have TagCompound data yet, so Load is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
+In the above example, we make sure to set `MySpecialBool` to false in `ModWorld.Initialize`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have `TagCompound` data yet, so `Load` is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
+
+# Examples
+Here are links to various examples in ExampleMod and other mods, in order of complexity:
+* [ExamplePlayer](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) - ModPlayer - Simple Example, 2 numbers
+* [ExampleWorld](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleWorld.cs) - ModWorld - List of strings
+* [TEScoreBoard](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) - ModTileEntity - Simple Dictionary
+* [ExampleInstancedGlobalItem](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs) - GlobalItem - Shows using NeedsSaving so we don't waste storage space.
+* [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/master/DisableCorruptionSpread.cs) - ModWorld - Shows `nameof` and `tag.ContainsKey` usage.
+* [AutoTrashPlayer](https://github.com/JavidPack/AutoTrash/blob/master/AutoTrashPlayer.cs) - ModPlayer - Saving and Loading a list of `Item`s.
+* [Item](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria/Item_tML.cs) (and [ItemIO](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ModLoader.IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
 
 # Simple Example
 
@@ -74,7 +87,7 @@ public override void Load(TagCompound tag)
 }
 ```
 
-Here we see a very simple example of saving and loading 2 int variables. In Save, we create a single TagCompound and add data to it. In Load we are provided a TagCompound named tag and retrieve values from it. We must use the appropriate methods in Load that match the data type of the data stored. If you are confused by this Save example, see below for an example that does the same thing, but is a little easier to understand if you are unfamiliar with some c# syntax:
+Here we see a very simple example of saving and loading 2 int variables. In `Save`, we create a single `TagCompound` and add data to it. In Load we are provided a `TagCompound` named tag and retrieve values from it. We must use the appropriate methods in Load that match the data type of the data stored. If you are confused by this `Save` example, see below for an example that does the same thing, but is a little easier to understand if you are unfamiliar with some c# syntax:
 
 ```cs
 TagCompound saveData = new TagCompound();
@@ -84,7 +97,7 @@ return saveData;
 ```
 
 # List Example
-A common mistake that modders make with TagCompound is saving lists of data as individual entries in a TagCompound. For example, the following is a bad approach:
+A common mistake that modders make with `TagCompound` is saving lists of data as individual entries in a `TagCompound`. For example, the following is a bad approach:
 
 ```cs
 TagCompound saveData = new TagCompound();
@@ -95,10 +108,10 @@ for (int i = 0; i < stats.Count; i++)
 return saveData;
 ```
 
-Saving individual entries like this is not how we should be using TagCompound. Here is what this approach looks like in NBTExplorer:    
+Saving individual entries like this is not how we should be using `TagCompound`. Here is what this approach looks like in NBTExplorer:    
 ![](https://i.imgur.com/puTAMHM.png)    
 
-TagCompound supports Lists of compatible data types, here is a proper approach:
+`TagCompound` supports Lists of compatible data types, here is a proper approach:
 
 ```cs
 // Save
@@ -113,8 +126,10 @@ stats = tag.Get<List<int>>("stats");
 ```    
 ![](https://i.imgur.com/dBLlbVu.png)    
 
+Note: If an entry is missing, an empty list rather than null will be returned from `GetList<>` or `Get<List<>>`.
+
 # Dictionary Example
-Saving and loading a dictionary can be done, but take a little effort. One approach is to save the keys and values as lists and then reconstruct the Dictionary by using the Zip method:
+Saving and loading a dictionary can be done, but take a little effort. One approach is to save the keys and values as lists and then reconstruct the `Dictionary` by using the `Zip` method:
 
 ```cs
 // This code can be found in TEScoreBoard in ExampleMod: https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs
@@ -138,7 +153,7 @@ public override void Load(TagCompound tag)
 	scores = names.Zip(values, (k, v) => new { Key = k, Value = v }).ToDictionary(x => x.Key, x => x.Value);
 }
 ```
-Here is a more complex example of a `Dictionary<ulong, Tuple<string, int>>`. Using Zip to do this would be a little hard, so we take an alternate approach here. Rather than store keys and values as lists separately, we construct a list of TagCompound, each TagCompound in that list representing an entry in the Dictionary:
+Here is a more complex example of a `Dictionary<ulong, Tuple<string, int>>`. Using `Zip` to do this would be a little hard, so we take an alternate approach here. Rather than store keys and values as lists separately, we construct a list of `TagCompound`, each `TagCompound` in that list representing an entry in the `Dictionary`:
 
 ```cs
 public Dictionary<ulong, Tuple<string, int>> complexDictionary;
@@ -185,17 +200,17 @@ public override void Load(TagCompound tag)
 **TODO: Finish this section with an example.**
 
 # Item Example
-A common task for modders is saving an Item. Don't attempt to hack out your own approach by saving the itemid or name of the item and then attempting to restore it during Load. The Item class is natively supported by TagCompound. Unloaded items will persist through mods unloading and loading as expected.
+A common task for modders is saving an Item. Don't attempt to hack out your own approach by saving the itemid or name of the item and then attempting to restore it during Load. The Item class is natively supported by `TagCompound`. Unloaded items will persist through mods unloading and loading as expected.
 
 # Custom TagCompound Example
 
 **TODO: Finish this section with an example.**
 
 # TagSerializer and TagSerializable Examples
-Creating a TagSerializer or implementing the TagSerializable interface is another approach to simplifying saving and loading custom data to TagCompounds. We can create and register a TagSerializer for classes that are not a part of our mod, while implementing TagSerializable is preferable for classes defined in our mod.
+Creating a `TagSerializer` or implementing the `TagSerializable` interface is another approach to simplifying saving and loading custom data to `TagCompound`s. We can create and register a `TagSerializer` for classes that are not a part of our mod, while implementing `TagSerializable` is preferable for classes defined in our mod.
 
 ## TagSerializer Examples
-We create TagSerializers for classes not under the control of our mod. Adding TagSerializers allows us to save and load the class directly in TagCompound. Here is an example:
+We create `TagSerializer`s for classes not under the control of our mod. Adding `TagSerializer`s allows us to save and load the class directly in `TagCompound`. Here is an example:
 
 ```cs
 public class RectangleSerializer : TagSerializer<Rectangle, TagCompound>
@@ -217,7 +232,7 @@ public override void Load()
 	Terraria.ModLoader.IO.TagSerializer.AddSerializer(new RectangleSerializer());
 ```
 
-Having registered the TagSerializer, we can now freely use Rectangle as if it were a natively supported data type:
+Having registered the `TagSerializer`, we can now freely use `Rectangle` as if it were a natively supported data type:
 ```cs
 public override TagCompound Save()
 {
@@ -235,14 +250,17 @@ public override void Load(TagCompound tag)
 ```
 ![](https://i.imgur.com/dBpWSf0.png)    
 
-Please be aware that RectangleSerializer is already implemented in tModLoader natively, and any attempt to register a TagSerializer for Rectangle will cause your mod to fail to load. Several other common classes already have TagSerializers made for them such as Vector2, Vector3, Color, Point16, and Rectangle. Since multiple TagSerializers for the same class will cause errors, if you implement a TagSerializer for a class that might be useful for other modders, please reach out to us with your implementation and we can add it in directly to the next tModLoader release.
+Please be aware that `RectangleSerializer` is already implemented in tModLoader natively, and any attempt to register a `TagSerializer` for `Rectangle` will cause your mod to fail to load. Several other common classes already have `TagSerializer`s made for them such as `Vector2`, `Vector3`, `Color`, `Point16`, and `Rectangle`. Since multiple `TagSerializer`s for the same class will cause errors, if you implement a `TagSerializer` for a class that might be useful for other modders, please reach out to us with your implementation and we can add it in directly to the next tModLoader release.
 
 ## TagSerializable Examples
-If a class is defined in your mod, it is better to implement TagSerializable directly on the class.
+If a class is defined in your mod, it is better to implement `TagSerializable` directly on the class.
 
 **TODO: Finish this section with an example.**
 
 # Other Topics
+## GlobalItem.NeedsSaving
+Saving data in GlobalItem will quickly explode the filesize of player and world saves. Use the NeedsSaving method to prevent saving useless data. See [ExampleInstancedGlobalItem](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs)
+
 ## nameof operator
 The `nameof` operator is available to those using c#6, it can simplify some things, but be careful. (See [nameof documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)) The `nameof` operator can help avoid spelling mistakes between Load and Save. Be careful, however, of refactor-renaming variables in your mod (the F2 command in Visual Studio). If you rename a ModPlayer variable that is saved using `nameof`, for example, your mod will lose data when your users update the mod. See below for an example. Notice how we don't need to write `"CorruptionSpreadDisabled"` to specify the key, risking a spelling error that would be hard to catch. 
 
