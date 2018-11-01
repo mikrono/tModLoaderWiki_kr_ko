@@ -9,45 +9,21 @@ Index|
 # Fields and Properties
 You can assign these fields to give your ModItem various values. Typically you'll want to refer to this page when writing code for ModItem.SetDefaults. Be sure to visit [Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values) to see what values vanilla items use for these fields.
 
-## value (int)
-Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values: `item.value = Item.buyPrice(0, 1, 4, 62);`
-You can also use the `Item.sellPrice()` method if you would rather think about an items value the other way.  Both `Item.buyPrice(0, 0, 10, 55)` and `Item.sellPrice(0, 0, 2, 11)` would set the value to 1055.
-
-## useStyle (int)
-The use style of your item:   
-1 for swinging,   
-2 for drinking,   
-3 act like shortsword,   
-4 for use like life crystal,   
-5 for use staffs or guns  
-
-## useTurn (bool)
-Whether the player can turn around while the using animation is happening.
-
-## autoReuse (bool)
-Whether the item is in continuous use while the mouse button is held down.
-
-## holdStyle (int)
-The hold style of your item:
-1 for holding out (torches and glowsticks)
-2 for holding up (Breathing Reed)
-3 for a different version of holding out (Magical Harp)
-
-## useAnimation (int)
-The time span of the using animation for the item. Recommended to be the same at useTime as this is only the animation. Blocks use 15. Default value is 100. Terraria runs at 60 frames per second, so 15 is 1/4th of a second.
-
-## useTime (int)
-The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120).
-
-## reuseDelay (int)
-A delay in frames added at the end of the using animation for the item, during which the player wont be able to use any items.
-
-## consumable (bool)
-Whether the item is consumed after use.
-
-### rare (int)
-Range from -1 to 13. 
-Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L23)
+| Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [value](#value)<a name="value"></a> | int | 0 | Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values: `item.value = Item.buyPrice(0, 1, 4, 62);` You can also use the `Item.sellPrice()` method if you would rather think about an items value the other way.  Both `Item.buyPrice(0, 0, 10, 55)` and `Item.sellPrice(0, 0, 2, 11)` would set the value to 1055. |
+| [useStyle](#usestyle)<a name="usestyle"></a>| int | 0 | The use style of your item:    <br>1 for swinging,    <br>2 for drinking,    <br>3 act like shortsword,    <br>4 for use like life crystal,    <br>5 for use staffs or guns                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [useTurn](#useturn)<a name="useturn"></a>| bool | false | Whether the player can turn around while the using animation is happening.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [autoReuse](#autoreuse)<a name="autoreuse"></a>|bool | false| Whether the item is in continuous use while the mouse button is held down. |
+| [holdStyle](#holdstyle)<a name="holdstyle"></a>| int|0 | The hold style of your item:<br>1 for holding out (torches and glowsticks)<br>2 for holding up (Breathing Reed)<br>3 for a different version of holding out (Magical Harp) |
+| [useAnimation](#useanimation)<a name="useanimation"></a>| int|100 | The time span of the using animation for the item. Recommended to be the same at useTime as this is only the animation. Blocks use 15. Default value is 100. Terraria runs at 60 frames per second, so 15 is 1/4th of a second. |
+| [useTime](#usetime)<a name="usetime"></a>|int |100 | The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120). |
+| [reuseDelay](#reusedelay)<a name="reusedelay"></a>|int | 0| A delay in frames added at the end of the using animation for the item, during which the player wont be able to use any items. |
+| [consumable](#consumable)<a name="consumable"></a>|bool |false | Whether the item is consumed after use. |
+| [rare](#rare)<a name="rare"></a>| int|0 | Range from -1 to 13.<br>Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L23) |
+| [](#)<a name=""></a>| | |  |
+| [](#)<a name=""></a>| | |  |
+| [](#)<a name=""></a>| | |  |
 
 ### maxStack (int)
 The maximum number of items that can be contained within a single stack.
