@@ -34,10 +34,10 @@ The hold style of your item:
 3 for a different version of holding out (Magical Harp)
 
 ## useAnimation (int)
-The time span of the using animation for the weapon. Recommended to be the same at useTime as this is only the animation.
+The time span of the using animation for the item. Recommended to be the same at useTime as this is only the animation. Blocks use 15. Default value is 100. Terraria runs at 60 frames per second, so 15 is 1/4th of a second.
 
 ## useTime (int)
-The time span of using the weapon in frames. Note: Terraria runs at 60 frames per second.
+The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120).
 
 ## reuseDelay (int)
 A delay in frames added at the end of the using animation for the item, during which the player wont be able to use any items.
