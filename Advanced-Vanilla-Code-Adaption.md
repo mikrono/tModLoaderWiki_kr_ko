@@ -438,7 +438,10 @@ Lets take a look in game!
 
 ![](https://thumbs.gfycat.com/FluffyGrizzledGordonsetter-small.gif)    
 
-Looks like we have several problems still: We can't toggle it, we can't mine it to recover it, the flame texture is totally messed up, it isn't actually lighting up anything, the tile doesn't alternate orientation, and we are missing the tiny sparks that randomly spawn sometimes. 
+Looks like we have several problems still: We can't toggle it, we can't mine it to recover it, the flame texture is totally messed up, it isn't actually lighting up anything, the tile doesn't alternate orientation, and we are missing the tiny sparks that randomly spawn sometimes. Looking at these 6, we'll find results for 5 of these in the remaining search results. For the mining problem, just follow other tiles in ExampleMod.
+
+### Toggle
+One of the results is in Wiring.HitWireSingle, this sounds like what we want. The corresponding tModLoader hook is `ModTile.HitWire`. We can copy in the code and have Visual Studio suggest the correct using statements. Feel free to clean up the code by renaming variables.
 
 
 
