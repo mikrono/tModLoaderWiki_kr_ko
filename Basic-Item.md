@@ -40,5 +40,5 @@ namespace ModNamespaceHere
 Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
 # SetDefaults
-The most important part of an Item is the SetDefaults. SetDefaults is where you set values for the item, things like what ammo does the item use, how big is the item, and which tile the item places. See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation) to see what values commonly set in SetDefaults mean.
+The most important part of an Item is the SetDefaults. SetDefaults is where you set values for the item, things like what ammo does the item use, how big is the item, and which tile the item places. See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation) to see what values commonly set in SetDefaults mean. You can also view vanilla item values by visiting [Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values). 
 
