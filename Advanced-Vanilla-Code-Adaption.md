@@ -443,5 +443,14 @@ Looks like we have several problems still: We can't toggle it, we can't mine it 
 ### Toggle
 One of the results is in Wiring.HitWireSingle, this sounds like what we want. The corresponding tModLoader hook is `ModTile.HitWire`. We can copy in the code and have Visual Studio suggest the correct using statements. Feel free to clean up the code by renaming variables.
 
+### Lighting
+Another result seems to be modifying 3 variables based on tile style. This is probably related to the lighting because lighting uses red, green, and blue. Once again, we search nearby for a TileLoader method and learn that `ModDust.ModifyLight` is where this code belongs. Remember to clean up the code, removing all the code related to other tile styles.
 
+### Sparks
+One of the find results is near a call to `Dust.NewDust`. This must be the sparks code. Searching for `TileLoader` after this line shows us that `ModTile.DrawEffects` is the hook we want to use. Copy this code in as well. Clean up the code and adapt it to fit our tile.
 
+### Orientation
+One of the results is near code relating to SpriteEffects. If you have looked at ExampleAnimatedTile, you would recognize this code. Migrate this code into `ModTile.SetSpriteEffects`.
+
+### Flame
+Finally, the last relevant result relates to drawing the Flame texture. Looking at the code around this result, it becomes clear that `Main.tileFlame` uses hard-coded TileIDs to draw different flame textures. We'll need to re-implement this ourselves and delete `Main.tileFlame[Type] = true;` from our code to get this working. The closest TileLoader result tells us that `ModTile.PostDraw` is the hook we will need to use. 
