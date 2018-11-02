@@ -319,7 +319,7 @@ First, we need to find the Lamp TileID in [TileID.cs](https://github.com/blushie
 
 ![](https://i.imgur.com/SyMfAb7.png)    
 
-I like this one, so I'll crop the image and edit it to fit ExampleMod art style. I measured the top lamp and noticed that it was 52 pixels high and made sure to crop the selected lamp to that same height. The padding pixels can sometimes be confusing, just remember that most tiles are made from 16x16 pixel image patches.
+I like this one, so I'll crop the image and edit it to fit ExampleMod art style. I measured the top lamp and noticed that it was 54 pixels high (if we include the 2 padding pixels) and made sure to crop the selected lamp to that same height. The padding pixels can sometimes be confusing, just remember that most tiles are made from 16x16 pixel image patches.
 
 ![](https://i.imgur.com/LFGJANI.png)
 
@@ -453,4 +453,10 @@ One of the find results is near a call to `Dust.NewDust`. This must be the spark
 One of the results is near code relating to SpriteEffects. If you have looked at ExampleAnimatedTile, you would recognize this code. Migrate this code into `ModTile.SetSpriteEffects`.
 
 ### Flame
-Finally, the last relevant result relates to drawing the Flame texture. Looking at the code around this result, it becomes clear that `Main.tileFlame` uses hard-coded TileIDs to draw different flame textures. We'll need to re-implement this ourselves and delete `Main.tileFlame[Type] = true;` from our code to get this working. The closest TileLoader result tells us that `ModTile.PostDraw` is the hook we will need to use. 
+Finally, the last relevant result relates to drawing the Flame texture. Looking at the code around this result, it becomes clear that `Main.tileFlame` uses hard-coded TileIDs to draw different flame textures. We'll need to re-implement this ourselves and delete `Main.tileFlame[Type] = true;` from our code to get this working. The closest TileLoader result tells us that `ModTile.PostDraw` is the hook we will need to use. In addition to adapting this code, we will make a new Flame texture in our mod.
+
+### Final Code and Result
+Here is the [final code](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) and result, see ExampleMod for the sprites.
+
+![](https://thumbs.gfycat.com/ImportantMixedAmericanwarmblood-small.gif)
+
