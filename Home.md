@@ -84,6 +84,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
 - [Vanilla Sound IDs](Vanilla-Sound-IDs)
 - [Vanilla Tile IDs](Vanilla-Tile-IDs)
+- [Tile Class Documentation](Tile-Class-Documentation)
 - [Vanilla Wall IDs](Vanilla-Wall-IDs)
 - [Vanilla World Generation Steps](Vanilla-World-Generation-Steps)
 - [Useful Vanilla Fields](Useful-Vanilla-Fields)
