@@ -311,3 +311,134 @@ This guide will be done later if anyone expresses interest.
 
 ## Custom Flail
 Making a flail, you might have noticed that the range of the flail is hard to customize. (TODO)
+
+## ExampleLamp Tile
+These are the exact steps to creating ExampleLamp. Lamps are special because they can be turned on and off by wires. Up until now, no example existed in ExampleMod of this.
+
+First, we need to find the Lamp TileID in [TileID.cs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Tile-IDs). We find that `Lamps = 93;`. Next, lets find a specific lamp style we wish to copy. Use [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) to extract Tiles_93.xnb and then open Tiles_93.png in an image editor of your choice. We'll be modifying one of these lamps for ExampleLamp, but you'll want to just use Tiles_93.png as a guide in your mod.
+
+![](https://i.imgur.com/SyMfAb7.png)    
+
+I like this one, so I'll crop the image and edit it to fit ExampleMod art style. I measured the top lamp and noticed that it was 52 pixels high and made sure to crop the selected lamp to that same height. The padding pixels can sometimes be confusing, just remember that most tiles are made from 16x16 pixel image patches.
+
+![](https://i.imgur.com/LFGJANI.png)
+
+Make sure to save the file, then do the same for the Item image. I just looked up the ItemID on the [wiki](https://terraria.gamepedia.com/Lamp). Turns out we used the Rich Mahogany Lamp as our guide, lets first do the ModItem by searching the source for 2087, the ItemID of Rich Mahogany Lamp. In our initial search, we found no results! Looking at ItemID.cs, we can see that RichMahoganyLamp is next to many other lamp items. Sometimes the source code uses ranges to apply code to many different item types. The lamp item furthest above `RichMahoganyLamp` is `CactusLamp = 2082;`, lets search for 2082. This time we find the code we need for our `ModItem.SetDefaults()`:
+
+```cs
+if (type >= 2082 && type <= 2091)
+{
+	this.useStyle = 1;
+	this.useTurn = true;
+	this.useAnimation = 15;
+	this.useTime = 10;
+	this.autoReuse = true;
+	this.maxStack = 99;
+	this.consumable = true;
+	this.createTile = 93;
+	this.placeStyle = type + 1 - 2082;
+	this.width = 10;
+	this.height = 24;
+	this.value = 500;
+	return;
+}
+```
+
+Here is what we end up with converting this code into a ModItem. We've added a recipe and replaced item.createTile with the correct TileType. We've also removed item.placeStyle since our tile only has 1 style:
+
+```cs
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod.Items.Placeable
+{
+	class ExampleLamp : ModItem
+	{
+		public override void SetDefaults()
+		{
+			item.useStyle = 1;
+			item.useTurn = true;
+			item.useAnimation = 15;
+			item.useTime = 10;
+			item.autoReuse = true;
+			item.maxStack = 99;
+			item.consumable = true;
+			item.createTile = mod.TileType<Tiles.ExampleLamp>();
+			item.width = 10;
+			item.height = 24;
+			item.value = 500;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.WoodenChair);
+			recipe.AddIngredient(mod.ItemType<ExampleBlock>(), 10);
+			recipe.AddTile(mod.TileType<Tiles.ExampleWorkbench>());
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
+	}
+}
+```
+Now that the ModItem is done, lets do the ModTile. First we have to find all the lines of code we need in `ModTile.SetDefaults`. First, read through [Basic Tile](https://github.com/blushiemagic/tModLoader/wiki/Basic-Tile) so you are aware of all the various fields relating to tiles, such as `Main.tileSolid`, `Main.tileFrameImportant`, etc. Now lets search for the TileID  (93) in the source code. As always, there will be many results that are unrelated to what we want. Luckily, we find various Main.tileX results, lets add those to our ModTile. We can ignore Item.cs results, but Lang.cs shows adding a map entry. In our ModTile, we can utilize vanilla localized text by doing this: `AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.FloorLamp"));` We got that color from another result: `array[93][0] = color;` and looking at `color`.
+
+![](https://i.imgur.com/jWYvbLl.png)
+
+Finally, there are other results, but lets go straight to the TileObjectData results:
+
+```cs
+TileObjectData.newTile.CopyFrom(TileObjectData.Style1xX);
+TileObjectData.newTile.WaterDeath = true;
+TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
+TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
+TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
+TileObjectData.newSubTile.LavaDeath = false;
+TileObjectData.newSubTile.LavaPlacement = LiquidPlacement.Allowed;
+TileObjectData.addSubTile(23);
+TileObjectData.addTile(93);
+```
+
+We can copy and paste this straight into our ModTile after we replace 93 with Type. We also don't need SubTiles, so lets delete those lines as well. Here is our ModTile so far:
+
+```cs
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Enums;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
+
+namespace ExampleMod.Tiles
+{
+	class ExampleLamp : ModTile
+	{
+		public override void SetDefaults()
+		{
+			Main.tileFlame[Type] = true;
+			Main.tileLighted[Type] = true;
+			Main.tileFrameImportant[Type] = true;
+			Main.tileNoAttach[Type] = true;
+			Main.tileWaterDeath[Type] = true;
+			Main.tileLavaDeath[Type] = true;
+
+			TileObjectData.newTile.CopyFrom(TileObjectData.Style1xX);
+			TileObjectData.newTile.WaterDeath = true;
+			TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
+			TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
+			TileObjectData.addTile(Type);
+
+			AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.FloorLamp"));
+		}
+	}
+}
+```
+
+Lets take a look in game! 
+
+![](https://thumbs.gfycat.com/FluffyGrizzledGordonsetter-small.gif)    
+
+Looks like we have several problems still: We can't toggle it, we can't mine it to recover it, the flame texture is totally messed up, it isn't actually lighting up anything, the tile doesn't alternate orientation, and we are missing the tiny sparks that randomly spawn sometimes. 
+
+
+
