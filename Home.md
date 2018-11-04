@@ -53,6 +53,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
+- [Saving-and-loading-using-TagCompound](Saving and loading using TagCompound)
 - [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
 - [Modding with C#6](Intermediate-modding-with-c%236)
 - [Modding with C#7](Intermediate-modding-with-c%237)
@@ -94,7 +95,6 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 
 ## Other pages
 These are pages that we have so far failed to categorize or simply do not belong in one.
-- [TagCompound](TagCompound)
 - [Mount Data Parameters](MountDataParameters)
 - [Open Source Mods](Open-Source-Mods)
 - [Command Line Arguments and Server Config](Command-Line)
