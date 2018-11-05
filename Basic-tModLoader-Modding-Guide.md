@@ -9,6 +9,8 @@ Click the `Generate Mod Skeleton` button and you should see a .zip file download
 
 ![](http://i.imgur.com/0zH7w65.png)
 
+You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\` folder. 
+
 ### Mod Skeleton Contents
 The Skeleton contains 7 files. Here is an explanation of each:    
 1. **[ModName].cs** - This is the `Mod` class. It is the central file to any mod. One and only one `Mod` class can exist in every mod. For simple mods this file will be very sparse, but in this class various global things can happen such as modifying music.     
