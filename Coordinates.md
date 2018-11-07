@@ -35,3 +35,8 @@ World Coordinates of the current mouse position. Unfortunately this doesn't work
 
 ### Main.MouseScreen
 Screen Coordinates of the mouse. `Main.mouseX` and `Main.mouseY` are the same.
+
+# Example
+![](https://i.imgur.com/T6La54i.png)
+
+Lets look at this picture to review. The white lines depict the Tile spaces, the red points show the world coordinate of the tile when converted to world coordinates. The bottom right tile is at tile coordinate `3548, 256`. Converting this to world coordinates by multiplying by 16 gets us `56768, 4096`. The snails position is displayed in the yellow box. The position of entities relates to the top left corner of the entity. Adding `0, 16` to the world position of the tile mentioned earlier, we arrive at `56768, 4112`, which is very close to the top snail position shown. (the snail is still a pixel to the right of that point)  I hope this has helped visualize this concept.
