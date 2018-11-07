@@ -49,6 +49,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
 - [Basic Logging](Logging)
 - [Basic Glowmasks](Basic-glowmask-guide)
+- [Coordinates](Coordinates)
 
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
