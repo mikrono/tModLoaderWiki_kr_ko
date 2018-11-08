@@ -4,8 +4,7 @@ This is a collection of vanilla methods that are useful when modding. This list 
 See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#methods)
 
 ## Projectile  
-### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
-Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
+See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#methods)
 
 ## Dust  
 ### public static int NewDust(Vector2 Position, int Width, int Height, int Type, float SpeedX = 0f, float SpeedY = 0f, int Alpha = 0, Color newColor = default(Color), float Scale = 1f)
