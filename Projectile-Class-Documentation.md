@@ -9,6 +9,7 @@ Index|
 # Fields and Properties
 You can assign these fields to give your ModProjectile various values. Typically you'll want to refer to this page when writing code for `ModProjectile.SetDefaults`. Be sure to visit [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values) to see what values vanilla projectiles use for these fields. All fields listed are public unless otherwise noted. 
 
+## Vanilla
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [type](#type)<a name="type"></a>|int |0 | This is the ProjectileID, automatically set.  |
@@ -45,10 +46,10 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [netUpdate](#)<a name=""></a>| | |  |
 | [netUpdate2](#)<a name=""></a>| | |  |
 | [numUpdates](#)<a name=""></a>| | |  |
-| [identity](#)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients & the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
+| [identity](#)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
 | [light](#)<a name=""></a>| | |  |
-| [position](#position)<a name="position"></a>| Vector2 | |  |
-| [velocity](#velocity)<a name="velocity"></a>| Vector2 | |  |
+| [position](#position)<a name="position"></a>| Vector2 | | |
+| [velocity](#velocity)<a name="velocity"></a>| Vector2 | | |
 | [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
 | [owner](#owner)<a name="owner"></a>| | | The index of the player who owns this projectile. In Multiplayer, Clients "own" projectiles that they shoot, while the Server "owns" projectiles spawned by NPCs and the World. It is very important to check `if (projectile.owner == Main.myPlayer)` for things like dropping items or spawning projectiles in `ModProjectile.AI` and some other methods because `AI` runs simultaneously on all Clients and the Server. This check gates some of the code that should only run on the owners computer. [ExampleJavelinProjectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleJavelinProjectile.cs#L88) checks owner for spawning the recovered ammo item. If you don't do this, you will run into desync bugs in your mod. |
 | [damage](#damage)<a name="damage"></a>| | | This will always be set in NewProjectile based on the weapons damage. Don't assume that setting it to something in SetDefaults does anything. |
@@ -59,7 +60,7 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 
-## tModLoader Only
+## tModLoader
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -68,12 +69,17 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [](#)<a name=""></a>| | |  |
 
 # Methods
+
+## Vanilla
 Remember that static methods are called by writing the classname and non-static methods use the instance name. `Projectile.NewProjectile(...)` vs `projectile.Kill(...)`
 
 ### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
 
-## tModLoader Only
+### public static int GetByUUID(int owner, int uuid)
+Do NOT use to get a projectile based on its projectile.identity. Instead, loop through the Main.projectile[] on the client you wish to find the projectile on and check if there is a projectile that has the same projectile.identity as the projectile you want to find.
+
+## tModLoader
 ### public GlobalProjectileGetGlobalProjectile(Mod mod, string name)
 
 Gets the GlobalProjectileinstance (with the given name and added by the given mod) associated with this item instance.
