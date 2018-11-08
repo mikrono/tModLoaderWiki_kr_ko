@@ -80,6 +80,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
 - [Vanilla NPC IDs](Vanilla-NPC-IDs)
 - [BannerToNPC Conversions](BannerToNPC-Conversions)
+- [Projectile Class Documentation](Projectile-Class-Documentation)
 - [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
 - [Vanilla Projectile IDs](Vanilla-Projectile-IDs)
 - [Vanilla Projectile Field Values](Vanilla-Projectile-Field-Values)
