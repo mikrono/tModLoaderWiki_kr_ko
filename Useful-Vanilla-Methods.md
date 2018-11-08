@@ -1,13 +1,7 @@
 This is a collection of vanilla methods that are useful when modding. This list is meant as a quick reference to the most commonly used methods, but with more advanced mods it is highly recommended to add Terraria as a reference to your IDE since this list isn't exhaustive.
 
 ## Item  
-### public static int NewItem(int X, int Y, int Width, int Height, int Type, int Stack = 1, bool noBroadcast = false, int pfix = 0, bool noGrabDelay = false, bool reverseLookup = false)
-Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. 
-Example: `Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));`
-
-### public static int NewItem(Rectangle rectangle, int Type, int Stack = 1, bool noBroadcast = false, int prefixGiven = 0, bool noGrabDelay = false, bool reverseLookup = false)
-This alternate method signature can simplify code.  
-Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
+See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#methods)
 
 ## Projectile  
 ### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
