@@ -11,7 +11,7 @@ Index|
 
 # Item Fields
 
-See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation)
+See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#fields-and-properties)
 
 # Main Fields
 
