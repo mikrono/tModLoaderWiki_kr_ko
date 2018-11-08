@@ -77,7 +77,7 @@ Remember that static methods are called by writing the classname and non-static 
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
 
 ### public static int GetByUUID(int owner, int uuid)
-Do NOT use to get a projectile based on its projectile.identity. Instead, loop through the Main.projectile[] on the client you wish to find the projectile on and check if there is a projectile that has the same projectile.identity as the projectile you want to find.
+Do not use this method to get a projectile on a client based on its projectile.identity. Instead, loop through the Main.projectile[] on the client you wish to find the projectile on and check if there is a projectile that has the same projectile.identity as the projectile you want to find.
 
 ## tModLoader
 ### public GlobalProjectileGetGlobalProjectile(Mod mod, string name)
