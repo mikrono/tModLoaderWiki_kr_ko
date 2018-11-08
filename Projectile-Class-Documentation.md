@@ -28,17 +28,17 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [melee](#melee)<a name="melee"><br>[ranged](#ranged)<a name="ranged"><br>[magic](#magic)<a name="magic"><br>[minion](#minion)<a name="minion"><br>[thrown](#thrown)<a name="thrown"><br></a>| bool | false | Determines which crit chance will influence the damage of this projectile |
 | [frame](#)<a name=""></a>| | |  |
 | [frameCounter](#)<a name=""></a>| | |  |
-| [rotation](#)<a name=""></a>| | |  |
+| [rotation](#)<a name=""></a>| | | Rotation of the projectile. Radians not Degrees. Use MathHelper if you want to convert degrees to radians. 0 is facing right, pi/2 is facing down, and so on. |
 | [oldPos](#)<a name=""></a>| | |  |
 | [oldRot](#)<a name=""></a>| | |  |
 | [oldSpriteDirection](#)<a name=""></a>| | |  |
 | [ai](#)<a name=""></a>| float[] | 0,0 |  |
 | [localAI](#)<a name=""></a>| float[] | 0,0 |  |
-| [noDropItem](#)<a name=""></a>| | |  |
+| [noDropItem](#nodropitem)<a name="nodropitem"></a>| bool | false | Set to true if you don't want this item to have a chance to recover the ammo item that shot this. For example, if you shoot the wooden arrow projectile, it will sometimes drop the wooded arrow item. If your weapon shoots multiple arrows for 1 ammo, you might want to consider setting this field to prevent infinite ammo glitches. |
 | [minion](#)<a name=""></a>| | |  |
 | [minionSlots](#)<a name=""></a>| | |  |
 | [spriteDirection](#)<a name=""></a>| | |  |
-| [hide](#)<a name=""></a>| | |  |
+| [hide](#hide)<a name="hide"></a>| bool | | Projectile is not drawn normally. See [ExampleBehindTilesProjectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBehindTilesProjectile.cs#L30) |
 | [lavaWet](#)<a name=""></a>| | |  |
 | [wetCount](#)<a name=""></a>| | |  |
 | [wet](#)<a name=""></a>| | |  |
@@ -47,14 +47,14 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [numUpdates](#)<a name=""></a>| | |  |
 | [identity](#)<a name=""></a>| | |  |
 | [light](#)<a name=""></a>| | |  |
-| [position](#)<a name=""></a>| | |  |
-| [velocity](#)<a name=""></a>| | |  |
-| [active](#)<a name=""></a>| | |  |
-| [owner](#)<a name=""></a>| | |  |
+| [position](#position)<a name="position"></a>| Vector2 | |  |
+| [velocity](#velocity)<a name="velocity"></a>| Vector2 | |  |
+| [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
+| [owner](#owner)<a name="owner"></a>| | | The index of the player who owns this projectile. In Multiplayer, Clients "own" projectiles that they shoot, while the Server "owns" projectiles spawned by NPCs and the World. It is very important to check `if (projectile.owner == Main.myPlayer)` for things like dropping items or spawning projectiles in `ModProjectile.AI` and some other methods because `AI` runs simultaneously on all Clients and the Server. This check gates some of the code that should only run on the owners computer. [ExampleJavelinProjectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleJavelinProjectile.cs#L88) checks owner for spawning the recovered ammo item. If you don't do this, you will run into desync bugs in your mod. |
 | [damage](#damage)<a name="damage"></a>| | | This will always be set in NewProjectile based on the weapons damage. Don't assume that setting it to something in SetDefaults does anything. |
 | [knockBack](#)<a name=""></a>| | |  |
-| [trap](#)<a name=""></a>| | |  |
-| [npcProj](#)<a name=""></a>| | |  |
+| [trap](#)<a name=""></a>| | | If true, this projectile was spawned by a trap tile. |
+| [npcProj](#)<a name=""></a>| | | If true, this projectile was spawned by a friendly Town NPC. |
 | [projUUID](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
