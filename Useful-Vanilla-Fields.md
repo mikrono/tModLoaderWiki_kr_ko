@@ -256,9 +256,7 @@ Determines the player's max flight time with wings when not mounted. Defaults to
 
 # Projectile Fields
 
-* ignoreWater; bool
-
-The projectile will not be affected by water.
+See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#fields-and-properties)
 
 # Worldgen Fields
 
