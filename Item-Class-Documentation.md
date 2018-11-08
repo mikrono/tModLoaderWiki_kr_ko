@@ -124,13 +124,17 @@ This alternate method signature can simplify code.
 Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
 
 ## tModLoader Only
-### public ItemInfo GetModInfo(Mod mod, string name)
+### public GlobalItemGetGlobalItem(Mod mod, string name)
 
-Gets the ItemInfo instance (with the given name and added by the given mod) associated with this item instance.
+Gets the GlobalItem instance (with the given name and added by the given mod) associated with this item instance.
 
-### public T GetModInfo\<T\>(Mod mod) where T : ItemInfo 
+### public T GetGlobalItem\<T\>(Mod mod) where T : GlobalItem
 
-Same as the other GetModInfo, but assumes that the class name and internal name are the same.
+Same as the other GetGlobalItem, but assumes that the class name and internal name are the same.
+
+### public T GetGlobalItem\<T\>() where T : GlobalItem
+
+Same as the other GetGlobalItem, but assumes that the class name and internal name are the same, as well as the Mod. This is the one you should use 99% of the time.
 
 ### public void CloneDefaults(int type)
 
