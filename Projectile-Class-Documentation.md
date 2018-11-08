@@ -27,11 +27,35 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [scale](#scale)<a name="scale"></a>| float | 1f |  |
 | [melee](#melee)<a name="melee"><br>[ranged](#ranged)<a name="ranged"><br>[magic](#magic)<a name="magic"><br>[minion](#minion)<a name="minion"><br>[thrown](#thrown)<a name="thrown"><br></a>| bool | false | Determines which crit chance will influence the damage of this projectile |
 | [frame](#)<a name=""></a>| | |  |
+| [frameCounter](#)<a name=""></a>| | |  |
 | [rotation](#)<a name=""></a>| | |  |
 | [oldPos](#)<a name=""></a>| | |  |
 | [oldRot](#)<a name=""></a>| | |  |
 | [oldSpriteDirection](#)<a name=""></a>| | |  |
-| [](#)<a name=""></a>| | |  |
+| [ai](#)<a name=""></a>| float[] | 0,0 |  |
+| [localAI](#)<a name=""></a>| float[] | 0,0 |  |
+| [noDropItem](#)<a name=""></a>| | |  |
+| [minion](#)<a name=""></a>| | |  |
+| [minionSlots](#)<a name=""></a>| | |  |
+| [spriteDirection](#)<a name=""></a>| | |  |
+| [hide](#)<a name=""></a>| | |  |
+| [lavaWet](#)<a name=""></a>| | |  |
+| [wetCount](#)<a name=""></a>| | |  |
+| [wet](#)<a name=""></a>| | |  |
+| [netUpdate](#)<a name=""></a>| | |  |
+| [netUpdate2](#)<a name=""></a>| | |  |
+| [numUpdates](#)<a name=""></a>| | |  |
+| [identity](#)<a name=""></a>| | |  |
+| [light](#)<a name=""></a>| | |  |
+| [position](#)<a name=""></a>| | |  |
+| [velocity](#)<a name=""></a>| | |  |
+| [active](#)<a name=""></a>| | |  |
+| [owner](#)<a name=""></a>| | |  |
+| [damage](#damage)<a name="damage"></a>| | | This will always be set in NewProjectile based on the weapons damage. Don't assume that setting it to something in SetDefaults does anything. |
+| [knockBack](#)<a name=""></a>| | |  |
+| [trap](#)<a name=""></a>| | |  |
+| [npcProj](#)<a name=""></a>| | |  |
+| [projUUID](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 
