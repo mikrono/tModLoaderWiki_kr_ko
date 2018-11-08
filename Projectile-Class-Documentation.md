@@ -45,7 +45,7 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [netUpdate](#)<a name=""></a>| | |  |
 | [netUpdate2](#)<a name=""></a>| | |  |
 | [numUpdates](#)<a name=""></a>| | |  |
-| [identity](#)<a name=""></a>| | |  |
+| [identity](#)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients & the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
 | [light](#)<a name=""></a>| | |  |
 | [position](#position)<a name="position"></a>| Vector2 | |  |
 | [velocity](#velocity)<a name="velocity"></a>| Vector2 | |  |
