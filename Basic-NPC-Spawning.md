@@ -46,6 +46,9 @@ Read up [here](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference
 ### And and OR (&& and ||)
 Read up on [&&](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-and-operator) and [||](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-or-operator). Note that && has higher precedence than ||. We will use this to combine conditions.
 
+### = vs ==
+Don't mix these two up. `=` assigns a value to a variable and `==` compares two values. Make sure to never do things like `if(Main.hardMode = true)` or you'll be confused why your world is suddenly in hard mode.
+
 ### Ternary
 A more compact version of an if-else conditional is a ternary. Read up on it [here](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator). Basically it changes: 
 
@@ -143,6 +146,11 @@ Each of the following examples will be as if they were inside a ModNPC.SpawnChan
 Just like in Examples above, we combine pieces of logic to construct our final decision. See !, &&, and || above.
 
 # Common Errors
+### Why is my world in HardMode suddenly?
+Many new programmers confuse `=` and `==`. `=` assigns a value to a variable and `==` compares values. 
+
+If you do `if(Main.hardMode = true)` you are assigning true to hardMode, essentially progressing the world straight into hardmode, not what you want. Make sure to do `if(Main.hardMode == true)` or better yet, `if(Main.hardMode)`. 
+
 ### CS0161 '[ClassName].SpawnChance(NPCSpawnInfo)': not all code paths return a value
 This means your code has a chance to not return a value. For example.
 
