@@ -56,6 +56,7 @@ The following guides are more advanced than the easy ones, but not advanced or e
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
 - [Saving and loading using TagCompound](Saving-and-loading-using-TagCompound)
 - [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Multiplayer Compatibility](Multiplayer-Compatibility): ModPacket
 - [Modding with C#6](Intermediate-modding-with-c%236)
 - [Modding with C#7](Intermediate-modding-with-c%237)
 - [Git & mod management](Intermediate-Git-&-mod-management)
