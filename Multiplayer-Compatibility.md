@@ -17,7 +17,7 @@ Many things in multiplayer are synchronized between clients, such as (as said ea
 So, we can send information over network to other clients via the server, by using a ModPacket. The ModPacket class is a BinaryWriter in essence, which tModLoader will be able to send to the server as explained earlier.
 
 You can retrieve a new ModPacket instance in your mod, by calling your mod instance class on the method 'GetPacket()':
-`ModPacket packet = myMod.GetPacket();`
+`ModPacket packet = mod.GetPacket();`
 
 If you are familiar with a BinaryWriter, the following use of ModPacket will not be foreign to you. To actually send data using your ModPacket, you will 'write' it onto the packet. Consider it like writing text onto a paper before you send it, if you will. You can do this by simply calling the .Write() method on your packet:
 `packet.Write(something);`
