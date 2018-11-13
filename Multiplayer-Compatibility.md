@@ -1,10 +1,201 @@
 # Multiplayer Compatibility
-Terraria is frequently played in with multiple players. Ensuring that your code is multiplayer compatible is something that should not be an afterthought. Test early and often in multiplayer as you develop your mod.
+Terraria is frequently played with multiple players on a server. Ensuring that your mods are multiplayer compatible is something that should not be an afterthought. Test early and often in multiplayer as you develop your mod. In this guide, we will go over how to make your mods multiplayer compatible, and hopefully show you it is not as difficult as it may seem.
 
 # Main Concepts
-The following are main concepts key to understanding how Terraria works in multiplayer:
-* Clients ("Players") all connect to a single Server via the internet/network code, even with Host and Play.
-* Communication from a Client always goes to the Server. The Server can then send the data to the other Clients. Messages can never go Client to Client.
-* Code such as AI code executes on all Clients and the Server independently. We must design our code to work deterministically or sync changes from the owner of that entity to the other Clients/Server.
+The following are main concepts key to understanding how Terraria works in multiplayer.
+1. When you play Terraria, your application is considered and called a "Client"
+2. During multiplayer, your client and other players' clients connect to a server
+3. While connected to this server, the connected clients need to communicate well together through the server, so that things happening in the game are synchronized between these clients.
+
+Let's elaborate on point 3, so you might understand it better. For example when in multiplayer, when an NPC spawns you want to be able to see and interact with that NPC on all clients. (all clients means all players). In order for this to be possible, all clients needs to be told that this NPC actually spawned. This is always done through the server, as the server will be able to inform connected clients of the event that happened in the game (in this case NPC spawning)
+
+This communication between clients and the server is done through network packets. These packets are often small and usually consist of little data, that will be used by a client to handle an event in the game. When in multiplayer, these packets can be sent to the server by a client, where the server will forward that packet to the other clients to inform them of the event.
+
+Many things in multiplayer are synchronized between clients, such as (as said earlier) NPC spawning and also items. Consider that for you to be able to see what armor your friend has equipped, your client actually needs to know about what items he is wearing. These are automatically synchronized by Terraria in most situations, so you often don't need to worry about these as a modder. However, for your custom events in your mod you'll likely need to perform some kind of synchronization to ensure all clients are aligned. This is done through the ModPacket class, which is essentially one of those network packets that gets sent across connected clients to the server.
+
+# ModPacket
+So, we can send information over network to other clients via the server, by using a ModPacket. The ModPacket class is a BinaryWriter in essence, which tModLoader will be able to send to the server as explained earlier.
+
+You can retrieve a new ModPacket instance in your mod, by calling your mod instance class on the method 'GetPacket()':
+`ModPacket packet = myMod.GetPacket();`
+
+If you are familiar with a BinaryWriter, the following use of ModPacket will not be foreign to you. To actually send data using your ModPacket, you will 'write' it onto the packet. Consider it like writing text onto a paper before you send it, if you will. You can do this by simply calling the .Write() method on your packet:
+`packet.Write(something);`
+
+Since you write binary, you can write most/all of the primitive data types: int, float, bool, decimal, double, byte[], short, byte, char, char[], sbyte... and so forth
+
+# Practical advice
+In general, you'll want to make your packets small so they can be sent across clients quickly and do not cause any problems in the network. Big packets or many packets sent will cause the network to clog up, and can cause lag or problems while playing the game. If a mod performs bad during multiplayer, this can be why. If a mod is actually buggy during multiplayer, it is often because they do not send packets at all and clients aren't synchronized.
+
+To help aid making packets small and minimizing the amount you need to send, you should try to make code deterministic whenever you can. Determinism means that code on clients align, and do not need further interaction between them to be in the same state. This means no networking between them needs to be done to ensure everyone gets the same result on their client.
+
+Ensuring determinism isn't always easy, but can easily be checked against when answering the following question:
+> "Will multiple clients be in the same state (or have the same result) when this code is ran for them individually, without any interaction between them?"
+
+If the answer is yes, that means your code is deterministic enough. If all clients can reach this point at the same time, no more networking is needed to ensure the same result.
+
+# Example use or common use
+Now you might wonder, what are some example use-cases for these network packets? A few of them were already discussed earlier: NPCs and Items. For example equipment you are wearing is automatically synced across all clients, so that everyone knows what you are wearing. Idem dito for when an NPC spawns, or their health changes. When an NPC takes a hit and loses health, all clients need to know about that since otherwise your client might think the NPC is still alive when it just got killed by your friend. Not syncing NPC health can be a common reason why you might experience lingering NPCs in your damaging world, that simply won't despawn or are invisible entirely.
+
+If you were to make an NPC yourself, such as a boss, the above advice applies. You'll want to send a packet to the server when the NPC's state changing in a non deterministic way. This means that, the state might change on your client, but not (necessarily) on other connected clients. Meaning that without a packet, the other players' clients won't be informed about the change and the NPC's state on their end does not align with yours. This will cause bugs during gameplay or even crashes. 
+
+Consider a boss NPC that targets a specific Player, and its movement is based on that target. If the boss' target changes, all clients will need to be informed about that new target so that the boss moves in the right direction on all connected clients. Usually a random target is chosen, which means that if all clients were to decide a target on their own, they'll most likely all end up with a different target. This is usually when you let the server select a new target instead of connected clients. If the new state (new target) weren't to be synchronized, the boss would be moving in invalid directions on other clients, often causing players to be confused as the boss isn't actually where it appears on their screen.
+
+# Modelling Send and Receive for ModPacket
+In general, it is easy to model how you should write and read data from a packet. **You should read the data, in the same order it was sent**. Consider the following scenario:
+```cs
+float someVal;
+int someInt;
+
+public void Send(int toWho, int fromWho)
+{
+	ModPacket packet = mod.GetPacket();
+	if (Main.netMode == NetmodeID.Server) {
+		packet.Write(fromWho)
+	}
+	packet.Write(someVal);
+	packet.Write(someInt);
+	packet.Send(toWho, fromWho);
+}
+
+public void Receive(BinaryReader reader, int fromWho)
+{
+	if (Main.netMode == NetmodeID.MultiplayerClient) {
+		fromWho = reader.ReadInt32();
+	}
+	someVal = reader.ReadSingle();
+	someInt = reader.ReadInt32();
+	if (Main.netMode == NetmodeID.Server) {
+		Send(-1, fromWho);
+	} else {
+		MyModPlayer myModPlayer = Main.player[fromWho].GetModPlayer<MyModPlayer>();
+		myModPlayer.someVal = someVal;
+		myModPlayer.someInt = someInt;
+	}
+}
+```
+
+In the above example we're showcasing how you can model/design your send and receive methods to handle all involved parties: both connected clients and the server. 
+
+In the Send() method, we're sending a packet that contains a float and int value, to some specific target and ignoring the passed fromWho client. In the Receive() method, we're reading the packet data, and then doing something based on if we're a server or client. You'll see that we read the fromWho data dependent on the Main.netMode. This is because this part of the packet only exists when the packet was sent by the server, so we can only read it if we're a client. You can do this to access the client that originally sent the packet, instead of 256 as fromWho which signifies the server. 
+
+If you compare Send() and Receive() closely, you'll see that the order of reading and writing aligns. At the end of the Receive() method, we call Send() again and pass -1 as toWho which signifies every connected client, except the fromWho client. This makes the server forward the packet to other clients. Conditionally if we're not a server (so we're a connected client), we can set the newly read values in some place where we actually need them.
+
+# Good practice managing many packets
+If you work on a big mod, you might find yourself sending many packets which can become a hassle to manage without a proper setup. Recommended is to use a PacketHandler class that can make it easier to handle different packets. Feel free to use this class:
+```cs
+	internal abstract class PacketHandler
+	{
+		internal byte HandlerType { get; set; }
+		
+		public abstract void HandlePacket(BinaryReader reader, int fromWho);
+
+		protected PacketHandler(byte handlerType)
+		{
+			HandlerType = handlerType;
+		}
+
+		protected ModPacket GetPacket(byte packetType, int fromWho)
+		{
+			var p = MyMod.Instance.GetPacket();
+			p.Write(HandlerType);
+			p.Write(packetType);
+			if (Main.netMode == NetmodeID.Server)
+			{
+				p.Write((byte)fromWho);
+			}
+			return p;
+		}
+	}
+```
+This class takes care of some stuff for you, including writing the handler type and packet type. This will be useful when receiving packets, knowing where to forward to.
+
+You can inherit this base class, for example when making a handler for "MyBossNPC":
+```cs
+	internal class MyBossNPCPacketHandler : PacketHandler
+	{
+		public MyBossNPCPacketHandler(byte handlerType) : base(handlerType)
+		{
+		}
+
+		public override void HandlePacket(BinaryReader reader, int fromWho)
+		{
+			throw new NotImplementedException();
+		}
+	}
+```
+If we go by the example earlier, you might want to sync the target of this boss. You can modify the class to reflect this. You'll need to make HandlePacket switch by the packet type, and call the appropriate handling method for that packet:
+```cs
+	internal class MyBossNPCPacketHandler : PacketHandler
+	{
+		public const byte SyncTarget = 1;
+
+		public MyBossNPCPacketHandler(byte handlerType) : base(handlerType)
+		{
+		}
+
+		public override void HandlePacket(BinaryReader reader, int fromWho)
+		{
+			switch (reader.ReadByte())
+			{
+				case (SyncTarget):
+					ReceiveTarget(reader, fromWho);
+					break;
+			}
+		}
+
+		public void SendTarget(int toWho, int fromWho, int npc, int target)
+		{
+			ModPacket packet = GetPacket(SyncTarget, fromWho);
+			packet.Write(npc);
+			packet.Write(target);
+			packet.Send(toWho, fromWho);
+		}
+
+		public void ReceiveTarget(BinaryReader reader, int fromWho)
+		{
+			int npc = reader.ReadInt32();
+			int target = reader.ReadInt32();
+			if (Main.netMode == NetmodeID.Server) {
+				SendTarget(-1, fromWho, npc, target);
+			}
+			else {
+				NPC theNpc = Main.npc[npc];
+				theNpc.oldTarget = theNpc.target;
+				theNpc.target = target;
+			}
+		}
+	}
+```
+
+The last thing you'll need to do, is actually call the appropriate PacketHandler class when your mod receives the packet. You can make a global class that handles this for you. In your mod class:
+```cs
+public override void HandlePacket(BinaryReader reader, int whoAmI) 
+{
+	ModNetHandler.HandlePacket(reader, whoAmI);
+}
+```
+
+In your new ModNetHandler class:
+```cs
+internal class ModNetHandler 
+{
+	// When a lot of handlers are added, it might be wise to automate
+	// creation of them
+	public const byte MyBossNpcType = 1;
+	internal static MyBossNPCPacketHandler myBossNpc = new MyBossNPCPacketHandler (MyBossNpcType);
+	public static void HandlePacket(BinaryReader r, int fromWho)
+	{
+		switch (r.ReadByte())
+		{
+			case MyBossNpcType:
+				myBossNpc.HandlePacket(r, fromWho);
+				break;
+		}
+	}
+}
+```
+
+With this setup, you can keep creating new PacketHandler classes to handle certain subjects in a more global way.
 
 
