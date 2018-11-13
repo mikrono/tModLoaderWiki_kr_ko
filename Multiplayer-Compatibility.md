@@ -1,5 +1,5 @@
-# Multiplayer Compatibility
-Terraria is frequently played with multiple players on a server. Ensuring that your mods are multiplayer compatible is something that should not be an afterthought. Test early and often in multiplayer as you develop your mod. In this guide, we will go over how to make your mods multiplayer compatible, and hopefully show you it is not as difficult as it may seem.
+# Introductory
+Terraria is frequently played with many players on a server. Ensuring that your mods work well with friends is something that should not be an afterthought. Test early and often in multiplayer as you develop your mod. In this guide, we will go over how to make your mods multiplayer compatible, and hopefully show you it is not as difficult as it may seem.
 
 # Main Concepts
 The following are main concepts key to understanding how Terraria works in multiplayer.
