@@ -6,8 +6,8 @@ It is important to clearly understand tiles in your mind. Starting out, you migh
 
 If you are curious about the `Tile` class itself, such as you would find in `Main.tile[]`, please see [Tile Class Documentation](Tile-Class-Documentation)
 
-# Making an Tile
-To add an tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
+# Making a Tile
+To add a tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
 
 ```cs
 using Microsoft.Xna.Framework;
