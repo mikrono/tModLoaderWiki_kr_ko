@@ -67,6 +67,7 @@ You may now edit your mod's code while tModLoader is running by pressing Ctrl+Al
 
 # FAQ
 ## Autocomplete isn't doing anything for me.
+(Also: Autocomplete is changing things I don't want it to, like changing `item` to `Items`.)
 1. Check that the tModLoader executable file is in your references. Make sure it's modded not vanilla.    
 ![](http://i.imgur.com/HvodIHV.png)
 2. Check that your .cs files are actually in the project, and that you are opening the project not just individual .cs files. You can use the show all files toggle and then right click -> include in project to add missing source files to the project.    
