@@ -1,4 +1,4 @@
-The following is a list of constants found in the Terraria.ID.ItemID class. Simply use your browsers find function (ctrl-f) to find the correct ItemID. Most item ids will be the English name of the item, but there are exceptions. If you can't find the item here, look them up on the [official Terraria wiki](https://terraria.gamepedia.com/Item_IDs) and then find the ItemID entry below.     
+The following is a list of constants found in the Terraria.ID.ItemID class. Simply use your browsers find function (ctrl-f) to find the correct ItemID. Most item ids will be the English name of the item, but there are exceptions. If you can't find the item here, look them up on the [official Terraria wiki](https://terraria.gamepedia.com/Item_IDs) and then find the ItemID entry below. For example, the item known in English as `Luminite Bar` item is actually `LunarBar`, `Luminite Bullet` is actually `MoonlordBullet`, and `Sky Dragon's Fury` is actually `MonkStaffT3`.       
 
 As a reminder you use these values either by writing `ItemID.Name` or just `Number`, do NOT write `ItemID.Number`:
 ```cs
