@@ -37,6 +37,7 @@ These pages aim to aid you to learn how to develop mods properly, how to setup y
 These guides are easy and should be used if you are new to the API. Their goal is to get you familiar with tML and help you learn certain classes.
 - [Basic Guide Prerequisites](Basic-Prerequisites)
 - [Basic ModItem](Basic-Item)
+- [Basic ModProjectile](Basic-Projectile)
 - [About NPC Spawning](Basic-NPC-Spawning)
 - [About NPC Drops and Loot](Basic-NPC-Drops-and-Loot)
 - [Autoloading guide](Basic-Autoload)
