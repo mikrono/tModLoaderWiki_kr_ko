@@ -35,7 +35,7 @@ namespace ModNamespaceHere
 		aiType = ProjectileID.WoodenArrowFriendly;
         }
 
-	// Additional hooks here.
+	// Additional hooks/methods here.
     }
 }
 ```
@@ -53,3 +53,5 @@ The AI of a projectile is the most important aspect of a projectile, it controls
 ## Vanilla AI
 
 
+# Other Hooks/Methods
+The [ModProjectile documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_projectile.html) lists many other hooks/methods you will want to use to make your projectile unique. For example, if you'd like to apply a debuff when the projectile hits, you would use `OnHitNPC`. To do something when the projectile hits a tile, use `OnTileCollide`. See the documentation and usages in ExampleMod to see how to properly use them.
