@@ -19,39 +19,37 @@ namespace ModNamespaceHere
 {
     public class NameHere : ModProjectile
     {
+	public override void SetStaticDefaults()
+	{
+		DisplayName.SetDefault("English Display Name Here");
+	}
+
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Modded Projectile");
-            projectile.width = 16; // The width of the projectile
-            projectile.height = 16; // the hight of the projectile
-            projectile.timeLeft = 180; // The lifetime
-            projectile.penetrate = 2; 
-            projectile.tileCollide = false;
-            projectile.ignoreWater = false; // Will the projectile slow down in water?
-            projectile.friendly = true; // Is this a player or enemy projectile?
-            projectile.hostile = false; // """"
-            projectile.ranged = true; // The damage type. Aka *.melee, *.magic etc
-            projectile.aiStyle = 3; //18 is the demon scythe style
-            projectile.light = 1f; // The light value emitted by the projectile
-            projectile.stepSpeed = 3; // The speed of the projectile
-            // Set other projectile.X values here
+		projectile.arrow = true;
+		projectile.width = 10;
+		projectile.height = 10;
+		projectile.aiStyle = 1;
+		projectile.friendly = true;
+		projectile.ranged = true;
+		aiType = ProjectileID.WoodenArrowFriendly;
         }
 
+	// Additional hooks here.
     }
 }
 ```
+Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
 # SetDefaults
+The most important part of a Projectile is the SetDefaults. SetDefaults is where you set values for the projectile, things like the hitbox width and height, if the projectile is friendly or hostile, and which AI the projectile will use. See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation) to see what values commonly set in SetDefaults mean. You can also view vanilla projectile values by visiting [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values). Many examples of different projectiles can be found in [ExampleMod.Projectiles](https://github.com/blushiemagic/tModLoader/tree/master/ExampleMod/Projectiles)
 
-Setting variables in SetDefaults can allow you to develop the identity of a projectile.
-## width/height
+## projectile.damage
+A commons mistake is setting projectile.damage in `SetDefaults`, this does not work, as the damage value a projectile has is always overwritten by the value passed into `Projectile.NewProjectile` when the projectile is spawned. Usually the item or the npc spawning the item will influence the damage.
 
-The dimensions of the projectile in pixels.
+# AI
+The AI of a projectile is the most important aspect of a projectile, it controls how the projectile moves and acts after it is spawned. It is easiest for new modders to first rely on AI code already used in other vanilla projectiles by assigning `projectile.aiStyle = #;` and `aiType = ProjectileID.NameHere;`
 
-## friendly/hostile
+## Vanilla AI
 
-Whether the projectile is friendly or hostile. Set the intended value to `true`.
 
-## melee/ranged/magic/thrown
-
-The damage type of the projectile. Used to calculate crit and the like. Set the intended value to `true`
