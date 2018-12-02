@@ -180,6 +180,24 @@ if (projectile.soundDelay == 0)
 }
 ```
 
+## Splitting/Spawning Projectiles
+Crystal Bullet and the Scourge of the Corruptor projectile (EatersBite) both spawn new projectiles when they die. We typically see spawning projectiles in `Kill` or `OnTileCollide`, but we can do it in `AI` as well. When spawning projectiles, we need to be aware of [Multiplayer Compatibility](https://github.com/blushiemagic/tModLoader/wiki/Multiplayer-Compatibility#projectile--modprojectile) and be sure to only spawn projectiles when `Main.myPlayer == projectile.owner` is true to prevent issues. Scaling down projectile.damage is typical. See [Projectile.NewProjectile](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectilefloat-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f) to see the parameters.
+```cs
+// This code spawns 3 projectiles in the opposite direction of the projectile, with random variance in velocity.
+if (OptionallySomeCondition && projectile.owner == Main.myPlayer)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		// Calculate new speeds for other projectiles.
+		// Rebound at 40% to 70% speed, plus a random amount between -8 and 8
+		float speedX = -projectile.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-8f, 8f);
+		float speedY = -projectile.velocity.Y * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 0.4f; // This is Vanilla code, a little more obscure.
+		// Spawn the Projectile.
+		Projectile.NewProjectile(projectile.position.X + speedX, projectile.position.Y + speedY, speedX, speedY, 90, (int)(projectile.damage * 0.5), 0f, projectile.owner, 0f, 0f);
+	}
+}
+```
+
 ## Homing
 // TODO
 
