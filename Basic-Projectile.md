@@ -80,4 +80,59 @@ That dust is cool, but if you want to change the color of that dust or any other
 # Custom AI
 This section will discuss elements you can incorporate into your AI. Remember to set `projectile.aiStyle` back to 0 if you are using `projectile.CloneDefaults` to copy other projectile defaults. All code for custom AI goes into the `ModProjectile.AI` method.
 
+## Timers
+Many projectiles use timers to delay actions. Typically we use `projectile.ai[0]` or `projectile.ai[1]` as those values are synced automatically, but we can also use class fields as well. Here we count to 30, or in other words, half a second.
 
+```cs
+projectile.ai[0] += 1f;
+if (projectile.ai[0] >= 30f)
+{
+	// Half a second has passed. Reset timer, etc.
+	projectile.ai[0] = 0f;
+	projectile.netUpdate = true;
+	// Do something here, maybe change to a new state.
+}
+```
+
+## Rotation
+### Constant Rotation
+We can increase projectile.rotation in AI to rotate like a boomerang.
+```cs
+projectile.rotation += 0.4f * (float)projectile.direction;
+```
+
+### Face Forward
+
+## Dust
+Spawn dust in AI for a visual effect. Randomizing placement, dustid, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, aiType ProjectileID.EnchantedBoomerang):    
+```cs
+if (Main.rand.Next(5) == 0) // only spawn 20% of the time
+{
+	int choice = Main.rand.Next(3); // choose a random number: 0, 1, or 2
+	if (choice == 0) // use that number to select dustID: 15, 57, or 58
+	{
+		choice = 15;
+	}
+	else if (choice == 1)
+	{
+		choice = 57;
+	}
+	else
+	{
+		choice = 58;
+	}
+	// Spawn the dust
+	Dust.NewDust(projectile.position, projectile.width, projectile.height, choice, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default(Color), 0.7f);
+}
+```
+
+## Sound
+### Repeating Sound
+The field `soundDelay` will automatically decrease each frame. Checking that it is 0 and then setting it to a value and playing a sound will result in a repeating sound. This example is from the boomerang aiStyle (3).
+```cs
+if (projectile.soundDelay == 0)
+{
+	projectile.soundDelay = 8;
+	Main.PlaySound(SoundID.Item7, projectile.position);
+}
+```
