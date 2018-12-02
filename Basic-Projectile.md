@@ -50,11 +50,34 @@ The most important part of a Projectile is the SetDefaults. SetDefaults is where
 ## projectile.damage
 A commons mistake is setting projectile.damage in `SetDefaults`, this does not work, as the damage value a projectile has is always overwritten by the value passed into `Projectile.NewProjectile` when the projectile is spawned. Usually the item or the npc spawning the item will influence the damage.
 
-# AI
-The AI of a projectile is the most important aspect of a projectile, it controls how the projectile moves and acts after it is spawned. It is easiest for new modders to first rely on AI code already used in other vanilla projectiles by assigning `projectile.aiStyle = #;` and `aiType = ProjectileID.NameHere;`
-
-## Vanilla AI
-
-
 # Other Hooks/Methods
 The [ModProjectile documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_projectile.html) lists many other hooks/methods you will want to use to make your projectile unique. For example, if you'd like to apply a debuff when the projectile hits, you would use `OnHitNPC`. To do something when the projectile hits a tile, use `OnTileCollide`. See the documentation and usages in ExampleMod to see how to properly use them.
+
+# What is AI
+The AI of a projectile is the most important aspect of a projectile, it controls how the projectile moves and acts after it is spawned. It is easiest for new modders to first rely on AI code already used in other vanilla projectiles by assigning `projectile.aiStyle = #;` and `aiType = ProjectileID.NameHere;`. This is called mimicking a vanilla projectile. As you desire more advanced movement, you'll realize that mimicking vanilla projectile AI is very limited. We will discuss mimicking and custom AI below.
+
+# Using Vanilla AI
+Let's make a boomerang. Using the same aiStyle as the vanilla projectiles that move like a boomerang, we can make a boomerang. You can look up boomerang projectiles in [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values) and you will discover that boomerangs all use aiStyle of 3:    
+![](https://i.imgur.com/RSaxV6T.png)    
+
+We can now use `projectile.aiStyle = 3;` in our code. To make this boomerang even easier, we can use `projectile.CloneDefaults(ProjectileID.EnchantedBoomerang)`, which will copy all the other defaults as well. Doing this, you will get a projectile that almost behaves the same way as the vanilla projectile:    
+![](https://i.imgur.com/CL2MwaF.png)     
+
+You'll notice that the dust aren't being spawned. We can fix this by using `aiType`. `aiType` is used to further narrow down `projectile.aiStyle`. Each `aiStyle` is shared between many different projectiles. If we want to use a specific behavior of a particular type of projectile, we need to set `aiType`. Here is how our copy of EnchantedBoomerang looks after assigning `aiType` as well:    
+![](https://i.imgur.com/39KqXhc.png)    
+
+Here is the resulting code.
+```cs
+public override void SetDefaults()
+{
+	projectile.CloneDefaults(ProjectileID.EnchantedBoomerang);
+	// projectile.aiStyle = 3; This line is not needed since CloneDefaults sets it.
+	aiType = ProjectileID.EnchantedBoomerang;
+}
+```
+That dust is cool, but if you want to change the color of that dust or any other small thing, you can't rely on `aiStyle` and `aiType`. To change things, you'll need to consult the [Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide to tweak existing code or read on to learn how to do AI code from scratch.
+
+# Custom AI
+This section will discuss elements you can incorporate into your AI. Remember to set `projectile.aiStyle` back to 0 if you are using `projectile.CloneDefaults` to copy other projectile defaults. All code for custom AI goes into the `ModProjectile.AI` method.
+
+
