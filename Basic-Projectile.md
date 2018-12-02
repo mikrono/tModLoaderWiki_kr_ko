@@ -183,6 +183,9 @@ if (projectile.soundDelay == 0)
 ## Homing
 // TODO
 
+## Follow Mouse
+// TODO
+
 ## Fade In/Out
 Many bullets fade in so that when they spawn they don't overlap the gun muzzle they appear from. You can set the projectile to spawn transparent with `projectile.alpha = 255;` in `SetDefaults`.
 ```cs
