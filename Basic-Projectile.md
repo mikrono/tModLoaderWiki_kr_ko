@@ -94,6 +94,37 @@ if (projectile.ai[0] >= 30f)
 }
 ```
 
+## Gravity
+Gravity doesn't actually exist for projectiles, every projectile that moves with gravity actually just has code in their AI. To implement gravity, simply add a small value to `projectile.velocity.Y`:
+```cs
+projectile.velocity.Y = projectile.velocity.Y + 0.1f; // 0.1f for arrow gravity, 0.4f for knife gravity
+if (projectile.velocity.Y > 16f) // This check implements "terminal velocity". We don't want the projectile to keep getting faster and faster. Past 16f this projectile will travel through blocks, so this check is useful.
+{
+	projectile.velocity.Y = 16f;
+}
+```
+
+### Delayed Gravity
+Arrows and Throwing Knife projectiles all wait several frames before being affected by gravity:   
+```cs
+projectile.ai[0] += 1f; // Use a timer to wait 15 ticks before applying gravity.
+if (projectile.ai[0] >= 15f)
+{
+	projectile.ai[0] = 15f;
+	projectile.velocity.Y = projectile.velocity.Y + 0.1f;
+}
+if (projectile.velocity.Y > 16f)
+{
+	projectile.velocity.Y = 16f;
+}
+```
+
+## Wind Resistance
+By reducing projectile.velocity.X multiplicity, we can easily implement wind resistance. Combine with a timer to have this effect conditionally.
+```cs
+projectile.velocity.X = projectile.velocity.X * 0.97f; // 0.99f for rolling grenade speed reduction. Try values between 0.9f and 0.99f
+```
+
 ## Rotation
 ### Constant Rotation
 We can increase projectile.rotation in AI to rotate like a boomerang.
@@ -102,6 +133,11 @@ projectile.rotation += 0.4f * (float)projectile.direction;
 ```
 
 ### Face Forward
+Rotating in the direction of travel is often used in projectiles like arrows. If your projectile faces right, you don't need to add `MathHelper.PiOver2` (found in Microsoft.Xna.Framework). If your projectile points up, you'll need to.
+```cs
+projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2; // projectile faces up
+projectile.rotation = projectile.velocity.ToRotation(); // projectile faces right
+```
 
 ## Dust
 Spawn dust in AI for a visual effect. Randomizing placement, dustid, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, aiType ProjectileID.EnchantedBoomerang):    
@@ -124,6 +160,12 @@ if (Main.rand.Next(5) == 0) // only spawn 20% of the time
 	// Spawn the dust
 	Dust.NewDust(projectile.position, projectile.width, projectile.height, choice, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default(Color), 0.7f);
 }
+```
+
+## Lighting
+Modders have many different definitions of lighting. If you want to add particles, see the Dust section. If you want the projectile texture to be un-affected by lighting, see `ModProjectile.GetAlpha`. If you want the projectile to give off white light, you can set `projectile.light = 1f;` (or any number between 0 and 1) in `SetDefaults`. Finally, if you want to give off color light NOT from spawned dust, light that lights up nearby tiles, use Lighting.AddLight:
+```cs
+Lighting.AddLight(projectile.Center, 0.9f, 0.1f, 0.3f); // R G B values from 0 to 1f. This is the red from the Crimson Heart pet
 ```
 
 ## Sound
