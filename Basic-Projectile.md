@@ -140,6 +140,9 @@ projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2; // 
 projectile.rotation = projectile.velocity.ToRotation(); // projectile faces sprite right
 ```
 
+### spriteDirection
+// TODO
+
 ## Dust
 Spawn dust in AI for a visual effect. Randomizing placement, dustid, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, aiType ProjectileID.EnchantedBoomerang):    
 ```cs
@@ -202,6 +205,9 @@ if (OptionallySomeCondition && projectile.owner == Main.myPlayer)
 // TODO
 
 ## Follow Mouse
+// TODO
+
+## Held Projectile
 // TODO
 
 ## Fade In/Out
