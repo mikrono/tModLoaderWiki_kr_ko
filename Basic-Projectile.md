@@ -57,7 +57,7 @@ The [ModProjectile documentation](http://blushiemagic.github.io/tModLoader/html/
 The AI of a projectile is the most important aspect of a projectile, it controls how the projectile moves and acts after it is spawned. It is easiest for new modders to first rely on AI code already used in other vanilla projectiles by assigning `projectile.aiStyle = #;` and `aiType = ProjectileID.NameHere;`. This is called mimicking a vanilla projectile. As you desire more advanced movement, you'll realize that mimicking vanilla projectile AI is very limited. We will discuss mimicking and custom AI below.
 
 # Using Vanilla AI
-Let's make a boomerang. Using the same aiStyle as the vanilla projectiles that move like a boomerang, we can make a boomerang. You can look up boomerang projectiles in [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values) and you will discover that boomerangs all use aiStyle of 3:    
+We can use vanilla AI to prototype our projectiles. Let's make a boomerang. Using the same aiStyle as the vanilla projectiles that move like a boomerang, we can make a boomerang. You can look up boomerang projectiles in [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values) and you will discover that boomerangs all use aiStyle of 3:    
 ![](https://i.imgur.com/RSaxV6T.png)    
 
 We can now use `projectile.aiStyle = 3;` in our code. To make this boomerang even easier, we can use `projectile.CloneDefaults(ProjectileID.EnchantedBoomerang)`, which will copy all the other defaults as well. Doing this, you will get a projectile that almost behaves the same way as the vanilla projectile:    
@@ -75,7 +75,7 @@ public override void SetDefaults()
 	aiType = ProjectileID.EnchantedBoomerang;
 }
 ```
-That dust is cool, but if you want to change the color of that dust or any other small thing, you can't rely on `aiStyle` and `aiType`. To change things, you'll need to consult the [Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide to tweak existing code or read on to learn how to do AI code from scratch.
+That dust is cool, but if you want to change the color of that dust or any other small thing, you can't rely on `aiStyle` and `aiType`. To change things, you'll need to consult the [Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide to tweak existing code or read on to learn how to do AI code from scratch. Remember, using `projectile.aiStyle` and `aiType` is a prototyping tool, anything remotely interesting in a mod would likely need to write their own AI code or adapt vanilla code.
 
 # Custom AI
 This section will discuss elements you can incorporate into your AI. Remember to set `projectile.aiStyle` back to 0 if you are using `projectile.CloneDefaults` to copy other projectile defaults. All code for custom AI goes into the `ModProjectile.AI` method.
