@@ -135,8 +135,9 @@ projectile.rotation += 0.4f * (float)projectile.direction;
 ### Face Forward
 Rotating in the direction of travel is often used in projectiles like arrows. If your projectile faces right, you don't need to add `MathHelper.PiOver2` (found in Microsoft.Xna.Framework). If your projectile points up, you'll need to.
 ```cs
-projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2; // projectile faces up
-projectile.rotation = projectile.velocity.ToRotation(); // projectile faces right
+projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2; // projectile sprite faces up
+// or
+projectile.rotation = projectile.velocity.ToRotation(); // projectile faces sprite right
 ```
 
 ## Dust
@@ -176,5 +177,41 @@ if (projectile.soundDelay == 0)
 {
 	projectile.soundDelay = 8;
 	Main.PlaySound(SoundID.Item7, projectile.position);
+}
+```
+
+## Homing
+// TODO
+
+## Fade In/Out
+Many bullets fade in so that when they spawn they don't overlap the gun muzzle they appear from. You can set the projectile to spawn transparent with `projectile.alpha = 255;` in `SetDefaults`.
+```cs
+if (projectile.alpha > 0)
+{
+	projectile.alpha -= 15; // Decrease alpha, increasing visibility.
+}
+```
+[`ExampleAnimatedPierce`](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs) shows using both fading in and out.
+
+## Animation/Multiple Frames
+Projectile animation, switching which frame of the sprite to draw, happens in AI. Make sure to set `Main.projFrames[projectile.type] = #;` in `SetStaticDefaults` first. You can set `projectile.frame` to whatever frame you want to be drawn. 
+
+### Looping/Cycling
+You can use `projectile.frameCounter` and `Main.projFrames[projectile.type]` to implement a looping animation. Example: [ExampleAnimatedPierce](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs)
+```cs
+// Loop through the 4 animation frames, spending 5 ticks on each.
+if (++projectile.frameCounter >= 5)
+{
+	projectile.frameCounter = 0;
+	if (++projectile.frame >= Main.projFrames[projectile.type])
+	{
+		projectile.frame = 0;
+	}
+}
+// Or, more compactly:
+if (++projectile.frameCounter >= 5)
+{
+	projectile.frameCounter = 0;
+	projectile.frame = ++projectile.frame % Main.projFrames[projectile.type];
 }
 ```
