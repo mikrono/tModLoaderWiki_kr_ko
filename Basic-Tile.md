@@ -241,7 +241,23 @@ Notice how the grass doesn't completely cover its area, so our tile seems to flo
 ![](http://i.imgur.com/PMBuMum.png)    
 
 ### Non 16 or 18 values
-Values other than 16 or 18 are possible, but are very rarely done. The coral tile, for example, is 
+Values other than 16 or 18 are possible, but are very rarely done, usually just for 1x1 tiles (since bigger heights would just draw over each other for larger tiles). The coral tile, for example, is 24x26 (each style, excluding padding of course.) The code defines the follow for this effect:
+```cs
+TileObjectData.newTile.CoordinateHeights = new int[]
+{
+	26
+};
+TileObjectData.newTile.CoordinateWidth = 24;
+TileObjectData.newTile.DrawYOffset = -8;
+```    
+
+![](https://i.imgur.com/65wwveE.png)       
+![](https://i.imgur.com/ku0wQH7.png)    
+
+## RandomStyleRange
+Coral also randomly places a style:    
+`TileObjectData.newTile.RandomStyleRange = 6;`    
+![](https://i.imgur.com/y23Gc7T.png)    
 
 ## addTile(Type);
 
