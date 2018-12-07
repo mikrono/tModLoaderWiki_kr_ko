@@ -138,7 +138,7 @@ These are more rarely used and won't be explained. See vanilla source code if yo
 ### Main.tileFrameCounter[Type] = true;
 
 ## Main.tileFrameImportant[Type] = true;
-This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See TileObjectData below for details.
+This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
 	
 ## ModTile fields: dustType, drop, adjTiles, etc
 These are explained in the [documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
@@ -155,6 +155,7 @@ AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
 ## AddMapEntry			
 AddMapEntry is for setting the color and optional text associated with the Tile when viewed on the map. Explore ExampleMod and the documentation for more info.
 
+<a name="tileobjectdata"></a>
 # TileObjectData or FrameImportant/MultiTiles
 If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetDefaults`. FrameImportant tiles can
 
