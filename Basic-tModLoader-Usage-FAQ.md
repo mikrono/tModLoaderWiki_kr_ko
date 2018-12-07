@@ -1,3 +1,6 @@
+# Note on Piracy
+If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
+
 # Installation
 ### The following files were missing and could not be installed:.....
 ![](http://i.imgur.com/TSKfacG.png)  
@@ -5,7 +8,7 @@ Solution: You didn't unzip the files prior to installation. Don't know how to un
 
 ### System.DllNotFoundException: Unable to load DLL'CSteamworks'.....
 ![](http://i.imgur.com/ZbbskuQ.png)  
-Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file.
+Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file. If you pirated Terraria, you can't use tModLoader.
 
 ### System.EntryPointNotFoundException: Unable to find an entry point named 'Init' in DLL 'CSteamworks'.
 ![](https://i.imgur.com/lp7yQQj.png)  
