@@ -157,10 +157,101 @@ AddMapEntry is for setting the color and optional text associated with the Tile 
 
 <a name="tileobjectdata"></a>
 # TileObjectData or FrameImportant/MultiTiles
-If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetDefaults`. FrameImportant tiles can
+If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetDefaults`. FrameImportant tiles can be any size, from 1x1 to anything bigger. They can also have many different "styles". Each style can also have "alternates" which are alternate placements of the particular style. 
+
+For this guide, many gifs will refer to this tile sprite:    
+![](https://i.imgur.com/b009P8f.png)    
+
+## Basic TileObjectData.newTile structure
+In `SetDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
+
+## CopyFrom
+Use this to utilize an existing template. The names are self explanatory usually.
+Existing Templates include:   
+```cs
+StyleSwitch
+StyleTorch
+Style4x2
+Style2x2
+Style1x2
+Style1x1
+StyleAlch
+StyleDye
+Style2x1
+Style6x3
+StyleSmallCage
+StyleOnTable1x1 // placeable on tables only, like bottles
+Style1x2Top // "Hangs" from attaching to tiles above.
+Style1xX
+Style2xX
+Style3x2
+Style3x3
+Style3x4
+Style3x3Wall
+```
+
+Typically, you'll want to start out by copying a template, and modifying it as needed.
+For example, [MonsterBanner.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/MonsterBanner.cs#L17) first does:
+`TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);`    
+....and then it makes adjustments such as:     
+```cs
+TileObjectData.newTile.Height = 3; // because the template is for 1x2 not 1x3
+TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16, 16 }; // because height changed
+```
+....and finally calls:    
+```TileObjectData.addTile(Type);```
+
+## Width
+Modifies the width of the tiles in tile coordinates:    
+`TileObjectData.newTile.Width = 3;`    
+![](http://i.imgur.com/ZjvSjOV.png)    
+`TileObjectData.newTile.Width = 2;`     
+![](http://i.imgur.com/4Qqx0mC.png)    
+`TileObjectData.newTile.Width = 1;`    
+![](http://i.imgur.com/8dudSXH.png)    
+
+## Height
+Modifies the height of the tiles in tile coordinates:    
+`TileObjectData.newTile.Height = 3;`    
+![](http://i.imgur.com/ZjvSjOV.png)    
+`TileObjectData.newTile.Height = 2;`     
+![](http://i.imgur.com/IqzM18z.png)    
+`TileObjectData.newTile.Height = 1;`    
+![](http://i.imgur.com/ypcuohX.png)    
+
+## Origin
+Modifies which part of the tile is centered on the mouse, in tile coordinates, from the top right corner:    
+`TileObjectData.newTile.Origin = new Point16(0, 0); // default`    
+![](https://thumbs.gfycat.com/DeficientNastyImperialeagle-small.gif)    
+`TileObjectData.newTile.Origin = new Point16(2, 0); // To the left 2 tiles`     
+Note how the cursor is placing the tile using the area marked "3" which is 2 to the right:    
+![](https://thumbs.gfycat.com/BouncyBriskBurro-small.gif)     
+
+## CoordinateHeights
+This int array defines how tall each individual tile within the tile should be. This array must be exactly the same number of elements as the value of Height or errors will happen. Note that these values don't include the padding pixels.
+
+Basically, all values should be 16 in most cases. Use 18 on the bottom so that the texture can extend a little into the ground below. Here is a closeup of the texture, note how there is white there, this is to illustrate why we use 18 on a bottom tile sometimes.    
+![](http://i.imgur.com/XMHqvfy.png)     
+`TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 }; // Extend into grass tiles.` 
+   
+Here we see the white pixels peeking out from behind the grass. Grass tiles don't completely cover their 16x16 area, leaving tiny holes. Correctly doing this will help the tile look like it's actually there and sitting in the soil, obviously modders should draw the sprite correctly and not with white. (note that it seems solid must be false for this.)    
+![](http://i.imgur.com/CDzrin7.png)    
+TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 }; // Don't extend into grass.`    
+Notice how the grass doesn't completely cover its area, so our tile seems to float a little.    
+![](http://i.imgur.com/PMBuMum.png)    
+
+### Non 16 or 18 values
+Values other than 16 or 18 are possible, but are very rarely done. The coral tile, for example, is 
+
+## addTile(Type);
 
 ### Conditional Behavior
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
+
+# Full Examples
+## Framed Tile
+
+## FrameImportant Tile
 
 ## Relevant References
 * [Vanilla TileIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
