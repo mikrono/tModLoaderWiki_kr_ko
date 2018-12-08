@@ -286,7 +286,7 @@ Here is an example of an AnchorTop that requires the tile above to be empty. Pla
 By default, tile styles are oriented vertically on the spritesheet:     
 ![](https://i.imgur.com/nx4asBg.png)     
 
-If may be more convenient to place them horizontally. To do this:    
+It may be more convenient to place them horizontally. To do this:    
 `TileObjectData.newTile.StyleHorizontal = true;`     
 ![](https://i.imgur.com/MzfnM3l.png)    
  
