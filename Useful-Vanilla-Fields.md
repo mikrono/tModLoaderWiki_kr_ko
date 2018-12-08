@@ -15,6 +15,8 @@ See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/I
 
 # Main Fields
 
+For `Main.tileSolid` and other Tile related fields, see [Basic Tile](https://github.com/blushiemagic/tModLoader/wiki/Basic-Tile).
+
 * expertMode; bool
 
 If true, means that the world is in expert mode.
