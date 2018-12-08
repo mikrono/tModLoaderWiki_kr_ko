@@ -301,7 +301,7 @@ Coral also randomly places a style:
 ![](https://i.imgur.com/y23Gc7T.png)    
 
 ## UsesCustomCanPlace
-Should always be true. If you copied a template it will already be true, but be sure yo set it if you aren't copying from a template.
+Should always be true. If you copied a template it will already be true, but be sure you set it if you aren't copying from a template.
 
 ## Wires, Toggles, Changing Frame
 Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.
