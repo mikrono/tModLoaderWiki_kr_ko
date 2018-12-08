@@ -162,6 +162,9 @@ If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] =
 For this guide, many gifs will refer to this tile sprite:    
 ![](https://i.imgur.com/b009P8f.png)    
 
+## Multiple Styles
+You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `item.createTile` but will have different `item.placeStyle` to differentiate which style to place. See [BossTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/BossTrophy.cs) for an example of the code and notice how [BunnyTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/BunnyTrophy.cs) and [PuritySpiritTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/PuritySpiritTrophy.cs) items use the same createTile but different placeStyle values. Notice how `frameX` is used in `ModTile.KillMultiTile` to choose which tile to spawn when the tile is mined. See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
+
 ## Basic TileObjectData.newTile structure
 In `SetDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
 
@@ -273,6 +276,10 @@ Here is an example of a custom AnchorBottom. The 2nd variable in the AnchorData 
 Here is an example of an AnchorTop that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
 `TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);`
 
+## StyleHorizontal
+StyleWrapLimit
+StyleMultiplier
+
 ## RandomStyleRange
 Coral also randomly places a style:    
 `TileObjectData.newTile.RandomStyleRange = 6;`    
@@ -281,8 +288,35 @@ Coral also randomly places a style:
 ## UsesCustomCanPlace
 Should always be true. If you copied a template it will already be true, but be sure yo set it if you aren't copying from a template.
 
-## addTile(Type);
+## Other
+There are many more not yet explained in this guide. Decompile Terraria and look in `TileObjectData.Initialize` to figure out how they are used:     
+```cs
+AnchorWall
+AnchorValidTiles
+AnchorInvalidTiles
+AnchorAlternateTiles
+AnchorValidWalls
+WaterDeath
+LavaDeath
+WaterPlacement
+LavaPlacement
+HookCheck
+HookPostPlaceEveryone
+HookPostPlaceMyPlayer
+HookPlaceOverride
+Direction
+FlattenAnchors
+CoordinatePaddingFix
+DrawFlipHorizontal
+DrawFlipVertical
+DrawStepDown
+```
 
+## addTile(Type);
+Be sure to call this or your mod won't load properly.     
+`TileObjectData.addTile(Type);`    
+
+## newSubTile and newAlternate
 ### Conditional Behavior
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
 
