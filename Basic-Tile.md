@@ -91,7 +91,8 @@ false (default):
 These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleOre.cs)
 
 ## Main.tileBlockLight[Type] = true;	
-TODO
+If set to true, light is blocked by this tile and the light will decrease as it passes through.     
+![](https://i.imgur.com/BVIl2Fl.png)    
 
 ## Main.tileLighted[Type] = true;
 TODO
