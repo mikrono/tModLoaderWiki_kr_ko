@@ -110,10 +110,12 @@ True:
 False (default):    
 ![](https://thumbs.gfycat.com/AshamedHoarseAnt-size_restricted.gif)    
 
+### Main.tileCut[Type] = true;
+The tile can be destroyed by weapons. See [ExampleCutTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs)
+
 ## Other
 These are more rarely used and won't be explained. See vanilla source code if you need hints with these.
 ### Main.tileBouncy[Type] = true;
-### Main.tileCut[Type] = true;
 ### Main.tileAlch[Type] = true;
 ### Main.tileStone[Type] = true;
 ### Main.tileAxe[Type] = true;
@@ -276,9 +278,22 @@ Here is an example of a custom AnchorBottom. The 2nd variable in the AnchorData 
 Here is an example of an AnchorTop that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
 `TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);`
 
+[ExampleCutTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs) shows a custom `AnchorTop` as well as clearing out a copied AnchorBottom.
+
 ## StyleHorizontal
-StyleWrapLimit
-StyleMultiplier
+By default, tile styles are oriented vertically on the spritesheet:     
+![](https://i.imgur.com/nx4asBg.png)     
+
+If may be more convenient to place them horizontally. To do this:    
+`TileObjectData.newTile.StyleHorizontal = true;`     
+![](https://i.imgur.com/MzfnM3l.png)    
+ 
+## StyleWrapLimit
+If you are making a lot of styles, you should be aware that the maximum size for a sprite is 2048x2048. If you have a lot of styles for a big tile, you might run into this limit. StyleWrapLimit makes the image wrap around to the next row/column to continue placing styles. In the Banner tile sprite (Tiles_91.xnb), `TileObjectData.newTile.StyleWrapLimit = 111;` means that styles 0 to 110 are on the first line, styles 111 to 221 are on the next, and so on. 111 different styles each 18 pixels wide is 1998 pixels, keeping this sprite below the 2048 pixel limit.    
+![](https://i.imgur.com/pdI4S2N.png)    
+
+## StyleMultiplier
+Used to give room for animation frames, growth stages, or tile states in the spritesheet.
 
 ## RandomStyleRange
 Coral also randomly places a style:    
@@ -287,6 +302,9 @@ Coral also randomly places a style:
 
 ## UsesCustomCanPlace
 Should always be true. If you copied a template it will already be true, but be sure yo set it if you aren't copying from a template.
+
+## Wires, Toggles, Changing Frame
+Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.
 
 ## Other
 There are many more not yet explained in this guide. Decompile Terraria and look in `TileObjectData.Initialize` to figure out how they are used:     
@@ -310,6 +328,7 @@ CoordinatePaddingFix
 DrawFlipHorizontal
 DrawFlipVertical
 DrawStepDown
+StyleLineSkip
 ```
 
 ## addTile(Type);
@@ -319,6 +338,9 @@ Be sure to call this or your mod won't load properly.
 ## newSubTile and newAlternate
 ### Conditional Behavior
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
+
+# Animation
+Do not change frameX or frameY of the tile for animation. The tile and its values should stay the same as it is animating. [VoidMonolith.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/VoidMonolith.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
 
 # Full Examples
 ## Framed Tile
