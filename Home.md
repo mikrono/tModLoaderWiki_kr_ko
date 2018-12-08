@@ -46,7 +46,6 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Sounds guide](Basic-Sounds)
 - [ModDust guide](Basic-Dust)
 - [ModTile guide](Basic-Tile)
-- [ModTile/TileObjectData guide](https://forums.terraria.org/index.php?threads/.23726/page-238#post-840809)
 - [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
 - [Basic Logging](Logging)
 - [Basic Glowmasks](Basic-glowmask-guide)
