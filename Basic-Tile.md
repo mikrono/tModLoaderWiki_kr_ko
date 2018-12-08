@@ -167,6 +167,8 @@ For this guide, many gifs will refer to this tile sprite:
 ## Multiple Styles
 You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `item.createTile` but will have different `item.placeStyle` to differentiate which style to place. See [BossTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/BossTrophy.cs) for an example of the code and notice how [BunnyTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/BunnyTrophy.cs) and [PuritySpiritTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/PuritySpiritTrophy.cs) items use the same createTile but different placeStyle values. Notice how `frameX` is used in `ModTile.KillMultiTile` to choose which tile to spawn when the tile is mined. See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
 
+![](https://i.imgur.com/O923oDq.png)    
+
 ## Basic TileObjectData.newTile structure
 In `SetDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
 
@@ -304,7 +306,8 @@ Coral also randomly places a style:
 Should always be true. If you copied a template it will already be true, but be sure you set it if you aren't copying from a template.
 
 ## Wires, Toggles, Changing Frame
-Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.
+Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.    
+![](https://i.imgur.com/Xq13Slr.png)     
 
 ## Other
 There are many more not yet explained in this guide. Decompile Terraria and look in `TileObjectData.Initialize` to figure out how they are used:     
