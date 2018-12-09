@@ -253,9 +253,97 @@ public override void Load(TagCompound tag)
 Please be aware that `RectangleSerializer` is already implemented in tModLoader natively, and any attempt to register a `TagSerializer` for `Rectangle` will cause your mod to fail to load. Several other common classes already have `TagSerializer`s made for them such as `Vector2`, `Vector3`, `Color`, `Point16`, and `Rectangle`. Since multiple `TagSerializer`s for the same class will cause errors, if you implement a `TagSerializer` for a class that might be useful for other modders, please reach out to us with your implementation and we can add it in directly to the next tModLoader release.
 
 ## TagSerializable Examples
-If a class is defined in your mod, it is better to implement `TagSerializable` directly on the class.
+If a class is defined in your mod, it is better to implement `TagSerializable` directly on the class. To do this, add ` : TagSerializable` to the class and add `public static readonly Func<TagCompound, ClassName> DESERIALIZER = LoadMethodNameHere;` to the class. Below is a complete example that utilizes `TagSerializable` for clear and concise code. This example also shows saving `List`s and how saving objects with other objects contained in that object can easily be done. The example also shows compact syntax in the `NestedData` class as well as usage of the `nameof` operator ([see below](#nameof-operator)). You'll also notice that `MyData` has a `Rectangle` contained within, showing how the already implemented `TagSerializer` for that class is automatically utilized. In short, this example goes over much of this guide.
 
-**TODO: Finish this section with an example.**
+```cs
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+
+namespace ExampleMod
+{
+	class MyModPlayer : ModPlayer
+	{
+		List<MyData> listOfMyData;
+		MyData specialMyData;
+
+		public override void Initialize()
+		{
+			listOfMyData = new List<MyData>();
+			specialMyData = new MyData();
+
+			// Test Data. In reality you would change this data in your mod somewhere where appropriate.
+			/*
+			specialMyData.number = 1;
+			specialMyData.rectangle = new Rectangle(1, 2, 3, 4);
+
+			var listItem = new MyData();
+			listItem.nested = new NestedData();
+			listItem.nested.A = 55;
+			listItem.nested.B = 66;
+			listItem.number = 77;
+			listOfMyData.Add(listItem);
+			*/
+		}
+
+		public override TagCompound Save()
+		{
+			return new TagCompound {
+				[nameof(listOfMyData)] = listOfMyData,
+				[nameof(specialMyData)] = specialMyData,
+			};
+		}
+
+		public override void Load(TagCompound tag)
+		{
+			listOfMyData = tag.Get<List<MyData>>(nameof(listOfMyData));
+			specialMyData = tag.Get<MyData>(nameof(specialMyData));
+		}
+	}
+
+	class MyData : TagSerializable
+	{
+		public static readonly Func<TagCompound, MyData> DESERIALIZER = Load;
+
+		public int number;
+		public Rectangle rectangle;
+		public NestedData nested = new NestedData();
+
+		public TagCompound SerializeData()
+		{
+			return new TagCompound
+			{
+				["number"] = number,
+				["rectangle"] = rectangle,
+				["nested"] = nested,
+			};
+		}
+
+		public static MyData Load(TagCompound tag)
+		{
+			var myData = new MyData();
+			myData.number = tag.GetInt("number");
+			myData.rectangle = tag.Get<Rectangle>("rectangle");
+			myData.nested = tag.Get<NestedData>("nested");
+			return myData;
+		}
+	}
+
+	class NestedData : TagSerializable
+	{
+		public static readonly Func<TagCompound, NestedData> DESERIALIZER = Load;
+		public int A;
+		public int B;
+		public TagCompound SerializeData() => new TagCompound { [nameof(A)] = A, [nameof(B)] = B };
+		// object initializers syntax
+		public static NestedData Load(TagCompound tag) => new NestedData() { A = tag.GetInt(nameof(A)), B = tag.GetInt(nameof(B)) };
+	}
+}
+```
+Here is the data that is saved for this example:    
+![](https://i.imgur.com/ZcUDRuO.png)    
 
 # Other Topics
 ## GlobalItem.NeedsSaving
