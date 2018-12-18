@@ -42,7 +42,10 @@ Here is an example of the sprite of a Framed tile:
 ![](https://i.imgur.com/vtH5d8n.png)
 
 Here is an example of the sprite of a FrameImportant tile:    
-![](https://i.imgur.com/s9ZtC9n.png)
+![](https://i.imgur.com/s9ZtC9n.png)    
+
+Not all 1x1 tiles are Framed tiles, here is an example of a 1x1 FrameImportant tile. If you recall, this `MetalBars` tile doesn't change when placed next to other tiles like Framed tiles do:    
+![](https://i.imgur.com/bqoyLqT.png)
 
 As you might have noticed, FrameImportant tiles can have multiple unique tile "styles". You might have also noticed some empty space in the spritesheets, this is padding. These concepts will be explored later.
 
