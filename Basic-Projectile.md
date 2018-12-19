@@ -167,7 +167,7 @@ if (Main.rand.Next(5) == 0) // only spawn 20% of the time
 ```
 
 ## Lighting
-Modders have many different definitions of lighting. If you want to add particles, see the Dust section. If you want the projectile texture to be un-affected by lighting, see `ModProjectile.GetAlpha`. If you want the projectile to give off white light, you can set `projectile.light = 1f;` (or any number between 0 and 1) in `SetDefaults`. Finally, if you want to give off color light NOT from spawned dust, light that lights up nearby tiles, use Lighting.AddLight:
+Modders have many different definitions of lighting. If you want to add particles, see the Dust section. If you want the projectile texture to be un-affected by lighting, see `ModProjectile.GetAlpha`. If you want the projectile to give off white light, you can set `projectile.light = 1f;` (or any number between 0 and 1) in `SetDefaults`. Finally, if you want to give off color light NOT from spawned dust, light that lights up nearby tiles, use Lighting.AddLight inside your `AI` method:
 ```cs
 Lighting.AddLight(projectile.Center, 0.9f, 0.1f, 0.3f); // R G B values from 0 to 1f. This is the red from the Crimson Heart pet
 ```
