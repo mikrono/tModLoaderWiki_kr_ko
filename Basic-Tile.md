@@ -2,7 +2,7 @@
 This guide serves to explain the basics of Tiles.
 
 # What is a Tile?
-It is important to clearly understand tiles in your mind. Starting out, you might confuse or conflate tiles and items. Items are things in your inventory. Tiles are blocks in the world. Many items in the game place tiles, but aside from the item placing the tile and the tile returning the tile, there is no enforced connection between an item and the tile it places. That said, most tiles modders will add will have 1 or many corresponding items. 
+It is important to clearly understand tiles in your mind. Starting out, you might confuse or conflate tiles and items. Items are things in your inventory. Tiles are blocks in the world. Many items in the game place tiles, but aside from the item placing the tile and the tile returning the item, there is no enforced connection between an item and the tile it places. That said, most tiles modders will add will have 1 or many corresponding items. 
 
 If you are curious about the `Tile` class itself, such as you would find in `Main.tile[]`, please see [Tile Class Documentation](Tile-Class-Documentation)
 
