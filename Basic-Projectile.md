@@ -289,4 +289,20 @@ Things change a little if your sprite is oriented horizontally. Here is our new 
 Once again, we can see that the hitbox doesn't line up:    
 ![](https://thumbs.gfycat.com/ConfusedSardonicCowbird-small.gif)     
 
-Unlike the horizontal example, this time we set `projectile.rotation = projectile.velocity.ToRotation();` directly instead of adding additional 90 degrees.
+Unlike the horizontal example, this time we set `projectile.rotation = projectile.velocity.ToRotation();` directly instead of adding additional 90 degrees. After some experimentation, we arrive at the following for a hitbox on the tip:
+```cs
+drawOffsetX = -62;
+drawOriginOffsetY = -20; 
+drawOriginOffsetX = 31;
+```
+These values are a bit odd because of some math Terraria is doing, so here is the algorithm for calculating them:
+```cs
+drawOffsetX = Negative X pixel position of the top left corner of the intended hitbox
+drawOriginOffsetY = Negative Y pixel position of the top left corner of the intended hitbox
+drawOriginOffsetX = X pixel position of center of hitbox minus Texture Width divided by 2 
+```
+Here is a diagram:
+![](https://i.imgur.com/KwqcwuW.png)    
+If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAnimatedPierce Projectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L114)
+
+
