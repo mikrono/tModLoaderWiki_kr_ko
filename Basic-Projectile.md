@@ -50,6 +50,9 @@ The most important part of a Projectile is the SetDefaults. SetDefaults is where
 ## projectile.damage
 A commons mistake is setting projectile.damage in `SetDefaults`, this does not work, as the damage value a projectile has is always overwritten by the value passed into `Projectile.NewProjectile` when the projectile is spawned. Usually the item or the npc spawning the item will influence the damage.
 
+## drawOffsetX, drawOriginOffsetY, drawOffsetX
+These are ModProjectile fields related to properly centering a hitbox to a sprite. Read [Drawing and Collision](#drawing-and-collision) for more info.
+
 # Other Hooks/Methods
 The [ModProjectile documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_projectile.html) lists many other hooks/methods you will want to use to make your projectile unique. For example, if you'd like to apply a debuff when the projectile hits, you would use `OnHitNPC`. To do something when the projectile hits a tile, use `OnTileCollide`. See the documentation and usages in ExampleMod to see how to properly use them.
 
@@ -141,7 +144,7 @@ projectile.rotation = projectile.velocity.ToRotation(); // projectile faces spri
 ```
 
 ### spriteDirection
-// TODO
+If your sprite is upside-down when shot to the left, you'll want to set this: `projectile.spriteDirection = projectile.direction;` See [Drawing and Collision](#drawing-and-collision) for an explanation and example.
 
 ## Dust
 Spawn dust in AI for a visual effect. Randomizing placement, dustid, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, aiType ProjectileID.EnchantedBoomerang):    
@@ -242,3 +245,6 @@ if (++projectile.frameCounter >= 5)
 	projectile.frame = ++projectile.frame % Main.projFrames[projectile.type];
 }
 ```
+
+# Drawing and Collision
+You may find yourself noticing that your projectile is hitting walls when it shouldn't or otherwise having a weird hitbox. First off, it is worth reiterating that `projectile.width` and `projectile.height` correspond to the hitbox of the projectile, NOT the sprite used. You almost never want `width` or `height` to be different, it should be square. The drawing of the sprite attempts to overlay the hitbox with the sprite, the drawing of this sprite is influenced by
