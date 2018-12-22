@@ -285,3 +285,8 @@ Fixed:
 ## Horizontal Sprite Example
 Things change a little if your sprite is oriented horizontally. Here is our new horizontal sprite, which is now 70x48 and oriented horizontally, pointing to the right instead of up as before:    
 ![](https://i.imgur.com/etzbzs0.png)
+
+Once again, we can see that the hitbox doesn't line up:    
+![](https://thumbs.gfycat.com/ConfusedSardonicCowbird-small.gif)     
+
+Unlike the horizontal example, this time we set `projectile.rotation = projectile.velocity.ToRotation();` directly instead of adding additional 90 degrees.
