@@ -250,7 +250,7 @@ if (++projectile.frameCounter >= 5)
 You may find yourself noticing that your projectile is hitting walls when it shouldn't or otherwise having a weird hitbox. First off, it is worth reiterating that `projectile.width` and `projectile.height` correspond to the hitbox of the projectile, NOT the sprite used. You almost never want `width` or `height` to be different, it should be square. You also never want to use `projectile.scale` since the vanilla drawing code doesn't really take it into account correctly. The drawing of the sprite attempts to overlay the hitbox with the sprite, the drawing of this sprite is influenced by various bits of math done in the `Main.DrawProj` method.
 
 ## Vertical Sprite Example
-Lets work through this example as we explore collision and drawing issues and work to solve them. Here is the sprite:    
+Lets work through this example as we explore collision and drawing issues and work to solve them. Here is the sprite, it is 48x70 pixels:    
 ![](https://i.imgur.com/y4OcJAv.png)    
 The important parts of this ModProjectile are as follows:    
 ```cs
@@ -262,24 +262,24 @@ projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90
 ```
 Our goal is to have the yellow part of this projectile be the hitbox. The yellow area is 8 by 8 pixels, so we set `width` and `height` to 8 already. The `projectile.rotation` code there sets the rotation to the velocity while adding 90 degrees of rotation, since the sprite we happen to be using faces up instead of to the right as is expected by the game. In this guide, we'll be using the [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) mod to visualize hitboxes. This is very useful.
 
-Here we see the hitbox, the yellow square, doesn't match up with the tip of our sprite:    
+Here we see the hitbox, the yellow square, doesn't match up with the tip of our sprite: [High Quality Video](https://gfycat.com/SimpleMinorImperialeagle)    
 ![](https://thumbs.gfycat.com/SimpleMinorImperialeagle-small.gif)    
 The math for what vanilla code is doing is a little confusing, but basically we need to set `drawOffsetX` and `drawOriginOffsetY` to values that offset the drawing of our sprite in an attempt to properly place the sprite over the hitbox. If you are attempting this, either use [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) to change the offset values in-game or use [Edit and Continue](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to adjust the values in-game. Another approach is to just measure it out on the sprite itself in your graphics program:    
 ![](https://i.imgur.com/m5DxkBm.png)   
-Here we see testing various values with Modders Toolkit. Make sure to replicate these values in your `SetDefaults` code:    
+Here we see testing various values with Modders Toolkit. Make sure to replicate these values in your `SetDefaults` code: [High Quality Video](https://gfycat.com/MintyCharmingCopperhead)    
 ![](https://thumbs.gfycat.com/MintyCharmingCopperhead-small.gif)     
 After some experimentation or measuring, we know that adding `drawOffsetX = -20;` to this `ModProjectile.SetDefaults` will fix the positioning of the drawing relative to the hitbox.
 
-Lets now try to position the hitbox over the blue portion of our sprite. This time, lets use [Edit and Continue](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to accomplish this. In the clip below, you can see how quickly we can test out new values:    
+Lets now try to position the hitbox over the blue portion of our sprite. This time, lets use [Edit and Continue](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to accomplish this. In the clip below, you can see how quickly we can test out new values: [High Quality Video](https://gfycat.com/WebbedUntimelyHarborseal)      
 ![](https://thumbs.gfycat.com/WebbedUntimelyHarborseal-small.gif)    
 As you saw, we added `drawOriginOffsetY = -16;` to position the hitbox lower on the sprite.
 
 ### Fixing upside-down sprite problem
 You might've noticed that the sprite is upside down when fired to the left. Remember that in our `AI`, we have this line of code: `projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);`. If we rotate our sprite to the left, then it is upside-down. We can fix this with `spriteDirection`. `spriteDirection` will flip the drawing of the sprite horizontally. To implement this, simply add `projectile.spriteDirection = projectile.direction;` to the `AI` code after the `projectile.rotation = ` line. 
 
-No fix:    
+No fix:     
 ![](https://i.imgur.com/sKUq94z.png)    
-Fixed:
+Fixed:     
 ![](https://i.imgur.com/w3ALhDX.png)    
 
 ## Horizontal Sprite Example
