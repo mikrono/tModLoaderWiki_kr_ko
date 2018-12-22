@@ -3,6 +3,10 @@
 2. During install, check the `.NET desktop development` workload. Nothing else needs to be checked.
 ![](https://i.imgur.com/Y8uZ14h.png)
 
+### I forgot to install .net desktop development
+If you've forgotten this step, you can click on Tools->Get Tools and Features to bring up the installer again.    
+![](https://i.imgur.com/EmqEsmH.png)    
+
 # Creating a Project
 This will let you use Visual Studio's code editing and Intellisense
 
