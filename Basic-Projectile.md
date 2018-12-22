@@ -305,4 +305,31 @@ Here is a diagram:
 ![](https://i.imgur.com/KwqcwuW.png)    
 If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAnimatedPierce Projectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L114)
 
+### Fixing upside-down sprite problem again
+With the vertical sprite, using `projectile.spriteDirection` works because it controls a horizontal flip of the projectile sprite. Using a horizontal sprite, a horizontal flip makes the sprite move facing backwards:    
+![](https://i.imgur.com/vfKrRzZ.png)    
+To fix this, we need to adjust the offsets dynamically and conditionally add 180 degrees or Pi to the rotation. Here is the code:
+```cs
+// Set both direction and spriteDirection to 1 or -1 (right and left respectively)
+// projectile.direction is automatically set correctly in Projectile.Update, but we need to set it here or the textures will draw incorrectly on the 1st frame.
+projectile.spriteDirection = projectile.direction = (projectile.velocity.X > 0).ToDirectionInt();
+// Adding Pi to rotation if facing left corrects the drawing
+projectile.rotation = projectile.velocity.ToRotation() + (projectile.spriteDirection == 1 ? 0f : MathHelper.Pi);
+if (projectile.spriteDirection == 1) // facing right
+{
+	drawOffsetX = -62; // These values match the values in SetDefaults
+	drawOriginOffsetY = -20;
+	drawOriginOffsetX = 31;
+}
+else
+{
+	// Facing left.
+	// You can figure these values out if you flip the sprite in your drawing program.
+	drawOffsetX = 0; // 0 since now the top left corner of the hitbox is on the far left pixel.
+	drawOriginOffsetY = -20; // doesn't change
+	drawOriginOffsetX = -31; // Math works out that this is negative of the other value.
+}
+```
+![](https://i.imgur.com/FKfhtQ0.png)    
 
+Hopefully these answers can help you solve your projectile hitbox and drawing issues.
