@@ -53,6 +53,9 @@ With Edit And Continue (or eac) you can edit code after you've hit a breakpoint 
 ### Simple Example
 In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
 
+### Another Example
+In the [Basic Projectile: Drawing and Collision](https://github.com/blushiemagic/tModLoader/wiki/Basic-Projectile#drawing-and-collision) guide, an example is shown using a breakpoint to test values for `ModProjectile.SetDefaults`: [Video](https://gfycat.com/WebbedUntimelyHarborseal)
+
 # Documentation
 If you have the tML XMLdoc file, you can see documentation for a method when you hover it.
 To get the XMLdoc, generate it yourself or ask ask a developer/modder in the Discord server.
