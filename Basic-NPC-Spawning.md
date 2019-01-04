@@ -72,9 +72,11 @@ NPCSpawnInfo is a struct that contains all the info pertaining to the spawn posi
 ## Player Biomes
 Use the player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer to use player biomes in spawn logic. [List of Zone Booleans](http://blushiemagic.github.io/tModLoader/html/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html#a894868167c60f17bea09fba0aea811a8)
 
-    if(spawnInfo.player.ZoneJungle) // Vanilla Biome aka Zone
+```cs
+if(spawnInfo.player.ZoneJungle) // Vanilla Biome aka Zone
 
-    if(spawnInfo.player.GetModPlayer<ExamplePlayer>().ZoneExample) // Mod Biome
+if(spawnInfo.player.GetModPlayer<ExamplePlayer>().ZoneExample) // Mod Biome
+```
 
 ## Heights
 When worlds are generated, a few values are saved with the world to specify various heights. Main.worldSurface is a few tiles below spawn, and Main.rockLayer is below that where rock becomes more prevalent than dirt. Main.maxTilesY is the max value for Y in the world, the lowest point. We can use these values and math to drive our spawn conditions. We can also use predefined Zones as seen in the image below rather than messing with math.    
@@ -144,6 +146,29 @@ Each of the following examples will be as if they were inside a ModNPC.SpawnChan
 
 # Combining Snippets
 Just like in Examples above, we combine pieces of logic to construct our final decision. See !, &&, and || above.
+
+## Combining bool and float
+The SpawnCondition fields return float values representing chance while a lot of other conditions are simply bools. This can lead to some tricky code. Lets try to put together `SpawnChance` code for an NPC that should spawn in spider caves but only at night. We can use SpawnCondition.SpiderCave and Main.dayTime for this.
+
+### Easy Syntax
+If you don't know c# very well, just separate the bools and floats. Use the bools in an if statement using !, &&, and || if needed and then if we pass those conditions, use the `SpawnCondition` in the return. If the conditions fail, the code will return 0 meaning the NPC will not spawn:
+```cs
+if(!Main.dayTime)
+    return SpawnCondition.SpiderCave.Chance * 0.1f;
+return 0;
+```
+
+### Moderate Syntax
+Using the Ternary we learned above, we can make our spawn condition logic more compact.
+```cs
+return !Main.dayTime ? SpawnCondition.SpiderCave.Chance * 0.1f : 0;
+```
+
+### Complicated Syntax
+If you find that your logic makes more sense if you interpret bools as 0 and 1 when false and true respectively, you can do that. This approach isn't really that common, but could be useful:
+```cs
+return (!Main.dayTime).ToInt() * SpawnCondition.SpiderCave.Chance * 0.1f;
+```
 
 # Common Errors
 ### Why is my world in HardMode suddenly?
