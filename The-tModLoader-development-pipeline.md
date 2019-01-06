@@ -5,7 +5,7 @@ First of all, tModLoader is a modification to the vanilla source that facilitate
 
 The patching system allows tML to be open-source as it does not disclose vanilla information nor does it host the decompiled source. Developers will have to manually decompile and patch their local source to work on the tML codebase. The patcher can do this by first decompiling the vanilla client, and then making separate managed projects in which one will have the patches applied. This will result in the user having access to the tML modified codebase locally.
 
-# How istModLoader updated?
+# How is tModLoader updated?
 Everytime vanilla updates, the patches for tModLoader become broken. This is due to changes in the vanilla codebase. For every update, the developers will have to manually go through patches to figure out what changed and how to fix the patch. This is all done manually.
 
 # How does tModLoader facilitate modding needs?
@@ -17,3 +17,8 @@ Once a mod codebase is made, it can be built using the in-game mod source menu w
 
 # How does tModLoader facilitate playing the game with mods?
 tModLoader is not only a tool to build mods, it also allows playing them. It does so by providing a Mod Browser (to look for- and download mods) and providing in-game functionality to load in and apply mods to the game (as well as unloading them). Players only need a '.tmod' file to get started, which is tModLoader's specific package format for mods.
+
+# How does tModLoader understand what mods want to add?
+Upon loading a mod, tModLoader will load that mods' assembly (its code) and look for classes that are provided by tModLoader. It can then load this content into the game. This is done by the so-called 'Loader' classes. These are classes that contain specific code to load a certain content into the game. These classes do things such as preparing the vanilla source to be edited, this can include things like resizing arrays that hold particular content. 
+
+The loaders contain methods that are called from specific points in the vanilla code, when modders would expect their code to execute. These calls are added by the tModLoader developers and is what makes the modded content work. tModLoader works sort of like a bridge between the client and mods; it will know which mods are loaded, and then proceed to call the necessary methods in them. This is why modders do not have to worry about how or when their code will be executed, they can simply focus on creating the content instead.
