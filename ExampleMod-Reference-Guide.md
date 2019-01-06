@@ -17,7 +17,7 @@ Pull our repo, open the ExampleMod solution in the solutions folder.
 Look for ExampleItem
 
 ## I want to learn more about tooltips for items
-Look for Face and ExamleDrawTooltip
+Look for Face and ExampleDrawTooltips
 
 ## I want to make a bag item that gives rewards
 Look for ExplorerBag
