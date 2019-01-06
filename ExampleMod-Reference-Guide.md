@@ -1,5 +1,6 @@
 # I want to mod, but I don't know where to look for examples
 On this page you will find common phrases with answers on where to look.
+Type in the github searchbar what this page tells you to look for.
 
 ## How do I make a mod?
 [Basic-tModLoader-Modding-Guide](Basic-tModLoader-Modding-Guide)
