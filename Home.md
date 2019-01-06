@@ -18,6 +18,7 @@ These pages tend to describe certain files or folders.
 - [Information about build.txt](build.txt)
 - [Information about description.txt](description.txt)
 - [ExampleMod Reference Guide](ExampleMod-Reference-Guide) (I want to mod, but I don't know where to look for examples)
+- [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
 
 ## Getting started
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide)
