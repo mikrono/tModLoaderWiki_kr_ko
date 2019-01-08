@@ -14,7 +14,7 @@ This will let you use Visual Studio's code editing and Intellisense
 
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
-1. Choose a name for the mod. This is the internal name (and file name), not the display name. Do not use whitespaces eg. Example Mod -> "ExampleMod", if you really want to signify spaces then use hyphens eg. Example Mod -> "Example_Mod" (**this however isn't recommended in C#!**)
+1. Choose a name for the mod. This is the internal name (and file name), not the display name. Do not use whitespaces eg. Example Mod -> "ExampleMod", if you really want to signify spaces then use underscores eg. Example Mod -> "Example_Mod" (**this however isn't recommended in C#!**)
 1. Uncheck "Create directory for solution"
 1. Click OK
 ![New Project Dialog](http://i.imgur.com/tQIfA3g.png)
