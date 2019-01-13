@@ -29,6 +29,10 @@ If true, the world is currently in hardmode.
 
 If true, is is currently raining in the world.
 
+* spawnTileX, spawnTileY; int
+
+The X and Y coordinates of the world spawn tile.
+
 # NPC Fields
 
 * downedBoss1; bool
