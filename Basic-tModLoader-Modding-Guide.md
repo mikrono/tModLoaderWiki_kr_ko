@@ -9,7 +9,7 @@ Click the `Generate Mod Skeleton` button and you should see a .zip file download
 
 ![](http://i.imgur.com/0zH7w65.png)
 
-You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\` folder. 
+You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\` folder. If you end up with a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\TutorialMod\` folder, you did it wrong. Make sure to move the folder. If you use an unzipping program to unzip, you might end up with duplicate folders.    
 
 ### Mod Skeleton Contents
 The Skeleton contains 7 files. Here is an explanation of each:    
