@@ -302,7 +302,7 @@ drawOriginOffsetY = Negative Y pixel position of the top left corner of the inte
 drawOriginOffsetX = X pixel position of center of hitbox minus Texture Width divided by 2 
 ```
 Here is a diagram:
-![](https://i.imgur.com/KwqcwuW.png)    
+![](https://i.imgur.com/zQfxXM3.png)    
 If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAnimatedPierce Projectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L114)
 
 ### Fixing upside-down sprite problem again
