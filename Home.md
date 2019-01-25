@@ -11,7 +11,7 @@ A list of useful resources can be found **[here](Useful-Resources)**
 
 Below is a structured list of wiki pages that you can use to learn more about the API.
 
-If you wish to contribute, please view our [contribution guidelines](Contribution-guidelines) beforehand.
+If you wish to contribute, please view our [contribution guide](https://github.com/blushiemagic/tModLoader#contributing) beforehand.
 
 ## Informative pages
 These pages tend to describe certain files or folders.
