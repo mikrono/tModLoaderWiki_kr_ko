@@ -26,3 +26,9 @@ Untested.
 Building mods outside of tModLoader is a little annoying, but it also forces you to use an IDE, which is a good skill to learn.
 
 [Xamarin instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
+
+After you've followed this guide you might find that you encounter this error when trying to build a mod that contains png files.
+
+![](https://cdn.discordapp.com/attachments/103115427491610624/540334979343974410/Screen_Shot_2019-01-30_at_6.55.40_PM.png)
+
+To fix this download [this zip file](https://cdn.discordapp.com/attachments/103115427491610624/540387967915655188/system.drawing_for_mac.zip) and extract the contents to where you installed tModLoader (usually it will be `Library/Application Support/Steam/steamapps/common/Terraria/Terraria.app/Contents/MacOS`), overwriting/merging any folders/files if asked.
