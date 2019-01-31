@@ -27,7 +27,8 @@ Building mods outside of tModLoader is a little annoying, but it also forces you
 
 [Xamarin instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
 
-After you've followed this guide you might find that you encounter this error when trying to build a mod that contains png files.
+### The type initializer for 'System.Drawing.GDIPlus' threw an exception
+On **Mac** after you've followed this guide you might find that you encounter this error when trying to build a mod that contains png files.
 
 ![](https://cdn.discordapp.com/attachments/103115427491610624/540334979343974410/Screen_Shot_2019-01-30_at_6.55.40_PM.png)
 
