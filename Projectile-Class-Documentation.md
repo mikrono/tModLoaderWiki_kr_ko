@@ -18,7 +18,7 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [height](#height)<a name="height"></a>|int  | 0| The height of the projectile's hitbox in pixels. |
 | [friendly](#friendly)<a name="friendly"></a>| bool| false | If True, this projectile will hurt enemies (!npc.friendly) |
 | [hostile](#hostile)<a name="hostile"></a>| bool|false  | If True, this projectile will hurt players and friendly npcs (npc.friendly) |
-| [maxPenetrate](#maxpenetrate)<a name="maxpenetrate"></a>| int|1 | How many npc can it hit before dying. (Or tile bounces) Set in SetDefaults.  |
+| [maxPenetrate](#maxpenetrate)<a name="maxpenetrate"></a>| int|1 | How many npc can it hit before dying. (Or tile bounces) Set at the end of SetDefaults automatically to the current value of penetrate.  |
 | [penetrate](#penetrate)<a name="penetrate"></a>| int|1 | Current penetrate value. |
 | [alpha](#alpha)<a name="alpha"></a>| int| 0 | How transparent to draw this projectile. 0 to 255. 255 is completely transparent. [ExampleBullet](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBullet.cs) sets this to 255, and the projectile aiStyle of 1 automatically decreases alpha each tick, letting the projectile fade in quickly after being spawned. Useful for projectiles that look odd when initially spawned on the weapon because of texture overlap. |
 | [timeLeft](#timeleft)<a name="timeleft"></a>|int | 3600|  |
