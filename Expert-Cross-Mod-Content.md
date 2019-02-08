@@ -6,21 +6,21 @@ When inter-operating with other mods, there are several things to note. The bigg
 
 The easiest form of cross-mod content is utilizing items or tiles in recipes, shops, or drops. The first thing to note is that the mod may or may not exist. To determine if it exists, we first ask tModLoader for the Mod object.
 ```cs
-    Mod exampleMod = ModLoader.GetMod("ExampleMod");
+Mod exampleMod = ModLoader.GetMod("ExampleMod");
 ```
 The exampleMod object is now either Null or a valid reference to the Mod class of ExampleMod. We want to check if exampleMod is null, and if it isn't we can do other things with it. In this example, we will add an item to our Town NPC's shop.
 ```cs
-    public override void SetupShop(Chest shop, ref int nextSlot)
+public override void SetupShop(Chest shop, ref int nextSlot)
+{
+    // other code
+    Mod exampleMod = ModLoader.GetMod("ExampleMod");
+    if (exampleMod != null)
     {
-        // other code
-        Mod exampleMod = ModLoader.GetMod("ExampleMod");
-        if (exampleMod != null)
-        {
-            shop.item[nextSlot].SetDefaults(exampleMod.ItemType("ExampleWings"));
-            nextSlot++;
-            // Add more items to the shop from Example Mod
-        }
-        // other code
+        shop.item[nextSlot].SetDefaults(exampleMod.ItemType("ExampleWings"));
+        nextSlot++;
+        // Add more items to the shop from Example Mod
+    }
+    // other code
 ```
 As you can see, we can use the exampleMod object and invoke the ItemType method to get the correct type for that item. Note that "ExampleWings" corresponds to the internal name of an item, so it may be necessary to ask the other modder so you can get the correct internal name of the items you wish to use.
 
@@ -30,15 +30,15 @@ Similar code can be used for NPC loot and recipes.
 
 Call is a method that requires cooperation from both the Called mod and the Calling mod. The Called mod will publish details on the variety of messages they accept and Calling mods wishing to inter-operate with those mods conform to the message format to send messages to the Called mod. To teach this concept, we will inter-operate with the most popular mod utilizing Call: Boss Checklist. (This mod lets us add our mod's bosses to a neat checklist. Very useful for players to know which boss to fight next.) First, we will find the homepage of Boss Checklist. From the mod browser, we are lead to [this page](https://forums.terraria.org/index.php?threads/boss-checklist-in-game-progression-checklist.50668/#post-1123050). Reading this page, we find 2 messages that we can send to Boss Checklist. The page also instructs us to do Call in PostSetupContent, but this could be different for other mods. We now use the same technique as we did earlier and call ModLoader.GetMod to check if the mod is loaded. We must also make sure to follow the message format perfectly or risk errors. Let's now do the code as if we wanted to add Boss Checklist support for ExampleMod:
 ```cs
-    public override void PostSetupContent()
+public override void PostSetupContent()
+{
+    Mod bossChecklist = ModLoader.GetMod("BossChecklist");
+    if(bossChecklist != null)
     {
-        Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-        if(bossChecklist != null)
-        {
-            bossChecklist.Call("AddBossWithInfo", "Abomination", 5.5f, (Func<bool>)(() => ExampleWorld.downedAbomination), "Use a [i:" + ItemType<Items.Abomination.FoulOrb>() + "] in the underworld after Plantera has been defeated");
-            bossChecklist.Call("AddBossWithInfo", "Purity Spirit", 15.5f, (Func<bool>)(() => ExampleWorld.downedPuritySpirit), "Kill a [i:" + ItemID.Bunny + "] in front of [i:" + ItemType<Items.Placeable.ElementalPurge>() + "]");
-        }
+        bossChecklist.Call("AddBossWithInfo", "Abomination", 5.5f, (Func<bool>)(() => ExampleWorld.downedAbomination), "Use a [i:" + ItemType<Items.Abomination.FoulOrb>() + "] in the underworld after Plantera has been defeated");
+        bossChecklist.Call("AddBossWithInfo", "Purity Spirit", 15.5f, (Func<bool>)(() => ExampleWorld.downedPuritySpirit), "Kill a [i:" + ItemID.Bunny + "] in front of [i:" + ItemType<Items.Placeable.ElementalPurge>() + "]");
     }
+}
 ```
 Now, if we build our mod, we will see that both of our bosses are added to the Boss Checklist checklist. 
 
@@ -48,13 +48,13 @@ Mod.Call is very useful, and is a very easy way for mods to communicate with eac
 
 Strong references are easy, but prevent your mod from being loaded if the referenced mod isn't loaded. Strong References represent a hierarchy of mods where it would make no sense for the referencing mod to be enabled without the referenced mod. To begin, let's imagine we want to reference ExampleMod. First, add a line of "modReferences = ExampleMod" to your build.txt. Second, make sure ExampleMod is downloaded and enabled. Third, we can code as normal, doing whatever you want. As an example, let's make a hotkey that sets Abomination and Purity spirit to defeated. First, we should add a using statement: `using ExampleMod;`. Next, in our ModPlayer.ProcessTriggers, where hotkeys should be processed, we can do this:
 ```cs
-    public override void ProcessTriggers(TriggersSet triggersSet)
+public override void ProcessTriggers(TriggersSet triggersSet)
+{
+    if (MyMod.ToggleChecklistHotKey.JustPressed)
     {
-        if (MyMod.ToggleChecklistHotKey.JustPressed)
-        {
-             ExampleMod.ExampleWorld.downedAbomination = true;
-             ExampleMod.ExampleWorld.downedPuritySpirit = true;
-        // ...
+         ExampleMod.ExampleWorld.downedAbomination = true;
+         ExampleMod.ExampleWorld.downedPuritySpirit = true;
+    // ...
 ```
 This example is extremely simple, but all manner of things can be done with a mod reference. Calling methods, accessing public variables, using the generic versions of ItemType and NPCType, and so on.
 
@@ -66,40 +66,40 @@ Weak References have the same capabilities as Strong references, but they don't 
 
 Weak References necessitate careful programming. For example, if you have the code "ExampleMod.ExampleWorld.downedAbomination = true;" in a method that is called, but ExampleMod isn't loaded, the game will crash. With Weak References, you have to make sure that variables and classes that might not be loaded are never seen by the virtual machine as it runs the c# code. Some examples:
 ```cs
-    shop.item[nextSlot].SetDefaults(mod.ItemType("ExampleItem"));
-    nextSlot++;
+shop.item[nextSlot].SetDefaults(mod.ItemType("ExampleItem"));
+nextSlot++;
 
-    // now for a cross-content item
-    if (BossChecklist.instance.thoriumLoaded)
+// now for a cross-content item
+if (BossChecklist.instance.thoriumLoaded)
+{
+    if (ThoriumMod.ThoriumWorld.downedScout)
     {
-        if (ThoriumMod.ThoriumWorld.downedScout)
-        {
-            shop.item[nextSlot].SetDefaults(ItemID.Gel);
-            nextSlot++;
-        }
+        shop.item[nextSlot].SetDefaults(ItemID.Gel);
+        nextSlot++;
     }
+}
 ```
 In this example, the game will crash. You might think that the check for thoriumLoaded being true would prevent the game from crashing, but what happens is the .Net runtime will try to understand all the code mentioned in this method as it is invoked, and since it can't make sense of ThoriumMod.ThoriumWorld.downedScout, it will crash.
 
 Here is a solution that does work, moving the potentially unresolvable code to a property, effectively preventing the runtime from ever having to know about ThoriumMod.ThoriumWorld.downedScout unless that mod is actually loaded:
 ```cs
-    if (BossChecklist.instance.thoriumLoaded)
+if (BossChecklist.instance.thoriumLoaded)
+{
+    if (ThoriumModDownedScout)
     {
-        if (ThoriumModDownedScout)
-        {
-            shop.item[nextSlot].SetDefaults(ItemID.Gel);
-            nextSlot++;
-        }
+        shop.item[nextSlot].SetDefaults(ItemID.Gel);
+        nextSlot++;
     }
+}
 
-    public bool ThoriumModDownedScout
-    {
-        get { return ThoriumMod.ThoriumWorld.downedScout; }
-    }
+public bool ThoriumModDownedScout
+{
+    get { return ThoriumMod.ThoriumWorld.downedScout; }
+}
 ```
 Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I suggest setting that static bool like this:
 ```cs
-    thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
+thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
 ```
 Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
 
