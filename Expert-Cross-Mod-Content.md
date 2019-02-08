@@ -4,7 +4,7 @@ When inter-operating with other mods, there are several things to note. The bigg
 
 # Simple Cross Mod content. Recipes, Items, and Tiles (Intermediate)
 
-The easiest for of cross-mod content is utilizing items or tiles in recipes, shops, or drops. The first thing to note is that the mod may or may not exist. To determine if it exists, we first ask tModLoader for the Mod object.
+The easiest form of cross-mod content is utilizing items or tiles in recipes, shops, or drops. The first thing to note is that the mod may or may not exist. To determine if it exists, we first ask tModLoader for the Mod object.
 ```cs
     Mod exampleMod = ModLoader.GetMod("ExampleMod");
 ```
