@@ -1,5 +1,5 @@
 # Prerequisites
-1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). It is free.
+1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). It is free. Make sure you are **NOT** downloading Visual Studio **Code**, that won't work.
 2. During install, check the `.NET desktop development` workload. Nothing else needs to be checked.
 ![](https://i.imgur.com/Y8uZ14h.png)
 
