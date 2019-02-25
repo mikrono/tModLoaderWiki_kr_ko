@@ -1,32 +1,55 @@
-# _Note: Work in Progress, instructions are not completely working or tested yet._
+### Note: Work in Progress, instructions are not completely working or tested yet. Currently there is no implementation to decompile Terraria on Linux/Mac. This means that you need to run the `Setup` tool to decompile Terraria under Windows. This will hopefully soon be implemented on Linux and Mac as well.
 
 # Developing on Mac or Linux
-tModLoader sometimes can't build mods in-game on Mac and Linux. This is because unlike on Windows, the compiler needed to compile code isn't necessarily present on the computer. This limitation is unfortunate, but there are workarounds.
+tModLoader requires the Microsoft C# Compiler (`mcs`) to be installed.
+On Windows, it's bundled with the .NET installation itself. On Mac and Linux however, it requires a separate package which might not be pre-installed on your system.
 
-You should notice `mcs not found` errors
+You can check if it is present by opening a terminal and executing the command `mcs`, you should see something like this:
+```
+error CS2008: No files to compile were specified
+Compilation failed: 1 error(s), 0 warnings
+```
 
-# Install mono-complete
-Please attempt this approach before attempting later approaches. This step installs the development files needed to compile c# code. 
+Or you can simply try compiling and look for `mcs not found` errors.
 
-## Linux
+Instructions on how to install the required packages are in the following section.
 
-Visit the Mono website and follow the [install instructions](https://www.mono-project.com/download/stable/#download-lin).
+# Building mods inside of tModLoader
 
-Tested with Raspbian 9 and Ubuntu 14.
+tModLoader has the ability to build mods that have no external dependencies/references within Terraria itself.
+If you are new to modding or have no idea what external dependencies are, this is most likely what you want.
 
-## Mac
+If you want to use external dependencies which allow for more "fancy" features and you know what you are doing you can look into [building outside of tModLoader](#building-outside-of-tmodloader)
 
-Visit the Mono website and follow the [install instructions](https://www.mono-project.com/download/stable/#download-mac).
+## Installing mono
+Having the Mono framework installed allows you to build mods directly within tModLoader under the `Mod Sources` menu option.
+
+### Linux
+
+On most Linux distributions the package is called `mono-complete` or simply `mono`.
+
+If you are having trouble installing the package you can go to the [installation instructions](https://www.mono-project.com/download/stable/#download-lin) page on the mono-projects website for further assistance.
+
+### Mac
+
+Visit the Mono website and follow the [installation instructions](https://www.mono-project.com/download/stable/#download-mac) for Mac.
 
 Apparently this install doesn't add the appropriate tools to the Path, so you may need to follow these instructions if you still can't build in game. Please update this page with any relevant information if you have any.
 
+Edit: Some further instructions can be found in the answers section of this [Stackoverflow question](https://stackoverflow.com/questions/32542535/how-to-install-mono-on-macos-so-mono-works-in-terminal)
+
 Untested.
 
-# Build outside of tModLoader
-Building mods outside of tModLoader is a little annoying, but it also forces you to use an IDE, which is a good skill to learn.
+# Building outside of tModLoader
 
-[Xamarin instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
+If you would like to have a more flexible and generally better development environment, you should probably look into building mods outside of tModLoader. This implies using an IDE such as Visual Studio Code (The regular Visual Studio is not supported on Linux, although it is on Mac).
 
+MonoDevelop/Xamarin (on which Visual Studio for Mac is based on) is the easiest method to get started.
+
+The following instructions can be followed for getting a simple environment going: [Xamarin/MonoDevelop instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
+
+# Known issues
+## Mac
 ### The type initializer for 'System.Drawing.GDIPlus' threw an exception
 On **Mac** after you've followed this guide you might find that you encounter this error when trying to build a mod that contains png files.
 
