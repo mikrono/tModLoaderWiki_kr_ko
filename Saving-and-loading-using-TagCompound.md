@@ -49,7 +49,7 @@ internal class MyModWorld : ModWorld
 	public override TagCompound Save()
 	{
 		return new TagCompound {
-			{"MySpecialBool"), MySpecialBool }
+			{"MySpecialBool", MySpecialBool }
 		};
 	}
 }
