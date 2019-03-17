@@ -1,21 +1,29 @@
+# Introduction
 ## About
-This guide is yet another Harmony Transpiler Tutorial. This guide will use Terraria as the target game and will touch lightly upon Labels, Extension Methods, and AccessTools. If you'd like, you can skip right to the bottom and see these sections directly. Read the guide from start to finish if you'd like to follow the thought process of developing this Transpiler.
+This guide explores IL editing. IL editing is an expert level technique that can be very powerful. With IL editing, mods can essentially edit code anywhere in the Terraria code base without relying on tModLoader hooks. IL editing stands for Intermediate Language editing, essentially we are editing compiled code on demand. This can be useful for very obscure methods that don't warrant a tModLoader method. With IL editing, it is crucial that your code employs defensive programming techniques to properly anticipate the potential of other mods attempting to modify the same area in the code. IL editing is powerful, but always try to utilize the tModLoader hooks if possible as they can facilitate multiple mods better than IL editing. If you aren't scared yet, read on. 
+
+### Limitations
+Be aware that the Common Language Runtime (CLR) will in-line short methods at runtime, these methods cannot be edited using these techniques. What counts as short isn't well defined, but things like Properties are likely candidates.
 
 ## Prerequisites
-* This guide assumes you have gone through the [original tutorial](https://gist.github.com/pardeike/c02e29f9e030e6a016422ca8a89eefc9).
 * [dnSpy](https://github.com/0xd4d/dnSpy) - We will use the compile functionality to help design our patch.
-* Familiarity with Terraria is NOT required
+* [Expert Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Expert-Prerequisites) - You will fail if you don't know how to debug.
+* [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) - Familiarity with finding things in the Terraria source code is very helpful.
+* Visual Studio or similar IDE is required.
 
-## Goal
-The goal that this guide will work toward is making the various bee related items in Terraria stronger. For those not familiar with Terraria, various items will spawn bees as weapons. If the player has the `strongBees` ability, bees will have a random chance of spawning as GiantBee instead. This patch will further augment the `strongBees` ability by giving it a chance to spawn a Beenade as well.
+# Examples
+## Hive Pack Upgrade
+### Goal
+The goal that this guide will work toward is making the various bee related items stronger when wearing an upgrade to the [Hive Pack](https://terraria.gamepedia.com/Hive_Pack). Various items will spawn bees as weapons. If the player is wearing the Hive Pack, `player.strongBees` will be true and spawned bees will have a random chance of spawning as GiantBee instead. To implement our Hive Pack upgrade, we need to modify the code referencing `player.strongBees` to give it a chance to spawn a Beenade as well.
 
-Here is how Bee weapons currently work ([video](https://gfycat.com/MagnificentLividHuia)):    
+Here is how Bee weapons currently work while the Hive Pack is equipped ([video](https://gfycat.com/MagnificentLividHuia)):    
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    
 
 Notice how about half of the bees spawn as GiantBees.
 
-## Original Method
-Lets first look at the original method to see what changes we'll want to make to the IL code. Start up dnSpy and add the exe by going to File->Open and then browsing to Terraria.exe. Expand the tabs for Terraria, Terraria.exe, Terraria, and finally Player. Scroll down and click on the `beeType()` method. How did I know this was where I need to look? Experience. I followed the logic of the bee weapons in decompiled code and found that beeType is the method that makes the decisions I want to modify. If you are reading this, you probably have already identified a method that you wish to change since you are resorting to Transpiling. By now you should see this:      
+### Original Method
+Lets first look at the original method to see what changes we'll want to make to the IL code. Start up dnSpy and add the exe by going to File->Open and then browsing to Terraria.exe. Expand the tabs for Terraria, Terraria.exe, Terraria, and finally Player. Scroll down and click on the `beeType()` method. How did I know this was where I need to look? Experience. I followed the logic of the bee weapons in decompiled code and found that `Player.beeType` is the method that makes the decisions I want to modify. If you are reading this, you probably have already identified a method that you wish to change since you are resorting to IL editing. By now you should see this:      
+![](https://i.imgur.com/9fOlM4n.png)    
 ```cs
 public int beeType()
 {
@@ -28,7 +36,7 @@ public int beeType()
 	return 181;
 }
 ```
-This is the C# code for this method. If you look in Terraria.ID.ProjectileID, you'll see that 566 is GiantBee and 181 is Bee. Our plan is to change the chosen projectile to Beenade (183) with random chance. This is how the code we want would look:    
+This is the C# code for this method. If you look in `Terraria.ID.ProjectileID`, you'll see that 566 is `GiantBee` and 181 is `Bee`. Our plan is to change the chosen projectile to `Beenade` (183) with random chance. This is how the code we want would look:    
 ```cs
 public int beeType()
 {
