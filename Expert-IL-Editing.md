@@ -43,7 +43,7 @@ public int beeType()
 	if (this.strongBees && Main.rand.Next(2) == 0)
 	{
 		this.makeStrongBee = true;
-		if(Main.rand.NextBool(10)) // NextBool is an extension method from Terraria.Utils
+		if(this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10)) // NextBool is an extension method from Terraria.Utils
 			return 183;
 		return 566;
 	}
