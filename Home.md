@@ -72,6 +72,7 @@ The following guides are considered advanced, and should only be attempted if th
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
 - [Expert Guide Prerequisites](Expert-Prerequisites)
 - [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
+- [IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
 
 # Vanilla References
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
