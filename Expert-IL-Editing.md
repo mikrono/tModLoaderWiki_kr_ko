@@ -11,9 +11,11 @@ Be aware that the Common Language Runtime (CLR) will in-line short methods at ru
 * [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) - Familiarity with finding things in the Terraria source code is very helpful.
 * Visual Studio or similar IDE is required.
 
-# Examples
-## Hive Pack Upgrade
-### Goal
+## Code Layout
+You can put patches anywhere you want, but `Mod.Load` or any of the `Autoload` methods are good candidates. 
+
+# Example - Hive Pack Upgrade
+## Goal
 The goal that this guide will work toward is making the various bee related items stronger when wearing an upgrade to the [Hive Pack](https://terraria.gamepedia.com/Hive_Pack). Various items will spawn bees as weapons. If the player is wearing the Hive Pack, `player.strongBees` will be true and spawned bees will have a random chance of spawning as GiantBee instead. To implement our Hive Pack upgrade, we need to modify the code referencing `player.strongBees` to give it a chance to spawn a Beenade as well.
 
 Here is how Bee weapons currently work while the Hive Pack is equipped ([video](https://gfycat.com/MagnificentLividHuia)):    
@@ -21,7 +23,7 @@ Here is how Bee weapons currently work while the Hive Pack is equipped ([video](
 
 Notice how about half of the bees spawn as GiantBees.
 
-### Original Method
+## Original Method
 Lets first look at the original method to see what changes we'll want to make to the IL code. Start up dnSpy and add the exe by going to File->Open and then browsing to Terraria.exe. Expand the tabs for Terraria, Terraria.exe, Terraria, and finally Player. Scroll down and click on the `beeType()` method. How did I know this was where I need to look? Experience. I followed the logic of the bee weapons in decompiled code and found that `Player.beeType` is the method that makes the decisions I want to modify. If you are reading this, you probably have already identified a method that you wish to change since you are resorting to IL editing. By now you should see this:      
 ![](https://i.imgur.com/9fOlM4n.png)    
 ```cs
@@ -43,8 +45,8 @@ public int beeType()
 	if (this.strongBees && Main.rand.Next(2) == 0)
 	{
 		this.makeStrongBee = true;
-		if(this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10)) // NextBool is an extension method from Terraria.Utils
-			return 183;
+		if(this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10))
+			return ProjectileID.Beenade;
 		return 566;
 	}
 	this.makeStrongBee = false;
@@ -83,7 +85,7 @@ This is great, but what now? First, lets use dnSpy to look at the IL Code for th
 	/* 0x0023B4FF 2A           */ IL_002E: ret
 } // end of method Player::beeType
 ```
-Lets make sense of this now by following along. Be sure to click on individual instructions to open the [OpCode documentation](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes_fields(v=vs.110).aspx) directly from dnSpy:    
+Lets make sense of this now by following along. Be sure to hover or click on individual instructions to open the [OpCode documentation](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes_fields(v=vs.110).aspx) directly from dnSpy:    
 ```cs
 ldarg.0 pushes the 1st argument onto the stack, but this method has 0 arguments, what is going on? 
 Well, non-static methods have the current instance as the 1st argument, 
@@ -129,10 +131,10 @@ Hopefully this annotated IL Code can help you make sense of things. If you are c
 Now that we've gotten an idea about the original method, let's use dnSpy to see how our changes will look. In dnSpy, right click on the method and click `Edit Method (C#)...`.     
 ![](https://i.imgur.com/vKEjicD.png)    
 In the window that pops up, make the changes we decided on earlier and then click Compile.    
-![](https://i.imgur.com/XJQROM0.png)    
-You'll see some errors if you are missing assembly references or bad code. In our case, we are missing ReLogic.dll. [Download it](https://github.com/blushiemagic/tModLoader/blob/master/references/ReLogic.dll) and then add it to dnSpy via "Add Assembly Reference":    
-![](https://i.imgur.com/U6f23SK.png)    
-Click "Compile" if you need to and the window will close and you'll be back to the IL Code. Switch back to C# view and you might be surprised to find your changes aren't exactly maintained in the C# view. The logic is all the same, it is just the layout of our code has moved various pieces about.    
+![](https://i.imgur.com/ojUkfez.png)    
+You'll see some errors if you are missing assembly references or bad code. First off, we need to add `using Terraria.ID;` and `using ExampleMod` to the code. Then, we need to add the missing references for Relogic and ExamplePlayer. You'll find ReLogic.dll in `\Documents\My Games\Terraria\ModLoader\references`. You'll find ExampleMod.dll in `\Documents\My Games\Terraria\Modding\tModLoader\ExampleMod\bin\Debug`. Add both of these dlls to dnSpy via "Add Assembly Reference":    
+![](https://i.imgur.com/U6f23SK.png)       
+Now that we have fixed the errors, click "Compile" and the window will close and you'll be back to the IL Code. Switch back to C# view and you might be surprised to find your changes aren't exactly maintained in the C# view. The logic is all the same, it is just the layout of our code has moved various pieces about.    
 ```cs
 public int beeType()
 {
@@ -142,14 +144,14 @@ public int beeType()
 		return 181;
 	}
 	this.makeStrongBee = true;
-	if (Main.rand.NextBool(10))
+	if (this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10))
 	{
 		return 183;
 	}
 	return 566;
 }
 ```    
-Do not worry, however, as our approach for this transpiler is to find the `return 566` in the instructions and add our instructions right before that. This can still be done even though the instructions have moved around a little in our temporarily modified copy of the instructions. Switching back to the IL view, lets find the code between `this.makeStrongBee = true;` and `return 566`. This code now contains the instructions for our if statement and returning 183. Lets annotate these instructions now:    
+Do not worry, however, as our approach for this patch is to find the `return 566` in the instructions and add our instructions right before that. This can still be done even though the instructions have moved around a little in our temporarily modified copy of the instructions. Switching back to the IL view, lets find the code between `this.makeStrongBee = true;` and `return 566`. This code now contains the instructions for our if statement and returning 183. Lets annotate these instructions now:    
 ```cs
 // push Player instance onto stack
 IL_0015: ldarg.0
@@ -158,28 +160,102 @@ IL_0016: ldc.i4.1
 // set Player.makeStrongBee
 IL_0017: stfld     bool Terraria.Player::makeStrongBee
 
+// NEW: push Player instance onto stack
+IL_001C: ldarg.0
+// NEW: Calls GetModPlayer
+IL_001D: call      instance !!0 Terraria.Player::GetModPlayer<class [ExampleMod]ExampleMod.ExamplePlayer>()
+// NEW: place the value of strongBeesUpgrade onto the stack
+IL_0022: ldfld     bool [ExampleMod]ExampleMod.ExamplePlayer::strongBeesUpgrade
+// NEW: If result is false, jump to instruction 3D. (short-circuiting)
+IL_0027: brfalse.s IL_003D
+
 // NEW: push Main.rand onto stack
-IL_001C: ldsfld    class Terraria.Utilities.UnifiedRandom Terraria.Main::rand
+IL_0029: ldsfld    class Terraria.Utilities.UnifiedRandom Terraria.Main::rand
 // NEW: push 10 onto stack
-IL_0021: ldc.i4.s  10
+IL_002E: ldc.i4.s  10
 // NEW: Call Utils.NextBool. Why Utils? Utils is the class that defines the NextBool extension method!
-IL_0023: call      bool Terraria.Utils::NextBool(class Terraria.Utilities.UnifiedRandom, int32)
-// NEW: If result is false, jump to instruction 30.
-IL_0028: brfalse.s IL_0030
+IL_0030: call      bool Terraria.Utils::NextBool(class Terraria.Utilities.UnifiedRandom, int32)
+// NEW: If result is false, jump to instruction 3D.
+IL_0035: brfalse.s IL_003D
 
 // NEW: Push 183, aka Beenade, onto stack
-IL_002A: ldc.i4    183
+IL_0037: ldc.i4    183
 // NEW: Return taking Beenade with it
-IL_002F: ret
+IL_003C: ret
 
 // Push 566, aka GiantBee, onto stack
-IL_0030: ldc.i4    566
+IL_003D: ldc.i4    566
 // Return taking GiantBee with it
-IL_0035: ret
+IL_0042: ret
 ```
-By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on Harmony code. Finally!    
+By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on the patch code. Finally!    
 
-## Harmony Patch
+## Patch Code
+Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on (Add link here after pushing to github)
+
+### Common Ideas
+The first concept to explore is loading our patch. Since this patch pertains to a new ModItem in our mod, lets add the patch to `ModItem.Autoload`. Simply override `Autoload` and type `IL.Terraria.Player.beeType += HookBeeType;` and then allow Visual Studio to generate the HookBeeType method for us. If Visual Studio doesn't understand the `IL.Terraria` namespace, make sure to add a dll reference to the MonoMod and TerrariaHooks dlls found in `Documents\My Games\Terraria\ModLoader\references`. 
+
+Next, we begin writing code. To start, we create a Cursor by writing `var c = il.At(0);`. A Cursor allows us to navigate the IL codes in a well organized manner. We need to use Cursor methods such as `TryGotoNext` and `GotoLabel` to navigate to the correct index within the list of IL instructions. We can't rely on hard-coded indexes because we need our patch to work properly when multiple patches edit the same method, or when different builds of tModLoader slightly change the IL instructions. Designing robust patch code is expected, as this is an Expert level technique. 
+
+After creating a cursor, we need to advance the cursor to be pointing at the area of code we desire to edit. As we have discovered through compiling in dnSpy, we want to insert our code between the code that sets `makeStrongBee` to true and the code that returns 566. We can write `if (!c.TryGotoNext(i => i.MatchLdcI4(566)))` to advance the cursor to the next IL instructions that matches the OpCode of `ldc.i4` with the operand of `566`. If such an instruction is not found, we would want to exit our patch and possibly log our patch failure to the logs, otherwise, we continue onto our edits in any of the following approaches.
+
+### Approach 1 - Modifying Evaluation Stack
+This first approach is the simplest. In this approach, we can take advantage of the fact that while `return 566;` is a single line in c#, in IL instructions, it consists of 2 instructions, the first pushing 566 to the stack, and the 2nd returning from the method. By taking advantage of this, we can insert instructions in between those 2 instructions to achieve our desired behavior. In effect, we are changing `return 566;` to `return (this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10)) ? 183 : 566;`. The first line of code here moves the cursor down: `c.Index++;`. The cursor was pointing at the instruction pushing 566 to the stack earlier, so increasing the index places the cursor right on the ret OpCode. After this, we call `.Emit` on the cursor with an OpCode, which places the specified OpCode at the current cursor index and pushes all the other instructions down, similar to List.Insert. The instruction we provide is Ldarg_0, which will push the current Player instance onto the stack because this is a non-static method. At this point, the stack consists of the Player at the top and an int with the original return value below that.     
+With an int and Player on the stack, we can now use `.EmitDelegate` to write c# code for the rest of our patch, greatly simplifying things. The generic types provided to the Delegate need to match up with the current stack, in order from bottom to top (oldest to most recently pushed). In this case, we will be using a `Func` which takes 2 parameters and returns 1 parameter. The 2 input parameters must be `int` and `Player` as those match the current stack. The output type will be `int` because it will go onto the stack after the int and Player are popped off. When our patch began, there was an int on the stack, so we need to make sure the stack is still the same when our patch completes so we don't crash the game. In our delegate, we simply put our conditional and use the provided original return value and Player instance to drive our logic. Here is the complete code:
+```cs
+// Start the Cursor at the start
+var c = il.At(0);
+// Try to find where 566 is placed onto the stack
+if (!c.TryGotoNext(i => i.MatchLdcI4(566)))
+	return; // Patch unable to be applied
+
+// Move the cursor after 566 and onto the ret op.
+c.Index++; 
+// Push the Player instance onto the stack
+c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
+// Call a delegate using the int and Player from the stack.
+c.EmitDelegate<Func<int, Player, int>>((returnValue, player) =>
+{
+	// Regular c# code
+	if (player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1)
+		return ProjectileID.Beenade;
+	return returnValue;
+});
+// After the delegate, the stack will once again have an int and the ret instruction will return from this method
+```
+
+### Approach 2 - Labels and Branches
+This next approach is very similar to approach 1, but aims to show how branching works via labels. If you remember from our exploration of the IL code above, IL instructions often use the `brfalse` OpCodes to conditionally jump to different instructions. When we make if statements in c#, the compiler implements those as jumps to different areas of code. With IL editing, we can define Labels that our branching code can jump to. The code is below. We can see that in effect, this approach more similarly matches the typical c# code approach by more closely mimicking the behavior of an if statement inserted before `return 566;` in the original code. While this is a simple example, using labels and branching may prove a useful skill.
+```cs
+// Make a label to use later
+var label = il.DefineLabel();
+// Push the Player instance onto the stack
+c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
+// Call a delegate popping the Player from the stack and pushing a bool
+c.EmitDelegate<Func<Player, bool>>(player =>
+{
+	if (player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1)
+		return true;
+	return false;
+});
+// if the bool on the stack is false, jump to label
+c.Emit(Mono.Cecil.Cil.OpCodes.Brfalse, label);
+// Otherwise, push ProjectileID.Beenade and return
+c.Emit(Mono.Cecil.Cil.OpCodes.Ldc_I4, ProjectileID.Beenade);
+c.Emit(Mono.Cecil.Cil.OpCodes.Ret);
+// Set the label to the current cursor, which is still the instruction pushing 566 (which is followed by Ret)
+c.MarkLabel(label);
+```
+
+### Approach 3 - Direct OpCode
+
+
+
+
+
+# Old tutorial below
+
 If you skipped to here, note that we now know what instructions we want to add and where. Now we will make the Transpiler code. We'll begin with the basic framework, annotating our static class with `HarmonyPatch` Attributes to specify the target method:     
 ```cs
 /// <summary>
@@ -308,3 +384,10 @@ You might assume that the IL code to call an extension method would need a Metho
 
 ### Labels
 Labels are a Harmony abstraction that simplifies jumps in branching code. This abstraction serves to simplify the work patches need to do to jump to the correct label. Since patches insert and delete IL Code, it would be very hard to properly maintain the jumps in branching code. With Harmony, the operand of branching opcodes are in fact replaced with Label instances. These Labels are swapped in in the place of the operands and are also added to the targeted CodeInstruction's `labels` field. Make sure to add `ILGenerator il` as a parameter to your Transpiler method so you can utilize `Label myLabel = il.DefineLabel();` to create a new Label. After creating a new Label, you need to add it to both the source and target CodeInstruction instances. For the CodeInstruction with the branching opcode, use the Label as the operand. For the CodeInstruction the opcode is branching to, be sure to add it to the labels field: `code[i].labels.Add(myLabel);`. After the Transpiler method executes, Harmony will swap the Labels out and calculate correct values for branching opcodes.
+
+# Example - Lava Snail Statue Spawn
+See [ExampleCritter.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
+
+# Other Examples
+The following examples from other mods can be explored as well:
+* Add to this list
