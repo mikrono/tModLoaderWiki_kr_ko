@@ -191,7 +191,7 @@ IL_0042: ret
 By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on the patch code. Finally!    
 
 ## Patch Code
-Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on (Add link here after pushing to github)
+Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on [WaspNest.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).
 
 ### Common Ideas
 The first concept to explore is loading our patch. Since this patch pertains to a new ModItem in our mod, lets add the patch to `ModItem.Autoload`. Simply override `Autoload` and type `IL.Terraria.Player.beeType += HookBeeType;` and then allow Visual Studio to generate the HookBeeType method for us. If Visual Studio doesn't understand the `IL.Terraria` namespace, make sure to add a dll reference to the MonoMod and TerrariaHooks dlls found in `Documents\My Games\Terraria\ModLoader\references`. 
@@ -268,6 +268,7 @@ c.MarkLabel(label); // The cursor is still pointing to the ldc.i4 566 instructio
 ```
 
 ## Results
+The full code can be explored on [WaspNest.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).    
 Lets watch a Bee weapon in action after applying our patch ([video](https://gfycat.com/QuerulousParchedJaguar)):    
 ![](https://thumbs.gfycat.com/QuerulousParchedJaguar-size_restricted.gif)    
 
