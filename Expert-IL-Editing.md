@@ -233,12 +233,7 @@ var label = il.DefineLabel();
 // Push the Player instance onto the stack
 c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
 // Call a delegate popping the Player from the stack and pushing a bool
-c.EmitDelegate<Func<Player, bool>>(player =>
-{
-	if (player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1)
-		return true;
-	return false;
-});
+c.EmitDelegate<Func<Player, bool>>(player => player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1);
 // if the bool on the stack is false, jump to label
 c.Emit(Mono.Cecil.Cil.OpCodes.Brfalse, label);
 // Otherwise, push ProjectileID.Beenade and return
@@ -249,141 +244,35 @@ c.MarkLabel(label);
 ```
 
 ### Approach 3 - Direct OpCode
-
-
-
-
-
-# Old tutorial below
-
-If you skipped to here, note that we now know what instructions we want to add and where. Now we will make the Transpiler code. We'll begin with the basic framework, annotating our static class with `HarmonyPatch` Attributes to specify the target method:     
+This final approach finally uses the output straight from dnSpy that we generated earlier. Seeing that our changes in the c# code of the method were neatly contained in a block of IL instructions nested between setting makeStrongBee to true and returning 566, we can simply insert those new instructions between those instructions directly. To do this, we take the output of dnSpy and line by line replace each instruction with equivalent patch code. For example, for `IL_001C: ldarg.0`, we can write `c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);`. We can use `using static Mono.Cecil.Cil.OpCodes;` to slim down the code to `c.Emit(Ldarg_0);`. We still need to generate new labels for the branch instructions, and we need to be aware of the expected values and cast appropriately. For example, to convert `IL_002E: ldc.i4.s  10` to code, we need to read the documentation and see that the `ldc.i4.s` OpCode expects an int8, which is an sbyte. The code would be `c.Emit(Ldc_I4_S, (sbyte)10);`, failure to cast correctly will crash the game.    
+The next thing to be aware of is that you need to pass in MethodInfo and FieldInfo classes rather than calling the method or field directly. For example, to adapt `IL_0037: ldsfld    int32 Terraria.Main::ProjectileUpdateLoopIndex`, you might make the mistake of writing `c.Emit(Ldsfld, Main.ProjectileUpdateLoopIndex);`, but that won't work. You need to use regular reflection techniques to retrieve a FieldInfo, like this: `c.Emit(Ldsfld, typeof(Main).GetField(nameof(Main.ProjectileUpdateLoopIndex)));`. Note that using `nameof` helps avoid spelling mistakes. This example will also shot how to retrieve a generic version of a MethodInfo.    
+Having converted all the IL instructions to patch code, making labels, and applying those labels to the instructions that need it, our patch is complete. This direct approach is useful if you don't quite understand how the stack works and are willing to write a bit more tedious code.    
 ```cs
-/// <summary>
-/// Patches Player.beeType to return a Beenade 10% of the time if Player.strongBees is true
-/// </summary>
-[HarmonyPatch(typeof(Player))]
-[HarmonyPatch("beeType")]
-public class Player_beeType_Patcher
-{
-	static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-	{
-		var code = new List<CodeInstruction>(instructions);
+var label = il.DefineLabel(); // Make a label that will point to the instruction pushing 566 to the stack
 
-		// We'll need to modify code here.
+c.Emit(Ldarg_0);
+c.Emit(Call, typeof(Player).GetMethod("GetModPlayer", new Type[] { }).MakeGenericMethod(typeof(ExamplePlayer)));
+c.Emit(Ldfld, typeof(ExamplePlayer).GetField(nameof(ExamplePlayer.strongBeesUpgrade)));
+c.Emit(Brfalse_S, label);
+c.Emit(Ldsfld, typeof(Main).GetField(nameof(Main.rand)));
+c.Emit(Ldc_I4_S, (sbyte)10);
+c.Emit(Call, typeof(Utils).GetMethod("NextBool", new Type[] { typeof(Terraria.Utilities.UnifiedRandom), typeof(int) }));
+c.Emit(Brfalse_S, label);
+c.Emit(Ldsfld, typeof(Main).GetField(nameof(Main.ProjectileUpdateLoopIndex)));
+c.Emit(Ldc_I4_M1);
+c.Emit(Bne_Un_S, label);
+c.Emit(Ldc_I4, ProjectileID.Beenade);
+c.Emit(Ret);
 
-		return code;
-	}
-}
+c.MarkLabel(label); // The cursor is still pointing to the ldc.i4 566 instruction, this label gives the branch instructions a destination
 ```
-We now need to decide where to put our code. Since other patches might occur in this same method, we need to be careful to preserve functionality. We also need to be aware that updates to the game we are patching, Terraria, might also change the specific instructions our patch will see as input to the Transpiler. We are fairly confident that GiantBee won't change from 566, so lets use the return of 566 as our way of finding a suitable location to insert our additional logic. Using a for loop and checking opcodes and operands, we can easily find this location:    
-```cs
-int insertionIndex = -1;
-for (int i = 0; i < code.Count - 1; i++) // -1 since we will be checking i + 1
-{
-	if (code[i].opcode == OpCodes.Ldc_I4 && (int)code[i].operand == 566 && code[i + 1].opcode == OpCodes.Ret)
-	{
-		insertionIndex = i;
-		break;
-	}
-}
-```
-Having found an appropriate index, now we must add instructions. I'm putting them in a List for easy insertion later:    
-```cs
-// Create a List
-var instructionsToInsert = new List<CodeInstruction>();
 
-// To translate the opcode output we saw earlier in dnSpy, for the most part we can copy things straight over. Comments below explain exactly how.
-
-// IL_001C: ldsfld    class Terraria.Utilities.UnifiedRandom Terraria.Main::rand
-// To translate instruction, we need a FieldInfo. Typing Main.rand here would be an error. 
-// Using AccessTools, we can easily derive the FieldInfo from Type and field name. 
-// Using nameof instead of a string helps prevent typos.
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldsfld, AccessTools.Field(typeof(Main), nameof(Main.rand))));
-// IL_0021: ldc.i4.s  10
-// Make sure to cast to sbyte here because the documentation for Ldc_I4_S says it expects an int8. 
-// Incorrect casts could cause issues.
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)10));
-// Even though we call the Extension method via Main.rand.NextBool, the method actually resides in Utils. 
-// We use AccessTools again here, this time for MethodInfo.
-// IL_0023: call      bool Terraria.Utils::NextBool(class Terraria.Utilities.UnifiedRandom, int32)
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Utils), "NextBool", new Type[] { typeof(UnifiedRandom), typeof(int) })));
-// IL_0028: brfalse.s IL_0030
-// What is IL_0030? How do we add this? We'll learn this next.
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Brfalse_S, ???));
-// IL_002A: ldc.i4    183
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldc_I4, 183));
-// IL_002F: ret
-instructionsToInsert.Add(new CodeInstruction(OpCodes.Ret));
-```
-In our first pass here, we almost got everything translated into code, the only thing we still don't know how to do is make the `Brfalse_S` opcode jump to the original `ldc.i4` instruction for 183/GiantBee. For now, lets finish off the code before talking about Labels. Lets take this List of CodeInstruction and insert them into the code variable and then return it:    
-```cs
-if (insertionIndex != -1)
-{
-	code.InsertRange(insertionIndex, instructionsToInsert);
-}
-return code;
-```
-Now lets talk about Labels. You might assume that you'll have to do some math to calculate instruction sizes and edit the values of the jumps in various branching statements. Luckily, this is not the case. This is a case where Harmony augments the instructions provided to the Transpiler to simplify things. Each CodeInstruction that has code jumping to it contains an entry in its CodeInstruction.labels for each CodeInstruction jumping to it. Using this `Label` class, we can modify where jumps jump to without calculating resulting instruction indexes. For our example, we need to jump to the `return 183` code, but no Label currently points to that line of IL Code.
-The first step is adding `ILGenerator il` to our Transpiler method parameters. After this, we can make a new label by calling `Label return566Label = il.DefineLabel();` We then need to add this label to the instruction that we want to jump to later. In our code, this will be the `code[i].labels.Add(return566Label);` line. Finally, we can use this label as the operand to our `Brfalse_S` opcode from before: `instructionsToInsert.Add(new CodeInstruction(OpCodes.Brfalse_S, return566Label));`     
-
-Here is the final result:    
-```cs
-/// <summary>
-/// Patches Player.beeType to return a Beenade 10% of the time if Player.strongBees is true
-/// </summary>
-[HarmonyPatch(typeof(Player))]
-[HarmonyPatch("beeType")]
-public class Player_beeType_Patcher
-{
-	static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
-	{
-		var code = new List<CodeInstruction>(instructions);
-
-		int insertionIndex = -1;
-		Label return566Label = il.DefineLabel();
-		for (int i = 0; i < code.Count - 1; i++) // -1 since we will be checking i + 1
-		{
-			if (code[i].opcode == OpCodes.Ldc_I4 && (int)code[i].operand == 566 && code[i + 1].opcode == OpCodes.Ret)
-			{
-				insertionIndex = i;
-				code[i].labels.Add(return566Label);
-				break;
-			}
-		}
-
-		var instructionsToInsert = new List<CodeInstruction>();
-
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldsfld, AccessTools.Field(typeof(Main), nameof(Main.rand))));
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)10));
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Utils), "NextBool", new Type[] { typeof(UnifiedRandom), typeof(int) })));
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Brfalse_S, return566Label));
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldc_I4, 183));
-		instructionsToInsert.Add(new CodeInstruction(OpCodes.Ret));
-
-		if (insertionIndex != -1)
-		{
-			code.InsertRange(insertionIndex, instructionsToInsert);
-		}
-		return code;
-	}
-}
-```    
-
+## Results
 Lets watch a Bee weapon in action after applying our patch ([video](https://gfycat.com/QuerulousParchedJaguar)):    
 ![](https://thumbs.gfycat.com/QuerulousParchedJaguar-size_restricted.gif)    
 
 As a reminder, this is how it used to act ([video](https://gfycat.com/MagnificentLividHuia)):    
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    
-
-## Recap
-### AccessTools
-AccessTools provides easy access to FieldInfo and MethodInfo. If you are familiar with Reflection using System.Reflection, it is the same thing. 
-
-### Extension Methods
-You might assume that the IL code to call an extension method would need a MethodInfo from the extended class, but remember that it is the class that adds the extension method that contains the MethodInfo. The first parameter will be the original class. 
-
-### Labels
-Labels are a Harmony abstraction that simplifies jumps in branching code. This abstraction serves to simplify the work patches need to do to jump to the correct label. Since patches insert and delete IL Code, it would be very hard to properly maintain the jumps in branching code. With Harmony, the operand of branching opcodes are in fact replaced with Label instances. These Labels are swapped in in the place of the operands and are also added to the targeted CodeInstruction's `labels` field. Make sure to add `ILGenerator il` as a parameter to your Transpiler method so you can utilize `Label myLabel = il.DefineLabel();` to create a new Label. After creating a new Label, you need to add it to both the source and target CodeInstruction instances. For the CodeInstruction with the branching opcode, use the Label as the operand. For the CodeInstruction the opcode is branching to, be sure to add it to the labels field: `code[i].labels.Add(myLabel);`. After the Transpiler method executes, Harmony will swap the Labels out and calculate correct values for branching opcodes.
 
 # Example - Lava Snail Statue Spawn
 See [ExampleCritter.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
