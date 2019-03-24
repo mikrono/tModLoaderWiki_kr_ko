@@ -19,22 +19,26 @@ The previous examples added vanilla items to the recipe by referencing the ItemI
 
 We can also add modded items added by this mod. There are several ways we can do this. Go for whatever approach you like:
 
-    recipe.AddIngredient(mod, "ExampleItem");
-    recipe.AddIngredient(null, "ExampleItem");
-    recipe.AddIngredient(mod.GetItem("ExampleItem"));
-    recipe.AddIngredient(mod.GetItem<Items.ExampleItem>());
-    recipe.AddIngredient(this); // adds the current ModItem
-    recipe.AddIngredient(mod.ItemType("ExampleItem"));
-    recipe.AddIngredient(mod.ItemType<Items.ExampleItem>());
+```cs
+recipe.AddIngredient(mod, "ExampleItem");
+recipe.AddIngredient(null, "ExampleItem");
+recipe.AddIngredient(mod.GetItem("ExampleItem"));
+recipe.AddIngredient(mod.GetItem<Items.ExampleItem>());
+recipe.AddIngredient(this); // adds the current ModItem
+recipe.AddIngredient(mod.ItemType("ExampleItem"));
+recipe.AddIngredient(mod.ItemType<Items.ExampleItem>());
+```
 
 Next, we can specify up to 14 crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs).
 
-    recipe.AddTile(TileID.WorkBenches);
-    recipe.AddTile(TileID.Anvils);
-    recipe.AddTile(mod.TileType("ExampleWorkbench"));
-    recipe.AddTile(mod.TileType<Tiles.ExampleWorkbench>());
-    recipe.AddTile(mod.GetTile("ExampleWorkbench"));
-    recipe.AddTile(mod.GetTile<Tiles.ExampleWorkbench>());
+```cs
+recipe.AddTile(TileID.WorkBenches);
+recipe.AddTile(TileID.Anvils);
+recipe.AddTile(mod.TileType("ExampleWorkbench"));
+recipe.AddTile(mod.TileType<Tiles.ExampleWorkbench>());
+recipe.AddTile(mod.GetTile("ExampleWorkbench"));
+recipe.AddTile(mod.GetTile<Tiles.ExampleWorkbench>());
+```
 Next, we need to set the result for the ModRecipe, what the recipe creates. There can only be 1 result per ModRecipe. This is done similar to AddIngredient as well. There is also an optional stack parameter here as well:
 
     recipe.SetResult(mod.ItemType<Items.ExampleItem>());
@@ -48,35 +52,42 @@ Finally, we need to tell tModLoader that our ModRecipe is complete and add it to
 ### Using Vanilla vs Modded Ingredients and Tiles
 As a recap, vanilla items and tiles use the TileID and ItemID classes, while modded items and items use the TileType and ItemType methods:
 
-    recipe.AddTile(TileID.WorkBenches); // Vanilla Tile
-    recipe.AddTile(mod.TileType("ExampleWorkbench")); // Modded Tile
-    recipe.AddIngredient(ItemID.Meowmere); // Vanilla Item
-    recipe.AddIngredient(mod.ItemType("ExampleItem")); // Modded Item
+```cs
+recipe.AddTile(TileID.WorkBenches); // Vanilla Tile
+recipe.AddTile(mod.TileType("ExampleWorkbench")); // Modded Tile
+recipe.AddIngredient(ItemID.Meowmere); // Vanilla Item
+recipe.AddIngredient(mod.ItemType("ExampleItem")); // Modded Item
+```
 ## Water, Honey, Lava
 Water, Honey, and Lava are not technically Tiles, so to make a recipe require standing next to those, use one of the following:
 
-    recipe.needWater = true;
-    recipe.needHoney = true;
-    recipe.needLava = true;
+```cs
+recipe.needWater = true;
+recipe.needHoney = true;
+recipe.needLava = true;
+```
 Note that needWater is also satisfied by Sinks, so don't add the Sink tile separately. Also note that there is a needSnowBiome you can also set, but anything more advanced would utilize ModRecipe.RecipeAvailable.
 
 ## Alchemy
 Use recipe.AddTile(TileID.Bottles); for alchemy recipes. 
 
 ## Multiple Recipes
-With multiple ModRecipes in the same AddRecipes, make sure not to redeclare your variable name. The following will cause errors: 
+With multiple ModRecipes in the same AddRecipes, make sure not to re-declare your variable name. The following will cause errors: 
 
-    ModRecipe recipe = new ModRecipe(mod);
-    // other code
-    ModRecipe recipe = new ModRecipe(mod);
-    // other code
+```cs
+ModRecipe recipe = new ModRecipe(mod);
+// other code
+ModRecipe recipe = new ModRecipe(mod);
+// other code
+```
 You can name your variables recipe1, recipe2, and so on, but a cleaner approach would be to just reuse the same variable:
 
-    ModRecipe recipe = new ModRecipe(mod);
-    // other code
-    recipe = new ModRecipe(mod);
-    // other code
-
+```cs
+ModRecipe recipe = new ModRecipe(mod);
+// other code
+recipe = new ModRecipe(mod);
+// other code
+```
 
 ## Making an "upgraded" vanilla tile
 As an aside, you may want your ModTile to count as, say, a workbench or anvil. To do this, add the following to your ModTile.SetDefaults:
@@ -87,37 +98,37 @@ As an aside, you may want your ModTile to count as, say, a workbench or anvil. T
 Here are 2 complete examples, one showing recipes added in a ModItem class more suitable for recipes involving that ModItem, and the other showing adding recipes in a Mod class more suitable for recipes involving vanilla items. Technically the recipes can go in either location, but for organization purposes it is sometimes nice to have recipes in ModItem classes. Also pay attention to `this` and `mod`, as they refer to different things depending on which class they occur in.
 ### ModItem Example
 ```cs
-    using Terraria;
-    using Terraria.ID;
-    using Terraria.ModLoader;
-    
-    namespace ExampleMod.Items.Abomination
-    {
-    	public class FoulOrb : ModItem
-    	{
-    		public override void SetDefaults()
-    		{
-    			// other code
-    		}
-    
-    		public override void AddRecipes()
-    		{
-    			ModRecipe recipe = new ModRecipe(mod);
-    			recipe.AddIngredient(ItemID.BeetleHusk);
-    			recipe.AddIngredient(ItemID.Ectoplasm, 5);
-    			recipe.AddTile(TileID.MythrilAnvil);
-    			recipe.SetResult(this);
-    			recipe.AddRecipe();
-    
-    			recipe = new ModRecipe(mod);
-    			recipe.AddIngredient(null, "BossItem", 10);
-    			recipe.AddTile(null, "ExampleWorkbench");
-    			recipe.needLava = true;
-    			recipe.SetResult(this, 20);
-    			recipe.AddRecipe();
-    		}
-    	}
-    }
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace ExampleMod.Items.Abomination
+{
+	public class FoulOrb : ModItem
+	{
+		public override void SetDefaults()
+		{
+			// other code
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.BeetleHusk);
+			recipe.AddIngredient(ItemID.Ectoplasm, 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(null, "BossItem", 10);
+			recipe.AddTile(null, "ExampleWorkbench");
+			recipe.needLava = true;
+			recipe.SetResult(this, 20);
+			recipe.AddRecipe();
+		}
+	}
+}
 ```
 
 ### Mod Example
@@ -140,6 +151,7 @@ namespace ExampleMod
 			recipe.SetResult(ItemID.Wood, 999);
 			recipe.AddRecipe();
 
+			// Here we reuse 'recipe', meaning we don't need to re-declare that it is a ModRecipe 
 			recipe = new ModRecipe(this);
 			recipe.AddIngredient(ItemID.BlueBerries, 20);
 			recipe.AddTile(TileID.WorkBenches);
@@ -153,6 +165,8 @@ namespace ExampleMod
 ## Common Errors
 ### Error CS0117 'ItemID' (or TileID) does not contain a definition for 'MyModItem'
 You tried to use the vanilla item syntax for adding a ModItem, read this tutorial again.
+### Error CS0103 The name 'recipe' does not exist in the current context
+You forgot to declare your first recipe as `ModRecipe`. Make sure the first recipe in your code starts with `ModRecipe recipe = ...`
 ### Error CS0128 A local variable named 'recipe' is already defined in this scope
 Read `Multiple Recipes` above.
 ### My recipes aren't in game
