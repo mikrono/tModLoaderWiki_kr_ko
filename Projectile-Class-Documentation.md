@@ -80,7 +80,7 @@ Spawns a projectile in the world. The owner variable should pretty much always b
 Do not use this method to get a projectile on a client based on its projectile.identity. Instead, loop through the Main.projectile[] on the client you wish to find the projectile on and check if there is a projectile that has the same projectile.identity as the projectile you want to find.
 
 ## tModLoader
-### public GlobalProjectileGetGlobalProjectile(Mod mod, string name)
+### public GlobalProjectile GetGlobalProjectile(Mod mod, string name)
 
 Gets the GlobalProjectileinstance (with the given name and added by the given mod) associated with this item instance.
 
