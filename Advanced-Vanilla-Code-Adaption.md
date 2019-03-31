@@ -9,6 +9,8 @@ This guide teaches how to navigate the jungle that is Terraria source code to fi
 ## Obtaining Vanilla Source Code
 It is against the law to publish the decompiled source code, but anyone with a competent computer can decompile their personal copy of Terraria.exe no problem. Note that you may wish to end up with a decompiled tModLoader rather than a decompiled vanilla Terraria so that you know where tModLoader hooks are. See [Advanced Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites) for more info.
 
+After you have a copy of the source, open the `Terraria.csproj` file so you can easily search the whole project.
+
 ## Example: Armor Effects: Ninja Shirt
 A simple example for investigating vanilla code is figuring out how vanilla armor or accessories achieve their special effects. For this example, we want to know how Ninja Shirt increases throwing damage by 15%. (Follow along for whatever effect you are interested in.) The first step is to find the ItemID. Searching ItemID.cs, you will find where NinjaShirt is defined:
 
