@@ -27,36 +27,36 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [extraUpdates](#extraupdates)<a name="extraupdates"></a>|int |0 | Additional update steps per tick. Useful for really fast projectiles such as [Shadowbeam Staff](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-item-and-projectile-shadowbeam-staff-clone). |
 | [scale](#scale)<a name="scale"></a>| float | 1f |  |
 | [melee](#melee)<a name="melee"><br>[ranged](#ranged)<a name="ranged"><br>[magic](#magic)<a name="magic"><br>[minion](#minion)<a name="minion"><br>[thrown](#thrown)<a name="thrown"><br></a>| bool | false | Determines which crit chance will influence the damage of this projectile |
-| [frame](#)<a name=""></a>| | |  |
-| [frameCounter](#)<a name=""></a>| | |  |
-| [rotation](#)<a name=""></a>| | | Rotation of the projectile. Radians not Degrees. Use MathHelper if you want to convert degrees to radians. 0 is facing right, pi/2 is facing down, and so on. |
-| [oldPos](#)<a name=""></a>| | |  |
-| [oldRot](#)<a name=""></a>| | |  |
-| [oldSpriteDirection](#)<a name=""></a>| | |  |
-| [ai](#)<a name=""></a>| float[] | 0,0 |  |
-| [localAI](#)<a name=""></a>| float[] | 0,0 |  |
+| [frame](#frame)<a name=""></a>| | |  |
+| [frameCounter](#framecounter)<a name=""></a>| | |  |
+| [rotation](#rotation)<a name=""></a>| | | Rotation of the projectile. Radians not Degrees. Use MathHelper if you want to convert degrees to radians. 0 is facing right, pi/2 is facing down, and so on. |
+| [oldPos](#oldpos)<a name=""></a>| | |  |
+| [oldRot](#oldrot)<a name=""></a>| | |  |
+| [oldSpriteDirection](#oldspritedirection)<a name=""></a>| | |  |
+| [ai](#ai)<a name=""></a>| float[] | 0,0 |  |
+| [localAI](#localai)<a name=""></a>| float[] | 0,0 |  |
 | [noDropItem](#nodropitem)<a name="nodropitem"></a>| bool | false | Set to true if you don't want this item to have a chance to recover the ammo item that shot this. For example, if you shoot the wooden arrow projectile, it will sometimes drop the wooded arrow item. If your weapon shoots multiple arrows for 1 ammo, you might want to consider setting this field to prevent infinite ammo glitches. |
-| [minion](#)<a name=""></a>| | |  |
-| [minionSlots](#)<a name=""></a>| | |  |
-| [spriteDirection](#)<a name=""></a>| | |  |
+| [minion](#minion)<a name=""></a>| | |  |
+| [minionSlots](#minionslots)<a name=""></a>| | |  |
+| [spriteDirection](#spritedirection)<a name=""></a>| | |  |
 | [hide](#hide)<a name="hide"></a>| bool | | Projectile is not drawn normally. See [ExampleBehindTilesProjectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBehindTilesProjectile.cs#L30) |
-| [lavaWet](#)<a name=""></a>| | |  |
-| [wetCount](#)<a name=""></a>| | |  |
-| [wet](#)<a name=""></a>| | |  |
-| [netUpdate](#)<a name=""></a>| | |  |
-| [netUpdate2](#)<a name=""></a>| | |  |
-| [numUpdates](#)<a name=""></a>| | |  |
-| [identity](#)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
-| [light](#)<a name=""></a>| | |  |
+| [lavaWet](#lavawet)<a name=""></a>| | |  |
+| [wetCount](#wetcount)<a name=""></a>| | |  |
+| [wet](#wet)<a name=""></a>| | |  |
+| [netUpdate](#netupdate)<a name=""></a>| | |  |
+| [netUpdate2](#netupdate2)<a name=""></a>| | |  |
+| [numUpdates](#numupdates)<a name=""></a>| | |  |
+| [identity](#identity)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
+| [light](#light)<a name=""></a>| | |  |
 | [position](#position)<a name="position"></a>| Vector2 | | |
 | [velocity](#velocity)<a name="velocity"></a>| Vector2 | | |
 | [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
 | [owner](#owner)<a name="owner"></a>| | | The index of the player who owns this projectile. In Multiplayer, Clients "own" projectiles that they shoot, while the Server "owns" projectiles spawned by NPCs and the World. It is very important to check `if (projectile.owner == Main.myPlayer)` for things like dropping items or spawning projectiles in `ModProjectile.AI` and some other methods because `AI` runs simultaneously on all Clients and the Server. This check gates some of the code that should only run on the owners computer. [ExampleJavelinProjectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleJavelinProjectile.cs#L88) checks owner for spawning the recovered ammo item. If you don't do this, you will run into desync bugs in your mod. |
 | [damage](#damage)<a name="damage"></a>| | | This will always be set in NewProjectile based on the weapons damage. Don't assume that setting it to something in SetDefaults does anything. |
-| [knockBack](#)<a name=""></a>| | |  |
-| [trap](#)<a name=""></a>| | | If true, this projectile was spawned by a trap tile. |
-| [npcProj](#)<a name=""></a>| | | If true, this projectile was spawned by a friendly Town NPC. |
-| [projUUID](#)<a name=""></a>| | |  |
+| [knockBack](#knockback)<a name=""></a>| | |  |
+| [trap](#trap)<a name=""></a>| | | If true, this projectile was spawned by a trap tile. |
+| [npcProj](#npcproj)<a name=""></a>| | | If true, this projectile was spawned by a friendly Town NPC. |
+| [projUUID](#projuuid)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 
