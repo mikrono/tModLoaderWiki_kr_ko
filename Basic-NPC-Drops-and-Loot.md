@@ -84,6 +84,17 @@ The following is an example of doubling expert mod drops. You can do it however 
 if(Main.rand.NextBool(Main.expertMode ? 2 : 1, 5))
 ```
 
+### Different Expert Mode Drops
+If you want to be more specific with your expert mode conditions, or any other condition, use an if-else statement.
+
+```c#
+// Drop 10-20 in expert mode, 20-30 in normal mode:
+if(Main.expertMode)
+	Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(20, 31));
+else
+	Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(10, 21));
+```
+
 ### Biome or Location
 The following shows the code for how vanilla drops Soul of Light. Note that this example is more suitable for a GlobalNPC class rather than an NPCLoot class since it add drops to all NPC that die in the biome/zone.
 
