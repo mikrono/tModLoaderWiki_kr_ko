@@ -20,11 +20,12 @@ These pages tend to describe certain files or folders.
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
 
 ## Getting started
-- [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide)
+- [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
 - [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
-- [Debugging Multiplayer Usage Issues](Debugging-Multiplayer-Usage-Issues)
 - [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
 - [Basic tModLoader Modding FAQ](Basic-tModLoader-Modding-FAQ)
+- [Running a modded server](Starting-a-modded-server) -- Learn how to setup a modded server
+- [Debugging Multiplayer Usage Issues](Debugging-Multiplayer-Usage-Issues)
 
 ## Development
 These pages aim to aid you to learn how to develop mods properly, how to setup your developing environment etc.
