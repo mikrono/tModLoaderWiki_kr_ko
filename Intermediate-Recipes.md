@@ -119,27 +119,27 @@ We can edit vanilla recipes from within out AddRecipes methods. Basically, we us
 ## Complete Example
 This code removes the ingredient Chain from all vanilla recipes. The second half of this example finds and deletes an exact recipe and deletes the whole recipe.
 ```csharp
-    public override void AddRecipes()
-    {
-    	RecipeFinder finder = new RecipeFinder();
-    	finder.AddIngredient(ItemID.Chain);
-    	foreach (Recipe recipe in finder.SearchRecipes())
-    	{
-    		RecipeEditor editor = new RecipeEditor(recipe);
-    		editor.DeleteIngredient(ItemID.Chain);
-    	}
-    
-    	finder = new RecipeFinder();
-    	finder.AddRecipeGroup("IronBar");
-    	finder.AddTile(TileID.Anvils);
-    	finder.SetResult(ItemID.Chain, 10);
-    	Recipe recipe2 = finder.FindExactRecipe();
-    	if (recipe2 != null)
-    	{
-    		RecipeEditor editor = new RecipeEditor(recipe2);
-    		editor.DeleteRecipe();
-    	}
-    }
+public override void AddRecipes()
+{
+	RecipeFinder finder = new RecipeFinder();
+	finder.AddIngredient(ItemID.Chain);
+	foreach (Recipe recipe in finder.SearchRecipes())
+	{
+		RecipeEditor editor = new RecipeEditor(recipe);
+		editor.DeleteIngredient(ItemID.Chain);
+	}
+
+	finder = new RecipeFinder();
+	finder.AddRecipeGroup("IronBar");
+	finder.AddTile(TileID.Anvils);
+	finder.SetResult(ItemID.Chain, 10);
+	Recipe recipe2 = finder.FindExactRecipe();
+	if (recipe2 != null)
+	{
+		RecipeEditor editor = new RecipeEditor(recipe2);
+		editor.DeleteRecipe();
+	}
+}
 ```
 # Common Errors
 
