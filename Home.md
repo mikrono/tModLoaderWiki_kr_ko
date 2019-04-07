@@ -18,6 +18,7 @@ These pages tend to describe certain files or folders.
 - [Information about build.txt](build.txt)
 - [Information about description.txt](description.txt)
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
+- [Contribute translations to mods or tML](Contributing-Localization)
 
 ## Getting started
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
@@ -104,4 +105,3 @@ These are pages that we have so far failed to categorize or simply do not belong
 - [Mount Data Parameters](MountDataParameters)
 - [Open Source Mods](Open-Source-Mods)
 - [Command Line Arguments and Server Config](Command-Line)
-- [Contributing Localization](Contributing-Localization)
