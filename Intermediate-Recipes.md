@@ -32,9 +32,10 @@ You may have noticed that aside from "Wood" and "IronBar", there aren't many use
 ```
 This is actually not too bad, but imagine you have 10 or 20 similar items that you'd like to use for your recipe, it would get unmanageable very quickly. To solve this, first we must add a new RecipeGroup. We do this in our Mod class by overriding the AddRecipeGroups method:
 ```csharp
+    // Don't forget using Terraria.Localization; up top.
     public override void AddRecipeGroups()
     {
-    	RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Magic Mirror", new int[]
+    	RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
     	{
     		ItemID.IceMirror,
     		ItemID.MagicMirror
@@ -42,7 +43,7 @@ This is actually not too bad, but imagine you have 10 or 20 similar items that y
     	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
     }
 ```
-As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Lang.misc[37] is just the word "any" in the selected language. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
+As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Language.GetTextValue("LegacyMisc.37") is just the word "any" in the selected language and requires writing `using Terraria.Localization;` at the top of your code. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
 
 Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGroups, except our RecipeGroup's name will be different:
 ```csharp
@@ -53,6 +54,7 @@ Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGr
     using Terraria;
     using Terraria.ID;
     using Terraria.ModLoader;
+    using Terraria.Localization;
     
     namespace SummonersAssociation
     {
@@ -66,7 +68,7 @@ Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGr
     
     		public override void AddRecipeGroups()
     		{
-    			RecipeGroup group = new RecipeGroup(() => Lang.misc[37] + " Magic Mirror", new int[]
+    			RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
     			{
     				ItemID.IceMirror,
     				ItemID.MagicMirror
