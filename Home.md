@@ -19,6 +19,7 @@ These pages tend to describe certain files or folders.
 - [Information about description.txt](description.txt)
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
 - [Contribute translations to mods or tML](Contributing-Localization)
+- [Information about the Mod browser](Mod-Browser) (How to use it and how to publish your mod)
 
 ## Getting started
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
