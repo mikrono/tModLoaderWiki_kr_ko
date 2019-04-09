@@ -50,6 +50,29 @@ After setting the 3 static fields from our `Mod` class to null in `Unload`, our 
 ![](https://i.imgur.com/sSDtR8H.png)    
 
 ## Tips
+### ILoadable
+It may be wise to implement an ILoadable interface:
+```cs
+internal interface ILoadable {
+    void Load();
+    void Unload();
+}
+```
+You can implement this interface in any class you wish to follow load/unload behavior, then from your main Load() and Unload() routines in the Mod class, you can simply call Load() and Unload() respectively on anything that implements ILoadable:
+```cs
+ILoadable loadable = new MyLoadableImpl();
+
+public void Load() {
+    // Given you have a loadable component somewhere
+    loadable.Load();
+}
+
+public void Unload() {
+    // Given you have a loadable component somewhere
+    loadable.Unload();
+}
+```
+
 ### What is `+<>c`
 Those can be ignored, and should go away once you fix the other issues.
 
