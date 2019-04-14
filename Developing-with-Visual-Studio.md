@@ -75,7 +75,8 @@ This will let you edit the source code and recompile the mod during debugging, w
 After fixing:    
 [Example](https://i.imgur.com/RY456Nb.png)
 4. Make sure an installed .net framework is installed. Right click on the project and selec properties, then use the Target Framework dropdown to select an installed .net framework. 4.5 or anything 4 or higher should work.    
-[Example](https://i.imgur.com/rH9Ca7q.png)    
+[Example](https://i.imgur.com/rH9Ca7q.png)   
+5. Make sure the Solution Explorer is in solution view and not folder view. [Button Location](https://i.imgur.com/NIOP3fn.png)     
 
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
 You can download the dll file from [here](https://github.com/blushiemagic/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
