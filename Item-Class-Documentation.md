@@ -124,7 +124,7 @@ This alternate method signature can simplify code.
 Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
 
 ## tModLoader Only
-### public GetGlobalItem GetGlobalItem(Mod mod, string name)
+### public GlobalItem GetGlobalItem(Mod mod, string name)
 
 Gets the GlobalItem instance (with the given name and added by the given mod) associated with this item instance.
 
