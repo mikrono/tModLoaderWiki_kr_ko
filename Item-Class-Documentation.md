@@ -84,7 +84,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [prefix](#prefix)<a name="prefix"></a>|byte |0 |  |
 | [release](#release)<a name="release"></a>|int |0 |  |
 | [sentry](#sentry)<a name="sentry"></a>| bool|false |  |
-| [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L190) |
+| [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L146) |
 | [shopSpecialCurrency](#shopspecialcurrency)<a name="shopspecialcurrency"></a>|int |-1 | Used in conjunction with [shopCustomPrice](#shopCustomPrice) to specify a custom currency. See [ExampleMod.Load](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleMod.cs#L71) and [ExampleCustomCurrency](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleCustomCurrency.cs) |
 | [stack](#stack)<a name="stack"></a>|int |1 | Current stack of the Item. |
 | [tileBoost](#tileboost)<a name="tileboost"></a>|int |-1 |  |
@@ -124,7 +124,7 @@ This alternate method signature can simplify code.
 Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
 
 ## tModLoader Only
-### public GetGlobalItem(Mod mod, string name)
+### public GetGlobalItem GetGlobalItem(Mod mod, string name)
 
 Gets the GlobalItem instance (with the given name and added by the given mod) associated with this item instance.
 
