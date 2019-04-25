@@ -58,7 +58,7 @@ Understand that you will get glitching issues if you are nowhere updating the ac
 ## Drafting the linear velocity formula with math
 Angular velocity = angular speed, denoted by lowercase omega (w) => `x revolutions / sec`
 
-The formula of linear velocity: `v = s/t`, next define s: `s = arc length = 2π * r * (theta/360)`
+The formula of linear velocity: `v = s/t`, next confine s: `s = arc length = 2π * r * (theta/360)`
 Where r is the radius and theta the angle. Now we can rewrite this with radians:`2π * r * (theta / 2π)`, the 2π cancel each other out, leaving: `r * theta`
 
 So now we have: `v = linear velocity = r * theta / t`. Going back to angular velocity: `w = theta / t`. This formula should make sense, as we said earlier the angular velocity is the angular displacement with respect to time. This is exactly what is displayed here.
