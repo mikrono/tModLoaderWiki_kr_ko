@@ -29,11 +29,11 @@ Trademark protects distinctive words, phrases, symbols, sounds and designs.
 Trademarks identify and distinguish the source of the goods (and services) of one party from those of another party.
 
 # About tModLoader's license
-tML uses the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl.html) (GNU AGPLv3). The GNU Affero General Public License is based on the GNU GPL, but has an additional term to allow users who interact with the licensed software over a network to receive the source for that program. It general a license sets certain permissions, conditions and limitations for the licensee. Most importantly our license permits: (includes the following, but not limited to)
+tML uses the [GNU Affero General Public License](https://www.gnu.org/licenses/agpl.html) (GNU AGPLv3). The GNU Affero General Public License is based on the GNU GPL, but has an additional term to allow users who interact with the licensed software over a network to receive the source for that program. In general a license sets certain permissions, conditions and limitations for the licensee. Most importantly our license permits: (includes the following, but not limited to)
 - Distribution of our software
 - Modification of our software
 
-These two permissions allow others to take our software, edit it and redistribute it elsewhere if they want so. This is important to us, as it will allow people to edit tML in any way they want be it for their own benefit or the improvement of our API for the general public.
+These two permissions allow others to take our software, edit it and redistribute it elsewhere if they want so. This is important to us, as it will allow people to edit tML in any way they want be it for their own benefit or the improvement of our API for the general public. As an honorable mention, this allows the 64-bit edit of tML to be available to everyone, and free: [https://github.com/Dradonhunter11/tModLoader/tree/x64](https://github.com/Dradonhunter11/tModLoader/tree/x64)
 
 The license also sets a few important conditions: (includes the following, but not limited to)
 - Source code must be disclosed
@@ -55,18 +55,21 @@ Including a license on Github (and many other distribution platforms) is easy. O
 
 **Please note** that you cannot stop others from viewing (unless you make your project private) or forking your repository. If you publish your source code in a public repository on GitHub, according to the [Terms of Service](https://help.github.com/en/articles/github-terms-of-service), other GitHub users have the right to view and fork your repository within the GitHub site. If you have already created a public repository and no longer want users to have access to it, you can make your repository private. When you convert a public repository to a private repository, existing forks or local copies created by other users will still exist. For more information, see ["Making a public repository private."](https://help.github.com/en/articles/making-a-public-repository-private) (see also: [Licensing a repository](https://help.github.com/en/articles/licensing-a-repository))
 
-# Not using a license ("license free") or using the "Unlicense"
+# Not using a license ("license free") or opting-out of copyright
 You are not under obligation to use a license. As stated before, the default copyright laws apply, so you retain all rights to the work of your project and no one may reproduce, distribute, or create derivative works from your work. (Except for viewing and forking your project on the Github website, as stated by the ToS, that is only if you use Github. Please consult the Terms of Service of the distribution platform you use to inform yourself). Not using a license is called software that is "license free". License-free software is computer software that is not explicitly in the public domain, but the software owner has not made explicit the terms of the license which makes the software fully copyright protected according to the Berne convention. (see also: [wikipedia](https://en.wikipedia.org/wiki/License-free_software))
 
 If you do not care much, not using a license is fine, but it is advised to make an informed decision for choosing a license.
 
-Using the unlicense is another popular option if you want to [disclaim copyright monopoly interest](https://cr.yp.to/publicdomain.html). You can do so easily by licensing your work under [the "Unlicense"](https://unlicense.org/).
+Using the "Unlicense" is another popular option if you want to [disclaim copyright monopoly interest](https://cr.yp.to/publicdomain.html). You can do so easily by licensing your work under [the "Unlicense"](https://unlicense.org/).
+**But please note** that the Unlicense isn't exactly very 'detailed', it's rather simplistic and open to different kinds of interpretations which can lead to liability concerns in legal context. It can be considered as written 'easy to read for humans', but not necessarily fit for legal systems we use today. You may be more interested in the [Creative Commons Zero License](https://creativecommons.org/share-your-work/public-domain/cc0/) (CC0) if you want to dedicate your work to the public domain, it is much better defined license. Please note also the Creative Commons licenses are very popular, very well established and used for many products and not just code. All of the CC licenses are a good choice.
+
+**Please understand** that it is _not_ possible to completely relinquish yourself of copyright holding in every jurisdiction, but certain licenses like the CC0 license are the most complete alternatives to still serve your product to a public domain. 
 
 # Copyright infringement
 Someone may have infringed your copyright, and may be held liable for not abiding to the terms of your license. There is only so much we can do as a non-professional, hobbyist modding team. We own the in-house Mod Browser. What we can offer you is a takedown of the copied mod in question if you can provide proof, but we have no jurisdiction on other platforms such as Github. We also cannot offer you legal advise. If it is of importance, you are advised to consult a professional. If you want to contact us, your best bet is by contacting us on Github or through our [discord server](https://tmodloader.net/discord) (this will require a DiscordApp account)
 
 # Literature
-All sources were consulted on the 26th of April, 2019
+All sources were consulted on the 26th of April, 2019 unless stated otherwise
 * https://en.wikipedia.org/wiki/License-free_software
 * https://choosealicense.com/no-permission/
 * https://en.wikipedia.org/wiki/Copyright
@@ -75,3 +78,5 @@ All sources were consulted on the 26th of April, 2019
 * https://help.github.com/en/articles/github-terms-of-service
 * https://choosealicense.com
 * https://www.gnu.org/licenses/agpl.html
+* https://creativecommons.org/share-your-work/public-domain/cc0/
+* https://github.com/Dradonhunter11/tModLoader/tree/x64
