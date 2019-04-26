@@ -20,6 +20,7 @@ These pages tend to describe certain files or folders.
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
 - [Contribute translations to mods or tML](Contributing-Localization)
 - [Information about the Mod browser](Mod-Browser) (How to use it and how to publish your mod)
+- [Licensing information](Licensing-information) (Among other things: how to license your mod, about tML's license)
 
 ## Getting started
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
