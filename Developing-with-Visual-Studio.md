@@ -90,3 +90,6 @@ Make sure "Output type" is set to "Class Library" in the project properties.
 ## References to other classes stopped working! (such as : ModItem, : ModProjectile etc.)
 Simply restart Visual Studio and it should fix itself.
 If it does not, you can attempt removing the .vs folder in your mod source root, then reloading the project.
+
+## Failed to load pre-compiled edit and continue dll System.IO.FileNotFoundException: Could not find file 'C:\...\YYY.pdb'.
+This error occurs when the project wasn't created with the mod skeleton generator. To fix this error, go under your project's properties (right-click the project under the Solution Explorer and click `Properties`), go to the `Build` tab, click the `Advanced` button and change the value of `Debugging Information` to `Full`.
