@@ -5,6 +5,7 @@ ___
 - [Vanilla references](./home#Vanilla-references)
 - [Source documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
 - [Mod Browser guide](Mod-Browser)
+- [tModLoader on Terraria Forums](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/)
 ___
 - [Getting started Guides](./home#getting-started)
 - [Development guides](./home#development)
