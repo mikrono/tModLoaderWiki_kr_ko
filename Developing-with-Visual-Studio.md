@@ -22,7 +22,7 @@
 1. Click Browse... and select the tModLoader executable (likely: `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe`)
 1. Add a new txt file named `build.txt` to the root of your project
 1. `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
-1. Add the XNA references to your project. You should have these if you can play Terraria, otherwise if you do not have XNA download it [here](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
+1. Add the XNA references to your project. You should have these if you can play Terraria, otherwise see [here](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
     1. Open the csproj file in a good text editor (like [Notepad++](https://notepad-plus-plus.org/))
     1. Find the reference section and add the following:
     ```
@@ -50,13 +50,13 @@ You can view the output of the build process using the Output window, **this is 
 1. Navigate to View -> Output
 
 # Debugging
-This will let you set breakpoints in your mod and inspect variables in Visual Studio. Change the paths if you installed Terraria elsewhere.
+This will let you set breakpoints in your mod and inspect variables in VS. Change the paths if you installed Terraria elsewhere.
 
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Debug tab
 1. Set the Start Action to Start external program: `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe`
 1. Set the Working directory to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`
-    1. Add the line `includePDB = true` to your build.txt if you want to include line numbers in exception stack traces (useful for debugging). _However it will increase the size of your mod and should be disable when publishing_.
+    1. Add the line `includePDB = true` to your build.txt if you want to include line numbers in exception stack traces (useful for debugging). _However it will increase the size of your mod and should be omitted from release builds_.
 
 # Edit and Continue
 This will let you edit the source code and recompile the mod during debugging, without having to restart the game.
@@ -82,7 +82,7 @@ After fixing:
 You can download the dll file from [here](https://github.com/blushiemagic/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
 
 ## Error CS0246 The type or namespace name 'Mod' (or 'ModLoader', 'ModItem', etc) could not be found
-You have added a reference to the vanilla Terraria.exe, remove it and add a correct reference to the Terraria.exe with tModLoader.
+You have added a reference to the vanilla Terraria.exe, remove it and add a correct reference to the modded Terraria.exe.
 
 ## CS5001 Program does not contain a static 'Main' method suitable for an entry point
 Make sure "Output type" is set to "Class Library" in the project properties.
@@ -90,7 +90,6 @@ Make sure "Output type" is set to "Class Library" in the project properties.
 ## References to other classes stopped working! (such as : ModItem, : ModProjectile etc.)
 Simply restart Visual Studio and it should fix itself.
 If it does not, you can attempt removing the .vs folder in your mod source root, then reloading the project.
-Otherwise try deleting the reference, and add then reference back.
 
 ## Failed to load pre-compiled edit and continue dll System.IO.FileNotFoundException: Could not find file 'C:\...\YYY.pdb'.
-This error occurs when the project wasn't created with the mod skeleton generator. To fix this error, go under your project's properties (right-click the project under the Solution Explorer and click 'Properties'), go to the 'Build' tab, click the 'Advanced' button and change the value of 'Debugging Information' to 'Full'.
+This error occurs when the project wasn't created with the mod skeleton generator. To fix this error, go under your project's properties (right-click the project under the Solution Explorer and click `Properties`), go to the `Build` tab, click the `Advanced` button and change the value of `Debugging Information` to `Full`.
