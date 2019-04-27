@@ -87,3 +87,7 @@ Using GitHub allows you to link your mod to your git repository, you can reap ma
 
 ## Easy release tracking
 With Git, it becomes much easier to track your releases of your mod. If you use Git from the start, you will be able to go back to any release you ever made and check out the code you had at that time. Useful for mods that live for a long time.
+
+## Literature
+- https://docs.microsoft.com/en-us/azure/devops/repos/git/gitquickstart?view=azure-devops&tabs=visual-studio
+- https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Visual-Studio
