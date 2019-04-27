@@ -10,21 +10,13 @@ Currently, tML supports the following locales:
 |----------:|:-------------|--------------|
 |           |              |              |
 | English   | en-US        | en-US.lang   |
-|           |              |              |
 | German    | de-DE        | de-DE.lang   |
-|           |              |              |
 | Italian   | it-IT        | it-IT.lang   |
-|           |              |              |
 | French    | fr-FR        | fr-FR.lang   |
-|           |              |              |
 | Chinese   | zh-Hans      | zh-Hans.lang |
-|           |              |              |
 | Spanish   | es-ES        | es-ES.lang   |
-|           |              |              |
 | Russian   | ru-RU        | ru-RU.lang   |
-|           |              |              |
 | Portugese | pt-BR        | pt-BR.lang   |
-|           |              |              |
 | Polish    | pl-PL        | pl-PL.lang   |
 
 # Git version control primer
