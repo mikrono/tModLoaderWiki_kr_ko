@@ -46,7 +46,7 @@ The license contains two liabilities, which are common in many licenses:
 - Limitation of liability
 - Software warranty
 
-The gist is that "we" and our software are not liable for any damages caused by using our sofware. (See section 16 of the license). There is also no warranty for our software, which means there is no guarantee our software works as intended. (See also section 15 of the license)
+The gist is that "we" and our software are not liable for any damages caused by using our software. (See section 16 of the license). There is also no warranty for our software, which means there is no guarantee our software works as intended. (See section 15 of the license)
 
 # How to license your mod(s)
 To license your own mod isn't very difficult. If you take things very seriously, you can consult a professional and setup your own license. It is however recommended, to take a good look at existing licenses that cover the points that you want. You can use a website such as [https://choosealicense.com](https://choosealicense.com) to help you find and choose one. The most common licenses are the MIT License, Apache License, and GNU License (but there are many more licenses).
