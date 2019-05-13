@@ -95,7 +95,7 @@ We can use simple math to make more precise Height-based spawn conditions. For e
 # Other Values
 In addition to NPCSpawnInfo, we can also use other fields in our SpawnChance logic:
 * `Main.dayTime` - true during the day, false at night
-* `NPC.downedGolemBoss` and [others](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#npc-fields) - true if the named boss has been defeated in this world
+* `NPC.downedGolemBoss` and [others](https://github.com/blushiemagic/tModLoader/wiki/NPC-Class-Documentation#downedboss1) - true if the named boss has been defeated in this world
 * `Main.hardMode` - true if in hard mode
 * `Main.expertMode` - true if in expert mode
 * `Main.time` - A value between 0 (4:30 AM) and 54000 (7:30 PM) during the day and between 0 (7:30 PM) and 32400 (4:30 AM) during the night. Use with Main.dayTime. Main.time usually increments by 1 each tick. Each in-game hour is 3600 ticks. 
