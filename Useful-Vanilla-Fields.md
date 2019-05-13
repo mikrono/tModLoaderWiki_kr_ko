@@ -35,6 +35,8 @@ The X and Y coordinates of the world spawn tile.
 
 # NPC Fields
 
+See [NPC Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/NPC-Class-Documentation#fields-and-properties)
+
 * downedBoss1; bool
 
 If true, the Eye of Cthulhu has been killed in that world.
