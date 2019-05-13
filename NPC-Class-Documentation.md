@@ -11,137 +11,82 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [width](#)<a name=""></a>| int | 0 | The width of the npc hitbox |
-| [height](#)<a name=""></a>| int | 0 | The height of the npc hitbox |
-| [](#)<a name=""></a>| | |  |
-| [](#)<a name=""></a>| | |  |
-| [](#)<a name=""></a>| | |  |
-| [](#)<a name=""></a>| | |  |
-| [value](#value)<a name="value"></a> | int | 0 | Value is the number of copper coins the item is worth (aka, cost to buy from a merchant). Setting it to 10462 would mean the item cost 1 gold, 4 silver, and 62 copper. The sell price of an item is one fifth of its value. Value also influences reforge costs with the goblin tinkerer. For convenience, you can also use the `Item.buyPrice()` method for setting values: `item.value = Item.buyPrice(0, 1, 4, 62);` You can also use the `Item.sellPrice()` method if you would rather think about an items value the other way.  Both `Item.buyPrice(0, 0, 10, 55)` and `Item.sellPrice(0, 0, 2, 11)` would set the value to 1055. |
-| [useStyle](#usestyle)<a name="usestyle"></a>| int | 0 | The use style of your item:    <br>1 for swinging,    <br>2 for drinking,    <br>3 act like shortsword,    <br>4 for use like life crystal,    <br>5 for use staffs or guns                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [useTurn](#useturn)<a name="useturn"></a>| bool | false | Whether the player can turn around while the using animation is happening.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| [autoReuse](#autoreuse)<a name="autoreuse"></a>|bool | false| Whether the item is in continuous use while the mouse button is held down. |
-| [holdStyle](#holdstyle)<a name="holdstyle"></a>| int|0 | The hold style of your item:<br>1 for holding out (torches and glowsticks)<br>2 for holding up (Breathing Reed)<br>3 for a different version of holding out (Magical Harp) |
-| [useAnimation](#useanimation)<a name="useanimation"></a>| int|100 | The time span of the using animation for the item. Recommended to be the same at useTime as this is only the animation. Blocks use 15. Default value is 100. Terraria runs at 60 frames per second, so 15 is 1/4th of a second. |
-| [useTime](#usetime)<a name="usetime"></a>|int |100 | The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120). |
-| [reuseDelay](#reusedelay)<a name="reusedelay"></a>|int | 0| A delay in frames added at the end of the using animation for the item, during which the player wont be able to use any items. |
-| [consumable](#consumable)<a name="consumable"></a>|bool |false | Whether the item is consumed after use. |
-| [rare](#rare)<a name="rare"></a>| int|0 | Range from -1 to 13.<br>Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L23) |
-| [maxStack](#maxstack)<a name="maxstack"></a>|int | 1| The maximum number of items that can be contained within a single stack. |
-| [width](#width)<a name="width"></a>| int |0 | The width of the item's hitbox in pixels. |
-| [height](#height)<a name="height"></a>|int  | 0| The height of the item's hitbox in pixels. |
-| [scale](#scale)<a name="scale"></a>| float | 1f | The size multiplier of the item's sprite while the item is being used. Also increases range for melee weapons. |
-| [createTile](#createtile)<a name="createtile"></a>| int | -1 | The ID of the tile this item places on use. |
-| [placeStyle](#placestyle)<a name="placestyle"></a>| int | 0| The style of the tile being placed. Used for tiles that have a different look depending on the item used to place them. |
-| [createWall](#createwall)<a name="createwall"></a>| int |-1 | The ID of the tile this item places on use. |
-| [UseSound](#usesound)<a name="usesound"></a>|LegacySoundStyle | null | The sound that your item makes when used. <br>Ex: `item.UseSound = SoundID.Item1;`|
-| [damage](#damage)<a name="damage"></a>|int | -1| The base damage inflicted by the item. |
-| [knockBack](#knockback)<a name="knockback"></a>|float | 0f| The force of the knock back. Max value is 20.  |
-| [shoot](#shoot)<a name="shoot"></a>|int |0 | The ID of the projectile that is fired by the item on use. |
-| [shootSpeed](#shootspeed)<a name="shootspeed"></a>| float| 0f| The velocity in pixels the projectile fired by the item will have. Actual velocity depends on the projectile being fired. If your weapon is shooting projectiles and they are stationary, change this to something like 10f. Throwing Knife uses 10f. Held projectiles like Vortex Beater use shootSpeed to determine how far away from the player to hold the projectile. |
-| [noMelee](#nomelee)<a name="nomelee"></a>| bool |false | If true, the item's using animation will not deal damage. Set to true on most weapons that aren't swords. |
-| [accessory](#accessory)<a name="accessory"></a>|bool |false | Whether the item is an accessory. |
-| [melee](#melee)<a name="melee"></a><br>[magic](#magic)<a name="magic"></a><br>[ranged](#ranged)<a name="ranged"></a><br>[thrown](#thrown)<a name="thrown"></a><br>[summon](#summon)<a name="summon"></a>| bool | false | The type of damage this item deals, if it is a weapon. Setting more than one is useless. |
-| [axe](#axe)<a name="axe"></a><br>[pick](#pick)<a name="pick"></a><br>[hammer](#hammer)<a name="hammer"></a>| int | 0| These 3 correspond to the power, but axe power is multiplied by 5, so adjust accordingly. |
-| [defense](#defense)<a name="defense"></a>|int |0 | The amount of defense this item provides when equipped, either as an accessory or armor. |
-| [crit](#crit)<a name="crit"></a>| int |0 | The base critical chance for this item. Remember that the player has a base crit chance of 4. |
-| [noUseGraphic](#nousegraphic)<a name="nousegraphic"></a>| bool | false| If true, the item's sprite will not be visible while the item is in use. |
-| [useAmmo](#useammo)<a name="useammo"></a>| int | AmmoID.None (0) | The ID of the ammo used by this item. See [Ammo Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo) |
-| [ammo](#ammo)<a name="ammo"></a>| int | AmmoID.None (0) | The ID of the ammo class this item is part of. See [Ammo Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo) |
-| [notAmmo](#notammo)<a name="notammo"></a>|bool | false | If true and the item is ammo, the item will not count as ammo for certain ammo-specific behavior, such as the tooltip mentioning the item is ammo, or ammo items going into ammo slots first when picked up. Used for the Coin items, Ale, and Wire. |
-| [mana](#mana)<a name="mana"></a>| int | 0 | The amount of mana this item consumes on use. |
-| [channel](#channel)<a name="channel"></a>|bool | false | Used for items that have special behavior when the attack button is held. |
-| [potion](#potion)<a name="potion"></a>| bool | false | If true, this item will inflict potion sickness on use. Also determines whether the item cannot be used when the player has potion sickness, and if the item can be used with the Quick Heal key. |
-| [healLife](#heallife)<a name="heallife"></a>| int |0 | The amount of life this item heals on use. |
-| [healMana](#healmana)<a name="healmana"></a>| int |0 | The amount of mana this item heals on use. |
-| [buffType](#bufftype)<a name="bufftype"></a>| int |0 | The ID of the buff given by this item on use. To have a potion give multiple buffs, assign one buff here and in `ModItem.UseItem`, call `player.AddBuff(buffID, time)` for the remaining buffs you wish to give. |
-| [buffTime](#bufftime)<a name="bufftime"></a>| int |0 | The duration in ticks of the buff given by this item on use. |
-| [expert](#expert)<a name="expert"></a>|bool |false | Signifies that this item is an expert mode item. |
-| [bait](#bait)<a name="bait"></a><br>[fishingPole](#fishingpole )<a name="fishingpole"></a>|int | 0| Correspond to fishing power of bait or poles respectively. |
-| [questItem](#questitem)<a name="questitem"></a>|bool |false | Whether this item's tooltip will mention it is a quest item. |
-| [mech](#mech)<a name="mech"></a>| bool |false | Whether this item will show wires when held. |
-| [material](#material)<a name="material"></a>| bool | false | If this item is a an ingredient in any recipe. Automatically assigned. |
-| [backSlot](#backslot)<a name="backslot"></a><br>[balloonSlot](#balloonslot)<a name="balloonslot"></a><br>[bodySlot](#bodyslot)<a name="bodyslot"></a><br>[faceSlot](#faceslot)<a name="faceslot"></a><br>[frontSlot](#frontslot)<a name="frontslot"></a><br>[handOffSlot](#handoffslot)<a name="handoffslot"></a><br>[handOnSlot](#handonslot)<a name="handonslot"></a><br>[headSlot](#headslot)<a name="headslot"></a><br>[legSlot](#legslot)<a name="legslot"></a><br>[neckSlot](#neckslot)<a name="neckslot"></a><br>[shieldSlot](#shieldslot)<a name="shieldslot"></a><br>[shoeSlot](#shoeslot)<a name="shoeslot"></a><br>[waistSlot](#waistslot)<a name="waistslot"></a><br>[wingSlot](#wingslot)<a name="wingslot"></a><br>| sbyte| -1 | These values indicate which equipment slots the accessory or armor will show. These slots correspond the the textures that are shown while equipped. tModLoader automatically will assign your item the correct values based on the AutoloadEquip attribute. |
-
-| Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [DD2Summon](#dd2summon)<a name="dd2summon"></a>|bool |false |  |
-| [ToolTip](#tooltip)<a name="tooltip"></a>|ItemTooltip|null |  |
-| [active](#active)<a name="active"></a>|bool |true | If false, this item is empty regardless of other values set. |
-| [alpha](#alpha)<a name="alpha"></a>| int|0 |  |
-| [buy](#buy)<a name="buy"></a>| bool|false |  |
-| [cartTrack](#carttrack)<a name="carttrack"></a>| bool|false |  |
-| [color](#color)<a name="color"></a>| Color|Transparent| Draws the item sprite with a colored tint. Gel and Sharkfin use this to spawn different colored items from the same ItemID. `NetMessage.SendData(88, ...` needs to be used to sync this if not done in SetDefaults.  |
-| [dye](#dye)<a name="dye"></a>|byte |0 |  |
-| [expertOnly](#expertonly)<a name="expertonly"></a>| bool|false |  |
-| [favorited](#favorited)<a name="favorited"></a>| bool|false    | If the item has been marked as favorited in the inventory. |
-| [flame](#flame)<a name="flame"></a>| bool|false | |
-| [glowMask](#glowmask)<a name="glowmask"></a>|short |-1 |  |
-| [hairDye](#hairdye)<a name="hairdye"></a>|short |-1 |  |
-| [instanced](#instanced)<a name="instanced"></a>|bool |false |  |
-| [lavaWet](#lavawet)<a name="lavawet"></a>|bool |false |  |
-| [lifeRegen](#liferegen)<a name="liferegen"></a>|int | 0|  |
-| [makeNPC](#makenpc)<a name="makenpc"></a>|short |0 | Spawns the specified NPCID. |
-| [manaIncrease](#manaincrease)<a name="manaincrease"></a>|int |0 |  |
-| [mountType](#mounttype)<a name="mounttype"></a>|int | -1| Specifies which mount to equip when the item is used. See [CarKey](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/CarKey.cs) |
-| [netID](#netid)<a name="netid"></a>|int |0 | Don't use. |
-| [noWet](#nowet)<a name="nowet"></a>|bool |false |  |
-| [paint](#paint)<a name="paint"></a>|byte |0 |  |
-| [prefix](#prefix)<a name="prefix"></a>|byte |0 |  |
-| [release](#release)<a name="release"></a>|int |0 |  |
-| [sentry](#sentry)<a name="sentry"></a>| bool|false |  |
-| [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L146) |
-| [shopSpecialCurrency](#shopspecialcurrency)<a name="shopspecialcurrency"></a>|int |-1 | Used in conjunction with [shopCustomPrice](#shopCustomPrice) to specify a custom currency. See [ExampleMod.Load](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleMod.cs#L71) and [ExampleCustomCurrency](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleCustomCurrency.cs) |
-| [stack](#stack)<a name="stack"></a>|int |1 | Current stack of the Item. |
-| [tileBoost](#tileboost)<a name="tileboost"></a>|int |-1 |  |
-| [tileWand](#tilewand)<a name="tilewand"></a>|int |0 |  |
-| [type](#type)<a name="type"></a>|int |0 | This is the ItemID, automatically set.  |
-| [uniqueStack](#uniquestack)<a name="uniquestack"></a>| bool|false |  |
-| [vanity](#vanity)<a name="vanity"></a>| bool|false | Specifies that an armor is a vanity item. |
-| [wet](#wet)<a name="wet"></a>| bool|false |  |
-| [wetCount](#wetcount)<a name="wetcount"></a>|int|0 |  |
-| [](#)<a name=""></a>| | |  |
+| [width](#width)<a name="width"></a>| int | 0 | The width of the npc hitbox |
+| [height](#height)<a name="height"></a>| int | 0 | The height of the npc hitbox |
+| [aiStyle](#aistyle)<a name="aistyle"></a>| int | 0 | Determines which AI code to run. Many NPC share the same AI code by having the same aiStyle. ModNPC can utilize vanilla aiStyle values in addition to ModNPC.aiType to mimic vanilla behavior to some degree. If you wish to further customize the AI of a ModNPC, you should read [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption). |
+| [damage](#damage)<a name="damage"></a>| int | 0 | The amount of damage this NPC will deal on collision. Usually npc.damage is scaled by some factor when NPC spawn projectiles with Projectile.NewProjectile in AI code. For example, passing in `(int)(npc.damage * 0.5f)` as the Damage parameter. |
+| [defDamage](#defdamage)<a name="defdamage"></a>| int | 0 | Stores the value of `damage` at the end of SetDefaults. Useful for scaling damage in AI code. |
+| [defense](#defense)<a name="defense"></a>| int | 0 | How resistant to damge this NPC is. |
+| [defDefense](#defdefense)<a name="defdefense"></a>| int | 0 | Stores the value of `defense` at the end of SetDefaults. Useful for scaling defense in AI code, like how King Slime changes defense as it gets smaller. |
+| [lifeMax](#lifemax)<a name="lifemax"></a>| int | 0 | The maximum life of this NPC. |
+| [life](#life)<a name="life"></a>| int | 0 | The current life of the NPC. Automatically assigned to lifeMax at the end of SetDefaults. |
+| [realLife](#reallife)<a name="reallife"></a>| int | -1 |  |
+| [HitSound](#hitsound)<a name="hitsound"></a>| LegacySoundStyle | null |  |
+| [DeathSound](#deathsound)<a name="deathsound"></a>| LegacySoundStyle | null |  |
+| [alpha](#alpha)<a name="alpha"></a>| int | 0 |  |
+| [color](#color)<a name="color"></a>| Color |  |  |
+| [value](#value)<a name="value"></a>| float | 0f |  |
+| [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] |  |  |
+| [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f |  |
+| [scale](#scale)<a name="scale"></a>| float | 1f |  |
+| [townNPC](#townnpc)<a name="townnpc"></a>| bool | false |  |
+| [noGravity](#nogravity)<a name="nogravity"></a>| bool | false |  |
+| [noTileCollide](#notilecollide)<a name="notilecollide"></a>| bool |  |  |
+| [npcSlots](#npcslots)<a name="npcslots"></a>| float |  |  |
+| [boss](#boss)<a name="boss"></a>| bool |  |  |
+| [netAlways](#netalways)<a name="netalways"></a>| bool |  |  |
+| [](#)<a name=""></a>|  |  |  |
 
 ## Static Fields
 
-Static fields are accessed by the classname, not the instance. For example, we write `Item.staff[item.type]` to check if an item is marked as a staff. Set these values in `ModItem.SetStaticDefaults`.
+Static fields are accessed by the classname, not the instance. For example, we write `NPC.downedPlantBoss` to check if Plantera has been defeated yet.
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [staff ](#staff)<a name="staff"></a>| bool[] | false | Indexed by ItemID. This makes the useStyle animate as a staff instead of as a gun. See [ExampleStaff](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleStaff.cs). If the staff doesn't rotate, make sure `item.shootSpeed` is not 0. |
-| [](#)<a name=""></a>| | |  |
+| [killCount](#killcount)<a name="killcount"></a>| int[] | 0 | Indexed by BannerID. Returns how many kills of the specified BannerID have been killed. Many NPC can share the same BannerID and many NPC actually don't have a Banner ID at all. This code will retrieve the bannerID of an NPC, or -1 if it does not exist: `int bannerID = Item.NPCtoBanner(npc.BannerID());` |
+| [savedTaxCollector](#savedtaxcollector)<a name="savedtaxcollector"></a><br>[savedGoblin](#savedgoblin)<a name="savedgoblin"></a><br>[savedWizard](#savedwizard)<a name="savedwizard"></a><br>[savedMech](#savedmech)<a name="savedmech"></a><br>[savedAngler](#savedangler)<a name="savedangler"></a><br>[savedStylist](#savedstylist)<a name="savedstylist"></a><br>[savedBartender](#savedbartender)<a name="savedbartender"></a>| bool | false | These values indicate which NPC have been found in the wild. You can use these in various conditions in your mod. |
+| [downedBoss1](#downedboss1)<a name="downedboss1"></a><br>[downedBoss2](#downedboss2)<a name="downedboss2"></a><br>[downedBoss3](#downedboss3)<a name="downedboss3"></a><br>[downedQueenBee](#downedqueenbee)<a name="downedqueenbee"></a><br>[downedSlimeKing](#downedslimeking)<a name="downedslimeking"></a><br>[downedGoblins](#downedgoblins)<a name="downedgoblins"></a><br>[downedFrost](#downedfrost)<a name="downedfrost"></a><br>[downedPirates](#downedpirates)<a name="downedpirates"></a><br>[downedClown](#downedclown)<a name="downedclown"></a><br>[downedPlantBoss](#downedplantboss)<a name="downedplantboss"></a><br>[downedGolemBoss](#downedgolemboss)<a name="downedgolemboss"></a><br>[downedMartians](#downedmartians)<a name="downedmartians"></a><br>[downedFishron](#downedfishron)<a name="downedfishron"></a><br>[downedHalloweenTree](#downedhalloweentree)<a name="downedhalloweentree"></a><br>[downedHalloweenKing](#downedhalloweenking)<a name="downedhalloweenking"></a><br>[downedChristmasIceQueen](#downedchristmasicequeen)<a name="downedchristmasicequeen"></a><br>[downedChristmasTree](#downedchristmastree)<a name="downedchristmastree"></a><br>[downedChristmasSantank](#downedchristmassantank)<a name="downedchristmassantank"></a><br>[downedAncientCultist](#downedancientcultist)<a name="downedancientcultist"></a><br>[downedMoonlord](#downedmoonlord)<a name="downedmoonlord"></a><br>[downedTowerSolar](#downedtowersolar)<a name="downedtowersolar"></a><br>[downedTowerVortex](#downedtowervortex)<a name="downedtowervortex"></a><br>[downedTowerNebula](#downedtowernebula)<a name="downedtowernebula"></a><br>[downedTowerStardust](#downedtowerstardust)<a name="downedtowerstardust"></a><br>[downedMechBossAny](#downedmechbossany)<a name="downedmechbossany"></a><br>[downedMechBoss1](#downedmechboss1)<a name="downedmechboss1"></a><br>[downedMechBoss2](#downedmechboss2)<a name="downedmechboss2"></a><br>[downedMechBoss3](#downedmechboss3)<a name="downedmechboss3"></a><br>| sbyte| -1 | These values indicate which bosses have been defeated in the world. Most are self explanitory. `downedBoss1` refers to Eye of Cthulu, `downedBoss2` refers to either Brain of Cthulhu or Eater of Worlds, and `downedBoss3` referes to Skeletron. `downedMechBoss` 1, 2, and 3 refer to The Destroyer, The Twins, and Skeletron Prime respectively. |
 
 ## tModLoader Only
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [modItem](#moditem)<a name="moditem"></a>| ModItem | null | The ModItem instance that controls the behavior of this item. This property is null if this is not a modded item. |
-| [globalItems](#globalitems)<a name="globalitems"></a>| internal GlobalItem[] | new GlobalItem[0] | Do not touch. Use `Item.GetGlobalItem` |
+| [modNPC](#modnpc)<a name="modnpc"></a>| ModNPC | null | The ModNPC instance that controls the behavior of this NPC. This property is null if this is not a modded NPC. |
+| [globalNPCs](#globalnpcs)<a name="globalnpcs"></a>| internal GlobalNPC[] | new GlobalNPC[0] | Do not touch. Use `NPC.GetGlobalNPC` |
 | [](#)<a name=""></a>| | |  |
 
 # Methods
-Remember that static methods are called by writing the classname and non-static methods use the instance name. `Item.NewItem(...)` vs `item.CloneDefaults(...)`
-### public static int NewItem(int X, int Y, int Width, int Height, int Type, int Stack = 1, bool noBroadcast = false, int pfix = 0, bool noGrabDelay = false, bool reverseLookup = false)
-Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. 
-Example: `Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));`
+Remember that static methods are called by writing the classname and non-static methods use the instance name. `NPC.NewNPC(...)` vs `npc.CloneDefaults(...)`
+### public static int NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
+Spawns an NPC in the world. Use this to spawn minions from bosses. 
+Example: `NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ExampleBossMinion");` The `ai` parameters can initialize an NPC with particular data if needed for special AI behavior.
 
-### public static int NewItem(Rectangle rectangle, int Type, int Stack = 1, bool noBroadcast = false, int prefixGiven = 0, bool noGrabDelay = false, bool reverseLookup = false)
-This alternate method signature can simplify code.  
-Example: `Item.NewItem(npc.getRect(), mod.ItemType("ExampleItem"));`
+### public static bool AnyNPCs(int Type)
+Returns true if there are any NPC of the supplied type alive in the world. Useful for boss spawning items or anytime you need to check if an NPC is alive. 
+Example: `if (NPC.AnyNPCs(mod.NPCType("CaptiveElement2"))) {`
+
+### public static int CountNPCS(int Type)
+Same as `AnyNPCs` except returns the number of active NPC of the supplied type.
+
+### public static int FindFirstNPC(int Type)
+Returns the index of the first NPC of the supplied type. Returns -1 if not found. Use to index into `Main.npc` to get the NPC instance.
+
+### public static void SpawnOnPlayer(int plr, int Type)
+Spawns a boss somewhere off screen of the specified player. This is the most common way of spawning bosses.
 
 ## tModLoader Only
-### public GlobalItem GetGlobalItem(Mod mod, string name)
+### public GlobalNPC GetGlobalNPC(Mod mod, string name)
 
-Gets the GlobalItem instance (with the given name and added by the given mod) associated with this item instance.
+Gets the GlobalNPC instance (with the given name and added by the given mod) associated with this npc instance.
 
-### public T GetGlobalItem\<T\>(Mod mod) where T : GlobalItem
+### public T GetGlobalNPC\<T\>(Mod mod) where T : GlobalNPC
 
-Same as the other GetGlobalItem, but assumes that the class name and internal name are the same.
+Same as the other GetGlobalNPC, but assumes that the class name and internal name are the same.
 
-### public T GetGlobalItem\<T\>() where T : GlobalItem
+### public T GetGlobalNPC\<T\>() where T : GlobalNPC
 
-Same as the other GetGlobalItem, but assumes that the class name and internal name are the same, as well as the Mod. This is the one you should use 99% of the time.
+Same as the other GetGlobalNPC, but assumes that the class name and internal name are the same, as well as the Mod. This is the one you should use 99% of the time.
 
 ### public void CloneDefaults(int type)
 
-Allows you to copy the defaults of a different type of item.
+Allows you to copy the defaults of a different type of NPC.
