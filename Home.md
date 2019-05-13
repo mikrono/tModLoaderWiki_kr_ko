@@ -84,6 +84,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Item Class Documentation](Item-Class-Documentation)
 - [Vanilla Item Field Values](Vanilla-Item-Field-Values)
 - [Vanilla Item IDs](Vanilla-Item-IDs)
+- [NPC Class Documentation](NPC-Class-Documentation)
 - [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
 - [Vanilla NPC IDs](Vanilla-NPC-IDs)
 - [BannerToNPC Conversions](BannerToNPC-Conversions)
