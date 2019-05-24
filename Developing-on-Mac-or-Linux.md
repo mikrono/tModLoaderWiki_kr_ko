@@ -1,3 +1,9 @@
+# These instructions do not apply yet
+
+For now, the only instructions are here: [Xamarin/MonoDevelop instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
+
+Everything below this possible relates to tModLoader v0.11, but the instructions do not work yet.
+
 ### Note: Work in Progress, instructions are not completely working or tested yet. Currently there is no implementation to decompile Terraria on Linux/Mac. This means that you need to run the `Setup` tool to decompile Terraria under Windows. This will hopefully soon be implemented on Linux and Mac as well.
 
 # Developing on Mac or Linux
