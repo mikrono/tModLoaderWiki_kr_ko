@@ -206,9 +206,13 @@ if (OptionallySomeCondition && projectile.owner == Main.myPlayer)
 
 ## Homing
 // TODO
+In short:
+You can loop Main.npc, and select a valid target. Then for the target your projectile has, you adjust the velocity of the projectile so it moves towards the target.
 
 ## Follow Mouse
 // TODO
+If you want the projectile to be exactly on the cursor, just set projectile.position to Main.MouseWorld in the AI:
+`projectile.position = Main.MouseWorld` 
 
 ## Held Projectile
 // TODO
