@@ -33,3 +33,7 @@ Learning to read [documentation](http://bluemagic123.github.io/tModLoader/html/a
 ### Virtual and Override
 You may notice that the documentation lists all the hooks as virtual, but all the ExampleMod code has override. This is because we override virtual methods when we inherit from them. [Read about inheritance](https://www.tutorialspoint.com/csharp/csharp_inheritance.htm) again if you've forgotten.
 
+## Vanilla Texture File Reference
+Looking at vanilla texture files and seeing how they are laid out is very useful, especially when you start animating NPC. Terraria stores textures in .xnb files that we can't open normally. The best option is to just extract all the Texture files to .png files and keep them around in a folder so you can look at them whenever you need to.    
+
+Instructions: Download [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) and run it. Fix the `Terraria Content Folder` path if needed, then click `Use Terraria`. Finally, use the folder icon for `Output Folder` to specify where you want to keep the extracted files.  I suggest creating a folder in the ModLoader folder so you can easily find it: `\Documents\My Games\Terraria\ModLoader\VanillaTextures\`. You can uncheck the options other than `Images` if you'd like. Now, click `Extract` and wait for it to finish. From now on, if you are curious how many frames an NPC has, you can simply find the png file corresponding to the NPCID and view it in your image viewer. 
