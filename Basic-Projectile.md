@@ -168,6 +168,8 @@ if (Main.rand.Next(5) == 0) // only spawn 20% of the time
 	Dust.NewDust(projectile.position, projectile.width, projectile.height, choice, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default(Color), 0.7f);
 }
 ```
+### Dust Trail
+A dust trail can be accomplished by spawning 1 dust every AI update.
 
 ## Lighting
 Modders have many different definitions of lighting. If you want to add particles, see the Dust section. If you want the projectile texture to be un-affected by lighting, see `ModProjectile.GetAlpha`. If you want the projectile to give off white light, you can set `projectile.light = 1f;` (or any number between 0 and 1) in `SetDefaults`. Finally, if you want to give off color light NOT from spawned dust, light that lights up nearby tiles, use Lighting.AddLight inside your `AI` method:
