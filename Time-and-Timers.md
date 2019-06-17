@@ -22,7 +22,7 @@ Implementing a timer that counts in ticks is easy, you simply increment a field 
 ## Important Fields
 * `Main.GameUpdateCount` - Each time a world is loaded, this will reset to 0. Incremented by 1 each tick, even while the game is paused. 
 * `NPC.ai[]` and `Projectile.ai[]` - A common approach in vanilla code is to use these arrays as timers.  
-* [`Projectile.timeLeft`](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#timeleft) - Counts down to 0, once 0 is hit, the Projectile will die automatically. By default, will be 3600 (60 seconds), but can be changed in `SetDefaults`. Can be used for a simple timer if 
+* [`Projectile.timeLeft`](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#timeleft) - Counts down to 0, once 0 is hit, the Projectile will die automatically. By default, will be 3600 (60 seconds), but can be changed in `SetDefaults`. Can be used for a simple timer, usually for counting ticks after spawning or before despawning. See example below.
 * [`Projectile.extraUpdates`](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#extraupdates)/`Projectile.MaxUpdates` - This will cause Projectile.Update to run multiple times for special effects. Be aware of this if you are implementing a timer but it seems to be too fast. You'll need to scale your timer logic to account for the additional Updates.
 
 ## Examples
