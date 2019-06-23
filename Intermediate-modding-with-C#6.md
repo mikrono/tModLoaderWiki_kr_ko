@@ -68,7 +68,7 @@ string s = $"Hello {user.name}, how are you on {DateTime.Now}?";
 ## Long list of issues when compiling with c#6
 
 ### !! IMPORTANT !! Possible issues
-**Note: most, if not all, of these issues have been solved since [v0.10.1.2](https://github.com/blushiemagic/tModLoader/releases/tag/v0.10.1.2). If for some reason you are still on an older version, you can see below for various issues and possible fixes.**
+**Note: most, if not all, of these issues have been solved since [v0.10.1.2](https://github.com/tModLoader/tModLoader/releases/tag/v0.10.1.2). If for some reason you are still on an older version, you can see below for various issues and possible fixes.**
 
 You need to include System.Core in some way or form in your code to avoid a bug.
 ```csharp
@@ -90,4 +90,4 @@ To fix this issue, go to your \ModCompile\ folder and look for the `FNA.dll` fil
 Go to your Terraria folder and look for `ReLogic.Native.dll` and _**copy**_ this file to your \ModCompile\ folder, then rename it to `ReLogic.dll` If it now starts mentioning Mac/Linux, copy the file twice more and name them to `ReLogicMac.dll` and `ReLogicLinux.dll`
 
 ### C#6 issues: "An attempt was made to load an assembly from a network location..."
-[See this page](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-FAQ#c-6-issues-an-attempt-was-made-to-load-an-assembly-from-a-network-location).
+[See this page](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-FAQ#c-6-issues-an-attempt-was-made-to-load-an-assembly-from-a-network-location).

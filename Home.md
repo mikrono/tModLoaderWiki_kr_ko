@@ -1,17 +1,17 @@
 # Welcome to the tModLoader wiki!  
 This place serves as a center for guides related to tModLoader. These guides help to teach basic concepts regarding tModLoader modding and should prove as a useful resource to modders. Please feel free to contribute guides for topics not yet covered, but please refrain from editing well established guides without consulting the developers first.
 
-Note that the **[automatically generated documentation](http://blushiemagic.github.io/tModLoader/html/annotated.html)** will be ahead of the current released version. There is no guarantee that everything here will be present in the current released version.
+Note that the **[automatically generated documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)** will be ahead of the current released version. There is no guarantee that everything here will be present in the current released version.
 
 You can navigate through the pages through the links in one of the sidebars on the right.
 
-If you have suggestions, tips, or have found things such as spelling errors or grammar mistakes, please notify us in **[our discord server](https://tmodloader.net/discord)**, **[the forum thead](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/)** or **[open an issue thread](https://github.com/blushiemagic/tModLoader/issues/new)** to suggest a change.
+If you have suggestions, tips, or have found things such as spelling errors or grammar mistakes, please notify us in **[our discord server](https://tmodloader.net/discord)**, **[the forum thead](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/)** or **[open an issue thread](https://github.com/tModLoader/tModLoader/issues/new)** to suggest a change.
 
 A list of useful resources can be found **[here](Useful-Resources)**
 
 Below is a structured list of wiki pages that you can use to learn more about the API.
 
-If you wish to contribute, please view our [contribution guide](https://github.com/blushiemagic/tModLoader#contributing) beforehand.
+If you wish to contribute, please view our [contribution guide](https://github.com/tModLoader/tModLoader#contributing) beforehand.
 
 ## Informative pages
 These pages tend to describe certain files or folders.

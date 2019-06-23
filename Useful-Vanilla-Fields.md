@@ -2,20 +2,20 @@ This is a quick list of the most common vanilla fields and a small description t
 
 Index|
 -----|
-[Item Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#item-fields)|
-[Main Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#main-fields)|
-[NPC Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#npc-fields)|
-[Player Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#player-fields)|
-[Projectile Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#projectile-fields)|
-[WorldGen Fields](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Fields#worldgen-fields)|
+[Item Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#item-fields)|
+[Main Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#main-fields)|
+[NPC Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#npc-fields)|
+[Player Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#player-fields)|
+[Projectile Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#projectile-fields)|
+[WorldGen Fields](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Fields#worldgen-fields)|
 
 # Item Fields
 
-See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#fields-and-properties)
+See [Item Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Item-Class-Documentation#fields-and-properties)
 
 # Main Fields
 
-For `Main.tileSolid` and other Tile related fields, see [Basic Tile](https://github.com/blushiemagic/tModLoader/wiki/Basic-Tile).
+For `Main.tileSolid` and other Tile related fields, see [Basic Tile](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile).
 
 * expertMode; bool
 
@@ -35,7 +35,7 @@ The X and Y coordinates of the world spawn tile.
 
 # NPC Fields
 
-See [NPC Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/NPC-Class-Documentation#fields-and-properties)
+See [NPC Class Documentation](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#fields-and-properties)
 
 # Player Fields
 
@@ -195,7 +195,7 @@ Determines the player's max flight time with wings when not mounted. Defaults to
 
 # Projectile Fields
 
-See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#fields-and-properties)
+See [Projectile Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#fields-and-properties)
 
 # Worldgen Fields
 

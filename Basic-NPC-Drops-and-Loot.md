@@ -8,7 +8,7 @@ We use the NPCLoot method in either our ModNPC class or our GlobalNPC class to s
 There are 2 places we can put NPC loot code. If our mod adds an NPC and we want specific drops for that NPC, please put the relevant code in that ModNPC class. If we want to add drops to vanilla NPC, put code in a GlobalNPC class. If we want to add drops to all NPC, such as how Dungeon Chest keys or Souls drop, put the code in GlobalNPC. Remember, organization is key for maintainability of your mod.
 
 ### Item.NewItem
-Throughout this guide you will see the `Item.NewItem` method being called. See [Useful Vanilla Methods](https://github.com/blushiemagic/tModLoader/wiki/Useful-Vanilla-Methods#public-static-int-newitemint-x-int-y-int-width-int-height-int-type-int-stack--1-bool-nobroadcast--false-int-pfix--0-bool-nograbdelay--false-bool-reverselookup--false) to see the parameters. This method spawns an item into the game world. The item is spawned centered into the area specified by the parameters. 
+Throughout this guide you will see the `Item.NewItem` method being called. See [Useful Vanilla Methods](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Methods#public-static-int-newitemint-x-int-y-int-width-int-height-int-type-int-stack--1-bool-nobroadcast--false-int-pfix--0-bool-nograbdelay--false-bool-reverselookup--false) to see the parameters. This method spawns an item into the game world. The item is spawned centered into the area specified by the parameters. 
 
 ### How do I specify my item?
 In the examples below, we drop a vanilla item: `ItemID.BeeGun`. This can be swapped for an item from your mod by replacing that with `mod.ItemType("ItemName")`

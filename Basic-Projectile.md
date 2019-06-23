@@ -39,13 +39,13 @@ namespace ModNamespaceHere
     }
 }
 ```
-Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
+Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/tModLoader/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
 # I can't find my Projectile
 Remember that Items and Projectiles are different. A common mistake is modders will make a projectile and not understand that they need to make something use that projectile. For example, for a throwing knife weapon, you need to make both an Item and a Projectile. Ammo items need a unique projectile associated with it as well. You don't always need both and item and a projectile, such as if the projectile is spawned by an npc. The easiest way to test a projectile is to make an item and set item.shoot to the projectile. For example, `item.shoot = mod.ProjectileType("MyProjectile")`. See ExampleMod for many examples of Projectiles spawned by Items, they are in separate folders, but they are easy to find. 
 
 # SetDefaults
-The most important part of a Projectile is the SetDefaults. SetDefaults is where you set values for the projectile, things like the hitbox width and height, if the projectile is friendly or hostile, and which AI the projectile will use. See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation) to see what values commonly set in SetDefaults mean. You can also view vanilla projectile values by visiting [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values). Many examples of different projectiles can be found in [ExampleMod.Projectiles](https://github.com/blushiemagic/tModLoader/tree/master/ExampleMod/Projectiles)
+The most important part of a Projectile is the SetDefaults. SetDefaults is where you set values for the projectile, things like the hitbox width and height, if the projectile is friendly or hostile, and which AI the projectile will use. See [Projectile Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation) to see what values commonly set in SetDefaults mean. You can also view vanilla projectile values by visiting [Vanilla Projectile Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Projectile-Field-Values). Many examples of different projectiles can be found in [ExampleMod.Projectiles](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod/Projectiles)
 
 ## projectile.damage
 A commons mistake is setting projectile.damage in `SetDefaults`, this does not work, as the damage value a projectile has is always overwritten by the value passed into `Projectile.NewProjectile` when the projectile is spawned. Usually the item or the npc spawning the item will influence the damage.
@@ -54,13 +54,13 @@ A commons mistake is setting projectile.damage in `SetDefaults`, this does not w
 These are ModProjectile fields related to properly centering a hitbox to a sprite. Read [Drawing and Collision](#drawing-and-collision) for more info.
 
 # Other Hooks/Methods
-The [ModProjectile documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_projectile.html) lists many other hooks/methods you will want to use to make your projectile unique. For example, if you'd like to apply a debuff when the projectile hits, you would use `OnHitNPC`. To do something when the projectile hits a tile, use `OnTileCollide`. See the documentation and usages in ExampleMod to see how to properly use them.
+The [ModProjectile documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_projectile.html) lists many other hooks/methods you will want to use to make your projectile unique. For example, if you'd like to apply a debuff when the projectile hits, you would use `OnHitNPC`. To do something when the projectile hits a tile, use `OnTileCollide`. See the documentation and usages in ExampleMod to see how to properly use them.
 
 # What is AI
 The AI of a projectile is the most important aspect of a projectile, it controls how the projectile moves and acts after it is spawned. It is easiest for new modders to first rely on AI code already used in other vanilla projectiles by assigning `projectile.aiStyle = #;` and `aiType = ProjectileID.NameHere;`. This is called mimicking a vanilla projectile. As you desire more advanced movement, you'll realize that mimicking vanilla projectile AI is very limited. We will discuss mimicking and custom AI below.
 
 # Using Vanilla AI
-We can use vanilla AI to prototype our projectiles. Let's make a boomerang. Using the same aiStyle as the vanilla projectiles that move like a boomerang, we can make a boomerang. You can look up boomerang projectiles in [Vanilla Projectile Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Projectile-Field-Values) and you will discover that boomerangs all use aiStyle of 3:    
+We can use vanilla AI to prototype our projectiles. Let's make a boomerang. Using the same aiStyle as the vanilla projectiles that move like a boomerang, we can make a boomerang. You can look up boomerang projectiles in [Vanilla Projectile Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Projectile-Field-Values) and you will discover that boomerangs all use aiStyle of 3:    
 ![](https://i.imgur.com/RSaxV6T.png)    
 
 We can now use `projectile.aiStyle = 3;` in our code. To make this boomerang even easier, we can use `projectile.CloneDefaults(ProjectileID.EnchantedBoomerang)`, which will copy all the other defaults as well. Doing this, you will get a projectile that almost behaves the same way as the vanilla projectile:    
@@ -78,7 +78,7 @@ public override void SetDefaults()
 	aiType = ProjectileID.EnchantedBoomerang;
 }
 ```
-That dust is cool, but if you want to change the color of that dust or any other small thing, you can't rely on `aiStyle` and `aiType`. To change things, you'll need to consult the [Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide to tweak existing code or read on to learn how to do AI code from scratch. Remember, using `projectile.aiStyle` and `aiType` is a prototyping tool, anything remotely interesting in a mod would likely need to write their own AI code or adapt vanilla code.
+That dust is cool, but if you want to change the color of that dust or any other small thing, you can't rely on `aiStyle` and `aiType`. To change things, you'll need to consult the [Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide to tweak existing code or read on to learn how to do AI code from scratch. Remember, using `projectile.aiStyle` and `aiType` is a prototyping tool, anything remotely interesting in a mod would likely need to write their own AI code or adapt vanilla code.
 
 # Custom AI
 This section will discuss elements you can incorporate into your AI. Remember to set `projectile.aiStyle` back to 0 if you are using `projectile.CloneDefaults` to copy other projectile defaults. All code for custom AI goes into the `ModProjectile.AI` method.
@@ -189,7 +189,7 @@ if (projectile.soundDelay == 0)
 ```
 
 ## Splitting/Spawning Projectiles
-Crystal Bullet and the Scourge of the Corruptor projectile (EatersBite) both spawn new projectiles when they die. We typically see spawning projectiles in `Kill` or `OnTileCollide`, but we can do it in `AI` as well. When spawning projectiles, we need to be aware of [Multiplayer Compatibility](https://github.com/blushiemagic/tModLoader/wiki/Multiplayer-Compatibility#projectile--modprojectile) and be sure to only spawn projectiles when `Main.myPlayer == projectile.owner` is true to prevent issues. Scaling down projectile.damage is typical. See [Projectile.NewProjectile](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectilefloat-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f) to see the parameters.
+Crystal Bullet and the Scourge of the Corruptor projectile (EatersBite) both spawn new projectiles when they die. We typically see spawning projectiles in `Kill` or `OnTileCollide`, but we can do it in `AI` as well. When spawning projectiles, we need to be aware of [Multiplayer Compatibility](https://github.com/tModLoader/tModLoader/wiki/Multiplayer-Compatibility#projectile--modprojectile) and be sure to only spawn projectiles when `Main.myPlayer == projectile.owner` is true to prevent issues. Scaling down projectile.damage is typical. See [Projectile.NewProjectile](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectilefloat-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f) to see the parameters.
 ```cs
 // This code spawns 3 projectiles in the opposite direction of the projectile, with random variance in velocity.
 if (OptionallySomeCondition && projectile.owner == Main.myPlayer)
@@ -227,13 +227,13 @@ if (projectile.alpha > 0)
 	projectile.alpha -= 15; // Decrease alpha, increasing visibility.
 }
 ```
-[`ExampleAnimatedPierce`](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs) shows using both fading in and out.
+[`ExampleAnimatedPierce`](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs) shows using both fading in and out.
 
 ## Animation/Multiple Frames
 Projectile animation, switching which frame of the sprite to draw, happens in AI. Make sure to set `Main.projFrames[projectile.type] = #;` in `SetStaticDefaults` first. You can set `projectile.frame` to whatever frame you want to be drawn. 
 
 ### Looping/Cycling
-You can use `projectile.frameCounter` and `Main.projFrames[projectile.type]` to implement a looping animation. Example: [ExampleAnimatedPierce](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs)
+You can use `projectile.frameCounter` and `Main.projFrames[projectile.type]` to implement a looping animation. Example: [ExampleAnimatedPierce](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs)
 ```cs
 // Loop through the 4 animation frames, spending 5 ticks on each.
 if (++projectile.frameCounter >= 5)
@@ -270,13 +270,13 @@ Our goal is to have the yellow part of this projectile be the hitbox. The yellow
 
 Here we see the hitbox, the yellow square, doesn't match up with the tip of our sprite: [High Quality Video](https://gfycat.com/SimpleMinorImperialeagle)    
 ![](https://thumbs.gfycat.com/SimpleMinorImperialeagle-small.gif)    
-The math for what vanilla code is doing is a little confusing, but basically we need to set `drawOffsetX` and `drawOriginOffsetY` to values that offset the drawing of our sprite in an attempt to properly place the sprite over the hitbox. If you are attempting this, either use [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) to change the offset values in-game or use [Edit and Continue](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to adjust the values in-game. Another approach is to just measure it out on the sprite itself in your graphics program:    
+The math for what vanilla code is doing is a little confusing, but basically we need to set `drawOffsetX` and `drawOriginOffsetY` to values that offset the drawing of our sprite in an attempt to properly place the sprite over the hitbox. If you are attempting this, either use [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) to change the offset values in-game or use [Edit and Continue](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to adjust the values in-game. Another approach is to just measure it out on the sprite itself in your graphics program:    
 ![](https://i.imgur.com/m5DxkBm.png)   
 Here we see testing various values with Modders Toolkit. Make sure to replicate these values in your `SetDefaults` code: [High Quality Video](https://gfycat.com/MintyCharmingCopperhead)    
 ![](https://thumbs.gfycat.com/MintyCharmingCopperhead-small.gif)     
 After some experimentation or measuring, we know that adding `drawOffsetX = -20;` to this `ModProjectile.SetDefaults` will fix the positioning of the drawing relative to the hitbox.
 
-Lets now try to position the hitbox over the blue portion of our sprite. This time, lets use [Edit and Continue](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to accomplish this. In the clip below, you can see how quickly we can test out new values: [High Quality Video](https://gfycat.com/WebbedUntimelyHarborseal)      
+Lets now try to position the hitbox over the blue portion of our sprite. This time, lets use [Edit and Continue](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) to accomplish this. In the clip below, you can see how quickly we can test out new values: [High Quality Video](https://gfycat.com/WebbedUntimelyHarborseal)      
 ![](https://thumbs.gfycat.com/WebbedUntimelyHarborseal-small.gif)    
 As you saw, we added `drawOriginOffsetY = -16;` to position the hitbox lower on the sprite.
 
@@ -309,7 +309,7 @@ drawOriginOffsetX = X pixel position of center of hitbox minus Texture Width div
 ```
 Here is a diagram:
 ![](https://i.imgur.com/zQfxXM3.png)    
-If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAnimatedPierce Projectile](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L114)
+If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAnimatedPierce Projectile](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L114)
 
 ### Fixing upside-down sprite problem again
 With the vertical sprite, using `projectile.spriteDirection` works because it controls a horizontal flip of the projectile sprite. Using a horizontal sprite, a horizontal flip makes the sprite move facing backwards:    

@@ -8,7 +8,7 @@ Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2
 Below are some things to keep in mind as you use `TagCompound`.
 
 ## Compatible Data Types
-All primitive data types are supported as well as byte[], int[] and Lists of other supported data types. Usually we use the methods like `GetInt` or `GetBool`, but we can use `Get<Type>` for Types without specific methods defined. See the [TagCompound documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_i_o_1_1_tag_compound.html) or rely on your IDEs [autocomplete](https://github.com/blushiemagic/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) to find the method you want. In addition to the types suggested by the method names, `ushort`, `uint`, `ulong`, `Vector2`, `Vector3`, `Item`, `Color`, `Point16`, and `Rectangle` are also supported. Additional support can be implemented either by implementing `TagSerializable` or by nesting `TagCompound`s manually.
+All primitive data types are supported as well as byte[], int[] and Lists of other supported data types. Usually we use the methods like `GetInt` or `GetBool`, but we can use `Get<Type>` for Types without specific methods defined. See the [TagCompound documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_i_o_1_1_tag_compound.html) or rely on your IDEs [autocomplete](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) to find the method you want. In addition to the types suggested by the method names, `ushort`, `uint`, `ulong`, `Vector2`, `Vector3`, `Item`, `Color`, `Point16`, and `Rectangle` are also supported. Additional support can be implemented either by implementing `TagSerializable` or by nesting `TagCompound`s manually.
 
 ## Mod Version Updates
 Using `TagCompound` helps modders update mods smoothly. For example, if v1.0 of a mod saves only `a`, but v2.0 saves both `a` and `b`, the modder doesn't need to make extra checks validating the value or presence of `b` for most situations. They'd only need to do extra effort if `b` has a non-default value. For example, `b = tag.GetInt("b");` will return the default value of int if the value does not exist in the `TagCompound`, and the default value of int is 0. If 0 is the value the mod would expect for a missing entry, this works out well. If a non-default value is what the mod expects for a missing entry, the following approach can be used:
@@ -59,13 +59,13 @@ In the above example, we make sure to set `MySpecialBool` to false in `ModWorld.
 
 # Examples
 Here are links to various examples in ExampleMod and other mods, in order of complexity:
-* [ExamplePlayer](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) - ModPlayer - Simple Example, 2 numbers
-* [ExampleWorld](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleWorld.cs) - ModWorld - List of strings
-* [TEScoreBoard](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) - ModTileEntity - Simple Dictionary
-* [ExampleInstancedGlobalItem](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs) - GlobalItem - Shows using NeedsSaving so we don't waste storage space.
+* [ExamplePlayer](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) - ModPlayer - Simple Example, 2 numbers
+* [ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs) - ModWorld - List of strings
+* [TEScoreBoard](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) - ModTileEntity - Simple Dictionary
+* [ExampleInstancedGlobalItem](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs) - GlobalItem - Shows using NeedsSaving so we don't waste storage space.
 * [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/master/DisableCorruptionSpread.cs) - ModWorld - Shows `nameof` and `tag.ContainsKey` usage.
 * [AutoTrashPlayer](https://github.com/JavidPack/AutoTrash/blob/master/AutoTrashPlayer.cs) - ModPlayer - Saving and Loading a list of `Item`s.
-* [Item](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria/Item_tML.cs) (and [ItemIO](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ModLoader.IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
+* [Item](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria/Item_tML.cs) (and [ItemIO](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria.ModLoader.IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
 
 # Simple Example
 
@@ -132,7 +132,7 @@ Note: If an entry is missing, an empty list rather than null will be returned fr
 Saving and loading a dictionary can be done, but take a little effort. One approach is to save the keys and values as lists and then reconstruct the `Dictionary` by using the `Zip` method:
 
 ```cs
-// This code can be found in TEScoreBoard in ExampleMod: https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs
+// This code can be found in TEScoreBoard in ExampleMod: https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs
 using System.Linq;
 
 internal Dictionary<string, int> scores = new Dictionary<string, int>();
@@ -347,7 +347,7 @@ Here is the data that is saved for this example:
 
 # Other Topics
 ## GlobalItem.NeedsSaving
-Saving data in GlobalItem will quickly explode the filesize of player and world saves. Use the NeedsSaving method to prevent saving useless data. See [ExampleInstancedGlobalItem](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs)
+Saving data in GlobalItem will quickly explode the filesize of player and world saves. Use the NeedsSaving method to prevent saving useless data. See [ExampleInstancedGlobalItem](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs)
 
 ## nameof operator
 The `nameof` operator is available to those using c#6, it can simplify some things, but be careful. (See [nameof documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)) The `nameof` operator can help avoid spelling mistakes between Load and Save. Be careful, however, of refactor-renaming variables in your mod (the F2 command in Visual Studio). If you rename a ModPlayer variable that is saved using `nameof`, for example, your mod will lose data when your users update the mod. See below for an example. Notice how we don't need to write `"CorruptionSpreadDisabled"` to specify the key, risking a spelling error that would be hard to catch. 

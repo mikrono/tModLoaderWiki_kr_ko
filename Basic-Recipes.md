@@ -15,7 +15,7 @@ Now, we add up to 14 different items we want the recipe to be crafted with:
 AddIngredient also takes an optional argument for specifying a stack size:
 
     recipe.AddIngredient(ItemID.Chain, 10);
-The previous examples added vanilla items to the recipe by referencing the ItemID class. With a capable IDE such as Visual Studio, you will find autocomplete and intellisense very useful, but you can also [look up ItemID names or values here](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs). 
+The previous examples added vanilla items to the recipe by referencing the ItemID class. With a capable IDE such as Visual Studio, you will find autocomplete and intellisense very useful, but you can also [look up ItemID names or values here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs). 
 
 We can also add modded items added by this mod. There are several ways we can do this. Go for whatever approach you like:
 
@@ -29,7 +29,7 @@ recipe.AddIngredient(mod.ItemType("ExampleItem"));
 recipe.AddIngredient(mod.ItemType<Items.ExampleItem>());
 ```
 
-Next, we can specify up to 14 crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs).
+Next, we can specify up to 14 crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs).
 
 ```cs
 recipe.AddTile(TileID.WorkBenches);
@@ -175,10 +175,10 @@ Check that your AddRecipes method has override not virtual.
 Make sure you are only overriding AddRecipes in Mod or ModItem.
 
 ## Relevant References
-* [Vanilla ItemIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Item-IDs)
-* [Vanilla TileIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
-* [ModRecipe Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
-* [Mod Documentation](http://bluemagic123.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html)
+* [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs)
+* [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
+* [ModRecipe Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
+* [Mod Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html)
 
 ## Not covered in Basic level
 There are other aspects of ModRecipes that will be covered in more advanced guides:

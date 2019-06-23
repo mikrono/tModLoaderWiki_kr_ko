@@ -1,6 +1,6 @@
 ### "Terraria.ModLoader.Mod.GetTexture(String name)" error
 ___
-This error means that tModLoader can't find the Texture that you have specified. You may be thinking, "Where did I specify the Texture to use?", and to answer that, you should read the [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) page.  
+This error means that tModLoader can't find the Texture that you have specified. You may be thinking, "Where did I specify the Texture to use?", and to answer that, you should read the [Autoload](https://github.com/tModLoader/tModLoader/wiki/Basic-Autoload) page.  
 
 Now that you read about Autoloading, you now know that the texture is derived from the namespace and classname of the class. If you don't know what namespace and classname are: [Google](http://www.google.com)
 
@@ -25,7 +25,7 @@ A visual explanation:
 
 ### "Sequence contains no matching element" error
 ___
-This means your Mod doesn't contain any class extending from Mod. If you went through the [Basic Modding Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-tModLoader-Modding-Guide) you should notice that one of the files has `class MyMod : Mod`. Make sure you have 1 and only 1 of these classes in your mod.
+This means your Mod doesn't contain any class extending from Mod. If you went through the [Basic Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) you should notice that one of the files has `class MyMod : Mod`. Make sure you have 1 and only 1 of these classes in your mod.
 
 ### "error CS0234: The type or namespace name 'X' does not exist in the namespace 'Y' (are you missing an assembly reference?)"
 ___
@@ -45,11 +45,11 @@ This is because the computer doesn't know what the ItemID class is. You need to 
 
 ### You must add a reference to assembly 'Relogic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ___
-If you are using Visual Studio, you might need to add a [reference to Relogic.dll](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#error-cs0246-the-type-or-namespace-name-relogic-could-not-be-found)
+If you are using Visual Studio, you might need to add a [reference to Relogic.dll](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio#error-cs0246-the-type-or-namespace-name-relogic-could-not-be-found)
 
 ### Error CS0161: 'ExampleItem.UseItem(Player)' (or some other hook): not all code paths return a value
 ___
-Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://blushiemagic.github.io/tModLoader/html/index.html) to know what value to return.
+Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://tmodloader.github.io/tModLoader/html/index.html) to know what value to return.
 
 ### C# 6 issues: "An attempt was made to load an assembly from a network location..."
 This is related to Windows blocking downloaded files. What happens is the downloaded tModLoader zip file is marked as "blocked" or "downloaded from the internet", and when you use the default windows unzipping process, all unzipped files are also marked as well. Those files need to be unblocked to properly function. The easiest way to do this is to first unblock the tModLoader download and then install tModLoader again. Do this by pressing selecting the zip file in the file explorer and pressing the shortcut "alt-enter" or right clicking on the file and selecting Properties. Then simply click unblock and then press Ok. Windows 7 and 8 might look different:  

@@ -1,10 +1,10 @@
 This is a collection of vanilla methods that are useful when modding. This list is meant as a quick reference to the most commonly used methods, but with more advanced mods it is highly recommended to add Terraria as a reference to your IDE since this list isn't exhaustive.
 
 ## Item  
-See [Item Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#methods)
+See [Item Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Item-Class-Documentation#methods)
 
 ## Projectile  
-See [Projectile Class Documentation](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#methods)
+See [Projectile Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#methods)
 
 ## Dust  
 ### public static int NewDust(Vector2 Position, int Width, int Height, int Type, float SpeedX = 0f, float SpeedY = 0f, int Alpha = 0, Color newColor = default(Color), float Scale = 1f)

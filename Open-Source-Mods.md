@@ -8,9 +8,9 @@ The following is a list of Open Source Mods (not all are technically "Open Sourc
 
 ## Content Mods
 These mods are mods that add _a lot_ of common things such as items, enemies, and bosses
-* [Example Mod](https://github.com/blushiemagic/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
+* [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Cave Story](https://github.com/JavidPack/CaveStory) -- Very open to contributions. 
-* [Bluemagic's Mod](https://github.com/bluemagic123/ElementalUnleash) -- Good resource for learning how to code Boss AI
+* [Bluemagic's Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.

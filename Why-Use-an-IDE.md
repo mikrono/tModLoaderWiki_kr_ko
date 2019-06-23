@@ -29,7 +29,7 @@ A common problem with new modders is that they don't know all the Terraria varia
 ![](https://i.imgur.com/CkGOuta.png)
 
 ### ItemIDs, NPCIDs, ProjectilesIDs, etc...
-While you can waste your time looking up various vanilla IDs in our [reference pages](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-IDs), it is much easier to just let Autocomplete do the work for us! Simply start typing your guess for the ID name and you will quickly see suggestions. You can select a suggestion to autocomplete it. How nice is that?    
+While you can waste your time looking up various vanilla IDs in our [reference pages](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs), it is much easier to just let Autocomplete do the work for us! Simply start typing your guess for the ID name and you will quickly see suggestions. You can select a suggestion to autocomplete it. How nice is that?    
 ![](https://i.imgur.com/8VpUJFF.png)
 
 ## Method names and parameters
@@ -48,13 +48,13 @@ After:
 With an IDE, such as VS, you can debug your mod. Debugging is the best way to pinpoint issues in your mod and solve them. While debugging, you can set 'breakpoints' which will make the application 'stop' and pause itself when it gets to that point. During this pause you can inspect what is happening, by for example looking at the values of variables in scope. You can quickly resume the application, or step over code to try to find the cause of a problem. To learn more about debugging, see its [own guide](Learn-How-To-Debug).
 
 ## Edit And Continue
-With Edit And Continue (or eac) you can edit code after you've hit a breakpoint and see the effect of your edits in game immediately, rather than having to rebuild your mod manually. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading, so they cannot benefit from eac.
+With Edit And Continue (or eac) you can edit code after you've hit a breakpoint and see the effect of your edits in game immediately, rather than having to rebuild your mod manually. This is extremely useful for positioning projectile spawns or tweaking item defaults. Be sure to [setup edit and continue](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio#edit-and-continue) in order to use this feature. Note that things like `ModItem.SetStaticDefaults`, `ModTile.SetDefaults`, or other code might only run when the mod is loading, so they cannot benefit from eac.
 
 ### Simple Example
 In this video, we see 2 Example Gun spawned. After the first is spawned, a breakpoint is set in SetDefaults. Once it is hit, the game is paused and Visual Studio comes to the front. Then, `item.damage` is changed from 40 to 80. We press continue and we can hover over the 2 items and see that the second item was spawned with 80 damage. [Watch this in action.](https://gfycat.com/CriminalGrossBasenji)   
 
 ### Another Example
-In the [Basic Projectile: Drawing and Collision](https://github.com/blushiemagic/tModLoader/wiki/Basic-Projectile#drawing-and-collision) guide, an example is shown using a breakpoint to test values for `ModProjectile.SetDefaults`: [Video](https://gfycat.com/WebbedUntimelyHarborseal)
+In the [Basic Projectile: Drawing and Collision](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#drawing-and-collision) guide, an example is shown using a breakpoint to test values for `ModProjectile.SetDefaults`: [Video](https://gfycat.com/WebbedUntimelyHarborseal)
 
 # Documentation
 If you have the tML XMLdoc file, you can see documentation for a method when you hover it.

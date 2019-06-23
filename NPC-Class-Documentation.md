@@ -3,17 +3,17 @@ This page lists methods and fields pertaining to the NPC class. This page is use
 
 Index|
 -----|
-[Fields](https://github.com/blushiemagic/tModLoader/wiki/NPC-Class-Documentation#fields-and-properties)|
-[Methods](https://github.com/blushiemagic/tModLoader/wiki/NPC-Class-Documentation#methods)|
+[Fields](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#fields-and-properties)|
+[Methods](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#methods)|
 
 # Fields and Properties
-You can assign these fields to give your ModNPC various values. Typically you'll want to refer to this page when writing code for `ModNPC.SetDefaults` and `ModNPC.AI`. Be sure to visit [Vanilla NPC Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-NPC-Field-Values) to see what values vanilla npc use for these fields. All fields listed are public unless otherwise noted.
+You can assign these fields to give your ModNPC various values. Typically you'll want to refer to this page when writing code for `ModNPC.SetDefaults` and `ModNPC.AI`. Be sure to visit [Vanilla NPC Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) to see what values vanilla npc use for these fields. All fields listed are public unless otherwise noted.
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [width](#width)<a name="width"></a>| int | 0 | The width of the npc hitbox |
 | [height](#height)<a name="height"></a>| int | 0 | The height of the npc hitbox |
-| [aiStyle](#aistyle)<a name="aistyle"></a>| int | 0 | Determines which AI code to run. Many NPC share the same AI code by having the same aiStyle. ModNPC can utilize vanilla aiStyle values in addition to ModNPC.aiType to mimic vanilla behavior to some degree. If you wish to further customize the AI of a ModNPC, you should read [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption). |
+| [aiStyle](#aistyle)<a name="aistyle"></a>| int | 0 | Determines which AI code to run. Many NPC share the same AI code by having the same aiStyle. ModNPC can utilize vanilla aiStyle values in addition to ModNPC.aiType to mimic vanilla behavior to some degree. If you wish to further customize the AI of a ModNPC, you should read [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption). |
 | [damage](#damage)<a name="damage"></a>| int | 0 | The amount of damage this NPC will deal on collision. Usually npc.damage is scaled by some factor when NPC spawn projectiles with Projectile.NewProjectile in AI code. For example, passing in `(int)(npc.damage * 0.5f)` as the Damage parameter. |
 | [defDamage](#defdamage)<a name="defdamage"></a>| int | 0 | Stores the value of `damage` at the end of SetDefaults. Useful for scaling damage in AI code. |
 | [defense](#defense)<a name="defense"></a>| int | 0 | How resistant to damge this NPC is. |

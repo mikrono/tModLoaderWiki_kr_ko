@@ -20,7 +20,7 @@ Why do we need a good text editor? A good text editor can open multiple files in
 ![](http://i.imgur.com/sViDiZ2.png)
 
 ## What about Visual Studio or other IDEs?
-You might have heard of Visual Studio. We will discuss IDEs later in [Intermediate Prerequisites](https://github.com/bluemagic123/tModLoader/wiki/Intermediate-Prerequisites). If you feel confident, feel free to skip the Text Editor stage of skill to go straight to the IDE stage.
+You might have heard of Visual Studio. We will discuss IDEs later in [Intermediate Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Prerequisites). If you feel confident, feel free to skip the Text Editor stage of skill to go straight to the IDE stage.
 
 ## Drawing Program
 One last thing you will need is a picture editor. We will make all our sprites in this program. Paint will NOT work, as it can not save transparent pixels. See below for commonly used programs used by modders:
@@ -28,4 +28,4 @@ One last thing you will need is a picture editor. We will make all our sprites i
 * [Piskel](http://www.piskelapp.com/) -- Free and quite popular amongst spriters
 
 ## Make a simple Mod
-Now that you are prepared, please visit [Basic tModLoader Modding Guide](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Modding-Guide) and follow the steps within before attempting any Basic-Level guides.
+Now that you are prepared, please visit [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) and follow the steps within before attempting any Basic-Level guides.

@@ -1,8 +1,8 @@
 - **Learn the basics of using tModLoader for both players and modders**
-- If you run into problems, see the [Usage FAQ](https://github.com/bluemagic123/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)  
+- If you run into problems, see the [Usage FAQ](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)  
 
 # Installing tModLoader
-1. Download the latest tModLoader: [Download Page](https://github.com/bluemagic123/tModLoader/releases/latest)
+1. Download the latest tModLoader: [Download Page](https://github.com/tModLoader/tModLoader/releases/latest)
 2. Extract the folder you downloaded.
 3. Install: 
    * Do not run the installer.jar file, follow the instructions in readme.txt

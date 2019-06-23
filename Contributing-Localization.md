@@ -88,9 +88,9 @@ Congratulations! You have now contributed the localization, and if the mod owner
 You can test your localizations by building the mod source from your personal fork. If you have not setup a modding environment then you should probably leave this to the owner of the mod you are helping out.
 
 ## tModLoader Translations
-tModLoader itself doesn't use .lang files, but .json files. The process is roughly the same, except for the structure of the files. Navigate to the [tModLoader source folder](https://github.com/blushiemagic/tModLoader/tree/master/patches/tModLoader) and find the .json file you want to edit. Open the file and look for lines with Key Values that have `//` before them. These files are missing translations. Follow the same procedure as with translating mods. Fork, edit, and pull request. Remember to only change the right side and remove the `//` from the lines you localize.
+tModLoader itself doesn't use .lang files, but .json files. The process is roughly the same, except for the structure of the files. Navigate to the [tModLoader source folder](https://github.com/tModLoader/tModLoader/tree/master/patches/tModLoader) and find the .json file you want to edit. Open the file and look for lines with Key Values that have `//` before them. These files are missing translations. Follow the same procedure as with translating mods. Fork, edit, and pull request. Remember to only change the right side and remove the `//` from the lines you localize.
 
 ## Miscellaneous 
 * Newlines can be added with `\n` interspersed in the Value.   
-* Don't put spaces in Keys. See [ExampleMod .lang files](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for more info on spaces in Keys.
-* Reuse vanilla and modded keys via `{$Full.Key.Name}`. See [ExampleMod .lang files](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for this as well.
+* Don't put spaces in Keys. See [ExampleMod .lang files](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for more info on spaces in Keys.
+* Reuse vanilla and modded keys via `{$Full.Key.Name}`. See [ExampleMod .lang files](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for this as well.

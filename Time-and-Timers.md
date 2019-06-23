@@ -22,8 +22,8 @@ Implementing a timer that counts in ticks is easy, you simply increment a field 
 ## Important Fields
 * `Main.GameUpdateCount` - Each time a world is loaded, this will reset to 0. Incremented by 1 each tick, even while the game is paused. 
 * `NPC.ai[]` and `Projectile.ai[]` - A common approach in vanilla code is to use these arrays as timers.  
-* [`Projectile.timeLeft`](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#timeleft) - Counts down to 0, once 0 is hit, the Projectile will die automatically. By default, will be 3600 (60 seconds), but can be changed in `SetDefaults`. Can be used for a simple timer, usually for counting ticks after spawning or before despawning. See example below.
-* [`Projectile.extraUpdates`](https://github.com/blushiemagic/tModLoader/wiki/Projectile-Class-Documentation#extraupdates)/`Projectile.MaxUpdates` - This will cause Projectile.Update to run multiple times for special effects. Be aware of this if you are implementing a timer but it seems to be too fast. You'll need to scale your timer logic to account for the additional Updates.
+* [`Projectile.timeLeft`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#timeleft) - Counts down to 0, once 0 is hit, the Projectile will die automatically. By default, will be 3600 (60 seconds), but can be changed in `SetDefaults`. Can be used for a simple timer, usually for counting ticks after spawning or before despawning. See example below.
+* [`Projectile.extraUpdates`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#extraupdates)/`Projectile.MaxUpdates` - This will cause Projectile.Update to run multiple times for special effects. Be aware of this if you are implementing a timer but it seems to be too fast. You'll need to scale your timer logic to account for the additional Updates.
 
 ## Examples
 In these examples, we'll use `ModNPC.AI` or `ModProjectile.AI` to advance our timers. 
@@ -38,7 +38,7 @@ if(projectile.ai[0] > 120) {
     projectile.ai[0] = 0;
 }
 ```
-[ExampleAnimatedPierce.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L74) shows using a timer to start fading out the projectile after 50 ticks.    
+[ExampleAnimatedPierce.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L74) shows using a timer to start fading out the projectile after 50 ticks.    
 
 We can use a property to make the code much easier to read:   
 ```cs
@@ -58,10 +58,10 @@ public override void AI() {
 	// Other code...
 }
 ```
-[FlutterSlime.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/FlutterSlime.cs#L67) shows this approach in practice.
+[FlutterSlime.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/FlutterSlime.cs#L67) shows this approach in practice.
 
 ### Timer Using New Field
-`npc.ai[]` and `projectile.ai[]` are synced automatically over the multiplayer network by the game, but you can make new fields in your `ModNPC` or `ModProjectile` class. This makes the code much easier to read, but you might need to sync this extra data. Read [Multiplayer Compatibility](https://github.com/blushiemagic/tModLoader/wiki/Multiplayer-Compatibility#npc--modnpc) if you want to learn more. Some data won't need to be synced, so try to familiarize yourself with when data needs to be synced.
+`npc.ai[]` and `projectile.ai[]` are synced automatically over the multiplayer network by the game, but you can make new fields in your `ModNPC` or `ModProjectile` class. This makes the code much easier to read, but you might need to sync this extra data. Read [Multiplayer Compatibility](https://github.com/tModLoader/tModLoader/wiki/Multiplayer-Compatibility#npc--modnpc) if you want to learn more. Some data won't need to be synced, so try to familiarize yourself with when data needs to be synced.
 
 Making a new field to act as a timer is simple:
 ```cs
@@ -83,7 +83,7 @@ public class ExampleBullet : ModProjectile
 	}
 }
 ```    
-ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/Abomination/Abomination.cs#L228). [More Examples](https://github.com/blushiemagic/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
+ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/Abomination/Abomination.cs#L228). [More Examples](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
 
 ### Projectile One Time Timer Using projectile.timeLeft
 If you need something to happen once X ticks after spawning, you can take advantage of `projectile.timeLeft` (you may want to change `projectile.timerLeft` in `ModProjectile.SetDefaults` to something smaller):
@@ -111,8 +111,8 @@ Here are the important fields relating to World Time:
 * `Main.dayRate` - Normally 1. 60 while enchanted sundial is happening. The value is added to `Main.time` during the `Main.UpdateTime` method.
 
 ## Intended Use
-* [NPC Spawning](https://github.com/blushiemagic/tModLoader/wiki/Basic-NPC-Spawning)
-* World Update events, such as the [Volcano event in ExampleWorld](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleWorld.cs#L405)
+* [NPC Spawning](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Spawning)
+* World Update events, such as the [Volcano event in ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs#L405)
 
 ## Wall Time
 When you are a beginner modder, you may find yourself googling "c# timer" in an attempt to code up something for your mod. If you did, you found examples of using `System.Timers`. Those concepts do not apply to video games or tModLoader modding at all, as they are examples of Wall Time. You'll need to consult [World Time](#world-time) and [Game Time](#game-time) above to determine the correct approach. Again, any usage of `System.Timers` is almost certainly the wrong approach. It'll be buggy and incorrect when the user pauses the game or uses an enchanted sundial.

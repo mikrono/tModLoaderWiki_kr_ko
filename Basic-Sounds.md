@@ -47,8 +47,8 @@ To use a vanilla sound, first you must figure out which one you want. Below are 
 
 ### Spread Sheets
 Look up UseSound, HitSound, and DeathSound of vanilla Items and NPC here:
-[Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values)
-[Vanilla NPC Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-NPC-Field-Values)
+[Vanilla Item Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-Field-Values)
+[Vanilla NPC Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values)
 Note: The spread sheets are currently out of date, so you'll have to convert the number it says to a LegacySoundStyle instance. For example, if the useSound of an item says "20", you'll have to change that to "SoundID.Item20".
 
 ### Source Code (Expert Prerequisites needed)
@@ -131,7 +131,7 @@ Run your .wav through [Audacity](http://www.audacityteam.org/download/) using `F
 4. Sample rate must be between 8,000 Hz and 48,000 Hz
 
 ## Relevant References
-* [Vanilla SoundIDs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Sound-IDs)
+* [Vanilla SoundIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Sound-IDs)
 
 ## Not covered in Basic level
 ModSound -- A way to allow overlapping sounds and other advanced things.    

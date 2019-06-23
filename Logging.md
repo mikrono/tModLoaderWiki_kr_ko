@@ -4,7 +4,7 @@ Starting with tModLoader releases _above version 0.10.1.5_, the API uses the [lo
 # Prerequisites
 1. To use this logging in your mod, you must have a release _above version 0.10.1.5_.
 1. If you use an IDE (such as VS), you must also have a reference to the log4net.dll file.
-   1. It is recommended to take the one tML uses, located in the [/references](https://github.com/blushiemagic/tModLoader/tree/master/references) path.
+   1. It is recommended to take the one tML uses, located in the [/references](https://github.com/tModLoader/tModLoader/tree/master/references) path.
    1. As per usual, if you want to put this reference inside your mod source directory then you should put it inside your /lib path, and ensure /lib is ignored during the build process.
 
 # Improvements

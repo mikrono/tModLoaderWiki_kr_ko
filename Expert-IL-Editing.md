@@ -7,8 +7,8 @@ Be aware that the Common Language Runtime (CLR) will in-line short methods at ru
 
 ## Prerequisites
 * [dnSpy](https://github.com/0xd4d/dnSpy) - We will use the compile functionality to help design our patch.
-* [Expert Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Expert-Prerequisites) - You will fail if you don't know how to debug.
-* [Advanced Vanilla Code Adaption](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) - Familiarity with finding things in the Terraria source code is very helpful.
+* [Expert Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Expert-Prerequisites) - You will fail if you don't know how to debug.
+* [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) - Familiarity with finding things in the Terraria source code is very helpful.
 * Visual Studio or similar IDE is required.
 
 ## Code Layout
@@ -191,7 +191,7 @@ IL_0042: ret
 By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on the patch code. Finally!    
 
 ## Patch Code
-Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on [WaspNest.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).
+Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).
 
 ### Common Ideas
 The first concept to explore is loading our patch. Since this patch pertains to a new ModItem in our mod, lets add the patch to `ModItem.Autoload`. Simply override `Autoload` and type `IL.Terraria.Player.beeType += HookBeeType;` and then allow Visual Studio to generate the HookBeeType method for us. If Visual Studio doesn't understand the `IL.Terraria` namespace, make sure to add a dll reference to the MonoMod and TerrariaHooks dlls found in `Documents\My Games\Terraria\ModLoader\references`. 
@@ -268,7 +268,7 @@ c.MarkLabel(label); // The cursor is still pointing to the ldc.i4 566 instructio
 ```
 
 ## Results
-The full code can be explored on [WaspNest.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).    
+The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).    
 Lets watch a Bee weapon in action after applying our patch ([video](https://gfycat.com/QuerulousParchedJaguar)):    
 ![](https://thumbs.gfycat.com/QuerulousParchedJaguar-size_restricted.gif)    
 
@@ -276,7 +276,7 @@ As a reminder, this is how it used to act ([video](https://gfycat.com/Magnificen
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    
 
 # Example - Lava Snail Statue Spawn
-See [ExampleCritter.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
+See [ExampleCritter.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
 
 # Other Examples
 The following examples from other mods can be explored as well:

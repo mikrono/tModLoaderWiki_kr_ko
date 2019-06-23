@@ -3,11 +3,11 @@ This page lists methods and fields pertaining to the Item class. This page is us
 
 Index|
 -----|
-[Fields](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#fields-and-properties)|
-[Methods](https://github.com/blushiemagic/tModLoader/wiki/Item-Class-Documentation#methods)|
+[Fields](https://github.com/tModLoader/tModLoader/wiki/Item-Class-Documentation#fields-and-properties)|
+[Methods](https://github.com/tModLoader/tModLoader/wiki/Item-Class-Documentation#methods)|
 
 # Fields and Properties
-You can assign these fields to give your ModItem various values. Typically you'll want to refer to this page when writing code for ModItem.SetDefaults. Be sure to visit [Vanilla Item Field Values](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Item-Field-Values) to see what values vanilla items use for these fields. All fields listed are public unless otherwise noted.
+You can assign these fields to give your ModItem various values. Typically you'll want to refer to this page when writing code for ModItem.SetDefaults. Be sure to visit [Vanilla Item Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-Field-Values) to see what values vanilla items use for these fields. All fields listed are public unless otherwise noted.
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -17,10 +17,10 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [autoReuse](#autoreuse)<a name="autoreuse"></a>|bool | false| Whether the item is in continuous use while the mouse button is held down. |
 | [holdStyle](#holdstyle)<a name="holdstyle"></a>| int|0 | The hold style of your item:<br>1 for holding out (torches and glowsticks)<br>2 for holding up (Breathing Reed)<br>3 for a different version of holding out (Magical Harp) |
 | [useAnimation](#useanimation)<a name="useanimation"></a>| int|100 | The time span of the using animation for the item. Recommended to be the same at useTime as this is only the animation. Blocks use 15. Default value is 100. Terraria runs at 60 frames per second, so 15 is 1/4th of a second. |
-| [useTime](#usetime)<a name="usetime"></a>|int |100 | The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120). |
+| [useTime](#usetime)<a name="usetime"></a>|int |100 | The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click. See [ExampleGun.cs's Clockwork Assault Rifle example](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L120). |
 | [reuseDelay](#reusedelay)<a name="reusedelay"></a>|int | 0| A delay in frames added at the end of the using animation for the item, during which the player wont be able to use any items. |
 | [consumable](#consumable)<a name="consumable"></a>|bool |false | Whether the item is consumed after use. |
-| [rare](#rare)<a name="rare"></a>| int|0 | Range from -1 to 13.<br>Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/blushiemagic/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L23) |
+| [rare](#rare)<a name="rare"></a>| int|0 | Range from -1 to 13.<br>Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L23) |
 | [maxStack](#maxstack)<a name="maxstack"></a>|int | 1| The maximum number of items that can be contained within a single stack. |
 | [width](#width)<a name="width"></a>| int |0 | The width of the item's hitbox in pixels. |
 | [height](#height)<a name="height"></a>|int  | 0| The height of the item's hitbox in pixels. |
@@ -40,8 +40,8 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [defense](#defense)<a name="defense"></a>|int |0 | The amount of defense this item provides when equipped, either as an accessory or armor. |
 | [crit](#crit)<a name="crit"></a>| int |0 | The base critical chance for this item. Remember that the player has a base crit chance of 4. |
 | [noUseGraphic](#nousegraphic)<a name="nousegraphic"></a>| bool | false| If true, the item's sprite will not be visible while the item is in use. |
-| [useAmmo](#useammo)<a name="useammo"></a>| int | AmmoID.None (0) | The ID of the ammo used by this item. See [Ammo Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo) |
-| [ammo](#ammo)<a name="ammo"></a>| int | AmmoID.None (0) | The ID of the ammo class this item is part of. See [Ammo Guide](https://github.com/blushiemagic/tModLoader/wiki/Basic-Ammo) |
+| [useAmmo](#useammo)<a name="useammo"></a>| int | AmmoID.None (0) | The ID of the ammo used by this item. See [Ammo Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Ammo) |
+| [ammo](#ammo)<a name="ammo"></a>| int | AmmoID.None (0) | The ID of the ammo class this item is part of. See [Ammo Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Ammo) |
 | [notAmmo](#notammo)<a name="notammo"></a>|bool | false | If true and the item is ammo, the item will not count as ammo for certain ammo-specific behavior, such as the tooltip mentioning the item is ammo, or ammo items going into ammo slots first when picked up. Used for the Coin items, Ale, and Wire. |
 | [mana](#mana)<a name="mana"></a>| int | 0 | The amount of mana this item consumes on use. |
 | [channel](#channel)<a name="channel"></a>|bool | false | Used for items that have special behavior when the attack button is held. |
@@ -77,15 +77,15 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [lifeRegen](#liferegen)<a name="liferegen"></a>|int | 0|  |
 | [makeNPC](#makenpc)<a name="makenpc"></a>|short |0 | Spawns the specified NPCID. |
 | [manaIncrease](#manaincrease)<a name="manaincrease"></a>|int |0 |  |
-| [mountType](#mounttype)<a name="mounttype"></a>|int | -1| Specifies which mount to equip when the item is used. See [CarKey](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/CarKey.cs) |
+| [mountType](#mounttype)<a name="mounttype"></a>|int | -1| Specifies which mount to equip when the item is used. See [CarKey](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/CarKey.cs) |
 | [netID](#netid)<a name="netid"></a>|int |0 | Don't use. |
 | [noWet](#nowet)<a name="nowet"></a>|bool |false |  |
 | [paint](#paint)<a name="paint"></a>|byte |0 |  |
 | [prefix](#prefix)<a name="prefix"></a>|byte |0 |  |
 | [release](#release)<a name="release"></a>|int |0 |  |
 | [sentry](#sentry)<a name="sentry"></a>| bool|false |  |
-| [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L146) |
-| [shopSpecialCurrency](#shopspecialcurrency)<a name="shopspecialcurrency"></a>|int |-1 | Used in conjunction with [shopCustomPrice](#shopCustomPrice) to specify a custom currency. See [ExampleMod.Load](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleMod.cs#L71) and [ExampleCustomCurrency](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/ExampleCustomCurrency.cs) |
+| [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L146) |
+| [shopSpecialCurrency](#shopspecialcurrency)<a name="shopspecialcurrency"></a>|int |-1 | Used in conjunction with [shopCustomPrice](#shopCustomPrice) to specify a custom currency. See [ExampleMod.Load](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleMod.cs#L71) and [ExampleCustomCurrency](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleCustomCurrency.cs) |
 | [stack](#stack)<a name="stack"></a>|int |1 | Current stack of the Item. |
 | [tileBoost](#tileboost)<a name="tileboost"></a>|int |-1 |  |
 | [tileWand](#tilewand)<a name="tilewand"></a>|int |0 |  |
@@ -102,7 +102,7 @@ Static fields are accessed by the classname, not the instance. For example, we w
 
 | Field    | Type | Default Value | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |----------|------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [staff ](#staff)<a name="staff"></a>| bool[] | false | Indexed by ItemID. This makes the useStyle animate as a staff instead of as a gun. See [ExampleStaff](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleStaff.cs). If the staff doesn't rotate, make sure `item.shootSpeed` is not 0. |
+| [staff ](#staff)<a name="staff"></a>| bool[] | false | Indexed by ItemID. This makes the useStyle animate as a staff instead of as a gun. See [ExampleStaff](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleStaff.cs). If the staff doesn't rotate, make sure `item.shootSpeed` is not 0. |
 | [](#)<a name=""></a>| | |  |
 
 ## tModLoader Only

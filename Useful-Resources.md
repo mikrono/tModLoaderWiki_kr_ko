@@ -2,8 +2,8 @@ The following covers a list of useful resources, adapted from the [help thread o
 
 ## Sites
 * tModloader Github wiki | You are here
-* [tModloader documentation](http://blushiemagic.github.io/tModLoader/html/index.html)
-* [tModloader Github repository](https://github.com/blushiemagic/tModLoader)
+* [tModloader documentation](http://tmodloader.github.io/tModLoader/html/index.html)
+* [tModloader Github repository](https://github.com/tModLoader/tModLoader)
 * [tModloader TCF thread](https://forums.terraria.org/index.php?threads/.23726/)
 * [tConfig wiki](http://tconfig.wikia.com/wiki/TConfig_Wiki) | This is an old wikipedia, used with tConfig
 * [tAPI docs](http://tapi.axxim.net/docs/) | This is an old documentation site, used with tAPI

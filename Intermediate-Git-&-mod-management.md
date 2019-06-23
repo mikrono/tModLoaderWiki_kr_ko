@@ -73,7 +73,7 @@ Use pull requests to discuss code changes with your team before merging them int
 Your team can configure Visual Studio Team Services to enforce consistent workflows and process across your team. [Set up branch policies](https://docs.microsoft.com/en-us/vsts/git/branch-policies) to ensure that pull requests meet your requirements before completion. Branch policies protect your important branches by preventing direct pushes, requiring reviewers, and ensuring clean builds. Use [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates) for more streamlined issues and PR content.
 
 ## Get a free website for your project
-GitHub allows you to upload a website for free for your project. Check the [GitHub-pages](https://pages.github.com/) system for more information. For tModLoader we utilize this system by providing source documentation using doxygen: [http://blushiemagic.github.io/tModLoader/html/index.html](http://blushiemagic.github.io/tModLoader/html/index.html)
+GitHub allows you to upload a website for free for your project. Check the [GitHub-pages](https://pages.github.com/) system for more information. For tModLoader we utilize this system by providing source documentation using doxygen: [http://tmodloader.github.io/tModLoader/html/index.html](http://tmodloader.github.io/tModLoader/html/index.html)
 
 ## License your work
 When you use Git, you can properly license your work. If you have no clue what license to use, check [Choose an open source license](https://choosealicense.com/)
@@ -83,7 +83,7 @@ When you use Git, you can properly license your work. If you have no clue what l
 It is common that mods are created by a bunch of people rather than one. Git makes working together on your mod much easier and can provide a more streamlined development process for the team.
 
 ## tModLoader GitHub integration
-Using GitHub allows you to link your mod to your git repository, you can reap many benefits by doing this. Check the [Mod-Browser (GitHub integration)](https://github.com/blushiemagic/tModLoader/wiki/Mod-Browser#github-integration) page for more information.
+Using GitHub allows you to link your mod to your git repository, you can reap many benefits by doing this. Check the [Mod-Browser (GitHub integration)](https://github.com/tModLoader/tModLoader/wiki/Mod-Browser#github-integration) page for more information.
 
 ## Easy release tracking
 With Git, it becomes much easier to track your releases of your mod. If you use Git from the start, you will be able to go back to any release you ever made and check out the code you had at that time. Useful for mods that live for a long time.

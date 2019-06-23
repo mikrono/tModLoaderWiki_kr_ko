@@ -7,7 +7,7 @@ This guide teaches how to navigate the jungle that is Terraria source code to fi
 * Use F2 to rename auto-generated variable names (num233, flag83, etc) as you figure out what each variable represents
 
 ## Obtaining Vanilla Source Code
-It is against the law to publish the decompiled source code, but anyone with a competent computer can decompile their personal copy of Terraria.exe no problem. Note that you may wish to end up with a decompiled tModLoader rather than a decompiled vanilla Terraria so that you know where tModLoader hooks are. See [Advanced Prerequisites](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites) for more info.
+It is against the law to publish the decompiled source code, but anyone with a competent computer can decompile their personal copy of Terraria.exe no problem. Note that you may wish to end up with a decompiled tModLoader rather than a decompiled vanilla Terraria so that you know where tModLoader hooks are. See [Advanced Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites) for more info.
 
 After you have a copy of the source, open the `Terraria.csproj` file so you can easily search the whole project.
 
@@ -32,7 +32,7 @@ Now we go through the 9 results in search of what we want to know. 2 of the resu
 
 ![](http://i.imgur.com/UyxK0l6.png)
 
-Now let's look in the [documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_player.html#a48027ba9e2e4188d3b73b49fa60071f2)! As you can see, the documentation also agrees, this is the hook to use to spawn dust and other effects.
+Now let's look in the [documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_player.html#a48027ba9e2e4188d3b73b49fa60071f2)! As you can see, the documentation also agrees, this is the hook to use to spawn dust and other effects.
 
 The last 3 results are in Projectile.cs. They do the same thing that earlier results did, but for melee projectiles instead of melee items. (Dust, Hit NPC, Hit PvP) The corresponding hooks we use to replicate this behavior is in: ModPlayer.ModifyHitNPCWithProj, ModPlayer.ModifyHitPvpWithProj, and GlobalProjectile.PostAI.
 
@@ -113,7 +113,7 @@ The second result is in a method called Projectile.Damage. If you remember, the 
 The 3rd result is in HandleMovement. It is a bit hard to find, but the related tModLoader hook is OnTileCollide.  
 The 4th result is in Projectile.AI, this is the code we'll need to adapt. Below you can see a neat feature of Visual Studio in action. Hover over the guidelines and you'll see a listing of the nested conditions that lead to this code. Notably, we see that this code is within an if statement checking `this.aiStyle == 48`.   
 ![](https://i.imgur.com/ml8sPMu.png)    
-Now that we've found all the relevant code, now we need to investigate how the color is decided. This might be a good time to check what other projectiles use projectile aiStyle 48. Searching for `this.aiStyle = 48` reveals that HeatRay, UFOLaser, MagnetSphereBolt, and ShadowBeamHostile all also share aiStyle 48. We know that HeatRay is yellow, but Shadowbeam Staff is purple. Knowing this, we know that the code for the color must be within an if statement within the AI code. Going back to the 4th result, the result in the AI method, we look for anything that looks like code related to color. Ahah! We find the code `int num448 = Dust.NewDust(vector33, 1, 1, 173, 0f, 0f, 0, default(Color), 1f);` and look up the 173rd dust in the [dust spritesheet](https://github.com/blushiemagic/tModLoader/wiki/Basic-Dust):    
+Now that we've found all the relevant code, now we need to investigate how the color is decided. This might be a good time to check what other projectiles use projectile aiStyle 48. Searching for `this.aiStyle = 48` reveals that HeatRay, UFOLaser, MagnetSphereBolt, and ShadowBeamHostile all also share aiStyle 48. We know that HeatRay is yellow, but Shadowbeam Staff is purple. Knowing this, we know that the code for the color must be within an if statement within the AI code. Going back to the 4th result, the result in the AI method, we look for anything that looks like code related to color. Ahah! We find the code `int num448 = Dust.NewDust(vector33, 1, 1, 173, 0f, 0f, 0, default(Color), 1f);` and look up the 173rd dust in the [dust spritesheet](https://github.com/tModLoader/tModLoader/wiki/Basic-Dust):    
 ![](https://i.imgur.com/FLhIi1G.png)    
 Yep, we've figured out why the Shadowbeam Staff projectile is purple, it is because dust 173 is spawned in AI. Let's remember to change this to spawn dust 178, a lime green projectile, for our modified clone. If you look at the rest of the code for aiStyle 48, you'll probably notice that there is nothing limiting the number of bounces. Through some trial and error, you'll discover that projectile.extraUpates and projectile.timeLeft are responsible. A timeLeft of 300 would normally stick around for 5 seconds, but because of extraUpdates being 100, it actually only lives for 3 ticks/frames. Lets change timeLeft to 200 for our weaker clone, this will shorten the reach of our weapon.   
 
@@ -256,7 +256,7 @@ Go in game and then use a mod with an NPC spawner like Cheat Sheet or Heros Mod 
 
 ### Preparatory work for modifications
 
-Unfortunately, there is no easy way to change the projectile that is shot by our clone. Our clone, as seen in our SetDefaults method, simply clones the vanilla AI code. The projectile the vanilla AI will spawn to attack the player is hard-coded into the AI method. The first thing we need is the [decompiled Terraria source code](https://github.com/blushiemagic/tModLoader/wiki/Advanced-Prerequisites#tmodloader-source-code). Once you have that, now we must find the AI code to copy. Find NPCID.GreekSkeleton and see that its value is 481, now search for 481. The first result we need to find is result in the SetDefaults method so we can find out which aiStyle GreekSkeleton/Hoplite is using:    
+Unfortunately, there is no easy way to change the projectile that is shot by our clone. Our clone, as seen in our SetDefaults method, simply clones the vanilla AI code. The projectile the vanilla AI will spawn to attack the player is hard-coded into the AI method. The first thing we need is the [decompiled Terraria source code](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites#tmodloader-source-code). Once you have that, now we must find the AI code to copy. Find NPCID.GreekSkeleton and see that its value is 481, now search for 481. The first result we need to find is result in the SetDefaults method so we can find out which aiStyle GreekSkeleton/Hoplite is using:    
 ![](https://i.imgur.com/mcDqzru.png)    
 Great, we now know to search the source code for `aiStyle == 3`:     
 ![](https://i.imgur.com/kGTeWrw.png)      
@@ -272,7 +272,7 @@ Find and Replace:
 ![](https://i.imgur.com/ekINkM2.png)    
 ![](https://i.imgur.com/0f9wFM3.png)    
 
-You'll probably notice that there are a lot of NPC type specific sections of code. If you want, you can clean up the code further by deleting sections of the code that would only run for other NPC, but if not, just leave it. Many errors will show up. Most of them can be solved simply by letting Visual Studio add the suggested using statements to our code. If you aren't using Visual Studio or you aren't seeing suggestions or errors, you need to fix that. Read the [FAQ](https://github.com/blushiemagic/tModLoader/wiki/Developing-with-Visual-Studio#faq) if you don't see suggestions. One error in this particular piece of code is `NPC.gravity`, just change those to 0.3f:    
+You'll probably notice that there are a lot of NPC type specific sections of code. If you want, you can clean up the code further by deleting sections of the code that would only run for other NPC, but if not, just leave it. Many errors will show up. Most of them can be solved simply by letting Visual Studio add the suggested using statements to our code. If you aren't using Visual Studio or you aren't seeing suggestions or errors, you need to fix that. Read the [FAQ](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio#faq) if you don't see suggestions. One error in this particular piece of code is `NPC.gravity`, just change those to 0.3f:    
 Before:    
 ![](https://i.imgur.com/qdegobF.png)    
 After:    
@@ -317,7 +317,7 @@ Making a flail, you might have noticed that the range of the flail is hard to cu
 ## ExampleLamp Tile
 These are the exact steps to creating ExampleLamp. Lamps are special because they can be turned on and off by wires. Up until now, no example existed in ExampleMod of this.
 
-First, we need to find the Lamp TileID in [TileID.cs](https://github.com/blushiemagic/tModLoader/wiki/Vanilla-Tile-IDs). We find that `Lamps = 93;`. Next, lets find a specific lamp style we wish to copy. Use [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) to extract Tiles_93.xnb and then open Tiles_93.png in an image editor of your choice. We'll be modifying one of these lamps for ExampleLamp, but you'll want to just use Tiles_93.png as a guide in your mod.
+First, we need to find the Lamp TileID in [TileID.cs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs). We find that `Lamps = 93;`. Next, lets find a specific lamp style we wish to copy. Use [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) to extract Tiles_93.xnb and then open Tiles_93.png in an image editor of your choice. We'll be modifying one of these lamps for ExampleLamp, but you'll want to just use Tiles_93.png as a guide in your mod.
 
 ![](https://i.imgur.com/SyMfAb7.png)    
 
@@ -383,7 +383,7 @@ namespace ExampleMod.Items.Placeable
 	}
 }
 ```
-Now that the ModItem is done, lets do the ModTile. First we have to find all the lines of code we need in `ModTile.SetDefaults`. First, read through [Basic Tile](https://github.com/blushiemagic/tModLoader/wiki/Basic-Tile) so you are aware of all the various fields relating to tiles, such as `Main.tileSolid`, `Main.tileFrameImportant`, etc. Now lets search for the TileID  (93) in the source code. As always, there will be many results that are unrelated to what we want. Luckily, we find various Main.tileX results, lets add those to our ModTile. We can ignore Item.cs results, but Lang.cs shows adding a map entry. In our ModTile, we can utilize vanilla localized text by doing this: `AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.FloorLamp"));` We got that color from another result: `array[93][0] = color;` and looking at `color`.
+Now that the ModItem is done, lets do the ModTile. First we have to find all the lines of code we need in `ModTile.SetDefaults`. First, read through [Basic Tile](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile) so you are aware of all the various fields relating to tiles, such as `Main.tileSolid`, `Main.tileFrameImportant`, etc. Now lets search for the TileID  (93) in the source code. As always, there will be many results that are unrelated to what we want. Luckily, we find various Main.tileX results, lets add those to our ModTile. We can ignore Item.cs results, but Lang.cs shows adding a map entry. In our ModTile, we can utilize vanilla localized text by doing this: `AddMapEntry(new Color(253, 221, 3), Language.GetText("MapObject.FloorLamp"));` We got that color from another result: `array[93][0] = color;` and looking at `color`.
 
 ![](https://i.imgur.com/jWYvbLl.png)
 
@@ -458,7 +458,7 @@ One of the results is near code relating to SpriteEffects. If you have looked at
 Finally, the last relevant result relates to drawing the Flame texture. Looking at the code around this result, it becomes clear that `Main.tileFlame` uses hard-coded TileIDs to draw different flame textures. We'll need to re-implement this ourselves and delete `Main.tileFlame[Type] = true;` from our code to get this working. The closest TileLoader result tells us that `ModTile.PostDraw` is the hook we will need to use. In addition to adapting this code, we will make a new Flame texture in our mod.
 
 ### Final Code and Result
-Here is the [final code](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) and result, see ExampleMod for the sprites.
+Here is the [final code](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) and result, see ExampleMod for the sprites.
 
 ![](https://thumbs.gfycat.com/ImportantMixedAmericanwarmblood-small.gif)
 

@@ -79,7 +79,7 @@ After fixing:
 5. Make sure the Solution Explorer is in solution view and not folder view. [Button Location](https://i.imgur.com/NIOP3fn.png)     
 
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
-You can download the dll file from [here](https://github.com/blushiemagic/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
+You can download the dll file from [here](https://github.com/tModLoader/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
 
 ## Error CS0246 The type or namespace name 'Mod' (or 'ModLoader', 'ModItem', etc) could not be found
 You have added a reference to the vanilla Terraria.exe, remove it and add a correct reference to the modded Terraria.exe.

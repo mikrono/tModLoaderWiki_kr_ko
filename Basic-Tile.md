@@ -36,7 +36,7 @@ namespace ModNamespaceHere
 }
 ```
 
-Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/blushiemagic/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
+Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/tModLoader/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
 # Framed vs FrameImportant Tiles
 There are 2 different types of Tiles. One type is the regular tiles that are 1x1 (width of 1, height of 1) and adjust themselves as you place similar tiles next to them. These will be referred to as "Framed" tiles in this guide. The other type are the tiles that do not change automatically, which we will call "FrameImportant" tiles. These tiles are usually larger than 1x1 so another name for them could be "MultiTiles".   
@@ -94,7 +94,7 @@ false (default):
 ## Main.tileShine[Type] = true;
 ## Main.tileShine2[Type] = true;
 ## Main.tileValue[Type] = true;
-These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleOre.cs)
+These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleOre.cs)
 
 ## Main.tileBlockLight[Type] = true;	
 If set to true, light is blocked by this tile and the light will decrease as it passes through.     
@@ -118,7 +118,7 @@ False (default):
 ![](https://thumbs.gfycat.com/AshamedHoarseAnt-size_restricted.gif)    
 
 ### Main.tileCut[Type] = true;
-The tile can be destroyed by weapons. See [ExampleCutTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs)
+The tile can be destroyed by weapons. See [ExampleCutTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs)
 
 ## Other
 These are more rarely used and won't be explained. See vanilla source code if you need hints with these.
@@ -150,7 +150,7 @@ These are more rarely used and won't be explained. See vanilla source code if yo
 This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
 	
 ## ModTile fields: dustType, drop, adjTiles, etc
-These are explained in the [documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
+These are explained in the [documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
 
 ## AddToArray(ref TileID.Sets.RoomNeeds.????);
 Used to make a ModTile act as a lightsource, chair or table for the purposes of housing. Some examples:    
@@ -172,7 +172,7 @@ For this guide, many gifs will refer to this tile sprite:
 ![](https://i.imgur.com/b009P8f.png)    
 
 ## Multiple Styles
-You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `item.createTile` but will have different `item.placeStyle` to differentiate which style to place. See [BossTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/BossTrophy.cs) for an example of the code and notice how [BunnyTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/BunnyTrophy.cs) and [PuritySpiritTrophy](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Items/Placeable/PuritySpiritTrophy.cs) items use the same createTile but different placeStyle values. Notice how `frameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined. See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
+You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `item.createTile` but will have different `item.placeStyle` to differentiate which style to place. See [BossTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/BossTrophy.cs) for an example of the code and notice how [BunnyTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Placeable/BunnyTrophy.cs) and [PuritySpiritTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Placeable/PuritySpiritTrophy.cs) items use the same createTile but different placeStyle values. Notice how `frameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined. See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
 
 ![](https://i.imgur.com/O923oDq.png)    
 
@@ -205,7 +205,7 @@ Style3x3Wall
 ```
 
 Typically, you'll want to start out by copying a template, and modifying it as needed.
-For example, [MonsterBanner.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/MonsterBanner.cs#L17) first does:
+For example, [MonsterBanner.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/MonsterBanner.cs#L17) first does:
 `TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);`    
 ....and then it makes adjustments such as:     
 ```cs
@@ -287,7 +287,7 @@ Here is an example of a custom AnchorBottom. The 2nd variable in the AnchorData 
 Here is an example of an AnchorTop that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
 `TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);`
 
-[ExampleCutTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs) shows a custom `AnchorTop` as well as clearing out a copied AnchorBottom.
+[ExampleCutTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs) shows a custom `AnchorTop` as well as clearing out a copied AnchorBottom.
 
 ## StyleHorizontal
 By default, tile styles are oriented vertically on the spritesheet:     
@@ -313,7 +313,7 @@ Coral also randomly places a style:
 Should always be true. If you copied a template it will already be true, but be sure you set it if you aren't copying from a template.
 
 ## Wires, Toggles, Changing Frame
-Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.    
+Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.    
 ![](https://i.imgur.com/Xq13Slr.png)     
 
 ## Other
@@ -350,7 +350,7 @@ Be sure to call this or your mod won't load properly.
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
 
 # Animation
-Do not change frameX or frameY of the tile for animation. The tile and its values should stay the same as it is animating. [VoidMonolith.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/VoidMonolith.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/blushiemagic/tModLoader/blob/master/ExampleMod/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
+Do not change frameX or frameY of the tile for animation. The tile and its values should stay the same as it is animating. [VoidMonolith.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/VoidMonolith.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
 
 # Full Examples
 ## Framed Tile
@@ -358,8 +358,8 @@ Do not change frameX or frameY of the tile for animation. The tile and its value
 ## FrameImportant Tile
 
 ## Relevant References
-* [Vanilla TileIDs](https://github.com/bluemagic123/tModLoader/wiki/Vanilla-Tile-IDs)
-* [ModTile Documentation](http://blushiemagic.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html)
+* [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
+* [ModTile Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html)
 
 ## Not covered in Basic level
 There are other aspects of ModTiles that will be covered in more advanced guides:
