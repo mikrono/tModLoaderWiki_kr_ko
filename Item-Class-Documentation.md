@@ -48,7 +48,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [potion](#potion)<a name="potion"></a>| bool | false | If true, this item will inflict potion sickness on use. Also determines whether the item cannot be used when the player has potion sickness, and if the item can be used with the Quick Heal key. |
 | [healLife](#heallife)<a name="heallife"></a>| int |0 | The amount of life this item heals on use. |
 | [healMana](#healmana)<a name="healmana"></a>| int |0 | The amount of mana this item heals on use. |
-| [buffType](#bufftype)<a name="bufftype"></a>| int |0 | The ID of the buff given by this item on use. To have a potion give multiple buffs, assign one buff here and in `ModItem.UseItem`, call `player.AddBuff(buffID, time)` for the remaining buffs you wish to give. |
+| [buffType](#bufftype)<a name="bufftype"></a>| int |0 | The ID of the buff given by this item on use. To have a potion give multiple buffs, assign one buff here and in `ModItem.UseItem`, call `player.AddBuff(buffID, time)` for the remaining buffs you wish to give. Make sure to set [buffTime](#buffTime) as well or the buff will instantly disappear. |
 | [buffTime](#bufftime)<a name="bufftime"></a>| int |0 | The duration in ticks of the buff given by this item on use. |
 | [expert](#expert)<a name="expert"></a>|bool |false | Signifies that this item is an expert mode item. |
 | [bait](#bait)<a name="bait"></a><br>[fishingPole](#fishingpole )<a name="fishingpole"></a>|int | 0| Correspond to fishing power of bait or poles respectively. |
