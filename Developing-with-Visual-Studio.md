@@ -11,6 +11,7 @@
     1. If you've forgotten this step, you can click on Tools->Get Tools and Features to bring up the installer again. ([Example](https://i.imgur.com/EmqEsmH.png))
 
 # Creating a Project
+These steps are for informational purposes only. You should use the [mod skeleton generator](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) if you are making a mod, as you can skip all of these steps.
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
 1. Set the _internal_ name for your mod. (No special characters allowed)
