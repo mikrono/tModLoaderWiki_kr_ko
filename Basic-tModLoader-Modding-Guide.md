@@ -5,7 +5,7 @@ To start, we will make a very simple mod to get you familiar with how mods are c
 
 If you are on 0.11 or higher, you can do this in game by visiting the Mod Sources->Create Mod menu. This generator does not include an example sword item, so you may want to copy that file from the online mod skeleton generator results. 
 
-![](http://i.imgur.com/B38HAI5.png)
+![](https://i.imgur.com/ZO542By.png)
 
 Click the `Generate Mod Skeleton` button and you should see a .zip file download. Next, open up `Documents\My Games\Terraria\ModLoader\Mod Sources` on Windows or `~/.local/share/Terraria/ModLoader/Mod Sources` on linux. If you do not have the Mod Sources folder, make a folder of that name. Next, we will take the folder contained within the .zip file we just downloaded and place it in the Mod Sources folder.
 
