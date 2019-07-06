@@ -7,7 +7,7 @@ If you are on 0.11 or higher, you can do this in game by visiting the Mod Source
 
 ![](http://i.imgur.com/B38HAI5.png)
 
-Click the `Generate Mod Skeleton` button and you should see a .zip file download. Next, open up `Documents\My Games\Terraria\ModLoader\Mod Sources` on Windows or `~/.local/share/Terraria/ModLoader/Mods` on linux. If you do not have the Mod Sources folder, make a folder of that name. Next, we will take the folder contained within the .zip file we just downloaded and place it in the Mod Sources folder.
+Click the `Generate Mod Skeleton` button and you should see a .zip file download. Next, open up `Documents\My Games\Terraria\ModLoader\Mod Sources` on Windows or `~/.local/share/Terraria/ModLoader/Mod Sources` on linux. If you do not have the Mod Sources folder, make a folder of that name. Next, we will take the folder contained within the .zip file we just downloaded and place it in the Mod Sources folder.
 
 ![](http://i.imgur.com/0zH7w65.png)
 
