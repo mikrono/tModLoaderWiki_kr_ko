@@ -27,7 +27,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [scale](#scale)<a name="scale"></a>| float | 1f | The size multiplier of the item's sprite while the item is being used. Also increases range for melee weapons. |
 | [createTile](#createtile)<a name="createtile"></a>| int | -1 | The ID of the tile this item places on use. |
 | [placeStyle](#placestyle)<a name="placestyle"></a>| int | 0| The style of the tile being placed. Used for tiles that have a different look depending on the item used to place them. |
-| [createWall](#createwall)<a name="createwall"></a>| int |-1 | The ID of the tile this item places on use. |
+| [createWall](#createwall)<a name="createwall"></a>| int |-1 | The ID of the wall this item places on use. |
 | [UseSound](#usesound)<a name="usesound"></a>|LegacySoundStyle | null | The sound that your item makes when used. <br>Ex: `item.UseSound = SoundID.Item1;`|
 | [damage](#damage)<a name="damage"></a>|int | -1| The base damage inflicted by the item. |
 | [knockBack](#knockback)<a name="knockback"></a>|float | 0f| The force of the knock back. Max value is 20.  |
