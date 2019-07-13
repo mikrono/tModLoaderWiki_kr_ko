@@ -88,7 +88,8 @@ ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.c
 ### Projectile One Time Timer Using projectile.timeLeft
 If you need something to happen once X ticks after spawning, you can take advantage of `projectile.timeLeft` (you may want to change `projectile.timerLeft` in `ModProjectile.SetDefaults` to something smaller):
 ```cs
-// when the projectile has 1 seconds left in its life if(projectile.timeLeft == 60) {
+// when the projectile has 1 seconds left in its life 
+if(projectile.timeLeft == 60) {
     // do something here.
 } 
 ```
