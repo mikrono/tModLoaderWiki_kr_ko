@@ -369,8 +369,8 @@ public class UIClickableButton : UIElement {
 			_uiText.SetText(_text.ToString());
 			_text = null;
 			Recalculate(); // 9
-            _uiPanel.MinWidth = _uiText.MinWidth; // 9
-            _uiPanel.MindHeight = _uiText.MinHeight; // 9
+            base.MinWidth = _uiText.MinWidth; // 9
+            base.MindHeight = _uiText.MinHeight; // 9
 		}
 	}
 }
@@ -407,7 +407,7 @@ public override void OnInitialize() {
   _button.Height.Set(50, 0);
   _button.HAlign = 0.5f;
   _button.Top.Set(25, 0);
-  panel.Append(_button);
+   panel.Append(_button);
 }
 
 private void OnButtonClick(UIMouseEvent evt, UIElement listeningElement) {
