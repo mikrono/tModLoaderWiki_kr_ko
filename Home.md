@@ -72,6 +72,7 @@ The following guides are considered advanced, and should only be attempted if th
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
 - [Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
 - [Angular velocity and Linear velocity](Advanced-Angular-velocity-and-Linear-velocity)
+- [Advanced guide to custom UI](Advanced-guide-to-custom-UI)
 
 ## Expert guides
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
