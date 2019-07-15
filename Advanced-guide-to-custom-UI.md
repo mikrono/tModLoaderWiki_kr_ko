@@ -252,7 +252,6 @@ public override void OnInitialize() {
   
   UIText text = new UIText("Click me!");
   text.HAlign = text.VAlign = 0.5f; // 4
-  text.OnClick += OnButtonClick;
   button.Append(text); // 5
 }
 
@@ -262,9 +261,9 @@ private void OnButtonClick(UIMouseEvent evt, UIElement listeningElement) {
 ```
 1) Initialize a new UIPanel. Because there is no UIButton class (only UIImageButton), we will use UIPanel and UIText for this.
 2) Set the top position slightly below our header.
-3) Add the new OnClick event
+3) Add the new OnClick event. It is important to note events will propagate through the parent-child chain. This means if we click the UIText, the click event will end up in our UIPanel (button) as well because it is the parent. For this reason we only have to add the handler to the UIPanel.
 4) Set the text alignment so it centers in our button panel.
-5) Append the text to our button. The button is appended to our background pannel.
+5) Append the text to our button. The button is appended to our background panel.
 
 OnButtonClick currently does nothing. Let's change our text. In order to do this, we must make our button text a field on class level instead of scoped to just the OnInitialize method:
 ```cs
