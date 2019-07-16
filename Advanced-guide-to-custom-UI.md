@@ -377,7 +377,7 @@ public class UIClickableButton : UIElement {
 ```
 There's a lot going on, let's see:
 1) We define variables our custom button needs.
-2) A public property that we can use to get and set the text backing field. More on this in point 7.
+2) A public property that we can use to get and set the text backing field. More on this in point 8.
 3) Simply return the text of our _uiText, or and empty string if it is null. (not initialized yet)
 4) Our constructor. We must pass a text and click action. Text is of type object, modelled after the UIText class.
 5) Create a new UIPanel as the base background. We set the size to Fill, which is equal to calling Set(0, 1f); 1f stands for 100%, so in this case we will stretch the UIPanel as big as we make this element.
