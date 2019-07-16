@@ -382,7 +382,7 @@ There's a lot going on, let's see:
 4) Our constructor. We must pass a text and click action. Text is of type object, modelled after the UIText class.
 5) Create a new UIPanel as the base background. We set the size to Fill, which is equal to calling Set(0, 1f); 1f stands for 100%, so in this case we will stretch the UIPanel as big as we make this element.
 6) Create a new UIText that we align centered in our UIPanel.
-7) Register the click action on both to just the UIPanel. Remember that click actions on children propagate through the parent-child chain, so the click event will end up on our UIPanel OnClick handler.
+7) Register the click action to just the UIPanel. Remember that click actions on children propagate through the parent-child chain, so the click event will end up on our UIPanel OnClick handler.
 8) By updating the UIText's text during Update, we can make our text changes thread-safe and avoid errors if we edit the text while it is being drawn.
 9) Recalculate forces this element and its children to recalculate sizes, padding etc. You should do this if the contents change, such as the text in this case. We can copy the min width and min height as they are calculated from the UIText class in this case during Recalculate().
 
