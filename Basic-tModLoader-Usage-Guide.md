@@ -5,13 +5,8 @@
 1. Download the latest tModLoader: [Download Page](https://github.com/tModLoader/tModLoader/releases/latest)
 2. Extract the folder you downloaded.
 3. Install: 
-   * Do not run the installer.jar file, follow the instructions in readme.txt
+   * Run the installer.jar file. If that doesn't work, follow the instructions in readme.txt
 4. Start Terraria as normal, you should see extra menu options.
-
-## GoG Version
-**Note: Jeckel, the author and maintainer of the GoG patcher, has not been seen for a very long time. The GoG is out of date and likely does not work correctly. There is no official alternative, for now.**
-
-See [here](https://forums.terraria.org/index.php?threads/tml-gog-patcher-beta.50413/) for installing if your Terraria is the GOG version. Please note we are not in charge of the GoG patcher, and it may not be up-to-date at all times. The patcher will often be behind in version because Jeckel needs to have time to update the patches.
 
 # Installing Mods
 - Mods are files with the ".tmod" extension. They go in the mods directory.
