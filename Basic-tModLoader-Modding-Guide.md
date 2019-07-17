@@ -48,6 +48,23 @@ Continue reading to learn more about tModLoader and how to get better.
 
 Firstly, they are technically not hooks. We simply call them hooks because it is easy. A 'hook' is a function you can use as a modder. Which hooks are available depends on the class you're working in. For example your Mod class has a **[Load Hook](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html#afbcbdc176a60f3da809842f683ff2e75)**, which is a function special to the Mod class. Every one of these functions is `virtual`, this means the function has a basic implementation but can be overridden by the modder if desired. This means when you want to use a hook, you _override_ it, this is why the word `virtual` is replaced with `override`. Since the _virtual_ (partial) implementation is overridden, that implementation will be lost. To see the standard implementation of hooks you should see the **[source documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)**.
 
+Hooks are basically opportunities for mods to run code. Each hook is "called" at an appropriate time in the update loop of the game. For example, there is a hook called ModItem.Shoot, this hook is called each time the game determines that the weapon item should shoot a projectile. The modder "overrides" the "hook" by writing code and that code will be executed when the weapon item shoots a projectile.
+
+## Hook Usage Example
+Let's imagine you want to do something while an item is in the inventory, similar to how the Cell Phone item works. First, we open up the source documentation and search for the [ModItem Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html). Having found this page, use `ctrl-f` to search the page for something related to what we want. In this case, searching for `inventory` and reading the results, you might find the `UpdateAccessory` method. The documentation tells us that this "hook" lets us make things happen when this item is in the inventory, which is what we want. To use this hook, we copy the method signature into our ModItem class.    
+```cs
+virtual void Terraria.ModLoader.ModItem.UpdateInventory	(Player player)	
+```
+If you remember from above, we must change "virtual" to "override". We also must remember to trim the method name down. This code is in the ModItem class, so we can get rid of "Terraria.ModLoader.ModItem.". Finally, make sure you tell the computer what this `Player` class is. We do that by adding `using Terraria;` to the top of our .cs file. After adding opening and closing curly braces, we finally have our hook ready to write code in:    
+```cs
+override void UpdateInventory (Player player)
+{
+    // We write code here.
+}
+```
+We can greatly simplify the process of overriding hooks by using [Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#override).    
+Now that we have a hook in our ModItem class, we can add code inside it. The code we write will depend on the effects we wish to achieve. ExampleMod and the [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide can be helpful for finding similar snippets of code to experiment with.
+
 # How are modded classes setup?
 
 tModLoader provides a number of classes you can use to create your own mod content. You will base your own classes off of these by using what's called `class derivation` or `class inheritance`. To keep this simple, it basically means your class will use one of ours as its base. For example, your items will be based on ModItem: `MyItemClass : ModItem`, where the `: ModItem` denotes it inherits from the ModItem class, which is present in the Terraria.ModLoader namespace. (if you come from Java, this is the same as `extends ModItem`)This means everything we made for ModItem becomes available to you in your class, such as the [SetDefaults](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a6d9fbbb1dec7e25959a345a9e4f78428) hook. Note that you can only derive from one class, so a ModItem cannot be a ModProjectile and so forth. 
