@@ -5,7 +5,7 @@ To start, we will make a very simple mod to get you familiar with how mods are c
 
 ## Generate a Mod Skeleton
 ### v0.11 instructions
-To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader (at least v0.11.2.2) and open the "Mod Sources" menu and click the "Create Mod" button. Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
+To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader (at least v0.11.2.2) and open the "Mod Sources" menu and click the "Create Mod" button (If you don't see "Mod Sources", you'll need to click ["Enable Developer Mode"](https://i.imgur.com/Jup4nHx.png) in the bottom right corner and then download the items you need. ). Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
 
 ![](https://i.imgur.com/QAo0dsd.png)    
 
