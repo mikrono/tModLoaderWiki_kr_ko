@@ -1,9 +1,18 @@
 This guide will get you familiar with tModLoader modding and will help you make your first mod. Please read and follow [Basic Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Basic-Prerequisites) first so you have access to a capable text editor.
 
 # Your First Mod
-To start, we will make a very simple mod to get you familiar with how mods are created for tModLoader. To begin, please visit the [Mod Skeleton Generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) and fill out the input boxes. I suggest TutorialMod, Tutorial Mod, TutorialSword, and NewbieModder. 
+To start, we will make a very simple mod to get you familiar with how mods are created for tModLoader. 
 
-If you are on 0.11 or higher, you can do this in game by visiting the Mod Sources->Create Mod menu. This generator does not include an example sword item, so you may want to copy that file from the online mod skeleton generator results. 
+## Generate a Mod Skeleton
+### v0.11 instructions
+To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader (at least v0.11.2.2) and open the "Mod Sources" menu and click the "Create Mod" button. Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
+
+![](https://i.imgur.com/QAo0dsd.png)    
+
+Continue this tutorial by going to the [Mod Skeleton Contents](#mod-skeleton-contents) section below.
+
+### v0.10 instructions
+To begin, please visit the [Mod Skeleton Generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) and fill out the input boxes. I suggest TutorialMod, Tutorial Mod, TutorialSword, and NewbieModder. 
 
 ![](http://i.imgur.com/B38HAI5.png)
 
@@ -11,15 +20,15 @@ Click the `Generate Mod Skeleton` button and you should see a .zip file download
 
 ![](http://i.imgur.com/0zH7w65.png)
 
-You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\` folder. If you end up with a `Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod\TutorialMod\` folder, you did it wrong. Make sure to move the folder. If you use an unzipping program to unzip, you might end up with duplicate folders.    
+You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` folder (no square brackets [ ].). If you end up with a `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\[ModName]\` folder, you did it wrong. Make sure to move the folder. If you use an unzipping program to unzip, you might end up with duplicate folders.    
 
-### Mod Skeleton Contents
-The Skeleton contains 7 files. Here is an explanation of each:    
+## Mod Skeleton Contents
+Open up your file browser and navigate to the `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` folder. This folder contains all the code relating to this mod. Currently, there should be 7 basic files added by the mod skeleton generator. Here is an explanation of each of those files:    
 1. **[ModName].cs** - This is the `Mod` class. It is the central file to any mod. One and only one `Mod` class can exist in every mod. For simple mods this file will be very sparse, but in this class various global things can happen such as modifying music.     
 2. **description.txt** - Contains text for the description of the mod. Click the `More Info` button in the Mod menu to view in game.    
 3. **build.txt** - Contains the version, author, and display name of your mod. Can contain other [values](https://github.com/tModLoader/tModLoader/wiki/build.txt). Necessary.  
 4. **[ModName].csproj** - A project file for Visual Studio set up for debugging your Mod. Debugging is extremely useful but a takes a bit of learning, don't delete.  
-5. **[ModName].csproj.user** - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
+5. **[ModName].csproj.user** (v0.10) or **Properties/launchSettings.json** (v0.11) - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
 6. **Items/[ItemName].cs** - A simple Sword item. Use this as an example as you learn to make additional ModItem classes.  
 7. **Items/[ItemName].png** - The corresponding sprite.  
 
@@ -32,7 +41,7 @@ Now go in game, make a workbench and mine 10 dirt blocks, and you should see tha
 
 ![](http://i.imgur.com/UQb3tXq.png)
 
-Wow! Amazing. But 50 damage isn't enough. We will now do our first actual programming. Open up the `Mod Sources\TutorialMod\Items\TutorialSword.cs` file in Notepad++. Find the line with `item.damage = 50;` and change 50 to 100. Also at this time, let's change `Tooltip.SetDefault("This is a modded sword.");` just for fun. Remember not to mess up the syntax that you learned in the Basic Prerequisites lesson. Now, save the file! Next, go in game, once again build and reload the mod and acquire the sword again. You should see the new damage and the new tooltip.
+Wow! Amazing. But 50 damage isn't enough. We will now do our first actual programming. Open up the `Mod Sources\[ModName]\Items\TutorialSword.cs` file in Notepad++. Find the line with `item.damage = 50;` and change 50 to 100. Also at this time, let's change `Tooltip.SetDefault("This is a modded sword.");` just for fun. Remember not to mess up the syntax that you learned in the Basic Prerequisites lesson. Now, save the file! Next, go in game, once again build and reload the mod and acquire the sword again. You should see the new damage and the new tooltip.
 
 ## Experiment a little
 
