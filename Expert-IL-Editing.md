@@ -87,44 +87,45 @@ This is great, but what now? First, lets use dnSpy to look at the IL Code for th
 ```
 Lets make sense of this now by following along. Be sure to hover or click on individual instructions to open the [OpCode documentation](https://msdn.microsoft.com/en-us/library/system.reflection.emit.opcodes_fields(v=vs.110).aspx) directly from dnSpy:    
 ```cs
-ldarg.0 pushes the 1st argument onto the stack, but this method has 0 arguments, what is going on? 
-Well, non-static methods have the current instance as the 1st argument, 
-it is there even though it isn't in the method parameters.
+// ldarg.0 pushes (loads) the first argument (argument 0) onto the stack.
+// This method has no arguments, what is going on?
+// In truth, non-static methods have the current instance (this) as the first argument,
+// it is there even though it isn't in the method parameters.
 IL_0000: ldarg.0
-Next, the value of strongBees is placed over the top item in the stack
+// Next, the value of strongBees is pushed to the stack
 IL_0001: ldfld     bool Terraria.Player::strongBees
-If that value is false, jump to instruction 22
+// If that value is false, jump (branch) to IL_0022 (instruction at 0x0022 in method)
 IL_0006: brfalse.s IL_0022
 
-// Otherwise, lets place the static field Main.rand onto the stack
+// Push the static field Main.rand onto the stack
 IL_0008: ldsfld    class Terraria.Utilities.UnifiedRandom Terraria.Main::rand
 // and then push 2 onto the stack
 IL_000D: ldc.i4.2
-// and then call the Next method.
+// and then call Main.rand's "Next" method, pushing the result onto the stack.
 IL_000E: callvirt  instance int32 Terraria.Utilities.UnifiedRandom::Next(int32)
-// if the result of that is non-zero, jump to instruction 22.
+// If the top of the stack (the result of "Next") is non-zero, jump to IL_0022.
 IL_0013: brtrue.s  IL_0022
 
-// Load the Player instance onto the stack
+// Push the Player instance onto the stack
 IL_0015: ldarg.0
-// Load 1 into the stack (remember, 1 is true)
+// Push 1 into the stack (remember, 1 is true)
 IL_0016: ldc.i4.1
-// Set Player.makeStrongBee to true
+// Set Player.makeStrongBee to true.
 IL_0017: stfld     bool Terraria.Player::makeStrongBee
-// Load 566 onto the stack
+// Push 566 onto the stack.
 IL_001C: ldc.i4    566
-// Return. Since 566 in on top of the stack it is the value returned
+// Return the top of the stack, 566.
 IL_0021: ret
 
-// Load the Player instance onto the stack
+// Push the Player instance onto the stack
 IL_0022: ldarg.0
-// Load 0 into the stack (remember, 0 is false)
+// Push 0 into the stack (remember, 0 is false)
 IL_0023: ldc.i4.0
 // Set Player.makeStrongBee to false
 IL_0024: stfld     bool Terraria.Player::makeStrongBee
-// Load 181 onto the stack
+// Push 181 onto the stack
 IL_0029: ldc.i4    181
-// Return. Since 181 in on top of the stack it is the value returned
+// Return the top of the stack, 181.
 IL_002E: ret
 ```
 Hopefully this annotated IL Code can help you make sense of things. If you are confused, it might be worth your while learning about stacks and other things related to how computers run instructions.    
