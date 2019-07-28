@@ -17,7 +17,7 @@ The following covers a list of useful resources, adapted from the [help thread o
 * [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) | Quickly create armor animation sprites with this tool
 * [Item name updater](https://cdn.discordapp.com/attachments/103110554649894912/321756918609870858/Item_Name_Updater_Fixed.zip) | A tool that can automatically change SetDefaults to SetStaticDefaults, used for migration to v0.10 (by @imkSushi)
 * [Terraria Tile Generator](https://forums.terraria.org/index.php?threads/terraria-tile-generator.70088/) | Quickly makes tile textures for ores.
-* [tModLoaderHelper](https://forums.terraria.org/index.php?threads/tmodloaderhelper.73330/) | Allows for quick evaluation and debugging for armor, items, ect against character models and other stuff.
+* [tModLoaderHelper](https://forums.terraria.org/index.php?threads/tmodloaderhelper.73330/) | Allows for quick evaluation and debugging for armor, items, etc. against character models and other stuff.
 * [Official mod migration guide to v0.10](https://docs.google.com/document/d/1GY6Jyj0IkqfvQlXJUwXg60d2V8tIzumoNVgh5OWzGIc/edit?usp=sharing)
 * [Terraria c# crash course](https://docs.google.com/document/d/1xRz3kFNbewb8DI29AKXuyi6O327IcxlgihZ7sdK_IuE/edit?usp=sharing)
 * [Quick C# structure guide](http://i.imgur.com/oDfE6d6.png)
