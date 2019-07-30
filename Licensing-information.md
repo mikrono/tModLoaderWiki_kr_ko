@@ -1,10 +1,12 @@
-* Primer about licenses
-* About copyright
-* About trademarks and patents
-* About tModLoader's license
-* How to license your mod(s)
-* What if you use no license or the "Unlicense"?
-* Copyright infringement
+## Table of Contents
+* [Primer about licenses](#primer-about-licenses)
+* [About copyright](#about-copyright)
+* [About trademarks and patents](#about-trademarks-and-patents)
+* [About tModLoader's license](#about-tmodloaders-license)
+* [How to license your mod(s)](#how-to-license-your-mods)
+* [Not using a license ("license free") or opting-out of copyright](#not-using-a-license-license-free-or-opting-out-of-copyright)
+* [Copyright infringement](#copyright-infringement)
+* [Sources](#sources)
 
 # Primer about licenses
 When you make a creative work (which includes code), the work is under exclusive copyright by default. 
@@ -65,10 +67,12 @@ Using the "Unlicense" is another popular option if you want to [disclaim copyrig
 
 **Please understand** that it is _not_ possible to completely relinquish yourself of copyright holding in every jurisdiction, but certain licenses like the CC0 license are the most complete alternatives to still serve your product to a public domain. 
 
+**Also another note, the Unilicense is NOT global.** The Unilicense doesn't make sense outside of a commonwealth ecosystem, has unclear legality in some countries (Australia, New Zealand, etc.) and is even explicitly illegal in some countries (like Germany). Lastly, some clauses can easily be interpreted for another or vague meaning, so if you somehow go to court, it may take a few trials for a legal team to come up with an objective definition for the Unilicense. 
+
 # Copyright infringement
 Someone may have infringed your copyright, and may be held liable for not abiding to the terms of your license. There is only so much we can do as a non-professional, hobbyist modding team. We own the in-house Mod Browser. What we can offer you is a takedown of the copied mod in question if you can provide proof, but we have no jurisdiction on other platforms such as Github. We also cannot offer you legal advise. If it is of importance, you are advised to consult a professional. If you want to contact us, your best bet is by contacting us on Github or through our [discord server](https://tmodloader.net/discord) (this will require a DiscordApp account)
 
-# Literature
+# Sources
 All sources were consulted on the 26th of April, 2019 unless stated otherwise
 * https://en.wikipedia.org/wiki/License-free_software
 * https://choosealicense.com/no-permission/
@@ -80,3 +84,4 @@ All sources were consulted on the 26th of April, 2019 unless stated otherwise
 * https://www.gnu.org/licenses/agpl.html
 * https://creativecommons.org/share-your-work/public-domain/cc0/
 * https://github.com/Dradonhunter11/tModLoader/tree/x64
+* https://web.archive.org/web/20170301020915/https://lists.opensource.org/pipermail/license-review/2012-January/001386.html (consulted 29 July 2019)
