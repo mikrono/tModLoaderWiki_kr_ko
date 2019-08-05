@@ -10,16 +10,16 @@ You are trying to connect to a server that is not the correct version. You might
 2. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file.
 3. Verify that the tModLoader version of the Client and the Server match exactly. If not, reinstall the latest tModLoader.
 4. You can also verify the filesizes: 
-   * Windows Steam tModLoder v0.10.1 Client: 11,696 KB
-   * Windows Steam tModLoder v0.10.1 Server: 11,684 KB
-![](https://i.imgur.com/S7uPCUw.png)
+   * Windows Steam tModLoder v0.11.3 Client: 16,963 KB
+   * Windows Steam tModLoder v0.11.3 Server: 16,946 KB
+![](https://i.imgur.com/t8mI1Q0.png)
 
 ## Version is fine
 If version isn't the issue, read [My connection is fine but my friend or I am stuck on "Connecting..."](#my-connection-is-fine-but-my-friend-or-i-am-stuck-on-connecting) below
 
 # I can join my server, but my friend can't
 ## Verify that your server is visible to the internet
-1. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file.
+1. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file. (If you are on 0.11.3+, you can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
 2. Select a world and start the server
 3. Go to [canyouseeme.org](http://canyouseeme.org/) on the computer with the server running and type in 7777 as the port (adjust this if you changed it.)
 4. Click Check Port
