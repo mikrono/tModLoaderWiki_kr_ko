@@ -29,6 +29,7 @@ One last thing you will need is a picture editor. We will make all our sprites i
 * [Inkscape](https://inkscape.org/) -- Free and Open-Source vector graphics editor as referenced on [this video](https://www.youtube.com/watch?v=Se7WVuyIEnU)
 * [Adobe Photoshop](www.adobe.com/products/photoshop.html) -- Expensive and capable, but not intended for sprite work
 * [Piskel](http://www.piskelapp.com/) -- Free and quite popular amongst spriters
+* [Aseprite](https://github.com/aseprite/aseprite) -- Open-source, meaning it's free, but you have to compile it yourself since they don't distribute copies for free. You can also get Aseprite at a cost on Steam [here](https://store.steampowered.com/app/431730/Aseprite/). As a plus, Aseprite is built for spriting, and it's fairly easy and intuitive to use.
 
 ## Make a simple Mod
 Now that you are prepared, please visit [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) and follow the steps within before attempting any Basic-Level guides.
