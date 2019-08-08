@@ -100,6 +100,24 @@ if(Main.GameUpdateCount % 60 == 0) {
    // Dust.NewDust or some other visual effect.
 }
 ```
+Here is another example showing cycling between 4 colors with 1 second between. Dividing GameUpdateCount by 60 turns the value into counting seconds, and using modulo 4 lets it cycle. This code came from a ModifyTooltips method, but the idea can be in other situations.
+```cs
+switch (Main.GameUpdateCount / 60 % 4)
+{
+	case 0:
+		line.overrideColor = new Color(254, 105, 47);
+		break;
+	case 1:
+		line.overrideColor = new Color(34, 221, 151);
+		break;
+	case 2:
+		line.overrideColor = new Color(190, 30, 209);
+		break;
+	case 3:
+		line.overrideColor = new Color(0, 106, 185);
+		break;
+}
+```
 
 # World Time
 World Time usually advances at the same pace as Game Time, but there are several situations where the difference is critical. While the game is paused, world time does not progress. While an enchanted sundial is in use, time progresses 60 times faster than usual. Be aware that mods could also change how fast time progresses. For example, time can be paused in HerosMod, so relying on World Time for gameplay effects would fail. 
