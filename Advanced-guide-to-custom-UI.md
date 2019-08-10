@@ -201,7 +201,7 @@ public override void OnInitialize() {
   UIText header = new UIText("My UI Header");
   header.HAlign = 0.5f; // 1
   header.Top.Set(15, 0); // 2
-  panel.Append(text);
+  panel.Append(header);
 }
 ```
 1) Set the horizontal alignment to 50%
@@ -240,7 +240,7 @@ public override void OnInitialize() {
   UIText header = new UIText("My UI Header");
   header.HAlign = 0.5f;
   header.Top.Set(15, 0);
-  panel.Append(text);
+  panel.Append(header);
 
   UIPanel button = new UIPanel(); // 1
   button.Width.Set(100, 0);  
@@ -400,7 +400,7 @@ public override void OnInitialize() {
   UIText header = new UIText("My UI Header");
   header.HAlign = 0.5f;
   header.Top.Set(15, 0);
-  panel.Append(text);
+  panel.Append(header);
 
   _button = new UIClickableButton("Click me!", OnButtonClick);
   _button.Width.Set(100, 0);  
