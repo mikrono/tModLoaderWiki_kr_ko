@@ -7,7 +7,7 @@ recipe.AddTile(18);                     // Good
 recipe.AddTile(TileID.18);              // Wrong
 ```
 
-| Sound	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Tile | ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | :-- 			| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Dirt | 0 |    
 | Stone | 1 |    
