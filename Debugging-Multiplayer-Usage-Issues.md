@@ -30,7 +30,7 @@ If version isn't the issue, read [My connection is fine but my friend or I am st
 ![](https://i.imgur.com/4Eo66NN.png)
 
 ## My connection is fine but my friend or I am stuck on "Connecting..."
-This is where things get complicated. There could be many reasons for this error, and most of them are likely caused by poorly programmed mods. The best approach is to launch the server manually (NOT Host and Play) and watch for messages that appear to be errors in the output. 
+This is where things get complicated. There could be many reasons for this error, and most of them are likely caused by poorly programmed mods. The best approach is to launch the server manually (NOT Host and Play) and watch for messages that appear to be errors in the output. (If you are on 0.11.3+, you can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
 
 First, I would suggest using fresh player and world files and attempting to connect to the server. If this works, the problem might be a mod that has trouble saving or loading its custom data correctly.
 
