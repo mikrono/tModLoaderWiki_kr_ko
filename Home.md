@@ -7,7 +7,7 @@ You can navigate through the pages through the links in one of the sidebars on t
 
 If you have suggestions, tips, or have found things such as spelling errors or grammar mistakes, please notify us in **[our discord server](https://tmodloader.net/discord)**, **[the forum thead](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/)** or **[open an issue thread](https://github.com/tModLoader/tModLoader/issues/new)** to suggest a change.
 
-A list of useful resources can be found **[here](Useful-Resources)**
+A list of useful resources can be found **[here](Useful-Resources)**.
 
 Below is a structured list of wiki pages that you can use to learn more about the API.
 
@@ -80,7 +80,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
 - [IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
 
-# Vanilla References
+## Vanilla References
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
 - [Vanilla Buff IDs](Vanilla-Buff-IDs)
 - [Item Class Documentation](Item-Class-Documentation)
