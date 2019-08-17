@@ -86,6 +86,7 @@ Wherever makes sense, but usually things like ModNPC.AI, ModProjectile.AI, ModTi
 
 ### What about custom mod sounds?
 This whole guide focused on vanilla sounds, but everything we learned above is the same for custom sounds if you understand a few concepts.
+If you want to add sounds to your mod, create a `Sounds` folder in your Mod folder, and put the files in there. In any other folder they won't be recognized.
 
 Replace LegacySoundStyles in method arguments from SoundID with mod.GetLegacySoundSlot calls.
 Replace style with the results from mod.GetSoundSlot in cases where you put both type and style.
