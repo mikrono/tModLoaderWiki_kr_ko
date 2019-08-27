@@ -32,7 +32,8 @@ These pages tend to describe certain files or folders.
 
 ## Development
 These pages aim to aid you to learn how to develop mods properly, how to setup your developing environment etc.
-- [Developing with Visual Studio](Developing-with-Visual-Studio)
+- [Developing with Visual Studio](Developing-with-Visual-Studio) -- Recommended
+- [Developing with Visual Studio Code](Developing-with-Visual-Studio-Code) -- Takes less space, ~200 MB. Can't debug.
 - [Developing with Rider](Developing-with-Rider)
 - [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
 - [Developing on Mac or Linux](Developing-on-Mac-or-Linux)
