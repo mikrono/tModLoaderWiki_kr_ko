@@ -34,7 +34,7 @@ If you do not have errors, you should see Build Succeeded on the bottom left. If
 **Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. So, before you release your mod, ALWAYS build using the in-game menu.**
 
 # Debugging
-Debugging is the main feature that sets Visual Studio apart from Visual Studio Code. This will let you set breakpoints in your mod and inspect variables in Visual Studio. To debug, simply click the button labeled "Terraria" or press F5:
+Debugging is the main feature that sets Visual Studio apart from Visual Studio Code. This will let you set breakpoints in your mod and inspect variables in Visual Studio. To debug, simply click the button labeled "Terraria" or press F5:    
 ![](https://i.imgur.com/7GUHYCS.png)    
 If you have errors, the Error List will appear, otherwise, the mod will build, be enabled automatically, and Terraria will start. (You may find that Full screen mode makes modding difficult, I suggest using Windowed mode while making mods.) You'll know it is working if you see this:
 ![](https://i.imgur.com/9vK1rvF.png)    
