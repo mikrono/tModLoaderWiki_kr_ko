@@ -11,7 +11,45 @@
     1. If you've forgotten this step, you can click on Tools->Get Tools and Features to bring up the installer again. ([Example](https://i.imgur.com/EmqEsmH.png))
 
 # Creating a Project
-These steps are for informational purposes only. You should use the [mod skeleton generator](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) if you are making a mod, as you can skip all of these steps. **The mod skeleton generator is now embedded in the client (versions 0.11 and up), which can be found in the mod sources menu. It is recommended to use this feature**.
+First we must create a new project for our mod. To do this, follow the v0.11 instructions in [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#v011-instructions)
+
+## Creating or Updating a existing project for an old mod
+If you are updating a mod older than 0.11, you can use the "Upgrade .csproj file" [button](https://i.imgur.com/woTP4Sf.png) in the Mod Sources menu. This will create a fully working project for you to open and continue working on.
+
+# Opening your Project
+It is very important that you open the .csproj file from the file explorer. If you open individual .cs files, Visual Studio will be completely useless. To open the csproj, navigate to `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` and double-click on `[ModName].csproj`. Make sure you aren't opening the `[ModName].csproj.user` or `[ModName].cs` files. This will likely happen if you do not have file extensions shown. Watch [this](https://gfycat.com/SleepyDisfiguredGuanaco) to see how to toggle file extensions. Now that Visual Studio is open, make sure you see the following:    
+![](https://i.imgur.com/NreIujY.png)    
+Click the `Solution Explorer` button to see the `.cs` files in your mod. You must open `.cs` files from here in order to correctly use Visual Studio. Let's make sure autocomplete is working. Open up `Items\TutorialSword.cs` and type `item.` on a new line after the existing `item.autoReuse = true;`. You should see the autocomplete popup show up:    
+![](https://i.imgur.com/2WOzFND.png)    
+Congratulations, you are ready to write code for your mod. Read below for info on building and debugging within Visual Studio.
+
+# Building with Visual Studio
+Building your mod within Visual Studio lets you quickly make sure the code you have written doesn't have any build errors. First, make sure tModLoader itself is closed, or at least that the mod you are building is unloaded. Next, simply select the Build->Build [Modname] menu item:    
+![](https://i.imgur.com/Afx2wtd.png)    
+If you have errors, you'll see them in the Error List. You can click on each error to see the offending code: 
+![](https://i.imgur.com/eO0w0cn.png)    
+If you do not have errors, you should see Build Succeeded on the bottom left. If you open the Output Panel (View->Output), you should see something similar to this:
+![](https://i.imgur.com/mrMpzB3.png)    
+
+**Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. So, before you release your mod, ALWAYS build using the in-game menu.**
+
+# Debugging
+Debugging is the main feature that sets Visual Studio apart from Visual Studio Code. This will let you set breakpoints in your mod and inspect variables in Visual Studio. To debug, simply click the button labeled "Terraria" or press F5:
+![](https://i.imgur.com/7GUHYCS.png)    
+If you have errors, the Error List will appear, otherwise, the mod will build, be enabled automatically, and Terraria will start. (You may find that Full screen mode makes modding difficult, I suggest using Windowed mode while making mods.) You'll know it is working if you see this:
+![](https://i.imgur.com/9vK1rvF.png)    
+More information on how to debug and the benefits of debugging are found in the [Why Use an IDE](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#debug) page, please read it, it is extremely useful.
+
+# Edit and Continue
+While debugging, you can edit the source code and recompile the mod in-game without having to reload mods or restart the game. The [Why Use an IDE](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) page has more info on this topic, please read it, it is extremely useful.
+
+# Next Steps
+Now that you have setup Visual Studio, your mod development speed can increase greatly. Please read [Why Use an IDE](Why-Use-an-IDE) for more tips on how an IDE like Visual Studio greatly speed up your modding.
+
+# Manual Setup
+Setting up a project for your mod manually is not recommended. Modders should use the automatic mod project generation. The info in this section is for informational purposes only.
+
+## Creating a Project
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
 1. Set the _internal_ name for your mod. (No special characters allowed)
@@ -34,7 +72,7 @@ These steps are for informational purposes only. You should use the [mod skeleto
     1. VS should prompt to reload the project, do so. Otherwise, simply re-open the project.
 1. Create a class extending `Terraria.ModLoader.Mod`
 
-# Building with Visual Studio
+## Building with Visual Studio
 This will let you build your mod from within Visual Studio, so you don't have to rebuild from within the game, or have your sources in the Mod Sources folder.
 
 1. Right click on your mod project in the Solution Explorer and click Properties
@@ -42,13 +80,6 @@ This will let you build your mod from within Visual Studio, so you don't have to
 1. Add the following to the Post-build event command line
 `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"`
     1. Ensure the paths are enclosed by double quotes, change the path to your tModLoaderServer if you have it installed elsewhere.
-
-**Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. So, before you release your mod, ALWAYS build using the in-game menu.**
-
-# See the build output from within VS.
-You can view the output of the build process using the Output window, **this is especially useful if your build fails**
-
-1. Navigate to View -> Output
 
 # Debugging
 This will let you set breakpoints in your mod and inspect variables in VS. Change the paths if you installed Terraria elsewhere.
@@ -65,6 +96,8 @@ This will let you edit the source code and recompile the mod during debugging, w
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
 # Common issues
+These issues usually only apply if you have not upgraded to the 0.11 .csproj. Please update your csproj in the Mod Sources menu first.
+
 ## Autocomplete isn't doing anything for me.
 (Also: Autocomplete is changing things I don't want it to, like changing `item` to `Items`.)
 1. Check that the tModLoader executable file is in your references. Make sure it's modded not vanilla.    
