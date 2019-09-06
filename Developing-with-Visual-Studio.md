@@ -14,7 +14,8 @@
 First we must create a new project for our mod. To do this, follow the v0.11 instructions in [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#v011-instructions)
 
 ## Creating or Updating a existing project for an old mod
-If you are updating a mod older than 0.11, you can use the "Upgrade .csproj file" [button](https://i.imgur.com/woTP4Sf.png) in the Mod Sources menu. This will create a fully working project for you to open and continue working on.
+If you are updating a mod older than 0.11, you can use the "Upgrade .csproj file" button in the Mod Sources menu. This will create a fully working project for you to open and continue working on.    
+![](https://i.imgur.com/woTP4Sf.png)
 
 # Opening your Project
 It is very important that you open the .csproj file from the file explorer. If you open individual .cs files, Visual Studio will be completely useless. To open the csproj, navigate to `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` and double-click on `[ModName].csproj`. Make sure you aren't opening the `[ModName].csproj.user` or `[ModName].cs` files. This will likely happen if you do not have file extensions shown. Watch [this](https://gfycat.com/SleepyDisfiguredGuanaco) to see how to toggle file extensions. Now that Visual Studio is open, make sure you see the following:    
