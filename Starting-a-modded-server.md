@@ -30,7 +30,13 @@ The tML installation should've come with several .bat files, including:
     1. Launch a server explicitly with a closed steam lobby so steam friends cannot join you through the steam UI.
 
 ### Starting server on Linux
-TODO (Undocumented)
+The tML installation should have come with a script called tModLoaderServer however it is not executable to change this and run the server:
+1. browse to the directory of installation using `cd /desiredPath/`
+2. verify correct path using `pwd` or make sure the files are there by typing `ls`
+3. type `sudo chmod +x tModLoaderServer`
+4. now you can run the script using `./tModLoaderServer`
+
+Optional: I recommend using running the server inside of a screen or tmux session this way when you need to close the terminal you don't have to close the server. This is especially useful for headless servers where the owner will only be connecting via SSH.
 
 ### Starting server on Mac
 TODO (Undocumented)
