@@ -1,4 +1,4 @@
-#Welcome to the tModLoader wiki!  
+# Welcome to the tModLoader wiki!  
 This place serves as a center for guides related to tModLoader. These guides help to teach basic concepts regarding tModLoader modding and should prove as a useful resource to modders. Please feel free to contribute guides for topics not yet covered, but please refrain from editing well established guides without consulting the developers first.
 
 Note that the **[automatically generated documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)** will be ahead of the current released version. There is no guarantee that everything here will be present in the current released version.
