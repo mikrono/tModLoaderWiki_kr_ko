@@ -25,7 +25,7 @@ Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender.
 
 ### System.IO.IOException: Cannot create a file when that file already exists.
 ![](https://i.imgur.com/Wjv2nx2.png)    
-Solution. Delete the logs folder. If you have previously installed 64 bit tModLoader, clear out the install directory and reinstall Terraria, then install tModLoader again.
+Solution. Delete the logs folder. If it comes back, you can try renaming the ModLoader folder to ModLoaderOld or completely reinstalling Terraria.
 
 ### Host and Play: The system cannot find the file specified
 ![](https://i.imgur.com/Vm2b78X.png)    
