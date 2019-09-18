@@ -182,7 +182,7 @@ Make sure you are only overriding AddRecipes in Mod or ModItem.
 
 ## Not covered in Basic level
 There are other aspects of ModRecipes that will be covered in more advanced guides:
-* RecipeGroups -- Intermediate -- Allows a single ingredient to be 1 of a large group, like how most recipes involving wood can take Boreal Wood or Pearl Wood. ("any wood")
+* [RecipeGroups](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#recipegroups) -- Intermediate -- Allows a single ingredient to be 1 of a large group, like how most recipes involving wood can take Boreal Wood or Pearl Wood. ("any wood")
 * ModRecipe.OnCraft
 * ModRecipe.ConsumeItem
 * ModRecipe.RecipeAvailable
