@@ -141,6 +141,25 @@ public override void AddRecipes()
 	}
 }
 ```
+
+# Cross-Mod Recipes
+If you wish to use items or tiles from other mods in your recipes, you need to plan ahead. Read [Expert Cross Mod Content](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content) for an idea of some considerations you'll need to keep in mind. For example, the mod you are referencing might change the item name in an update to their mod, breaking your mod in the process. Another issue is planning for the other mod not being enabled. In that case, you might want to skip the recipe altogether or plan an alternate recipe. The example below shows the alternate ingredients approach. 
+
+```cs
+Mod exampleMod = ModLoader.GetMod("ExampleMod");
+ModRecipe recipe = new ModRecipe(this);
+if (exampleMod != null) {
+	recipe.AddIngredient(exampleMod.ItemType("ExampleWings"));
+}
+else {
+	recipe.AddIngredient(this.ItemType("MyItem"));
+	recipe.AddIngredient(ItemID.EnchantedSword);
+}
+recipe.SetResult(ItemID.Wood, 999);
+recipe.AddRecipe();
+```
+As you can see, this recipe takes ExampleMod's ExampleWings item if ExampleMod is enabled, and the current mods MyItem and vanilla's EnchantedSword if ExampleMod is not enabled. If you have opted to only load your mod if the other mod is enabled, you can simplify the logic since the other mod will always be available if you are using modReferences.
+
 # Common Errors
 
 # Relevant References
