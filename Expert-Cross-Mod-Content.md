@@ -22,9 +22,15 @@ public override void SetupShop(Chest shop, ref int nextSlot)
     }
     // other code
 ```
-As you can see, we can use the exampleMod object and invoke the ItemType method to get the correct type for that item. Note that "ExampleWings" corresponds to the internal name of an item, so it may be necessary to ask the other modder so you can get the correct internal name of the items you wish to use.
+As you can see, we can use the exampleMod object and invoke the ItemType method to get the correct type for that item. Note that "ExampleWings" corresponds to the internal name of an item, so it may be necessary to ask the other modder so you can get the correct internal name of the items you wish to use. See [Determining Internal Names](#determining-internal-names) below for more approaches. Also be aware that if the mod you are referencing changes the internal name, your mod will break until you fix it. It is recommended that mods expecting cross-mod content refrain from changing fields, methods, and namespaces other mod expect to remain consistent.
 
 Similar code can be used for NPC loot and recipes.
+
+## Recipe Example
+See [here](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) for a recipe example.
+
+## Determining Internal Names
+If you use the Helpful Hotkeys mod and enable the Show Developer Info setting, then use the Query Mod Origin hotkey while hovering over a modded entity in-game, you can determine the internal name of that entity. Another approach is setting a breakpoint after the `ModLoader.GetMod` method call and inspecting the resulting Mod object. For example, you could inspect the `items` dictionary to find the `Name` field of the `ModItem` you are interested.
 
 # Call, aka Mod.Call (Intermediate)
 
