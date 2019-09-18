@@ -23,6 +23,10 @@ Solution: Same as above. (Don't try to install other things such as other stand 
 ![](https://i.imgur.com/IkPqCo6.png)    
 Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender.
 
+### System.IO.IOException: Cannot create a file when that file already exists.
+![](https://i.imgur.com/Wjv2nx2.png)    
+Solution. Delete the logs folder. If you have previously installed 64 bit tModLoader, clear out the install directory and reinstall Terraria, then install tModLoader again.
+
 ### Host and Play: The system cannot find the file specified
 ![](https://i.imgur.com/Vm2b78X.png)    
 Simply put, you didn't follow the install instructions. Check the install directory, usually "C:\Program Files (x86)\Steam\steamapps\common\Terraria" (NOT "C:\Documents\My Games\Terraria\ModLoader"!), and make sure that tModLoaderServer.exe has been copied into the folder. If not, take the file from the tModLoader zip file and place it there.
