@@ -19,7 +19,7 @@ Follow the v0.11 instructions in [Basic tModLoader Modding Guide](Basic-tModLoad
 # Open your Mod Source
 1. It is very important that you installed the C# Extension listed in [Prerequisites](#prerequisites)
 1. Open Visual Studio Code
-1. Click `Open Folder`. If you don't see it, click `File->Open Folder`. Navigate to `%UserProfile%\My Games\Terraria\ModLoader\Mod Sources\TutorialMod` and click `Select Folder`: [Example](https://i.imgur.com/lCaN4aP.png)
+1. Click `Open Folder`. If you don't see it, click `File->Open Folder`. Navigate to `%UserProfile%\Documents\My Games\Terraria\ModLoader\Mod Sources\TutorialMod` and click `Select Folder`: [Example](https://i.imgur.com/lCaN4aP.png)
 1. You should now see various files available to edit. Open `TutorialMod.cs` and you should be able to start writing code.
 1. You can create new folders and .cs files by right clicking in empty space in the Explorer pane: [New File](https://i.imgur.com/B6fh4JD.png)
 
