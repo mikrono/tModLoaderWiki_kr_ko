@@ -4,8 +4,8 @@
 - **This guide is not meant to learn C# fundamentals**
 
 # Prerequisites
-1. Download [Visual Studio](https://code.visualstudio.com/). 
-1. Install Visual Studio by running the downloaded installer. Allow the program to run and accept licence agreements as you would normally do. The default options should be suitable.
+1. Download [Visual Studio Code](https://code.visualstudio.com/). 
+1. Install Visual Studio Code by running the downloaded installer. Allow the program to run and accept licence agreements as you would normally do. The default options should be suitable.
 1. Launch Visual Studio Code
 1. Install the C# Extension
     1. You should see something similar to the following: [Welcome Page](https://i.imgur.com/YwNh3x6.png)
