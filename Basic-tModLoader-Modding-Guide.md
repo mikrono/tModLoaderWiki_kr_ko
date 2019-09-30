@@ -4,23 +4,9 @@ This guide will get you familiar with tModLoader modding and will help you make 
 To start, we will make a very simple mod to get you familiar with how mods are created for tModLoader. 
 
 ## Generate a Mod Skeleton
-### v0.11 instructions
 To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader (at least v0.11.2.2) and open the "Mod Sources" menu and click the "Create Mod" button (If you don't see "Mod Sources", you'll need to click ["Enable Developer Mode"](https://i.imgur.com/Jup4nHx.png) in the bottom right corner and then download the items you need. ). Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
 
 ![](https://i.imgur.com/QAo0dsd.png)    
-
-Continue this tutorial by going to the [Mod Skeleton Contents](#mod-skeleton-contents) section below.
-
-### v0.10 instructions
-To begin, please visit the [Mod Skeleton Generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) and fill out the input boxes. I suggest TutorialMod, Tutorial Mod, TutorialSword, and NewbieModder. 
-
-![](http://i.imgur.com/B38HAI5.png)
-
-Click the `Generate Mod Skeleton` button and you should see a .zip file download. Next, open up `Documents\My Games\Terraria\ModLoader\Mod Sources` on Windows or `~/.local/share/Terraria/ModLoader/Mod Sources` on linux. If you do not have the Mod Sources folder, make a folder of that name. Next, we will take the folder contained within the .zip file we just downloaded and place it in the Mod Sources folder.
-
-![](http://i.imgur.com/0zH7w65.png)
-
-You should now have a `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` folder (no square brackets [ ].). If you end up with a `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\[ModName]\` folder, you did it wrong. Make sure to move the folder. If you use an unzipping program to unzip, you might end up with duplicate folders.    
 
 ## Mod Skeleton Contents
 Open up your file browser and navigate to the `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` folder. This folder contains all the code relating to this mod. Currently, there should be 7 basic files added by the mod skeleton generator. Here is an explanation of each of those files:    
