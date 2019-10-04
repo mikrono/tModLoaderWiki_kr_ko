@@ -1,7 +1,7 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here.
 
 # v0.11.5
-v0.11.5 introduced ContentInstance, a faster and simpler way to access IDs and instances of modded classes. 
+v0.11.5 introduced `ContentInstance`, a faster and simpler way to access IDs and instances of modded classes. 
 
 ### Do I need to Update
 No, all mods should still work, but if you wish to publish on v0.11.5, you will have to update.
