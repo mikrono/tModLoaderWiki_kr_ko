@@ -38,6 +38,7 @@ These pages aim to aid you to learn how to develop mods properly, how to setup y
 - [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
 - [Developing on Mac or Linux](Developing-on-Mac-or-Linux)
 - [Why Use an IDE](Why-Use-an-IDE)
+- [Update Migration Guide](Update-Migration-Guide) -- Contains info on code updates required for updating mods to new tModLoader releases.
 
 ## Easy guides
 These guides are easy and should be used if you are new to the API. Their goal is to get you familiar with tML and help you learn certain classes.
