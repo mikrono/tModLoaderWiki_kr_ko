@@ -14,6 +14,8 @@ You can migrate your whole mod easily with the following Find and Replace comman
 
 Find: `(this|mod)\.(.*)Type<(.*)>\(\)`    
 Replace: `ModContent.$2Type<$3>()`    
+Example:    
+![](https://i.imgur.com/DGycKCu.png)     
 
 If you'd prefer the `using static Terraria.ModLoader.ModContent;` approach, do the following Find and Replace commands instead. These also require that `Use Regular Expressions` is enabled. You'll need to fix the calls in your Mod class to use `ModContent.XType<>()` manually:    
 
