@@ -27,7 +27,11 @@ If true, the world is currently in hardmode.
 
 * rain; bool
 
-If true, is is currently raining in the world.
+If true, it is currently raining in the world.
+
+* bloodMoon; bool
+
+If true, it is currently a blood moon going on.
 
 * spawnTileX, spawnTileY; int
 
