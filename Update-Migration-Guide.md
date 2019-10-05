@@ -15,12 +15,12 @@ You can migrate your whole mod easily with the following Find and Replace comman
 Find: `(this|mod)\.(.*)Type<(.*)>\(\)`    
 Replace: `ModContent.$2Type<$3>()`    
 
-If you'd prefer the `using static Terraria.ModLoader.ModContent;` approach, do the following Find and Replace commands instead. These also require that `Use Regular Expressions` is enabled:    
+If you'd prefer the `using static Terraria.ModLoader.ModContent;` approach, do the following Find and Replace commands instead. These also require that `Use Regular Expressions` is enabled. You'll need to fix the calls in your Mod class to use `ModContent.XType<>()` manually:    
 
 Find: `using Terraria.ModLoader;`    
 Replace: `using Terraria.ModLoader;\nusing static Terraria.ModLoader.ModContent;`    
-Find: `(this|mod)\.(.*)Type<(.*)>\(\)`    
-Replace: `$2Type<$3>()`    
+Find: `mod\.(.*)Type<(.*)>\(\)`    
+Replace: `$1Type<$2>()`    
 
 ## Mod.GetModX and Instance fields
 Similar to above, generic `Mod.GetModX<T>()` methods such as `GetModWorld` are now no longer invoked from an instance of the `Mod` class. Replace `mod.GetModWorld<ExampleWorld>();` with `GetInstance<ExampleWorld>();`, provided you write `using static Terraria.ModLoader.ModContent;` at the top of each .cs file. If you don't, it will be `ModContent.GetInstance<ExampleWorld>()`. Also, static instance variables are no longer recommended. Remove things like `public static ExampleConfigServer Instance;` and simply call `GetInstance<ExampleConfigServer>()` instead. Another example: `ExampleMod.Instance` -> `GetInstance<ExampleMod>()`. [Examples](https://github.com/tModLoader/tModLoader/commit/4bb65940e7928af8b6bf8fee30f935d37683505c)
