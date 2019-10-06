@@ -36,6 +36,17 @@ v0.11.5 adds `Player.MaxBuffs`. If you previously iterated over buffs using `for
 ## Reflection
 As always, your reflection might have broken, so double check that. Many internal classes and fields have changed namespaces and identifiers.
 
+For example, here are the changes needed for reflection into the load mods progress bar.
+```cs
+//var type = assembly.GetType("Terraria.ModLoader.Interface");
+//FieldInfo loadModsField = type.GetField("loadModsProgress", BindingFlags.Static | BindingFlags.NonPublic);
+//Type UILoadModsProgressType = assembly.GetType("Terraria.ModLoader.UI.DownloadManager.UILoadModsProgress");
+
+var type = assembly.GetType("Terraria.ModLoader.UI.Interface");
+FieldInfo loadModsField = type.GetField("loadMods", BindingFlags.Static | BindingFlags.NonPublic);
+Type UILoadModsProgressType = assembly.GetType("Terraria.ModLoader.UI.UILoadMods");
+```
+
 # v0.11
 
 v0.11 introduced many changes. Here is the [migration guide](https://docs.google.com/document/d/127Gmexzj533xMBC3ISmvWUz1yy6RZYjVjO8H2ZotwGM/edit?usp=sharing).
