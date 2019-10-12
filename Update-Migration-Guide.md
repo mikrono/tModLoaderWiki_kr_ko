@@ -50,3 +50,7 @@ Type UILoadModsProgressType = assembly.GetType("Terraria.ModLoader.UI.UILoadMods
 # v0.11
 
 v0.11 introduced many changes. Here is the [migration guide](https://docs.google.com/document/d/127Gmexzj533xMBC3ISmvWUz1yy6RZYjVjO8H2ZotwGM/edit?usp=sharing).
+
+# v0.10
+
+Here is the [migration guide](https://docs.google.com/document/d/1GY6Jyj0IkqfvQlXJUwXg60d2V8tIzumoNVgh5OWzGIc/edit?usp=sharing)
