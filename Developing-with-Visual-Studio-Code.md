@@ -40,8 +40,11 @@ If you have done the `One Time Steps` above, you are now ready to build your mod
 
 * If you get an error relating to "System.IO.IOException: The process cannot access the file TutorialMod.tmod because it is being used by another process.", you need to disable the mod in tModLoader and reload mods so that the file can be edited.
 
+## No Error Checking or Autocomplete
+You might need to wait for the "C# for Visual Studio Code (powered by OmniSharp)" extension to finish updating. It updates fairly often. See the output panel to view download progress. [Update Output](https://i.imgur.com/qcDMLVe.png) 
+
 # Why Use Visual Studio Code
-Please read the [Why Use an IDE](Why-Use-an-IDE) page. Aside from debugging, most of the features apply to Visual Studio Code. If you aren't seeing errors being underlined or fixes being suggested,  you might have skipped installing the [C# Extension](#prerequisites).
+Please read the [Why Use an IDE](Why-Use-an-IDE) page. Aside from debugging, most of the features apply to Visual Studio Code. If you aren't seeing errors being underlined or fixes being suggested, you might have skipped installing the [C# Extension](#prerequisites).
 
 # Debugging
 You can't debug in Visual Studio Code. To debug, use [Visual Studio](Developing-with-Visual-Studio).
