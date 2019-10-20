@@ -44,6 +44,9 @@ Before:
 After:    
 ![](https://i.imgur.com/KpQARfo.png)     
 
+## Cross Mod
+By using the extract mod feature, `[Modname]_[Modversion].dll` (and optionally a `[Modname]_[Modversion].xml` documentation file if it exists) will be placed in `Terraria\ModLoader\references\mods`. This file can be added as a dll reference to your .csproj if your mod has a strong or weak reference to another mod (you'll still need the build.txt entries). This path is consistent and accessible from the Mod Sources folder, meaning that the reference added to .csproj is portable for all contributors for your mod, provided they extract the referenced mod on their computer. 
+
 # Debug
 With an IDE, such as VS, you can debug your mod. Debugging is the best way to pinpoint issues in your mod and solve them. While debugging, you can set 'breakpoints' which will make the application 'stop' and pause itself when it gets to that point. During this pause you can inspect what is happening, by for example looking at the values of variables in scope. You can quickly resume the application, or step over code to try to find the cause of a problem. To learn more about debugging, see its [own guide](Learn-How-To-Debug).
 
@@ -57,8 +60,10 @@ In this video, we see 2 Example Gun spawned. After the first is spawned, a break
 In the [Basic Projectile: Drawing and Collision](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#drawing-and-collision) guide, an example is shown using a breakpoint to test values for `ModProjectile.SetDefaults`: [Video](https://gfycat.com/WebbedUntimelyHarborseal)
 
 # Documentation
-If you have the tML XMLdoc file, you can see documentation for a method when you hover it.
-To get the XMLdoc, generate it yourself or ask ask a developer/modder in the Discord server.
+tModLoader will automatically provide documentation XMLdoc files, you can see documentation for a method when you hover it. 
+
+## Mod Documentation
+As of v0.11.5, modders making mods with API to be used by other mods can include [ModName].xml files in their mod and they will be automatically extracted alongside their .dll file and placed in `ModLoader\references\mods` for easy collaboration (provided `hideCode` is not true, which would be counter-productive for a mod expecting to be referenced by other mods.). XMLdoc files for mods can be generated in Visual Studio during a regular build and should be named [ModName].xml and placed in the root of the mod's source folder.
 
 # Find All References (Ctrl-K, R)
 Find all references makes it easy to locate all usages of a variable in your whole project. Simply right click on a variable and click `Find all references`. This is very useful to see where you assign and use your variables.
