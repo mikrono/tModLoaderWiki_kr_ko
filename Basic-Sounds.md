@@ -42,7 +42,7 @@ To use a vanilla sound, first you must figure out which one you want. Below are 
 ### Mod
 [Dust and Sound Catalogue 2](https://forums.terraria.org/index.php?threads/dust-and-sound-catalogue-2.42370/) lets you experiment in game with sounds. Features a table of all sounds and what they are on the homepage aswell.
 
-[Terraria Sound Suite](https://forums.terraria.org/index.php?threads/terraria-sound-suite-customize-all-ingame-sounds-and-more.83611/) lets you enable debug mode to see sounds, their exact values, etc. without needing to see in source code.
+[Terraria Sound Suite](https://forums.terraria.org/index.php?threads/terraria-sound-suite-customize-all-ingame-sounds-and-more.83611/) lets you enable debug mode to see sounds, their exact values, etc. without needing to search in the source code.
 
 ### Extract
 [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) can extract the sound files to .wav files that you can easily load into VLC or whatever media player you have on your computer.
