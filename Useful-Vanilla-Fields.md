@@ -45,7 +45,7 @@ See [NPC Class Documentation](https://github.com/tModLoader/tModLoader/wiki/NPC-
 
 * dash; int
 
-Enables a dash ability depending on the value of the variable. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 4 = Ninja Master Gear Dash.
+Enables a dash ability depending on the value of the variable. 1 = Ninja Master Gear Dash. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 
 
 * endurance; float (%)
 
