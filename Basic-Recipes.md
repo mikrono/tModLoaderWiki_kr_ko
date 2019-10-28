@@ -23,10 +23,10 @@ We can also add modded items added by this mod. There are several ways we can do
 recipe.AddIngredient(mod, "ExampleItem");
 recipe.AddIngredient(null, "ExampleItem");
 recipe.AddIngredient(mod.GetItem("ExampleItem"));
-recipe.AddIngredient(mod.GetItem<Items.ExampleItem>());
+recipe.AddIngredient(ModContent.GetInstance<Items.ExampleItem>());
 recipe.AddIngredient(this); // adds the current ModItem
 recipe.AddIngredient(mod.ItemType("ExampleItem"));
-recipe.AddIngredient(mod.ItemType<Items.ExampleItem>());
+recipe.AddIngredient(ModContent.ItemType<Items.ExampleItem>());
 ```
 
 Next, we can specify up to 14 crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs).
@@ -35,14 +35,14 @@ Next, we can specify up to 14 crafting stations. This follows the same patterns 
 recipe.AddTile(TileID.WorkBenches);
 recipe.AddTile(TileID.Anvils);
 recipe.AddTile(mod.TileType("ExampleWorkbench"));
-recipe.AddTile(mod.TileType<Tiles.ExampleWorkbench>());
+recipe.AddTile(ModContent.TileType<Tiles.ExampleWorkbench>());
 recipe.AddTile(mod.GetTile("ExampleWorkbench"));
-recipe.AddTile(mod.GetTile<Tiles.ExampleWorkbench>());
+recipe.AddTile(ModContent.GetInstance<Tiles.ExampleWorkbench>());
 ```
 Next, we need to set the result for the ModRecipe, what the recipe creates. There can only be 1 result per ModRecipe. This is done similar to AddIngredient as well. There is also an optional stack parameter here as well:
 
-    recipe.SetResult(mod.ItemType<Items.ExampleItem>());
-    recipe.SetResult(mod.ItemType("ExampleItem"));
+    recipe.SetResult(ModContent.ItemType<Items.ExampleItem>());
+    recipe.SetResult(ModContent.ItemType("ExampleItem"));
     recipe.SetResult(ItemID.Meowmere);
     recipe.SetResult(this, 999);
 Finally, we need to tell tModLoader that our ModRecipe is complete and add it to the game:
