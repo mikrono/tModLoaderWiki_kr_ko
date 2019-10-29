@@ -56,7 +56,7 @@ namespace ExampleMod.Items
 {
 	class ShadowbeamStaffClone : ModItem
 	{
-		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
+		public override string Texture => "Terraria/Item_" + ItemID.ShadowbeamStaff;
 
 		public override void SetDefaults()
 		{
@@ -84,7 +84,7 @@ namespace ExampleMod.Items
 {
 	class ShadowbeamStaffClone : ModItem
 	{
-		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
+		public override string Texture => "Terraria/Item_" + ItemID.ShadowbeamStaff;
 
 		public override void SetStaticDefaults()
 		{
@@ -135,7 +135,7 @@ namespace ExampleMod.Items
 	class ShadowbeamStaffClone : ModItem
 	{
 		// Remove this and the item.color line in SetDefaults once you make your own sprite/texture.
-		public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
+		public override string Texture => "Terraria/Item_" + ItemID.ShadowbeamStaff;
 
 		public override void SetStaticDefaults()
 		{
@@ -167,7 +167,7 @@ namespace ExampleMod.Items
 		}
 
 		// Note, this Texture is actually just a blank texture, FYI.
-		public override string Texture { get { return "Terraria/Projectile_" + ProjectileID.ShadowBeamFriendly; } }
+		public override string Texture => "Terraria/Projectile_" + ProjectileID.ShadowBeamFriendly;
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
@@ -221,7 +221,7 @@ Well, we've done it, we've investigated and cloned a vanilla projectile AI. We'v
 
 ### Exact Clone
 
-To start, lets make a basic clone of an NPC as seen in Party Zombie. Lets clone the Hoplite. After some searching, we discover `GreekSkeleton = 481;` in NPCID and use that for our basic clone. For simplicity, I will make sure to set `languageVersion = 6` in build.txt so I can use the `=>` functionality ([Read about =>](https://msdn.microsoft.com/en-us/magazine/dn802602.aspx))
+To start, lets make a basic clone of an NPC as seen in Party Zombie. Lets clone the Hoplite. After some searching, we discover `GreekSkeleton = 481;` in NPCID and use that for our basic clone. For simplicity, I will use the `=>` functionality ([Read about =>](https://msdn.microsoft.com/en-us/magazine/dn802602.aspx))
 
 The following is the code:
 
