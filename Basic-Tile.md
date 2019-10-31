@@ -242,7 +242,7 @@ Note how the cursor is placing the tile using the area marked "3" which is 2 to 
 ![](https://thumbs.gfycat.com/BouncyBriskBurro-small.gif)     
 
 ## CoordinateHeights
-This int array defines how tall each individual tile within the tile should be. This array must be exactly the same number of elements as the value of Height or errors will happen. Note that these values don't include the padding pixels.
+This int array defines how tall each row of individual tiles within the tile should be. This array must be exactly the same number of elements as the value of Height or errors will happen. Note that these values don't include the padding pixels.
 
 Basically, all values should be 16 in most cases. Use 18 on the bottom so that the texture can extend a little into the ground below. Here is a closeup of the texture, note how there is white there, this is to illustrate why we use 18 on a bottom tile sometimes.    
 ![](http://i.imgur.com/XMHqvfy.png)     
