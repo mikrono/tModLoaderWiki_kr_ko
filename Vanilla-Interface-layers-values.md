@@ -1,4 +1,9 @@
 This is a list of the vanilla interface layers stored in the layers parameter in the Mod.ModifyInterfaceLayers(List<MethodSequenceListItem> layers), in the order that they appear.
+In order to use those, write your code like this:
+```cs
+int mouseItemIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Item / NPC Head"));
+if (mouseItemIndex != -1) layers.Insert(inventoryIndex, ...);
+```
 (Descriptions to be filled)
 
 | Interface layer	| Description
