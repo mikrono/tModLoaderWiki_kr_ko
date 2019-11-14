@@ -46,6 +46,25 @@ Edit the server config file that the dedicated host is using. Not every host is 
 NodeCraft - Follow the [instructions](https://nodecraft.com/support/games/terraria/tmodloader-server-guide)    
 GameServers - Add `-savedirectory ./` to server command line    
 
+## Dedicated Server (Self-Hosted)
+### Linux
+If you'd like to install tModLoader on a Linux computer you have access to, but isn't the computer you intend to play on, below is a script that will setup tModLoader without needing Steam or Terraria installed. Download make a `linuxServerScript.sh` file with the contents below in a folder where you wish to install the tModLoader server. `chmod +x linuxServerScript.sh` the file so you can execute it, then run it. This script downloads the unmodded Terraria server, downloads the latest tModLoader, and does the extracting of the files for you. After installation, it is up to you to manage running the server whenever you want by running `./tModLoaderServer` manually or with a script. You might want to use `-config serverconfig.txt` or the `-tmlsavedirectory` options to configure the behavior of the server as usual.
+
+```sh
+# Linux Server Install Script v1.0 by Chicken-Bones, jopojelly
+tver=1353
+wget http://terraria.org/server/terraria-server-$tver.zip
+unzip terraria-server-$tver.zip $tver/Linux/* -d .
+mv $tver/Linux/* .
+rmdir -p $tver/Linux
+wget https://api.github.com/repos/tModLoader/tModLoader/releases/latest -O tMLlatest.json
+tml=`sed -n 's/.*\(https.*Linux.*\)".*/\1/p' tMLlatest.json`
+wget $tml
+tar xvzf tModLoader.Linux*.tar.gz
+chmod a+x Terraria tModLoader tModLoader-* *.bin*
+rm *.zip *.jar tMLlatest.json
+```
+
 ## Visual Studio
 ### Build/Edit/Test mods
 Setting the Post Build event to `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"` will allow you to easily build and run your mod in Edit and Continue mode, facilitating efficient tweaking, modding, and testing. Add -skipselect so you don't have to go through the menus for an even easier time. See [Developing with Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio) for more information.
