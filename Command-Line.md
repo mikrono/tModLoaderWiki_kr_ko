@@ -40,6 +40,8 @@ Make a shortcut to the tModLoader exe file by either copy and then paste shortcu
 See picture:
 ![](https://i.imgur.com/N8FM1ba.png)
 ## Dedicated Host
+A Dedicated Host is a company that provides server hosting for a fee.
+
 Edit the server config file that the dedicated host is using. Not every host is the same. You'll need to make sure that tModLoaderServer is being launched with either the command line argument or the server config line for the path to Mods folder. If you wish to use a Mods folder in the same folder as the tModLoaderServer executable, I believe you can use a relative path like "modpath=./Mods". You'll also need to set savedirectory since some mods store mod specific data in the save directory. (savedirectory is a command line only parameter.) Add `-savedirectory ./` to the command that launches the server, which can be found usually on the website for your host.
 
 ### Dedicated Hosts known to work
@@ -47,6 +49,8 @@ NodeCraft - Follow the [instructions](https://nodecraft.com/support/games/terrar
 GameServers - Add `-savedirectory ./` to server command line    
 
 ## Dedicated Server (Self-Hosted)
+If you have an extra computer around, you can use it to host a server 24/7 without paying for a Dedicated Host. Setting up a dedicated server involves downloading and extracting the server from your OS ([Terraria Server v1.3.5.3](http://terraria.org/server/terraria-server-1353.zip)), installing the tModLoader files over that installation, and configuring the computer to run the server forever (execute the tModLoaderServer script (Linux/Mac) or tModLoader.exe (Windows)).
+
 ### Linux
 If you'd like to install tModLoader on a Linux computer you have access to, but isn't the computer you intend to play on, below is a script that will setup tModLoader without needing Steam or Terraria installed. Download make a `linuxServerScript.sh` file with the contents below in a folder where you wish to install the tModLoader server. `chmod +x linuxServerScript.sh` the file so you can execute it, then run it. This script downloads the unmodded Terraria server, downloads the latest tModLoader, and does the extracting of the files for you. After installation, it is up to you to manage running the server whenever you want by running `./tModLoaderServer` manually or with a script. You might want to use `-config serverconfig.txt` or the `-tmlsavedirectory` options to configure the behavior of the server as usual.
 
