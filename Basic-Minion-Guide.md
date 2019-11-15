@@ -53,6 +53,7 @@ and the minion has its own movement code rendering shoot speed useless in most c
 ```csharp
 public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack) {
 	player.AddBuff(item.buffType, 2, true);
+	position = Main.MouseWorld;
 	return true;
 }
 ```
@@ -89,8 +90,6 @@ ProjectileID.Sets.Homing[projectile.type] = true;
 ```
 In `SetDefaults()`:
 ```csharp 
-// Needed for custom AI
-projectile.aiStyle = -1;
 // Only controls if it deals damage to enemies on contact (more on that later)
 projectile.friendly = true;
 // Only determines the damage type
