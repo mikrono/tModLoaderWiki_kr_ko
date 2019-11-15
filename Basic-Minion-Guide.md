@@ -64,7 +64,7 @@ This is your actual minion file where most of your code will be. It is advised t
 the [Basic Projectile Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile) whenever you have projectile-specific questions or problems.
 
 ### Mandatory
-(For mandatory right-click targeting code, see further down below)
+(For mandatory right-click targeting code, see [further down below](#targeting))
 First of all we need a bunch of code that makes the projectile classify as a minion.
 
 #### Defaults
@@ -126,7 +126,7 @@ There are also two ways a minion can move: Affected by gravity, or not.
 The `ExampleMinion` showcases the simplest type of minion: contact damage + flying (and not colliding with tiles, which makes it even easier).
 
 Even a simple minion requires a fair bit of code to do its job properly.
-Most of the time it boils down to the same few general 'operations' it performs. These boil down to:
+Most of the time it boils down to the same few general 'operations' it performs. These are:
 * General behavior (determining idle position, overlap with other minions etc.)
 * Targeting (enemy to attack based on conditions)
 * Movement and Attack
