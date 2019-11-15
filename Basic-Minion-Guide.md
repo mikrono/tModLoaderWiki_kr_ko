@@ -208,7 +208,7 @@ You can combine them for example as follows:
 if (((closest && inRange) || !foundTarget) && lineOfSight)
 ```
 
-Once we find a target, we update our search variables, to make sure that we only search for the closest NPC
+Once we find a target, we update our search variables, to make sure that we only search for the closest NPC.
 ```csharp
 distanceFromTarget = between;
 targetCenter = npc.Center;
@@ -302,7 +302,7 @@ Here are a few easy ones:
 
 **Lean towards its direction in the x axis:**
 ```csharp
-rojectile.rotation = projectile.velocity.X * 0.05f;
+projectile.rotation = projectile.velocity.X * 0.05f;
 ```
 
 **Create light:**
@@ -329,7 +329,7 @@ You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/m
 **I want to summon a projectile that occupies more than one minion slot, or more than one minion (total summoned minion slots bigger than 1)**
 
 If applicable, see the above answer.
-Additonally, in your `ModItem`, `SetStaticDefaults()`, assign this the number of minion slots (rounded up to nearest integer) that will be summoned with a single use of the weapon:
+Additonally, in your `ModItem`, `SetStaticDefaults()`, assign this the number of minion slots (rounded **up** to nearest integer) that will be summoned with a single use of the weapon:
 ```csharp
 ItemID.Sets.StaffMinionSlotsRequired[item.type] = 2; // 2 as an example
 ```
