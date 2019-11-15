@@ -11,9 +11,9 @@ A `ModBuff`.
 
 To summarize:
 
-* [ModProjectile]
-* [ModItem]
-* [ModBuff]
+* [ModProjectile](#modprojectile)
+* [ModItem](#moditem)
+* [ModBuff](#modbuff)
 
 This sounds like much, but it really isn't. The majority is going to be the same as the examples (latter two classes)
 and most of your own code is going to be in the `ModProjectile` which dictates how your minion behaves.
