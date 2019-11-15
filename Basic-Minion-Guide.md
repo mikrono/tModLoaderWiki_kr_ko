@@ -31,7 +31,7 @@ If you forget to implement the `Update()` code, it might lead to
 * the buff being active even though your minion is not summoned
 
 It will be the same code for most of the minions you will create, just replace `ExampleMinion` in the provided example accordingly.
-You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/Minions/ExampleSimpleMinion/ExampleSimpleMinion.cs).
+You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/Minions/ExampleSimpleMinion/ExampleSimpleMinion.cs#L24).
 
 ## ModItem
 This is your weapon that you use to summon the minion.
@@ -57,18 +57,7 @@ public override bool Shoot(Player player, ref Vector2 position, ref float speedX
 	return true;
 }
 ```
-This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies.
-Notice below that this code changes slightly if you want to modify right-click behavior or the way the minion spawns.
-
-### Targeting
-If your minion should support right-click targeting (the purple circle that appears on enemies that the minions then prioritize attacking),
-You will need code for that in both your weapon and your minion projectile. The projectile code is seen at [Intermission: Targeting], and the item code looks as follows:
-
-In `SetStaticDefaults()`:
-```csharp
-ItemID.Sets.GamepadWholeScreenUseRange[item.type] = true;
-ItemID.Sets.LockOnIgnoresCollision[item.type] = true;
-```
+This is needed so the buff that keeps your minion alive and allows you to despawn it properly applies. You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/Minions/ExampleSimpleMinion/ExampleSimpleMinion.cs#L44).
 
 ## ModProjectile
 This is your actual minion file where most of your code will be. It is advised to read up on
@@ -327,6 +316,8 @@ if (Main.rand.NextBool(5)) {
 Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire);
 }
 ```
+
+You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/Minions/ExampleSimpleMinion/ExampleSimpleMinion.cs#L100).
 
 ## FAQ
 
