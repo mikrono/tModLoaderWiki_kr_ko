@@ -342,4 +342,6 @@ Concider the point below.
 **I want to do something exactly like vanilla/something not shown in the examples**
 
 Your best bet is taking a look in vanilla source code yourself, the guide is found [here](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption).
-If you specifically want something that works exactly like the Stardust Dragon, some of its code (mainly the replacing/adding new segments part) is very hardcoded. Most you can do is summoning all segments necessary at once.
+
+**I want to make something like the Stardust Dragon**
+Some of its code (mainly the replacing/adding new segments part) is very hardcoded. Most you can do is summoning all segments necessary at once.
