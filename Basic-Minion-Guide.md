@@ -64,7 +64,7 @@ This is your actual minion file where most of your code will be. It is advised t
 the [Basic Projectile Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile) whenever you have projectile-specific questions or problems.
 
 ### Mandatory
-(For mandatory right-click targeting code, see [further down below](#targeting))
+(For mandatory right-click targeting code, see [further down below](#intermission-targeting))
 First of all we need a bunch of code that makes the projectile classify as a minion.
 
 #### Defaults
