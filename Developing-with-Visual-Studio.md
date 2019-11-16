@@ -13,7 +13,7 @@
 # Creating a Project
 First we must create a new project for our mod. To do this, follow the v0.11 instructions in [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#v011-instructions)
 
-## Creating or Updating a existing project for an old mod
+## Creating or Updating an existing project for an old mod
 If you are updating a mod older than 0.11, you can use the "Upgrade .csproj file" button in the Mod Sources menu. This will create a fully working project for you to open and continue working on.    
 ![](https://i.imgur.com/woTP4Sf.png)
 
@@ -114,7 +114,7 @@ After fixing:
 5. Make sure the Solution Explorer is in solution view and not folder view. [Button Location](https://i.imgur.com/NIOP3fn.png)     
 
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
-You can download the dll file from [here](https://github.com/tModLoader/tModLoader/tree/master/references). Place the file in a folder like `\My Games\Terraria\ModLoader\References` and then add it using `Add References...`
+Make sure you are using the updated .csproj and this error will automatically fix itself. See [Creating or Updating an existing project for an old mod](#creating-or-updating-an-existing-project-for-an-old-mod) to update your csproj.
 
 ## Error CS0246 The type or namespace name 'Mod' (or 'ModLoader', 'ModItem', etc) could not be found
 You have added a reference to the vanilla Terraria.exe, remove it and add a correct reference to the modded Terraria.exe.
