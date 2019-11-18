@@ -339,6 +339,27 @@ ItemID.Sets.StaffMinionSlotsRequired[item.type] = 2; // 2 as an example
 Coordinating movement with minion states like staying close to the player, jumping at enemies, flying when too far away from the player etc. is more advanced and isn't covered in this guide.
 Concider the point below.
 
+**My minion isn't going through platforms when an enemy is underneath it**
+
+If your minion is not flying, you want to use the `TileCollideStyle()` hook. You might want to have `foundTarget`, `targetCenter` and others be fields in your `ModProjectile` instead of inside `AI()`, so you don't need to do the target finding code again here (see [Targeting](#targeting)). If you do that, make sure to reset them back to their defaults in `AI()` so everything resets itself.
+```csharp
+// target is the index of the targeted NPC. 
+if (foundTarget) {
+	Vector2 toTarget = targetCenter - projectile.Center;
+	// Here we check if the NPC is below the minion and 300/16 = 18.25 tiles away horizontally
+	if (toTarget.Y > 0 && Math.Abs(toTarget.X) < 300) {
+		fallThrough = true;
+	}
+	else {
+		fallThrough = false;
+	}
+}
+else {
+	fallThrough = false;
+}
+return base.TileCollideStyle(ref width, ref height, ref fallThrough);
+```
+
 **I want to do something exactly like vanilla/something not shown in the examples**
 
 Your best bet is taking a look in vanilla source code yourself, the guide is found [here](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption).
