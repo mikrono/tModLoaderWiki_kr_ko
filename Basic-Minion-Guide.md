@@ -343,7 +343,6 @@ Concider the point below.
 
 If your minion is not flying, you want to use the `TileCollideStyle()` hook. You might want to have `foundTarget`, `targetCenter` and others be fields in your `ModProjectile` instead of inside `AI()`, so you don't need to do the target finding code again here (see [Targeting](#targeting)). If you do that, make sure to reset them back to their defaults in `AI()` so everything resets itself.
 ```csharp
-// target is the index of the targeted NPC. 
 if (foundTarget) {
 	Vector2 toTarget = targetCenter - projectile.Center;
 	// Here we check if the NPC is below the minion and 300/16 = 18.25 tiles away horizontally
