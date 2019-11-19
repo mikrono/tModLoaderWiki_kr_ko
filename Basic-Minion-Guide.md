@@ -181,12 +181,12 @@ for (int i = 0; i < Main.maxNPCs; i++) {
 	NPC npc = Main.npc[i];
 	if (npc.CanBeChasedBy()) {
 		/* If we are here, that means we found an NPC that is:
-		* active
-		* chaseable
-		* max life bigger than 5 (not a critter)
+		* active (alive)
+		* chaseable (e.g. not a cultist archer)
+		* max life bigger than 5 (e.g. not a critter)
 		* can take damage (e.g. moonlord core after all it's parts are downed)
 		* hostile
-		* not immortal (not a target dummy)
+		* not immortal (e.g. not a target dummy)
 		*/
 		}
 	}
