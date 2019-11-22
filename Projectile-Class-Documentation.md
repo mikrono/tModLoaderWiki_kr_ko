@@ -47,7 +47,7 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [netUpdate2](#netupdate2)<a name=""></a>| | |  |
 | [numUpdates](#numupdates)<a name=""></a>| | |  |
 | [identity](#identity)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
-| [light](#light)<a name=""></a>| | |  |
+| [light](#light)<a name="light"></a>| | |  |
 | [position](#position)<a name="position"></a>| Vector2 | | |
 | [velocity](#velocity)<a name="velocity"></a>| Vector2 | | |
 | [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
@@ -73,7 +73,7 @@ You can assign these fields to give your ModProjectile various values. Typically
 ## Vanilla
 Remember that static methods are called by writing the classname and non-static methods use the instance name. `Projectile.NewProjectile(...)` vs `projectile.Kill(...)`
 
-### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
+### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f) <a name="newprojectile"></a>
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
 
 ### public static int GetByUUID(int owner, int uuid)
