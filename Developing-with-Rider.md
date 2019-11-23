@@ -1,3 +1,5 @@
+# These instructions not up-to-date
+With the introduction of the in-game mod generator, many of these instructions might be incorrect. I think you can just skip the steps pertaining to creating a project and configuring it and use the in-game mod generator, but this guide needs to be fixed. The Visual Studio and Visual Studio Code guides are up-to-date.
 
 # Introductory
 
