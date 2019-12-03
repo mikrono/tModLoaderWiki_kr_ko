@@ -59,6 +59,7 @@ In the above example, we make sure to set `MySpecialBool` to false in `ModWorld.
 
 # Examples
 Here are links to various examples in ExampleMod and other mods, in order of complexity:
+* [ExampleCustomData](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleCustomData.cs) - ModItem - Simple Example, 1 number
 * [ExamplePlayer](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) - ModPlayer - Simple Example, 2 numbers
 * [ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs) - ModWorld - List of strings
 * [TEScoreBoard](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) - ModTileEntity - Simple Dictionary
