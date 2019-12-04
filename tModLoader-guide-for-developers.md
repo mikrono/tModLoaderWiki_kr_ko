@@ -7,10 +7,13 @@ Choose your favorite IDE to mod with tModLoader. Refer to the [development secti
 ## I am new to modding
 If you are new to modding, it is recommended to start with [the starter guide](Basic-tModLoader-Modding-Guide). You can then move on to the [easy guides](home#easy-guides).
 
-## [I don't want to create mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)
+___
+
+**[I don't want to create mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)**
+
+___
 
 The following links might be useful for you:
-___
 1. [tModLoader documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)
 2. [tModLoader WIKI](https://github.com/tModLoader/tModLoader/wiki) (useful information and guides)
 3. [Join our Discord server](https://discord.me/tmodloader) (requires a DiscordApp account)
