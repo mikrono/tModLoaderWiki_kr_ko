@@ -23,6 +23,8 @@ These pages tend to describe certain files or folders.
 - [Licensing information](Licensing-information) (Among other things: how to license your mod, about tML's license)
 
 ## Getting started
+- [tModLoader guide for players](tModLoader-guide-for-players) -- Learn tModLoader if you want to play mods
+- [tModLoader guide for developers](tModLoader-guide-for-developers) -- Learn how to work with tModLoader to create mods
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
 - [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
 - [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
