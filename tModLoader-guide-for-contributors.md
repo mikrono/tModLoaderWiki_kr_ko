@@ -1,3 +1,13 @@
+___
+
+**[I don't want to contribute to tModLoader, I want to play mods](tModLoader-guide-for-players)**
+
+___
+
+**[I don't want to contribute to tModLoader, I want to create mods](tModLoader-guide-for-developers)**
+
+___
+
 ## Installation
 If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
 
