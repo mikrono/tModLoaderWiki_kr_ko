@@ -6,6 +6,9 @@ Choose your favorite IDE to mod with tModLoader. Refer to the [development secti
 
 ## I am new to modding
 If you are new to modding, it is recommended to start with [the starter guide](Basic-tModLoader-Modding-Guide). You can then move on to the [easy guides](home#easy-guides).
+___
+
+**[I don't want to create mods, I just want to play with them](tModLoader-guide-for-players)**
 
 ___
 
