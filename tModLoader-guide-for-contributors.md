@@ -10,18 +10,18 @@ ___
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
 
-tModLoader uses its own code patcher. If you want to contribute to tModLoader, you will have to use this tool. We need to use a patches system, because we are not allowed to upload vanilla source code publicly. It also allows for relatively easy code maintenance. Here's what the tool looks like: [url](https://i.imgur.com/u9Yy1rl.png)
+tModLoader uses its own code patcher. If you want to contribute to tModLoader, you will have to use this tool. We need to use a patches system, because we are not allowed to upload vanilla source code publicly. It also allows for relatively easy code maintenance. [Here's what the tool looks like](https://i.imgur.com/u9Yy1rl.png)
 
 ### Getting the tModLoader code for the first time
 ___
 1. Clone this repository
-* (Temporary Extra Step) Download Terraria 1.3.5.2 from steam. [Instructions](https://github.com/tModLoader/tModLoader/issues/227#issuecomment-324450642)
+    * (Temporary Extra Step) Download Terraria 1.3.5.2 from steam. [Instructions](https://github.com/tModLoader/tModLoader/issues/227#issuecomment-324450642)
 2. Open setup.bat in the root folder
     * If setup.bat won't open, you must unblock all the files in the cloned repository
     * If you get an error that mentions File Cannot be Found, you might need to make sure `msbuild` is on your `PATH`. For a VS 2019 install, this should be in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`, so add that to your `PATH`. If you don't know how to edit your `PATH`, google it. Make sure to restart setup.bat after editing your PATH for it to take effect.
-3. Select your vanilla terraria.exe (must be vanilla) ([img](https://i.imgur.com/MccGyvB.png))
+3. Select your vanilla terraria.exe (must be vanilla) ([See example](https://i.imgur.com/MccGyvB.png))
 4. Click on 'Setup' (top left button)
-    * **Warning:** decompilation can take several hours to complete depending on your hardware. It's also likely that your computer **completely freezes** during the process, mainly once it hits NPC.cs It is recommended that you enable the 'Single Decompile Thread' option ([img](https://i.imgur.com/6mBbZnQ.png)) if you don't have very high end hardware. It's unwise to even attempt a decompile if you have less than 8 GB RAM. Having an SSD, powerful CPU and a high amount of RAM will significantly speed up the decompilation process.
+    * **Warning:** decompilation can take several hours to complete depending on your hardware. It's also likely that your computer **completely freezes** during the process, mainly once it hits NPC.cs It is recommended that you enable the 'Single Decompile Thread' option ([See example](https://i.imgur.com/6mBbZnQ.png)) if you don't have very high end hardware. It's unwise to even attempt a decompile if you have less than 8 GB RAM. Having an SSD, powerful CPU and a high amount of RAM will significantly speed up the decompilation process.
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
     * src/merged/
@@ -30,6 +30,7 @@ ___
 6. To open up the tModLoader workspace, navigate to solutions/ and open tModLoader.sln
 
 ## Getting Example Mod into the Mod Sources folder
+___
 As you add features to tModLoader, you'll want to add examples of using those features to Example Mod. Example Mod, however, needs to be located in the Mod Sources folder to build and test the mod. While you could copy and paste the folder back and forth between your Mod Sources folder and this repository folder whenever you wish to push your changes, a better approach can be achieved by using a symbolic link. A symbolic link allows a single folder to exist in 2 places at once. By creating a symbolic link in Mod Sources pointing to the ExampleMod folder in this repository, you can easily keep ExampleMod up to date and push changes to Github. Here is the command for creating the symbolic link on Windows. 
 1. Open the Command Prompt as Administrator by right clicking on it in the start menu and selecting "Run as Administrator" 
 2. Find the path to both your Mod Sources folder and the ExampleMod folder within your local copy of this repo.
