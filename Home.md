@@ -25,6 +25,7 @@ These pages tend to describe certain files or folders.
 ## Getting started
 - [tModLoader guide for players](tModLoader-guide-for-players) -- Learn tModLoader if you want to play mods
 - [tModLoader guide for developers](tModLoader-guide-for-developers) -- Learn how to work with tModLoader to create mods
+- [tModLoader guide for contributors](tModLoader-guide-for-contributors) -- Learn how to contribute to tModLoader
 - [Basic tModLoader Usage Guide](Basic-tModLoader-Usage-Guide) -- Learn the basics of using tML
 - [Basic tModLoader Usage FAQ](Basic-tModLoader-Usage-FAQ)
 - [Basic tModLoader Modding Starter Guide](Basic-tModLoader-Modding-Guide) - Start here if you want to make a mod.
