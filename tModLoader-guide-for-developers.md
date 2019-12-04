@@ -1,11 +1,3 @@
-## Installation
-If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
-
-## Developing with tModLoader
-Choose your favorite IDE to mod with tModLoader. Refer to the [development section](home#development) on the homepage.
-
-## I am new to modding
-If you are new to modding, it is recommended to start with [the starter guide](Basic-tModLoader-Modding-Guide). You can then move on to the [easy guides](home#easy-guides).
 ___
 
 **[I don't want to create mods, I just want to play with them](tModLoader-guide-for-players)**
@@ -15,6 +7,16 @@ ___
 **[I don't want to create mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)**
 
 ___
+
+
+## Installation
+If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
+
+## Developing with tModLoader
+Choose your favorite IDE to mod with tModLoader. Refer to the [development section](home#development) on the homepage.
+
+## I am new to modding
+If you are new to modding, it is recommended to start with [the starter guide](Basic-tModLoader-Modding-Guide). You can then move on to the [easy guides](home#easy-guides).
 
 The following links might be useful for you:
 1. [tModLoader documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)
