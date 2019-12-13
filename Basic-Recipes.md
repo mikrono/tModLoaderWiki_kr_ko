@@ -186,5 +186,5 @@ There are other aspects of ModRecipes that will be covered in more advanced guid
 * ModRecipe.OnCraft
 * ModRecipe.ConsumeItem
 * ModRecipe.RecipeAvailable
-* RecipeFinder/RecipeEditor -- Intermediate -- Allows you to modify and delete vanilla recipes.
+* [RecipeFinder/RecipeEditor](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-vanilla-recipes) -- Intermediate -- Allows you to modify and delete vanilla recipes.
 * [Cross-Mod Content](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) -- Intermediate -- Use Items or Tiles from other mods in your Recipe.
