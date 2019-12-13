@@ -14,102 +14,102 @@ Note that, like with AddIngredient, there is an optional parameter for specifyin
 ## New RecipeGroups
 You may have noticed that aside from "Wood" and "IronBar", there aren't many useful vanilla RecipeGroups. Luckily, we can make our own RecipeGroups. Let's imagine we want to make a recipe that used a Magic Mirror or Ice Mirror as an ingredient. Without RecipeGroups, we would have to do this:
 ```csharp
-    ModRecipe recipe = new ModRecipe(mod);
-    recipe.AddIngredient(ItemID.MagicMirror);
-    recipe.AddIngredient(ItemID.Gel, 10);
-    recipe.AddTile(TileID.Chairs);
-    recipe.AddTile(TileID.Tables);
-    recipe.SetResult(this);
-    recipe.AddRecipe();
+ModRecipe recipe = new ModRecipe(mod);
+recipe.AddIngredient(ItemID.MagicMirror);
+recipe.AddIngredient(ItemID.Gel, 10);
+recipe.AddTile(TileID.Chairs);
+recipe.AddTile(TileID.Tables);
+recipe.SetResult(this);
+recipe.AddRecipe();
 
-    recipe = new ModRecipe(mod);
-    recipe.AddIngredient(ItemID.IceMirror);
-    recipe.AddIngredient(ItemID.Gel, 10);
-    recipe.AddTile(TileID.Chairs);
-    recipe.AddTile(TileID.Tables);
-    recipe.SetResult(this);
-    recipe.AddRecipe();
+recipe = new ModRecipe(mod);
+recipe.AddIngredient(ItemID.IceMirror);
+recipe.AddIngredient(ItemID.Gel, 10);
+recipe.AddTile(TileID.Chairs);
+recipe.AddTile(TileID.Tables);
+recipe.SetResult(this);
+recipe.AddRecipe();
 ```
 This is actually not too bad, but imagine you have 10 or 20 similar items that you'd like to use for your recipe, it would get unmanageable very quickly. To solve this, first we must add a new RecipeGroup. We do this in our Mod class by overriding the AddRecipeGroups method:
 ```csharp
-    // Don't forget using Terraria.Localization; up top.
-    public override void AddRecipeGroups()
-    {
-    	RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
-    	{
-    		ItemID.IceMirror,
-    		ItemID.MagicMirror
-    	});
-    	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
-    }
+// Don't forget using Terraria.Localization; up top.
+public override void AddRecipeGroups()
+{
+	RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
+	{
+		ItemID.IceMirror,
+		ItemID.MagicMirror
+	});
+	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
+}
 ```
 As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Language.GetTextValue("LegacyMisc.37") is just the word "any" in the selected language and requires writing `using Terraria.Localization;` at the top of your code. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
 
 Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGroups, except our RecipeGroup's name will be different:
 ```csharp
-    recipe.AddRecipeGroup("SummonersAssociation:MagicMirrors");
+recipe.AddRecipeGroup("SummonersAssociation:MagicMirrors");
 ```
 ## Complete Example
 ```csharp
-    using Terraria;
-    using Terraria.ID;
-    using Terraria.ModLoader;
-    using Terraria.Localization;
-    
-    namespace SummonersAssociation
-    {
-    	public class SummonersAssociation : Mod
-    	{
-    		public SummonersAssociation()
-    		{
-    		}
-    
-    		// Other Code
-    
-    		public override void AddRecipeGroups()
-    		{
-    			RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
-    			{
-    				ItemID.IceMirror,
-    				ItemID.MagicMirror
-    			});
-    			RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
-    		}
-    
-    		public override void AddRecipes()
-    		{
-    			ModRecipe recipe = new ModRecipe(this);
-    			recipe.AddIngredient(ItemID.SlimeStaff);
-    			recipe.AddRecipeGroup("SummonersAssociation:MagicMirrors");
-    			recipe.AddTile(TileID.Chairs);
-    			recipe.AddTile(TileID.Tables);
-    			recipe.SetResult(ItemType<Items.MinionControlRod>());
-    			recipe.AddRecipe();
-    
-    			recipe = new ModRecipe(this);
-    			recipe.AddIngredient(ItemID.Gel, 10);
-    			// Here, instead of adding 5 ItemID.Wood, we use a RecipeGroup to specify all types of Wood in a single recipe.
-    			recipe.AddRecipeGroup("Wood", 5);
-    			recipe.AddTile(TileID.Chairs);
-    			recipe.AddTile(TileID.Tables);
-    			recipe.SetResult(ItemType<Items.SummonersAssociationCard>());
-    			recipe.AddRecipe();
-    		}
-    	}
-    }
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Localization;
+
+namespace SummonersAssociation
+{
+	public class SummonersAssociation : Mod
+	{
+		public SummonersAssociation()
+		{
+		}
+
+		// Other Code
+
+		public override void AddRecipeGroups()
+		{
+			RecipeGroup group = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Magic Mirror", new int[]
+			{
+				ItemID.IceMirror,
+				ItemID.MagicMirror
+			});
+			RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.SlimeStaff);
+			recipe.AddRecipeGroup("SummonersAssociation:MagicMirrors");
+			recipe.AddTile(TileID.Chairs);
+			recipe.AddTile(TileID.Tables);
+			recipe.SetResult(ItemType<Items.MinionControlRod>());
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(this);
+			recipe.AddIngredient(ItemID.Gel, 10);
+			// Here, instead of adding 5 ItemID.Wood, we use a RecipeGroup to specify all types of Wood in a single recipe.
+			recipe.AddRecipeGroup("Wood", 5);
+			recipe.AddTile(TileID.Chairs);
+			recipe.AddTile(TileID.Tables);
+			recipe.SetResult(ItemType<Items.SummonersAssociationCard>());
+			recipe.AddRecipe();
+		}
+	}
+}
 ```
 ## Editing Vanilla RecipeGroups
 In some situations you might want to add your own items to existing RecipeGroups. In this example, we will add another wood type to the "Wood" RecipeGroup.
 ```csharp
-    public override void AddRecipeGroups()
-    {
-    	if(RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
-    	{
-    		int index = RecipeGroup.recipeGroupIDs["Wood"];
-    		RecipeGroup group = RecipeGroup.recipeGroups[index];
-    		group.ValidItems.Add(ItemType("MyWood"));
-    	}
-    }
+public override void AddRecipeGroups()
+{
+	if(RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
+	{
+		int index = RecipeGroup.recipeGroupIDs["Wood"];
+		RecipeGroup group = RecipeGroup.recipeGroups[index];
+		group.ValidItems.Add(ItemType("MyWood"));
+	}
+}
 ```
 Note that checking `if(RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not necessary, but it will prevent errors if some other mod completely removes that RecipeGroup for some reason.
 
