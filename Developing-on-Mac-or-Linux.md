@@ -54,6 +54,32 @@ MonoDevelop/Xamarin (on which Visual Studio for Mac is based on) is the easiest 
 
 The following instructions can be followed for getting a simple environment going: [Xamarin/MonoDevelop instructions](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/page-525#post-1001200)
 
+## Working Visual Studio for Mac instructions
+Using the skeleton generator in-game, the following changes can be made to the generated .csproj to make it work on Visual Studio for Mac. These results are the results of one modders attempts at getting it working. We'll try to make the workflow better in further updates. In the meantime, here is the edited csproj:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\references\tModLoader.targets" />
+    <PropertyGroup>
+        <AssemblyName>test</AssemblyName>
+        <TargetFramework>net45</TargetFramework>
+        <PlatformTarget>x86</PlatformTarget>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <Target Name="BuildMod" AfterTargets="Build">
+        <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath)" />
+    </Target>
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'Terraria' ">
+        <StartAction>Program</StartAction>
+        <StartProgram>$(tMLPath)</StartProgram>
+        <StartWorkingDirectory>$(TerrariaSteamPath)</StartWorkingDirectory>
+        <EnvironmentVariables>
+            <Variable name="DYLD_LIBRARY_PATH" value="$(TerrariaSteamPath)/osx" xmlns="" />
+        </EnvironmentVariables>
+    </PropertyGroup>
+</Project>
+```
+
 # Known issues
 ## Mac
 ### The type initializer for 'System.Drawing.GDIPlus' threw an exception
