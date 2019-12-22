@@ -46,7 +46,8 @@ Edit the server config file that the dedicated host is using. Not every host is 
 
 ### Dedicated Hosts known to work
 NodeCraft - Follow the [instructions](https://nodecraft.com/support/games/terraria/tmodloader-server-guide)    
-GameServers - Add `-savedirectory ./` to server command line    
+GameServers - Add `-savedirectory ./` to server command line 
+[Citadel Servers Hosting Company](https://citadelservers.com/en-us/game-servers/terraria) 
 
 ## Dedicated Server (Self-Hosted)
 If you have an extra computer around, you can use it to host a server 24/7 without paying for a Dedicated Host. Setting up a dedicated server involves downloading and extracting the server from your OS ([Terraria Server v1.3.5.3](http://terraria.org/server/terraria-server-1353.zip)), installing the tModLoader files over that installation, and configuring the computer to run the server forever (execute the tModLoaderServer script (Linux/Mac) or tModLoader.exe (Windows)).
