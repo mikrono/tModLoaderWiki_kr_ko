@@ -86,6 +86,11 @@ Some Terraria methods have many many parameters. It can be hard to remember the 
 An extremely useful shortcut, Goto allows you to quickly navigate to and class, method, or field in your code. Simply type `Ctrl-,` and the Go to All window will pop up. Type the name or part of the name and select the item to quickly navigate to the code. You can also type the first letter of each word in a name to find it. For example, typing `eqf` will suggest `ExampleQuestFish`. Visual Studio will smartly handle misspellings and partial matches as well. The video shows just how quick this feature can be and how easy it is to quickly navigate to other places in your code. [Watch this in action.](https://gfycat.com/AromaticLazyFrogmouth)    
 ![](https://i.imgur.com/TUthjgE.png)    
 
+# Quick Actions and Refactorings (Ctrl-.)
+This context sensitive hotkey is useful in several situations. The suggestions depend on where the cursor is or what text is selected. Here are some useful actions:
+## Introduce Local for All Occurrences
+If you are repeating yourself a lot in your code accessing the same object via fields and methods, sometimes your code can get a bit repetitive. Making a local variable and re-using that variable makes the code much cleaner. If you highlight the first occurrence of repeated object access, you can use this action to quickly introduce a local variable that you can then give an appropriate name to. [Watch this in action.](https://gfycat.com/devotedgreedyirishwaterspaniel)
+
 # Format Document (Ctrl-E, D or Edit->Advanced->Format Document)
 Properly formatted code is key for readability. Make sure to run this command before asking for help with your code as nothing is more annoying that poorly formatted code. [Watch this in action.](https://gfycat.com/DearZanyComet)    
 
