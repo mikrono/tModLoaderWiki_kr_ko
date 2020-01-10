@@ -38,17 +38,17 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [noDropItem](#nodropitem)<a name="nodropitem"></a>| bool | false | Set to true if you don't want this item to have a chance to recover the ammo item that shot this. For example, if you shoot the wooden arrow projectile, it will sometimes drop the wooded arrow item. If your weapon shoots multiple arrows for 1 ammo, you might want to consider setting this field to prevent infinite ammo glitches. |
 | [minion](#minion)<a name=""></a>| bool | false | Indicates that this projectile is a minion |
 | [minionSlots](#minionslots)<a name=""></a>| float | 0f | Set to 1f on a minion to count it towards the minion limit of the summoning player (Optic Staff summons two minions at once with 0.5f each) |
-| [spriteDirection](#spritedirection)<a name=""></a>| | |  |
+| [spriteDirection](#spritedirection)<a name=""></a>| int | |  |
 | [hide](#hide)<a name="hide"></a>| bool | | Projectile is not drawn normally. See [ExampleBehindTilesProjectile](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBehindTilesProjectile.cs#L30) |
 | [lavaWet](#lavawet)<a name=""></a>| bool | false | Indicates that this projectile is currently in lava |
 | [wetCount](#wetcount)<a name=""></a>| | |  |
 | [wet](#wet)<a name=""></a>| bool | false | Indicates that this projectile is currently in water |
 | [netImportant](#netimportant)<a name=""></a>| bool | false | Indicates that this projectile will be synced to a joining player (by default, any projectiles active before the player joins (besides pets) are not synced over). Example: glowsticks |
-| [netUpdate](#netupdate)<a name=""></a>| bool | false | Set manually to true in AI() once to make it sync its current ai[] array to the server and other clients (depending on what the Main.netMode is where this is set to true in) |
-| [netUpdate2](#netupdate2)<a name=""></a>| | |  |
+| [netUpdate](#netupdate)<a name=""></a>| bool | false | Set manually to true in `ModProjectile.AI` once to make it sync its current ai[] array to the server and other clients (depending on what the Main.netMode is where this is set to true in) |
+| [netUpdate2](#netupdate2)<a name=""></a>| bool | false | Used internally to check for projectiles that spam `netUpdate`. Don't use it yourself manually |
 | [numUpdates](#numupdates)<a name=""></a>| | |  |
 | [identity](#identity)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
-| [light](#light)<a name="light"></a>| float | 0f | Set to a value between 0f and 1f to make this projectile emit a white light (higher number: more intensive light) |
+| [light](#light)<a name="light"></a>| float | 0f | Set to a value above 0f to make this projectile emit a white light (higher number: more intensive light. 1f being stronger than a torch)) |
 | [position](#position)<a name="position"></a>| Vector2 | | |
 | [velocity](#velocity)<a name="velocity"></a>| Vector2 | Vector2.Zero | The amount of coordinates this projectile will move per tick |
 | [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
