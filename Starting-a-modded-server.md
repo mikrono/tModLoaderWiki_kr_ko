@@ -2,7 +2,7 @@
 For the most part, launching a tModLoader server is the exact same as launching a Terraria server. 
 
 ## Setting Up a Dedicated Server
-If you have an extra old computer sitting around or leave your computer on all the time, you can use that computer to host a dedicated server.
+If you have an extra old computer sitting around or leave your computer on all the time, you can use that computer to host a dedicated server. Do note that this server computer also needs their own copy of a Terraria Server which can be found [here](https://terraria.gamepedia.com/Server#Downloads) with tModLoader also installed.
 
 ### Configure the server
 You can change `serverconfig.txt` with your server configurations which will be loaded by the tML server when using the instructions below.
