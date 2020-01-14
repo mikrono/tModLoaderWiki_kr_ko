@@ -32,8 +32,8 @@ The tML installation should've come with several .bat files, including:
 ### Starting server on Linux or Mac
 The tML installation should have come with a script called `tModLoaderServer`. This script will start an instance of a server.
 1. Browse to the directory of installation using `cd /desiredPath/`.
-  1. desiredPath is the installation folder path name of your Terraria Server patched with tModLoader.
-  2. For Mac, the installation folder is generally in `~/Library/Application\ Support/Steam/steamapps/common/Terraria/Terraria.app/Contents/MacOS`.
+    1. desiredPath is the installation folder path name of your Terraria Server patched with tModLoader.
+    2. For Mac, the installation folder is generally in `~/Library/Application\ Support/Steam/steamapps/common/Terraria/Terraria.app/Contents/MacOS`.
 2. Verify correct path using `pwd` or make sure the files are there by typing `ls`.
 3. Run the script using `./tModLoaderServer`.
 
