@@ -29,14 +29,14 @@ The tML installation should've come with several .bat files, including:
 1. `start.tModLoaderServer-steam-private.bat`
     1. Launch a server explicitly with a closed steam lobby so steam friends cannot join you through the steam UI.
 
-### Starting server on Linux
-The tML installation should have come with a script called tModLoaderServer however it is not executable to change this and run the server:
-1. browse to the directory of installation using `cd /desiredPath/`
-2. verify correct path using `pwd` or make sure the files are there by typing `ls`
-3. type `sudo chmod +x tModLoaderServer`
-4. now you can run the script using `./tModLoaderServer`
+### Starting server on Linux or Mac
+The tML installation should have come with a script called `tModLoaderServer`. This script will start an instance of a server.
+1. Browse to the directory of installation using `cd /desiredPath/`.
+  - desiredPath is the installation folder path name of your Terraria Server patched with tModLoader.
+  - For Mac, the installation folder is generally in `~/Library/Application\ Support/Steam/steamapps/common/Terraria/Terraria.app/Contents/MacOS`.
+2. Verify correct path using `pwd` or make sure the files are there by typing `ls`.
+3. Run the script using `./tModLoaderServer`.
 
-Optional: I recommend using running the server inside of a screen or tmux session this way when you need to close the terminal you don't have to close the server. This is especially useful for headless servers where the owner will only be connecting via SSH.
+If the script is refusing to behave properly (e.g. it is not running as expected), then there might be a permission issue. Simply type `sudo chmod u+x tModLoaderServer` while being on the installation directory of tModLoader to fix this issue.
 
-### Starting server on Mac
-TODO (Undocumented)
+Optional: it is recommended running the server inside of a screen or tmux session. This way, when you need to close the terminal, you don't have to close the server. This is especially useful for headless servers where the owner will only be connecting via SSH.
