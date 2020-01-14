@@ -21,6 +21,7 @@ Rider is an IDE similar to Visual Studio, for C# (and other languages) The softw
   * [Code analysis, inspection settings](#code-analysis-inspection-settings)
   * [Using the right MSBuild version](#using-the-right-msbuild-version)
   * [Split view: working on multiple files simultaneously](#split-view-working-on-multiple-files-simultaneously)
+  * [How to set Target framework in Jetbrains Rider](#how-to-set-target-framework-in-jetbrains-rider)
 
 ## Start
 First, install Rider. Unlike VS, Rider is a paid product, but a free 30 day trial is available. Download here: https://www.jetbrains.com/rider/
