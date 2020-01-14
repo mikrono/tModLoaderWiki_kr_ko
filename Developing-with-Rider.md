@@ -269,3 +269,30 @@ It can look something like the following:
 To enable this feature navigate to `Window -> Editor Tabs -> Split Vertically`
 
 [Back to TOC](#table-of-contents)
+
+
+# How to set Target framework in Jetbrains Rider
+
+If you get errors about the .NET Target framework, you can change the values by right clicking your Solution name and selecting 'properties'.
+
+![](https://i.imgur.com/coM4bsX.png)
+
+The Project Properties will now open up and the Target framework option is available to be changed.
+
+![](https://i.imgur.com/zDwbi9y.png)
+
+Click the option dots (...) and select the preferred Target framework. Any version above 4.5 will work for developing tModLoader mods.
+
+![](https://i.imgur.com/nCZQ3I1.png)
+
+Click OK -> OK and reboot Jetbrains Rider. After rebooting, load up your Solution and your Target framework should be correctly set. In order to verify this you can edit your configuration by clicking Edit Configuration in the top right corner of the Rider context menu.
+
+![](https://i.imgur.com/g1CHKWW.png)
+
+![](https://i.imgur.com/0LP7DNG.png)
+
+Verify you can run your configuration by pressing Shift + F10, or by clicking the green arrow next to the edit configuration menu.
+
+![](https://i.imgur.com/DpLIBbh.png)
+
+[Back to TOC](#table-of-contents)
