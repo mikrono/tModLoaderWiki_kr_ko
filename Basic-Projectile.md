@@ -10,11 +10,12 @@ Many items in Terraria are functional due to projectiles, including guns and bow
 
 To create a projectile in Terraria, you must first create a class that "inherits" from ModProjectile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your item and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
 
+
+```c#
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-```c#
 namespace ModNamespaceHere
 {
     public class NameHere : ModProjectile
