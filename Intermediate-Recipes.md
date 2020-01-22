@@ -162,6 +162,9 @@ As you can see, this recipe takes ExampleMod's ExampleWings item if ExampleMod i
 
 # Common Errors
 
+### MyModItem.AddRecipeGroups(): no suitable method found to override
+`AddRecipeGroups` has to go in the `Mod` class, not your `ModItem` class.
+
 # Relevant References
 * [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs)
 * [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
