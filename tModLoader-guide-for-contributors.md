@@ -28,7 +28,7 @@ ___
     * (Temporary Extra Step) Download Terraria 1.3.5.2 from steam:
         * In your web browser or file explorer, paste `steam://open/console` and hit enter. (You may have to confirm that you want to open Steam Client Bootstrapper) This will bring up the steam console prompt
         * Paste `download_depot 105600 105601 4963288974433434036` into the prompt and press enter. ([Image](https://i.imgur.com/fg2WVRM.png)) This will start a download of the Terraria 1.3.5.2 files
-        * Wait until your download has finished. The console won't give much feedback, and the download might be slower than normal steam downloads, but you should see network activity in Library->Downloads. You'll know it is done when you see "???" in the steam console window.
+        * Wait until your download has finished. The console won't give much feedback, and the download might be slower than normal steam downloads, but you should see network activity in Library->Downloads. You'll know it is done when you see `Depot download complete : "C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601" (10431 files, manifest 4963288974433434036)` in the steam console window. This can take an hour or more because of the slow download server.
         * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files in `C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601` or move them to a convenient location.
 2. Open setup.bat in the root folder
     * If setup.bat won't open, you must unblock all the files in the cloned repository
