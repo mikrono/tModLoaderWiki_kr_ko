@@ -20,7 +20,7 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [defDefense](#defdefense)<a name="defdefense"></a>| int | 0 | Stores the value of `defense` at the end of SetDefaults. Useful for scaling defense in AI code, like how King Slime changes defense as it gets smaller. |
 | [lifeMax](#lifemax)<a name="lifemax"></a>| int | 0 | The maximum life of this NPC. |
 | [life](#life)<a name="life"></a>| int | 0 | The current life of the NPC. Automatically assigned to lifeMax at the end of SetDefaults. |
-| [realLife](#reallife)<a name="reallife"></a>| int | -1 |  |
+| [realLife](#reallife)<a name="reallife"></a>| int | -1 | This value is used for multi-part npcs that share life while maintaining separate hitboxes. This is useful for worm enemies. The value represents the index in `Main.npc` of the npc that has the actual life for this multi-part npc. All the segments will point to the same npc, usually the "head" of the npc, and the head and all other non-multi-part npcs will have the default value of -1 still. |
 | [HitSound](#hitsound)<a name="hitsound"></a>| LegacySoundStyle | null | The sound that plays when this npc is hit. |
 | [DeathSound](#deathsound)<a name="deathsound"></a>| LegacySoundStyle | null | The sound that plays when this npc dies. |
 | [alpha](#alpha)<a name="alpha"></a>| int | 0 | 0 is opaque, and 255 is transparent. This is the opposite of typical representations of alpha in computer graphics, so be aware of that. |
