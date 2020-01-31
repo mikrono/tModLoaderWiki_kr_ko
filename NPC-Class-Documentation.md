@@ -21,8 +21,8 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [lifeMax](#lifemax)<a name="lifemax"></a>| int | 0 | The maximum life of this NPC. |
 | [life](#life)<a name="life"></a>| int | 0 | The current life of the NPC. Automatically assigned to lifeMax at the end of SetDefaults. |
 | [realLife](#reallife)<a name="reallife"></a>| int | -1 |  |
-| [HitSound](#hitsound)<a name="hitsound"></a>| LegacySoundStyle | null |  |
-| [DeathSound](#deathsound)<a name="deathsound"></a>| LegacySoundStyle | null |  |
+| [HitSound](#hitsound)<a name="hitsound"></a>| LegacySoundStyle | null | The sound that plays when this npc is hit. |
+| [DeathSound](#deathsound)<a name="deathsound"></a>| LegacySoundStyle | null | The sound that plays when this npc dies. |
 | [alpha](#alpha)<a name="alpha"></a>| int | 0 | 0 is opaque, and 255 is transparent. This is the opposite of typical representations of alpha in computer graphics, so be aware of that. |
 | [color](#color)<a name="color"></a>| Color |  |  |
 | [value](#value)<a name="value"></a>| float | 0f | How many coins the NPC will drop when killed. |
@@ -30,8 +30,8 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f |  |
 | [scale](#scale)<a name="scale"></a>| float | 1f |  |
 | [townNPC](#townnpc)<a name="townnpc"></a>| bool | false |  |
-| [noGravity](#nogravity)<a name="nogravity"></a>| bool | false |  |
-| [noTileCollide](#notilecollide)<a name="notilecollide"></a>| bool | false |  |
+| [noGravity](#nogravity)<a name="nogravity"></a>| bool | false | If true, the npc will not be affected by gravity. Demon Eyes and other floating npc use this. |
+| [noTileCollide](#notilecollide)<a name="notilecollide"></a>| bool | false | If true, the npc does not collide with tiles, making the npc pass through tiles freely. Meteor Head and Worm npc use this. |
 | [npcSlots](#npcslots)<a name="npcslots"></a>| float | 1f | Represents how much this npc counts towards the npc spawn limit. Small critters like worms or flys have values around .1f and .25. Enemies that are more difficult than normal have values higher than 1f, and bosses and mini bosses have values around 6. Proper npcSlots values help balance the game and prevents the player from randomly being overwhelmed by powerful enemies. Check the [Vanilla NPC Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) spreadsheets to determine a suitable value for your NPC. |
 | [boss](#boss)<a name="boss"></a>| bool | false | Set to true if the NPC is a boss. Prevents off-screen despawn. |
 | [netAlways](#netalways)<a name="netalways"></a>| bool | false |  |
