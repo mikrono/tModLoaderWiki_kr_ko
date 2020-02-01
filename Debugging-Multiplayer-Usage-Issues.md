@@ -10,9 +10,9 @@ You are trying to connect to a server that is not the correct version. You might
 2. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file.
 3. Verify that the tModLoader version of the Client and the Server match exactly. If not, reinstall the latest tModLoader.
 4. You can also verify the filesizes: 
-   * Windows Steam tModLoder v0.11.3 Client: 16,963 KB
-   * Windows Steam tModLoder v0.11.3 Server: 16,946 KB
-![](https://i.imgur.com/t8mI1Q0.png)
+   * Windows Steam tModLoder v0.11.6.2 Client: 16,925 KB
+   * Windows Steam tModLoder v0.11.6.2 Server: 16,908 KB
+![](https://i.imgur.com/lgfzxmp.png)
 
 ## Version is fine
 If version isn't the issue, read [My connection is fine but my friend or I am stuck on "Connecting..."](#my-connection-is-fine-but-my-friend-or-i-am-stuck-on-connecting) below
