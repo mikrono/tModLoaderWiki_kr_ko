@@ -99,6 +99,7 @@ Main.PlaySound(SoundLoader.customSoundType, -1, -1, mod.GetSoundSlot(SoundType.C
 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImpact").WithVolume(.7f).WithPitchVariance(.5f));
 item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
 npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
+if (!Main.dedServ) npc.DeathSound = DeathSound = SoundID.NPCDeath42.WithVolume(0.5f);
 Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
 ```
 ## Additional Tricks
@@ -109,6 +110,7 @@ We can use either LegacySoundStyle methods or PlaySound parameters to affect vol
 Main.PlaySound(SoundID.Item59.WithVolume(.5f));
 Main.PlaySound(2, -1, -1, 59, .5f);
 ```
+Keep in mind that values >1f  can cause the sound to not be played and exceptions to be thrown if the game sound volume is near 100% (so the total game sound volume + sound effect volume is bigger than 1f).
 ### Adjust Pitch
 Same for random pitch:
 ```c#  
@@ -119,6 +121,7 @@ For specific pitch:
 ```c#
 Main.PlaySound(2, -1, -1, 59, 1f, -.2f); // down a few notes
 ```
+Values too far in one direction can cause the sound to not be played and exceptions to be thrown because vanilla applies a random pitch to most sounds before the specified custom pitch is applied, causing values below 0f or above 2f.
 For something like Harp, consult the source code.
 
 ## Common Errors
@@ -126,6 +129,8 @@ For something like Harp, consult the source code.
 Add `using Terraria.ID;` to the top of your source file.
 ### No sound plays with custom sounds
 Check the spelling and try again.
+### Mod doesn't load on the server when using `.WithVolume()` for sounds in `SetDefaults`
+add `if (!Main.dedServ)` to that line. Servers don't have sound files loaded, that's why you have to check for this
 ### "Ensure that the specified stream contains valid PCM mono or stereo wave data."
 Run your .wav through [Audacity](http://www.audacityteam.org/download/) using `File->Export Audio->Wav (Microsoft) signed 16-bit PCM`. For reference, the following are the allowed parameters for Wav files:
 1. Must be a PCM wave file
