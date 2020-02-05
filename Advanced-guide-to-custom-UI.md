@@ -116,7 +116,7 @@ The interface keeps track of a state history. If you wish to go back to the prev
 # Adding elements
 
 If you activate your UI now, you might be confused since nothing shows. This is because your UI is empty.
-You can add any elements you want to the UISate, and they will then show up.
+You can add any elements you want to the UIState, and they will then show up.
 
 In your MyUI class, override the `OnInitialize` method. For example add a new UIPanel to the state:
 ```cs
