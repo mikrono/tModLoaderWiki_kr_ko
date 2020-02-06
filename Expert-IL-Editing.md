@@ -206,7 +206,7 @@ This first approach is the simplest. In this approach, we can take advantage of 
 With an int and Player on the stack, we can now use `.EmitDelegate` to write c# code for the rest of our patch, greatly simplifying things. The generic types provided to the Delegate need to match up with the current stack, in order from bottom to top (oldest to most recently pushed). In this case, we will be using a `Func` which takes 2 parameters and returns 1 parameter. The 2 input parameters must be `int` and `Player` as those match the current stack. The output type will be `int` because it will go onto the stack after the int and Player are popped off. When our patch began, there was an int on the stack, so we need to make sure the stack is still the same when our patch completes so we don't crash the game. In our delegate, we simply put our conditional and use the provided original return value and Player instance to drive our logic. Here is the complete code:
 ```cs
 // Start the Cursor at the start
-var c = il.At(0);
+var c = new ILCursor(il);
 // Try to find where 566 is placed onto the stack
 if (!c.TryGotoNext(i => i.MatchLdcI4(566)))
 	return; // Patch unable to be applied
