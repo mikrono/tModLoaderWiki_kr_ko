@@ -121,7 +121,7 @@ For specific pitch:
 ```c#
 Main.PlaySound(2, -1, -1, 59, 1f, -.2f); // down a few notes
 ```
-Values too far in one direction can cause the sound to not be played and exceptions to be thrown because vanilla applies a random pitch to most sounds before the specified custom pitch is applied, causing values below 0f or above 2f.
+
 For something like Harp, consult the source code.
 
 ## Common Errors
