@@ -18,15 +18,15 @@ using Terraria.ModLoader;
 
 namespace ModNamespaceHere
 {
-    public class NameHere : ModProjectile
-    {
+	public class NameHere : ModProjectile
+	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("English Display Name Here");
 		}
 
-        public override void SetDefaults()
-        {
+		public override void SetDefaults()
+		{
 			projectile.arrow = true;
 			projectile.width = 10;
 			projectile.height = 10;
@@ -34,10 +34,10 @@ namespace ModNamespaceHere
 			projectile.friendly = true;
 			projectile.ranged = true;
 			aiType = ProjectileID.WoodenArrowFriendly;
-        }
+		}
 
 		// Additional hooks/methods here.
-    }
+	}
 }
 ```
 Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/tModLoader/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
