@@ -40,9 +40,11 @@ ModTiles have a ModTile.soundType and ModTile.soundStyle that specify the sound 
 To use a vanilla sound, first you must figure out which one you want. Below are several ways to find the sound you want.
 
 ### Mod
-[Dust and Sound Catalogue 2](https://forums.terraria.org/index.php?threads/dust-and-sound-catalogue-2.42370/) lets you experiment in game with sounds. Features a table of all sounds and what they are on the homepage aswell.
+[Dust and Sound Catalogue 2](https://forums.terraria.org/index.php?threads/dust-and-sound-catalogue-2.42370/) lets you experiment in game with sounds. Features a table of all sounds and what they are on the homepage as well.
 
 [Terraria Sound Suite](https://forums.terraria.org/index.php?threads/terraria-sound-suite-customize-all-ingame-sounds-and-more.83611/) lets you enable debug mode to see sounds, their exact values, etc. without needing to search in the source code. You can also select any sound you want and play it in its config.
+
+[Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) has an option to log sounds, allowing you to see what code is causing sounds to play and also see modded sound paths as well as sound types and sound styles.
 
 ### Extract
 [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) can extract the sound files to .wav files that you can easily load into VLC or whatever media player you have on your computer.
