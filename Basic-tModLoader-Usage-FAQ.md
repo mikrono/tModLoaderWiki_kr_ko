@@ -46,7 +46,7 @@ This error is an error usually caused by an unhandled error in a mod. This makes
 ### OutOfMemoryException
 This error means that tModLoader does not have enough RAM to load all the mods that you are trying to load. Large mods that add lots of items are the main culprit. You may have to cut down on the number of large mods you are trying to load at the same time. You can also try loading Small or Medium worlds instead of Large. Another possibility is that you have other large programs running. If you can close them, do so. Press Ctrl+Shift+Escape to bring up the Task Manager. In the Task Manager's Processes tab, look for processes that take up a large amount of memory. Anything taking more than 100,000 K is a good candidate. Also make sure that you are on 64 bit Windows and that you actually have more than 4 GB of RAM.
 
-Do note that there is also an alternative version of tmodloader that was made to solve this specific issue made by Dradonhunter11 and Rartrin which you can get there. Tough any issue related to it must be reported to them and not us.
+Do note that there is also an alternative 64-bit version of tmodloader that was made to solve this specific issue made by Dradonhunter11 and Rartrin which you can get there. Tough any issue related to it must be reported to them and not us.
 Forum page link: https://forums.terraria.org/index.php?threads/1-3-tmodloader-fna-32bit-64bit-branch-of-tml.75644/
 
 Technical Explanation: 
