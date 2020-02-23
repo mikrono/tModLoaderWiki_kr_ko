@@ -52,6 +52,11 @@ Forum page link: https://forums.terraria.org/index.php?threads/1-3-tmodloader-fn
 Technical Explanation: 
 On Windows, Terraria is a 32 bit process, meaning it can only use up to 4GB of Ram. It also has a bit less than that due to the .Net framework overhead, limiting the amount of Ram it can use even further. Note that the so-called "4GB" patch is already applied, do not tell people to apply it, it does nothing. Also, if you are on 32 bit Windows, there isn't much you can do.
 
+Viewing Mods that use a lot of Memory:
+If you are curious which mods are using your limited Ram, you can enable the "Show Mod Memory Estimates" option in `Settings->tModLoader Settings`. After enabling the setting, you will have to exit to the main menu and then close and reopen the game for the setting to take effect. Visit the Mods menu, make sure you enable and reload the mods you are curious about, and you should now see colorful graph at the top that shows how much memory each mod is using. Use this information to disable mods that take too much ram compared to how much you enjoy the content.
+
+![](https://i.imgur.com/3Pl6tG2.png)
+
 # Players/Worlds
 ### "HELP, all my players and worlds are gone!"
 tModLoader saves are kept separate from vanilla Terraria saves. You can copy back and forth between save locations, but be aware that you will lose Modded Tile and Items if you use tModloader worlds/characters in vanilla.
