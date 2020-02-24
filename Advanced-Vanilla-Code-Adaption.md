@@ -16,7 +16,7 @@ A simple example for investigating vanilla code is figuring out how vanilla armo
 
 ![](http://i.imgur.com/fxnOPXA.png)
 
-We now must search the entire project for "257". Be sure to set "Match whole word" here to limit results. In the results, you will see many references to "257", you must now trim down the results to find the relevant results. You may find a result in Item.SetDefaults1, setting the default values for the result, but this code isn't responsible for the throwing damage bonus, so we must continue searching. Continuing down the list of results, you can skip the results in NPC.cs, as those probably relate to whatever NPCID is equal to 257, not the ItemID of 257. Finally, you will come to the results in Player.cs and your screen will show this:
+We now must search the entire project for "257", using the Quick Find tool (Ctrl-F, don't mistake the "Search Solution Explorer as the search tool, that is different). Be sure to set "Match whole word" here to limit results. In the results, you will see many references to "257", you must now trim down the results to find the relevant results. You may find a result in Item.SetDefaults1, setting the default values for the result, but this code isn't responsible for the throwing damage bonus, so we must continue searching. Continuing down the list of results, you can skip the results in NPC.cs, as those probably relate to whatever NPCID is equal to 257, not the ItemID of 257. Finally, you will come to the results in Player.cs and your screen will show this:
 
 ![](http://i.imgur.com/n0YKKbB.png)
 
