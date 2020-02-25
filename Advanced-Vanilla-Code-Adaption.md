@@ -4,6 +4,7 @@ This guide teaches how to navigate the jungle that is Terraria source code to fi
 ## TL;DR
 * Change `this.X` code to the corresponding object, such as `npc.X` or `player.X`
 * If you are manually copying aiStyles, you can delete all code related to other types to make the code more readable
+  * For example, Projectile AiStyle 1 is 3500 lines of code, but can be pruned down to about 5 lines of code, see [Basic Projectile - AiStyle 1](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#aistyle-1) for that code.
 * Use F2 to rename auto-generated variable names (num233, flag83, etc) as you figure out what each variable represents
 
 ## Obtaining Vanilla Source Code
