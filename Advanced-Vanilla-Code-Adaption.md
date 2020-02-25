@@ -7,7 +7,7 @@ This guide teaches how to navigate the jungle that is Terraria source code to fi
 * Use F2 to rename auto-generated variable names (num233, flag83, etc) as you figure out what each variable represents
 
 ## Obtaining Vanilla Source Code
-It is against the law to publish the decompiled source code, but anyone with a competent computer can decompile their personal copy of Terraria.exe no problem. Note that you may wish to end up with a decompiled tModLoader rather than a decompiled vanilla Terraria so that you know where tModLoader hooks are. See [Advanced Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites) for more info.
+It is against the law to publish the decompiled source code, but anyone with a competent computer can decompile their personal copy of Terraria.exe no problem. Note that you may wish to end up with a decompiled tModLoader rather than a decompiled vanilla Terraria so that you know where tModLoader hooks are. See [Advanced Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites) for more info on how to decompile tModLoader.
 
 After you have a copy of the source, open the `Terraria.csproj` file so you can easily search the whole project.
 
