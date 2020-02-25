@@ -253,6 +253,25 @@ if (++projectile.frameCounter >= 5)
 }
 ```
 
+## Examples
+### AiStyle 1
+Projectile AiStyle 1, used for many simple projectiles in the game, is over 3000 lines long. If you have tried to adapt this AI using the [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide, you might have been frustrated. Here is brief outline of that AiStyle without all the ProjectileID-specific code:
+```cs
+// Optional: if the projectile should fade in, fade it in:
+	if (projectile.alpha > 0)
+		projectile.alpha -= 15;
+	if (projectile.alpha < 0)
+		projectile.alpha = 0;
+// Set the rotation to face the current trajectory:
+projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+// Or, this version is easier to read:
+projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2;
+// Cap downward velocity, in case you add gravity to this projectile
+if (projectile.velocity.Y > 16f)
+	projectile.velocity.Y = 16f;
+```
+As you can see, the Projectile AiStyle of 1 without all the ProjectileID specific code is only a few lines of code, and matches up with the fade-in and rotation examples above.
+
 # Drawing and Collision
 You may find yourself noticing that your projectile is hitting walls when it shouldn't or otherwise having a weird hitbox. First off, it is worth reiterating that `projectile.width` and `projectile.height` correspond to the hitbox of the projectile, NOT the sprite used. You almost never want `width` or `height` to be different, it should be square. You also never want to use `projectile.scale` since the vanilla drawing code doesn't really take it into account correctly. The drawing of the sprite attempts to overlay the hitbox with the sprite, the drawing of this sprite is influenced by various bits of math done in the `Main.DrawProj` method.
 
