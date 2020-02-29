@@ -16,7 +16,7 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [aiStyle](#aistyle)<a name="aistyle"></a>| int | 0 | Determines which AI code to run. Many NPC share the same AI code by having the same aiStyle. ModNPC can utilize vanilla aiStyle values in addition to ModNPC.aiType to mimic vanilla behavior to some degree. If you wish to further customize the AI of a ModNPC, you should read [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption). If you are using completely custom AI, set this to -1 since an aiStyle of 0 will face the player automatically, which may interfere with your logic. |
 | [damage](#damage)<a name="damage"></a>| int | 0 | The amount of damage this NPC will deal on collision. Usually npc.damage is scaled by some factor when NPC spawn projectiles with Projectile.NewProjectile in AI code. For example, passing in `(int)(npc.damage * 0.5f)` as the Damage parameter. |
 | [defDamage](#defdamage)<a name="defdamage"></a>| int | 0 | Stores the value of `damage` at the end of SetDefaults. Useful for scaling damage in AI code. |
-| [defense](#defense)<a name="defense"></a>| int | 0 | How resistant to damge this NPC is. |
+| [defense](#defense)<a name="defense"></a>| int | 0 | How resistant to damage this NPC is. |
 | [defDefense](#defdefense)<a name="defdefense"></a>| int | 0 | Stores the value of `defense` at the end of SetDefaults. Useful for scaling defense in AI code, like how King Slime changes defense as it gets smaller. |
 | [lifeMax](#lifemax)<a name="lifemax"></a>| int | 0 | The maximum life of this NPC. |
 | [life](#life)<a name="life"></a>| int | 0 | The current life of the NPC. Automatically assigned to lifeMax at the end of SetDefaults. |
@@ -26,15 +26,15 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [alpha](#alpha)<a name="alpha"></a>| int | 0 | 0 is opaque, and 255 is transparent. This is the opposite of typical representations of alpha in computer graphics, so be aware of that. |
 | [color](#color)<a name="color"></a>| Color |  |  |
 | [value](#value)<a name="value"></a>| float | 0f | How many copper coins the NPC will drop when killed (100 copper coins = 1 silver coin etc.). |
-| [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] | all false | make the NPC immune to buffs/debuffs. Example: `npc.buffImmune[BuffID.OnFire] = true;` |
-| [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f |  |
-| [scale](#scale)<a name="scale"></a>| float | 1f |  |
-| [townNPC](#townnpc)<a name="townnpc"></a>| bool | false |  |
+| [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] | all false | Make the NPC immune to buffs/debuffs. Example: `npc.buffImmune[BuffID.OnFire] = true;` |
+| [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f | How much of the knockback it receives will actually apply. 1f: full knockback; 0f: no knockback. |
+| [scale](#scale)<a name="scale"></a>| float | 1f | Makes the NPC bigger or smaller. Bigger than 1f = bigger. |
+| [townNPC](#townnpc)<a name="townnpc"></a>| bool | false | If true, the npc counts as a town NPC. Has multiple implications (i.e. npc shop, housing, hostile spawn rate reduction). |
 | [noGravity](#nogravity)<a name="nogravity"></a>| bool | false | If true, the npc will not be affected by gravity. Demon Eyes and other floating npc use this. |
 | [noTileCollide](#notilecollide)<a name="notilecollide"></a>| bool | false | If true, the npc does not collide with tiles, making the npc pass through tiles freely. Meteor Head and Worm npc use this. |
 | [npcSlots](#npcslots)<a name="npcslots"></a>| float | 1f | Represents how much this npc counts towards the npc spawn limit. Small critters like worms or flys have values around .1f and .25. Enemies that are more difficult than normal have values higher than 1f, and bosses and mini bosses have values around 6. Proper npcSlots values help balance the game and prevents the player from randomly being overwhelmed by powerful enemies. Check the [Vanilla NPC Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) spreadsheets to determine a suitable value for your NPC. |
 | [boss](#boss)<a name="boss"></a>| bool | false | Set to true if the NPC is a boss. Prevents off-screen despawn. |
-| [netAlways](#netalways)<a name="netalways"></a>| bool | false |  |
+| [netAlways](#netalways)<a name="netalways"></a>| bool | false | If true, makes sure that this NPC is always synced in multiplayer (same happens if it's a boss or townNPC). |
 | [](#)<a name=""></a>|  |  |  |
 
 ## Static Fields
