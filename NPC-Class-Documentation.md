@@ -25,8 +25,8 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [DeathSound](#deathsound)<a name="deathsound"></a>| LegacySoundStyle | null | The sound that plays when this npc dies. |
 | [alpha](#alpha)<a name="alpha"></a>| int | 0 | 0 is opaque, and 255 is transparent. This is the opposite of typical representations of alpha in computer graphics, so be aware of that. |
 | [color](#color)<a name="color"></a>| Color |  |  |
-| [value](#value)<a name="value"></a>| float | 0f | How many coins the NPC will drop when killed. |
-| [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] |  |  |
+| [value](#value)<a name="value"></a>| float | 0f | How many copper coins the NPC will drop when killed (100 copper coins = 1 silver coin etc.). |
+| [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] | all false | make the NPC immune to buffs/debuffs. Example: `npc.buffImmune[BuffID.OnFire] = true;` |
 | [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f |  |
 | [scale](#scale)<a name="scale"></a>| float | 1f |  |
 | [townNPC](#townnpc)<a name="townnpc"></a>| bool | false |  |
