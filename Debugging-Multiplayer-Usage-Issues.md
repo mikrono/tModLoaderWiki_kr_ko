@@ -17,6 +17,12 @@ You are trying to connect to a server that is not the correct version. You might
 ## Version is fine
 If version isn't the issue, read [My connection is fine but my friend or I am stuck on "Connecting..."](#my-connection-is-fine-but-my-friend-or-i-am-stuck-on-connecting) below
 
+# When I join my own server, mods get disabled
+This is caused by bad mods. You must view the server.log file or start the server with the console visible to identify the issue. 
+* Set Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png)
+  * When the console shows up, look for red text or anything that looks out of place. Reading the exception messages, you should see mod names mentioned, disable those mods.
+* View server.log by opening the `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\server.log` file in a text editor. Look for exception messages and stop using the mods that are causing the errors.
+
 # I can join my server, but my friend can't
 ## Verify that your server is visible to the internet
 1. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file. (If you are on 0.11.3+, you can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
@@ -30,7 +36,7 @@ If version isn't the issue, read [My connection is fine but my friend or I am st
 ![](https://i.imgur.com/4Eo66NN.png)
 
 ## My connection is fine but my friend or I am stuck on "Connecting..."
-This is where things get complicated. There could be many reasons for this error, and most of them are likely caused by poorly programmed mods. The best approach is to launch the server manually (NOT Host and Play) and watch for messages that appear to be errors in the output. (If you are on 0.11.3+, you can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
+This is where things get complicated. There could be many reasons for this error, and most of them are likely caused by poorly programmed mods. The best approach is to launch the server manually (NOT Host and Play) and watch for messages that appear to be errors in the output. (You can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
 
 First, I would suggest using fresh player and world files and attempting to connect to the server. If this works, the problem might be a mod that has trouble saving or loading its custom data correctly.
 
