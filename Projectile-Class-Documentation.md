@@ -27,37 +27,37 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [extraUpdates](#extraupdates)<a name="extraupdates"></a>|int |0 | Additional update steps per tick. Useful for really fast projectiles such as [Shadowbeam Staff](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-item-and-projectile-shadowbeam-staff-clone). |
 | [scale](#scale)<a name="scale"></a>| float | 1f |  |
 | [melee](#melee)<a name="melee"><br>[ranged](#ranged)<a name="ranged"><br>[magic](#magic)<a name="magic"><br>[minion](#minion)<a name="minion"><br>[thrown](#thrown)<a name="thrown"><br></a>| bool | false | Determines which crit chance will influence the damage of this projectile |
-| [frame](#frame)<a name=""></a>| int | 0 | The frame # in the spritesheet that this projectile will be drawn with. Example: projectile has 4 frames, then `frame` can have values between 0 and 3 |
-| [frameCounter](#framecounter)<a name=""></a>| int | 0 | Used as a timer to decide when to change `frame` |
-| [rotation](#rotation)<a name=""></a>| float | 0f | Rotation of the projectile. Radians not Degrees. Use MathHelper if you want to convert degrees to radians. 0 is facing right, pi/2 is facing down, and so on. |
-| [oldPos](#oldpos)<a name=""></a>| Vector2[] | |  |
-| [oldRot](#oldrot)<a name=""></a>| float[] | |  |
-| [oldSpriteDirection](#oldspritedirection)<a name=""></a>| int[] | |  |
-| [ai](#ai)<a name=""></a>| float[] | 0,0 |  |
-| [localAI](#localai)<a name=""></a>| float[] | 0,0 |  |
+| [frame](#frame)<a name="frame"></a>| int | 0 | The frame # in the spritesheet that this projectile will be drawn with. Example: projectile has 4 frames, then `frame` can have values between 0 and 3 |
+| [frameCounter](#framecounter)<a name="framecounter"></a>| int | 0 | Used as a timer to decide when to change `frame` |
+| [rotation](#rotation)<a name="rotation"></a>| float | 0f | Rotation of the projectile. Radians not Degrees. Use MathHelper if you want to convert degrees to radians. 0 is facing right, pi/2 is facing down, and so on. |
+| [oldPos](#oldpos)<a name="oldpos"></a>| Vector2[] | |  |
+| [oldRot](#oldrot)<a name="oldrot"></a>| float[] | |  |
+| [oldSpriteDirection](#oldspritedirection)<a name="oldspritedirection"></a>| int[] | |  |
+| [ai](#ai)<a name="ai"></a>| float[] | 0,0 |  |
+| [localAI](#localai)<a name="localai"></a>| float[] | 0,0 |  |
 | [noDropItem](#nodropitem)<a name="nodropitem"></a>| bool | false | Set to true if you don't want this item to have a chance to recover the ammo item that shot this. For example, if you shoot the wooden arrow projectile, it will sometimes drop the wooded arrow item. If your weapon shoots multiple arrows for 1 ammo, you might want to consider setting this field to prevent infinite ammo glitches. |
-| [minion](#minion)<a name=""></a>| bool | false | Indicates that this projectile is a minion |
-| [minionSlots](#minionslots)<a name=""></a>| float | 0f | Set to 1f on a minion to count it towards the minion limit of the summoning player (Optic Staff summons two minions at once with 0.5f each) |
-| [spriteDirection](#spritedirection)<a name=""></a>| int | |  |
+| [minion](#minion)<a name="minion"></a>| bool | false | Indicates that this projectile is a minion |
+| [minionSlots](#minionslots)<a name="minionslots"></a>| float | 0f | Set to 1f on a minion to count it towards the minion limit of the summoning player (Optic Staff summons two minions at once with 0.5f each) |
+| [spriteDirection](#spritedirection)<a name="spritedirection"></a>| int | |  |
 | [hide](#hide)<a name="hide"></a>| bool | | Projectile is not drawn normally. See [ExampleBehindTilesProjectile](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBehindTilesProjectile.cs#L30) |
-| [lavaWet](#lavawet)<a name=""></a>| bool | false | Indicates that this projectile is currently in lava |
-| [wetCount](#wetcount)<a name=""></a>| | |  |
-| [wet](#wet)<a name=""></a>| bool | false | Indicates that this projectile is currently in water |
-| [netImportant](#netimportant)<a name=""></a>| bool | false | Indicates that this projectile will be synced to a joining player (by default, any projectiles active before the player joins (besides pets) are not synced over). Example: glowsticks |
-| [netUpdate](#netupdate)<a name=""></a>| bool | false | Set manually to true in `ModProjectile.AI` once to make it sync its current ai[] array to the server and other clients (depending on what the Main.netMode is where this is set to true in) |
-| [netUpdate2](#netupdate2)<a name=""></a>| bool | false | Used internally to check for projectiles that spam `netUpdate`. Don't use it yourself manually |
-| [numUpdates](#numupdates)<a name=""></a>| | |  |
-| [identity](#identity)<a name=""></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
+| [lavaWet](#lavawet)<a name="lavawet"></a>| bool | false | Indicates that this projectile is currently in lava |
+| [wetCount](#wetcount)<a name="wetcount"></a>| | |  |
+| [wet](#wet)<a name="wet"></a>| bool | false | Indicates that this projectile is currently in water |
+| [netImportant](#netimportant)<a name="netimportant"></a>| bool | false | Indicates that this projectile will be synced to a joining player (by default, any projectiles active before the player joins (besides pets) are not synced over). Example: glowsticks |
+| [netUpdate](#netupdate)<a name="netupdate"></a>| bool | false | Set manually to true in `ModProjectile.AI` once to make it sync its current ai[] array to the server and other clients (depending on what the Main.netMode is where this is set to true in) |
+| [netUpdate2](#netupdate2)<a name="netupdate2"></a>| bool | false | Used internally to check for projectiles that spam `netUpdate`. Don't use it yourself manually |
+| [numUpdates](#numupdates)<a name="numupdates"></a>| | |  |
+| [identity](#identity)<a name="identity"></a>| int | | The projectile's universal unique identifier, which is the same on all clients and the server. Usually used to find the same projectile on multiple clients and/or the server, e.g. Projectile match = Main.projectile.FirstOrDefault(x => x.identity == identity); |
 | [light](#light)<a name="light"></a>| float | 0f | Set to a value above 0f to make this projectile emit a white light (higher number: more intensive light. 1f being stronger than a torch)) |
 | [position](#position)<a name="position"></a>| Vector2 | | |
 | [velocity](#velocity)<a name="velocity"></a>| Vector2 | Vector2.Zero | The amount of coordinates this projectile will move per tick |
 | [active](#active)<a name="active"></a>| bool | | True if this Projectile actually exists. `Main.projectile` will hold a lot of junk data in it. If you are iterating over `Main.projectile`, be sure to check `active` to make sure the projectile is still alive. For example, old projectiles that die aren't removed from the array, they simply have active set to false. |
 | [owner](#owner)<a name="owner"></a>| | | The index of the player who owns this projectile. In Multiplayer, Clients "own" projectiles that they shoot, while the Server "owns" projectiles spawned by NPCs and the World. It is very important to check `if (projectile.owner == Main.myPlayer)` for things like dropping items or spawning projectiles in `ModProjectile.AI` and some other methods because `AI` runs simultaneously on all Clients and the Server. This check gates some of the code that should only run on the owners computer. [ExampleJavelinProjectile](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleJavelinProjectile.cs#L88) checks owner for spawning the recovered ammo item. If you don't do this, you will run into desync bugs in your mod. |
 | [damage](#damage)<a name="damage"></a>| | | This will always be set in NewProjectile based on the weapons damage. Don't assume that setting it to something in SetDefaults does anything. |
-| [knockBack](#knockback)<a name=""></a>| | |  |
-| [trap](#trap)<a name=""></a>| | | If true, this projectile was spawned by a trap tile. |
-| [npcProj](#npcproj)<a name=""></a>| | | If true, this projectile was spawned by a friendly Town NPC. |
-| [projUUID](#projuuid)<a name=""></a>| | |  |
+| [knockBack](#knockback)<a name="knockback"></a>| | |  |
+| [trap](#trap)<a name="trap"></a>| | | If true, this projectile was spawned by a trap tile. |
+| [npcProj](#npcproj)<a name="npcproj"></a>| | | If true, this projectile was spawned by a friendly Town NPC. |
+| [projUUID](#projuuid)<a name="projuuid"></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 | [](#)<a name=""></a>| | |  |
 
