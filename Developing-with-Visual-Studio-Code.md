@@ -33,7 +33,7 @@ These steps need to be done the first time you build the mod:
 1. Click `Create tasks.json file` in the menu that appears: [Image](https://i.imgur.com/JHqC4PE.png)
 1. Click the `MSBuild` option in the menu that appears: [Image](https://i.imgur.com/qg4chlH.png)
 
-If you have done the `One Time Steps` above, you are now ready to build your mod. To build your mod, simply click `Terminal->Run Build Task...` and then `build` in the menu that appears. A successful build will look like this: [Successs](https://i.imgur.com/FjolklJ.png)
+If you have done the `One Time Steps` above, you are now ready to build your mod. To build your mod, simply click `Terminal->Run Build Task...` and then `build` in the menu that appears. A successful build will look like this: [Success](https://i.imgur.com/FjolklJ.png)
 
 ## Common Build Issues
 * If you get an error relating to "project.assets.json not found. Run a NuGet package restore to generate this file.", then go to `View->Terminal`, run the `dotnet restore` command in the terminal that appears. Now you can run the build again.  
