@@ -64,7 +64,7 @@ public override void ProcessTriggers(TriggersSet triggersSet)
 ```
 This example is extremely simple, but all manner of things can be done with a mod reference. Calling methods, accessing public variables, using the generic versions of ItemType and NPCType, and so on.
 
-Note: To properly code in Visual Studio, VS needs a reference to the .dll file contained within the .tmod file. Use the menus in tModLoader to extract the mod and find the .dll files. If no .dll file is extracted, the mod author has chosen not to allow it to be unpacked, so ask them nicely for it. Add the reference just like how you added the reference to tModLoader's exe. 
+Note: To properly code in Visual Studio, VS needs a reference to the .dll file contained within the .tmod file. Use the menus in tModLoader to extract the mod and find the .dll files. If no .dll file is extracted, the mod author has chosen not to allow it to be unpacked, so ask them nicely for it. Add the reference by right clicking `Dependencies` in the solution explorer, then clicking `Add Reference`, then `Browse...`, then finding the dll and finally clicking `Add`. 
 
 # Weak References, aka weakReferences (Expert)
 
