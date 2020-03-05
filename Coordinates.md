@@ -40,3 +40,12 @@ Screen Coordinates of the mouse. `Main.mouseX` and `Main.mouseY` are the same.
 ![](https://i.imgur.com/T6La54i.png)
 
 Lets look at this picture to review. The white lines depict the Tile spaces, the red points show the world coordinate of the tile when converted to world coordinates. The bottom right tile is at tile coordinate `3548, 256`. Converting this to world coordinates by multiplying by 16 gets us `56768, 4096`. The snails position is displayed in the yellow box. The position of entities relates to the top left corner of the entity. Adding `0, 16` to the world position of the tile mentioned earlier, we arrive at `56768, 4112`, which is very close to the top snail position shown. (the snail is still a pixel to the right of that point)  I hope this has helped visualize this concept.
+
+Some practical examples are:
+```cs
+//spawn 50 coordinates above the player center
+Vector2 spawnPosition = player.Center + new Vector2(0, -50);
+
+//Tile coordinates are used to index tiles in the world, here given an `i` and `j` representing X and Y
+Tile tileLeft = Main.tile[i - 1, j];
+```
