@@ -23,6 +23,7 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
 * [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
 * [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), custom minion/sentry AIs, player layers and more.
+* [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds an herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
 
 
 ## Other Mods
