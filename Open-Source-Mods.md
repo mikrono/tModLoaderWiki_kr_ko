@@ -55,4 +55,4 @@ These mods are _probably_ too specific or advanced to for most modders.
 * [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
 
 ## Ambitious
-*[CLib](https://github.com/aberna01/CLib) -- Rewriting the update methods for all entities, loads of static method tools that you can use to save some time typing. Tries to aid TMod the best it can.
+* [CLib](https://github.com/aberna01/CLib) -- Rewriting the update methods for all entities, loads of static method tools that you can use to save some time typing. Tries to aid TMod the best it can. Always accepting help.
