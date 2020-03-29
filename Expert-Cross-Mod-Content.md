@@ -109,6 +109,9 @@ thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
 ```
 Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
 
+## Testing
+You may mistakenly think that your weak reference is working because you disabled the weakly referenced mod and your mod still loads. This is a false positive. To properly test weak references, you must disable the referenced mod and then close and re-open tModLoader. 
+
 ## Recommendations
 The best practice is to put all code that directly uses a weakReference (potentially optional one), in a separate class. This can make sure the JIT (Just-In-Time) compiler never has to resolve such references when they aren't available, preventing a crash.
 
