@@ -1,6 +1,6 @@
 # Read First
 
-When inter-operating with other mods, there are several things to note. The biggest thing to note is that the Mod you wish to interact with may or may not actually be loaded. Calling methods, accessing fields, or trying to use Items from mods that aren't loaded will cause problems. You can avoid the issue altogether if you make your mod "strongly" depend on the other mod, but this means that your mod can't be loaded without the other mod present. An alternative to a strong dependency is a weak dependency. Weak dependencies are the most difficult to do correctly but also the most powerful. A 3rd option is less powerful than the other 2 but much easier and relies on Mod.Call, a simple way of passing messages between mods. This option requires the mod you wish to operate with to support it. A 4th option is for simple things like recipes. These options are explained from simplest to strongest below.
+When inter-operating with other mods, there are several things to note. The biggest thing to note is that the Mod you wish to interact with may or may not actually be loaded. Calling methods, accessing fields, or trying to use Items from mods that aren't loaded will cause problems. You can avoid the issue altogether if you make your mod "strongly" depend on the other mod, but this means that your mod can't be loaded without the other mod present. An alternative to a strong dependency is a weak dependency. Weak dependencies are the most difficult to do correctly but also the most powerful. A 3rd option is less powerful than the other 2 but much easier and relies on Mod.Call, a simple way of passing messages between mods. This option requires the mod you wish to operate with to support it. A 4th option is using reflection, and is a bad approach. A 5th option is for simple things like recipes. These options are explained from simplest to strongest below.
 
 # Simple Cross Mod content. Recipes, Items, and Tiles (Intermediate)
 
@@ -109,5 +109,9 @@ thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
 ```
 Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
 
-# Recommendations
+## Recommendations
 The best practice is to put all code that directly uses a weakReference (potentially optional one), in a separate class. This can make sure the JIT (Just-In-Time) compiler never has to resolve such references when they aren't available, preventing a crash.
+
+# No References, aka reflection (Expert)
+
+Using reflection to do cross mod is not ideal. For one, reflection relies on strings for accessing classes and fields of the target mod. As the target mod updates and changes, your mod will fail as well. This option is not cooperative and can be inefficient. This approach will not be explained here as it is a poor choice.
