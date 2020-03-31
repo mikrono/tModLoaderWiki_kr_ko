@@ -102,7 +102,8 @@ Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/BananaImp
 item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/FireballSound");
 npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/NPCHit/EnemyHurtSqueak");
 if (!Main.dedServ) npc.DeathSound = SoundID.NPCDeath42.WithVolume(0.5f);
-Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
+Main.PlaySound(SoundID.Item, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
+Main.PlaySound(SoundID.NPCKilled, -1, -1, mod.GetSoundSlot(SoundType.NPCKilled, "Sounds/NPCKilled/MyDeathSound"));
 ```
 ## Additional Tricks
 
