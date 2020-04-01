@@ -62,13 +62,14 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic Glowmasks](Basic-glowmask-guide)
 - [Coordinates](Coordinates)
 - [Time and Timers](Time-and-Timers)
+- [Basic netcode](Basic-Netcode)
 
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
 - [Saving and loading using TagCompound](Saving-and-loading-using-TagCompound)
 - [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
-- [Multiplayer Compatibility](Multiplayer-Compatibility): ModPacket
+- [Intermediate netcode](Intermediate-netcode)
 - [Modding with C#6](Intermediate-modding-with-c%236)
 - [Modding with C#7](Intermediate-modding-with-c%237)
 - [Git & mod management](Intermediate-Git-&-mod-management)
