@@ -1,16 +1,16 @@
-The following is a list of Open Source Mods (not all are technically "Open Source" in the traditional sense, by the way.). These mods' sources are available for a variety of reasons, mostly to facilitate and encourage community contributions, but I have listed them here for two reasons. 
+The following is a list of Open Source Mods (not all are technically "Open Source" in the traditional sense, by the way.). These mods' sources are available for a variety of reasons, mostly to facilitate and encourage community contributions, but we have listed them here for two reasons. 
 
 1. The first reason is that modding is difficult, and learning how to do everything by oneself can prove hard. Joining an existing mod is a great way to quickly see your ideas come to life without having to know everything about Terraria modding. If you are interested in contributing to one of these mods, feel free to fork the mod, make your changes, and then submit a pull request to the main branch. Once you have gained the trust of the mod owner, you may be allowed into the team and given direct access to the mod. Please note that not all open source mods desire random contributions. Try to get a feel for what the mod needs, either by noticing bug reports on their Issue tracker or on their homepage. You can also look for `TODO` notes in the code or noted elsewhere for ideas of things to implement. If you are contributing art or sounds, it might be a good idea to communicate with the mod owner as well to get art direction before you waste your efforts on something that wasn't desired. If in doubt, contact the mod owner on the Terraria Community Forums.
 
-2. The second reason I have listed these mods is because there are still a lot of things the tutorials and ExampleMod do not cover. Search these mods and look for code that might help you. Remember, just because a Mod is Open Source, that doesn't mean you can copy all the code and call it your own. Read the licence the code is licenced under for details. For the most part, however, you should be using Open Source mods as a guide for learning how to structure your mod. (You'll be shunned in the modding community if your mod is just a copy/paste conglomeration of other mods' code.)
+2. The second reason we have listed these mods is because there are still a lot of things the tutorials and ExampleMod do not cover. Search these mods and look for code that might help you. Remember, just because a Mod is Open Source, that doesn't mean you can copy all the code and call it your own. Read the licence the code is licenced under for details. For the most part, however, you should be using Open Source mods as a guide for learning how to structure your mod. (You'll be shunned in the modding community if your mod is just a copy/paste conglomeration of other mods' code.)
 
 **Remember, you can't just copy code from these mods unless the licence they are under specifically allows it. If there is no licence, the owner reserves all ownership and copyright of the code, so you need to contact the owner and ask permission to utilize certain parts. Don't worry, most will be happy to allow you to use portions of their code, but you still need to ask.**
 
 ## Content Mods
-These mods are mods that add _a lot_ of common things such as items, enemies, and bosses
+These mods are mods that add common things such as items, enemies, furniture, pets and so forth.
 * [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Cave Story](https://github.com/JavidPack/CaveStory) -- Very open to contributions. 
-* [Bluemagic's Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
+* [Elemental Unleash Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.
@@ -23,12 +23,12 @@ These mods are mods that add _a lot_ of common things such as items, enemies, an
 * [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
 * [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
 * [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), custom minion/sentry AIs, player layers and more.
-* [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds an herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
+* [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
 
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
-* [Even More Modifiers](https://github.com/Jofairden/EvenMoreModifiers) -- A mod to add custom effects to the game that can affect weapons, accessories and armors. Showcases hacking armor items to allow them to be reforged as accessories. Also showcases UI. Has a solid open-ended framework designed so other mods can add their own content to its system. Is fully documented and showcases lots of abstraction and design practices. Showcases MP compatibility. Showcases use of glowmasks and shaders, also showcases optional hard-references (support with other mods) Showcases various uses for Attributes.
+* [Even More Modifiers](https://github.com/Jofairden/EvenMoreModifiers) -- A mod to add custom effects to the game that can affect weapons, accessories and armors. Showcases hacking armor items to allow them to be reforged as accessories, UI, a solid open-ended framework designed so other mods can add their own content to its system, documentation, abstraction and design practices, MP compatibility, glowmasks and shaders, optional hard-references (support with other mods) and various uses for Attribute classes.
 * [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication
 * [HEROs Mod](https://github.com/JavidPack/HEROsMod) -- A lot of networking code. (Do not consult for UI)
 * [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
