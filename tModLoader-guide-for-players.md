@@ -15,8 +15,9 @@ Installing tModLoader is relatively easy. If you want to ensure you can easily r
 1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tML release you want. (usually the **[latest](https://github.com/tModLoader/tModLoader/releases/latest)**)
 2. Unblock the .zip file _if needed_ ([See how to](https://thirtysix.zendesk.com/hc/en-us/articles/202921675-How-to-Unblock-a-File-Downloaded-from-an-Email-or-the-Internet))
 3. Unzip the contents somewhere (usually documents or downloads folder)
-5. (Installer) Run the installer .jar file (requires Java 8 or higher) (_Recommended to have launched vanilla Terraria at least once for the best install experience_)
-4. (Manual Install) Open the extracted folder, **copy** the contents to your Terraria folder and let it overwrite files when asked. (replace files)
+4. You can install using one of two options, pick one:
+    * **Option 1, manual install (Recommended)**: Open the extracted folder, **copy** the contents to your Terraria folder and let it overwrite files when asked. (replace files)
+    * **Option 2, installer**: Run the installer .jar file (requires Java 8 or higher) (_Recommended to have launched vanilla Terraria at least once for the best install experience_)
 5. Done. You can launch Terraria as usual.
 
 Tip: Here is an easy way to find where your Terraria files are located:
