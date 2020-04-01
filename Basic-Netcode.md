@@ -29,7 +29,7 @@ It is common for this flow to occur in games when a client is out of sync and th
 If you want to send packets in your mod, you will use the ModPacket class. This class is designed to send data in any of the designated flows described above. A very simple packet could look like this:
 ```cs
 ModPacket myPacket = myMod.GetPacket();
-myPacket.write("Hello world!");
+myPacket.Write("Hello world!");
 ```
 Now you have written a packet with the string data "Hello World!". In order to send the packet to the server, call the `Send` function on ModPacket:
 ```cs
@@ -42,7 +42,7 @@ You may already have realized we are now in flow 2: we are sending a packet to t
 For receiving and reading packets, you'll have to override the `HandlePackets` method in your Mod class:
 ```cs
 public override void HandlePacket(BinaryReader reader, int whoAmI) {
-    reader.readString(); // "Hello world!"
+    string msg = reader.ReadString(); // "Hello world!"
 }
 ```
 `HandlePacket` is called whenever a packet is received from a client (if this is a server) or the server (if this is a client). whoAmI is the ID of whomever sent the packet (equivalent to the Main.myPlayer of the sender), and reader is used to read the binary data of the packet. **So in order to handle packets sent by a client on the server you must make sure your mod is also running on the server.**
@@ -55,25 +55,24 @@ myPacket.Write("Hello world!"); // message
 myPacket.Send();
 ```
 ```cs
-		public override void HandlePacket(BinaryReader reader, int whoAmI) {
-			byte msgType = reader.ReadByte();
-			switch (msgType) {
-				case 0:
-					string msg = reader.ReadString(); // "Hello world!"
-					break;
-				case 1:
-					... // another message type goes here
-					break;
-				default:
-					Logger.WarnFormat("MyMod: Unknown Message type: {0}", msgType);
-					break;
-			}
-		}
+public override void HandlePacket(BinaryReader reader, int whoAmI) {
+	byte msgType = reader.ReadByte();
+	switch (msgType) {
+		case 0:
+			string msg = reader.ReadString(); // "Hello world!"
+			break;
+		case 1:
+			... // another message type goes here
+			break;
+		default:
+			Logger.WarnFormat("MyMod: Unknown Message type: {0}", msgType);
+			break;
 	}
+}
 ```
 
 ### Reading a packet
-Reading is just as writing, you'll have to call any of the appropriate read functions from the BinaryReader object. Very common are: `ReadString()`, `ReadInt32()`, `ReadByte()` and `ReadSingle()` (reading a float)
+Reading is just as writing, you'll have to call any of the appropriate read functions from the BinaryReader object. Very common are: `ReadString()`, `ReadInt32()`, `ReadByte()` and `ReadSingle()` (reading a float).
 
 ### Writing and reading in the correct order
 It is very important that you remember that packets are **FIFO**: First in = First out.
@@ -107,9 +106,9 @@ To not overflow the network with ridiculous amounts of packets you need to think
 
 **Make sure you send a packet where it is supposed to be sent, in this case on death for the boss.** ModNPC has a hook for this.
 
-**In a lot of cases, you do not need to send packets at all; simply use one of the TML hooks.** In the given example we could also just check if the running instance is a server in the death hook for the boss, and then run whatever logic we need. Usually there's a hook already available you can use for your logic. Our [intermediate netcode guide](intermediate-netcode) goes more in-depth on this matter.
+**In a lot of cases, you do not need to send packets at all; simply use one of the provided tML hooks.** In the given example we could also just check if the running instance is a server in the death hook for the boss, and then run whatever logic we need. Usually there's a hook already available you can use for your logic. Our [intermediate netcode guide](intermediate-netcode) goes more in-depth on this matter.
  
-But now you might wonder, **when to send a packet then**? Usually a good time to send a packet is with non-deterministic behavior. Consider the boss again in a multiplayer game. You may have programmed the AI to semi-randomly switch phases of the boss. In a multiplayer scenario this random switch should occur on the server, and at that point the server should send a packet to all clients informing them of the phase change. This way all clients will stay in sync because they are informed by the server. If the clients were to decide for themselves when to switch phases each client would turn out of sync with each other because they would switch at different moments.
+But now you might wonder, **when to send a packet then?** Usually a good time to send a packet is with non-deterministic behavior. Consider the boss again in a multiplayer game. You may have programmed the AI to semi-randomly switch phases of the boss. In a multiplayer scenario this random switch should occur on the server, and at that point the server should send a packet to all clients informing them of the phase change. This way all clients will stay in sync because they are informed by the server. If the clients were to decide for themselves when to switch phases each client would turn out of sync with each other because they would switch at different moments.
 
 # Improving
 Many examples can be found in ExampleMod for packets. For example you can use the Notepad++ "Find in files" feature and look for `GetPacket()` in the ExampleMod folder. Make sure 'Match case' and 'In all sub-folders' are checked. You'll find all locations in which a packet is created and likely sent.
