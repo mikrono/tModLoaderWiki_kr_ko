@@ -1,28 +1,5 @@
 # Introductory
-Terraria is frequently played with many players on a server. Ensuring that your mods work well with friends is something that should not be an afterthought. Test early and often in multiplayer as you develop your mod. In this guide, we will go over how to make your mods multiplayer compatible, and hopefully show you it is not as difficult as it may seem.
-
-# Main Concepts
-The following are main concepts key to understanding how Terraria works in multiplayer.
-1. When you play Terraria, your application is considered and called a "Client"
-2. During multiplayer, your client and other players' clients connect to a server
-3. While connected to this server, the connected clients need to communicate well together through the server, so that things happening in the game are synchronized between these clients.
-
-Let's elaborate on point 3, so you might understand it better. For example when in multiplayer, when an NPC spawns you want to be able to see and interact with that NPC on all clients. (all clients means all players). In order for this to be possible, all clients needs to be told that this NPC actually spawned. This is always done through the server, as the server will be able to inform connected clients of the event that happened in the game (in this case NPC spawning)
-
-This communication between clients and the server is done through network packets. These packets are often small and usually consist of little data, that will be used by a client to handle an event in the game. When in multiplayer, these packets can be sent to the server by a client, where the server will forward that packet to the other clients to inform them of the event.
-
-Many things in multiplayer are synchronized between clients, such as (as said earlier) NPC spawning and also items. Consider that for you to be able to see what armor your friend has equipped, your client actually needs to know about what items he is wearing. These are automatically synchronized by Terraria in most situations, so you often don't need to worry about these as a modder. However, for your custom events in your mod you'll likely need to perform some kind of synchronization to ensure all clients are aligned. This is done through the ModPacket class, which is essentially one of those network packets that gets sent across connected clients to the server.
-
-# ModPacket
-So, we can send information over network to other clients via the server, by using a ModPacket. The ModPacket class is a BinaryWriter in essence, which tModLoader will be able to send to the server as explained earlier.
-
-You can retrieve a new ModPacket instance in your mod, by calling your mod instance class on the method 'GetPacket()':
-`ModPacket packet = mod.GetPacket();`
-
-If you are familiar with a BinaryWriter, the following use of ModPacket will not be foreign to you. To actually send data using your ModPacket, you will 'write' it onto the packet. Consider it like writing text onto a paper before you send it, if you will. You can do this by simply calling the .Write() method on your packet:
-`packet.Write(something);`
-
-Since you write binary, you can write most/all of the primitive data types: int, float, bool, decimal, double, byte[], short, byte, char, char[], sbyte... and so forth
+Before you continue this guide, you should read our [basic netcode](basic-netcode) guide first.
 
 # Practical advice
 In general, you'll want to make your packets small so they can be sent across clients quickly and do not cause any problems in the network. Big packets or many packets sent will cause the network to clog up, and can cause lag or problems while playing the game. If a mod performs bad during multiplayer, this can be why. If a mod is actually buggy during multiplayer, it is often because they do not send packets at all and clients aren't synchronized.
@@ -33,13 +10,6 @@ Ensuring determinism isn't always easy, but can easily be checked against when a
 > "Will multiple clients be in the same state (or have the same result) when this code is ran for them individually, without any interaction between them?"
 
 If the answer is yes, that means your code is deterministic enough. If all clients can reach this point at the same time, no more networking is needed to ensure the same result.
-
-# Example use or common use
-Now you might wonder, what are some example use-cases for these network packets? A few of them were already discussed earlier: NPCs and Items. For example equipment you are wearing is automatically synced across all clients, so that everyone knows what you are wearing. Idem dito for when an NPC spawns, or their health changes. When an NPC takes a hit and loses health, all clients need to know about that since otherwise your client might think the NPC is still alive when it just got killed by your friend. Not syncing NPC health can be a common reason why you might experience lingering NPCs in your damaging world, that simply won't despawn or are invisible entirely.
-
-If you were to make an NPC yourself, such as a boss, the above advice applies. You'll want to send a packet to the server when the NPC's state changing in a non deterministic way. This means that, the state might change on your client, but not (necessarily) on other connected clients. Meaning that without a packet, the other players' clients won't be informed about the change and the NPC's state on their end does not align with yours. This will cause bugs during gameplay or even crashes. 
-
-Consider a boss NPC that targets a specific Player, and its movement is based on that target. If the boss' target changes, all clients will need to be informed about that new target so that the boss moves in the right direction on all connected clients. Usually a random target is chosen, which means that if all clients were to decide a target on their own, they'll most likely all end up with a different target. This is usually when you let the server select a new target instead of connected clients. If the new state (new target) weren't to be synchronized, the boss would be moving in invalid directions on other clients, often causing players to be confused as the boss isn't actually where it appears on their screen. A simple example of syncing NPC behavior can be seen in [FlutterSlime.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/FlutterSlime.cs#L146).
 
 # Automatic Syncing (non-ModPacket)
 Terraria handles many network syncing things for us, we just have to use them right.
