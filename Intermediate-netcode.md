@@ -11,26 +11,105 @@ Ensuring determinism isn't always easy, but can easily be checked against when a
 
 If the answer is yes, that means your code is deterministic enough. If all clients can reach this point at the same time, no more networking is needed to ensure the same result.
 
-# Automatic Syncing (non-ModPacket)
-Terraria handles many network syncing things for us, we just have to use them right.
+# Packet flows
+There are a couple of flows that can happen for network packets:
 
-## NPC / ModNPC
-With NPC, any non-deterministic decision must be synced to the clients. The Server is the owner of all NPC. As seen in [FlutterSlime.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/FlutterSlime.cs#L146), we use npc.netUpdate to trigger the NPC syncing code. Terraria will sync position, life, and other data from the server to the clients whenever `npc.netUpdate` has been set to true. We can use [ModNPC.SendExtraAI](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#ad091edf8203519c61a7f7c903880dd60) and [ModNPC.ReceiveExtraAI](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#a3ff34ad5598cdf5e664eaa32d687d1c0) to sync extra data needed by all clients rather than `ModPacket`. This extra data will always be synced whenever the npc itself is synced.
+**Flow 1**: Client -> Server -> Client <br>
+This flow is very common. A client sends a packet to the server, after which the server forwards this packet to all other connected clients (or specified ones).
 
-## Projectile / ModProjectile
-Projectiles operate the same way as NPC, with the exception that the owner of a projectile is not always the Server. Projectiles spawned by players are owned by that player/client, while all other projectiles such as NPC spawned or World spawned projectiles are owned by the server. In the case of client changes, the `projectile.netUpdate` flag will sync the client's data to the server and the server will relay that to the other clients. An example is [Magic Missile](https://terraria.gamepedia.com/Magic_Missile). The AI will check `if (Main.myPlayer == projectile.owner)` and then set `projectile.netUpdate = true;` if the position has changed due to the client players mouse position.
+**Flow 2**: Client -> Server <br>
+This flow is also very common and is used when a client needs to instruct the server of a change.
+An example could be running a (chat) command that alters server behavior, so something that the server controls.
 
-## World / ModWorld
-World data should only ever be changed on the server. Whenever something important happens in the world, such as the Noon command on the server console, a Boss being defeated, or a random invasion triggering, World data is synced from the server to the clients. Whenever world data is synced, each ModWorld is also synced via [NetSend](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_world.html#a58fe0616b0c4135ec038025e67268561) and [NetReceive](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_world.html#aaf20d147cc364d10b4b137999b5c26b5). We can trigger a network sync of world data by calling `NetMessage.SendData(MessageID.WorldData);` on the server, as seen in [Abomination](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/Abomination/CaptiveElement2.cs#L367) when we set `ExampleWorld.downedAbomination = true;`. Try to only do this when necessary.
+**Flow 3**: Server -> Client <br>
+This flow is less common than the other 2 flows and is used to have the server instruct the client about something.
+It is common for this flow to occur in games when a client is out of sync and the server sends it information to come back in sync.
 
-## Item / ModItem / GlobalItem
-Items are also synced. Use [`NetSend`](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a5f7a03b9388a7610935e6f628b257dfe) and [`NetRecieve`](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#a4e4112cadf7f23f51b913cda238c8708) to sync data. Follow decompiled source code if you need to do anything unorthodox, most mods won't need to do anything such as triggering manual syncing. When Items are synced, only a very select subset of the fields are synced, this is why changing default values such as `item.damage` in something like `UpdateInventory` is not recommended. Use [`GetWeaponsDamage`](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_item.html#af2170bc3ec0925114fa9488767bf2ceb) for that.
+# ModPacket
+### Making and sending a packet
+If you want to send packets in your mod, you will use the ModPacket class. This class is designed to send data in any of the designated flows described above. A very simple packet could look like this:
+```cs
+ModPacket myPacket = myMod.GetPacket();
+myPacket.Write("Hello world!");
+```
+Now you have written a packet with the string data "Hello World!". In order to send the packet to the server, call the `Send` function on ModPacket:
+```cs
+myPacket.Send();
+```
 
-## ModTileEntity
-Owned by the server. Only sent to client when the client first visits the "chunk"/"section" of the world where it resides. Changes are applied on the server and synced from the server to client. See [TEScoreBoard](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) for an example.
+You may already have realized we are now in flow 2: we are sending a packet to the server. It is now up to the server to do something with this packet.
 
-## Player / ModPlayer
-Player data is very large, so special data syncing is used to minimize how often and which Player data must be synced. See `CustomBiomesMatch`, `CopyCustomBiomesTo`, `SendCustomBiomes`, `ReceiveCustomBiomes`, `clientClone`, `SyncPlayer`, and `SendClientChanges` in the [ModPlayer Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_player.html) and [ExamplePlayer](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) to learn their purpose and see them in use. Vanilla `Player` data such as inventory slots, health, position, and selected item are all synced automatically, so changing those in code will automatically sync to the server and be relayed to the other clients. Failure to sync Biomes will cripple NPC spawning behavoir in Multiplayer. Failure to use SyncPlayer and SendClientChanges will lead to desync and many other problems, they are very important to get right. 
+### Receiving packets
+For receiving and reading packets, you'll have to override the `HandlePackets` method in your Mod class:
+```cs
+public override void HandlePacket(BinaryReader reader, int whoAmI) {
+    string msg = reader.ReadString(); // "Hello world!"
+}
+```
+`HandlePacket` is called whenever a packet is received from a client (if this is a server) or the server (if this is a client). whoAmI is the ID of whomever sent the packet (equivalent to the Main.myPlayer of the sender), and reader is used to read the binary data of the packet. **So in order to handle packets sent by a client on the server you must make sure your mod is also running on the server.**
+
+You'll obviously want to write this method more elegantly so you can handle different kinds of packets. It's very common to write an identifier for your packet so you can recognize what the packet is about. You can then read this type and execute the corresponding reading logic:
+```cs
+ModPacket myPacket = myMod.GetPacket();
+myPacket.Write((byte)0); // id
+myPacket.Write("Hello world!"); // message
+myPacket.Send();
+```
+```cs
+public override void HandlePacket(BinaryReader reader, int whoAmI) {
+	byte msgType = reader.ReadByte();
+	switch (msgType) {
+		case 0:
+			string msg = reader.ReadString(); // "Hello world!"
+			break;
+		case 1:
+			... // another message type goes here
+			break;
+		default:
+			Logger.WarnFormat("MyMod: Unknown Message type: {0}", msgType);
+			break;
+	}
+}
+```
+
+### Reading a packet
+Reading is just as writing, you'll have to call any of the appropriate read functions from the BinaryReader object. Very common are: `ReadString()`, `ReadInt32()`, `ReadByte()` and `ReadSingle()` (reading a float).
+
+### Writing and reading in the correct order
+It is very important that you remember that packets are **FIFO**: First in = First out.
+**You must read the data in the order it was sent in**.
+For example, let's consider a packet where you send a byte, and integer and then a float. We'll be using some arbitrary numbers alongside an id for the packet. You'll write and send the packet as follows:
+```cs
+ModPacket packet = mod.GetPacket();
+packet.Write((byte)0); // id
+packet.Write(100); // progress
+packet.Write(1.0f); // difficulty
+packet.Send();
+```
+You must read the packet in the same order on the receiving end, so:
+```cs
+byte id = reader.ReadByte();
+int progress = reader.ReadInt32();
+float difficulty = reader.ReadSingle();
+```
+
+# Networking optimization
+Bad networking code can cause your mod to perform poorly in multiplayer play. Let's go over some concepts to ensure that doesn't happen.
+
+**Under-reading or over-writing** <br>
+In general, you must remember to **only send data you will actually use**. If you send more data than you are reading, this is considered under-reading or over-writing. Essentially you are bloating the network with redundant data, data that you aren't using. **Always make sure you are actually using all the data you are sending**.
+
+**Common data you usually don't have to send are calculated values, or instead parameters for a calculation**.
+Consider that you have calculated a number on one client, and this number needs to go another client. You could choose to send the non-deterministic parameters which you used to calculate the number, or you could choose to send the calculated number. For example, if we take simple multiplication for integers the latter choice would be best because we're sending just one integer vs two integers. In some cases however, you may end up with multiple results from these two parameters, in this case it may be better to send the parameters instead and calculate the values again on the other client.
+
+**Sending packets at the right moment** <br>
+To not overflow the network with ridiculous amounts of packets you need to think about when it is the right time to send a packet. For example consider a packet notifying the death of a boss. You could choose to send a packet every frame with the health of the boss and check this value on the receiving end. However, the game updates at an interval that will cause you to send dozens of packets every second! You can imagine that packets holding a lot of data this way will bloat the networking and cause the game to perform poorly.
+
+**Make sure you send a packet where it is supposed to be sent, in this case on death for the boss.** ModNPC has a hook for this.
+
+**In a lot of cases, you do not need to send packets at all; simply use one of the provided tML hooks.** In the given example we could also just check if the running instance is a server in the death hook for the boss, and then run whatever logic we need. Usually there's a hook already available you can use for your logic. Our [intermediate netcode guide](intermediate-netcode) goes more in-depth on this matter.
+ 
+But now you might wonder, **when to send a packet then?** Usually a good time to send a packet is with non-deterministic behavior. Consider the boss again in a multiplayer game. You may have programmed the AI to semi-randomly switch phases of the boss. In a multiplayer scenario this random switch should occur on the server, and at that point the server should send a packet to all clients informing them of the phase change. This way all clients will stay in sync because they are informed by the server. If the clients were to decide for themselves when to switch phases each client would turn out of sync with each other because they would switch at different moments.
 
 # Modelling Send and Receive for ModPacket
 In general, it is easy to model how you should write and read data from a packet. **You should read the data, in the same order it was sent**. Consider the following scenario:
