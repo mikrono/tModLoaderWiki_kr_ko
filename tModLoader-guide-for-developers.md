@@ -20,9 +20,8 @@ If you are new to modding, it is recommended to start with [the starter guide](B
 
 The following links might be useful for you:
 1. [tModLoader documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)
-2. [tModLoader WIKI](https://github.com/tModLoader/tModLoader/wiki) (useful information and guides)
+2. tModLoader wiki (useful information and guides) -- you are here right now.
 3. [Join our Discord server](https://discord.me/tmodloader) (requires a DiscordApp account)
-4. [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html)
- This tool, made by Jopojelly, can quickly setup a .csproj for you with the barebones of a mod.
+4. [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) -- note: it is recommended you use the in-game menu for creating a new mod.
 5. [tModLoader's official release thread on TCF](http://forums.terraria.org/index.php?threads/.23726/)
 6. [tModLoaders help & resources thread](http://forums.terraria.org/index.php?threads/tmodloader-code-examples-handy-code-snippets.28901)
