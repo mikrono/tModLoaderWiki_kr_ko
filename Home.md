@@ -80,6 +80,7 @@ The following guides are considered advanced, and should only be attempted if th
 - [Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
 - [Angular velocity and Linear velocity](Advanced-Angular-velocity-and-Linear-velocity)
 - [Advanced guide to custom UI](Advanced-guide-to-custom-UI)
+- [Fixing Mod Not Fully Unloaded](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
 
 ## Expert guides
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
