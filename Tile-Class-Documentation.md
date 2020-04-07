@@ -5,6 +5,7 @@ Index|
 -----|
 [Fields](#fields-and-properties)|
 [Methods](#methods)|
+[Bitfield Data](#bitfield-data)|
 
 # Fields and Properties
 The `Tile` class is structured to be very compact and efficient. You usually don't want to modify many of these fields directly. All values default to 0.
@@ -121,3 +122,84 @@ Prints debug info about a Tile.
 ## internal void ClearMetadata()
 ## public Color actColor(Color oldColor)
 Various methods.
+
+# Bitfield Data
+In order to store its data efficiently, each `Tile` uses several "header" fields as **bitfields**.
+
+A **bitfield** is a variable used for a sequence of bits instead of an actual value.  Accessing and modifying the bits is usually done through the bitwise operators:  `|` (bitwise-OR), `&` (bitwise-AND), `^` (bitwise-XOR), `~` (bitwise-NOT), `<<` (shift left logical) and `>>` (shift right logical).
+
+An example of uses for each operator is shown below:
+
+| Operator  | Value 1 | Value 2 | Expression |   Expression (binary)    | Result | Result (binary)
+|-----------|---------|---------|------------|--------------------------|--------|----------------
+|    `\|`   |   35    |   68    | `35 \| 68` | `0010 0011 \| 0100 0100` |  103   | `0110 0111`
+|    `&`    |   39    |   68    | `39 & 68`  | `0010 0111 & 0100 0100`  |   4    | `0000 0100`
+|    `^`    |   47    |   68    | `47 ^ 68`  | `0010 1111 ^ 0100 0100`  |  107   | `0110 1011`
+|    `~`    |   68    |   n/a   | `~ 68`     | `~ 0100 0100`            |  187   | `1011 1011`
+|    `<<`   |   35    |   2     | `35 << 2`  | `0010 0011 << 0000 0010` |  210   | `1000 1100`
+|    `>>`   |   35    |   2     | `35 >> 2`  | `0010 0011 >> 0000 0010` |   8    | `0000 1000`
+
+| Operator | Explanation
+|----------|------------
+|   `\|`   | If the bit in Value 1 or the bit in Value 2 is set, the bit in the result is also set.
+|   `$`    | The bit in the result is set only if the bit in Value 1 and Value 2 is set.
+|   `^`    | The bit in the result is set only if the bit in Value 1 or Value 2 is set, but not both.
+|   `~`    | Every 1 bit becomes a 0 bit and vice versa.
+|   `<<`   | Every bit in Value 1 is shifted to the left Value 2 times.  Zeros are filled in from the right and any bits that overflow past the most significant bit (the first one) are removed.
+|   `>>`   | Every bit in Value 1 is shifted to the right Value 2 times.  The most significant bit is filled in from the left and any bits that overflow past the least significant bit (the last one) are removed.
+
+The `Tile` class has four bitfields:  `sTileHeader`, `bTileHeader`, `bTileHeader2` and `bTileHeader3`.  These bitfields should ***NOT*** be modified directly.  Instead, use the various methods in `Tile`.
+
+For reference, here's what every bit in the bitfields represent and where they are normally accessed:
+
+## sTileHeader
+`-SSS UHGB RTAC CCCC`
+
+`-`: Unused.
+
+`SSS`: Where the slope type for this `Tile` is stored.  Accessed from `tile.slope()` and `tile.slope(byte)`.  0 is no slope, 2 is down-right slope, 3 is down-left slope, 4 is up-right slope and 5 is up-left slope.
+
+`U`: If this `Tile` has an Actuator on it.  Accessed from `tile.actuator()` and `tile.actuator(bool)`.
+
+`H`: If this `Tile` is a half-brick.  Accessed from `tile.halfBrick()` and `tile.halfBrick(bool)`.
+
+`G`: If this `Tile` has a Green Wire on it.  Accessed from `tile.wire3()` and `tile.wire3(bool)`.
+
+`B`: If this `Tile` has a Blue Wire on it.  Accessed from `tile.wire2()` and `tile.wire2(bool)`.
+
+`R`: If this `Tile` has a Red Wire on it.  Accessed from `tile.wire()` and `tile.wire(bool)`.
+
+`T`: If this `Tile` is actuated.  Accessed from `tile.inActive()` and `tile.inActive(bool)`.
+
+`A`: If this `Tile` is active (not air).  Accessed from `tile.active()` and `tile.active(bool)`.
+
+`C CCCC`: Where the paint color type for this `Tile` is stored.  Accessed from `tile.color()` and `tile.color(byte)`.  Value ranges from 0 to 30.
+
+## bTileHeader
+`YLLW WWWW`
+
+`Y`: If this `Tile` has a Yellow Wire on it.  Accessed from `tile.wire4()` and `tile.wire4(bool)`.
+
+`LL`: Where the liquid type for this `Tile` is stored.  Accessed from `tile.lava()`, `tile.lava(bool)`, `tile.honey()` and `tile.honey(bool)`.  0 is water, 1 is lava and 2 is honey.
+
+`W WWWW`: Where the paint color type for this `Tile`'s wall is stored.  Accessed from `tile.wallColor()` and `tile.wallColor(byte)`.  Value ranges from 0 to 30.
+
+## bTileHeader2
+`WWNN XXXX`
+
+`WW`: Related to wall framing.  Accessed from `tile.wallFrameNumber()` and `tile.wallFrameNumber(byte)`.  Values range from 0 to 3.
+
+`NN`: The alternate frame number for this `Tile`.  Accessed from `tile.frameNumber()` and `tile.frameNumber(byte)`.  Values can range from 0 to 3, but vanilla only uses 0 to 2.
+
+`XXXX`: Where the frameX for this `Tile`'s wall in its spritesheet is stored.  Accessed from `tile.wallFrameX()` and `tile.wallFrameX(byte)`.  The values range from 0 to 15.  `tile.wallFrameX()` returns this value * 36 when called, and `tile.wallFrameX(byte)` sets this value to the parameter / 36.
+
+## bTileHeader3
+`---S CYYY`
+
+`---`: Unused.
+
+`S`: A flag used for liquid updating.  Accessed from `tile.skipLiquid()` and `tile.skipLiquid(bool)`.
+
+`C`: A flag used for liquid updating.  Accessed from `tile.checkingLiquid()` and `tile.checkingLiquid(bool)`.
+
+`YYY`: Where the frameY for this `Tile`'s wall in its spritesheet is stored.  Accessed from `tile.wallFrameY()` and `tile.wallFrameY(byte)`.  Values range from 0 to 7.  These bits are handled in the same manner as the `XXXX` bits in `bTileHeader2`.
