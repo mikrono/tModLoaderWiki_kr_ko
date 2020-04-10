@@ -77,6 +77,7 @@ Shorthand for `NetMessage.SendData(MessageID.TileSquare, whoAmi, -1, null, numbe
 Shorthand for `NetMessage.SendData(MessageID.TileSquare, whoAmi, -1, null, size, tileX - num, tileY - num, 0f, (int)changeType, 0, 0);`.  
 (tileX, tileY) is the **center** for the tile square.  
 `num` is set to `(size - 1) / 2`.
+This should be used for changes to a tile's frame.
 
 ## public static void SendTravelShop(int remoteClient)
 If this game is a server instance, this method is a shorthand for `NetMessage.SendData(MessageID.TravelMerchantItems, remoteClient, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);`.  Otherwise, it does nothing.
