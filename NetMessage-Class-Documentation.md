@@ -28,7 +28,7 @@ Like `SendChatMessageToClient()`, but the packet is sent to all players and, opt
 Sends a text packet from this client's player to the server.
 
 ## public static void SendData(int msgType, int remoteClient = -1, int ignoreClient = -1, NetworkText text = null, int number = 0, float number2 = 0f, float number3 = 0f, float number4 = 0f, int number5 = 0, int number6 = 0, int number7 = 0)
-Sends netcode data from this client to the server.  Covered in more detail in the [next section](#netmessagesenddata).
+Sends netcode data from this client to the server or vice versa.  Covered in more detail in the [next section](#netmessagesenddata).
 
 ## public static int CompressTileBlock(int xStart, int yStart, short width, short height, byte[] buffer, int bufferStart)
 Prepares the tile data in the given area of the map to be sent.
