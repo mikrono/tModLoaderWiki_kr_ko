@@ -112,6 +112,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Useful Vanilla Methods](Useful-Vanilla-Methods)
 - [Vanilla Interface layers values](Vanilla-Interface-layers-values)
 - [Vanilla Interface Changes](Vanilla-Class-Changes)
+- [NetMessage Class Documentation](NetMessage-Class-Documentation)
 
 ## Other pages
 These are pages that we have so far failed to categorize or simply do not belong in one.
