@@ -30,27 +30,6 @@ Sends a text packet from this client's player to the server.
 ## public static void SendData(int msgType, int remoteClient = -1, int ignoreClient = -1, NetworkText text = null, int number = 0, float number2 = 0f, float number3 = 0f, float number4 = 0f, int number5 = 0, int number6 = 0, int number7 = 0)
 Sends netcode data from this client to the server or vice versa.  Covered in more detail in the [next section](#netmessagesenddata).
 
-## public static int CompressTileBlock(int xStart, int yStart, short width, short height, byte[] buffer, int bufferStart)
-Prepares the tile data in the given area of the map to be sent.
-
-## public static void CompressTileBlock_Inner(BinaryWriter writer, int xStart, int yStart, int width, int height)
-Helper method for `CompressTileBlock()`.  Responsible for preparing tile, sign, chest and tile entity data in the given area of the world to be sent.
-
-## public static void DecompressTileBlock(byte[] buffer, int bufferStart, int bufferLength)
-Does the reverse of `CompressTileBlock()`.  Receives a buffer of compressed data, decompresses it, then reads that data into the given area indicated by the area information stored from `CompressTileBlock()`.
-
-## public static void DecompressTileBlock_Inner(BinaryReader reader, int xStart, int yStart, int width, int height)
-Helper method for `DecompressTileBlock()`.  Does the actual decompressing and reading of data into the world.
-
-## public static void ReceiveBytes(byte[] bytes, int streamLength, int i = 256)
-Stores the data indicated by the `bytes` array into the `MessageBuffer` in `NetMessage.buffer[i]`.
-
-## public static void CheckBytes(int bufferIndex = 256)
-Validates that the `MessageBuffer.totalData` for the `MessageBuffer` at `NetMessge.buffer[bufferIndex]` matches the length of the data array stored.
-
-## public static void BootPlayer(int plr, NetworkText msg)
-Shorthand for `NetMessage.SendData(MessageID.Kick, plr, -1, msg, 0, 0f, 0f, 0f, 0, 0, 0);`
-
 ## public static void SendObjectPlacment(int whoAmi, int x, int y, int type, int style, int alternative, int random, int direction)
 Shorthand for `NetMessage.SendData(MessageID.PlaceObject, remoteClient, ignoreClient, null, x, y, type, style, alternative, random, direction);`.  
 `remoteClient` is -1 and `ignoreClient` is `whoAmi` if this message is sent from the server and vice versa if this message is sent from a client.
@@ -58,61 +37,33 @@ Shorthand for `NetMessage.SendData(MessageID.PlaceObject, remoteClient, ignoreCl
 ## public static void SendTemporaryAnimation(int whoAmi, int animationType, int tileType, int xCoord, int yCoord)
 Shorthand for `NetMessage.SendData(MessageID.TemporaryAnimation, whoAmi, -1, null, animationType, tileType, xCoord, yCoord, 0, 0, 0);`.
 
-## public static void SendPlayerHurt(int playerTargetIndex, PlayerDeathReason reason, int damage, int direction, bool critical, bool pvp, int hitContext, int remoteClient = -1, int ignoreClient = -1)
-Shorthand for `NetMessage.SendData(MessageID.PlayerHurtV2, remoteClient, ignoreClient, null, playerTargetIndex, damage, direction, bb, hitContext, 0, 0);`.  
-`_currentPlayerDeathReason` is set to `reason`.  
-`bb` is a `BitsByte` compressing the `critical` and `pvp` parameters.
-
-## public static void SendPlayerDeath(int playerTargetIndex, PlayerDeathReason reason, int damage, int direction, bool pvp, int remoteClient = -1, int ignoreClient = -1)
-Shorthand for `NetMessage.SendData(MessageID.PlayerDeathV2, remoteClient, ignoreClient, null, playerTargetIndex, damage, direction, bb, 0, 0, 0);`
-`_currentPlayerDeathReason` is set to `reason`.  
-`bb` is a `BitsByte` compressing the `pvp` parameter.
-
 ## public static void SendTileRange(int whoAmi, int tileX, int tileY, int xSize, int ySize, TileChangeType changeType = TileChangeType.None)
+Use this method to update a certain area of tiles.  Has more control over the specified area than `SendTileSquare()`.  
 Shorthand for `NetMessage.SendData(MessageID.TileSquare, whoAmi, -1, null, number, tileX, tileY, 0f, (int)changeType, 0, 0);`.  
 (tileX, tileY) is the **top-left corner** of the tile square.  
 `number` is set to the max of `xSize` and `ySize`.
 
 ## public static void SendTileSquare(int whoAmi, int tileX, int tileY, int size, TileChangeType changeType = TileChangeType.None)
+Use this method to update a certain area of tiles.  
 Shorthand for `NetMessage.SendData(MessageID.TileSquare, whoAmi, -1, null, size, tileX - num, tileY - num, 0f, (int)changeType, 0, 0);`.  
 (tileX, tileY) is the **center** for the tile square.  
-`num` is set to `(size - 1) / 2`.
-This should be used for changes to a tile's frame.
+`num` is set to `(size - 1) / 2`.  
+The "center" is biased towards the top-left of the tile square.  For example, passing in `10, 10, 4` for `tileX, tileY, size` will have the top-left tile in the square be at (9, 9).  However, passing in `10, 10, 5` for `tileX, tileY, size` will have the top-left tile in the square be at (8, 8), which makes sense since the square has odd-numbered edges.
 
 ## public static void SendTravelShop(int remoteClient)
+Informs a certain client of the Travelling Merchant's current shop.
 If this game is a server instance, this method is a shorthand for `NetMessage.SendData(MessageID.TravelMerchantItems, remoteClient, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);`.  Otherwise, it does nothing.
 
 ## public static void SendAnglerQuest(int remoteClient)
 Informs all clients or a specific client of the current Angler quest.  If this game isn't a server instance, this method does nothing.
 
 ## public static void SendSection(int whoAmi, int sectionX, int sectionY, bool skipSent = false)
+Useful for loading a specific section of the map for multiplayer purposes.  Sections are 200 by 150 tile "chunks" of the world map.  
 If this game isn't a server instance, this method does nothing.  
 Otherwise, if the given section of the map isn't loaded for the client `Netplay.Clients[whoAmi]`, the section is loaded and all NPCs inside the section send their info to that client.
 
-## public static void greetPlayer(int plr)
-Prints the world's Message of the Day (MOTD) and the active player list to the chat.  
-**(MOTD is empty)** The localized text for `$"Welcome to {Main.worldName}!"` is printed to the chat.  
-**(MOTD isn't empty)** The MOTD is printed to the chat.
-
 ## public static void sendWater(int x, int y)
-Informs all clients of an update to the liquid in a tile if the section of the map the tile is in is loaded for the client.
-
-## public static void SyncDisconnectedPlayer(int plr)
-Sends the client's data indicated by `plr` to the server then automatically shuts down the server if that client is the local host.
-
-## public static void SyncConnectedPlayer(int plr)
-Sends the client's data indicated by `plr` to the server then gets the data from every other client, every town NPC's current shop and current Angler quest.
-
-## private static void SendNPCHousesAndTravelShop(int plr)
-Gets the data for every town NPC's shop and the Travelling Merchant's shop if the NPC is active.
-
-## private static void EnsureLocalPlayerIsPresent()
-If the server's automatic shutdown is disabled, this method does nothing.  
-Otherwise, if the local client host isn't connected, the world is saved and all clients are forced to disconnect.
-
-## private static void SyncOnePlayer(int plr, int toWho, int fromWho)
-If the client's state is "just joined the server", their data is sent to the rest of the clients and the localized text for `$"{player.name} has joined."` is printed to the chat.  
-Otherwise, the server is informed that the client is leaving and the localized text for `$"{player.name} has left."` is printed to the chat.
+For each client, if the tile at `Main.tile[x, y]` is in one of the client's loaded sections of the map, said client is informed that that tile's liquid properties were changed.
 
 # NetMessage.SendData()
 ### public static void SendData(int msgType, int remoteClient = -1, int ignoreClient = -1, NetworkText text = null, int number = 0, float number2 = 0f, float number3 = 0f, float number4 = 0f, int number5 = 0, int number6 = 0, int number7 = 0)
