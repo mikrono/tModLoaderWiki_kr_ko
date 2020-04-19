@@ -4,7 +4,7 @@
 | :--  | :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | mountData.spawnDust (int) | The ID of the dust spawned when mounted or dismounted.|
 | mountData.buff (int) | The ID number of the buff assigned to the mount.|
-| mountData.abilityChargeMax (int) | Used in the Scutlix mount, where it represents the time in frames before it can fire another laser. |
+| mountData.abilityChargeMax (int) | Used in the Scutlix mount, represents the maximum amount of time in frames a mount will charge its ability until it stops charging. In the case of the Scutlix mount, it affects the rate of change of the lighting on the mount's eyes. The higher the value is for the Scutlix mount, the slower the blue value of the color value of the lighting on the Scutlix's eyes will raise. |
 | mountData.abilityCooldown (int) | The amount of time in frames before the mount can call Mount.UseAbility or the ModMount can callq MountLoader.UseAbility.  |
 | mountData.abilityDuration (int) | How long, in frames, the crosshair on the Scutlix mount will exist on screen after the ability has been used. |
 | mountData.swimSpeed (float) | This parameter is used in vanilla for the turtle mount, the drill mount, and the cute fishron mount. It represents the horizontal velocity, how many pixels on the x axis it can move per frame. |
