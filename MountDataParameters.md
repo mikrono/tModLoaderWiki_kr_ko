@@ -17,5 +17,5 @@
 | mountData.acceleration (float) | The rate at which the mount falls faster down the y axis due to gravity when in the air. To find the speed in pixels per frame that you will be falling while mounted at any given time will be your existing Y velocity - Acceleration + Gravity + 0.001. Gravity will be a value between 0.25 and 1 depending on your X position in relation to the world's surface position divided by 6. |
 | mountData.jumpSpeed (float) | |
 | mountData.blockExtraJumps (boolean) | |
-| mountData.totalFrames (int) | This is the order in which the mount animations are handled in the Mount's texture. Certain keyframes are used to represent a state of the mount at the given time. 0 is standing, 1 is running, 2 is freefalling, 3 is flying, 4 is swimming, and 5 is dashing|
+| mountData.totalFrames (int) | The total amount of frames involved in the animation of the mount when involved in movement under various conditions. There is an order to the sequence of movement states a mount can have. The order goes: Standing, Running, Freefalling, Flying, Swimming, Dashing|
 | mountData.constantJump (boolean) | |
