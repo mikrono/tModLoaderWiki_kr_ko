@@ -6,7 +6,7 @@
 | mountData.buff (int) | The ID number of the buff assigned to the mount.|
 | mountData.abilityChargeMax (int) | Used in the Scutlix mount, where it represents the time in frames before it can fire another laser. |
 | mountData.abilityCooldown (int) | The amount of time in frames before the mount calls Mount.UseAbility or the ModMount calls MountLoader.UseAbility.  |
-| mountData.abilityDuration (int) | |
+| mountData.abilityDuration (int) | How long, in frames, the crosshair will exist on screen after the ability has been used. |
 | mountData.swimSpeed (float) | This parameter is used in vanilla for the turtle mount, the drill mount, and the cute fishron mount. It represents the horizontal velocity, how many pixels on the x axis it can move per frame. |
 | mountData.heightBoost (int) | How many pixels the player is boosted in the vertical axis when mounted. |
 | mountData.fallDamage (float) | A number which is the fall damage multiplier. |
