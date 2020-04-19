@@ -117,7 +117,7 @@ Static fields are accessed by the classname, not the instance. For example, we w
 Remember that static methods are called by writing the classname and non-static methods use the instance name. `Item.NewItem(...)` vs `item.CloneDefaults(...)`
 <a name="newitem"></a>
 ### public static int NewItem(int X, int Y, int Width, int Height, int Type, int Stack = 1, bool noBroadcast = false, int pfix = 0, bool noGrabDelay = false, bool reverseLookup = false)
-Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. 
+Spawns an item in the world. Commonly seen used in ModNPC.NPCLoot. X, Y, Width, and Height are commonly derived from the npc. This method should not be called on multiplayer clients. If you need to spawn items from client code, use `player.QuickSpawnItem`, it handles the multiplayer syncing code needed.
 Example: `Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));`
 
 ### public static int NewItem(Rectangle rectangle, int Type, int Stack = 1, bool noBroadcast = false, int prefixGiven = 0, bool noGrabDelay = false, bool reverseLookup = false)
