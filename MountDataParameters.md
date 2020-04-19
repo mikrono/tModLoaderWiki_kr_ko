@@ -2,20 +2,20 @@
 
 | MountData | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | :--  | :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| mountData.spawnDust (int) | Which dust is created when the mount is mounted or dismounted. |
-| mountData.buff (int) | Which buff is active when the mount is used. |
+| mountData.spawnDust (int) | The ID of the dust spawned when mounted or dismounted.|
+| mountData.buff (int) | The ID number of the buff assigned to the mount.|
 | mountData.abilityChargeMax (int) | |
 | mountData.abilityCooldown (int) | |
 | mountData.abilityDuration (int) | |
-| mountData.swimSpeed (float) | |
-| mountData.heightBoost (int) | How much the player is boosted in the vertical axis when mounted. |
+| mountData.swimSpeed (float) | | This parameter is used in vanilla for the turtle mount, the drill mount, and the cute fishron mount. It represents the horizontal velocity, how many pixels on the x axis it can move per frame. |
+| mountData.heightBoost (int) | How many pixels the player is boosted in the vertical axis when mounted. |
 | mountData.fallDamage (float) | A number which is the fall damage multiplier. |
 | mountData.runSpeed (float) | |
 | mountData.dashSpeed (float) | |
 | mountData.flightTimeMax (int) | |
-| mountData.jumpHeight (int) | |
+| mountData.jumpHeight (int) | | 
 | mountData.acceleration (float) | |
-| mountData.jumpSpeed (float) | |
+| mountData.jumpSpeed (float) | |, 
 | mountData.blockExtraJumps (boolean) | |
-| mountData.totalFrames (int) | This is the number of frames in the Mount's texture. |
+| mountData.totalFrames (int) | This is the number of frames in the Mount's texture. Certain keyframes are used to represent a state of the mount at the given time. 0 is standing, 1 is running, 2 is freefalling, 3 is flying, 4 is swimming, and 5 is dashing|
 | mountData.constantJump (boolean) | |
