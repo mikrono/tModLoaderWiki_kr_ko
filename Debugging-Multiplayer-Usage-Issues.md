@@ -25,7 +25,7 @@ This is caused by bad mods. You must view the server.log file or start the serve
 
 # I can join my server, but my friend can't
 ## Make sure you have the correct IP address
-1. If you are giving your friends an IP address that looks like 192.168.x.x, then you have the wrong IP address. IP addresses that start with 192.168 are local IP addresses and will only work for playing with friends that are phyically at your house connected to the same router.
+1. If you are giving your friends an IP address that looks like 192.168.x.x, then you have the wrong IP address. IP addresses that start with 192.168 are local IP addresses and will only work for playing with friends that are physically at your house connected to the same router as you.
 2. To find your internet IP address, you can google "what is my ip address" or visit a site like http://www.whatismyasn.org/. This number is the address you need to give to your friends. This number can change every once in a while, depending on your internet service provider.
 ## Verify that your server is visible to the internet
 1. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file. (If you are on 0.11.3+, you can do this in Host and Play by setting Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png))
