@@ -39,6 +39,10 @@ Now that you have a simple mod with a simple sword, it is time to branch out an 
 
 Continue reading to learn more about tModLoader and how to get better.
 
+# How do I reference things in my mod from other files?
+
+One of the first things modders seek to do is shoot a custom projectile from a custom weapon, or any other similar behavior that requires classes in your mod to reference other classes. To do this, we make use of the `ModContent.SomethingType` methods, where "Something" is replaced with "Item", "Projectile", "NPC", etc. For example, if you want your `ModItem` to shoot a specific `ModProjectile`, in your `ModItem.SetDefaults` method you would write `item.shoot = ModContent.ProjectileType<MyProjectileClassName>();`. Conversely, shooting a projectile from the original game would be `item.shoot = ProjectileID.WoodenArrowFriendly;` or something similar.
+
 # How do tModLoader 'hooks' work?
 
 Firstly, they are technically not hooks. We simply call them hooks because it is easy. A 'hook' is a function you can use as a modder. Which hooks are available depends on the class you're working in. For example your Mod class has a **[Load Hook](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html#afbcbdc176a60f3da809842f683ff2e75)**, which is a function special to the Mod class. Every one of these functions is `virtual`, this means the function has a basic implementation but can be overridden by the modder if desired. This means when you want to use a hook, you _override_ it, this is why the word `virtual` is replaced with `override`. Since the _virtual_ (partial) implementation is overridden, that implementation will be lost. To see the standard implementation of hooks you should see the **[source documentation](http://tmodloader.github.io/tModLoader/html/annotated.html)**.
