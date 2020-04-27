@@ -5,7 +5,7 @@
 # Prerequisites
 1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). 
     1. The community edition is free of charge. 
-    1. You can use either 2017 or 2019 edition.
+    1. You can use either 2017 or 2019 edition, but if you are using 2017 you must update to a recent update.
 1. During installation, check the `.NET desktop development` workload. Nothing else needs to be checked. ([Example](https://i.imgur.com/Y8uZ14h.png)) 
     1. You may be tempted to uncheck items you think you don't need in the `Individual components` tab to save hard drive space or bandwidth. We have not currently determined which individual components are able to be unchecked for tModLoader modding. Many have unchecked things and have been unable to compile mods. If you get an error message similar to "The type 'Object' is defined in an assembly that is not referenced.", you may have this issue and should do the full workload install. 
     1. If you've forgotten this step, you can click on Tools->Get Tools and Features to bring up the installer again. ([Example](https://i.imgur.com/EmqEsmH.png))
