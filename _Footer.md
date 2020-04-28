@@ -1,1 +1,1 @@
-This is the end of the homepage. Back to the [top](https://github.com/tModLoader/tModLoader/wiki).
+This is the end of the homepage. Back to the [top](https://github.com/tModLoader/tModLoader/wiki#top).
