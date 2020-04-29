@@ -1,4 +1,4 @@
-<a href="https://tmodloader.net"><img src="https://i.imgur.com/XMRajB4.png" width="100" height="100" style="display: block;margin-left: auto;margin-right: auto;"/></a>
+<a href="https://tmodloader.net"><img src="https://forums.terraria.org/index.php?attachments/tml-png.268594/" width="100" height="100" style="display: block;margin-left: auto;margin-right: auto;"/></a>
 ___
 - [**Home**](Home)
 - [Useful resources](Useful-resources)
