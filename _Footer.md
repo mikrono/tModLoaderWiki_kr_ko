@@ -1,1 +1,1 @@
-This is the end of the homepage. Back to the [top](#).
+This is the end of the page. Back to the [top](#).
