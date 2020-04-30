@@ -1,4 +1,4 @@
-<p align="center"><a href="https://tmodloader.net"><img src="https://cdn.discordapp.com/attachments/705196083210485885/705196205793083392/TML.png" width="128" height="128" style="display: block;margin-left: auto;margin-right: auto;"/></a></p>
+<p align="center" style="margin-left: 30px;><a href="https://tmodloader.net"><img src="https://cdn.discordapp.com/attachments/705196083210485885/705196205793083392/TML.png" width="128" height="128" style="display: block;margin-left: auto;margin-right: auto;"/></a></p>
 
 ___
 - [**Home**](Home)
