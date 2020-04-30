@@ -8,8 +8,16 @@ ___
 
 ___
 
-## Installation
+## Steam Installation
+To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
+Simply browse for tModLoader on Steam and install it.
+The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla.
 ___
+
+## Manual Installation
+___
+This installation is suitable for all players, including as non-steam players.
+
 Installing tModLoader is relatively easy. If you want to ensure you can easily revert back to vanilla, you should make a backup copy of your Terraria.exe and TerrariaServer.exe, however if you use the installer jar it will create these backups for you (Windows only, Mac and Linux don't need backups as we don't replace the files).
 
 1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tML release you want. (usually the **[latest](https://github.com/tModLoader/tModLoader/releases/latest)**)
@@ -18,8 +26,7 @@ Installing tModLoader is relatively easy. If you want to ensure you can easily r
 4. You can install using one of two options, pick one:
     * **Option 1, manual install (Secondary)**: Open the extracted folder, **copy** the contents to your Terraria folder and let it overwrite files when asked. (replace files)
     * **Option 2, installer**: Run the installer .jar file (requires Java 8 or higher) (_Recommended to have launched vanilla Terraria at least once for the best install experience_)
-    * **Option 3, Steam (Recommended)**: Download [Terraria](https://store.steampowered.com/app/105600/Terraria) through Steam, then install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader).
-5. Done. You can launch Terraria as usual. If you used Option 3, choose tModLoader in your Steam library.
+5. Done. You can launch Terraria as usual.
 
 Tip: Here is an easy way to find where your Terraria files are located:
 
