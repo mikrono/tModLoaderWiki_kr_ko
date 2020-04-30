@@ -18,7 +18,7 @@ Installing tModLoader is relatively easy. If you want to ensure you can easily r
 4. You can install using one of two options, pick one:
     * **Option 1, manual install (Secondary)**: Open the extracted folder, **copy** the contents to your Terraria folder and let it overwrite files when asked. (replace files)
     * **Option 2, installer**: Run the installer .jar file (requires Java 8 or higher) (_Recommended to have launched vanilla Terraria at least once for the best install experience_)
-    * **Option 3, Steam (Recommended)**: Download [Terraria](https://store.steampowered.com/app/105600/Terraria) through Steam, then install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader].
+    * **Option 3, Steam (Recommended)**: Download [Terraria](https://store.steampowered.com/app/105600/Terraria) through Steam, then install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader).
 5. Done. You can launch Terraria as usual. If you used Option 3, choose tModLoader in your Steam library.
 
 Tip: Here is an easy way to find where your Terraria files are located:
