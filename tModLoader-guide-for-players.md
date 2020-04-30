@@ -36,7 +36,7 @@ Uninstallation of tModLoader is even easier than installation. This part covers 
 4. Done. You can launch Terraria as usual.
 
 ## Uninstallation (Steam Version)
-__
+___
 Uninstallation of tModLoader is even easier if you downloaded it from Steam. All you have to do is:
 
 1. Open Steam, go to your game library section and locate tModLoader.
