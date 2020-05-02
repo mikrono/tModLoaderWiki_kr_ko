@@ -111,4 +111,7 @@ Ok, so it might not be the most exciting thing in the world, but you should now 
 To quickly understand what you can do with the UIElements, create a new class, inherit from it but do not add anything yet. Right click within the class brackets, click quick actions and then auto generate overrides. That will allow you to figure out what actions you can take. Notice that Draw() showed up! Since it looks like Draw() is drawing a sprite batch, you should right click on SpriteBatch and peek its definitions to get more ideas. If you look closely, you'll see that we could have called Draw() in our UIElement code many different ways.
 
 # Medium Level Example
-Finally, if you'd like more hand holding then check out the example mod and how they implemented some UI elements [here](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod/UI). Keep in mind the three classes we discussed above and you should be able to figure it out. You'll notice they use other classes that aid in the implementation of certain UI pieces (UIPanel & UIHoverImageButton)
+Finally, if you'd like more hand holding then check out the example mod and how they implemented some UI elements [here](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod/UI). Keep in mind the three classes we discussed above and you should be able to figure it out. You'll notice they use other classes in place of UIElement that aid in the implementation of certain UI pieces (UIPanel & UIHoverImageButton)
+
+# 
+Thanks to Scalie and absoluteAquarian for helping me figure this out.
