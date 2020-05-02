@@ -37,20 +37,22 @@ Terraria's armour shaders modify how a specific texture is drawn. The most obvio
 
 The parameters of the armour shader are as follows:
 
-    sampler uImage0 : register(s0); // The texture that you are currently drawing.
-    sampler uImage1 : register(s1); // A secondary texture that you can use for various purposes. This is usually a noise map.
-    float3 uColor;
-    float3 uSecondaryColor;
-    float uOpacity;
-    float uSaturation;
-    float uRotation;
-    float uTime;
-    float4 uSourceRect; // The position and size of the currently drawn frame.
-    float2 uWorldPosition;
-    float uDirection;
-    float3 uLightSource; // Used for reflective dyes.
-    float2 uImageSize0;
-    float2 uImageSize1;
+```hlsl
+sampler uImage0 : register(s0); // The texture that you are currently drawing.
+sampler uImage1 : register(s1); // A secondary texture that you can use for various purposes. This is usually a noise map.
+float3 uColor;
+float3 uSecondaryColor;
+float uOpacity;
+float uSaturation;
+float uRotation;
+float uTime;
+float4 uSourceRect; // The position and size of the currently drawn frame.
+float2 uWorldPosition;
+float uDirection;
+float3 uLightSource; // Used for reflective dyes.
+float2 uImageSize0;
+float2 uImageSize1;
+```
 
 ## Screen shaders
 
@@ -62,27 +64,29 @@ Screen shaders are significantly more complex than pixel shaders, so unless you'
 
 The parameters of the screen shader are as follows:
 
-    sampler uImage0 : register(s0); // The contents of the screen.
-    sampler uImage1 : register(s1); // Up to three extra textures you can use for various purposes (for instance as an overlay).
-    sampler uImage2 : register(s2);
-    sampler uImage3 : register(s3);
-    float3 uColor;
-    float3 uSecondaryColor;
-    float2 uScreenResolution;
-    float2 uScreenPosition; // The position of the camera.
-    float2 uTargetPosition; // The "target" of the shader, what this actually means tends to vary per shader.
-    float2 uDirection;
-    float uOpacity;
-    float uTime;
-    float uIntensity;
-    float uProgress;
-    float2 uImageSize1;
-    float2 uImageSize2;
-    float2 uImageSize3;
-    float2 uImageOffset;
-    float uSaturation;
-    float4 uSourceRect; // Doesn't seem to be used, but included for parity.
-    float2 uZoom;
+```hlsl
+sampler uImage0 : register(s0); // The contents of the screen.
+sampler uImage1 : register(s1); // Up to three extra textures you can use for various purposes (for instance as an overlay).
+sampler uImage2 : register(s2);
+sampler uImage3 : register(s3);
+float3 uColor;
+float3 uSecondaryColor;
+float2 uScreenResolution;
+float2 uScreenPosition; // The position of the camera.
+float2 uTargetPosition; // The "target" of the shader, what this actually means tends to vary per shader.
+float2 uDirection;
+float uOpacity;
+float uTime;
+float uIntensity;
+float uProgress;
+float2 uImageSize1;
+float2 uImageSize2;
+float2 uImageSize3;
+float2 uImageOffset;
+float uSaturation;
+float4 uSourceRect; // Doesn't seem to be used, but included for parity.
+float2 uZoom;
+```
 
 # How to write a shader
 
@@ -94,67 +98,69 @@ To start of with, a shader file in XNA (the framework Terraria uses) has the ext
 
 Let's start with some armour shaders. To start off, let's write the absolute smallest working shader possible.
 
-    sampler uImage0 : register(s0);
-    sampler uImage1 : register(s1);
-    float3 uColor;
-    float3 uSecondaryColor;
-    float uOpacity;
-    float uSaturation;
-    float uRotation;
-    float uTime;
-    float4 uSourceRect;
-    float2 uWorldPosition;
-    float uDirection;
-    float3 uLightSource;
-    float2 uImageSize0;
-    float2 uImageSize1;
+```hlsl
+sampler uImage0 : register(s0);
+sampler uImage1 : register(s1);
+float3 uColor;
+float3 uSecondaryColor;
+float uOpacity;
+float uSaturation;
+float uRotation;
+float uTime;
+float4 uSourceRect;
+float2 uWorldPosition;
+float uDirection;
+float3 uLightSource;
+float2 uImageSize0;
+float2 uImageSize1;
     
-    float4 ArmorBasic(float4 sampleColor : COLOR0) : COLOR0
-    {
-        return sampleColor;
-    }
+float4 ArmorBasic(float4 sampleColor : COLOR0) : COLOR0
+{
+    return sampleColor;
+}
     
-    technique Technique1
+technique Technique1
+{
+    pass ArmorBasic
     {
-        pass ArmorBasic
-        {
-            PixelShader = compile ps_2_0 ArmorBasic();
-        }
+        PixelShader = compile ps_2_0 ArmorBasic();
     }
-
+}
+```
 That's quite a lot to unpack. The parameters you already know, so let's look at the middle bit.
 
-    float4 ArmorBasic(float4 sampleColor : COLOR0) : COLOR0
-    {
-        return sampleColor;
-    }
-
+```hlsl
+float4 ArmorBasic(float4 sampleColor : COLOR0) : COLOR0
+{
+    return sampleColor;
+}
+```
 What we have here is a single pass. Now, you might recognise that the `float4` in front of `ArmorMyShader` means that that is the return type. The `: COLOR0` indicates where this return type should be stored, namely in the COLOR0 register of the GPU. Put two and two together, and what this means is that this pass writes a colour value consisting of four floats (red, green, blue and alpha) to the GPU.
 
 As for `float4 sampleColor : COLOR0`, this means you're declaring a parameter equal to what's in that COLOR0 register. So what this pass does is take the value of COLOR0 and put it in COLOR0. Not very useful, as you might imagine.
 
 We'll move on to something more useful in a bit, but let's first take a look at that last part of the shader:
-
-    technique Technique1
+```hlsl
+technique Technique1
+{
+    pass ArmorBasic
     {
-        pass ArmorBasic
-        {
-            PixelShader = compile ps_2_0 ArmorBasic();
-        }
+        PixelShader = compile ps_2_0 ArmorBasic();
     }
-
+}
+```
 All this really does is compile the technique, by in turn compiling all the the passes we want it to contain. Every time you create a pass, you'll have to add it to the technique if you want to use it in Terraria. Also, make sure you use `ps_2_0`, or you'll get compatibility problems.
 
 I'll leave out the parameters and techniques from now on to keep the code snippets short, but obviously you still need those if you're going to compile.
 
 Okay, so let's make something more useful. Right now, we're writing the contents of a register to that same register, which is entirely useless. What we want to do for starters is to just draw the texture. To do so, we have to make some adjustments.
-
-    float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        return colour;
-    }
-
+```hlsl
+float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    return colour;
+}
+```
 So two things happened here: one, we added `float2 coords : TEXCOORD0` as a parameter, and two, we added something called `tex2D` To understand either of these, you first have to remember what I mentioned in the introduction: a pixel shader is executed for every pixel that the texture covers (not every pixel of the texture, but if you're drawing sprites at a scale of one that basically amounts to the same thing). Now, you can probably tell that `coords` takes the value of the TEXCOORD0 register just like `sampleColor` did, but what does the value actually mean? Basically, it represents the coordinates of the current pixel relative to the texture. This might sound complex, but hopefully this image clears it up:
 
 ![Coordinate illustration](https://i.imgur.com/A6Chqtu.png)
@@ -164,64 +170,64 @@ So, imagine the shader running on this texture. It will start in the top left co
 What does `tex2D` do then? Simply put, it samples the colour data of `uImage0` at position `coords`. And because the shader runs for every pixel, and `coords` updates accordingly, essentially it's tracing the texture pixel by pixel. So what this pass does is nothing short of simply drawing your texture.
 
 There's a problem, however, in that you are overwriting the contents of the colour register. This can sometimes be useful when it is intentional (screen shaders generally do this), but it can also cause issues, especially if you're overwriting transparency. So usually, you want to multiply whatever your result is with the content of the register before writing to it:
-
-    float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    return colour * sampleColor;
+}
+```
 Sampling will form the basis of almost all of your passes, but doesn't do much by itself. Let's introduce some parameters.
 
 ## Parameters & Swizzles
 
 Now we can draw our sprites, but that's not really any different from what the game already does: we want a custom effect. Say, for instance, we want to tint our sprite. If we didn't know any better, we might try to do this:
-
-    float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour *= uColor;
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour *= uColor;
+    return colour * sampleColor;
+}
+```
 Here, we're using our `uColor` parameter from our parameter list, but there's a problem: `colour` is a `float4`, but `uColor` is a `float3`, and you can't multiply those with each other. What we want to is multiply the red, green and blue channels of our texture with the value of the parameter, so instead we do this:
-
-    float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= uColor;
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= uColor;
+    return colour * sampleColor;
+}
+```
 The line `colour.rgb *= uColor;` is equal to:
-
-    colour.r *= uColor.r;
-    colour.g *= uColor.g;
-    colour.b *= uColor.b;
-
+```hlsl
+colour.r *= uColor.r;
+colour.g *= uColor.g;
+colour.b *= uColor.b;
+```
 This member access is what we call a swizzle. We use `rgba` to refer to colour data, but sometimes you're working with positions, in which case `xyzw` makes more sense. Therefore, you could also do this:
-
-    colour.xyz *= uColor;
-
+```hlsl
+colour.xyz *= uColor;
+```
 This is exactly the same as the previous line, it's just syntactic sugar. You can even mix them up in the same line. What you can not do, however, is mix them up in the same swizzle:
-
-    colour1.rgb = colour2.xyz; // This is fine.
-    colour1.xgb = colour2.xyz; // This is not.
-
+```hlsl
+colour1.rgb = colour2.xyz; // This is fine.
+colour1.xgb = colour2.xyz; // This is not.
+```
 Anyway, let's get back to our original pass. Let's pass in pure red and see what happens:
 
 ![Red simple](https://i.imgur.com/2IhgYzX.png)
 
 Not bad. Let's look at a slightly more complex example:
-
-    float4 ArmorLuminosity(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        float luminosity = (colour.r + colour.g + colour.b) / 3;
-        colour.rgb = luminosity * uColor;
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorLuminosity(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    float luminosity = (colour.r + colour.g + colour.b) / 3;
+    colour.rgb = luminosity * uColor;
+    return colour * sampleColor;
+}
+```
 What we do here is calculate the luminosity (brightness) of each pixel, and then multiply our colour with it. This prevents large dark patches where your tint complements the colour of the texture.
 
 The result:
@@ -231,38 +237,40 @@ The result:
 ## Getting creative with coordinates
 
 While we can already can do rather nice stuff, it's all rather uniform. To add some variety, we can work with our coordinates to get something nice. Let's make a simple gradient:
-
-    float4 ArmorGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= coords.x;
-        return colour * sampleColor;
-    }
+```hlsl
+float4 ArmorGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= coords.x;
+    return colour * sampleColor;
+}
+```
 
 If you remember the image above that explained how coordinates work, you might be able to guess what happens here: the leftmost pixels will be black, and will brighten to their original colour. I had to slightly enhance the result for clarity, but it would look something like this:
 
 ![Gradient horizontal](https://i.imgur.com/hSNMYTl.png)
 
 Simple, right? You can even combine two gradients into opposite directions:
-
-    float4 ArmorColourGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        float luminosity = (colour.r + colour.g + colour.b) / 3;
-        colour.rgb *= ((coords.x * uColor) + ((1 - coords.x) * uSecondaryColor)) * luminosity;
-        return colour * sampleColor;
-    }
+```hlsl
+float4 ArmorColourGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    float luminosity = (colour.r + colour.g + colour.b) / 3;
+    colour.rgb *= ((coords.x * uColor) + ((1 - coords.x) * uSecondaryColor)) * luminosity;
+    return colour * sampleColor;
+}
+```
 ![Gradient horizontal multicolour](https://i.imgur.com/w3PTOr3.png)
 
 Alright, so that's horizontally. Let's try it vertically!
-
-    float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= coords.y;
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= coords.y;
+    return colour * sampleColor;
+}
+```
 ![Gradient vertical bad](https://i.imgur.com/yIMcvQB.png)
 
 Hm, that doesn't look right. If you look very closely, you might be able to see that the bottom of the robe is getting slightly brighter, but surely it should be fully bright at that point? What's going on?
@@ -272,19 +280,19 @@ The problem here is that coordinates are relative to the texture you are drawing
 ![Gradient vertical bad anim](https://i.imgur.com/pZuvvF8.gif)
 
 To solve this, we want the y-coordinate to be 0 at the beginning of our current frame and to be 1 at the end. Fortunately, there's a (relatively) simple formula for that:
-
-    float frameY = (coords.y * uImageSize0.y - uSourceRect.y) / uSourceRect.w;
-
+```hlsl
+float frameY = (coords.y * uImageSize0.y - uSourceRect.y) / uSourceRect.w;
+```
 You can work out exactly what this does in your own time, but it "shrinks" the coordinates to encompass just a single frame, and then shifts the origin to the active frame. Now, let's try this again:
-
-    float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        float frameY = (coords.y * uImageSize0.y - uSourceRect.y) / uSourceRect.w;
-        colour.rgb *= frameY;
-        return colour * sampleColor;
-    }[/CODE]
-
+```hlsl
+float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    float frameY = (coords.y * uImageSize0.y - uSourceRect.y) / uSourceRect.w;
+    colour.rgb *= frameY;
+    return colour * sampleColor;
+}
+```
 ![Gradient vertical good](https://i.imgur.com/TD8CvHI.png)
 
 Yep, that's much better!
@@ -296,54 +304,57 @@ Yep, that's much better!
 Now, there's a good chance you're here not for the boring gradient stuff, but because you want to make animated shaders, and you'd be right too! Actually, making an animated shader is deceptively easy: all you have to do is use the `uTime` parameter. However, the main problem is using it correctly.
 
 Say I were to do this:
-
-    float4 ArmorAnimated(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= uTime;
-        return colour * sampleColor;
-    }
-
+```hlsl
+float4 ArmorAnimated(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= uTime;
+    return colour * sampleColor;
+}
+```
 Now, this would just increase the brightness until infinity (well, until one hour has passed, at which point it would reset, but that's still a long wait), and that's not really helpful. Instead, most dyes use a sine function to turn raw time into a sine wave. This will give you a nice and predictable scalar to use:
-
-    float4 ArmorAnimatedSine(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= sin(uTime);
-        return colour * sampleColor;
-    }
+```hlsl
+float4 ArmorAnimatedSine(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= sin(uTime);
+    return colour * sampleColor;
+}
+```
 ![Sine animation](https://i.imgur.com/xQAqvm1.gif)
 
 As you might know, a sine wave... well, waves... between 1 and -1. In this particular case, that negative range isn't really useful, as negative colours just display as black. If we wanted to remove that negative range and just bounce between 0 and 1, we could do this:
-
-    float time = (sin(uTime) + 1) / 2;
-    float altTime = sin(uTime) * 0.5f + 0.5f; // Same thing. [/code]
-
+```hlsl
+float time = (sin(uTime) + 1) / 2;
+float altTime = sin(uTime) * 0.5f + 0.5f; // Same thing. [/code]
+```
 Apart from sine waves, there's another, less-useful-but-still-nice way to establish pattern, and that's by using `frac`, which gets the fractional component of a number. When used with `uTime`, you get a nice sawtooth pattern, ranging from 0 to 1 exclusive.
-
-    float4 ArmorAnimatedFrac(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 colour = tex2D(uImage0, coords);
-        colour.rgb *= frac(uTime);
-        return colour * sampleColor;
-    }
+```hlsl
+float4 ArmorAnimatedFrac(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    colour.rgb *= frac(uTime);
+    return colour * sampleColor;
+}
+```
 ![Frac animation](https://i.imgur.com/djj1vSI.gif)
 
 Okay, one more. What happens if we combine coordinates with time? Cool stuff, that's what:
-
-    float4 ArmorRadar(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 color = tex2D(uImage0, coords);
-        float wave = 1 - frac(coords.x + uTime);
-        color.rgb = color.rgb * wave;
-        return color * sampleColor;
-    }
+```hlsl
+float4 ArmorRadar(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 color = tex2D(uImage0, coords);
+    float wave = 1 - frac(coords.x + uTime);
+    color.rgb = color.rgb * wave;
+    return color * sampleColor;
+}
+```
 ![Radar dye](https://i.imgur.com/XvnaDFY.gif)
 Becase we're adding `uTime` to `coords.x`, our 'split point' (where the results of `frac` jumps from ~0.99 back to 0) keeps shifting to the left, giving us a nice radar-like effect. Want to speed up or slow down the shift? Simply multiply `uTime` by a scalar:
-
-    float wave = 1 - frac(coords.x + uTime * 0.5f); // This would be half as fast.
-    float wave = 1 - frac(coords.x + uTime * 2); // This would be twice as fast. Or half as slow. Whatever takes your fancy.
-
+```hlsl
+float wave = 1 - frac(coords.x + uTime * 0.5f); // This would be half as fast.
+float wave = 1 - frac(coords.x + uTime * 2); // This would be twice as fast. Or half as slow. Whatever takes your fancy.
+```
 ## Making some noise
 
 Finally, we'll take a look at how we can use noise to pep up our dyes a bit. Most dyes have a rather geometric feel to them, and sometimes that can be very nice. However, if you want to add some randomness (perceived or otherwise), you can use a noise map. Several dyes already do this: the stars in Twilight Dye, the sand in Shifting Sands Dye and the... eh, vortex... in Vortex Dye are all created through use of a noise map.
@@ -351,43 +362,46 @@ Finally, we'll take a look at how we can use noise to pep up our dyes a bit. Mos
 The applications of noise are very diverse, and I won't touch upon them all. However, one of the more common applications is to use it as an overlay. For that to work, we do have to do quite a bit of work, though.
 
 The first problem you have to solve is the different pixel ratios: because coordinates range from 0 to 1 regardless of how large an image is, using one set of coordinates for both images will not cover the same amount of pixels if the images aren't the same size, which results in ugly stretching:
-
-    float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 color = tex2D(uImage0, coords);
-        float4 noise = tex2D(uImage1, coords); // Same coords
-        color.rgb = noise.rgb;
-        return color * sampleColor * color.a; // Multiplying by color.a to mask the invisible pixels.
-    }
+```hlsl
+float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 color = tex2D(uImage0, coords);
+    float4 noise = tex2D(uImage1, coords); // Same coords
+    color.rgb = noise.rgb;
+    return color * sampleColor * color.a; // Multiplying by color.a to mask the invisible pixels.
+}
+```
 ![Noise bad](https://i.imgur.com/Kuw015o.png)
 
 To convert texture coordinates to noise coordinates, you can use this formula:
-
-    float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
-
+```hlsl
+float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
+```
 This gets the Cartesian coordinates of the pixel you want and then determines the coordinates that will get you that pixel. In practice, that would look like this:
-
-    float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 color = tex2D(uImage0, coords);
-        float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
-        float4 noise = tex2D(uImage1, noiseCoords);
-        color.rgb = noise.rgb;
-        return color * sampleColor * color.a; // Multiplying by color.a to mask the invisible pixels.    
-    }
+```hlsl
+float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 color = tex2D(uImage0, coords);
+    float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
+    float4 noise = tex2D(uImage1, noiseCoords);
+    color.rgb = noise.rgb;
+    return color * sampleColor * color.a; // Multiplying by color.a to mask the invisible pixels.    
+}
+```
 ![Noise good](https://i.imgur.com/CjpZhBE.png)
 
 You can then do all sort of things with it (most of them ugly):
-
-    float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
-    {
-        float4 color = tex2D(uImage0, coords);
-        float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
-        float4 noise = tex2D(uImage1, noiseCoords);
-        float luminosity = (color.r + color.g + color.b) / 3;
-        color.rgb = luminosity * noise.b * 2;
-        return color * sampleColor;
-    }
+```hlsl
+float4 ArmorNoise(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 color = tex2D(uImage0, coords);
+    float2 noiseCoords = (coords * uImageSize0 - uSourceRect.xy) / uImageSize1;
+    float4 noise = tex2D(uImage1, noiseCoords);
+    float luminosity = (color.r + color.g + color.b) / 3;
+    color.rgb = luminosity * noise.b * 2;
+    return color * sampleColor;
+}
+```
 ![Noise applied](https://i.imgur.com/WP9ld0c.png)
 
 If you simple want to sample the noise map for a pseudo-random scalar, you can dispense with all this: just sample with the normal coordinates, and it should work just as well.
@@ -403,69 +417,70 @@ Using fxcompiler is very simple: just put the files you want to compile into the
 # Using your shader
 
 How to use your shader largely depends on what kind of shader it is, but first and foremost you'll have to load them first. You do this in the Load function of your Mod:
+```cs
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using static Terraria.ModLoader.ModContent;
 
-    using Microsoft.Xna.Framework.Graphics;
-    using Terraria.Graphics.Effects;
-    using Terraria.Graphics.Shaders;
-    using Terraria.ID;
-    using static Terraria.ModLoader.ModContent;
-    
-    public class MyMod : Mod
+public class MyMod : Mod
+{
+    // stuff...
+
+    public override void Load()
     {
-        // stuff...
     
-        public override void Load()
+        // All of this loading needs to be client-side.
+   
+        if (Main.netMode != NetmodeID.Server)
         {
+            // First, you load in your shader file.
+            // You'll have to do this regardless of what kind of shader it is,
+            // and you'll have to do it for every shader file.
+            // This example assumes you have both armour and screen shaders.
+
+            Ref<Effect> dyeRef = new Ref<Effect>(GetEffect("Effects/MyDyes"));
+            Ref<Effect> specialRef = new Ref<Effect>(GetEffect("Effects/MySpecials"));
+            Ref<Effect> filterRef = new Ref<Effect>(GetEffect("Effects/MyFilters"));
+
+            // To add a dye, simply add this for every dye you want to add.
+            // "PassName" should correspond to the name of your pass within the *technique*,
+            // so if you get an error here, make sure you've spelled it right across your effect file.
+
+            GameShaders.Armor.BindShader(ItemType<MyDyeItem>(), new ArmorShaderData(dyeRef, "PassName"));
+
+            // If your dye takes specific parameters such as colour, you can append them after binding the shader.
+            // IntelliSense should be able to help you out here.   
+
+            GameShaders.Armor.BindShader(ItemType<MyColourDyeItem>(), new ArmorShaderData(dyeRef, "ColourPass")).UseColor(1.5f, 0.15f, 0f);
+            GameShaders.Armor.BindShader(ItemType<MyNoiseDyeItem>(), new ArmorShaderData(dyeRef, "NoisePass")).UseImage("Images/Misc/noise"); // Uses the default Terraria noise map.
+
+            // To bind a miscellaneous, non-filter effect, use this.
+            // If you're actually using this, you probably already know what you're doing anyway.
     
-            // All of this loading needs to be client-side.
-       
-            if (Main.netMode != NetmodeID.Server)
-            {
-                // First, you load in your shader file.
-                // You'll have to do this regardless of what kind of shader it is,
-                // and you'll have to do it for every shader file.
-                // This example assumes you have both armour and screen shaders.
+            GameShaders.Misc["EffectName"] = new MiscShaderData(specialref, "PassName");
     
-                Ref<Effect> dyeRef = new Ref<Effect>(GetEffect("Effects/MyDyes"));
-                Ref<Effect> specialRef = new Ref<Effect>(GetEffect("Effects/MySpecials"));
-                Ref<Effect> filterRef = new Ref<Effect>(GetEffect("Effects/MyFilters"));
-       
-                // To add a dye, simply add this for every dye you want to add.
-                // "PassName" should correspond to the name of your pass within the *technique*,
-                // so if you get an error here, make sure you've spelled it right across your effect file.
+            // To bind a screen shader, use this.
+            // EffectPriority should be set to whatever you think is reasonable.   
     
-                GameShaders.Armor.BindShader(ItemType<MyDyeItem>(), new ArmorShaderData(dyeRef, "PassName"));
-    
-                // If your dye takes specific parameters such as colour, you can append them after binding the shader.
-                // IntelliSense should be able to help you out here.   
-    
-                GameShaders.Armor.BindShader(ItemType<MyColourDyeItem>(), new ArmorShaderData(dyeRef, "ColourPass")).UseColor(1.5f, 0.15f, 0f);
-                GameShaders.Armor.BindShader(ItemType<MyNoiseDyeItem>(), new ArmorShaderData(dyeRef, "NoisePass")).UseImage("Images/Misc/noise"); // Uses the default Terraria noise map.
-    
-                // To bind a miscellaneous, non-filter effect, use this.
-                // If you're actually using this, you probably already know what you're doing anyway.
-    
-                GameShaders.Misc["EffectName"] = new MiscShaderData(specialref, "PassName");
-    
-                // To bind a screen shader, use this.
-                // EffectPriority should be set to whatever you think is reasonable.   
-    
-                Filters.Scene["FilterName"] = new Filter(new ScreenShaderData(filterRef, "PassName"), EffectPriority.Medium);
-            }
+            Filters.Scene["FilterName"] = new Filter(new ScreenShaderData(filterRef, "PassName"), EffectPriority.Medium);
         }
     }
-
+}
+```
 For dyes, this is entirely sufficient: equipping your dye item will show the dye. Simple, right? For filters, you'll have to activate them when appropriate. Activating (and deactivating) a filter is very simple:
+```cs
+if (Main.netMode != NetmodeID.Server) // This all needs to happen client-side!
+{
+    Filters.Scene.Activate("FilterName");
 
-    if (Main.netMode != NetmodeID.Server) // This all needs to happen client-side!
-    {
-        Filters.Scene.Activate("FilterName");
-    
-        // Updating a filter
-        Filters.Scene["FilterName"].GetShader().UseProgress(progress);
-    
-        Filters.Scene["FilterName"].Deactivate();
-    }
+    // Updating a filter
+    Filters.Scene["FilterName"].GetShader().UseProgress(progress);
+
+    Filters.Scene["FilterName"].Deactivate();
+}
+```
 
 For an example of how you can put filters to use, check out my other guide for a shockwave filter:
 
@@ -489,70 +504,72 @@ That's all I have to say. If you have any questions about anything in this threa
 ***
 
 _Armour shader template_
+```cs
+sampler uImage0 : register(s0);
+sampler uImage1 : register(s1);
+float3 uColor;
+float3 uSecondaryColor;
+float uOpacity;
+float uSaturation;
+float uRotation;
+float uTime;
+float4 uSourceRect;
+float2 uWorldPosition;
+float uDirection;
+float3 uLightSource;
+float2 uImageSize0;
+float2 uImageSize1;
 
-    sampler uImage0 : register(s0);
-    sampler uImage1 : register(s1);
-    float3 uColor;
-    float3 uSecondaryColor;
-    float uOpacity;
-    float uSaturation;
-    float uRotation;
-    float uTime;
-    float4 uSourceRect;
-    float2 uWorldPosition;
-    float uDirection;
-    float3 uLightSource;
-    float2 uImageSize0;
-    float2 uImageSize1;
-    
-    float4 ArmorMyShader(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+float4 ArmorMyShader(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 color = tex2D(uImage0, coords);
+    return color * sampleColor;
+}
+
+technique Technique1
+{
+    pass ArmorMyShader
     {
-        float4 color = tex2D(uImage0, coords);
-        return color * sampleColor;
+        PixelShader = compile ps_2_0 ArmorMyShader();
     }
-    
-    technique Technique1
-    {
-        pass ArmorMyShader
-        {
-            PixelShader = compile ps_2_0 ArmorMyShader();
-        }
-    }
+}
+```
 
 _Screen shader template_
+```cs
+sampler uImage0 : register(s0);
+sampler uImage1 : register(s1);
+sampler uImage2 : register(s2);
+sampler uImage3 : register(s3);
+float3 uColor;
+float3 uSecondaryColor;
+float2 uScreenResolution;
+float2 uScreenPosition;
+float2 uTargetPosition;
+float2 uDirection;
+float uOpacity;
+float uTime;
+float uIntensity;
+float uProgress;
+float2 uImageSize1;
+float2 uImageSize2;
+float2 uImageSize3;
+float2 uImageOffset;
+float uSaturation;
+float4 uSourceRect;
+float2 uZoom;
 
-    sampler uImage0 : register(s0);
-    sampler uImage1 : register(s1);
-    sampler uImage2 : register(s2);
-    sampler uImage3 : register(s3);
-    float3 uColor;
-    float3 uSecondaryColor;
-    float2 uScreenResolution;
-    float2 uScreenPosition;
-    float2 uTargetPosition;
-    float2 uDirection;
-    float uOpacity;
-    float uTime;
-    float uIntensity;
-    float uProgress;
-    float2 uImageSize1;
-    float2 uImageSize2;
-    float2 uImageSize3;
-    float2 uImageOffset;
-    float uSaturation;
-    float4 uSourceRect;
-    float2 uZoom;
-    
-    float4 FilterMyShader(float2 coords : TEXCOORD0) : COLOR0
+float4 FilterMyShader(float2 coords : TEXCOORD0) : COLOR0
+{
+    float4 colour = tex2D(uImage0, coords);
+    return colour;
+}
+
+technique Technique1
+{
+    pass FilterMyShader
     {
-        float4 colour = tex2D(uImage0, coords);
-        return colour;
+        PixelShader = compile ps_2_0 FilterMyShader();
     }
-    
-    technique Technique1
-    {
-        pass FilterMyShader
-        {
-            PixelShader = compile ps_2_0 FilterMyShader();
-        }
-    }
+}
+```
