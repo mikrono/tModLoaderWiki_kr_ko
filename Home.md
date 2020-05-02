@@ -49,6 +49,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic ModItem](Basic-Item)
 - [Basic ModProjectile](Basic-Projectile)
 - [Basic Minion](Basic-Minion-Guide)
+- [Basic UI Element](Basic-UI-Element)
 - [About NPC Spawning](Basic-NPC-Spawning)
 - [About NPC Drops and Loot](Basic-NPC-Drops-and-Loot)
 - [Autoloading guide](Basic-Autoload)
