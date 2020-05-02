@@ -88,6 +88,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Expert Guide Prerequisites](Expert-Prerequisites)
 - [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
 - [IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
+- [IL Editing another mod](Patching-Other-Mods-Using-MonoMod)
 
 ## Vanilla References
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
