@@ -22,6 +22,7 @@ An MMHook dll is a special reference file, that contains the `On` and `IL` varia
 * Copy the mod dll you extracted previously into the MonoMod folder, and drag and drop it on top of the `MonoMod.RuntimeDetour.HookGen` executable. It should look like this: ![](https://i.imgur.com/PNElana.png)
 * This should open a CMD window, which will start creating your MMHook dll. The time taken will vary by hardware and mod size, but it shouldn't take more than a few minutes in most cases.
 * Once it is done, you should find a dll in the same folder called `MMHook_NameOfMod_VersionNumber`: ![](https://i.imgur.com/KsAcmRD.png)
+* Please note: MMHook dlls created for a specific mod version will likely only work for that particular version. It is therefore advisable to make a new MMHook dll for each new update the mod you are editing receives. 
 
 ## Step 2: Adding the MMHook dll as a Reference
 Now that you have the dll, you can add it to your mod. In build.txt, add the line `dllReferences = <Name of MMHook dll>`. The dll must be put in a `lib/` folder in the highest level of your mod's directory, as per the information on `dllReferences` states [here](https://github.com/tModLoader/tModLoader/wiki/build.txt). I also recommend adding `sortAfter = <Name of mod you are editing>`, which will mitigate the risk of your mod trying to apply patches before the other mod is loaded.
