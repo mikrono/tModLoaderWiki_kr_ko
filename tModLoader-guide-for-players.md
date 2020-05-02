@@ -34,7 +34,7 @@ Tip: Here is an easy way to find where your Terraria files are located:
 2. Browse to the 'Local Files' tab and click on the 'Browse local files...' button
 3. You are now in your Terraria folder (this is where you should install tModLoader)
 
-## Uninstallation (Standard)
+## Uninstall manual installation
 ___
 Uninstallation of tModLoader is even easier than installation. This part covers how to do it when using Steam.
 
@@ -42,7 +42,7 @@ Uninstallation of tModLoader is even easier than installation. This part covers 
 2. Let Steam **[verify the integrity of game files](https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)** for Terraria, this will reconfigure your game files to run vanilla.
 4. Done. You can launch Terraria as usual.
 
-## Uninstallation (Steam Version)
+## Uninstall Steam installation
 ___
 Uninstallation of tModLoader is even easier if you downloaded it from Steam. All you have to do is:
 
