@@ -279,6 +279,5 @@ As a reminder, this is how it used to act ([video](https://gfycat.com/Magnificen
 # Example - Lava Snail Statue Spawn
 See [ExampleCritter.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
 
-# Other Examples
-The following examples from other mods can be explored as well:
-* Add to this list
+## Going further
+[Making IL Edits for other mods (Expert)](Patching-Other-Mods-Using-MonoMod)
