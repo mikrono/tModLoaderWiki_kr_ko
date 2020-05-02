@@ -1,6 +1,7 @@
 The following covers a list of useful resources, adapted from the [help thread on TCF](https://forums.terraria.org/index.php?threads/official-tmodloader-help-thread.28901/). Feel free to add a new resource if you think it is useful to others, but please refrain from adding unuseful items.
 
 ## Sites
+* [Our website](https://tmodloader.net/)
 * tModloader Github wiki | You are here
 * [tModloader documentation](http://tmodloader.github.io/tModLoader/html/index.html)
 * [tModloader Github repository](https://github.com/tModLoader/tModLoader)
