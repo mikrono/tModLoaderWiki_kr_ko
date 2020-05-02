@@ -1,3 +1,10 @@
+___
+Coming from Steam? <br>
+Looking for install instructions? [Click here!](tModLoader-guide-for-players) (Steam and non-steam) <br>
+[I don't just want to play mods, I want to create them](tModLoader-guide-for-developers) <br>
+[I don't just want to play mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)
+
+___
 # Welcome to the tModLoader wiki!  
 This place serves as a center for guides related to tModLoader. These guides help to teach basic concepts regarding tModLoader modding and should prove as a useful resource to modders. Please feel free to contribute guides for topics not yet covered, but please refrain from editing well established guides without consulting the developers first.
 
