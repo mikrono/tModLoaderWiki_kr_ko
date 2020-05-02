@@ -114,7 +114,7 @@ Due to this, we can assume that in any code that runs after the if statement, th
 
 ![](https://i.imgur.com/7qmRTG9.png)
 
-In our new code, the cursor index is first incremented by 1, which will move it directly in front on the 'push 654' instruction. Next, we will pop the value 654 off the stack. `OpCodes` are crucial, as they tell the computer what you are actually doing to the stack. The full OpCode documentation can be found [here](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.opcodes?redirectedfrom=MSDN&view=netcore-3.1#fields). For small edits like these, you will only need simple instructions. More complex actions such as branching will only be required on larger edits. 
+In our new code, the cursor index is first incremented by 1, which will move it directly in front of the 'push 654' instruction. Next, we will pop the value 654 off the stack. `OpCodes` are crucial, as they tell the computer what you are actually doing to the stack. The full OpCode documentation can be found [here](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.opcodes?redirectedfrom=MSDN&view=netcore-3.1#fields). For small edits like these, you will only need simple instructions. More complex actions such as branching will only be required on larger edits. 
 
 Now that we've removed 654 from the stack, we can push our own value in place of it, since the code still expects a value. If you remember from before, the value pushed used the instruction `LdcI4`, which we know is for an `int32`. Therefore, we need to push our new number on using the same OpCode:
 
