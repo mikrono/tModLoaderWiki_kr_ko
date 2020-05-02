@@ -1,5 +1,10 @@
-# Introduction
-## About
+___
+[Want to learn how to IL edit other mods? Click here!](Patching-Other-Mods-Using-MonoMod)
+
+**New to IL Editing? Then read this guide first.**
+___
+
+## Introduction
 This guide explores IL editing. IL editing is an expert level technique that can be very powerful. With IL editing, mods can essentially edit code anywhere in the Terraria code base without relying on tModLoader hooks. IL editing stands for Intermediate Language editing, essentially we are editing compiled code on demand. This can be useful for very obscure methods that don't warrant a tModLoader method. With IL editing, it is crucial that your code employs defensive programming techniques to properly anticipate the potential of other mods attempting to modify the same area in the code. IL editing is powerful, but always try to utilize the tModLoader hooks if possible as they can facilitate multiple mods better than IL editing. If you aren't scared yet, read on. 
 
 ### Limitations
