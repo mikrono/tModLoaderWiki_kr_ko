@@ -43,7 +43,7 @@ This obviously isn't going to be of much use to us, so let's add some simple cod
 
 ![](https://i.imgur.com/XXp8JDC.png)
 
-As you required the mod's dll to get the MMHook one, you will be able to view its source code. You can open the dll in [ILSpy](https://github.com/icsharpcode/ILSpy) and do `File > Save Code` to save a copy of the source. If you are IL editing, you can do the same thing with [dnSpy](https://github.com/0xd4d/dnSpy) to inspect IL code. Now that you have the source code, it's time to choose what you want to change. I have no particular goal in mind here, so I'll just pick something at random - let's say we want our mod to stop the Roxcalibur from spawning, if certain conditions are true.
+As you required the mod's dll to get the MMHook one, you will be able to view its source code. You can open the dll in [ILSpy](https://github.com/icsharpcode/ILSpy) and do `File > Save Code` to save a copy of the source. If you are IL editing, you can do the same thing with [dnSpy](https://github.com/0xd4d/dnSpy) to inspect IL code. Now that you have the source code, it's time to choose what you want to change. I have no particular goal in mind here, so I'll just pick something at random - let's say we want our mod to stop the Roxcalibur from spawning and replace it with the merchant NPC, if certain conditions are true.
 
 You should have already found the method you desire, and noted its name, class and namespace. VS autocomplete can now do most of the work for us. Type in `On.` and it should bring up a list of namespaces. You can then simply type and navigate to the one you want. Once you've found the exact method you'd like to hook, type `+=` and VS will bring up a prompt to automatically generate a method. Press `TAB` to insert it:
 
