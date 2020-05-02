@@ -12,6 +12,10 @@ ___
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
 Simply browse for tModLoader on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla.
+
+**How to uninstall?** <br>
+Simply right-click tModLoader -> Manage -> Uninstall.
+Your vanilla install will be unharmed.
 ___
 
 ## Manual Installation
@@ -34,25 +38,16 @@ Tip: Here is an easy way to find where your Terraria files are located:
 2. Browse to the 'Local Files' tab and click on the 'Browse local files...' button
 3. You are now in your Terraria folder (this is where you should install tModLoader)
 
-## Uninstall manual installation
-___
-Uninstallation of tModLoader is even easier than installation. This part covers how to do it when using Steam.
+**How to uninstall?** <br>
+Uninstallation of tModLoader is even easier than installation.
 
 1. Open Steam, go to your game library section and locate Terraria.
 2. Let Steam **[verify the integrity of game files](https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)** for Terraria, this will reconfigure your game files to run vanilla.
 4. Done. You can launch Terraria as usual.
-
-## Uninstall Steam installation
-___
-Uninstallation of tModLoader is even easier if you downloaded it from Steam. All you have to do is:
-
-1. Open Steam, go to your game library section and locate tModLoader.
-2. Uninstall tModloader.
-3. Done.
 
 ## HELP! I've lost my Players / Worlds when I installed tModLoader, what do I do?
 ___
 tModLoader uses separate folders to store player (.plr) and world (.wld) files, mainly because it will store additional data for them. Your vanilla players and worlds will be stored in: `%UserProfile%\Documents\My Games\Terraria` (for Windows) in the _Players_ and _Worlds_ folders respectively. (If you are using the cloud, you will need to get them from there first or they won't be shown. Do this by opening your vanilla client and moving them off the cloud first.) You can select, then copy and paste these folders into the ModLoader directory to migrate your players and worlds to tModLoader. The ModLoader directory is used by tModLoader to store all kinds of files, such as your installed mods. **Please note** that once you play tModLoader, it will create .tplr and .twld files as well as backup files (.bak) for your player and world files. To revert to a backup, simply remove the .plr or .wld file, then rename the .bak file to not include the .bak extension. (If your backup looks like this: playername.plr.bak, then it should be renamed to: playername.plr) If your explorer view is not showing file extensions, you can enable this by opening your 'View' menu and checking the 'File name extensions' checkbox. ([See example](https://i.imgur.com/CzP5yMA.png)) If you can not see this menu, you may need to unfold it by [clicking the down arrow](https://i.imgur.com/O8LqfGz.png) in the top right corner of your explorer view.
 
 ## How do I download and play mods?
-tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you used Option 3 during installation, you have the Steam Workshop when available.
+tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
