@@ -1,10 +1,13 @@
-# Introduction
-## About
+___
+[New to IL editing? Read our other guide about IL editing first, click here!](Expert-IL-Editing)
+___
+
+## Introduction
 This guide will explore the use of MonoMod to patch the code of other mods - a very useful tool for compatibility reasons, as well as a means to allow your mod to better interact with others. Using this, you are essentially given complete freedom of choice as to what changes you wish to make. It involves using techniques that will be familiar to experienced modders - `On` and `IL`, and I recommend trying it with vanilla before moving on to other mods, so you get a grasp of how it works. The expert IL guide can be found [here](https://github.com/tModLoader/tModLoader/wiki/Expert-IL-Editing).
 
 ## Word of Warning
 Note that the third rule of the Mod Browser outlines that: **Your mod will not do anything else deemed illicit, inappropriate, or harmful.
-(Yes, we check the decompiled source of mods from time to time. If your code is obfuscated to prevent easy checking we may ban you if we decide to.) This also includes irresponsible use of reflection, Cecil, or other code that prevents harmonious mod coexistence.** This means that it is prohibited to use any of the techniques mentioned in this guide to deliberately prevent another mod from working, or otherwise compromise it.
+(Yes, we check the decompiled source of mods from time to time. If your code is obfuscated to prevent easy checking we may ban you if we decide to.) This also includes irresponsible use of reflection, Cecil, or other code that prevents harmonious mod coexistence.** This means that it is prohibited to use any of the techniques mentioned in this guide to deliberately prevent another mod from working, or otherwise compromise it. If you do, we will find out and you will be banned from the browser. There are some exceptions, for example deliberately disabling/alter a mechanic because it would crash the game etc. But don't play around!
 
 ## Prerequisites
 If you are going to be IL editing specifically, then the prerequisites for that are identical to those mentioned in the IL guide (linked above). However, as we are editing other mods, there are also a few more things that need to be done, and they will be listed below.
