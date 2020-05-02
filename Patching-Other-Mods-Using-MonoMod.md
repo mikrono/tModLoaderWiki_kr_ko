@@ -21,7 +21,7 @@ An MMHook dll is a special reference file, that contains the `On` and `IL` varia
 * Once it is done, you should find a dll in the same folder called `MMHook_NameOfMod_VersionNumber`: ![](https://i.imgur.com/KsAcmRD.png)
 
 ## Step 2: Adding the MMHook dll as a Reference
-Now that you have the dll, you can add it to your mod. In build.txt, add the line `dllReferences = <Name of MMHook dll>`. The dll must be put in `lib/` folder in the highest level of your mod's directory, as per the information on `dllReferences` states [here](https://github.com/tModLoader/tModLoader/wiki/build.txt). I also recommend adding `sortAfter = <Name of mod you are editing>`, which will mitigate the risk of your mod trying to apply patches before the other mod is loaded.
+Now that you have the dll, you can add it to your mod. In build.txt, add the line `dllReferences = <Name of MMHook dll>`. The dll must be put in a `lib/` folder in the highest level of your mod's directory, as per the information on `dllReferences` states [here](https://github.com/tModLoader/tModLoader/wiki/build.txt). I also recommend adding `sortAfter = <Name of mod you are editing>`, which will mitigate the risk of your mod trying to apply patches before the other mod is loaded.
 
  In order to facilitate development, it is advisable to add it as a Visual Studio reference as well. You can do this by navigating to the drop down menu labelled `Dependencies` in the Solution Explorer, right-clicking it, and selecting `Add Reference`. This will give you the option to Browse, and use it to select your MMHook dll and add it as a VS reference.
 
