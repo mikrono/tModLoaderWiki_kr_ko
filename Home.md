@@ -53,49 +53,49 @@ These pages aim to aid you to learn how to develop mods properly, how to setup y
 ## Easy guides
 These guides are easy and should be used if you are new to the API. Their goal is to get you familiar with tML and help you learn certain classes.
 - [Basic Guide Prerequisites](Basic-Prerequisites)
-- [Basic ModItem](Basic-Item)
-- [Basic ModProjectile](Basic-Projectile)
-- [Basic Minion](Basic-Minion-Guide)
-- [Basic UI Element](Basic-UI-Element)
-- [About NPC Spawning](Basic-NPC-Spawning)
-- [About NPC Drops and Loot](Basic-NPC-Drops-and-Loot)
-- [Autoloading guide](Basic-Autoload)
-- [ModRecipe guide](Basic-Recipes)
-- [Making a basic ammo](Basic-Ammo)
-- [Sounds guide](Basic-Sounds)
-- [ModDust guide](Basic-Dust)
-- [ModTile guide](Basic-Tile)
-- [Basic JSON & ModConfigs](Basic-JSON-&-ModConfigs)
-- [Basic Logging](Logging)
-- [Basic Glowmasks](Basic-glowmask-guide)
-- [Coordinates](Coordinates)
-- [Time and Timers](Time-and-Timers)
-- [Basic netcode](Basic-Netcode)
+- [Basic ModItem Guide](Basic-Item)
+- [Basic ModProjectile Guide](Basic-Projectile)
+- [Basic Minion Guide](Basic-Minion-Guide)
+- [Basic UI Element Guide](Basic-UI-Element)
+- [Basic NPC Spawning Guide](Basic-NPC-Spawning)
+- [Basic NPC Drops and Loot Guide](Basic-NPC-Drops-and-Loot)
+- [Basic Autoloading Guide](Basic-Autoload)
+- [Basic ModRecipe Guide](Basic-Recipes)
+- [Basic Ammo Guide](Basic-Ammo)
+- [Basic Sound Guide](Basic-Sounds)
+- [Basic ModDust Guide](Basic-Dust)
+- [Basic ModTile Guide](Basic-Tile)
+- [Basic ModConfig Guide](Basic-JSON-&-ModConfigs)
+- [Basic Logging Guide](Logging)
+- [Basic Glowmasks Guide](Basic-glowmask-guide)
+- [Basic Coordinates Guide](Coordinates)
+- [Basic Time and Timers Guide](Time-and-Timers)
+- [Basic Netcode Guide](Basic-Netcode)
 
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
-- [Saving and loading using TagCompound](Saving-and-loading-using-TagCompound)
-- [Intermediate Recipes](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
-- [Intermediate netcode](Intermediate-netcode)
-- [Modding with C#6](Intermediate-modding-with-c%236)
-- [Modding with C#7](Intermediate-modding-with-c%237)
-- [Git & mod management](Intermediate-Git-&-mod-management)
+- [Intermediate Saving and loading Guide](Saving-and-loading-using-TagCompound)
+- [Intermediate Recipe Guide](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Intermediate Netcode Guide](Intermediate-netcode)
+- [Intermediate Modding with C#6 Guide](Intermediate-modding-with-c%236)
+- [Intermediate Modding with C#7 Guide](Intermediate-modding-with-c%237)
+- [Intermediate Git & mod management Guide](Intermediate-Git-&-mod-management)
 
 ## Advanced guides
 The following guides are considered advanced, and should only be attempted if the intermediate level is mastered.
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
-- [Vanilla Code Adaption](Advanced-Vanilla-Code-Adaption)
-- [Angular velocity and Linear velocity](Advanced-Angular-velocity-and-Linear-velocity)
-- [Advanced guide to custom UI](Advanced-guide-to-custom-UI)
-- [Fixing Mod Not Fully Unloaded](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
+- [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
+- [Advanced Angular velocity and Linear velocity Guide](Advanced-Angular-velocity-and-Linear-velocity)
+- [Advanced Custom UI Guide](Advanced-guide-to-custom-UI)
+- [Advanced Fixing Mod Not Fully Unloaded Guide](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
 
 ## Expert guides
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
 - [Expert Guide Prerequisites](Expert-Prerequisites)
-- [Cross Mod Content](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
-- [IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
-- [IL Editing another mod](Patching-Other-Mods-Using-MonoMod)
+- [Expert Cross Mod Content Guide](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
+- [Expert IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
+- [Expert IL Editing another mod](Patching-Other-Mods-Using-MonoMod)
 
 ## Vanilla References
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
