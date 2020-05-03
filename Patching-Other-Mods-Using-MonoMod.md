@@ -131,10 +131,39 @@ And now, we should be finished! To confirm, let's test it ingame. Geyser project
 As expected, none spawned with the edit active. Usually, a lot of debugging is necessary before IL edits will work, as they often do not, the first time. Errors thrown by it are almost meaningless, and so your best chance if you are stuck is asking somebody else, or attempting to use a different approach such as the simpler `On`.
 
 ### Addendum
-In rare cases, the method you want to IL edit may not be in any namespaces. This could happen under certain conditions like the method being private. If this happens, you can still IL edit using events and reflection:
+In rare cases, the method you want to IL edit may not be in any namespaces. This could happen under certain conditions like the method being private, or you may not want your mod to depend on strong referencing other mods. If this happens, you can still IL edit using events and reflection, which I will give an example for below.
 
-![](https://i.imgur.com/7Yw5RII.png)
+### Bonus Example: `IL` editing using only weak references and reflection
+Here, I'll show an example of how one could apply an IL patch without having to strong reference a single thing. Principally, this is achieved by using reflection to get a `MethodInfo` from another mod's type, which we can then use to apply our patches to. I'll make a new mod file for this, simply to make it easier to identify what we are doing:
 
-Here, `Limits` is a private method present in a Calamity class, and `value` is our IL edit. We use reflection to get its `MethodInfo`, and then we add our IL edits to that method using `HookEndpointManager`. To add your edit, simply do what you would normally do but instead of adding to a method in an IL namespace, you add to your event. The operand `+=` will call `add`, while `-=` will call `remove`. This method could also be used if you do not want to strong reference the mod you are editing, or include the MMHook dll in your mod's source, as all that is required is reflection to get the `MethodInfo`. Therefore, if you are proficient at reflection, it is possible to IL edit other mods using nothing but weak references.
+![](https://i.imgur.com/83UOtpw.png)
 
+The method we are targeting in Calamity is called `Limits` internally, so I have named the `MethodInfo` object the same thing. It's null to start off with, as this lets us check whether we were actually able to find the method. In order to get this method, we must first get the type that it is present in. In order to do this, we must get the Calamity mod's `Assembly`, because it will contain, among other things, a list of every type present in the assembly. Let's add that to our code:
 
+![](https://i.imgur.com/zgq2eKG.png)
+
+This is quite a substantial addition of code, so let's analyse it. Firstly, we declare a variable of type `Type` and name `calamityPlayerMiscEffects`, which will represent the class of that name from Calamity. Next, we get the `Assembly` object mentioned from before, by assigning it to `Calamity.GetType().Assembly`. `Calamity` is the `Mod` variable that represents our weak referenced mod, and `GetType()` will return its type. We can then use the `Assembly` property to get the assembly, which contains a list of all the types.
+
+Once we have the assembly, the `foreach` statement will iterate through `Assembly.GetTypes()`(`GetTypes()` returns a `Type[]` containing all the types in the assembly). When it hits a type with the name of the Calamity class in question, we will assign our previously null type variable the value of that type.
+
+Lastly, we have prepared an if statement that checks if our type is not null, so that we can extract a method from it - let's do that now:
+
+![](https://i.imgur.com/mHKPVoq.png)
+
+This is quite a simple piece of reflection, and what it will do is get a method of name `Limits` from out type, that matches our `BindingFlags` binding attributes. In this case, the method is static and private, so we used `BindingFlags.Static` and `BindingFlags.NonPublic`. Now that we have the `MethodInfo` object, we can check if it is not null and then apply the patch using an `ILContext.Manipulator` event. I'll write one up now:
+
+![](https://i.imgur.com/0j6NVl5.png)
+
+Here's our event, but oh dear! It looks as though we have an error. Mouseovering it in VS will show us this: 
+
+![](https://i.imgur.com/doHSrdP.png)
+
+Ah, this makes sense. Our `MethodInfo` object is not static, which means we require an object reference. Let's fix this by changing our declaration of the object to make it static:
+
+![](https://i.imgur.com/i0QMlgz.png)
+
+As expected, the error has now disappeared. We're almost finished now! All that is required is to apply our patch is hooking our IL method onto our event, which is very simple indeed. Simply do `ModifyLimits +=`, which will prompt the insertion of an IL hook. Follow the same instructions as the IL example above to use it. Using the `+=` operand will call the `add` part of the event, while `-=` will call `remove` - useful for unloading it if you so choose. Let's see how this is done, then:
+
+![](https://i.imgur.com/4njH0sL.png)
+
+Now, you can IL edit as you normally would! Reflection is an incredibly powerful tool, as shown here, to branch out and deepen your mod's interactions with other mods - the sky is the limit.
