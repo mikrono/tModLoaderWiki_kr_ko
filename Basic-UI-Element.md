@@ -102,7 +102,7 @@ And finally, we end with the most complicated part. I was told all of this code 
             }
         }
 # Results
-At this point, your screen should have a button just like this.
+At this point, your screen should have a button just like this. Notice it's not a menu bar... yet. You'd simply add and arrange more UIElements to it in the future.
 
 ![terraria-button](https://user-images.githubusercontent.com/8439537/80858632-6380b980-8c0f-11ea-950e-c4740ef506c1.png)
 
