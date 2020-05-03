@@ -67,7 +67,7 @@ First, we'll declare a variable of UIState we made above which holds our single 
 Next, we'll declare a variable of the UserInterface that will use the MenuBar later. We did not need to create this class or inherit from it.
         
         private UserInterface _cooldownBar;
-In Load(), let's set the two above to actual instances, then feed the MenuBar to the UserInterface.
+In Load(), let's set the two above to actual instances, then feed the MenuBar to the UserInterface. If you don't Activate() the UI element here while the mod is loading, you will crash once the game starts. It will throw a _Object reference not set to an instance of an object_ error.
 
         public override void Load()
         {
