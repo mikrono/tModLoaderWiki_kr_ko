@@ -47,7 +47,7 @@ Uninstallation of tModLoader is even easier than installation.
 
 If you use GOG, uninstall Terraria and reinstall. Your worlds and players will be saved.
 
-## HELP! I've lost my Players / Worlds when I installed tModLoader, what do I do?
+## My worlds and characters disappeared when I installed!
 ___
 **tModLoader DOES NOT use your vanilla world and player files.** <br>
 The in-game should give you the option to _copy over_ your original vanilla files.<br>
