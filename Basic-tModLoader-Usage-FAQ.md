@@ -73,6 +73,9 @@ Otherwise, the Mod Browser is out of bandwidth. Visit Mod Homepages for alternat
 Most Mods are found here: [Terraria Community Forums](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/)
 Web-based Mod Browser for Mac/Linux users: [Mod Browser](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php)
 
+# Steam Workshop
+The Steam Workshop is not available yet.
+
 # Flowchart
 Sometimes a mod is causing issues, but you can't tell which mod is the problem. Use this flowchart to diagnose and determine the bad mod:    
 ![](https://cdn.discordapp.com/attachments/466247288331829249/481464717043564554/Untitled_Diagram1.png)
