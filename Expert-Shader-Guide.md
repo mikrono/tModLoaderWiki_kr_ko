@@ -1,9 +1,15 @@
+___
+Please read the [expert guide prerequisites](Expert-Prerequisites) beforehand. <br>
+New to modding? Then you should not follow this tutorial <br>
 _Original:_ https://forums.terraria.org/index.php?threads/a-beginners-guide-to-shaders.86128/
+___
 
-Shaders are extremely powerful and, provided you know what you are doing, lightweight tools to create fancy visuals. However, they are also quite complex, and the implementation barrier is rather high. The purpose of this guide is to help remedy this, and provide an introductory course for writing your very own shaders for Terraria modding.
-
-![Lysergic Acid Dye](https://i.imgur.com/GZ4aAqa.gif)
 # Introduction
+
+Shaders are extremely powerful and, provided you know what you are doing, lightweight tools to create fancy visuals. 
+However, they are also quite complex, and the implementation barrier is rather high. The purpose of this guide is to help remedy this, and provide an introductory course for writing your very own shaders for Terraria modding.
+
+[[https://i.imgur.com/GZ4aAqa.gif|inline]] 
 
 ## What is a shader?
 
@@ -56,7 +62,7 @@ float2 uImageSize1;
 
 ## Screen shaders
 
-![Screen shader example](https://i.imgur.com/pjpwfxO.png)
+[[https://i.imgur.com/pjpwfxO.png|inline]]
 
 Terraria's screen shaders modify the contents of the entire screen rather than a specific texture. The most common application of screen shaders is to give the screen a certain tint, but they can be used for other effects as well, such as distortion effects, overlays or simply turning the screen upside down, if for whatever reason you'd want to do that. Screen shaders should not be confused with custom skies, such as the meteors that fall in the background at a Solar Pillar: those have nothing to do with shaders, and are not covered in this guide.
 
