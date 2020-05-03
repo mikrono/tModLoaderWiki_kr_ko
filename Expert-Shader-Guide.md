@@ -171,7 +171,7 @@ So two things happened here: one, we added `float2 coords : TEXCOORD0` as a para
 
 ![Coordinate illustration](https://i.imgur.com/A6Chqtu.png)
 
-So, imagine the shader running on this texture. It will start in the top left corner, in which case `coords` will be equal to (0, 0). Halfway through the first row, it'll be (0.5, 0). In the dead center of the texture, it will be (0.5, 0.5), and at the bottom left corner it'll be (1, 1).
+So, imagine the shader running on this texture. It will start in the top left corner, in which case `coords` will be equal to (0, 0). Halfway through the first row, it'll be (0.5, 0). In the dead center of the texture, it will be (0.5, 0.5), and at the bottom right corner it'll be (1, 1).
 
 What does `tex2D` do then? Simply put, it samples the colour data of `uImage0` at position `coords`. And because the shader runs for every pixel, and `coords` updates accordingly, essentially it's tracing the texture pixel by pixel. So what this pass does is nothing short of simply drawing your texture.
 
