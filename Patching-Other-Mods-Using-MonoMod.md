@@ -162,7 +162,7 @@ Ah, this makes sense. Our `MethodInfo` object is not static, which means we requ
 
 ![](https://i.imgur.com/i0QMlgz.png)
 
-As expected, the error has now disappeared. We're almost finished now! All that is required is to apply our patch is hooking our IL method onto our event, which is very simple indeed. Simply do `ModifyLimits +=`, which will prompt the insertion of an IL hook. Follow the same instructions as the IL example above to use it. Using the `+=` operand will call the `add` part of the event, while `-=` will call `remove` - useful for unloading it if you so choose. Let's see how this is done, then:
+As expected, the error has now disappeared. We're almost finished now! All that is required is to apply our patch by hooking our IL method onto our event, which is very simple indeed. Simply do `ModifyLimits +=`, which will prompt the insertion of an IL hook. Follow the same instructions as the IL example above to use it. Using the `+=` operand will call the `add` part of the event, while `-=` will call `remove` - useful for unloading it if you so choose. Let's see how this is done, then:
 
 ![](https://i.imgur.com/4njH0sL.png)
 
