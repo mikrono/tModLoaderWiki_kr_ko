@@ -45,7 +45,7 @@ Uninstallation of tModLoader is even easier than installation.
 2. Let Steam **[verify the integrity of game files](https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)** for Terraria, this will reconfigure your game files to run vanilla.
 4. Done. You can launch Terraria as usual.
 
-If you use GOG, uninstall and reinstall. Your worlds and players will be saved.
+If you use GOG, uninstall Terraria and reinstall. Your worlds and players will be saved.
 
 ## HELP! I've lost my Players / Worlds when I installed tModLoader, what do I do?
 ___
