@@ -10,6 +10,7 @@
   - Linux: `~/.local/share/Terraria/ModLoader/Mods` OR `$XDG_DATA_HOME/Terraria`
   - Mac: `/Users/account/Library/Application Support/Terraria`
 - **Most mods are hosted in the "Mod Browser". You can easily browse mods and use the download button to download mods. Downloaded mods aren't enabled by default.**
+- If you use the Steam version, you can also get mods from the Steam Workshop **when it is available.**
 - You can also find mods in other places and add them to the Mods folder, this is useful when the Mod Browser is down or the mod is too big for the Mod Browser.  
 
 # Enabling Mods
