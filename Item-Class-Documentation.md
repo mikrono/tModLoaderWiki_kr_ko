@@ -31,7 +31,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [UseSound](#usesound)<a name="usesound"></a>|LegacySoundStyle | null | The sound that your item makes when used. <br>Ex: `item.UseSound = SoundID.Item1;`|
 | [damage](#damage)<a name="damage"></a>|int | -1| The base damage inflicted by the item. |
 | [knockBack](#knockback)<a name="knockback"></a>|float | 0f| The force of the knock back. Max value is 20.  |
-| [shoot](#shoot)<a name="shoot"></a>|int |0 | The ID of the projectile that is fired by the item on use. |
+| [shoot](#shoot)<a name="shoot"></a>|int | 0 | The ID of the projectile that is fired by the item on use. If this weapon uses useAmmo, then this value is ignored as the projectile will be decided by the ammo item, but shoot should still be 10 by convention. |
 | [shootSpeed](#shootspeed)<a name="shootspeed"></a>| float| 0f| The velocity in pixels the projectile fired by the item will have. Actual velocity depends on the projectile being fired. If your weapon is shooting projectiles and they are stationary, change this to something like 10f. Throwing Knife uses 10f. Held projectiles like Vortex Beater use shootSpeed to determine how far away from the player to hold the projectile. |
 | [noMelee](#nomelee)<a name="nomelee"></a>| bool |false | If true, the item's using animation will not deal damage. Set to true on most weapons that aren't swords. |
 | [accessory](#accessory)<a name="accessory"></a>|bool |false | Whether the item is an accessory. |
