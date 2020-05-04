@@ -16,7 +16,18 @@ You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 
 ## Code patcher
 ___
-**Huge thanks to [ChickenBones](https://github.com/Chicken-Bones) for creating the code patcher!**
+**Current TEMPORARY steps for developer setup:**
+* pull master
+
+* run `git submodule update --init --recursive` (or GUI equivalent) in git bash
+
+* [install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
+
+* revalidate steam files, or have "Terraria_v1.3.5.3.exe" and "TerrariaServer_v1.3.5.3.exe" present in the steam dir
+
+* build and run the Setup program from `setup/setup.sln`
+
+* click the Setup button
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
 
@@ -90,4 +101,4 @@ ___
 4. Run `git stash pop`
 
 ## Further online assistance
-If you would like to contact us or tModLoader users, it's best to join our [Discord server](https://discord.me/tmodloader). Discord is a chat and voice application we've used for over 2 years to communicate with each other. It's similar to IRC chats. To use Discord you will need to register a new account on [their website](https://discordapp.com/).
+If you would like to contact us or tModLoader users, it's best to join our [Discord server](https://tmodloader.net/discord). Discord is a chat and voice application.
