@@ -117,4 +117,4 @@ The best practice is to put all code that directly uses a weakReference (potenti
 
 # No References, aka reflection (Expert)
 
-Using reflection to do cross mod is not ideal. For one, reflection relies on strings for accessing classes and fields of the target mod. As the target mod updates and changes, your mod will fail as well. This option is not cooperative and can be inefficient. This approach will not be explained here as it is a poor choice.
+Using reflection to do cross mod is not ideal. For one, reflection relies on strings for accessing classes and fields of the target mod. As the target mod updates and changes, your mod will fail as well. This option is not cooperative and can be inefficient. This approach will not be explained here as it is a poor choice. It is much better if you work together with the author(s) of the other mod(s), so they can open up their mod for modifications you want to make with your mod. Using Github together is your best bet!
