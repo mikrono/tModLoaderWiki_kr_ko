@@ -4,7 +4,7 @@ If you pirated Terraria, we can't help you. tModLoader won't work. Please don't 
 # Installation
 ### The following files were missing and could not be installed:.....
 ![](http://i.imgur.com/TSKfacG.png)  
-Solution: You didn't unzip the files prior to installation. Don't know how to unzip? -> [Google](http://www.google.com)
+Solution: You didn't unzip the files prior to installation. Don't know how to unzip? -> [7-Zip](https://www.7-zip.org)
 
 ### System.DllNotFoundException: Unable to load DLL'CSteamworks'.....
 ![](http://i.imgur.com/ZbbskuQ.png)  
