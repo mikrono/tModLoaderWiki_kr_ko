@@ -19,15 +19,17 @@ ___
 **Current TEMPORARY steps for developer setup:**
 * pull master
 
-* run `git submodule update --init --recursive` (or GUI equivalent) in git bash
+* Run `git submodule update --init --recursive` (or GUI equivalent) in git bash
 
-* [install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
+* [Install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
-* revalidate steam files, or have "Terraria_v1.3.5.3.exe" and "TerrariaServer_v1.3.5.3.exe" present in the steam dir
+* Revalidate steam files, or have "Terraria_v1.3.5.3.exe" and "TerrariaServer_v1.3.5.3.exe" present in the steam dir
 
-* build and run the Setup program from `setup/setup.sln`
+* Open `setup/setup.sln` and try building the solution. If there are any errors about missing dependencies, run `dotnet restore setup.csproj` in the `Package Manager Console` and try again.
 
-* click the Setup button
+* Run the Setup program from `setup/setup.sln`
+
+* Click the Setup button
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
 
