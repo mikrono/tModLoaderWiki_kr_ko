@@ -1,4 +1,4 @@
-A excerpt from "[tModLoader guide for players](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players)":
+An excerpt from "[tModLoader guide for players](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players)":
 
 ## Steam Installation
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
