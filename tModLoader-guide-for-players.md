@@ -55,7 +55,7 @@ You do not have to worry about your vanilla saves being modified; they will be c
 
 tModLoader uses separate folders to store player (.plr) and world (.wld) files, mainly because it will store additional data for them. Your vanilla players and worlds will be stored in: `%UserProfile%\Documents\My Games\Terraria` (for Windows) in the _Players_ and _Worlds_ folders respectively.
 
-If the automatic copy doesn't work, copy the "World" and "Player" folders from "%UserProfile%\Documents\My Games\Terraria" to "%UserProfile%\Documents\My Games\Terraria\tModLoader".
+If the automatic copy doesn't work, copy the "World" and "Player" folders from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\tModLoader`.
 
 ## How do I download and play mods?
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
