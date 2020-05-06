@@ -35,7 +35,7 @@ You can now experiment a little more by changing some of the other item values. 
 
 ## Next Steps
 
-Now that you have a simple mod with a simple sword, it is time to branch out an learn other skills. Take it slow and experiment with something you want to learn. If you are seeking help from other modders on the Forum or Discord, it is best to phrase your question in terms of Vanilla things. For example, if you are curious how the Molten Fury changes Wooden Arrows to Flaming Arrows, it would be wise to ask "How does the Molten Fury change the projectile it shoots only when Wooden Arrows are used as ammo?" Phrasing your questions in this manner is most effective.
+Now that you have a simple mod with a simple sword, it is time to branch out and learn other skills. Take it slow and experiment with something you want to learn. If you are seeking help from other modders on the Forum or Discord, it is best to phrase your question in terms of Vanilla things. For example, if you are curious how the Molten Fury changes Wooden Arrows to Flaming Arrows, it would be wise to ask "How does the Molten Fury change the projectile it shoots only when Wooden Arrows are used as ammo?" Phrasing your questions in this manner is most effective.
 
 Continue reading to learn more about tModLoader and how to get better.
 
