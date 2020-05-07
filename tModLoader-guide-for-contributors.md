@@ -57,6 +57,11 @@ ___
     * src/tModLoader/
 6. To open up the tModLoader workspace, navigate to solutions/ and open tModLoader.sln
 
+## Testing your Code
+If you are testing bug fixes, simply debugging the WindowsDebug configuration is all that is required. Note that when you launch tModLoader.sln, LinuxRelease will be selected, you have to switch this each time you launch tModLoader.sln.
+
+If you are testing a new hook/field/method, you'll need to run setup.bat again and run Setup Debugging after saving your changes in tModLoader.sln. This step will update your ModCompile folder so that it is in sync with your new changes, allowing mods to build properly. After that, make sure WindowsDebug is built and debug either ExampleMod where you are using the new hook or WindowsDebug.
+
 ## Getting Example Mod into the Mod Sources folder
 ___
 As you add features to tModLoader, you'll want to add examples of using those features to Example Mod. Example Mod, however, needs to be located in the Mod Sources folder to build and test the mod. While you could copy and paste the folder back and forth between your Mod Sources folder and this repository folder whenever you wish to push your changes, a better approach can be achieved by using a symbolic link. A symbolic link allows a single folder to exist in 2 places at once. By creating a symbolic link in Mod Sources pointing to the ExampleMod folder in this repository, you can easily keep ExampleMod up to date and push changes to Github. Here is the command for creating the symbolic link on Windows. 
