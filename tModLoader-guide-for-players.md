@@ -58,4 +58,9 @@ tModLoader uses separate folders to store player (.plr) and world (.wld) files, 
 If the automatic copy doesn't work, copy the "World" and "Player" folders from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\tModLoader`.
 
 ## How do I download and play mods?
+___
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
+
+## I have too little memory to run multiple mods!
+___
+If you have 4 gigabytes of ram or less, we can't help you. If you have 5 or more, try [tModLoader 64-bit](https://forums.terraria.org/index.php?threads/1-3-tmodloader-fna-32bit-64bit-branch-of-tml.75644/). It's unofficial, so contact the developers of them when you have issues.
