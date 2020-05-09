@@ -3,6 +3,11 @@ The Mod Browser is an online component of tModLoader where Mod Makers can publis
 ### Direct Download
 If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `%userprofile%/Documents/My Games/Terraria/ModLoader/Mods/`
 
+### Mod Browser
+That's easy, just download from Terraria. If that doesn't work, refer to Option 1.
+
+### Steam Workshop
+This will only work for the Steam version of tModLoader when it is available. Workshop support will come after the release of tModloader on Steam.
 ***
 **Modders wishing to publish their mod to the Mod Browser should continue reading.**
 ***
