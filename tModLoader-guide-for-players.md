@@ -63,4 +63,4 @@ tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browse
 
 ## I have too little memory to run multiple mods!
 ___
-If you have 4 gigabytes of ram or less, we can't help you. If you have 5 or more, try [tModLoader 64-bit](https://forums.terraria.org/index.php?threads/1-3-tmodloader-fna-32bit-64bit-branch-of-tml.75644/). It's unofficial, so contact the developers of them when you have issues.
+If you have 4 gigabytes of ram or less, we can't help you. If you have 5 or more, try [tModLoader 64-bit](https://forums.terraria.org/index.php?threads/1-3-tmodloader-fna-32bit-64bit-branch-of-tml.75644/). It's unofficial, so contact the developers of them when you have issues. *This version is NOT available on Steam.*
