@@ -13,7 +13,7 @@ To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) o
 Simply browse for tModLoader on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla.
 
-**How to uninstall?** <br>
+### How to uninstall? <br>
 Simply right-click tModLoader -> Manage -> Uninstall.
 Your vanilla install will be unharmed.
 ___
