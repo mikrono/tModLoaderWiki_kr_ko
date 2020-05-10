@@ -16,10 +16,8 @@ The tModLoader installation will exist alongside the vanilla installation, allow
 ### How to uninstall? <br>
 Simply right-click tModLoader -> Manage -> Uninstall.
 Your vanilla install will be unharmed.
-___
 
 ## Manual Installation
-___
 This installation is suitable for all players, including as non-steam players.
 
 Installing tModLoader is relatively easy. If you want to ensure you can easily revert back to vanilla, you should make a backup copy of your Terraria.exe and TerrariaServer.exe, however if you use the installer jar it will create these backups for you (Windows only, Mac and Linux don't need backups as we don't replace the files).
@@ -47,7 +45,6 @@ Tip: Here is an easy way to find where your Terraria files are located:
 If you use GOG, uninstall Terraria and reinstall. Your worlds and players will be saved.
 
 ## My worlds and characters disappeared when I installed!
-___
 **tModLoader DOES NOT use your vanilla world and player files.** <br>
 The in-game should give you the option to _copy over_ your original vanilla files.<br>
 You do not have to worry about your vanilla saves being modified; they will be copied for modded gameplay use. When you go back to vanilla, you will see your original saves.<br>
@@ -57,9 +54,7 @@ tModLoader uses separate folders to store player (.plr) and world (.wld) files, 
 If the automatic copy doesn't work, copy the "World" and "Player" folders from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\tModLoader`.
 
 ## How do I download and play mods?
-___
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
 
 ## I have too little memory to run multiple mods!
-___
-If you have 4 gigabytes of ram or less, we can't help you. If you have 5 or more, try [tModLoader 64-bit](https://forums.terraria.org/index.php?threads/1-3-tmodloader-fna-32bit-64bit-branch-of-tml.75644/). It's unofficial, so contact the developers of them when you have issues. **This version is NOT available on Steam.**
+Terraria and tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit variant of tModLoader.
