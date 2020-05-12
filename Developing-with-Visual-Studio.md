@@ -113,6 +113,9 @@ After fixing:
 [Example](https://i.imgur.com/rH9Ca7q.png)   
 5. Make sure the Solution Explorer is in solution view and not folder view. [Button Location](https://i.imgur.com/NIOP3fn.png)     
 
+## The SDK 'Microsoft.NET.Sdk' specified could not be found.
+This means you skipped installing the `.NET desktop development` workload mentioned at the top of this page. [Prerequisites](#Prerequisites)
+
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
 Make sure you are using the updated .csproj and this error will automatically fix itself. See [Creating or Updating an existing project for an old mod](#creating-or-updating-an-existing-project-for-an-old-mod) to update your csproj.
 
