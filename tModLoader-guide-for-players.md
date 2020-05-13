@@ -59,3 +59,6 @@ tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browse
 
 ## I have too little memory to run multiple mods!
 Terraria and tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit variant of tModLoader.
+
+## I use macOS Catalina. What do I do?
+If you experience any problems, try using the 64-bit variant of tModLoader.
