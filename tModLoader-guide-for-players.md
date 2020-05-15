@@ -1,3 +1,10 @@
+
+
+___
+want to contribute to tModLoader](tModLoader-guide-for-contributors)**
+
+___
+
 ## Steam Installation
 **Note: This method will be available starting May 16, 2020** <br>
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
