@@ -1,5 +1,3 @@
-If the automatic copy doesn't work, copy the "World" and "Player" folders from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\tModLoader`.
-
 ## How do I download and play mods?
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time and can only be used if you installed it through Steam.**
