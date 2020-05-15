@@ -7,7 +7,7 @@ I don't want to just play mods, [I want to contribute to tModLoader](https://git
 ___
 
 ## Steam Installation
-**Note: This method will be available starting May 16, 2020** <br>
+**Note: This method will be available at 1 PM (EST)** <br>
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
 Simply browse for tModLoader on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla.
