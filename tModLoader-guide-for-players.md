@@ -2,6 +2,7 @@
 
 ___
 I don't want to just play mods, [I want to make them](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-developers)
+
 I don't want to just play mods, [I want to contribute to tModLoader](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-contributors)
 ___
 
