@@ -38,16 +38,15 @@ tModLoader uses its own code patcher. If you want to contribute to tModLoader, y
 ### Getting the tModLoader code for the first time
 ___
 1. Clone this repository
-    * (Temporary Extra Step) Download Terraria 1.3.5.2 from steam:
-        * **Warning: As of February 2020, it seems 1.3.5.2 is no longer downloadable with this method, you may have to get the exe file from someone who has downloaded it previously. Alternatively, you can use 'DepotDownloader' with the following command: `depotdownloader -app 105600 -depot 105601 -manifest 4963288974433434036`.**
+    * (Temporary Extra Step) Download Terraria 1.3.5.3 from steam:
         * In your web browser or file explorer, paste `steam://open/console` and hit enter. (You may have to confirm that you want to open Steam Client Bootstrapper) This will bring up the steam console prompt
-        * Paste `download_depot 105600 105601 4963288974433434036` into the prompt and press enter. ([Image](https://i.imgur.com/fg2WVRM.png)) This will start a download of the Terraria 1.3.5.2 files
-        * Wait until your download has finished. The console won't give much feedback, and the download might be slower than normal steam downloads, but you should see network activity in Library->Downloads. You'll know it is done when you see `Depot download complete : "C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601" (10431 files, manifest 4963288974433434036)` in the steam console window. This can take an hour or more because of the slow download server.
+        * Paste `download_depot 105600 105601 8115792227484220109` into the prompt and press enter. ([Image](https://i.imgur.com/fg2WVRM.png)) This will start a download of the Terraria 1.3.5.3 files
+        * Wait until your download has finished. The console won't give much feedback, and the download might be slower than normal steam downloads, but you should see network activity in Library->Downloads. You'll know it is done when you see `Depot download complete : "C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601" (10431 files, manifest 8115792227484220109)` in the steam console window. This can take an hour or more because of the slow download server.
         * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files in `C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601` or move them to a convenient location.
 2. Open setup.bat in the root folder
     * If setup.bat won't open, you must unblock all the files in the cloned repository
     * If you get an error that mentions File Cannot be Found, you might need to make sure `msbuild` is on your `PATH`. For a VS 2019 install, this should be in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`, so add that to your `PATH`. If you don't know how to edit your `PATH`, google it. Make sure to restart setup.bat after editing your PATH for it to take effect.
-3. Select your vanilla terraria.exe (must be vanilla) ([See example](https://i.imgur.com/MccGyvB.png)) Remember that this needs to be the 1.3.5.2 version of Terraria that we downloaded earlier in step 1.
+3. Select your vanilla terraria.exe (must be vanilla) ([See example](https://i.imgur.com/MccGyvB.png)) Remember that this needs to be the 1.3.5.3 version of Terraria that we downloaded earlier in step 1.
 4. Click on 'Setup' (top left button)
     * **Warning:** decompilation can take several hours to complete depending on your hardware. It's also likely that your computer **completely freezes** during the process, mainly once it hits NPC.cs It is recommended that you enable the 'Single Decompile Thread' option ([See example](https://i.imgur.com/6mBbZnQ.png)) if you don't have very high end hardware. It's unwise to even attempt a decompile if you have less than 8 GB RAM. Having an SSD, powerful CPU and a high amount of RAM will significantly speed up the decompilation process.
 5. When decompilation is complete, verify that you have these folders:
