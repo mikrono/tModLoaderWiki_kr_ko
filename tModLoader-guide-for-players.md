@@ -56,7 +56,7 @@ If the automatic copy doesn't work, copy the "World" and "Player" folders from `
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time and can only be used if you installed it through Steam.**
 
 ## I have too little memory to run multiple mods!
-Terraria and tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit variant of tModLoader.
+Terraria and tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial [64-bit variant of tModLoader](https://sites.google.com/view/offsitewarning/warning).
 
 ## I use macOS Catalina. What do I do?
-If you experience any problems, try using the 64-bit variant of tModLoader.
+If you experience any problems, try using the [64-bit variant of tModLoader](https://sites.google.com/view/offsitewarning/warning).
