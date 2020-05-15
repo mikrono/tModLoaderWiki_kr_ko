@@ -1,7 +1,3 @@
-## How do I download and play mods?
-tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time.**
-tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods. If you use the official Steam installation, you may get access to Steam Workshop mods, **but as of yet there is no Steam Workshop support. This will come at a later time and can only be used if you installed it through Steam.**
-___
 Coming from Steam? <br>
 Looking for install instructions? [Click here!](tModLoader-guide-for-players) (Steam and non-steam) <br>
 [I don't just want to play mods, I want to create them](tModLoader-guide-for-developers) <br>
