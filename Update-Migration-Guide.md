@@ -1,5 +1,10 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here.
 
+# v0.11.7 (Steam Release)
+It is required to have a fresh Terraria v1.4 installation.
+tModLoader from now on _must not_ be installed into the Terraria folder, but in a separate folder in case of manual installation.
+No additional changes to mods should be required.
+
 # v0.11.5
 v0.11.5 introduced `ContentInstance`, a faster and simpler way to access IDs and instances of modded classes. 
 
