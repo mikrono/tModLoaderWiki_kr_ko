@@ -1,3 +1,4 @@
+Coming from Steam? <br>
 Looking for install instructions? [Click here!](tModLoader-guide-for-players) (Steam and non-steam) <br>
 [I don't just want to play mods, I want to create them](tModLoader-guide-for-developers) <br>
 [I don't just want to play mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)
