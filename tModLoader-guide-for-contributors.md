@@ -17,7 +17,7 @@ You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 ## Code patcher
 ___
 **Current TEMPORARY steps for developer setup:**
-* pull master
+* Pull the master branch
 
 * Run `git submodule update --init --recursive` (or GUI equivalent) in git bash
 
