@@ -27,6 +27,37 @@ Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender.
 ![](https://i.imgur.com/Wjv2nx2.png)    
 Solution. Delete the logs folder. If it comes back, you can try renaming the ModLoader folder to ModLoaderOld or completely reinstalling Terraria.
 
+This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add tModLoader.exe to your whitelist, for further instructions on how to do this continue reading below.
+
+![Right-Click and open security dashboard.](https://i.imgur.com/2Lj2Wrx.png)  
+Right-Click Windows Security in your system tray and select "View Security Dashboard"
+
+![Select "Virus & Threat protection"](https://i.imgur.com/Uc5a5WL.png)  
+Left-Click "Virus & threat Protection"
+
+![](https://i.imgur.com/OJNFSd5.png)  
+From there, Left-Click "Manage settings" under "Virus & threat protection settings"
+
+![Scroll down.](https://i.imgur.com/2nhsK3a.png)  
+Scroll down until you find the "Controlled folder access" section, and then left-click "Manage Controlled folder access"
+
+![](https://i.imgur.com/DnT3LLQ.png)  
+Left-Click "Allow an app through controlled folder access"
+
+![](https://i.imgur.com/Az03a4f.png)  
+![](https://i.imgur.com/WLovfFc.png)  
+Left-Click "Add an allowed app", and select "Recently blocked apps"
+
+![](https://i.imgur.com/tsXmj1b.png)  
+Scroll through the list until you find "tModLoader.exe", and click the + and then close, after this you're done! (If you cannot find "tModLoader.exe" on your list, then continue with the below steps)
+
+![Extra Step 1](https://i.imgur.com/0ruiXoA.png)  
+Back in the "Add allowed app" selection, left-click "Browse all apps"
+
+![Extra Step 2](https://i.imgur.com/E7pnDZo.png)  
+Nagivate to wherever you installed your tModLoader and double-click or select and left-click then open "tModloader.exe" this will add the file to your whitelist. Done!
+
+
 ### Host and Play: The system cannot find the file specified
 ![](https://i.imgur.com/Vm2b78X.png)    
 Simply put, you didn't follow the install instructions. Check the install directory, usually "C:\Program Files (x86)\Steam\steamapps\common\Terraria" (NOT "C:\Documents\My Games\Terraria\ModLoader"!), and make sure that tModLoaderServer.exe has been copied into the folder. If not, take the file from the tModLoader zip file and place it there.
