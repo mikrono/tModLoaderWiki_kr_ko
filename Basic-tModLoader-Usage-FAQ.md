@@ -27,6 +27,9 @@ Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender.
 ![](https://i.imgur.com/Wjv2nx2.png)    
 Solution. Delete the logs folder. If it comes back, you can try renaming the ModLoader folder to ModLoaderOld or completely reinstalling Terraria.
 
+### System.UnauthorizedAccessException: Access to the path is denied.  
+![](https://i.imgur.com/ZjhIvNo.png)
+
 This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add tModLoader.exe to your whitelist, for further instructions on how to do this continue reading below.
 
 ![Right-Click and open security dashboard.](https://i.imgur.com/2Lj2Wrx.png)  
