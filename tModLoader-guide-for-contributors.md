@@ -51,7 +51,6 @@ ___
     * **Warning:** decompilation can take several hours to complete depending on your hardware. It's also likely that your computer **completely freezes** during the process, mainly once it hits NPC.cs It is recommended that you enable the 'Single Decompile Thread' option ([See example](https://i.imgur.com/6mBbZnQ.png)) if you don't have very high end hardware. It's unwise to even attempt a decompile if you have less than 8 GB RAM. Having an SSD, powerful CPU and a high amount of RAM will significantly speed up the decompilation process.
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
-    * src/merged/
     * src/Terraria/
     * src/tModLoader/
 6. To open up the tModLoader workspace, navigate to solutions/ and open tModLoader.sln
