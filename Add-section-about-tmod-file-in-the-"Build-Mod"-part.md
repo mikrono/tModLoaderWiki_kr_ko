@@ -19,7 +19,7 @@ Open up your file browser and navigate to the `Documents\My Games\Terraria\ModLo
 7. **Items/[ItemName].png** - The corresponding sprite.  
 
 ## Learn how to Build the Mod
-We now have a ready-made mod ready to be built. Start up tModLoader and click on the Mod Sources menu item. Now click the build and reload button.
+We now have a ready-made mod ready to be built. Start up tModLoader and click on the Mod Sources menu item. Now click the build and reload button. If you didn't get any errors, your mod will show up in the Mods menu!
 
 ![](http://i.imgur.com/jbCpSYc.png)
 
@@ -28,6 +28,8 @@ Now go in game, make a workbench and mine 10 dirt blocks, and you should see tha
 ![](http://i.imgur.com/UQb3tXq.png)
 
 Wow! Amazing. But 50 damage isn't enough. We will now do our first actual programming. Open up the `Mod Sources\[ModName]\Items\TutorialSword.cs` file in Notepad++. Find the line with `item.damage = 50;` and change 50 to 100. Also at this time, let's change `Tooltip.SetDefault("This is a modded sword.");` just for fun. Remember not to mess up the syntax that you learned in the Basic Prerequisites lesson. Now, save the file! Next, go in game, once again build and reload the mod and acquire the sword again. You should see the new damage and the new tooltip.
+
+Lastly, the mod you built is packaged into a `.tmod` file called `[ModName]`, found in `ModLoader/Mods`. If you want your friends to play your mod but don't want to publish it yet, you can send them this file and have them place it in the same folder.
 
 ## Experiment a little
 
