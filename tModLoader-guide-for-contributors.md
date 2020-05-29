@@ -45,7 +45,7 @@ ___
         * Paste what you just copied into the command prompt window and hit enter.
             * If you have Steam Guard, it will prompt you to put in the code that Steam sends to you. 
         * The download of the Terraria 1.3.5.3 files should start. Wait until your download has finished. The console is very verbose. You'll know it is done when you see a line that starts with `Depot 105601` followed by however big the data was.
-        * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files where they are or move the 'foldername' folder to wherever you want.
+        * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files where they are or move the `folder`, uh, folder to wherever you want.
 2. Open setup.bat in the root folder
     * If setup.bat won't open, you must unblock all the files in the cloned repository
     * If you get an error that mentions File Cannot be Found, you might need to make sure `msbuild` is on your `PATH`. For a VS 2019 install, this should be in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`, so add that to your `PATH`. If you don't know how to edit your `PATH`, google it. Make sure to restart setup.bat after editing your PATH for it to take effect.
