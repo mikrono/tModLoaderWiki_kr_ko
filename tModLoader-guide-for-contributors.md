@@ -38,11 +38,13 @@ tModLoader uses its own code patcher. If you want to contribute to tModLoader, y
 ### Getting the tModLoader code for the first time
 ___
 1. Clone this repository
-    * (Temporary Extra Step) Download Terraria 1.3.5.3 from steam:
-        * In your web browser or file explorer, paste `steam://open/console` and hit enter. (You may have to confirm that you want to open Steam Client Bootstrapper) This will bring up the steam console prompt
-        * Paste `download_depot 105600 105601 8115792227484220109` into the prompt and press enter. ([Image](https://i.imgur.com/fg2WVRM.png)) This will start a download of the Terraria 1.3.5.3 files
-        * Wait until your download has finished. The console won't give much feedback, and the download might be slower than normal steam downloads, but you should see network activity in Library->Downloads. You'll know it is done when you see `Depot download complete : "C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601" (10431 files, manifest 8115792227484220109)` in the steam console window. This can take an hour or more because of the slow download server.
-        * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files in `C:\Program Files (x86)\Steam\steamapps\content\app_105600\depot_105601` or move them to a convenient location.
+    * (Temporary Extra Step) Download Terraria 1.3.5.3 from steam: 
+        * In your web browser, visit https://github.com/SteamRE/DepotDownloader/releases and download the latest release of DepotDownloader (2.3.5 as of May 21st 2020).
+        * Unzip the folder, open it up, and open a new command prompt window in that folder. The easiest way to do this is to type `cmd` in the folder address bar and then hit enter.
+        * Open up a blank notepad or notepad++ file and paste `dotnet DepotDownloader.dll -app 105600 -depot 105601 -manifest 8115792227484220109 -dir folder -username steamUsername -password steamPassword` into the file (this is a temporary file so feel free to delete it without saving once Terraria is downloaded). Change `folder` to the name of the folder you want (this will be in the current folder where DepotDownloader is), `steamUsername` to your personal Steam username, and `steamPassword` to your personal Steam password. Copy everything in this file.
+        * Paste what you just copied into the command prompt window and hit enter. This will start a download of the Terraria 1.3.5.3 files.
+        * Wait until your download has finished. The console is very verbose. You'll know it is done when you see a line that starts with `Depot 105601` followed by however big the data was.
+        * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files where they are or move the 'foldername' folder to wherever you want.
 2. Open setup.bat in the root folder
     * If setup.bat won't open, you must unblock all the files in the cloned repository
     * If you get an error that mentions File Cannot be Found, you might need to make sure `msbuild` is on your `PATH`. For a VS 2019 install, this should be in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`, so add that to your `PATH`. If you don't know how to edit your `PATH`, google it. Make sure to restart setup.bat after editing your PATH for it to take effect.
