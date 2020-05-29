@@ -27,7 +27,7 @@ One last thing you will need is a picture editor. We will make all our sprites i
 * [Krita](https://krita.org/en/) -- Krita is a free and Open-Source raster graphics editor capable of making pixelart sprites as refferenced on [this video](https://youtu.be/OmnpKQITm3I)
 * [GNU Image Manipulator (GIMP)](https://www.gimp.org/) -- Free and Open-Source cross-platform image editor with support for pretty much everything, but it's initial configuration is complicated. Referencing [video demonstraction](https://youtu.be/s8HDwkXq6jk?t=65)
 * [Inkscape](https://inkscape.org/) -- Free and Open-Source vector graphics editor as referenced on [this video](https://www.youtube.com/watch?v=Se7WVuyIEnU)
-* [Adobe Photoshop](www.adobe.com/products/photoshop.html) -- Expensive and capable, but not intended for sprite work
+* [Adobe Photoshop](www.adobe.com/products/photoshop.html) -- Very capable, but expensive and not intended for sprite work
 * [Piskel](http://www.piskelapp.com/) -- Free and quite popular amongst spriters
 * [Aseprite](https://github.com/aseprite/aseprite) -- Open-source, meaning it's free, but you have to compile it yourself since they don't distribute copies for free. You can also get Aseprite at a cost on Steam [here](https://store.steampowered.com/app/431730/Aseprite/). As a plus, Aseprite is built for spriting, and it's fairly easy and intuitive to use.
 
