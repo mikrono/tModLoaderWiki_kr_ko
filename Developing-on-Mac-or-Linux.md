@@ -80,6 +80,135 @@ Using the skeleton generator in-game, the following changes can be made to the g
 </Project>
 ```
 
+## Tweaks to MonoDevelop Compilation on Debian
+(2020-05-31, Debian 10/4.19.118, MonoDevelop 7.8.4, Mono 6.8.0.123, Steam tModLoader v0.11.7.4)
+
+tModLoader looked to want
+
+* `<projectname>.XNA.dll`
+* `<projectname>.XNA.pdb`
+* `<projectname>.FNA.dll`
+* `<projectname>.FNA.pdb`
+
+when building a mod.
+
+Mostly following instructions in link above, using the supplied blank Linux csproj, with the following notable exceptions.
+
+Prior to opening project:
+* When installing MonoDevelop, added repository to apt cache, updated all mono* packages, then installed.
+* Grabbed ModCompile zips from https://github.com/tModLoader/tModLoader/releases/tag/v0.11.4 and combined them both in a new ModCompile folder in the Terraria installation folder.
+* Created symbolic links to tModLoader and Terraria installation near project for pathing ease.
+* Changed `<Import Project="$(MSBuildToolsPath)/Microsoft.CSHARP.targets" />` to `<Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />` in project file.
+
+In MonoDevelop, after opening project:
+* Removed all referenced assemblies, added back `FNA.dll` and `tModLoader.exe` from tModLoader folder.  Will likely need to add others as required by code and when someone can test the Windows half of the build, so wrote down the ones removed.
+* Under project options / Configurations, renamed `Windows` to `MyMod.XNA`.
+* Under project options / Configurations, renamed `Mono` to `MyMod.FNA`.
+* Under project options / Compiler, changed Debug information from `None` to `Symbols only` in both configurations.
+* Under project options / Custom Commands, added After Build step `cp bin/${ProjectConfigName}/${ProjectName}.pdb ${ProjectConfigName}.pdb` to both configurations.
+
+Was then able to compile both configurations, run `tModLoaderServer -build <path_to_mymod>` successfully, and the simple mod (1 tile, 1 item) worked in game.  Need to test in Windows.
+
+<details>
+<summary>mymod.csproj</summary>
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7773BDD8-037E-46DB-B842-B0EE41E74873}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>MyMod</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>MyMod</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MyMod.FNA|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\MyMod.FNA</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp bin/${ProjectConfigName}/${TargetName} ${ProjectConfigName}.dll</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp bin/${ProjectConfigName}/${ProjectName}.pdb ${ProjectConfigName}.pdb</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MyMod.XNA|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MyMod.XNA</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp bin/${ProjectConfigName}/${TargetName} ${ProjectConfigName}.dll</command>
+        </Command>
+        <Command>
+          <type>AfterBuild</type>
+          <command>cp bin/${ProjectConfigName}/${ProjectName}.pdb ${ProjectConfigName}.pdb</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.txt" />
+    <Content Include="description.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Tiles\MyTile.cs" />
+    <Compile Include="Items\MyItem.cs" />
+    <Compile Include="MyMod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tiles\" />
+    <Folder Include="Items\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FNA">
+      <HintPath>..\..\tModLoader\FNA.dll</HintPath>
+    </Reference>
+    <Reference Include="tModLoader">
+      <HintPath>..\..\tModLoader\tModLoader.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)/Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
+```
+
+</details>
+
 # Known issues
 ## Mac
 ### The type initializer for 'System.Drawing.GDIPlus' threw an exception
