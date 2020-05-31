@@ -4,7 +4,7 @@ This guide will get you familiar with tModLoader modding and will help you make 
 To start, we will make a very simple mod to get you familiar with how mods are created for tModLoader. 
 
 ## Generate a Mod Skeleton
-To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader (at least v0.11.2.2) and open the "Mod Sources" menu and click the "Create Mod" button (If you don't see "Mod Sources", you'll need to click ["Enable Developer Mode"](https://i.imgur.com/Jup4nHx.png) in the bottom right corner and then download the items you need. ). Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
+To begin, we will use tModLoader to generate a basic mod skeleton. Open up tModLoader and open the "Mod Sources" menu and click the "Create Mod" button (If you don't see "Mod Sources", you'll need to click ["Enable Developer Mode"](https://i.imgur.com/Jup4nHx.png) in the bottom right corner and then download the items you need. ). Now, fill out the input boxes. I suggest suggest TutorialMod, Tutorial Mod, NewbieModder, and TutorialSword respectively. Finally, click "Create". If a message comes up, fix the issue, otherwise you'll be taken back to the Mod Sources menu.
 
 ![](https://i.imgur.com/QAo0dsd.png)    
 
@@ -14,7 +14,7 @@ Open up your file browser and navigate to the `Documents\My Games\Terraria\ModLo
 2. **description.txt** - Contains text for the description of the mod. Click the `More Info` button in the Mod menu to view in game.    
 3. **build.txt** - Contains the version, author, and display name of your mod. Can contain other [values](https://github.com/tModLoader/tModLoader/wiki/build.txt). Necessary.  
 4. **[ModName].csproj** - A project file for Visual Studio set up for debugging your Mod. Debugging is extremely useful but a takes a bit of learning, don't delete.  
-5. **[ModName].csproj.user** (v0.10) or **Properties/launchSettings.json** (v0.11) - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
+5. **Properties/launchSettings.json** (v0.11) - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
 6. **Items/[ItemName].cs** - A simple Sword item. Use this as an example as you learn to make additional ModItem classes.  
 7. **Items/[ItemName].png** - The corresponding sprite.  
 
