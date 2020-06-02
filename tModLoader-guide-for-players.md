@@ -39,7 +39,7 @@ Installing tModLoader is relatively easy.
         * Windows/Mac/Linux: Copy the `steam_appid.txt` file over as well.
 5. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that.
 
-Tip: Here is an easy way to find where your Terraria files are located:
+Tip: Here is an easy way to find where your Terraria files are located: ([video example](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
 
 1. Locate Terraria in your Steam game library, right click it and click 'Properties'
 2. Browse to the 'Local Files' tab and click on the 'Browse local files...' button
