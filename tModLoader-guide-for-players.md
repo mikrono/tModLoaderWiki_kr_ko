@@ -36,7 +36,7 @@ Installing tModLoader is relatively easy.
         * Windows: `steam_api.dll` and `CSteamworks.dll`
         * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so`, and `lib64/libCSteamworks.so`
         * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
-        * We're not positive, but you might also need to make a `steam_appid.txt` file in the install directory and put the text `1281930` in it and save the file.
+        * Copy `steam_appid.txt` file as well.
 5. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that.
 
 Tip: Here is an easy way to find where your Terraria files are located:
