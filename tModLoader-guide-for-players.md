@@ -9,14 +9,14 @@ ___
 ## Steam Installation
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
 Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
-The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla.
+The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. If you are using family share and it is not installing, you can read the manual install instructions below.
 
 ### How to uninstall?
 Simply right-click tModLoader -> Manage -> Uninstall.
 Your vanilla install will be unharmed.
 
 ## Manual Installation
-This installation is necessary for players who have purchased Terraria from GOG.
+This installation is necessary for players who have purchased Terraria from GOG or who can't get Steam Family Share to work.
 
 Installing tModLoader is relatively easy.
 
@@ -36,7 +36,7 @@ Installing tModLoader is relatively easy.
         * Windows: `steam_api.dll` and `CSteamworks.dll`
         * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so`, and `lib64/libCSteamworks.so`
         * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
-        * Copy `steam_appid.txt` file as well.
+        * Windows/Mac/Linux: Copy `steam_appid.txt` file over as well.
 5. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that.
 
 Tip: Here is an easy way to find where your Terraria files are located:
