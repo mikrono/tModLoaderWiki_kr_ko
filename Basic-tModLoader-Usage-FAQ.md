@@ -1,24 +1,6 @@
 # Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
-# Installation
-### The following files were missing and could not be installed:.....
-![](http://i.imgur.com/TSKfacG.png)  
-Solution: You didn't unzip the files prior to installation. Don't know how to unzip, or don't have software for it? -> Try [7-Zip](https://www.7-zip.org). It's free and open source, like tModLoader.
-
-### System.DllNotFoundException: Unable to load DLL'CSteamworks'.....
-![](http://i.imgur.com/ZbbskuQ.png)  
-Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file. If you pirated Terraria, you can't use tModLoader.
-
-### System.EntryPointNotFoundException: Unable to find an entry point named 'Init' in DLL 'CSteamworks'.
-![](https://i.imgur.com/lp7yQQj.png)  
-Solution: You tried to launch tModLoader 0.10+ with Terraria 1.3.4.4 or earlier files. Please use Steam to Verify game integrity (so that your Terraria is updated to 1.3.5+) and then reinstall the latest tModLoader.
-[Video of how to verify game integrity](https://gfycat.com/PlaintiveFickleCamel)
-
-### System.EntryPointNotFoundException: Unable to find an entry point named 'InitSafe' in DLL 'CSteamworks'.
-![](https://i.imgur.com/rZoXMGi.png)  
-Solution: Same as above. (Don't try to install other things such as other stand alone mods.)
-
 ### System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
 Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender. Some more info has been collected [here](https://forums.terraria.org/index.php?threads/terraria-error-system-threading.74373/#post-1664359).
@@ -63,11 +45,6 @@ Navigate to wherever you installed your tModLoader (refer to video linked below 
 [How to find a game install location on Steam](https://gfycat.com/SelfreliantAssuredIsabellineshrike)  
 Use the process shown in the above linked video to find your tModLoader install location, the gif is showing how to do this for Terraria, but you will need to do the same process except with tModLoader on Steam (you must have it installed first).
 
-
-### Host and Play: The system cannot find the file specified
-![](https://i.imgur.com/Vm2b78X.png)    
-Simply put, you didn't follow the install instructions. Check the install directory, usually "C:\Program Files (x86)\Steam\steamapps\common\Terraria" (NOT "C:\Documents\My Games\Terraria\ModLoader"!), and make sure that tModLoaderServer.exe has been copied into the folder. If not, take the file from the tModLoader zip file and place it there.
-
 # Load Mod
 ### "Failed to resolve assembly: 'Terraria, Version=1.3.5.1, Culture=neutral, PublicKeyToken=null'"
 This seems to happen when users rename the tModLoader exe to something other than Terraria.exe. Rename it back to Terraria.exe and it should still work.
@@ -109,9 +86,28 @@ Otherwise, the Mod Browser is out of bandwidth. Visit Mod Homepages for alternat
 Most Mods are found here: [Terraria Community Forums](https://forums.terraria.org/index.php?forums/client-server-mods-tools.116/)
 Web-based Mod Browser for Mac/Linux users: [Mod Browser](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php)
 
-# Steam Workshop
-The Steam Workshop is not available yet.
-
 # Flowchart
 Sometimes a mod is causing issues, but you can't tell which mod is the problem. Use this flowchart to diagnose and determine the bad mod:    
 ![](https://cdn.discordapp.com/attachments/466247288331829249/481464717043564554/Untitled_Diagram1.png)
+
+# Old Issues
+### The following files were missing and could not be installed:.....
+![](http://i.imgur.com/TSKfacG.png)  
+Solution: You didn't unzip the files prior to installation. Don't know how to unzip, or don't have software for it? -> Try [7-Zip](https://www.7-zip.org). It's free and open source, like tModLoader.
+
+### System.DllNotFoundException: Unable to load DLL'CSteamworks'.....
+![](http://i.imgur.com/ZbbskuQ.png)  
+Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file. If you pirated Terraria, you can't use tModLoader.
+
+### System.EntryPointNotFoundException: Unable to find an entry point named 'Init' in DLL 'CSteamworks'.
+![](https://i.imgur.com/lp7yQQj.png)  
+Solution: You tried to launch tModLoader 0.10+ with Terraria 1.3.4.4 or earlier files. Please use Steam to Verify game integrity (so that your Terraria is updated to 1.3.5+) and then reinstall the latest tModLoader.
+[Video of how to verify game integrity](https://gfycat.com/PlaintiveFickleCamel)
+
+### System.EntryPointNotFoundException: Unable to find an entry point named 'InitSafe' in DLL 'CSteamworks'.
+![](https://i.imgur.com/rZoXMGi.png)  
+Solution: Same as above. (Don't try to install other things such as other stand alone mods.)
+
+### Host and Play: The system cannot find the file specified
+![](https://i.imgur.com/Vm2b78X.png)    
+Simply put, you didn't follow the install instructions. Check the install directory, usually "C:\Program Files (x86)\Steam\steamapps\common\Terraria" (NOT "C:\Documents\My Games\Terraria\ModLoader"!), and make sure that tModLoaderServer.exe has been copied into the folder. If not, take the file from the tModLoader zip file and place it there.
