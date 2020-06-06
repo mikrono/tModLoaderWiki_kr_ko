@@ -1,5 +1,5 @@
 # What is Ammo?
-Ammo is a system that links Weapon items, ammo items, and projectiles together. The basic idea is this: Weapon items have `item.useAmmo` set to an AmmoID, Ammo items that that weapon should use have `item.ammo` set to that same AmmoID, and that Ammo item has `item.shoot` set to the particular projectile that will be shot by the weapon when the ammo is used.
+Ammo is a system that links Weapon items, ammo items, and projectiles together. The basic idea is this: Weapon items have `item.useAmmo` set to an AmmoID, Ammo items that weapon should use have `item.ammo` set to that same AmmoID, and that Ammo item has `item.shoot` set to the particular projectile that will be shot by the weapon when the ammo is used.
 
 As an example, let's consider `Wooden Bow` and `Flaming Arrow`. The `Wooden Bow` has `item.useAmmo = AmmoID.Arrow;` and `Flaming Arrow` has `item.shoot = ProjectileID.FireArrow;` and `item.ammo = AmmoID.Arrow;`. When the player is shooting their `Wooden Bow`, Terraria looks in the player's inventory and searches for items with `item.ammo` matching `Wooden Bow`'s `item.useAmmo`. If an ammo item is found, the ammo item's `item.shoot` projectile is spawned and the ammo is consumed.
 
