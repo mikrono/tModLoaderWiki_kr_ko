@@ -28,15 +28,15 @@ Installing tModLoader is relatively easy.
 ![](https://i.imgur.com/YWaqZPO.png)    
     * **DO NOT** install the tModLoader files directly into the Terraria folder.
 3. Remove or Add the Steam files depending on which version of the game you own:
-    1. If you are using the GOG version of Terraria, delete the Steam file from the folder you just extracted tModLoader into (These files might already be deleted from the zip you download):
+    1. If you are using the GOG version of Terraria, delete the Steam file from the folder you just extracted tModLoader into (these files might already be deleted from the zip you downloaded):
         * Windows: `steam_api.dll`
         * Linux: `lib/libsteam_api.so` and `lib64/libsteam_api.so`
         * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib`
     2. If you are using the Steam version of Terraria, if the Steam files are missing from the zip, copy them from your Terraria install to the tModLoader install:
-        * Windows: `steam_api.dll` and `CSteamworks.dll`
-        * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so`, and `lib64/libCSteamworks.so`
-        * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
-        * Windows/Mac/Linux: Copy the `steam_appid.txt` file over as well.
+        * Copy the `steam_appid.txt`, then, depending on your platform:
+            * Windows: `steam_api.dll` and `CSteamworks.dll`
+            * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so`, and `lib64/libCSteamworks.so`
+            * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
 5. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that.
 
 Tip: Here is an easy way to find where your Terraria files are located: ([video example](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
