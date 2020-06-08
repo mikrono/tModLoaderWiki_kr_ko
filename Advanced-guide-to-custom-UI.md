@@ -39,7 +39,7 @@ Because UI is something only to be seen by players, you shouldn't initialize UI 
 if (!Main.dedServ) {
 	MyInterface = new UserInterface();
     
-	MyUI = new MyUI();
+	MyUI = new TheUI();
 	MyUI.Activate(); // Activate calls Initialize() on the UIState if not initialized, then calls OnActivate and then calls Activate on every child element
 }
 ```
