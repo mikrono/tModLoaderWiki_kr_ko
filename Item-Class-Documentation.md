@@ -87,7 +87,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [shopCustomPrice](#shopcustomprice)<a name="shopcustomprice"></a>|int? |null | Use in `ModNPC/GlobalNPC.SetupShop` to assign a custom price for an item regardless of the value field. Use with shopSpecialCurrency to use a custom currency rather than coins. See [ExampleGlobalNPC.SetupShop](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleGlobalNPC.cs#L146) |
 | [shopSpecialCurrency](#shopspecialcurrency)<a name="shopspecialcurrency"></a>|int |-1 | Used in conjunction with [shopCustomPrice](#shopCustomPrice) to specify a custom currency. See [ExampleMod.Load](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleMod.cs#L71) and [ExampleCustomCurrency](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleCustomCurrency.cs) |
 | [stack](#stack)<a name="stack"></a>|int |1 | Current stack of the Item. |
-| [tileBoost](#tileboost)<a name="tileboost"></a>|int |-1 |  |
+| [tileBoost](#tileboost)<a name="tileboost"></a>|int |-1 | Specifies the use range of a Tool |
 | [tileWand](#tilewand)<a name="tilewand"></a>|int |0 |  |
 | [type](#type)<a name="type"></a>|int |0 | This is the ItemID, automatically set.  |
 | [uniqueStack](#uniquestack)<a name="uniquestack"></a>| bool|false |  |
