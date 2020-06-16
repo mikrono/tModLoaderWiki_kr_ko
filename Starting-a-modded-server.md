@@ -7,6 +7,11 @@ If you have an extra old computer sitting around or leave your computer on all t
 ### Configure the server
 You can change `serverconfig.txt` with your server configurations which will be loaded by the tML server when using the instructions below.
 
+## Getting the server to load mods
+On your client, create a modpack of all the mods you want to use on the server, then copy that modpackName.json file to the server.  Create a folder to hold the mods "C:\Server\Mods" then create a ModPacks folder in that folder.  Copy your modpack.json file in the ModPacks folder and the associated tmod files into the Mods folder.  In your serverconfig.txt file, add the following two lines at the end of the file
+modpath=c:\Server\Mods
+modpack=modpackName
+
 ### Portforwarding
 If you want other people to connect to your server from another network, you must open up the port your server will run on. 
 
