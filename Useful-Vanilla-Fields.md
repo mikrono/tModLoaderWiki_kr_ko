@@ -43,6 +43,11 @@ See [NPC Class Documentation](https://github.com/tModLoader/tModLoader/wiki/NPC-
 
 # Player Fields
 
+* armor; int[]
+
+Represents the primary equip slots of the player (not counting pet, mount and hook slots that are on a separate page).
+0-2: Armor (Head, Chest, Legs), 3-7 + extra slots (up to 9): Accessories, 10-12: Vanity Armor (Head, Chest, Legs), 13-17 + extra slots (up to 19) Vanity Accessories.
+
 * dash; int
 
 Enables a dash ability depending on the value of the variable. 1 = Ninja Master Gear Dash. 2 = Eye of Cthulhu Shield Dash. 3 = Solar Armor Dash. 
@@ -58,6 +63,10 @@ Gives the player immunity. He cannot be hurt by being hit.
 * immuneAlpha; int
 
 Set to 0 to prevent blinking when immune.
+
+* immuneTime; int
+
+Represents the time in ticks the player is be immune for (use with the immune bool).
 
 * lifeRegen; int
 
