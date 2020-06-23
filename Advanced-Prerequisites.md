@@ -15,4 +15,4 @@ There are a few drawbacks to the simple way. The biggest drawback is you can't d
 ![](http://i.imgur.com/ZeXH2p5.png)
 
 ### Hard Way
-The best way to get the source code is to download the tModLoader repository and go through the [setup instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-contributors#getting-the-tmodloader-code-for-the-first-time). This will net you a completely functional solution that you can open in Visual Studio. This method will take more time and it's not usually required unless you need to debug Terraria code itself or contribute to tModLoader directly. 
+The best way to get the source code is to download the tModLoader repository and go through the [setup instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-contributors#getting-the-tmodloader-code-for-the-first-time). This will get you a completely functional solution that you can open in Visual Studio. This method will take more time and it's not usually required unless you need to debug Terraria code itself or contribute to tModLoader directly. 
