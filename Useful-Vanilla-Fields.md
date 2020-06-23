@@ -43,7 +43,7 @@ See [NPC Class Documentation](https://github.com/tModLoader/tModLoader/wiki/NPC-
 
 # Player Fields
 
-* armor; int[]
+* armor; Item[]
 
 Represents the primary equip slots of the player (not counting pet, mount and hook slots that are on a separate page).
 0-2: Armor (Head, Chest, Legs), 3-7 + extra slots (up to 9): Accessories, 10-12: Vanity Armor (Head, Chest, Legs), 13-17 + extra slots (up to 19) Vanity Accessories.
@@ -67,6 +67,10 @@ Set to 0 to prevent blinking when immune.
 * immuneTime; int
 
 Represents the time in ticks the player is be immune for (use with the immune bool).
+
+* inventory; Item[]
+
+Represents the inventory, including hotbar, coin, and ammo slots. Coin slots are 50-53, while Ammo slots are 54-57. Main.maxInventory = 58 items total
 
 * lifeRegen; int
 
