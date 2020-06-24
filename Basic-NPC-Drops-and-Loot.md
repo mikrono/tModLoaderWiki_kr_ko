@@ -181,9 +181,10 @@ class MyGlobalNPC : GlobalNPC
 }
 ```
 
-### Some special cases
-Some vanilla bosses require special conditions to detect when it is killed and ready to drop its loot. 
-Eater of worlds:
+### Special Cases
+Some vanilla bosses require special conditions to detect when it they are killed and ready to drop their loot.
+
+Eater of Worlds:
 ```c#
 if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
 ```
