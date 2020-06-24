@@ -181,6 +181,18 @@ class MyGlobalNPC : GlobalNPC
 }
 ```
 
+### Some special cases
+Some vanilla bosses require special conditions to detect when it is killed and ready to drop its loot. 
+Eater of worlds:
+```c#
+if (npc.boss && System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
+```
+
+The Twins:
+```c#
+if (npc.type == NPCID.Retinazer && !NPC.AnyNPCs(NPCID.Spazmatism) || npc.type == NPCID.Spazmatism && !NPC.AnyNPCs(NPCID.Retinazer))
+```
+
 ## Other approaches
 ### NextBool
 There is a NextBool method you can use if you want to use it rather than comparing a random number to 0
