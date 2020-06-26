@@ -7,10 +7,10 @@ You may need to decompile tModLoader to understand the correct way to do somethi
 ### But wait, I found the code on Google!
 No. That code is bad and will not work. It has tens of thousands of decompilation errors. Just decompile it yourself, it is easy. Read on.
 
-### Simply Way
+### Simple Way
 A simpler way is to download a recent release of [ilspy](https://github.com/icsharpcode/ILSpy/releases) (These instructions last tested with 6.0 Preview 3), unzip the zip to a folder, launch ILSpy.exe, use File->Open to open tModLoader.exe (typically found in `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`), and finally press the save code button and navigate to a convenient empty folder (You'll want to choose a folder that you can easily find later, I suggest making a folder in the Saves directory: `C:\Documents\My Games\Terraria\ModLoader\DecompiledTModLoader`). (If you are on Linux or Mac, you will need to use [AvaloniaILSpy](https://github.com/icsharpcode/AvaloniaILSpy/releases) instead of ILSpy) This will take a minute or so depending on your computer. The folder that you saved the code to now has a `tModLoader.csproj` file, opening this file should open Visual Studio if you have it installed (highly recommended). If you do not have Visual Studio installed, you'll have to navigate the files individually through file explorer.
 
-There are a few drawbacks to the simple way. The biggest drawback is you can't debug tModLoader itself. This is an advanced technique, but if you wish to do this later, come back to these instructions and read the Hard way below. The other drawback is you might find the code to have decompilation errors. With the latest version of ilspy, these are very limited and easily fixed.
+There are a few drawbacks to the simple way. The biggest drawback is you can't debug tModLoader itself. This is an advanced technique, but if you wish to do this later, come back to these instructions and read the `Hard Way` below. The other drawback is you might find the code to have decompilation errors. With the latest version of ilspy, these are very limited and easily fixed.
 
 ![](http://i.imgur.com/ZeXH2p5.png)
 
