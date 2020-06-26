@@ -77,6 +77,26 @@ Remember that static methods are called by writing the classname and non-static 
 ### public static int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f) <a name="newprojectile"></a>
 Spawns a projectile in the world. The owner variable should pretty much always be set to Main.myPlayer.
 
+Proper usage with multiplayer in mind:
+* If spawned from a player (via accessory, on hit by, on use, etc.), only the "owner" of this projectile should spawn it:
+```c#
+if (Main.netMode != NetmodeID.Server && Main.myPlayer == player.whoAmI)
+{
+    //player.whoAmI could be projectile.owner instead if this runs from a projectile
+    Projectile.NewProjectile(...);
+}
+```
+
+* Otherwise, if no player "owns" the projectile (such as a friendly or hostile NPC shooting it, or the world itself spawns it), spawn it on the server (or singleplayer)
+```c#
+if (Main.netMode != NetmodeID.MultiplayerClient)
+{
+    Projectile.NewProjectile(...);
+}
+```
+
+In both cases, this guarantees that `NewProjectile` runs only on one instance of the game, such that no duplicate projectiles spawn.
+
 ### public static int GetByUUID(int owner, int uuid)
 Do not use this method to get a projectile on a client based on its projectile.identity. Instead, loop through the Main.projectile[] on the client you wish to find the projectile on and check if there is a projectile that has the same projectile.identity as the projectile you want to find.
 
