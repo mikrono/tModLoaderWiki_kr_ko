@@ -38,6 +38,9 @@ If we wish to drop more than one item in a stack, specify the number to drop.
 Item.NewItem(npc.getRect(), ItemID.Beenade, 20);
 ```
 
+### Drop Per Player or Instanced
+TODO
+
 ## Randomness
 Most of the time, we don't want an item to drop all the time, but rather with a small chance. We can use a random number generator to give our items a chance to drop. We will use `Main.rand.[METHODNAME]` to do this, usually `Main.rand.Next`.
 
