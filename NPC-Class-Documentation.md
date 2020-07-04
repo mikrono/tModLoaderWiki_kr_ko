@@ -35,7 +35,7 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [noTileCollide](#notilecollide)<a name="notilecollide"></a>| bool | false | If true, the npc does not collide with tiles, making the npc pass through tiles freely. Meteor Head and Worm npc use this. |
 | [npcSlots](#npcslots)<a name="npcslots"></a>| float | 1f | Represents how much this npc counts towards the npc spawn limit. Small critters like worms or flys have values around .1f and .25. Enemies that are more difficult than normal have values higher than 1f, and bosses and mini bosses have values around 6. Proper npcSlots values help balance the game and prevents the player from randomly being overwhelmed by powerful enemies. Check the [Vanilla NPC Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) spreadsheets to determine a suitable value for your NPC. |
 | [boss](#boss)<a name="boss"></a>| bool | false | Set to true if the NPC is a boss. Prevents off-screen despawn. |
-| [netAlways](#netalways)<a name="netalways"></a>| bool | false | If true, makes sure that this NPC is always synced in multiplayer (same happens if it's a boss or townNPC). |
+| [netAlways](#netalways)<a name="netalways"></a>| bool | false | If true, makes sure that this NPC is always synced in multiplayer for newly joined players (same happens if it's a boss or townNPC). |
 | [](#)<a name=""></a>|  |  |  |
 
 ## Static Fields
