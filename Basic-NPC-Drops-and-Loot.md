@@ -39,7 +39,16 @@ Item.NewItem(npc.getRect(), ItemID.Beenade, 20);
 ```
 
 ### Drop Per Player or Instanced
-TODO
+//TODO per player
+
+#### Instanced
+If you want an item to drop like boss bags do (one per player, clientside (other players won't see the drops that belong to other players)), use the `npc.DropItemInstanced` method:
+
+```c#
+npc.DropItemInstanced(npc.position, npc.Size, ItemID.Picksaw, 1, true);
+```
+
+The last two parameters are stack size, and if an interaction is required between the NPC and the player for it to drop.
 
 ## Randomness
 Most of the time, we don't want an item to drop all the time, but rather with a small chance. We can use a random number generator to give our items a chance to drop. We will use `Main.rand.[METHODNAME]` to do this, usually `Main.rand.Next`.
