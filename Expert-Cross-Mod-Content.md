@@ -31,6 +31,7 @@ See [here](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cr
 
 ## Determining Internal Names
 If you use the Helpful Hotkeys mod and enable the Show Developer Info setting, then use the Query Mod Origin hotkey while hovering over a modded entity in-game, you can determine the internal name of that entity. Another approach is setting a breakpoint after the `ModLoader.GetMod` method call and inspecting the resulting Mod object. For example, you could inspect the `items` dictionary to find the `Name` field of the `ModItem` you are interested.
+Another mod you can use is "Which Mod Is This From": Rnable everything in its config and it tells you the internal name of that entity on hovering.
 
 # Call, aka Mod.Call (Intermediate)
 
