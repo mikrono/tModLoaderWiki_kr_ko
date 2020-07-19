@@ -24,6 +24,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
 * [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), custom minion/sentry AIs, player layers and more.
 * [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
+* [Mo' Tools](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of tools, weapons, enemies, bosses, and more!
 
 
 ## Other Mods
