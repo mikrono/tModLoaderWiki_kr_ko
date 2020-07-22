@@ -21,8 +21,6 @@ ___
 
 * [Install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
-* Revalidate steam files, or have "Terraria_v1.3.5.3.exe" and "TerrariaServer_v1.3.5.3.exe" present in the steam dir
-
 * Run the setup.bat
 
 * Click the Setup button
@@ -33,21 +31,11 @@ tModLoader uses its own code patcher. If you want to contribute to tModLoader, y
 
 ### Getting the tModLoader code for the first time
 ___
-1. Clone this repository
-    * (Temporary Extra Step) Download Terraria 1.3.5.3 from steam: 
-        * In your web browser, visit https://github.com/SteamRE/DepotDownloader/releases and download the latest release of DepotDownloader (2.3.5 as of May 21st 2020).
-        * Unzip the folder, open it up, and open a new command prompt window in that folder. The easiest way to do this is to type `cmd` in the folder address bar and then hit enter.
-        * Open up a blank notepad or notepad++ file and paste `dotnet DepotDownloader.dll -app 105600 -depot 105601 -manifest 8115792227484220109 -dir folder -username steamUsername -password steamPassword` into the file (this is a temporary file so feel free to delete it without saving once Terraria is downloaded). Change `folder` to the name of the folder you want (this will be in the current folder where DepotDownloader is), `steamUsername` to your personal Steam username, and `steamPassword` to your personal Steam password. Copy everything in this file.
-        * Paste what you just copied into the command prompt window and hit enter.
-            * If you have Steam Guard, it will prompt you to put in the code that Steam sends to you. 
-        * The download of the Terraria 1.3.5.3 files should start. Wait until your download has finished. The console is very verbose. You'll know it is done when you see a line that starts with `Depot 105601` followed by however big the data was.
-        * You'll need to use this version of Terraria when you select vanilla Terraria.exe in step 3 below. You can leave the files where they are or move the `folder`, uh, folder to wherever you want.
-2. Open setup.bat in the root folder
-    * If setup.bat won't open, you must unblock all the files in the cloned repository
-    * If you get an error that mentions File Cannot be Found, you might need to make sure `msbuild` is on your `PATH`. For a VS 2019 install, this should be in `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin`, so add that to your `PATH`. If you don't know how to edit your `PATH`, google it. Make sure to restart setup.bat after editing your PATH for it to take effect.
-3. Select your vanilla terraria.exe (must be vanilla) ([See example](https://i.imgur.com/MccGyvB.png)) Remember that this needs to be the 1.3.5.3 version of Terraria that we downloaded earlier in step 1.
+1. Install Terraria and tModLoader via Steam. Note setup does not currently work for GoG
+2. Clone this repository
+3. Open setup.bat in the root folder
 4. Click on 'Setup' (top left button)
-    * **Warning:** decompilation can take several hours to complete depending on your hardware. It's also likely that your computer **completely freezes** during the process, mainly once it hits NPC.cs It is recommended that you enable the 'Single Decompile Thread' option ([See example](https://i.imgur.com/6mBbZnQ.png)) if you don't have very high end hardware. It's unwise to even attempt a decompile if you have less than 8 GB RAM. Having an SSD, powerful CPU and a high amount of RAM will significantly speed up the decompilation process.
+    * If asked, select your vanilla Terraria.exe (must be vanilla) from steam. I recommend making a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.0.5.exe and TerrariaServer_1.4.0.5.exe, so that when steam updates, you can still keep working on tModLoader
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
     * src/Terraria/
