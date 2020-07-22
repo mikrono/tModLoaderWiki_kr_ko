@@ -17,7 +17,7 @@ You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 ## Code patcher
 ___
 **Current TEMPORARY steps for developer setup:**
-* Pull the master branch
+* Pull the 1.4 branch
 
 * [Install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
