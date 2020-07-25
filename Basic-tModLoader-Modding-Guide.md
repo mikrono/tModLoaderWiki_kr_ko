@@ -1,4 +1,6 @@
-This guide will get you familiar with tModLoader modding and will help you make your first mod. Please read and follow [Basic Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Basic-Prerequisites) first so you have access to a capable text editor.
+The first thing you have to do is decide on the program that you wish to code in. There are essentially two choices, a **text editor** or and **IDE** If you are completely new to the concept of binary logic and design, you might want to start with a text editor to get the hang of the basics and be able to work with simple code without feeling overwhelmed by the interface and tools of an IDE. For most other cases, an **Integrated Development Environment** is what you want to use. An IDE is software that sets up a convenient interface for a particular programming language, in our case it's C# and. An IDE can do anything text editors can do because a text editor is just a component of the IDE.
+
+This guide will get you familiar with tModLoader modding and will help you make your first mod. Please read and follow [Basic Prerequisites](https://github.com/tModLoader/tModLoader/wiki/Basic-Prerequisites) 
 
 # Your First Mod
 To start, we will make a very simple mod to get you familiar with how mods are created for tModLoader. 
