@@ -47,7 +47,7 @@ Edit the server config file that the dedicated host is using. Not every host is 
 ### Dedicated Hosts known to work
 NodeCraft - Follow the [instructions](https://nodecraft.com/support/games/terraria/tmodloader-server-guide)    
 GameServers - Add `-savedirectory ./` to server command line 
-
+[Akliz Hosting](https://www.akliz.net/games/terraria) - Works as is. 
 [Citadel Servers Hosting Company](https://citadelservers.com/en-us/game-servers/terraria) 
 
 ## Dedicated Server (Self-Hosted)
