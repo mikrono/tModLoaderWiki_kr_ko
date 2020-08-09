@@ -8,6 +8,8 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 `UIElement.Id` -> `UIElement.UniqueId` (changed from string to automatically assigned auto-incrementing int)    
 `Main.itemTexture[i]` -> `Terraria.GameContent.TextureAssets.Item[i].Value` (regex fix: `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`)    
 `ModX.mod` -> `ModX.Mod`    
+`Player.hideVisual` -> `Player.hideVisibleAccessory`    
+`Item.thrown` -> doesn't exist anymore.
 
 ## Big change concepts
 Every asset is wrapped inside an Asset<T>. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;`
