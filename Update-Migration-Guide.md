@@ -11,7 +11,12 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 `Player.hideVisual` -> `Player.hideVisibleAccessory`    
 `Item.thrown` -> doesn't exist anymore.    
 `Main.PlaySound` -> `SoundEngine.PlaySound`    
-
+`Player.showItemIcon` -> `Player.cursorItemIconEnabled`    
+`Player.showItemIcon2` -> `Player.cursorItemIconID`    
+`NetMessage.BroadcastChatMessage` -> `ChatHelper.BroadcastChatMessage`    
+`` -> ``    
+`` -> ``    
+`` -> ``    
 
 ## Big change concepts
 Every asset is wrapped inside an Asset<T>. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;`
