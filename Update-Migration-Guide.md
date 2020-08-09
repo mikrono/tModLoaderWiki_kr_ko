@@ -1,5 +1,17 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here.
 
+# v0.12 (WIP, 0.12 isn't out yet, don't read this)
+v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here are the most relevant changes.
+
+## Renamed or Moved Fields
+`Main.fontMouseText` -> `Terraria.GameContent.FontAssets.MouseText.Value` (as well as the other fonts)    
+`UIElement.Id` -> `UIElement.UniqueId` (changed from string to automatically assigned auto-incrementing int)    
+`Main.itemTexture[i]` -> `Terraria.GameContent.TextureAssets.Item[i].Value` (regex fix: `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`)    
+`ModX.mod` -> `ModX.Mod`    
+
+## Big change concepts
+Every asset is wrapped inside an Asset<T>. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;`
+
 # v0.11.7.5
 
 ## Reflection
