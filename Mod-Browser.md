@@ -85,3 +85,10 @@ What will be deemed inappropriate? You can probably guess it, but still here's a
 
 ### Malicious Code
 Don't do it. The mods you upload are tagged with your Steam identity. Your will be **permanently banned** from the browser and all of your mods will be removed. We will also notify Terraria and Steam staff about you and your malicious code.
+
+## Frequently Asked Questions (FAQ)
+### No one can download my mod
+This can happen if you finished github integration and then made your repository private. Repositories linked to mods have to be public so the Mod Browser can redirect to the releases.
+
+### It won't publish my mod
+Reread the instructions on the [Mod Browser Registration page](http://javid.ddns.net/tModLoader/register.php).
