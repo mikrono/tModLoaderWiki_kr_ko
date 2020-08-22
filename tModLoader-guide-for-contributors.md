@@ -64,7 +64,7 @@ mklink /D "C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod" "C:\
 ![](https://i.imgur.com/pHVnAYN.png)  
 6. To properly open ExampleMod.csproj, you need to navigate to `C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod` and open the ExampleMod.csproj file from File Explorer. Opening it from within Visual Studio with `File->Open->Project/Solution...` won't work, it will have the wrong working directory. Build ExampleMod once it is open to make sure there are no problems before starting.
 
-Before you're about to make a contribution, please check [this article](https://github.com/tModLoader/tModLoader/blob/master/CONTRIBUTING.md). Thanks in advance.
+Before you're about to make a contribution, please check [this article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks in advance.
 
 ### Keeping your code up-to-date
 ___
@@ -82,7 +82,7 @@ ___
 2. Click on 'Diff x' where x is your workspace
     * Your workspace is tModLoader 99% of the time. If it isn't, we imply you know what you're doing.
 3. Create a new commit to commit the patches/ folder
-    * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/CONTRIBUTING.md). Thanks.
+    * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
 
 ### HELP! I accidentally committed on a wrong branch!
 Simply stash changes and checkout.
