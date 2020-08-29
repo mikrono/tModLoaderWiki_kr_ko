@@ -13,7 +13,7 @@ Note that the third rule of the Mod Browser outlines that: **Your mod will not d
 If you are going to be IL editing specifically, then the prerequisites for that are identical to those mentioned in the IL guide (linked above). However, as we are editing other mods, there are also a few more things that need to be done, and they will be listed below.
 
 ## Step 1: Creating an MMHook dll
-An MMHook dll is a special reference file, that contains the `On` and `IL` variants of all the methods in your chosen mod. It is highly important that you have one, or it will make the process much more difficult. To acquire one, you must follow these steps:
+An MMHook dll is a special reference file, that contains the `On` and `IL` variants of all the methods in your chosen mod. It is highly important that you have one, or it will make the process much more difficult. If you want to do this with only reflection, scroll to the bottom. To acquire one, you must follow these steps:
 * Get the dll of your chosen mod. You can do this by extracting ingame. Go to the Mods menu, and click the question mark icon on the mod of your choice, which will bring you to the Mod Info screen. Once you've done this, you will see an Extract button: ![](https://i.imgur.com/SxAm09D.png)
 * Click it, and the extraction will begin. Once it's complete, the dll will be output to the path `C:\Users\%userprofile%\Documents\My Games\Terraria\ModLoader\references\mods`.
 
