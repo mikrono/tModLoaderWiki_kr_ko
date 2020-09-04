@@ -3,20 +3,30 @@ This page contains guides for migrating your code to new methods and functionali
 # v0.12 (WIP, 0.12 isn't out yet, don't read this)
 v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here are the most relevant changes.
 
-## Renamed or Moved Fields
-`Main.fontMouseText` -> `Terraria.GameContent.FontAssets.MouseText.Value` (as well as the other fonts)    
-`UIElement.Id` -> `UIElement.UniqueId` (changed from string to automatically assigned auto-incrementing int)    
-`Main.itemTexture[i]` -> `Terraria.GameContent.TextureAssets.Item[i].Value` (regex fix: `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`)    
-`ModX.mod` -> `ModX.Mod`    
-`Player.hideVisual` -> `Player.hideVisibleAccessory`    
-`Item.thrown` -> doesn't exist anymore.    
-`Main.PlaySound` -> `SoundEngine.PlaySound`    
-`Player.showItemIcon` -> `Player.cursorItemIconEnabled`    
-`Player.showItemIcon2` -> `Player.cursorItemIconID`    
-`NetMessage.BroadcastChatMessage` -> `ChatHelper.BroadcastChatMessage`    
-`` -> ``    
-`` -> ``    
-`` -> ``    
+## Renamed or Moved Members
+
+### Namespaces
+* `Terraria.World.Generation` -> `Terraria.WorldBuilding`
+
+### Static Methods
+* `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
+* `Terraria.NetMessage.BroadcastChatMessage` -> `Terraria.Chat.ChatHelper.BroadcastChatMessage`
+
+### Static Fields / Constants / Properties
+* `Terraria.Main.font*` -> `Terraria.GameContent.FontAssets.*.Value`<br/>
+**Regex:** `Main.font(\w+)]` -> `Terraria.GameContent.FontAssets.$1.Value`
+* `Terraria.Main.*Texture[i]` -> `Terraria.GameContent.TextureAssets.*[i].Value`<br/>
+**Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`
+* `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`
+### Non-Static Fields / Constants / Properties
+* `UIElement.Id` -> `UIElement.UniqueId`<br/>
+(changed from string to automatically assigned auto-incrementing int)
+* `ModX.mod` -> `ModX.Mod`
+* `GlobalX.mod` -> `GlobalX.Mod`
+* `Player.hideVisual` -> `Player.hideVisibleAccessory`
+* `Item.thrown` -> doesn't exist anymore.
+* `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
+* `Player.showItemIcon2` -> `Player.cursorItemIconID`
 
 ## Big change concepts
 Every asset is wrapped inside an Asset<T>. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;`
