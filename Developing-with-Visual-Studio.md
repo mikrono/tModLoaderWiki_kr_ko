@@ -32,7 +32,7 @@ If you have errors, you'll see them in the Error List. You can click on each err
 If you do not have errors, you should see Build Succeeded on the bottom left. If you open the Output Panel (View->Output), you should see something similar to this:
 ![](https://i.imgur.com/mrMpzB3.png)    
 
-**Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. So, before you release your mod, ALWAYS build using the in-game menu.**
+**Please keep in mind that Visual Studio DOES NOT abide to your buildIgnore rules, and your built .tmod file will be larger than if you would use the in-game build option. _So, before you release your mod, ALWAYS build using the in-game menu_.**
 
 # Debugging
 Debugging is the main feature that sets Visual Studio apart from Visual Studio Code. This will let you set breakpoints in your mod and inspect variables in Visual Studio. To debug, simply click the button labeled "Terraria" or press F5:    
@@ -59,7 +59,7 @@ Setting up a project for your mod manually is not recommended. Modders should us
 1. Click OK
     1. Your output should look similar to [this](https://i.imgur.com/8JBLt1A.png). Note, your window may look different, this is the window for VS 2019. 
 1. Go to the Solution Explorer tab, right click on Solution -> ModName -> References and click Add Reference... ([example](https://i.imgur.com/oM30lfT.png))
-1. Click Browse... and select the tModLoader executable (likely: `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe`)
+1. Click Browse... and select the tModLoader executable (likely: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader\tModLoader.exe`, if you're not on Windows check out [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
 1. Add a new txt file named `build.txt` to the root of your project
 1. `buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*` to your build.txt
 1. Add the XNA references to your project. You should have these if you can play Terraria, otherwise see [here](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
@@ -79,7 +79,7 @@ This will let you build your mod from within Visual Studio, so you don't have to
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Build Events tab
 1. Add the following to the Post-build event command line
-`"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\"`
+`"C:\Program Files (x86)\Steam\steamapps\common\tModLoader\tModLoaderServer.exe" -build "$(ProjectDir)\"`
     1. Ensure the paths are enclosed by double quotes, change the path to your tModLoaderServer if you have it installed elsewhere.
 
 # Debugging
@@ -87,8 +87,8 @@ This will let you set breakpoints in your mod and inspect variables in VS. Chang
 
 1. Right click on your mod project in the Solution Explorer and click Properties
 1. Go to the Debug tab
-1. Set the Start Action to Start external program: `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe`
-1. Set the Working directory to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`
+1. Set the Start Action to Start external program: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader\tModLoader.exe`
+1. Set the Working directory to `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`
     1. Add the line `includePDB = true` to your build.txt if you want to include line numbers in exception stack traces (useful for debugging). _However it will increase the size of your mod and should be omitted from release builds_.
 
 # Edit and Continue
