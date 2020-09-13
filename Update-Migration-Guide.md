@@ -29,7 +29,36 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
 
 ## Big change concepts
-Every asset is wrapped inside an Asset<T>. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;`
+Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;` You could also technically do `Texture2D test = (Texture2D)GetTexture("Test);`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture. 
+
+Recipes were totally reworked. Instead of creating a `ModRecipe`, and calling methods on that, recipes now use builder syntax. If you don't know what that is, here's an example of what it looked like before:
+```
+// this would be in your item
+public override void AddRecipes()
+{
+    var recipe = new ModRecipe(mod);
+    recipe.AddIngredient(ItemID.Wood, 5);
+    recipe.SetResult(this);
+    recipe.AddRecipe();
+}
+```
+This has been replaced with:
+```
+// still in your item
+public override void AddRecipes()
+{
+    CreateRecipe()
+        .AddIngredient(ItemID.Wood, 5)
+        .Register();
+}
+```
+You can even use an expression for this:
+```
+public override void AddRecipes() => CreateRecipe()
+        .AddIngredient(ItemID.Wood, 5)
+        .Register();
+```
+There is a more detailed explanation of how to do this in ExampleMod/ExampleRecipes.cs
 
 # v0.11.7.5
 
