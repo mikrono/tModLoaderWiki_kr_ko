@@ -31,7 +31,7 @@ Implementing your own tile shaders is rather complex, and in my personal opinion
 
 Terraria shaders consists of three parts: parameters, passes and techniques. Passes and techniques aren't really used to their full capability, so all you really need to know that for the purposes of writing shaders for Terraria, a pass is a single function that modifies the pixel output, and all passes are contained within a technique. If we take the vanilla dyes as an example, every dye uses a pass to change the appearance of an armour piece, accessory or mount, and all of these passes are contained within a single technique.
 
-A parameter is information passed from outside (i.e. Terraria) into the shader, such as the colour the shader should use. It allows you to make multiple effects from a single pass (all basic colour dyes use the same pass, just with a different colour parameter). When you create your own shader and want to use Terraria's pre-existing shader system (which you should), your shader needs to contain all the parameters the default shaders does: if not, Terraria will attempt to set parameters that don't exist, causing a crash. Armour shaders and screen shaders do not use the same set of parameters, so they will be discussed individually in their respective chapters.
+A parameter is information passed from outside (i.e. Terraria) into the shader, such as the color the shader should use. It allows you to make multiple effects from a single pass (all basic color dyes use the same pass, just with a different color parameter). When you create your own shader and want to use Terraria's pre-existing shader system (which you should), your shader needs to contain all the parameters the default shaders does: if not, Terraria will attempt to set parameters that don't exist, causing a crash. Armour shaders and screen shaders do not use the same set of parameters, so they will be discussed individually in their respective chapters.
 
 You can find blank examples of both armour and screen shaders attached to the bottom of this post.
 
@@ -141,7 +141,7 @@ float4 ArmorBasic(float4 sampleColor : COLOR0) : COLOR0
     return sampleColor;
 }
 ```
-What we have here is a single pass. Now, you might recognise that the `float4` in front of `ArmorMyShader` means that that is the return type. The `: COLOR0` indicates where this return type should be stored, namely in the COLOR0 register of the GPU. Put two and two together, and what this means is that this pass writes a colour value consisting of four floats (red, green, blue and alpha) to the GPU.
+What we have here is a single pass. Now, you might recognise that the `float4` in front of `ArmorMyShader` means that that is the return type. The `: COLOR0` indicates where this return type should be stored, namely in the COLOR0 register of the GPU. Put two and two together, and what this means is that this pass writes a color value consisting of four floats (red, green, blue and alpha) to the GPU.
 
 As for `float4 sampleColor : COLOR0`, this means you're declaring a parameter equal to what's in that COLOR0 register. So what this pass does is take the value of COLOR0 and put it in COLOR0. Not very useful, as you might imagine.
 
@@ -163,8 +163,8 @@ Okay, so let's make something more useful. Right now, we're writing the contents
 ```hlsl
 float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    return colour;
+    float4 color = tex2D(uImage0, coords);
+    return color;
 }
 ```
 So two things happened here: one, we added `float2 coords : TEXCOORD0` as a parameter, and two, we added something called `tex2D` To understand either of these, you first have to remember what I mentioned in the introduction: a pixel shader is executed for every pixel that the texture covers (not every pixel of the texture, but if you're drawing sprites at a scale of one that basically amounts to the same thing). Now, you can probably tell that `coords` takes the value of the TEXCOORD0 register just like `sampleColor` did, but what does the value actually mean? Basically, it represents the coordinates of the current pixel relative to the texture. This might sound complex, but hopefully this image clears it up:
@@ -173,14 +173,14 @@ So two things happened here: one, we added `float2 coords : TEXCOORD0` as a para
 
 So, imagine the shader running on this texture. It will start in the top left corner, in which case `coords` will be equal to (0, 0). Halfway through the first row, it'll be (0.5, 0). In the dead center of the texture, it will be (0.5, 0.5), and at the bottom right corner it'll be (1, 1).
 
-What does `tex2D` do then? Simply put, it samples the colour data of `uImage0` at position `coords`. And because the shader runs for every pixel, and `coords` updates accordingly, essentially it's tracing the texture pixel by pixel. So what this pass does is nothing short of simply drawing your texture.
+What does `tex2D` do then? Simply put, it samples the color data of `uImage0` at position `coords`. And because the shader runs for every pixel, and `coords` updates accordingly, essentially it's tracing the texture pixel by pixel. So what this pass does is nothing short of simply drawing your texture.
 
-There's a problem, however, in that you are overwriting the contents of the colour register. This can sometimes be useful when it is intentional (screen shaders generally do this), but it can also cause issues, especially if you're overwriting transparency. So usually, you want to multiply whatever your result is with the content of the register before writing to it:
+There's a problem, however, in that you are overwriting the contents of the color register. This can sometimes be useful when it is intentional (screen shaders generally do this), but it can also cause issues, especially if you're overwriting transparency. So usually, you want to multiply whatever your result is with the content of the register before writing to it:
 ```hlsl
 float4 ArmorBasic(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    return color * sampleColor;
 }
 ```
 Sampling will form the basis of almost all of your passes, but doesn't do much by itself. Let's introduce some parameters.
@@ -191,34 +191,34 @@ Now we can draw our sprites, but that's not really any different from what the g
 ```hlsl
 float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour *= uColor;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color *= uColor;
+    return color * sampleColor;
 }
 ```
-Here, we're using our `uColor` parameter from our parameter list, but there's a problem: `colour` is a `float4`, but `uColor` is a `float3`, and you can't multiply those with each other. What we want to is multiply the red, green and blue channels of our texture with the value of the parameter, so instead we do this:
+Here, we're using our `uColor` parameter from our parameter list, but there's a problem: `color` is a `float4`, but `uColor` is a `float3`, and you can't multiply those with each other. What we want to is multiply the red, green and blue channels of our texture with the value of the parameter, so instead we do this:
 ```hlsl
 float4 ArmorTint(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= uColor;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= uColor;
+    return color * sampleColor;
 }
 ```
-The line `colour.rgb *= uColor;` is equal to:
+The line `color.rgb *= uColor;` is equal to:
 ```hlsl
-colour.r *= uColor.r;
-colour.g *= uColor.g;
-colour.b *= uColor.b;
+color.r *= uColor.r;
+color.g *= uColor.g;
+color.b *= uColor.b;
 ```
-This member access is what we call a swizzle. We use `rgba` to refer to colour data, but sometimes you're working with positions, in which case `xyzw` makes more sense. Therefore, you could also do this:
+This member access is what we call a swizzle. We use `rgba` to refer to color data, but sometimes you're working with positions, in which case `xyzw` makes more sense. Therefore, you could also do this:
 ```hlsl
-colour.xyz *= uColor;
+color.xyz *= uColor;
 ```
 This is exactly the same as the previous line, it's just syntactic sugar. You can even mix them up in the same line. What you can not do, however, is mix them up in the same swizzle:
 ```hlsl
-colour1.rgb = colour2.xyz; // This is fine.
-colour1.xgb = colour2.xyz; // This is not.
+color1.rgb = color2.xyz; // This is fine.
+color1.xgb = color2.xyz; // This is not.
 ```
 Anyway, let's get back to our original pass. Let's pass in pure red and see what happens:
 
@@ -228,13 +228,13 @@ Not bad. Let's look at a slightly more complex example:
 ```hlsl
 float4 ArmorLuminosity(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    float luminosity = (colour.r + colour.g + colour.b) / 3;
-    colour.rgb = luminosity * uColor;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    float luminosity = (color.r + color.g + color.b) / 3;
+    color.rgb = luminosity * uColor;
+    return color * sampleColor;
 }
 ```
-What we do here is calculate the luminosity (brightness) of each pixel, and then multiply our colour with it. This prevents large dark patches where your tint complements the colour of the texture.
+What we do here is calculate the luminosity (brightness) of each pixel, and then multiply our color with it. This prevents large dark patches where your tint complements the color of the texture.
 
 The result:
 
@@ -246,35 +246,35 @@ While we can already can do rather nice stuff, it's all rather uniform. To add s
 ```hlsl
 float4 ArmorGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= coords.x;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= coords.x;
+    return color * sampleColor;
 }
 ```
 
-If you remember the image above that explained how coordinates work, you might be able to guess what happens here: the leftmost pixels will be black, and will brighten to their original colour. I had to slightly enhance the result for clarity, but it would look something like this:
+If you remember the image above that explained how coordinates work, you might be able to guess what happens here: the leftmost pixels will be black, and will brighten to their original color. I had to slightly enhance the result for clarity, but it would look something like this:
 
 ![Gradient horizontal](https://i.imgur.com/hSNMYTl.png)
 
 Simple, right? You can even combine two gradients into opposite directions:
 ```hlsl
-float4 ArmorColourGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
+float4 ArmorColorGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    float luminosity = (colour.r + colour.g + colour.b) / 3;
-    colour.rgb *= ((coords.x * uColor) + ((1 - coords.x) * uSecondaryColor)) * luminosity;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    float luminosity = (color.r + color.g + color.b) / 3;
+    color.rgb *= ((coords.x * uColor) + ((1 - coords.x) * uSecondaryColor)) * luminosity;
+    return color * sampleColor;
 }
 ```
-![Gradient horizontal multicolour](https://i.imgur.com/w3PTOr3.png)
+![Gradient horizontal multicolor](https://i.imgur.com/w3PTOr3.png)
 
 Alright, so that's horizontally. Let's try it vertically!
 ```hlsl
 float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= coords.y;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= coords.y;
+    return color * sampleColor;
 }
 ```
 ![Gradient vertical bad](https://i.imgur.com/yIMcvQB.png)
@@ -293,10 +293,10 @@ You can work out exactly what this does in your own time, but it "shrinks" the c
 ```hlsl
 float4 ArmorVerticalGradient(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
+    float4 color = tex2D(uImage0, coords);
     float frameY = (coords.y * uImageSize0.y - uSourceRect.y) / uSourceRect.w;
-    colour.rgb *= frameY;
-    return colour * sampleColor;
+    color.rgb *= frameY;
+    return color * sampleColor;
 }
 ```
 ![Gradient vertical good](https://i.imgur.com/TD8CvHI.png)
@@ -313,23 +313,23 @@ Say I were to do this:
 ```hlsl
 float4 ArmorAnimated(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= uTime;
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= uTime;
+    return color * sampleColor;
 }
 ```
 Now, this would just increase the brightness until infinity (well, until one hour has passed, at which point it would reset, but that's still a long wait), and that's not really helpful. Instead, most dyes use a sine function to turn raw time into a sine wave. This will give you a nice and predictable scalar to use:
 ```hlsl
 float4 ArmorAnimatedSine(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= sin(uTime);
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= sin(uTime);
+    return color * sampleColor;
 }
 ```
 ![Sine animation](https://i.imgur.com/xQAqvm1.gif)
 
-As you might know, a sine wave... well, waves... between 1 and -1. In this particular case, that negative range isn't really useful, as negative colours just display as black. If we wanted to remove that negative range and just bounce between 0 and 1, we could do this:
+As you might know, a sine wave... well, waves... between 1 and -1. In this particular case, that negative range isn't really useful, as negative colors just display as black. If we wanted to remove that negative range and just bounce between 0 and 1, we could do this:
 ```hlsl
 float time = (sin(uTime) + 1) / 2;
 float altTime = sin(uTime) * 0.5f + 0.5f; // Same thing. [/code]
@@ -338,9 +338,9 @@ Apart from sine waves, there's another, less-useful-but-still-nice way to establ
 ```hlsl
 float4 ArmorAnimatedFrac(float4 sampleColor : COLOR0, float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    colour.rgb *= frac(uTime);
-    return colour * sampleColor;
+    float4 color = tex2D(uImage0, coords);
+    color.rgb *= frac(uTime);
+    return color * sampleColor;
 }
 ```
 ![Frac animation](https://i.imgur.com/djj1vSI.gif)
@@ -456,10 +456,10 @@ public class MyMod : Mod
 
             GameShaders.Armor.BindShader(ItemType<MyDyeItem>(), new ArmorShaderData(dyeRef, "PassName"));
 
-            // If your dye takes specific parameters such as colour, you can append them after binding the shader.
+            // If your dye takes specific parameters such as color, you can append them after binding the shader.
             // IntelliSense should be able to help you out here.   
 
-            GameShaders.Armor.BindShader(ItemType<MyColourDyeItem>(), new ArmorShaderData(dyeRef, "ColourPass")).UseColor(1.5f, 0.15f, 0f);
+            GameShaders.Armor.BindShader(ItemType<MyColorDyeItem>(), new ArmorShaderData(dyeRef, "ColorPass")).UseColor(1.5f, 0.15f, 0f);
             GameShaders.Armor.BindShader(ItemType<MyNoiseDyeItem>(), new ArmorShaderData(dyeRef, "NoisePass")).UseImage("Images/Misc/noise"); // Uses the default Terraria noise map.
 
             // To bind a miscellaneous, non-filter effect, use this.
@@ -497,7 +497,7 @@ https://forums.terraria.org/index.php?threads/tutorial-shockwave-effect-for-tmod
 I've already given most of my trade secrets away by now, but there are a few tidbits left that might be able to help you if you get stuck.
 
 1. **Mask your sprite when necessary** -
-Sometimes, your shader will fill up the transparent parts of your sprite as well. You can generally remedy this by multiplying your colour by the alpha of your sample (unless you've overwritten it, which you shouldn't really be doing do). See the examples with noise maps above for an... well... example.
+Sometimes, your shader will fill up the transparent parts of your sprite as well. You can generally remedy this by multiplying your color by the alpha of your sample (unless you've overwritten it, which you shouldn't really be doing do). See the examples with noise maps above for an... well... example.
 2. **Be efficient** -
 Shaders are executed many times per frame. Make sure they're as fast as possible, or at the very least not any slower than necessary. Personally, I think that extends to all code, but I seem to be in the minority on that front.
 3. **Be mindful with flashing effects** -
@@ -567,8 +567,8 @@ float2 uZoom;
 
 float4 FilterMyShader(float2 coords : TEXCOORD0) : COLOR0
 {
-    float4 colour = tex2D(uImage0, coords);
-    return colour;
+    float4 color = tex2D(uImage0, coords);
+    return color;
 }
 
 technique Technique1
