@@ -45,6 +45,11 @@ Tip: Here is an easy way to find where your Terraria files are located: ([video 
 2. Browse to the 'Local Files' tab and click on the 'Browse local files...' button
 3. You are now in your Terraria folder (this is where you should install tModLoader)
 
+### Manual Installation Common Issues
+Windows only: If the game doesn't launch at all, you might not have .NET 4.5 or XNA 4.0 installed. Download and run both installers:
+1. [Microsoft .NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=30653)
+2. [Microsoft XNA Framework Redistributable 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
+
 ### How to uninstall?
 
 1. Open Steam, go to your game library section and locate Terraria.
