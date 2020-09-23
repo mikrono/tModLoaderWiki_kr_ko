@@ -420,6 +420,8 @@ Once you have finished writing a shader, you'll need to compile it before you ca
 
 Using fxcompiler is very simple: just put the files you want to compile into the same folder as fxcompiler.exe, run it, and you're done. Move the .xnb files to your mod folder (_YourModName/Effects_ is a good place to put them) and you're done. If you build them with a XNA application, they will end up in your bin folder.
 
+A additional option is to use the Modders Toolkit Shader Tool. The Shader tool allows live testing and development of your shader in-game. More info can be found on the [Modders Toolkit Wiki](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/page-5#post-2125104).
+
 # Using your shader
 
 How to use your shader largely depends on what kind of shader it is, but first and foremost you'll have to load them first. You do this in the Load function of your Mod:
