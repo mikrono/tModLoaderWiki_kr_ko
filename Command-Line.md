@@ -55,26 +55,21 @@ GameServers - Add `-savedirectory ./` to server command line
 
 
 ## Dedicated Server (Self-Hosted)
-If you have an extra computer around, you can use it to host a server 24/7 without paying for a Dedicated Host. Setting up a dedicated server involves downloading and extracting the server from your OS ([Terraria Server v1.3.5.3](http://terraria.org/server/terraria-server-1353.zip)), installing the tModLoader files over that installation, and configuring the computer to run the server forever (execute the tModLoaderServer script (Linux/Mac) or tModLoader.exe (Windows)).
+If you have an extra computer around, you can use it to host a server 24/7 without paying for a Dedicated Host. Setting up a dedicated server involves installing the tModLoader files and configuring the computer to run the server forever (execute the tModLoaderServer script (Linux/Mac) or tModLoader.exe (Windows)).
 
 ### Linux
-If you'd like to install tModLoader on a Linux computer you have access to, but isn't the computer you intend to play on, below is a script that will setup tModLoader without needing Steam or Terraria installed. Make a `linuxServerScript.sh` file with the contents below in a folder where you wish to install the tModLoader server. `chmod +x linuxServerScript.sh` the file so you can execute it, then run it. This script downloads the unmodded Terraria server, downloads the latest tModLoader, and does the extracting of the files for you. After installation, it is up to you to manage running the server whenever you want by running `./tModLoaderServer` manually or with a script. You might want to use `-config serverconfig.txt` or the `-tmlsavedirectory` options to configure the behavior of the server as usual.
+If you'd like to install tModLoader on a Linux computer you have access to, but isn't the computer you intend to play on, below is a script that will setup tModLoader without needing Steam or Terraria installed. Make a `linuxServerScript.sh` file with the contents below in a folder where you wish to install the tModLoader server. `chmod +x linuxServerScript.sh` the file so you can execute it, then run it. This script downloads the latest tModLoader and does the extracting of the files for you. After installation, it is up to you to manage running the server whenever you want by running `./tModLoaderServer` manually or with a script. You might want to use `-config serverconfig.txt` or the `-tmlsavedirectory` options to configure the behavior of the server as usual.
 
 ```sh
-# Linux Server Install Script v1.0 by Chicken-Bones (some changes by jopojelly)
-tver=1353
-wget http://terraria.org/server/terraria-server-$tver.zip
-unzip terraria-server-$tver.zip $tver/Linux/* -d .
-mv $tver/Linux/* .
-rmdir -p $tver/Linux
+# Linux Server Install Script v1.1 by Chicken-Bones (some changes by jopojelly)
 wget https://api.github.com/repos/tModLoader/tModLoader/releases/latest -O tMLlatest.json
-tml=`sed -n 's/.*\(https.*Linux.*\)".*/\1/p' tMLlatest.json`
+tml=`sed -n 's/.*\(https.*Linux.*.tar.gz*\)".*/\1/p' tMLlatest.json`
 wget $tml
 tar xvzf tModLoader.Linux*.tar.gz
-chmod a+x Terraria tModLoader tModLoader-* *.bin*
-rm *.zip *.jar tMLlatest.json
+chmod a+x tModLoader tModLoader-* tModLoaderServer *.bin*
+rm *.zip *.tar.gz *.jar tMLlatest.json
 ```
 
 ## Visual Studio
 ### Build/Edit/Test mods
-Setting the Post Build event to `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"` will allow you to easily build and run your mod in Edit and Continue mode, facilitating efficient tweaking, modding, and testing. Add -skipselect so you don't have to go through the menus for an even easier time. See [Developing with Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio) for more information.
+Setting the Post Build event to `"C:\Program Files (x86)\Steam\steamapps\common\Terraria\tModLoaderServer.exe" -build "$(ProjectDir)\" -eac "$(TargetPath)"` will allow you to easily build and run your mod in Edit and Continue mode, facilitating efficient tweaking, modding, and testing. This is automatically added by default in all newly generated mods. Add -skipselect so you don't have to go through the menus for an even easier time. See [Developing with Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio) for more information.
