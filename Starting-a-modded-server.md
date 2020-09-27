@@ -2,10 +2,10 @@
 For the most part, launching a tModLoader server is the exact same as launching a Terraria server. 
 
 ## Setting Up a Dedicated Server
-If you have an extra old computer sitting around or leave your computer on all the time, you can use that computer to host a dedicated server. Do note that this server computer also needs their own copy of a Terraria Server which can be found [here](https://terraria.gamepedia.com/Server#Downloads) with tModLoader also installed.
+If you have an extra old computer sitting around or leave your computer on all the time, you can use that computer to host a dedicated server.
 
 ### Configure the server
-You can change `serverconfig.txt` with your server configurations which will be loaded by the tML server when using the instructions below.
+You can change `serverconfig.txt` with your server configurations which will be loaded by the tModLoader server when using the instructions below.
 
 #### Getting the server to load mods
 On your client, create a modpack of all the mods you want to use on the server, then copy that modpackName.json file to the server.  Create a folder to hold the mods "C:\Server\Mods" then create a ModPacks folder in that folder.  Copy your modpack.json file in the ModPacks folder and the associated tmod files into the Mods folder.  In your serverconfig.txt file, add the following two lines at the end of the file
@@ -28,7 +28,7 @@ Your typical home IP starts with 192.168, the router is often located on 192.168
 You can type this number in your internet browser to navigate to the router webpage. You'll need the password to login, which is typically displayed on a sticker somewhere on the physical router device. It is recommended to change this password if possible to increase security. It is possible your internet provider did this for you, if you do not know the password you'll have to call them and discuss how you can retrieve it. You'll likely have to reset the router, so make sure to remember the password next time.
 
 ### Starting server on Windows
-The tML installation should've come with several .bat files, including:
+The tModLoader installation should've come with several .bat files, including:
 1. `start-tModLoaderServer.bat`
     1. Launch a server normally, people with the server IP and port can join the server.
 1. `start-tModLoaderServer-steam-friends.bat`
@@ -37,7 +37,7 @@ The tML installation should've come with several .bat files, including:
     1. Launch a server explicitly with a closed steam lobby so steam friends cannot join you through the steam UI.
 
 ### Starting server on Linux or Mac
-The tML installation should have come with a script called `tModLoaderServer`. This script will start an instance of a server.
+The tModLoader installation should have come with a script called `tModLoaderServer`. This script will start an instance of a server.
 1. Browse to the directory of installation using `cd /desiredPath/`.
     1. desiredPath is the installation folder path name of your Terraria Server patched with tModLoader.
     2. For Mac, the installation folder is generally in `~/Library/Application\ Support/Steam/steamapps/common/Terraria/Terraria.app/Contents/MacOS`.
