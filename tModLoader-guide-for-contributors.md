@@ -15,7 +15,7 @@ If you still need to install tModLoader refer to the [tModLoader guide for playe
 You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 
 ## Git
-If you've never used Git before, checkout our [guide on how to use it](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management). If you ever come across something in this guide you don't recognize, just Google it. You should be easily able to find something relevant to your problem. You can also checkout [this little snippet](##further-online-assistance).
+If you've never used Git before, checkout our [guide on how to use it](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management). If you ever come across something in this guide you don't recognize, just Google it. You should be easily able to find something relevant to your problem. You can also checkout [this little snippet](#further-online-assistance).
 
 ## Code patcher
 ___
