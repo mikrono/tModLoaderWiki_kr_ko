@@ -14,6 +14,9 @@ If you still need to install tModLoader refer to the [tModLoader guide for playe
 ## IDE
 You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 
+## Git
+If you've never used Git before, checkout our [guide on how to use it](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management). If you ever come across something in this guide you don't recognize, just Google it. You should be easily able to find something relevant to your problem. You can also checkout [this little snippet](##further-online-assistance).
+
 ## Code patcher
 ___
 **Current TEMPORARY steps for developer setup:**
@@ -27,12 +30,14 @@ ___
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
 
+* When you're done, PR to 1.4, and *not* `master`
+
 tModLoader uses its own code patcher. If you want to contribute to tModLoader, you will have to use this tool. We need to use a patches system, because we are not allowed to upload vanilla source code publicly. It also allows for relatively easy code maintenance. [Here's what the tool looks like](https://i.imgur.com/u9Yy1rl.png)
 
 ### Getting the tModLoader code for the first time
 ___
-1. Install Terraria and tModLoader via Steam. Note setup does not currently work for GoG
-2. Clone this repository
+1. Install Terraria and tModLoader via Steam. Note: setup does not currently work for GoG
+2. Fork this repository, then clone your fork onto your PC
 3. Open setup.bat in the root folder
 4. Click on 'Setup' (top left button)
     * If asked, select your vanilla Terraria.exe (must be vanilla) from steam. I recommend making a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.0.5.exe and TerrariaServer_1.4.0.5.exe, so that when steam updates, you can still keep working on tModLoader
@@ -66,16 +71,6 @@ mklink /D "C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod" "C:\
 
 Before you're about to make a contribution, please check [this article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks in advance.
 
-### Keeping your code up-to-date
-___
-**NOTE:** it is wise that you backup your edits before pulling latest patches, if you have any that you haven't committed yet. Applying the latest patches **will** delete any of your work not included in them.
-
-1. Pull all newer commits from this repository
-   * You should verify that you now have the latest patches, located in patches/
-2. Open setup.bat in the root folder
-3. Click on 'Regenerate Source' (bottom right corner)
-   * After this process you can open solutions/tModLoader.sln as usual with the updated code
-
 ### Committing your changes
 ___
 1. Open setup.bat in the root folder
@@ -83,6 +78,30 @@ ___
     * Your workspace is tModLoader 99% of the time. If it isn't, we imply you know what you're doing.
 3. Create a new commit to commit the patches/ folder
     * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
+
+### Keeping your code up-to-date
+___
+**NOTE:** it is wise that you backup your edits before pulling latest patches, if you have any that you haven't committed yet. Applying the latest patches **will** delete any of your work not included in them.
+
+Setup (do this if you're updating your code for the first time, it also requires that you have git-scm installed)
+1. Open a Git Bash window or whatever in the tML folder
+2. Enter `git remote add remote https://github.com/tModLoader/tModLoader/`
+3. To ensure that it's been setup correctly, enter `git remote -v` and you should see something like this:
+```
+origin  https://github.com/*YOURUSERNAME*/tModLoader.git (fetch)
+origin  https://github.com/*YOURUSERNAME*/tModLoader.git (push)
+upstream        https://github.com/tModLoader/tModLoader (fetch)
+upstream        https://github.com/tModLoader/tModLoader (push)
+```
+
+1. Open up another shell window (if you want, enter `git remote -v` to make sure everything's as it should be)
+2. Enter `git fetch upstream`
+3. Then `git merge upstream/*branchtomerge*`
+   * This will pull all the newest commits from *branchtomerge* into the branch that you have checked out
+   * You should verify that you now have the latest patches, located in patches/
+4. Open setup.bat in the root folder
+5. Click on 'Regenerate Source' (bottom right corner)
+   * After this process you can open solutions/tModLoader.sln as usual with the updated code
 
 ### HELP! I accidentally committed on a wrong branch!
 Simply stash changes and checkout.
