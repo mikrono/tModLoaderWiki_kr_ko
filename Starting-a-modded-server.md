@@ -8,12 +8,38 @@ If you have an extra old computer sitting around or leave your computer on all t
 You can change `serverconfig.txt` with your server configurations which will be loaded by the tModLoader server when using the instructions below.
 
 #### Getting the server to load mods
+
+##### Windows
+
 On your client, create a modpack of all the mods you want to use on the server, then copy that modpackName.json file to the server.  Create a folder to hold the mods "C:\Server\Mods" then create a ModPacks folder in that folder.  Copy your modpack.json file in the ModPacks folder and the associated tmod files into the Mods folder.  In your serverconfig.txt file, add the following two lines at the end of the file
 
 modpath=c:\Server\Mods
-
 modpack=modpackName
 
+##### Linux (tested on Ubuntu 20.04 LTS)
+Go to `/home/<user>/.local/share/Terraria/ModLoader/Mods` and create a new directory called ModPack:  
+`mkdir ModPack`  
+Upload your mod pack JSON file there. You might need to upload mods manually to the mod folder.  
+  
+If you are missing `serverconfig.txt`, you have to create one manually. You can use config preset from the internet or make one yourself.  
+Some recommended parameters to have there:  
+#Load the world automatically when you run ./tModLoaderServer -config *configname*.txt, this one is required for some other arguments to take effect  
+`world=path to world file, for example /home/<user>/.local/share/Terraria/ModLoader/Worlds/<worldname>.wld` **(it must be .wld and not .twld!)**  
+#Sets the max number of players allowed on a server. The value must be between 1 and 255. (default=8)  
+`maxplayers=<number>`  
+#Set the port number (default=7777)   
+`port=<number>`  
+#Set the server password  
+`password=<password>`  
+#Reduces enemy skipping but increases bandwidth usage. The lower the number the less skipping will happen, but more data is sent. 0 is off.  
+`npcstream=<number>` (recommended around 2-6, increases required bandwidth but reduces teleporting)  
+#Link the mods folder (might default to that so could be irrelevant)  
+`modpath=/home/<user>/.local/share/Terraria/ModLoader/Mods`  
+#Select the modpack to load for the specific world  
+`modpack=<name of modpack without .json>` (maybe works with .json too, not sure)  
+For full list go to: https://terraria.gamepedia.com/Server#Server_config_file  
+Note: Journey's End config commands are NOT going to work because tModLoader runs on an older version of terraria!  
+  
 ### Portforwarding
 If you want other people to connect to your server from another network, you must open up the port your server will run on. 
 
