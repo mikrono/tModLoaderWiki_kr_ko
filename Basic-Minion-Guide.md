@@ -337,7 +337,7 @@ ItemID.Sets.StaffMinionSlotsRequired[item.type] = 2; // 2 as an example
 **My minion should be running on the ground instead of flying**
 
 Coordinating movement with minion states like staying close to the player, jumping at enemies, flying when too far away from the player etc. is more advanced and isn't covered in this guide.
-Concider the point below.
+Consider the point below.
 
 **My minion isn't going through platforms when an enemy is underneath it**
 
