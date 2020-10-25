@@ -157,7 +157,7 @@ For reference, here's what every bit in the bitfields represent and where they a
 
 `-`: Unused.
 
-`SSS`: Where the slope type for this `Tile` is stored.  Accessed from `tile.slope()` and `tile.slope(byte)`.  0 is no slope, 2 is down-right slope, 3 is down-left slope, 4 is up-right slope and 5 is up-left slope.
+`SSS`: Where the slope type for this `Tile` is stored.  Accessed from `tile.slope()` and `tile.slope(byte)`.  0 is no slope, 1 is down-left slope, 2 is down-right slope, 3 is up-left slope and 4 is up-right slope.
 
 `U`: If this `Tile` has an Actuator on it.  Accessed from `tile.actuator()` and `tile.actuator(bool)`.
 
