@@ -40,7 +40,8 @@ ___
 2. Fork this repository, then clone your fork onto your PC
 3. Open setup.bat in the root folder
 4. Click on 'Setup' (top left button)
-    * If asked, select your vanilla Terraria.exe (must be vanilla) from steam. I recommend making a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.0.5.exe and TerrariaServer_1.4.0.5.exe, so that when steam updates, you can still keep working on tModLoader
+    * If asked, select your vanilla Terraria.exe (must be vanilla) from steam. I recommend making a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.1.1.exe and TerrariaServer_1.4.1.1.exe, so that when steam updates, you can still keep working on tModLoader
+    * If you want to work on the 1.3 version of tml, you need Terraria_1.3.5.3.exe and TerrariaServer_1.3.5.3.exe (Up to you to figure out how to get them)
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
     * src/Terraria/
