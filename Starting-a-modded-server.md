@@ -18,7 +18,7 @@ modpack=modpackName
 
 ##### Linux (tested on Ubuntu 20.04 LTS)
 Go to `/home/<user>/.local/share/Terraria/ModLoader/Mods` and create a new directory called ModPack:  
-`mkdir ModPack`  
+`mkdir ModPacks`  
 Upload your mod pack JSON file there. You might need to upload mods manually to the mod folder.  
   
 If you are missing `serverconfig.txt`, you have to create one manually. You can use config preset from the internet or make one yourself.  
