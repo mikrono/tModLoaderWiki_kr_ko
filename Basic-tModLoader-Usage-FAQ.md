@@ -3,7 +3,7 @@ If you pirated Terraria, we can't help you. tModLoader won't work. Please don't 
 
 ### System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
-Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender. Some more info has been collected [here](https://forums.terraria.org/index.php?threads/terraria-error-system-threading.74373/#post-1664359).
+Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender. Some more info has been collected [here](https://www.bitdefender.com/consumer/support/answer/2700/).
 
 ### System.IO.IOException: Cannot create a file when that file already exists.
 ![](https://i.imgur.com/Wjv2nx2.png)    
