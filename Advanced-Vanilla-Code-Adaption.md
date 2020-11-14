@@ -261,7 +261,7 @@ Unfortunately, there is no easy way to change the projectile that is shot by our
 ![](https://i.imgur.com/mcDqzru.png)    
 Great, we now know to search the source code for `aiStyle == 3`:     
 ![](https://i.imgur.com/kGTeWrw.png)      
-Now follow the code into the AI_003_Fighters method and copy all the code and paste it into an AI method in our own ModNPC class. (Be careful not to mess up the `{ }` pairs) We will also set `npc.aiStyle = 0;` in SetDefaults (since the CloneDefaults method would set that to 3) and delete `aiType = NPCID.GreekSkeleton;` since we don't want both our copy of the AI code and the vanilla code to run. Once we have copied the code into our AI method, we need to do the usual cleanup: Change `base.` and `this.` to `npc.` everywhere they appear in the method:
+Now follow the code into the AI_003_Fighters method and copy all the code and paste it into an AI method in our own ModNPC class. (Be careful not to mess up the `{ }` pairs) We will also set `npc.aiStyle = -1;` in SetDefaults (since the CloneDefaults method would set that to 3) and delete `aiType = NPCID.GreekSkeleton;` since we don't want both our copy of the AI code and the vanilla code to run. Once we have copied the code into our AI method, we need to do the usual cleanup: Change `base.` and `this.` to `npc.` everywhere they appear in the method:
 
 Before:    
 ![](https://i.imgur.com/FGLIGWO.png)  
