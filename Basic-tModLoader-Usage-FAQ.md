@@ -79,6 +79,9 @@ Solutions: Copy from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfil
 
 You may notice that your vanilla player or world isn't in that folder, or maybe only .bak files are in that folder. This means that you have put that player or world onto the cloud. There are 2 ways to get them into tModLoader. The first option is to open vanilla Terraria and simply click the "Move off cloud" button and then follow the above instructions. The second option is to copy the files from the local copy of cloud files steam keeps around and place them in their respective ModLoader folder (`%UserProfile%\Documents\My Games\Terraria\ModLoader`). These are located in: `C:\Program Files (x86)\Steam\userdata\[some number here]\105600\remote`
 
+### "Cloud storage limit reached, unable to move to cloud"
+tModLoader shares the cloud storage space with Terraria (about 150 MB of it). Exceeding this limit on Terraria + tModLoader combined will make you unable to move players and worlds to the cloud until sufficient storage is available. Easiest way is to "un-cloud" your vanilla Terraria worlds, they take up the most space. You can check how much storage is used in Steam: Right click "tModLoader" -> "Properties" -> "Updates", at the bottom it says the amount of available storage. In the rare case where you used tModLoader cloud storage feature before steam release (0.11.7), you won't be able to get rid of these "orphaned" files the normal way. Try this method: [Video, Terraria App ID is 105600](https://youtu.be/JADsIv2RUSw).
+
 # Mod Browser
 ### "Mod Browser Offline", "I can't download mods"
 ![](https://i.imgur.com/JTtOMbq.png)
