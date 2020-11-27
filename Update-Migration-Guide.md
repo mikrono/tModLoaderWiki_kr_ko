@@ -18,6 +18,9 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Terraria.Main.*Texture[i]` -> `Terraria.GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`
 * `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`
+* `Main.maxInventory` -> `Main.InventorySlotsTotal`
+* `ItemUseStyleID` has a few renamed fields (`HoldingOut` becomes `Shoot`) and alot more use styles to choose from
+
 ### Non-Static Fields / Constants / Properties
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
