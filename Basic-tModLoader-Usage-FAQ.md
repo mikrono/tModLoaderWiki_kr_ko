@@ -7,7 +7,10 @@ Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender.
 
 ### System.IO.IOException: Cannot create a file when that file already exists.
 ![](https://i.imgur.com/Wjv2nx2.png)    
-Solution. Delete the logs folder. If it comes back, you can try renaming the ModLoader folder to ModLoaderOld or completely reinstalling Terraria.
+Solution. Delete the logs folder. If it comes back, you can try renaming the `ModLoader` folder to ModLoaderOld or completely reinstalling Terraria.
+
+### Enabling mods freezes the game/Setting controls doesn't work properly.
+This is most likely related to your antivirus blocking access to the `ModLoader` folder. See the [below issue](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#systemunauthorizedaccessexception-access-to-the-path-is-denied) for the process (but do this with the folder instead of the exe)
 
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
