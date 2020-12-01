@@ -44,7 +44,7 @@ Clears all fields.
 Sets or checks if the Tile has a tile present or not. 
 
 ## public bool nactive()
-Returns true is Tile is active but not actuated.
+Returns true is Tile is active but not actuated. Equivalent to `tile.active() && !tile.inActive()`.
 
 ## public bool inActive()
 ## public void inActive(bool inActive)
