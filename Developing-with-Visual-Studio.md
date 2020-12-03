@@ -54,7 +54,7 @@ Setting up a project for your mod manually is not recommended. Modders should us
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
 1. Set the _internal_ name for your mod. (No special characters allowed)
-1. Uncheck "Create directory for solution" is using VS 2017, and check "Place solution and project in the same directory" if using VS 2019.
+1. Uncheck "Create directory for solution" if using VS 2017, and check "Place solution and project in the same directory" if using VS 2019.
 1. Make sure to set the location to the Mod Sources directory
 1. Click OK
     1. Your output should look similar to [this](https://i.imgur.com/8JBLt1A.png). Note, your window may look different, this is the window for VS 2019. 
