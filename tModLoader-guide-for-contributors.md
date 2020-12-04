@@ -20,13 +20,13 @@ If you've never used Git before, checkout our [guide on how to use it](https://g
 ## Code patcher
 ___
 **Current TEMPORARY steps for developer setup:**
-* Pull the 1.4 branch
+* Pull the 1.4 branch. You HAVE to use git for this, downloading source code as a zip file won't work;
 
-* [Install .NET Core 3.1 developer pack](https://dotnet.microsoft.com/download/visual-studio-sdks)
+* [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
-* Run the setup.bat
+* Run the setup.bat;
 
-* Click the Setup button
+* Click the Setup button;
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
 
