@@ -45,7 +45,7 @@ When you've created your translations and committed them to your fork, they are 
 
 ## Translation file format
 Before you can begin translating, you must understand the localization file format that tML uses.
-A localization file will be named by the language's abbreviation (see the list above) with the `.lang` extension. For example: `en-US.lang`. _These files should be located in a folder called `Localization`_. Make sure the file encodings are UTF-8, not UTF-8-BOM, and the fuile uses consistent line separators (usually `CL RF` aka `\r\n`).
+A localization file will be named by the language's abbreviation (see the list above) with the `.lang` extension. For example: `en-US.lang`. _These files should be located in a folder called `Localization`_. Make sure the file encodings are UTF-8, not UTF-8-BOM, and the file uses consistent line separators (usually `CL RF` aka `\r\n`).
 
 Lang files follow the simple key=value format:
 `key=value`
