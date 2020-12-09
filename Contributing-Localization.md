@@ -93,4 +93,4 @@ tModLoader itself doesn't use .lang files, but .json files. The process is rough
 ## Miscellaneous 
 * Newlines can be added with `\n` interspersed in the Value.   
 * Don't put spaces in Keys. See [ExampleMod .lang files](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for more info on spaces in Keys.
-* Reuse vanilla and modded keys via `{$Full.Key.Name}`. See [ExampleMod .lang files](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for this as well.
+* Reuse vanilla and modded keys via substitution syntax: `{$Full.Key.Name}`. See [ExampleMod](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Localization/en-US.lang) for use in .lang files. This syntax also works in code, such as `Tooltip.SetDefault("{$Full.Key.Name}"))`;.
