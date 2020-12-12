@@ -84,7 +84,7 @@ ___
 ___
 **NOTE:** it is wise that you backup your edits before pulling latest patches, if you have any that you haven't committed yet. Applying the latest patches **will** delete any of your work not included in them.
 
-**Setup** (do this if you're updating your code for the first time, it also requires that you have some kind of command line [git client](https://cli.github.com/) installed)
+**Setup** (do this if you're updating your code for the first time, it also requires that you have some kind of command line [git client](https://git-scm.com/downloads) installed)
 1. Open a Git Bash window or whatever in the tML folder
 2. Enter `git remote add remote https://github.com/tModLoader/tModLoader/`
 3. To ensure that it's been setup correctly, enter `git remote -v` and you should see something like this:
