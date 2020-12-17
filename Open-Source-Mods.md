@@ -25,7 +25,8 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), custom minion/sentry AIs, player layers and more.
 * [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
 * [Mo' Tools](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of tools, weapons, enemies, bosses, and more!
-
+* [Clicker Class](https://github.com/SamsonAllen13/ClickerClass) -- Adds a custom class and associated items. Comes with armor glowmasks, custom `mod.Call API` including an example mod, and translation/localization support.
+* [The Amulet Of Many Minions](https://github.com/westphallm1/tModLoader_Minions) -- Adds new minions and associated items, aswell as a "squire" summoner subclass. Heavy utilization of inheritance, and has custom networking/netcode.
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
