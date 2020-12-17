@@ -32,31 +32,31 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
-* [Even More Modifiers](https://github.com/Jofairden/EvenMoreModifiers) -- A mod to add custom effects to the game that can affect weapons, accessories and armors. Showcases hacking armor items to allow them to be reforged as accessories, UI, a solid open-ended framework designed so other mods can add their own content to its system, documentation, abstraction and design practices, MP compatibility, glowmasks and shaders, optional hard-references (support with other mods) and various uses for Attribute classes.
-* [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication
-* [HEROs Mod](https://github.com/JavidPack/HEROsMod) -- A lot of networking code. (Do not consult for UI)
-* [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
 * [AutoTrash](https://github.com/JavidPack/AutoTrash) -- UI, a slot that auto trashes items you pick up.
-* [Shorter Respawn](https://github.com/JavidPack/ShorterRespawn) -- Integrating with other mods through Call. (Cheat Sheet and HEROs Mod)
+* [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication.
+* [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support with FK's Mod Settings Configurator).
+* [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
+* [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor).
+* [Eternal Mods](https://github.com/Eternal-Team) -- Tile Entities, UI and a bunch of framework stuff.
+* [Even More Modifiers](https://github.com/Jofairden/EvenMoreModifiers) -- A mod to add custom effects to the game that can affect weapons, accessories and armors. Showcases hacking armor items to allow them to be reforged as accessories, UI, a solid open-ended framework designed so other mods can add their own content to its system, documentation, abstraction and design practices, MP compatibility, glowmasks and shaders, optional hard-references (support with other mods) and various uses for Attribute classes.
+* [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual.
+* [hamstar's mods](https://github.com/hamstar0) -- A set of 11 open source mods adding significant original gameplay elements or minor content additions.
+* [HEROs Mod](https://github.com/JavidPack/HEROsMod) -- A lot of networking code. (Do not consult for UI)
 * [Item Checklist](https://github.com/JavidPack/ItemChecklist) -- UI, TagCompound, saving Items in TagCompounds.
-* [Item Customizer](https://github.com/gamrguy/ItemCustomizer) -- Messing with shaders
-* [Shader Lib](https://github.com/gamrguy/ShaderLib) -- Messing with shaders
-* [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor)
+* [Item Customizer](https://github.com/gamrguy/ItemCustomizer) -- Messing with shaders.
+* [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
+* [Shader Lib](https://github.com/gamrguy/ShaderLib) -- Messing with shaders.
+* [Shorter Respawn](https://github.com/JavidPack/ShorterRespawn) -- Integrating with other mods through Call. (Cheat Sheet and HEROs Mod).
+* [Terraria Sound Suite](https://github.com/direwolf420/TerrariaSoundSuite) -- Everything Terraria sounds: Lets see sounds, their exact values, etc. without needing to search in the source code. You can also select any sound you want and play it in its extensive config. Uses TerrariaHooks' detours (On.) and reflection.
+* [The Deconstructor](https://github.com/Jofairden/TheDeconstructor) -- Deconstruct _any_ item back into its recipe (showcases custom UI, sound effects and more).
 * [Vanilla Tweaks](https://github.com/goldenapple3/VanillaTweaks) -- Various tweaks using GlobalItem, GlobalNPC etc, recipe editing, options system with JSON.
 * [Wireless](https://github.com/goldenapple3/Wireless) -- Wiring related code, storing custom tile information using ModWorld.
-* [Eternal Mods](https://github.com/Eternal-Team) -- Tile Entities, UI and a bunch of framework stuff.
-* [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
-* [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support with FK's Mod Settings Configurator)
-* [Fast Start](https://github.com/Jofairden/FastStart) -- Start the game with a bit more gear than usual
-* [The Deconstructor](https://github.com/Jofairden/TheDeconstructor) -- Deconstruct _any_ item back into its recipe (showcases custom UI, sound effects and more)
-* [hamstar's mods](https://github.com/hamstar0) -- A set of 11 open source mods adding significant original gameplay elements or minor content additions.
+
 
 ## Too Advanced/Specific
 These mods are _probably_ too specific or advanced to for most modders.
 * [Alternate Dimensions](https://github.com/JavidPack/AlternateDimensions) -- An incomplete implementation of alternate dimensions. Knowledgeable and determined modders are encouraged to discuss a suitable implementation.
-* [WorldGenPreviewer](https://github.com/JavidPack/WorldGenPreviewer) -- Hijacking the WorldGen screen, Reflection
-* [Emoji Support](https://github.com/JavidPack/EmojiSupport) -- Add a Chat Tag Handler
 * [Boss Expertise](https://github.com/goldenapple3/BossExpertise) -- Various Expert Mode related "hacks", options system with JSON, integration with Cheat Sheet.
-
-## Ambitious
 * [CLib](https://github.com/aberna01/CLib) -- Rewriting the update methods for all entities, loads of static method tools that you can use to save some time typing. Adds a drawtext equivalent data structure to drawdata. Has some rewritten collision detection and some custom. Tries to aid TMod the best it can. Always accepting help.
+* [Emoji Support](https://github.com/JavidPack/EmojiSupport) -- Add a Chat Tag Handler
+* [WorldGenPreviewer](https://github.com/JavidPack/WorldGenPreviewer) -- Hijacking the WorldGen screen, Reflection.
