@@ -8,25 +8,27 @@ The following is a list of Open Source Mods (not all are technically "Open Sourc
 
 ## Content Mods
 These mods are mods that add common things such as items, enemies, furniture, pets and so forth.
-* [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
-* [Cave Story](https://github.com/JavidPack/CaveStory) -- Very open to contributions. 
-* [Elemental Unleash Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
-* [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
-* [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code.
+* [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
+* [Cave Story](https://github.com/JavidPack/CaveStory) -- Adds a bit of everything.
+* [Clicker Class](https://github.com/SamsonAllen13/ClickerClass) -- Adds a custom class and associated items. Comes with armor glowmasks, custom mod.Call API including an example mod, and translation/localization support.
+* [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
+* [Elemental Unleash Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
+* [Enigma](https://github.com/Laugic/Laugicality) -- Adds a new level-up system, a few bosses, weapons, and accessories. 
+* [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
+* [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
+* [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
+* [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything.
+* [Mo' Tools](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of tools, weapons, enemies, bosses, and more!
+* [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), an invasion, custom minion/sentry AIs, player layers and more.
+* [Spirit Mod](https://github.com/PhoenixBladez/SpiritMod) -- Large content mod with alot of worldgen, and custom visuals utilizing primitive drawing.
+* [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
+* [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code. Uses TerrariaHooks' detours (On.) to simulate a minion target.
+* [The Amulet Of Many Minions](https://github.com/westphallm1/tModLoader_Minions) -- Adds new minions and associated items, aswell as a "squire" summoner subclass. Heavy utilization of inheritance, and has custom networking/netcode.
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
-* [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything, open to contributors.
-* [Tremor](https://github.com/Jofairden/Tremor) -- Please be advised that the code in Tremor is mostly very sub-optimal, though slowly being improved by Jofairden and collaborators. If you are looking for example, try to use Tremor as a last resort instead of a first
-* [Enigma](https://github.com/Laugic/Laugicality) -- Adds a new level-up system, a few bosses, weapons, and accessories. 
-* [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
-* [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
-* [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
-* [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), custom minion/sentry AIs, player layers and more.
-* [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
-* [Mo' Tools](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of tools, weapons, enemies, bosses, and more!
-* [Clicker Class](https://github.com/SamsonAllen13/ClickerClass) -- Adds a custom class and associated items. Comes with armor glowmasks, custom `mod.Call API` including an example mod, and translation/localization support.
-* [The Amulet Of Many Minions](https://github.com/westphallm1/tModLoader_Minions) -- Adds new minions and associated items, aswell as a "squire" summoner subclass. Heavy utilization of inheritance, and has custom networking/netcode.
+
+
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
