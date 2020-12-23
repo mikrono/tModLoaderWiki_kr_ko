@@ -3,7 +3,7 @@ In this guide we will go over minions, what makes them work, and show basic AI c
 
 ## Introduction
 A minion is, first of all, a projectile.
-Not to be confused with a boss minion such as the Brain of Chthulhu Creeper, which is an NPC.
+Not to be confused with a boss minion such as the Brain of Cthulhu Creeper, which is an NPC.
 That means you are going to extend the `ModProjectile` class provided by tModLoader.
 Then, you need a weapon that you use to summon it with, therefore extending `ModItem`.
 The last thing being the thing that allows the minion to stay alive and to be able to be unsummoned:
