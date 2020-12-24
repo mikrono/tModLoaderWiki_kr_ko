@@ -26,6 +26,7 @@ You can assign these fields to give your ModNPC various values. Typically you'll
 | [alpha](#alpha)<a name="alpha"></a>| int | 0 | 0 is opaque, and 255 is transparent. This is the opposite of typical representations of alpha in computer graphics, so be aware of that. |
 | [color](#color)<a name="color"></a>| Color |  |  |
 | [value](#value)<a name="value"></a>| float | 0f | How many copper coins the NPC will drop when killed (100 copper coins = 1 silver coin etc.). |
+| [rarity](#rarity)<a name="rarity"></a>| int | 0 | How rare the NPC is for the Lifeform Analyzer. 4 is for Tim and Mimics, 1 is for bound town NPCs. |
 | [immune](#immune)<a name="immune"></a>| int[] | all 0 | This determines if an NPC can be hit by a item or projectile owned by a particular player (it is an array, each slot corresponds to different players (whoAmI)). It is decremented towards 0 every update.	Melee items set immune[player.whoAmI] to player.itemAnimation, which starts at item.useAnimation and decrements towards 0. Penetrating projectiles usually set immune to 10, while non-penetrating projectiles do not set immune. ExampleAnimatedPierce.cs explains more about options for npc and projectile immunity. |
 | [buffImmune](#buffimmune)<a name="buffimmune"></a>| bool[] | all false | Make the NPC immune to buffs/debuffs. Example: `npc.buffImmune[BuffID.OnFire] = true;` |
 | [knockBackResist](#knockbackresist)<a name="knockbackresist"></a>| float | 1f | How much of the knockback it receives will actually apply. 1f: full knockback; 0f: no knockback. |
