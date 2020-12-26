@@ -29,22 +29,23 @@ _**Why: Avoids confusion and inconsistency in the public 'contract' of the class
 ## Braces
 Use [K&R Style](https://en.wikipedia.org/wiki/Indentation_style#K&R_style). Braces on the same line for statements. New line for declarations. This is mostly enforced by .editorconfig
 
-Braces may be ommitted on single line `if/else/using` statements. For example:
+Braces may be ommitted on single line `if/else/using` statements.
 ```cs
-foreach (var mod in mods) {
-	if (mod.Name.Length == 0)
-		errors.Add(Language.GetTextValue("tModLoader.BuildErrorModNameEmpty"));
-	else if (mod.Name.Equals("Terraria", StringComparison.InvariantCultureIgnoreCase))
-		errors.Add(Language.GetTextValue("tModLoader.BuildErrorModNamedTerraria"));
-	else if (mod.Name.IndexOf('.') >= 0)
-		errors.Add(Language.GetTextValue("tModLoader.BuildErrorModNameHasPeriod"));
-	else if (!names.Add(mod.Name))
-		errors.Add(Language.GetTextValue("tModLoader.BuildErrorTwoModsSameName", mod.Name));
-	else
-		continue;
-
-	erroredMods.Add(mod);
+if (canRestoreFlag) {
+    for (int k = 0; k < canRestore.Count; k++) {
+        if (canRestore[k] > 0)
+            infos[k] = null;
+    }
 }
+```
+
+**NOT**
+
+```cs
+if (canRestoreFlag)
+    for (int k = 0; k < canRestore.Count; k++)
+        if (canRestore[k] > 0)
+            infos[k] = null;
 ```
 
 **Do not** mix and match missing braces
