@@ -29,7 +29,7 @@ _**Why: Avoids confusion and inconsistency in the public 'contract' of the class
 ## Braces
 Use [K&R Style](https://en.wikipedia.org/wiki/Indentation_style#K&R_style). Braces on the same line for statements. New line for declarations. This is mostly enforced by .editorconfig
 
-Braces may be ommitted on single line `if/else/using` statements.
+Braces may be ommitted on _single_ line `if/else/using` statements.
 ```cs
 if (canRestoreFlag) {
     for (int k = 0; k < canRestore.Count; k++) {
@@ -39,7 +39,7 @@ if (canRestoreFlag) {
 }
 ```
 
-**NOT**
+**Forbidden.** The first `if` statement is multi-line, and `for` loops must always have braces.
 
 ```cs
 if (canRestoreFlag)
