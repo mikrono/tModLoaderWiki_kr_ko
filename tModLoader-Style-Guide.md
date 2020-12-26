@@ -49,3 +49,11 @@ Use of var is encouraged if it aids readability by avoiding type names that are 
 * When working with basic types - e.g. `int i = 0`;
 * When working with compiler-resolved built-in numeric types - e.g. `var number = 12 * ReturnsFloat();`
 * When users would clearly benefit from knowing the type - e.g. `var listOfItems = GetList();`
+
+<details>
+  <summary>Example</summary>
+
+  ```
+  long console output here
+  ```
+</details>
