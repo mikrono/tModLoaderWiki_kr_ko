@@ -37,3 +37,15 @@ Generally, put fields, then properties, then methods.
 	
 ## reducing patch size
 	
+
+## The var keyword
+Use of var is encouraged if it aids readability by avoiding type names that are noisy, obvious, or unimportant.
+### Encouraged:
+
+* When the type is obvious - e.g. `var apple = new Apple();`, or `var request = Factory.Create<HttpRequest>();`
+* For transient variables that are only passed directly to other methods - e.g. `var item = GetItem(); ProcessItem(item);`
+### Discouraged:
+
+* When working with basic types - e.g. `int i = 0`;
+* When working with compiler-resolved built-in numeric types - e.g. `var number = 12 * ReturnsFloat();`
+* When users would clearly benefit from knowing the type - e.g. `var listOfItems = GetList();`
