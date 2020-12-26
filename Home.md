@@ -127,3 +127,4 @@ These are pages that we have so far failed to categorize or simply do not belong
 - [Mount Data Parameters](MountDataParameters)
 - [Open Source Mods](Open-Source-Mods)
 - [Command Line Arguments and Server Config](Command-Line)
+- [.tmod File format](https://github.com/tModLoader/tModLoader/wiki/.tmod-File-format)
