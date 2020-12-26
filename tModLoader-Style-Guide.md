@@ -172,7 +172,8 @@ internal void AddFile(string fileName, byte[] data) {
 	
 ## Keep Patches Small
 The source code of Terraria is not stored on git, instead tML changes are stored in .patch files in the patches/ directory. Keeping patches as small as possible makes handling Terraria updates and identifying the exact changes tML requires much easier. 
-* Use block comments rather than removing code
+
+Use block comments rather than removing code
 ```cs
 else if (buffType[j] == 117) {
 	allDamage += 0.1f;
@@ -184,7 +185,7 @@ else if (buffType[j] == 117) {
 	*/
 }
 ```
-* Use goto to avoid changing indentation
+Use goto to avoid changing indentation
 ```cs
 if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
 	goto PostDraw;
@@ -194,7 +195,7 @@ if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
 PostDraw:
 WallLoader.PostDraw(j, i, wall, spriteBatch);
 ```
-* Wrap a method to insert a hook at the end of a method with multiple return statements
+Wrap a method to insert a hook at the end of a method with multiple return statements
 ```cs
 public void HitEffect(int hitDirection = 0, double dmg = 10.0) {
 	VanillaHitEffect(hitDirection, dmg);
