@@ -2,7 +2,7 @@ The number one rule of collaborative development is _pick a style and stick to i
 
 The following are useful resources for general C# design and style
 * https://google.github.io/styleguide/csharp-style.html
-* https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/and
+* https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/
 * https://github.com/ktaranov/naming-convention/blob/master/C%23%20Coding%20Standards%20and%20Naming%20Conventions.md
 
 If something is not listed in this guide, use your best judgement to pick between matching existing code and the advice listed above.
