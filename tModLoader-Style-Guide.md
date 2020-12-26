@@ -27,9 +27,9 @@ A class should have either public properties or public fields. not both. If you 
 _**Why: Avoids confusion and inconsistency in the public 'contract' of the class. Terraria itself rarely uses properties. Microsoft guidelines recommend avoiding public fields entirely.**_
 
 ## Braces
-Use [K&R Style](https://en.wikipedia.org/wiki/Indentation_style#K&R_style). Braces on the same line for statements. New line for declarations. This is mostly enforced by .editorconfig
+Use [K&R Style](https://en.wikipedia.org/wiki/Indentation_style#K&R_style). Braces on the same line for statements, method and property declarations. New line for all other declarations. This is mostly enforced by .editorconfig
 
-Braces may be ommitted on _single_ line `if/else/using` statements.
+Braces may be omitted on _single_ line `if/else/using` statements. For example:
 ```cs
 if (canRestoreFlag) {
     for (int k = 0; k < canRestore.Count; k++) {
@@ -39,18 +39,18 @@ if (canRestoreFlag) {
 }
 ```
 
-**Forbidden.** The first `if` statement is multi-line, and `for` loops must always have braces.
+The following is **forbidden**
 
 ```cs
-if (canRestoreFlag)
-    for (int k = 0; k < canRestore.Count; k++)
-        if (canRestore[k] > 0)
+if (canRestoreFlag) // Body spans multiple lines
+    for (int k = 0; k < canRestore.Count; k++) // Braces required on for loops
+        if (canRestore[k] > 0) // Ok
             infos[k] = null;
 ```
 
 **Do not** mix and match missing braces
 ```cs
-if (ConfigManager.AnyModNeedsReload())
+if (ConfigManager.AnyModNeedsReload()) // Forbidden. Must have braces to match `else`
 	needsReload = true;
 else {
 	foreach (NetConfig pendingConfig in pendingConfigs)
