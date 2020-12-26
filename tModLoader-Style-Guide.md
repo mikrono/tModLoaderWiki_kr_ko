@@ -62,10 +62,10 @@ _**Why: Balance between good visual separation and keeping code on-screen when T
 ## Comments
 Short comments about a single line should go on the same line.
 ```cs
-public override void SetDefaults(Item item) {
-	if (item.type == ItemID.CopperShortsword) { // Here we make sure to only change Copper Shortsword by checking item.type in an if statement
-		item.damage = 50; // Changed original CopperShortsword's damage to 50!
-	}
+public override void SetDefaults() {
+	item.damage = 12; // The damage for projectiles isn't actually 12, it actually is the damage combined with the projectile and the item together.
+	item.DamageType = DamageClass.Ranged;
+	...
 }
 ```
 **Do not** use block comments. Use multiple line comments instead
