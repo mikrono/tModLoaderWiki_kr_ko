@@ -186,7 +186,7 @@ else if (buffType[j] == 117) {
 	*/
 }
 ```
-Use goto to avoid changing indentation
+Use goto to avoid changing indentation. **Only when 5+ lines would be indented**
 ```cs
 if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
 	goto PostDraw;
