@@ -42,7 +42,7 @@ If you have errors, the Error List will appear, otherwise, the mod will build, b
 More information on how to debug and the benefits of debugging are found in the [Why Use an IDE](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#debug) page, please read it, it is extremely useful.
 
 # Edit and Continue
-While debugging, you can edit the source code and recompile the mod in-game without having to reload mods or restart the game. The [Why Use an IDE](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) page has more info on this topic, please read it, it is extremely useful.
+While debugging, you can edit the source code and recompile the mod in-game without having to reload mods or restart the game. The [Why Use an IDE](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#edit-and-continue) page has more info on this topic, please read it, it is extremely useful. ***Anything between "Next Steps" and "Common issues" is not required to do, this has been set up by the "Create Mod" button when you made your mod. Don't touch your .csproj if you don't know EXACTLY what you are doing.***
 
 # Next Steps
 Now that you have setup Visual Studio, your mod development speed can increase greatly. Please read [Why Use an IDE](Why-Use-an-IDE) for more tips on how an IDE like Visual Studio greatly speed up your modding.
