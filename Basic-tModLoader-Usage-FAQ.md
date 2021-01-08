@@ -12,6 +12,9 @@ Solution. Delete the logs folder. If it comes back, you can try renaming the `Mo
 ### Enabling mods freezes the game/Setting controls doesn't work properly.
 This is most likely related to your antivirus blocking access to the `ModLoader` folder. See the [below issue](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#systemunauthorizedaccessexception-access-to-the-path-is-denied) for the process (but do this with the folder instead of the exe)
 
+### Disk Write Error
+If you try to install tModLoader through Steam and it gives you a message with "Disk Write Error" in it, it is usually caused by Avast. Disable it temporarily and install tModLoader.
+
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
 
