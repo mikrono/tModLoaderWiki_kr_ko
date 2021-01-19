@@ -20,7 +20,7 @@ If version isn't the issue, read [My connection is fine but my friend or I am st
 ## Stuck on "Found Server"
 If you have an ASUS computer, there seems to be a program called Armory Crate running that prevents running the server on the normal 7777 port. You can close that program, or launch the server manually with a different port to bypass this issue. Make sure when you connect to the server to specify the new port as well.
 
-If you do not have that you can check for other programs taking the ports by opening up Resource Monitor
+If you do not have that you can check for other programs taking the ports by opening up Resource Monitor, going to the Network tab, then expand TCP Connections and Listening Ports, then sort them both by Port. Look for any program using the default 7777 port.
 
 # When I join my own server, mods get disabled
 This is caused by bad mods. You must view the server.log file or start the server with the console visible to identify the issue. 
