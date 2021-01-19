@@ -17,6 +17,9 @@ You are trying to connect to a server that is not the correct version. You might
 ## Version is fine
 If version isn't the issue, read [My connection is fine but my friend or I am stuck on "Connecting..."](#my-connection-is-fine-but-my-friend-or-i-am-stuck-on-connecting) below
 
+## Stuck on "Found Server"
+If you have an ASUS computer, there seems to be a program called Armory Crate running that prevents running the server on the normal 7777 port. You can close that program, or launch the server manually with a different port to bypass this issue. Make sure when you connect to the server to specify the new port as well.
+
 # When I join my own server, mods get disabled
 This is caused by bad mods. You must view the server.log file or start the server with the console visible to identify the issue. 
 * Set Show Server Console to On: [image](https://i.imgur.com/nfhC1GH.png)
