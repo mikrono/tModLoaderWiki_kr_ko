@@ -75,7 +75,7 @@ The Mod Browser uses a lot of bandwidth, more than we can afford. In an effort t
 
 To integrate, visit the [Mod Browser Registration page](http://javid.ddns.net/tModLoader/register.php), log in, click "Manage Mods", then "Submit GitHub Authorization". After that, follow the instructions very, very carefully. After success, the next time you publish your mod you will enjoy the benefits.
 
-### Advanced Github Integration (v0.11.7.6+, Experimental, DO NOT USE)
+### Advanced Github Integration (v0.11.8, Experimental, DO NOT USE)
 If you are using Github as designed, meaning as a repository of your source code, you can automate releases of your mod by using Github Actions. To do this, visit your repository and click the `Actions` button. Then, click `Skip this and set up a workflow yourself`. Copy and paste the following into the text box.    
 ```
 name: Push on Master jobs
@@ -87,18 +87,18 @@ on:
 jobs:
   automaticpublish:
     name: Automatic Mod Browser Publish Integration
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
        
       # Mod Browser integration
-      - uses: JavidPack/tModLoaderPublishIntegration@v0.11.7.6.Beta.3
+      - uses: JavidPack/tModLoaderPublishIntegration@v0.11.8
         with:
           STEAMID64: ${{secrets.STEAMID64}}
           MODBROWSERPASSPHRASE: ${{secrets.MODBROWSERPASSPHRASE}}
           MODNAME: YourModNameHere
 ```
-Now, replace `YourModNameHere` with the internal name of your mod. Commit this file. Next, visit `Settings->Secrets` and create a secret called `STEAMID64` with your steamid64 and a secret called `MODBROWSERPASSPHRASE` with your current mod browser passphrase. With these steps complete, the next time you push a commit to your master branch that increases the version in `build.txt`, the mod will automatically be published using the tModLoader version specified. As tModLoader updates, so too will `tModLoaderPublishIntegration`, so be sure to update the version used by changing `JavidPack/tModLoaderPublishIntegration@v0.11.7.6.Beta.3` to the tModLoader version you wish to publish with.
+Now, replace `YourModNameHere` with the internal name of your mod. Commit this file. Next, visit `Settings->Secrets` and create a repository secret called `STEAMID64` with your steamid64 and another secret called `MODBROWSERPASSPHRASE` with your current mod browser passphrase. With these steps complete, the next time you push a commit to your master branch that increases the version in `build.txt`, the mod will automatically be published using the tModLoader version specified. As tModLoader updates, so too will `tModLoaderPublishIntegration`, so be sure to update the version used by changing `JavidPack/tModLoaderPublishIntegration@v0.11.8` to the tModLoader version you wish to publish with.
 
 ## Limitations
 ### Terraria Community Forum Rules
