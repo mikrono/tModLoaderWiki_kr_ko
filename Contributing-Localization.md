@@ -6,18 +6,18 @@ Most mods should have their code on github, this guide will give a primer on how
 
 Currently, tML supports the following locales:
 
-| Language  | Abbreviation | Filename
-|----------:|:-------------|--------------|
-|           |              |              |
-| English   | en-US        | en-US.lang   |
-| German    | de-DE        | de-DE.lang   |
-| Italian   | it-IT        | it-IT.lang   |
-| French    | fr-FR        | fr-FR.lang   |
-| Chinese   | zh-Hans      | zh-Hans.lang |
-| Spanish   | es-ES        | es-ES.lang   |
-| Russian   | ru-RU        | ru-RU.lang   |
-| Portugese | pt-BR        | pt-BR.lang   |
-| Polish    | pl-PL        | pl-PL.lang   |
+| Language             | Abbreviation | Filename
+|---------------------:|:-------------|--------------|
+|                      |              |              |
+| English              | en-US        | en-US.lang   |
+| German               | de-DE        | de-DE.lang   |
+| Italian              | it-IT        | it-IT.lang   |
+| French               | fr-FR        | fr-FR.lang   |
+| Simplified Chinese   | zh-Hans      | zh-Hans.lang |
+| Spanish              | es-ES        | es-ES.lang   |
+| Russian              | ru-RU        | ru-RU.lang   |
+| Brazilian Portuguese | pt-BR        | pt-BR.lang   |
+| Polish               | pl-PL        | pl-PL.lang   |
 
 # Git version control primer
 Most mods will publish their source using the git version control system. Github, the site you're on, provides a nice global place for everyone to contribute to projects using git.
