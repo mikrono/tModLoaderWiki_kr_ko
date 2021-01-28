@@ -220,8 +220,8 @@ Always check your patches when committing and see if there's a way to minimise t
 ## Special Cases
 The patches of tModLoader contain some strong preferences for handling particular additions, that otherwise aren't covered in preceding documentation.
 
-If working within a method that has code nested within an ```if(statement){}``` block, and there exists no subsequent code within the method that is required to run following the ```statement``` returning false, then the following applies  
-DO:
+If working within a method that has code nested within an ```if(statement){}``` block, and there exists no subsequent code within the method that is required to run following the ```statement``` returning ```false```, then the following applies  
+**Do**:
 ```void method(){
 //something code here
 if (data == null)
@@ -233,7 +233,7 @@ if (data == null)
 }
 ```
 
-DON'T:
+**Do not**:
 ```void method(){
 //something basic here
 
