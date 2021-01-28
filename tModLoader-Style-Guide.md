@@ -230,7 +230,8 @@ if (data == null)
 //the nested code
 
 //nothing here
-}```
+}
+```
 
 DON'T:
 ```void method(){
@@ -241,4 +242,5 @@ if (data != null){
 }
 
 //nothing here
-}```
+}
+```
