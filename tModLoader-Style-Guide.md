@@ -216,3 +216,29 @@ public void VanillaHitEffect(int hitDirection = 0, double dmg = 10.0) {
 ```
 
 Always check your patches when committing and see if there's a way to minimise them.
+
+## Special Cases
+The patches of tModLoader contain some strong preferences for handling particular additions, that otherwise aren't covered in preceding documentation.
+
+If working within a method that has code nested within an ```if(statement){}``` block, and there exists no subsequent code within the method that is required to run following the ```statement``` returning false, then the following applies  
+DO:
+```void method(){
+//something code here
+if (data == null)
+    return;
+
+//the nested code
+
+//nothing here
+}```
+
+DON'T:
+```void method(){
+//something basic here
+
+if (data != null){
+    //the nested code
+}
+
+//nothing here
+}```
