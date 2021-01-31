@@ -109,7 +109,7 @@ Any nudity or inappropriate content in a Mod Icon will result in especially seve
 What will be deemed inappropriate? You can probably guess it, but still here's a few examples: nudity/porno, swearing, violence/harm to other humans or animals, and also icons that encourage vandalism, crime, terrorism, racism, eating disorders, or suicide.. The list can go on.. just use an appropriate icon please.
 
 ### Malicious Code
-Don't do it. The mods you upload are tagged with your Steam identity. Your will be **permanently banned** from the browser and all of your mods will be removed. We will also notify Terraria and Steam staff about you and your malicious code.
+Don't do it. The mods you upload are tagged with your Steam identity. You will be **permanently banned** from the browser and all of your mods will be removed. We will also notify Terraria and Steam staff about you and your malicious code.
 
 ## Frequently Asked Questions (FAQ)
 ### No one can download my mod
