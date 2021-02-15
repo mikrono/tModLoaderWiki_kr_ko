@@ -26,6 +26,8 @@ ___
 
 * Run the setup.bat;
 
+* Select your Terraria installation under Options -> Select Terraria
+
 * Click the Setup button;
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
