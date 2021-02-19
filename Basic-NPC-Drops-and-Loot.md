@@ -80,7 +80,7 @@ We can even do specific percentages.
 if (Main.rand.NextFloat() < .1323f) // 13.23% chance
 ```
 ## Other Conditions
-There are times we want to check other conditions, such as expertMode of current biome.
+There are times we want to check other conditions, such as expertMode or current biome.
 ### Using Conditions
 We can add conditions to our NPCLoot code using logical operators such as AND (&&)
 
