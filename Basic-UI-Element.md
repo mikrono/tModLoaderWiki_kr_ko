@@ -2,12 +2,12 @@
 This will explain the bare minimum that is required to draw a simple UI element (button) on the screen. Drawing one element has multiple steps and understanding these are required to build larger UI aspects.
 
 # High Level Process
-This image explains the general classes and process you will follow to draw a simple button on the screen. Notice you aren't drawing the UI element on screen until the very last step.
+This image explains the general classes and process you will follow to draw a simple button on the screen. Notice you aren't drawing the UI element on screen until the very last step.  
 ![ui-process](https://user-images.githubusercontent.com/8439537/80857675-c28f0000-8c08-11ea-95df-39712a2159c3.png)
 
 # Making a Button
 Making a button is fairly straight forward. You'll want to make a new class and inherit from UIElement from vanilla code. 
-
+```cs
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Terraria.UI;
@@ -26,6 +26,7 @@ Making a button is fairly straight forward. You'll want to make a new class and 
             }   
         }
     }
+```
 Notice a few things:
 * I named my class after the element it will be. This will be a button that displays a play symbol
 * spriteBatch.Draw is using a vanilla texture (the play button texture itself)
@@ -35,7 +36,7 @@ Notice a few things:
 The correct terminology (and class) is UIState. However, I think it's easier to think of the next piece as a canvas an artist draws on. You can place hundreds of buttons on this if you really wanted to. You _would_ need to let your buttons accept custom starting coordinates in its constructor however. Right now, it would draw all of the hundreds of buttons in the same spot.
 
 For a lack of a better idea, we'll call this state/canvas that the button will go on a menu bar even though it will only hold one button for now.
-
+```cs
     using Terraria.UI;
 
     namespace YourMod.UI
@@ -52,6 +53,7 @@ For a lack of a better idea, we'll call this state/canvas that the button will g
             }
         }
     }
+```
 Notice the following:
 * Only one of our newly made play buttons is used, and it's using whatever default it has back in the the PlayButton class (drawn in center of screen)
 * We must Append() the playButton to the UIState/canvas for it to show up when we draw it later
@@ -62,13 +64,15 @@ Now comes the fun part. We currently have a button that is placed on a menuBar U
 The following code is required to go in your class file that inherited from Mod.
 
 First, we'll declare a variable of UIState we made above which holds our single button.
-
+```cs
         internal MenuBar MenuBar;
+```
 Next, we'll declare a variable of the UserInterface that will use the MenuBar later. We did not need to create this class or inherit from it.
-        
+```cs
         private UserInterface _menuBar;
+```
 In Load(), let's set the two above to actual instances, then feed the MenuBar to the UserInterface. If you don't Activate() the UI element here while the mod is loading, you will crash once the game starts. It will throw a _Object reference not set to an instance of an object_ error.
-
+```cs
         public override void Load()
         {
             MenuBar = new CooldownBar();
@@ -76,15 +80,16 @@ In Load(), let's set the two above to actual instances, then feed the MenuBar to
             _menuBar = new UserInterface();
             _menuBar.SetState(MenuBar);
         }
-
+```
 I'm unclear on the next part but assume it's needed so here it is.
-
+```cs
         public override void UpdateUI(GameTime gameTime)
         {
             _menuBar?.Update(gameTime);
         }
+```
 And finally, we end with the most complicated part. I was told all of this code is required and cannot explain to you how it works. Essentially this is where the drawing actually occurs after we've fed the UserInterface everything it needed. If you do not use this code, your entire UI will disappear!
-
+```cs
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
             int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
@@ -100,7 +105,7 @@ And finally, we end with the most complicated part. I was told all of this code 
                     InterfaceScaleType.UI)
                 );
             }
-        }
+```
 # Results
 At this point, your screen should have a button just like this. Notice it's not a menu bar... yet. You'd simply add and arrange more UIElements to it in the future.
 
