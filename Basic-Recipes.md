@@ -7,14 +7,20 @@ First, make sure you have `using Terraria.ModLoader` at the top of your .cs file
 
 To start a recipe we create an instance of the ModRecipe class:
 
-    ModRecipe recipe = new ModRecipe(mod);
+```cs
+ModRecipe recipe = new ModRecipe(mod);
+```
 Now, we add up to 14 different items we want the recipe to be crafted with:
 
-    recipe.AddIngredient(ItemID.DirtBlock);
-    recipe.AddIngredient(ItemID.Ruby);
+```cs
+recipe.AddIngredient(ItemID.DirtBlock);
+recipe.AddIngredient(ItemID.Ruby);
+```
 AddIngredient also takes an optional argument for specifying a stack size:
 
-    recipe.AddIngredient(ItemID.Chain, 10);
+```cs
+recipe.AddIngredient(ItemID.Chain, 10);
+```
 The previous examples added vanilla items to the recipe by referencing the ItemID class. With a capable IDE such as Visual Studio, you will find autocomplete and intellisense very useful, but you can also [look up ItemID names or values here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs). 
 
 We can also add modded items added by this mod. There are several ways we can do this. Go for whatever approach you like:
@@ -41,13 +47,17 @@ recipe.AddTile(ModContent.GetInstance<Tiles.ExampleWorkbench>());
 ```
 Next, we need to set the result for the ModRecipe, what the recipe creates. There can only be 1 result per ModRecipe. This is done similar to AddIngredient as well. There is also an optional stack parameter here as well:
 
-    recipe.SetResult(ModContent.ItemType<Items.ExampleItem>());
-    recipe.SetResult(ModContent.ItemType("ExampleItem"));
-    recipe.SetResult(ItemID.Meowmere);
-    recipe.SetResult(this, 999);
+```cs
+recipe.SetResult(ModContent.ItemType<Items.ExampleItem>());
+recipe.SetResult(ModContent.ItemType("ExampleItem"));
+recipe.SetResult(ItemID.Meowmere);
+recipe.SetResult(this, 999);
+```
 Finally, we need to tell tModLoader that our ModRecipe is complete and add it to the game:
 
-    recipe.AddRecipe();
+```cs
+recipe.AddRecipe();
+```
 
 ### Using Vanilla vs Modded Ingredients and Tiles
 As a recap, vanilla items and tiles use the TileID and ItemID classes, while modded items and items use the TileType and ItemType methods:
