@@ -16,6 +16,7 @@ You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 
 ## Git
 If you've never used Git before, checkout our [guide on how to use it](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management). If you ever come across something in this guide you don't recognize, just Google it. You should be easily able to find something relevant to your problem. You can also checkout [this little snippet](#further-online-assistance).
+Further, if command line inherently scares you, additional tools such as [GitHub desktop](https://desktop.github.com/) and [Github Extension for VisualStudio](https://marketplace.visualstudio.com/items?itemName=GitHub.GitHubExtensionforVisualStudio) can provide most of the functionality you need in a user friendly interface.
 
 ## Code patcher
 ___
@@ -24,9 +25,9 @@ ___
 
 * [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
-* Run the setup.bat;
+* Run the setup.bat that is in the local copy of the repository;
 
-* Select your Terraria installation under Options -> Select Terraria
+* Select your Terraria installation (the terraria.exe file) under Options -> Select Terraria
 
 * Click the Setup button;
 
@@ -47,8 +48,8 @@ ___
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
     * src/Terraria/
-    * src/tModLoader/
-6. To open up the tModLoader workspace, navigate to solutions/ and open tModLoader.sln
+    * src/tModLoader/ (You will be primarily modifying files within this folder, through the patcher and tModLoader.sln file) 
+6. To open up the tModLoader workspace, navigate to solutions/ and open "tModLoader.sln"
 
 ## Testing your Code
 If you are testing bug fixes, simply debugging the WindowsDebug configuration is all that is required. Note that when you launch tModLoader.sln, LinuxRelease will be selected, you have to switch this each time you launch tModLoader.sln.
@@ -78,7 +79,7 @@ Before you're about to make a contribution, please check [this article](https://
 ___
 1. Open setup.bat in the root folder
 2. Click on 'Diff x' where x is your workspace
-    * Your workspace is tModLoader 99% of the time. If it isn't, we imply you know what you're doing.
+    * **Your workspace is tModLoader 99% of the time.** If it isn't, we imply you know what you're doing.
 3. Create a new commit to commit the patches/ folder
     * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
 
