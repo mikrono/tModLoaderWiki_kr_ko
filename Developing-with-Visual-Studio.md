@@ -91,7 +91,7 @@ This will let you set breakpoints in your mod and inspect variables in VS. Chang
 1. Set the Working directory to `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`
     1. Add the line `includePDB = true` to your build.txt if you want to include line numbers in exception stack traces (useful for debugging). _However it will increase the size of your mod and should be omitted from release builds_.
 
-# Edit and Continue
+# Setup Edit and Continue
 This will let you edit the source code and recompile the mod during debugging, without having to restart the game.
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
