@@ -15,6 +15,9 @@ The tModLoader installation will exist alongside the vanilla installation, allow
 Simply right-click tModLoader -> Manage -> Uninstall.
 Your vanilla install will be unharmed.
 
+### Steam Family Share Installation
+For some reason, if you don't own Terraria and are instead using a family shared Terraria, tModLoader won't launch and will take you to the Steam store. We are looking into the issue, but an easy fix is to install tModLoader through steam as normal and then copy the `steam_appid.txt` file from the Terraria install folder to the tModLoader install folder, replacing the existing file.
+
 ## Manual Installation
 This installation is necessary for players who have purchased Terraria from GOG or who can't get Steam Family Share to work.
 
