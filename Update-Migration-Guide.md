@@ -63,6 +63,13 @@ public override void AddRecipes() => CreateRecipe()
 ```
 There is a more detailed explanation of how to do this in ExampleMod/ExampleRecipes.cs
 
+## tModLoader .NET Upgrade
+{Some info on .NET5 and AnyCPU targetting}
+### .NET 5 Install and Visual Studio Setup
+{}
+### .NET 5 Tutorial Links
+{}
+
 # v0.11.7.5
 
 ## Reflection
