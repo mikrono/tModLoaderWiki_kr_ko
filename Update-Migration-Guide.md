@@ -70,6 +70,11 @@ There is a more detailed explanation of how to do this in ExampleMod/ExampleReci
 ### .NET 5 Tutorial Links
 {}
 
+## Terraria 1.4+ vanilla changes
+{1.4 includes several back end changes that we should point out}
+### ProjectileSources
+{Some info on Projectile Sources}
+
 # v0.11.7.5
 
 ## Reflection
