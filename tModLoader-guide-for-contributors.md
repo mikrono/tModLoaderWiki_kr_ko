@@ -29,6 +29,8 @@ ___
 
 * Select your Terraria installation (the terraria.exe file) under Options -> Select Terraria
 
+* Select the Directory you would like your Builds output to (defaults to steamapps/common/tModLoader/) under Options -> Select Custom TML Output Directory
+
 * Click the Setup button;
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
