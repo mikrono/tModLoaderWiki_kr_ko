@@ -8,7 +8,7 @@ ___
 
 ___
 
-## Installation
+# Installation
 If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
 
 ## IDE
@@ -18,9 +18,9 @@ You will need an IDE to help develop tModLoader. We recommend Visual Studio.
 If you've never used Git before, checkout our [guide on how to use it](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management). If you ever come across something in this guide you don't recognize, just Google it. You should be easily able to find something relevant to your problem. You can also checkout [this little snippet](#further-online-assistance).
 Further, if command line inherently scares you, additional tools such as [GitHub desktop](https://desktop.github.com/) and [Github Extension for VisualStudio](https://marketplace.visualstudio.com/items?itemName=GitHub.GitHubExtensionforVisualStudio) can provide most of the functionality you need in a user friendly interface.
 
-## Code patcher
+# Code patcher
 ___
-**Current TEMPORARY steps for developer setup:**
+## Current TEMPORARY steps for developer setup:**
 * Pull the 1.4 branch. You HAVE to use git for this, downloading source code as a zip file won't work;
 
 * [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
@@ -39,7 +39,7 @@ ___
 
 tModLoader uses its own code patcher. If you want to contribute to tModLoader, you will have to use this tool. We need to use a patches system, because we are not allowed to upload vanilla source code publicly. It also allows for relatively easy code maintenance. [Here's what the tool looks like](https://i.imgur.com/u9Yy1rl.png)
 
-### Getting the tModLoader code for the first time
+## Getting the tModLoader code for the first time
 ___
 1. Install Terraria and tModLoader via Steam. Note: setup does not currently work for GoG
 2. Fork this repository, then clone your fork onto your PC
@@ -60,6 +60,14 @@ If you are testing a new hook/field/method, you'll need to run setup.bat again a
 
 If you get the "Failed to compile tModLoader.FNA.exe" Error after pressing `Setup Debugging`, and you intend to test a new hook/field/method, choose the MacRelease configuration and build that. Otherwise, ignore it.
 
+## Committing your changes
+___
+1. Open setup.bat in the root folder
+2. Click on 'Diff x' where x is your workspace
+    * **Your workspace is tModLoader 99% of the time.** If it isn't, we imply you know what you're doing.
+3. Create a new commit to commit the patches/ folder
+    * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
+
 ## Getting Example Mod into the Mod Sources folder
 ___
 As you add features to tModLoader, you'll want to add examples of using those features to Example Mod. Example Mod, however, needs to be located in the Mod Sources folder to build and test the mod. While you could copy and paste the folder back and forth between your Mod Sources folder and this repository folder whenever you wish to push your changes, a better approach can be achieved by using a symbolic link. A symbolic link allows a single folder to exist in 2 places at once. By creating a symbolic link in Mod Sources pointing to the ExampleMod folder in this repository, you can easily keep ExampleMod up to date and push changes to Github. Here is the command for creating the symbolic link on Windows. 
@@ -76,14 +84,6 @@ mklink /D "C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod" "C:\
 6. To properly open ExampleMod.csproj, you need to navigate to `C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod` and open the ExampleMod.csproj file from File Explorer. Opening it from within Visual Studio with `File->Open->Project/Solution...` won't work, it will have the wrong working directory. Build ExampleMod once it is open to make sure there are no problems before starting.
 
 Before you're about to make a contribution, please check [this article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks in advance.
-
-### Committing your changes
-___
-1. Open setup.bat in the root folder
-2. Click on 'Diff x' where x is your workspace
-    * **Your workspace is tModLoader 99% of the time.** If it isn't, we imply you know what you're doing.
-3. Create a new commit to commit the patches/ folder
-    * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
 
 ### Keeping your code up-to-date
 ___
