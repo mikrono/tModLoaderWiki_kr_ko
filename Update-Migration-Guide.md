@@ -28,8 +28,12 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `GlobalX.mod` -> `GlobalX.Mod`
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
 * `Item.thrown` -> doesn't exist anymore.
+* `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
 * `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
+
+### tModLoader changes
+* `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 
 ## Big change concepts
 Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;` You could also technically do `Texture2D test = (Texture2D)GetTexture("Test);`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture. 
