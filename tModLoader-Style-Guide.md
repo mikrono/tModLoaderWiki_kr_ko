@@ -186,7 +186,7 @@ else if (buffType[j] == 117) {
 	*/
 }
 ```
-Use goto to avoid changing indentation. **Only when 5+ lines would be indented**
+Use return/continue or goto to avoid changing indentation. **Only when 5+ lines would be indented**
 ```cs
 if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
 	goto PostDraw;
@@ -196,6 +196,16 @@ if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
 PostDraw:
 WallLoader.PostDraw(j, i, wall, spriteBatch);
 ```
+
+```cs
+private bool ItemCheck_CheckCanUse(Item sItem) {
+	if(!CombinedHooks.CanUseItem(this, sItem))
+		return false;
+
+	...
+}
+```
+
 Wrap a method to insert a hook at the end of a method with multiple return statements
 ```cs
 public void HitEffect(int hitDirection = 0, double dmg = 10.0) {
@@ -216,31 +226,3 @@ public void VanillaHitEffect(int hitDirection = 0, double dmg = 10.0) {
 ```
 
 Always check your patches when committing and see if there's a way to minimise them.
-
-## Special Cases
-The patches of tModLoader contain some strong preferences for handling particular additions, that otherwise aren't covered in preceding documentation.
-
-If working within a method that has code nested within an ```if(statement){}``` block, and there exists no subsequent code within the method that is required to run following the ```statement``` returning ```false```, then the following applies  
-**Do**:
-```void method(){
-//something code here
-if (data == null)
-    return;
-
-//the nested code
-
-//nothing here
-}
-```
-
-**Do not**:
-```void method(){
-//something basic here
-
-if (data != null){
-    //the nested code
-}
-
-//nothing here
-}
-```
