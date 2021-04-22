@@ -42,6 +42,8 @@ Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to 
 
 Texture/Asset paths are now also slightly changed, so any use of something like this: `override string Texture => "Terraria/Item_" + ItemID.IronPickaxe;`, will have to be changed to this: `override string Texture => "Terraria/Images/Item_" + ItemID.IronPickaxe;`
 
+Finally, when summoning vanilla textures, make sure to call the right variant of "Main.instance.LoadItem(type);" before using it in cases such as "TextureAssets.Item[type].Value" to avoid null errors.
+
 ### Recipes
 Recipes were totally reworked. Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use builder syntax. If you don't know what that is, here's an example of what it looked like before:
 ```
