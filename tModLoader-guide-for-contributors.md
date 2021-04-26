@@ -25,15 +25,15 @@ ___
 
 * [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
+* [Install .NET 5.0 SDK;](https://dotnet.microsoft.com/download/dotnet/5.0) 
+
 * Run the setup.bat that is in the local copy of the repository;
 
 * Select your Terraria installation (the terraria.exe file) under Options -> Select Terraria
 
-* Select the Directory you would like your Builds output to (defaults to steamapps/common/tModLoader/) under Options -> Select Custom TML Output Directory
-
 * Click the Setup button;
 
-**NOTE: The decompilation doesn't work on Mac or Linux. You need Windows.**
+**NOTE: The decompilation doesn't work on Mac or Linux. You need Windows Terraria.exe.**
 
 * When you're done, PR to 1.4, and *not* `master`
 
@@ -54,10 +54,10 @@ ___
 6. To open up the tModLoader workspace, navigate to solutions/ and open "tModLoader.sln"
 
 ## Testing your Code
-If you are testing bug fixes, simply debugging the WindowsDebug configuration is all that is required. Note that when you launch tModLoader.sln, LinuxRelease will be selected, you have to switch this each time you launch tModLoader.sln.
+If you are testing bug fixes, simply debugging the WindowsDebug (1.3)/ Debug (1.4) configuration is all that is required. Note that when you launch tModLoader.sln on 1.3, LinuxRelease will be selected, you have to switch this each time you launch tModLoader.sln.
 
+### The following applies to 1.3 tModLoader:
 If you are testing a new hook/field/method, you'll need to run setup.bat again and run Setup Debugging after saving your changes in tModLoader.sln. This step will update your ModCompile folder so that it is in sync with your new changes, allowing mods to build properly. After that, make sure WindowsDebug is built and debug either ExampleMod where you are using the new hook or WindowsDebug.
-
 If you get the "Failed to compile tModLoader.FNA.exe" Error after pressing `Setup Debugging`, and you intend to test a new hook/field/method, choose the MacRelease configuration and build that. Otherwise, ignore it.
 
 ## Committing your changes
