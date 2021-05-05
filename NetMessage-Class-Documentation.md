@@ -378,7 +378,21 @@ Unused.  Plain and simple.
 // TODO
 
 ## MessageID.TileEntityPlacement (87)
-// TODO
+Attempts to send a tile entity's data, if the ID provided exists.  The data is sent via `TileEntity.Write(BinaryWriter, TileEntity, bool)`, which calls `ModTileEntity.NetSend(BinaryWriter, bool)`.
+
+Example:
+```cs
+Point16 tilePosition = new Point16(i, j);
+ModTileEntity entity = ModContent.GetInstance<SomeModTileEntity>();
+
+//If the given position does not have an entity on it, place one and send a net message
+if(entity.Find(tilePosition.X, tilePosition.Y) < 0){
+    int id = entity.Place(tilePosition.X, tilePosition.Y);
+
+    if(Main.netMode == NetmodeID.MultiplayerClient)
+        NetMessage.SendData(MessageID.TileEntityPlacement, remoteClient: -1, ignoreClient: Main.myPlayer, number: id);
+}
+```
 
 ## MessageID.ItemTweaker (88)
 // TODO
