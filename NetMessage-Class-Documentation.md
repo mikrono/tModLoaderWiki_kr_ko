@@ -391,6 +391,22 @@ if(entity.Find(tilePosition.X, tilePosition.Y) < 0){
 }
 ```
 
+If the ID no longer exists in the client that sends the message (via `TileEntity.ByID.Remove(int)`), but it does exist on the other clients, the tile entity will be removed on those clients.
+
+Example:
+```cs
+Point16 tilePosition = new Point16(i, j);
+if(TileEntity.ByPosition.ContainsKey(tilePosition){
+    ModTileEntity existing = TileEntity.ByPosition[tilePosition];
+    //Kill an entity if it exists at (i, j)
+    entity.Kill(i, j);
+    
+    //Send a net message
+    if(Main.netMode == NetmodeID.MultiplayerClient)
+        NetMessage.SendData(MessageID.TileEntitySharing, remoteClient: -1, ignoreClient: Main.myPlayer, existing.ID);
+}
+```
+
 ## MessageID.TileEntityPlacement (87)
 // TODO
 
