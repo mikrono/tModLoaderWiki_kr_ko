@@ -375,9 +375,6 @@ Unused.  Plain and simple.
 // TODO
 
 ## MessageID.TileEntitySharing (86)
-// TODO
-
-## MessageID.TileEntityPlacement (87)
 Attempts to send a tile entity's data, if the ID provided exists.  The data is sent via `TileEntity.Write(BinaryWriter, TileEntity, bool)`, which calls `ModTileEntity.NetSend(BinaryWriter, bool)`.
 
 Example:
@@ -390,9 +387,12 @@ if(entity.Find(tilePosition.X, tilePosition.Y) < 0){
     int id = entity.Place(tilePosition.X, tilePosition.Y);
 
     if(Main.netMode == NetmodeID.MultiplayerClient)
-        NetMessage.SendData(MessageID.TileEntityPlacement, remoteClient: -1, ignoreClient: Main.myPlayer, number: id);
+        NetMessage.SendData(MessageID.TileEntitySharing, remoteClient: -1, ignoreClient: Main.myPlayer, number: id);
 }
 ```
+
+## MessageID.TileEntityPlacement (87)
+// TODO
 
 ## MessageID.ItemTweaker (88)
 // TODO
