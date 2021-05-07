@@ -24,8 +24,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 ### Non-Static Fields / Constants / Properties
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
-* `ModX.mod` -> `ModX.Mod`
-* `GlobalX.mod` -> `GlobalX.Mod`
+* `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. ModPlayer.player) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
 * `Item.thrown` -> doesn't exist anymore.
 * `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
