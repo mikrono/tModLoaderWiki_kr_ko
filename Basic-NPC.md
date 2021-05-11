@@ -23,7 +23,7 @@ if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
     direction.Normalize();
     float speed = 10f;
     int type = ProjectileID.PinkLaser;
-    int damage = npc.damage / 2;
+    int damage = npc.damage; //If the projectile is hostile, the damage passed into NewProjectile will be applied doubled, and quadrupled if expert mode, so keep that in mind when balancing projectiles
     Projectile.NewProjectile(position, direction * speed, type, damage, 0f, Main.myPlayer);
 }
 ```
