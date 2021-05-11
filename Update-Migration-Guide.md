@@ -33,6 +33,8 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### tModLoader changes
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
+* `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
+* //TODO Shoot hook things
 
 ## Big change concepts
 
