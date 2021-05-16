@@ -51,8 +51,9 @@ GameServers - Add `-savedirectory ./` to server command line
 
 [Akliz Hosting](https://www.akliz.net/games/terraria) - Works as is. 
 
-[Citadel Servers Hosting Company](https://citadelservers.com/en-us/game-servers/terraria) 
+[Citadel Servers Hosting Company](https://citadelservers.com/en-us/game-servers/terraria)
 
+[AleForge](https://aleforge.net/games/terraria.html)
 
 ## Dedicated Server (Self-Hosted)
 If you have an extra computer around, you can use it to host a server 24/7 without paying for a Dedicated Host. Setting up a dedicated server involves installing the tModLoader files and configuring the computer to run the server forever (execute the tModLoaderServer script (Linux/Mac) or tModLoader.exe (Windows)).
