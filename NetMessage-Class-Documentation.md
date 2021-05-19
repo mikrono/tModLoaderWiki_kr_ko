@@ -179,7 +179,18 @@ Not sure why main menu information would need to be sent through a server anyway
 // TODO
 
 ## MessageID.SyncItem (21)
-// TODO
+Sends the information of the dropped item `Main.item[number]`.  If the target item is not `active`, then this MessageID can be used to inform other clients that this item has despawned.  
+The `number2` parameter is used when sending the message from the server in `Item.NewItem()` for if `noGrabDelay` is true.  Otherwise, it can just be ignored.
+
+Example:
+```cs
+int item = Item.NewItem(/* args */);
+
+// Code that directly modifies Main.item[item] here...
+
+if(Main.netMode != NetmodeID.Singleplayer)
+    NetMessage.SendData(MessageID.SyncItem, number: item);
+```
 
 ## MessageID.ItemOwner (22)
 // TODO
