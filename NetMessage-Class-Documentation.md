@@ -224,7 +224,24 @@ Obsolete.  Use [MessageID.PlayerHurtV2](#messageidplayerhurtv2-117) instead.
 // TODO
 
 ## MessageID.SyncChestItem (32)
-// TODO
+Syncs the item at `Main.chest[number].item[number2]`.  This message is usually sent within `MessageID.ChestUpdates`, but it still functions normally by itself.
+
+Example:
+```cs
+Point16 position = /* some tile position */;
+//FindByGuessing searches the nearby tiles within a 3x3 area with the target position at the center
+//The call will return the index of whatever chest had this target position inside of its 2x2 tile bounds
+int chest = Chest.FindByGuessing(position.X, position.Y);
+
+if(chest > -1){
+    Item item = Main.chest[chest].item[20] = new Item();
+    item.SetDefaults(ItemID.DirtBlock);
+    item.stack = 20;
+
+    if(Main.netMode != NetmodeID.Singleplayer)
+        NetMessage.SendData(MessageID.SyncChestItem, number: chest, number2: 20, number3: 0);
+}
+```
 
 ## MessageID.SyncPlayerChest (33)
 // TODO
