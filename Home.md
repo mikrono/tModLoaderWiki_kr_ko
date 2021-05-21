@@ -85,6 +85,7 @@ The following guides are considered advanced, and should only be attempted if th
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
 - [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
 - [Advanced Angular velocity and Linear velocity Guide](Advanced-Angular-velocity-and-Linear-velocity)
+- [World Generation](World-Generation)
 - [Advanced Custom UI Guide](Advanced-guide-to-custom-UI)
 - [Advanced Fixing Mod Not Fully Unloaded Guide](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
 
