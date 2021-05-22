@@ -5,16 +5,16 @@ World generation is a fairly complex topic, and a good understanding of many top
 
 # Table of Contents
 * [Terminology](#terminology)
-* Prerequisite Knowledge
-* Debugging World Generation
-* Code Setup
-* Determining a suitable index
-* Determining a starting location
-* Common Patterns
-* In-Game/Multiplayer considerations
-* Stamp Tiles
-* Procedural Syntax
-* Useful Methods
+* [Prerequisite Knowledge](#prerequisite-knowledge)
+* [Debugging World Generation](#debugging-world-generation)
+* [Code Setup](#code-setup)
+* [Determining a suitable index](#determining-a-suitable-index)
+* [Determining a starting location](#determining-a-starting-location)
+* [Common Patterns](#common-patterns)
+* [In-Game/Multiplayer considerations](#in-gamemultiplayer-considerations)
+* [Stamp Tiles](#stamp-tiles)
+* [Procedural Syntax](#procedural-syntax)
+* [Useful Methods](#useful-methods)
 
 # Terminology
 ## Pass, Step, and Task
@@ -730,7 +730,7 @@ TileRunner is NOT SAFE to use when multitiles are in the world with the `overRid
 Similar to `TileRunner`, but without many of the options. OreRunner places small splotches of the specified tile (`type`) starting at the coordinates (`x` and `y` in tile coordinates). OreRunner only replaces active tiles that are either `TileID.Sets.CanBeClearedDuringOreRunner` or `Main.tileMoss`, making it suitable to be used even after frameimportant tiles exist in the world. If you have a tile that should be suseptible to being replaced when additional ores are spawned in the world, set `TileID.Sets.CanBeClearedDuringOreRunner` to `true` for that ModTile. Vanilla code only uses this method when spawning hardmode ores. This method is suitable for use in-game and in multiplayer as it both frames and syncs tile changes.
 
 ## [Terraria.WorldGen] public static int PlaceChest(int x, int y, ushort type = 21, bool notNearOtherChests = false, int style = 0)
-The method attempts to place a chest at the given coordinates. The coordinate provided will be the bottom left corner of the resulting chest, if the method succeeds. `type` is the tile type to place, and `style` is the style type to place. For vanilla chests, you can count from zero starting from the left in the Tiles_21.png image after [extracting the vanilla textures](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Prerequisites#vanilla-texture-file-reference) to find the style you want to place. `notNearOtherChests` can be set to true to prevent the chest from placing if another chest exists within 25 tiles left or right and 8 tiles up and down. This method returns the chest index of the chest that was successfully placed or -1 if placing the chest failed. Chest placement can fail for many reasons, such as if existing tiles block the space, or if there isn't 2 suitable solid tiles directly below the intended location. See [Try Until Success](Try Until Success) for an approach to using this method. See [Placing Items in Chests](Placing Items in Chests) for info on placing items in the chest.    
+The method attempts to place a chest at the given coordinates. The coordinate provided will be the bottom left corner of the resulting chest, if the method succeeds. `type` is the tile type to place, and `style` is the style type to place. For vanilla chests, you can count from zero starting from the left in the Tiles_21.png image after [extracting the vanilla textures](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Prerequisites#vanilla-texture-file-reference) to find the style you want to place. `notNearOtherChests` can be set to true to prevent the chest from placing if another chest exists within 25 tiles left or right and 8 tiles up and down. This method returns the chest index of the chest that was successfully placed or -1 if placing the chest failed. Chest placement can fail for many reasons, such as if existing tiles block the space, or if there isn't 2 suitable solid tiles directly below the intended location. See [Try Until Success](#try-until-success) for an approach to using this method. See [Placing Items in Chests](#placing-items-in-chests) for info on placing items in the chest.    
 ![](https://i.imgur.com/CyAgVNp.png)
 
 ## [Terraria.WorldGen] public static bool AddBuriedChest(int i, int j, int contain = 0, bool notNearOtherChests = false, int Style = -1)
