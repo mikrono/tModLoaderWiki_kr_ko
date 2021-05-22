@@ -1,10 +1,10 @@
 # What is World Generation
-World Generation is the act of programatically placing and removing tiles from the world. World Generation is done in two places, during world creation and in-game. The vast majority of this guide will focus on world generation during world creation, but in-game considerations will also be detailed.
+World Generation is the act of programmatically placing and removing tiles from the world. World Generation is done in two places, during world creation and in-game. The vast majority of this guide will focus on world generation during world creation, but in-game considerations will also be detailed.
 
-World generation is a fairly complex topic, and a good understanding of many topics is required to work effectively. It is recommended to familiarize yourself when the following sections before jumping stright into the code. In addition, using an IDE with edit and continue support like Visual Studio is highly recommended.
+World generation is a fairly complex topic, and a good understanding of many topics is required to work effectively. It is recommended to familiarize yourself when the following sections before jumping straight into the code. In addition, using an IDE with edit and continue support like Visual Studio is highly recommended.
 
 # Table of Contents
-* Terminology
+* [Terminology](#terminology)
 * Prerequisite Knowledge
 * Debugging World Generation
 * Code Setup
@@ -23,7 +23,7 @@ When a world is generated, the game runs each pass in order. In this guide, the 
 
 # Prerequisite Knowledge
 ## Tile Coordinates
-The very top left of the world is located at `0, 0` in tile coordinates, and the bottom right at `Main.maxTilesX, Main.maxTilesY`. These cordinates directly map into `Main.tile[,]`. See [Coordinates](https://github.com/tModLoader/tModLoader/wiki/Coordinates) for more info. By convention, we use `x` and `y` or `i` and `j` in code for tile coordinates. We need mutliple pairs of variables because many times we are working with coordinates derived from other coordinates. 
+The very top left of the world is located at `0, 0` in tile coordinates, and the bottom right at `Main.maxTilesX, Main.maxTilesY`. These coordinates directly map into `Main.tile[,]`. See [Coordinates](https://github.com/tModLoader/tModLoader/wiki/Coordinates) for more info. By convention, we use `x` and `y` or `i` and `j` in code for tile coordinates. We need multiple pairs of variables because many times we are working with coordinates derived from other coordinates. 
 
 ## Main.tile[,]
 `Main.tile[,]` is an 2D array containing all the tiles in the world. You can directly access the `Tile` object at a specific `x` and `y` coordinate during worldgen by writing `Tile tile = Main.tile[x, y];`. If you are checking tiles in-game, you must use `Tile tile = Framing.GetTileSafely(x, y);` because the Tile object might be `null`. Be mindful that negative numbers or coordinates outside the bounds of the world will lead to errors. To avoid this, use the [`WorldGen.InWorld`](#InWorldLinkHere) method.
