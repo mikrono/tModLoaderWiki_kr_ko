@@ -108,22 +108,22 @@ The client then sends a [MessageID.RequestWorldInfo](#messageidrequestworldinfo-
 
 | Type(s) | Size | Description |
 |------|------|-------------|
-| byte | 1 | MessageID.LoadPlayer |
-| byte | 1 | remoteClient; the client's `player.whoAmI` |
+| `byte` | 1 | MessageID.LoadPlayer |
+| `byte` | 1 | remoteClient; the client's `player.whoAmI` |
 | ? | ? | NetMessage.SendData, message type [MessageID.SyncPlayer](#messageidsyncplayer-4) |
 | ? | ? | NetMessage.SendData, message type [MessageID.ClientUUID](#messageidclientuuid-68) |
 | ? | ? | NetMessage.SendData, message type [MessageID.PlayerHealth](#messageidplayerhealth-16) |
 | ? | ? | NetMessage.SendData, message type [MessageID.PlayerMana](#messageidplayermana-42) |
 | ? | ? | NetMessage.SendData, message type [MessageID.PlayerBuffs](#messageidplayerbuffs-50) |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's main inventory |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's armor and accessory slots |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's equipped dye slots |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's miscellaneous accessory slots (pet, light pet, hook, minecart, mount) |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's miscellaneous dye slots (for the miscellaneous accessories) |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Piggy Bank inventory |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Safe inventory |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for the client player's trash item slot |
-| byte, short, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Defender's Forge inventory |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's main inventory |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's armor and accessory slots |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's equipped dye slots |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's miscellaneous accessory slots (pet, light pet, hook, minecart, mount) |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's miscellaneous dye slots (for the miscellaneous accessories) |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Piggy Bank inventory |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Safe inventory |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for the client player's trash item slot |
+| `byte`, `short`, ? | 7 + modded data | NetMessage.SendData, message type [MessageID.SyncEquipment](#messageidsyncequipment-5); called for each item in the client player's Defender's Forge inventory |
 | none | 0 | NetMessage.SendData, message type [MessageID.RequestWorldInfo](#messageidrequestworldinfo-6) |
 
 ## MessageID.SyncPlayer (4)
@@ -135,8 +135,55 @@ The client then sends a [MessageID.RequestWorldInfo](#messageidrequestworldinfo-
 ## MessageID.RequestWorldInfo (6)
 // TODO
 
-## MessageID.WorldInfo (7)
-// TODO
+## MessageID.WorldData (7)
+Sends information about the world to the server and/or other clients.  
+Use this `MessageID` whenever anything about the world has changed, including, but not limited to, the time of day and weather.
+
+| Type(s)  | Size | Description
+|----------|------|------------
+| `int`    | 4    | `Main.time`
+| `byte`   | 1    | A `BitsByte` set to the values of `Main.dayTime`, `Main.bloodMoon` and `Main.eclipse`
+| `byte`   | 1    | `Main.moonPhase`
+| `short`  | 2    | `Main.maxTilesX`
+| `short`  | 2    | `Main.maxTilesY`
+| `short`  | 2    | `Main.spawnTileX`
+| `short`  | 2    | `Main.spawnTileY`
+| `short`  | 2    | `Main.worldSurface`
+| `short`  | 2    | `Main.rockLayer`
+| `int`    | 4    | `Main.worldID`
+| `string` | ?    | `Main.worldName`
+| `byte[]` | ?    | The return value of `Main.ActiveWorldFileData.UniqueId.ToByteArray()`
+| `ulong`  | 8    | `Main.ActiveFileData.WorldGeneratorVersion`
+| `byte`   | 1    | `Main.moonType`
+| `byte`   | 1    | `WorldGen.treeBG`
+| `byte`   | 1    | `WorldGen.corruptBG`
+| `byte`   | 1    | `WorldGen.snowBG`
+| `byte`   | 1    | `WorldGen.hallowBG`
+| `byte`   | 1    | `WorldGen.crimsonBG`
+| `byte`   | 1    | `WorldGen.desertBG`
+| `byte`   | 1    | `WorldGen.oceanBG`
+| `byte`   | 1    | `Main.iceBackStyle`
+| `byte`   | 1    | `Main.jungleBackStyle`
+| `byte`   | 1    | `Main.hellBackStyle`
+| `float`  | 4    | `Main.windSpeedSet`
+| `byte`   | 1    | `Main.numClouds`
+| `int`    | 12   | The contents of `Main.treeX[]`
+| `byte`   | 4    | The contents of `Main.treeStyle[]`, each cast to `byte`
+| `int`    | 12   | The contents of `Main.caveBackX[]`
+| `byte`   | 4    | The contents of `Main.caveBackStyle[]`, each cast to `byte`
+| `float`  | 4    | `Main.maxRaining`
+| `byte`   | 1    | A `BitsByte` set to the values of `WorldGen.shadowOrbSmashed`, `NPC.downedBoss1`, `NPC.downedBoss2`, `NPC.downedBoss3`, `Main.hardMode`, `NPC.downedClown` and `NPC.downedPlantBoss`
+| `byte`   | 1    | A `BitsByte` set to the values of `NPC.downedMechBoss1`, `NPC.downedMechBoss2`, `NPC.downedMechBoss3`, `NPC.downedMechBossAny`, `Main.cloudBGActive >= 1f`, `WorldGen.crimson`, `Main.pumpkinMoon` and `Main.snowMoon`
+| `byte`   | 1    | A `BitsByte` set to the values of `Main.expertMode`, `Main.fastForwardTime`, `Main.slimeRain`, `NPC.downedSlimeKing`, `NPC.downedQueenBee`, `NPC.downedFishron`, `NPC.downedMartian` and `NPC.downedAncientCultist`
+| `byte`   | 1    | A `BitsByte` set to the values of `NPC.downedMoonlord`, `NPC.downedHalloweenKing`, `NPC.downedHalloweenTree`, `NPC.downedChristmasIceQueen`, `NPC.downedChristmasSantank`, `NPC.downedChristmasTree`, `NPC.downedGolemBoss` and `BirthdayParty.PartyIsUp`
+| `byte`   | 1    | A `BitsByte` set to the values of `NPC.downedPirates`, `NPC.downedFrost`, `NPC.downedGoblins`, `Sandstorm.Happening`, `DD2Event.Ongoing`, `DD2Event.DownedInvasionT1`, `DD2Event.DownedInvasionT2` and `DD2Event.DownedInvasionT3`
+| `sbyte`  | 1    | `Main.invasionType`
+| ?        | ?    | The result of calling `WorldIO.SendModData(BinaryWriter)`.  `ModWorld.NetSend(BinaryWriter)` is called here.
+| `ulong`  | 8    | If `SocialAPI.Network` isn't `null`, then the result of `SocialAPI.Network.GetLobbyId()` is written.  Otherwise, a `0` is written instead.
+| `float`  | 4    | `Sandstorm.IntendedSeverity`
+
+Sending this net message has the following side effect:
+- `Main.maxRaining` is set to `0f` before it is written to the `BinaryWriter` if `Main.raining` is `false`.
 
 ## MessageID.RequestTileData (8)
 // TODO
