@@ -5,7 +5,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ## Renamed or Moved Members
 
-### Namespaces
+### Namespaces / Classes
 * `Terraria.World.Generation` -> `Terraria.WorldBuilding`
 
 ### Static Methods
@@ -17,11 +17,18 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 **Regex:** `Main.font(\w+)]` -> `Terraria.GameContent.FontAssets.$1.Value`
 * `Terraria.Main.*Texture[i]` -> `Terraria.GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`
+* `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
+* `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CountsAsHoming`
 * `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`
 * `Main.maxInventory` -> `Main.InventorySlotsTotal`
 * `ItemUseStyleID` has a few renamed fields (`HoldingOut` becomes `Shoot`) and alot more use styles to choose from
+* `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`, but cannot be set for the time being.
+
+### Non-Static Methods
+* `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
 
 ### Non-Static Fields / Constants / Properties
+* `Main.Rasterizer` is now static
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
 * `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. ModPlayer.player) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
@@ -30,10 +37,19 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
 * `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
+* `Player.showItemIconText` -> `Player.cursorItemIconText`
+* `Player.ZoneHoly` -> `Player.ZoneHallow`
+* `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
+* `Player.bee` and similar accessory flags -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
 
 ### tModLoader changes
+* `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
+* `Terraria.ModLoader.ModPlayer(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
-* `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
+* `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
+* `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
+* `Terraria.ModLoader.ModPlayer/ModItem/GlobalItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
+* `Terraria.ModLoader.ModPlayer.DrawEffects(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * //TODO Shoot hook things
 
 ## Big change concepts
@@ -77,6 +93,9 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 
 ### Damage Classes
 `Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
+
+### Tiles
+TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
 
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
