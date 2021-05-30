@@ -96,7 +96,7 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 ### Damage Classes
 `Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
 
-Minion projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` in addition to `Projectile.minion = true;`.
+Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
 ### Tiles
 TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
@@ -114,7 +114,7 @@ TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActi
 With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile.
 {More info on Projectile Sources}
 ### Minion spawning
-With 1.4, summon damage (minions and sentries) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the damage the projectile spawns with AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
+Summon damage (minions and sentries) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the damage the projectile spawns with AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
  
 ```cs
 //1: Used mostly for sentries (in combination with `Player.FindSentryRestingSpot`)
@@ -124,6 +124,10 @@ Main.projectile[index].originalDamage = damage;
 //2: Sets originalDamage automatically, used mostly for minions
 Player.SpawnMinionOnCursor(parameters);
 ```
+### Bestiary
+Each mod gets its own filter for the bestiary, by default a "?" icon. You can change it by providing a 30x30 `icon_small.png` in your root folder.
+
+//TODO bestiary integration with custom preview images, animation, drop rules etc.
 
 # v0.11.7.5
 
