@@ -50,7 +50,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
-* `Terraria.ModLoader.ModPlayer.DrawEffects(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
+* `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * //TODO Shoot hook things
 
