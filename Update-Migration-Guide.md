@@ -129,6 +129,9 @@ Each mod gets its own filter for the bestiary, by default a "?" icon. You can ch
 
 //TODO bestiary integration with custom preview images, animation, drop rules etc.
 
+### Wings
+Wing data is now assigned through an `ArmorIDs` set on load (`ModItem.SetStaticDefaults`) like follows: `ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(wingTimeMax, speed, acceleration);` (Check other constructors for more fine-tuning). Only assign player.wingTimeMax or use `ModItem.HorizontalWingSpeeds` if you need to dynamically adjust those. Failure to add the former code will result in the player not moving horizontally while flying.
+
 # v0.11.7.5
 
 ## Reflection
