@@ -99,7 +99,7 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
 ### Tiles
-TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
+TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
 
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
