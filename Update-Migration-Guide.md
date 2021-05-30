@@ -43,19 +43,21 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Player.bee` and similar accessory flags -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
 
 ### tModLoader changes
+_All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModPlayer(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
-* `Terraria.ModLoader.ModPlayer/ModItem/GlobalItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
+* `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `Terraria.ModLoader.ModPlayer.DrawEffects(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
+* `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * //TODO Shoot hook things
 
 ## Big change concepts
 
 ### Assets
-Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;` You could also technically do `Texture2D test = (Texture2D)GetTexture("Test);`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture. 
+Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;` You could also technically do `Texture2D test = (Texture2D)GetTexture("Test");`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture. 
 
 Texture/Asset paths are now also slightly changed, so any use of something like this: `override string Texture => "Terraria/Item_" + ItemID.IronPickaxe;`, will have to be changed to this: `override string Texture => "Terraria/Images/Item_" + ItemID.IronPickaxe;`
 
@@ -89,10 +91,12 @@ public override void AddRecipes() => CreateRecipe()
         .AddIngredient(ItemID.Wood, 5)
         .Register();
 ```
-There is a more detailed explanation of how to do this in `ExampleMod/ExampleRecipes.cs`. Keep in mind that chaining methods is optional, you can still use the old pattern.
+There is a more detailed explanation of how to do this in `ExampleMod/ExampleRecipes.cs`. _Keep in mind that chaining methods is optional, you can still use the old pattern._
 
 ### Damage Classes
 `Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
+
+Minion projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` in addition to `Projectile.minion = true;`.
 
 ### Tiles
 TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
@@ -109,6 +113,17 @@ TODO mention all the method -> property renames (`Tile.active()` -> `Tile.IsActi
 ### IProjectileSource
 With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile.
 {More info on Projectile Sources}
+### Minion spawning
+With 1.4, summon damage (minions and sentries) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the damage the projectile spawns with AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
+ 
+```cs
+//1: Used mostly for sentries (in combination with `Player.FindSentryRestingSpot`)
+int index = Projectile.NewProjectile(parameters);
+Main.projectile[index].originalDamage = damage;
+
+//2: Sets originalDamage automatically, used mostly for minions
+Player.SpawnMinionOnCursor(parameters);
+```
 
 # v0.11.7.5
 
