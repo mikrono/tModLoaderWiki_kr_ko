@@ -472,7 +472,8 @@ Example:
 ```cs
 Point16 tilePosition = new Point16(i, j);
 if(TileEntity.ByPosition.ContainsKey(tilePosition){
-    ModTileEntity existing = TileEntity.ByPosition[tilePosition];
+    //Assumes that the TileEntity is actually a ModTileEntity, which should be the case if you're using this code
+    ModTileEntity existing = TileEntity.ByPosition[tilePosition] as ModTileEntity;
     //Kill an entity if it exists at (i, j)
     entity.Kill(i, j);
     
