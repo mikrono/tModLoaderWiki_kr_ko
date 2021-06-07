@@ -44,6 +44,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
+* `ModHotKey` -> `ModHotkey` and `Mod.RegisterHotKey(string, string)` -> `HotkeyLoader.RegisterHotkey(Mod, string, string)`
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModPlayer(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
