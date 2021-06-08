@@ -99,6 +99,9 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
+### Equip Textures
+1.4 includes support for a new streamlined armor texture format. If you would like to continue using the old format, replace `EquipType` usage with corresponding Legacy versions of the `EquipType`. For example, replace `EquipType.Body` with `EquipType.BodyLegacy` in your `AutoloadEquip` attributes. Using the new armor texture layout is much easier and should be used for all new armor sprite sheets. There is no reason to redo all legacy sprite sheets, as they will still work.
+
 ### Tiles
 TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
 
