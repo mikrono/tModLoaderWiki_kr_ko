@@ -44,11 +44,12 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
-* `ModHotKey` -> `ModHotkey` and `Mod.RegisterHotKey(string, string)` -> `HotkeyLoader.RegisterHotkey(Mod, string, string)`
+* `ModHotKey` -> `ModKeybind` and `Mod.RegisterKeybind(string, string)` -> `KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModPlayer(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
-* `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` is now `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` is now `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters).
+* `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
+* `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
