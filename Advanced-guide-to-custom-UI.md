@@ -351,7 +351,7 @@ public class UIClickableButton : UIElement {
 		_clickAction = clickAction;
 	}
 
-	public override OnInitialize() { 
+	public override void OnInitialize() { 
 		_uiPanel = new UIPanel(); // 5
 		_uiPanel.Width = StyleDimension.Fill; // 5
 		_uiPanel.Height = StyleDimension.Fill; // 5
@@ -364,13 +364,13 @@ public class UIClickableButton : UIElement {
 		_uiPanel.OnClick += _clickAction; // 7
 	}
 	
-	public override Update(GameTime gameTime) {
+	public override void Update(GameTime gameTime) {
 		if (_text != null) { // 8
 			_uiText.SetText(_text.ToString());
 			_text = null;
 			Recalculate(); // 9
             base.MinWidth = _uiText.MinWidth; // 9
-            base.MindHeight = _uiText.MinHeight; // 9
+            base.MinHeight = _uiText.MinHeight; // 9
 		}
 	}
 }
