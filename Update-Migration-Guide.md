@@ -33,7 +33,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 (changed from string to automatically assigned auto-incrementing int)
 * `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. ModPlayer.player) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
-* `Item.thrown` -> doesn't exist anymore.
+* `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
 * `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
 * `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
