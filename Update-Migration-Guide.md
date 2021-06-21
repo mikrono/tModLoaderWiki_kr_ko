@@ -7,6 +7,8 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### Namespaces / Classes
 * `Terraria.World.Generation` -> `Terraria.WorldBuilding`
+* `Terraria.ModLoader.NPCSpawnHelper` -> `Terraria.ModLoader.Utilities.NPCSpawnHelper`
+* `Terraria.ModLoader.RecipeGroupHelper` -> `Terraria.ModLoader.Utilities.RecipeGroupHelper`
 
 ### Static Methods
 * `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
@@ -34,6 +36,9 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. ModPlayer.player) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
 * `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
+* `Item.prefix` -> `byte` to `int` (Many changes to related methods aswell)
+* `Item.dye` -> `byte` to `int` (Many changes to related methods aswell)
+* `Item.hairDye` -> `short` to `int` (Many changes to related methods aswell)
 * `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
 * `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
@@ -44,9 +49,13 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
-* `ModHotKey` -> `ModKeybind` and `Mod.RegisterKeybind(string, string)` -> `KeybindLoader.RegisterKeybind(Mod, string, string)`
+* `Terraria.ModLoader.PlayerHooks` -> `Terraria.ModLoader.PlayerLoader`
+* `Terraria.ModLoader.ModHotKey` -> `Terraria.ModLoader.ModKeybind`
+* `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
+* `Terraria.ModLoader.Mod.CreateTranslation(string)` -> `Terraria.ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
+* `Terraria.ModLoader.Mod.AddTranslation(ModTranslation)` -> `Terraria.ModLoader.LocalizationLoader.AddTranslationModTranslation)`
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
-* `Terraria.ModLoader.ModPlayer(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer(PlayerDrawSet, ...)`
+* `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
