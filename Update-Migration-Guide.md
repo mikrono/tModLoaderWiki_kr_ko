@@ -53,7 +53,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModHotKey` -> `Terraria.ModLoader.ModKeybind`
 * `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `Terraria.ModLoader.Mod.CreateTranslation(string)` -> `Terraria.ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
-* `Terraria.ModLoader.Mod.AddTranslation(ModTranslation)` -> `Terraria.ModLoader.LocalizationLoader.AddTranslationModTranslation)`
+* `Terraria.ModLoader.Mod.AddTranslation(ModTranslation)` -> `Terraria.ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
