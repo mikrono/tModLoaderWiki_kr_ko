@@ -7,8 +7,6 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### Namespaces / Classes
 * `Terraria.World.Generation` -> `Terraria.WorldBuilding`
-* `Terraria.ModLoader.NPCSpawnHelper` -> `Terraria.ModLoader.Utilities.NPCSpawnHelper`
-* `Terraria.ModLoader.RecipeGroupHelper` -> `Terraria.ModLoader.Utilities.RecipeGroupHelper`
 
 ### Static Methods
 * `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
@@ -51,10 +49,12 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.PlayerHooks` -> `Terraria.ModLoader.PlayerLoader`
 * `Terraria.ModLoader.ModHotKey` -> `Terraria.ModLoader.ModKeybind`
+* `Terraria.ModLoader.NPCSpawnHelper` -> `Terraria.ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
+* `Terraria.ModLoader.RecipeGroupHelper` -> `Terraria.ModLoader.Utilities.RecipeGroupHelper`
+* `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `Terraria.ModLoader.Mod.CreateTranslation(string)` -> `Terraria.ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
 * `Terraria.ModLoader.Mod.AddTranslation(ModTranslation)` -> `Terraria.ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
-* `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
