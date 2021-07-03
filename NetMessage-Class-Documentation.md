@@ -499,7 +499,19 @@ if(TileEntity.ByPosition.ContainsKey(tilePosition){
 // TODO
 
 ## MessageID.SyncExtraValue (92)
-// TODO
+Syncs `Main.npc[number].extraValue` by setting it to `number2` and, on clients, plays the "ping" sound at the world position `(number3, number4)`.
+
+Example:
+```cs
+//"npc" is an NPC instance and "position" is a Vector2 where the "pickup" visuals should be displayed
+int givenCoins = 50;  //50 copper coins
+npc.extraValue += givenCoins;
+
+if(Main.netMode == NetmodeID.Singleplayer)
+    npc.moneyPing(position);
+else
+    NetMessage.SendData(MessageID.SendExtraValue, number: npc.whoAmI, number2: givenCoins, number3: position.X, number4: position.Y);
+```
 
 ## MessageID.SocialHandshake (93)
 // TODO
