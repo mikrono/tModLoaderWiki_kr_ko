@@ -346,7 +346,7 @@ for (int i = 0; i < Main.maxTilesX; i++) {
 	for (int j = 0; j < Main.maxTilesY; j++) {
 		Tile tile = Main.tile[i, j];
 		if (tile.type == TileID.Iron)
-			tile.type = ModContent.TileType<MyCoolOre>();
+			tile.type = (ushort)ModContent.TileType<MyCoolOre>();
 	}
 }
 ```
