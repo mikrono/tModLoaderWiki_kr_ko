@@ -25,7 +25,7 @@ Go to `/home/<user>/.local/share/Terraria/ModLoader/Mods` and create a new direc
 
 `mkdir ModPacks`
 
-Upload your mod pack JSON file there. You might need to upload mods manually to the mod folder.
+Upload your mod pack JSON file there. You are required to upload mods manually to the mod folder.
 
 #### Server Configuration
 
