@@ -51,43 +51,43 @@ These pages aim to aid you to learn how to develop mods properly, how to setup y
 ## Easy guides
 These guides are easy and should be used if you are new to the API. Their goal is to get you familiar with tML and help you learn certain classes.
 - [Basic Guide Prerequisites](Basic-Prerequisites)
+- [Basic Ammo Guide](Basic-Ammo)
+- [Basic Autoloading Guide](Basic-Autoload)
+- [Basic Coordinates Guide](Coordinates)
+- [Basic Glowmasks Guide](Basic-glowmask-guide)
+- [Basic Logging Guide](Logging)
+- [Basic Minion Guide](Basic-Minion-Guide)
+- [Basic ModConfig Guide](Basic-JSON-&-ModConfigs)
+- [Basic ModDust Guide](Basic-Dust)
 - [Basic ModItem Guide](Basic-Item)
 - [Basic ModProjectile Guide](Basic-Projectile)
-- [Basic Minion Guide](Basic-Minion-Guide)
-- [Basic UI Element Guide](Basic-UI-Element)
+- [Basic ModRecipe Guide](Basic-Recipes)
+- [Basic ModTile Guide](Basic-Tile)
+- [Basic Netcode Guide](Basic-Netcode)
 - [Basic NPC Spawning Guide](Basic-NPC-Spawning)
 - [Basic NPC Drops and Loot Guide](Basic-NPC-Drops-and-Loot)
-- [Basic Autoloading Guide](Basic-Autoload)
-- [Basic ModRecipe Guide](Basic-Recipes)
-- [Basic Ammo Guide](Basic-Ammo)
 - [Basic Sound Guide](Basic-Sounds)
-- [Basic ModDust Guide](Basic-Dust)
-- [Basic ModTile Guide](Basic-Tile)
-- [Basic ModConfig Guide](Basic-JSON-&-ModConfigs)
-- [Basic Logging Guide](Logging)
-- [Basic Glowmasks Guide](Basic-glowmask-guide)
-- [Basic Coordinates Guide](Coordinates)
 - [Basic Time and Timers Guide](Time-and-Timers)
-- [Basic Netcode Guide](Basic-Netcode)
+- [Basic UI Element Guide](Basic-UI-Element)
 
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
 - [Intermediate Guide Prerequisites](Intermediate-Prerequisites)
-- [Intermediate Saving and loading Guide](Saving-and-loading-using-TagCompound)
-- [Intermediate Recipe Guide](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
-- [Intermediate Netcode Guide](Intermediate-netcode)
+- [Intermediate Git & mod management Guide](Intermediate-Git-&-mod-management)
 - [Intermediate Modding with C#6 Guide](Intermediate-modding-with-c%236)
 - [Intermediate Modding with C#7 Guide](Intermediate-modding-with-c%237)
-- [Intermediate Git & mod management Guide](Intermediate-Git-&-mod-management)
+- [Intermediate Netcode Guide](Intermediate-netcode)
+- [Intermediate Recipe Guide](Intermediate-Recipes): RecipeGroups, RecipeFinder/RecipeEditor
+- [Intermediate Saving and loading Guide](Saving-and-loading-using-TagCompound)
 
 ## Advanced guides
 The following guides are considered advanced, and should only be attempted if the intermediate level is mastered.
 - [Advanced Guide Prerequisites](Advanced-Prerequisites)
-- [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
 - [Advanced Angular velocity and Linear velocity Guide](Advanced-Angular-velocity-and-Linear-velocity)
 - [World Generation](World-Generation)
 - [Advanced Custom UI Guide](Advanced-guide-to-custom-UI)
 - [Advanced Fixing Mod Not Fully Unloaded Guide](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
+- [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
 
 ## Expert guides
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
@@ -98,30 +98,34 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Expert Shader Guide](Expert-Shader-Guide) -- Armor dyes and screen shaders
 
 ## Vanilla References
-- [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
-- [Vanilla Buff IDs](Vanilla-Buff-IDs)
-- [Item Class Documentation](Item-Class-Documentation)
-- [Vanilla Item Field Values](Vanilla-Item-Field-Values)
-- [Vanilla Item IDs](Vanilla-Item-IDs)
-- [NPC Class Documentation](NPC-Class-Documentation)
-- [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
-- [Vanilla NPC IDs](Vanilla-NPC-IDs)
+#### Guides / Value References / Changes
 - [BannerToNPC Conversions](BannerToNPC-Conversions)
-- [Projectile Class Documentation](Projectile-Class-Documentation)
-- [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
-- [Vanilla Projectile IDs](Vanilla-Projectile-IDs)
-- [Vanilla Projectile Field Values](Vanilla-Projectile-Field-Values)
-- [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
-- [Vanilla Sound IDs](Vanilla-Sound-IDs)
-- [Vanilla Tile IDs](Vanilla-Tile-IDs)
-- [Tile Class Documentation](Tile-Class-Documentation)
-- [Vanilla Wall IDs](Vanilla-Wall-IDs)
-- [Vanilla World Generation Steps](Vanilla-World-Generation-Steps)
+- [Player Item Animation](Player-Item-Animation)
 - [Useful Vanilla Fields](Useful-Vanilla-Fields)
 - [Useful Vanilla Methods](Useful-Vanilla-Methods)
-- [Vanilla Interface layers values](Vanilla-Interface-layers-values)
 - [Vanilla Interface Changes](Vanilla-Class-Changes)
+- [Vanilla Interface layers values](Vanilla-Interface-layers-values)
+- [Vanilla Item Field Values](Vanilla-Item-Field-Values)
+- [Vanilla NPC Field Values](Vanilla-NPC-Field-Values)
+- [Vanilla Projectile Field Values](Vanilla-Projectile-Field-Values)
+- [Vanilla Recipes](http://bit.ly/TerrariaVanillaRecipes)
+- [Vanilla World Generation Steps](Vanilla-World-Generation-Steps)
+#### IDs / Names
+- [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
+- [Vanilla Buff IDs](Vanilla-Buff-IDs)
+- [Vanilla Item IDs](Vanilla-Item-IDs)
+- [Vanilla NPC IDs](Vanilla-NPC-IDs)
+- [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
+- [Vanilla Projectile IDs](Vanilla-Projectile-IDs)
+- [Vanilla Sound IDs](Vanilla-Sound-IDs)
+- [Vanilla Tile IDs](Vanilla-Tile-IDs)
+- [Vanilla Wall IDs](Vanilla-Wall-IDs)
+#### Class Documentation
+- [Item Class Documentation](Item-Class-Documentation)
 - [NetMessage Class Documentation](NetMessage-Class-Documentation)
+- [NPC Class Documentation](NPC-Class-Documentation)
+- [Projectile Class Documentation](Projectile-Class-Documentation)
+- [Tile Class Documentation](Tile-Class-Documentation)
 
 ## Other pages
 These are pages that we have so far failed to categorize or simply do not belong in one.
