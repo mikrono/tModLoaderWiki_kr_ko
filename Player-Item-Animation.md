@@ -28,7 +28,7 @@ Any item use is wrapped around a check of `player.itemAnimation > 0`, so this fi
 
 **Noteworthy Cases:**
 - If the player's held item's `useTime` is **equal to** its `useAnimation`, nothing spetacular happens.  
-- If the player's held item's `useTime` is **less than** its `useAnimation`, the item use code will be called multiple times during the animation due that was mentioned in the previous sub-section.  
+- If the player's held item's `useTime` is **less than** its `useAnimation`, the item use code will be called multiple times during the animation due what was mentioned in the previous sub-section.  
 - If the player's held item's `useTime` is **greater than** its `useAnimation`, then the player will be unable to switch items nor use the item again until `player.itemTime` has reached zero, which would happen *after* the use animation finishes.
   - However, if `player.reuseDelay` is greater than `0` when `player.itemAnimation` reaches 0 in this case, the leftover timer from `player.itemTime` will be overwritten.
 
