@@ -115,6 +115,11 @@ Minion and sentry projectiles will have to have `Projectile.DamageType = DamageC
 ### Tiles
 TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
 
+## Hook Changes
+* `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
+* `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
+
+
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
 ### .NET 5 Install and Visual Studio Setup
