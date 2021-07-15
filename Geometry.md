@@ -45,11 +45,13 @@ Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2
 // NextVector2Circular allows supplying the width and height radii, for an oval distribution
 Vector2 speed = Main.rand.NextVector2Circular(0.5f, 1f);
 ```    
-![](https://i.imgur.com/RJZuLoA.png)     ![](https://i.imgur.com/N6XF5CZ.png)    ![](https://i.imgur.com/wGW3hFn.png)
+![](https://i.imgur.com/RJZuLoA.png)     ![](https://i.imgur.com/N6XF5CZ.png)    ![](https://i.imgur.com/wGW3hFn.png)    
+
 
 ## Random Vector Along Circle Edge
-By generating a random vector that reaches the edges, a modder can generate a random vectors with a consistent length or magnitude.
+By generating a random vector that reaches the edges, a modder can generate a random vectors with a consistent length or magnitude.    
 
+![](https://thumbs.gfycat.com/BlandDismalGnu-size_restricted.gif)    
 
 ## Random Vector Within Square
 A lot of old Terraria code uses a strange approach to randomizing vectors. Each component, X and Y, are randomly generated in the following manner:   
