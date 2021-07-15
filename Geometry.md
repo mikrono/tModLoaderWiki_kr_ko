@@ -66,7 +66,7 @@ float ySpeed = Main.rand.NextFloat(-1f, 1f);
 // Another approach
 Vector2 speed = Utils.RandomVector2(Main.rand, -1f, 1f);
 ```
-On first glance, this seems like it should work fine, but this approach actually has a strange distribution that may be unwanted, it actually can generate vectors longer than intended extending out towards the corners of an imaginary square.     
+On first glance, this seems like it should work fine, but this approach actually has a strange distribution that may be unwanted, it actually can generate vectors longer than intended extending out towards the corners of an imaginary square. In the image and gif below, note the odd shape that forms.   
 ![](https://i.imgur.com/rmPZlwk.png)    
 ![](https://thumbs.gfycat.com/LightCircularBluefish-size_restricted.gif)    
 
