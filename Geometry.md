@@ -76,6 +76,24 @@ Not very useful.
 # Examples
 Now that we have a basic knowledge of geometry and have seen various Vector2 methods that facilitate that knowledge, we can finally use geometry to program interesting behaviors into our mod.
 
+In these examples, you may see Dust or Projectiles being used to illustrate the technique, but they are interchangeable. Just remember to consult the method signature of the method you are using to know the purpose of each parameter.
+
+## Spawn a circle of something
+This is the code used for the random vector section above. In this example, we use a for loop to spawn 50 dust, each with a random vector along the edge of the circle. Note that we multiply the vector by 5 to scale it and make it larger, causing the dust to move a good distance.
+```cs
+for (int i = 0; i < 50; i++) {
+	Vector2 speed = Main.rand.NextVector2CircularEdge(1f, 1f);
+	Dust d = Dust.NewDustPerfect(Main.LocalPlayer.Top, DustID.BlueCrystalShard, speed * 5, Scale: 1.5f);
+	d.noGravity = true;
+}
+```
+We can use some simple geometry to change the spawn location away from the same spot. By adding `speed * 32` to `Main.LocalPlayer.Top`, the dust start in a small circle and expand outward from there instead of all starting in the same spot. 
+```cs
+Dust d = Dust.NewDustPerfect(Main.LocalPlayer.Top + speed * 32, DustID.BlueCrystalShard, speed * 2, Scale: 1.5f);
+```
+The speed has been reduced to more easily visualize the effect.    
+![](https://thumbs.gfycat.com/ImaginativeMenacingIbex-size_restricted.gif)    
+
 ## Shoot at a Target
 
 ## Spawn something in an Arc
