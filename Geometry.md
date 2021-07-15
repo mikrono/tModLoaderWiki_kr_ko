@@ -33,25 +33,30 @@ Rotation is expressed in radians, not degrees. If you would like to use degrees,
 // Others?
 
 # Random Vectors
-Utilizing random vectors is an easy way to add variety to visual and behavior effects. There are many ways to generate a random vector.
+Utilizing random vectors is an easy way to add variety to visual and behavior effects. There are many ways to generate a random vector. The diagrams accompanying the following approaches show the distribution an an in-game example of spawning several dust using the approach to illustrate their behavior. 
 
 ## Random Vector Within Circle
 This approach is the most typical result when a modder wants to make a random vector. The results are well distributed.
 ```cs
 // Normal approach
-Vector2 speed = Main.rand.NextVector2Unit();
-// Optional parameters allow for specifying a range of rotations. In this example, the start rotation is  Math.PI / 4 and it can be up to Math.PI / 2 more than that.
-Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2);
+Vector2 speed = Main.rand.NextVector2Circular(1f, 1f);
+// Generate vectors within an arc only. 
+Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2) * Main.rand.NextFloat();
 // NextVector2Circular allows supplying the width and height radii, for an oval distribution
 Vector2 speed = Main.rand.NextVector2Circular(0.5f, 1f);
 ```    
 ![](https://i.imgur.com/RJZuLoA.png)     ![](https://i.imgur.com/N6XF5CZ.png)    ![](https://i.imgur.com/wGW3hFn.png)    
-
+![](https://thumbs.gfycat.com/MeaslyRecklessFantail-size_restricted.gif)    ![](https://thumbs.gfycat.com/FoolhardyQuerulousBluewhale-size_restricted.gif)    ![](https://thumbs.gfycat.com/FlakyEvilBrontosaurus-size_restricted.gif)
 
 ## Random Vector Along Circle Edge
 By generating a random vector that reaches the edges, a modder can generate a random vectors with a consistent length or magnitude.    
-
-![](https://thumbs.gfycat.com/BlandDismalGnu-size_restricted.gif)    
+```cs
+// Normal approach
+Vector2 speed = Main.rand.NextVector2Unit();
+// Optional parameters allow for specifying a range of rotations. In this example, the start rotation is  Math.PI / 4 and it can be up to Math.PI / 2 more than that.
+Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2);
+```    
+![](https://thumbs.gfycat.com/BlandDismalGnu-size_restricted.gif)   ![](https://thumbs.gfycat.com/PlainImpressionableCricket-size_restricted.gif)   
 
 ## Random Vector Within Square
 A lot of old Terraria code uses a strange approach to randomizing vectors. Each component, X and Y, are randomly generated in the following manner:   
@@ -63,9 +68,10 @@ Vector2 speed = Utils.RandomVector2(Main.rand, -1f, 1f);
 ```
 On first glance, this seems like it should work fine, but this approach actually has a strange distribution that may be unwanted, it actually can generate vectors longer than intended extending out towards the corners of an imaginary square.     
 ![](https://i.imgur.com/rmPZlwk.png)    
+![](https://thumbs.gfycat.com/LightCircularBluefish-size_restricted.gif)    
 
 ## Random Vector Square Edge
-A lot of old Terraria code 
+Not very useful.
 
 # Examples
 Now that we have a basic knowledge of geometry and have seen various Vector2 methods that facilitate that knowledge, we can finally use geometry to program interesting behaviors into our mod.
