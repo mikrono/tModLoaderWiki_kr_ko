@@ -257,7 +257,7 @@ Go in game and then use a mod with an NPC spawner like Cheat Sheet or Heros Mod 
 
 ### Preparatory work for modifications
 
-Unfortunately, there is no easy way to change the projectile that is shot by our clone. Our clone, as seen in our SetDefaults method, simply clones the vanilla AI code. The projectile the vanilla AI will spawn to attack the player is hard-coded into the AI method. The first thing we need is the [decompiled Terraria source code](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites#tmodloader-source-code). Once you have that, now we must find the AI code to copy. Find NPCID.GreekSkeleton and see that its value is 481, now search for 481. The first result we need to find is result in the SetDefaults method so we can find out which aiStyle GreekSkeleton/Hoplite is using:    
+Unfortunately, there is no easy way to change the projectile that is shot by our clone. Our clone, as seen in our SetDefaults method, simply clones the vanilla AI code. The projectile the vanilla AI will spawn to attack the player is hard-coded into the AI method. The first thing we need is the [decompiled Terraria source code](https://github.com/tModLoader/tModLoader/wiki/Advanced-Prerequisites#tmodloader-source-code). Once you have that, now we must find the AI code to copy. Find `NPCID.GreekSkeleton` and see that its value is 481, now search for 481. The first find result that we need to locate in the find results is the result located in the SetDefaults method. Once we locate this, we can find out which aiStyle GreekSkeleton/Hoplite is using:    
 ![](https://i.imgur.com/mcDqzru.png)    
 Great, we now know to search the source code for `aiStyle == 3`:     
 ![](https://i.imgur.com/kGTeWrw.png)      
