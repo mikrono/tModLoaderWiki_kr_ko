@@ -54,6 +54,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic Ammo Guide](Basic-Ammo)
 - [Basic Autoloading Guide](Basic-Autoload)
 - [Basic Coordinates Guide](Coordinates)
+- [Geometry](Geometry)
 - [Basic Glowmasks Guide](Basic-glowmask-guide)
 - [Basic Logging Guide](Logging)
 - [Basic Minion Guide](Basic-Minion-Guide)
