@@ -76,7 +76,7 @@ float desiredRotation = vectorFromNpcToPlayer.ToRotation();
 // Now we can do 1 of 2 things. The simplest approach is to use the rotation value directly
 npc.rotation = desiredRotation;
 // A second approach is to use that rotation to turn the npc while obeying a max rotational speed. Experiment until you get a good value.
-npc.rotation = npc.rotation .AngleTowards(desiredRotation, 0.02f); 
+npc.rotation = npc.rotation.AngleTowards(desiredRotation, 0.02f); 
 ```
 
 ## Multiplying Vectors
