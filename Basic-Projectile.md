@@ -272,6 +272,9 @@ if (projectile.velocity.Y > 16f)
 ```
 As you can see, the Projectile AiStyle of 1 without all the ProjectileID specific code is only a few lines of code, and matches up with the fade-in and rotation examples above.
 
+# Bounce and OnTileCollide
+Many projectiles bounce when colliding with a solid tile. This behavior is technically not part of the `AI` as it happens in a method called `OnTileCollide`. 
+
 # Drawing and Collision
 You may find yourself noticing that your projectile is hitting walls when it shouldn't or otherwise having a weird hitbox. First off, it is worth reiterating that `projectile.width` and `projectile.height` correspond to the hitbox of the projectile, NOT the sprite used. You almost never want `width` or `height` to be different, it should be square. You also never want to use `projectile.scale` since the vanilla drawing code doesn't really take it into account correctly. The drawing of the sprite attempts to overlay the hitbox with the sprite, the drawing of this sprite is influenced by various bits of math done in the `Main.DrawProj` method.
 
