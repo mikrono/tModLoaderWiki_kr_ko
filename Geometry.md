@@ -25,6 +25,31 @@ We can also use vectors to represent the difference between two points. A common
 ### Position vs Center
 In the above diagrams, you might have noticed that the arrows originate and point to the top left corners of the entities. In reality, `player.position` does refer to the top left corner, as that is just how the game is designed. What this means is we rarely actually use `player.position` in code. Instead, we use `player.Center` as that value points to the center of the entity. (All entities can be thought of having a rectangle as their hitbox). The same can be said for `npc.Center` and `projectile.Center`. From now on, the guide will use `.Center` as this position makes more sense to use.
 
+## Acceleration
+When the game updates the position of something like a projectile, it takes the current velocity and adds it to the current position. This happens 60 times a second and operates in world coordinates. For projectiles like a bullet, this is all that needs to happen, but we can implement "acceleration" to influence the velocity over time to give our projectile interesting movement. This acceleration happens in various `AI` methods and also in various collision methods. Acceleration can be used to simulate gravity, wind resistance, and homing capabilities.
+
+### Gravity
+Gravity is simulated by adding a positive Y velocity to the entity every update. The game implements gravity to players by default. NPCs are affected by gravity by if `npc.noGravity` is false. Dust also have a `noGravity` field. Projectiles are not affected by gravity, so the modder must add a gravity force to the projectile in `ModProjectile.AI` if they wish. The [Basic Projectile](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#gravity) guide goes into various details for implementing gravity. 
+
+```cs
+projectile.velocity.Y = projectile.velocity.Y + 0.1f;
+```
+
+### Drag or Wind Resistance
+To simulate wind resistance, please read the [Basic Projectile](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#wind-resistance) guide. Essentially a component of the velocity is multiplied by a number slightly smaller than 1, so slowly reduce it.
+
+### Homing
+Homing in its simplest form is basically accelerating towards a target. See [Basic Projectile](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#homing).
+
+### Collision and Bounce
+When a projectile collides with a solid tile, the velocity instantly reverses direction to allow the projectile to bounce. See [Basic Projectile](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#bounce-and-ontilecollide) for more on this. 
+
+### Acceleration Visualization Examples
+
+In the gif below, we can see a summary of most of the topics above. Red arrows represent velocity, and the blue arrows represent acceleration. In the Shuriken examples, we can see that the acceleration forces point slightly to the left and down. The left force is caused by wind resistance and the down force is caused by gravity. The grenade does not have the same wind resistance force, so we only see a gravity force. When the grenade collides with a tile, we see a large force for an instant. This is the collision force which reverses the projectile velocity.    
+
+![](https://thumbs.gfycat.com/LittleLeanHalcyon-size_restricted.gif)     
+
 ## Vector2.Normalize
 When working with vectors, much of the time the size of the vector isn't relevant, only the direction that the vector represents. Imagine a player 100 units away from an enemy and another player 1000 units away from the enemy in the same direction. If we calculate the vectors from the enemy to each of these players, those vectors will point in the same direction but one will be 10 times longer. If we used these vectors as-is in our `AI` method for spawning a projectile to shoot at the players, the second projectile will travel 10 times faster! We don't want this, we want enemy projectiles to have a consistent speed no matter how far away the player is. (Right now we are imagining a bullet style projectile, if your enemy is lobbing something like a grenade, you would want to take distance into account up to the max intended throw speed of your enemy, but that kind of advanced AI behaviors is not what we are talking about here.) 
 
