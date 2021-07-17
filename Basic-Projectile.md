@@ -273,7 +273,19 @@ if (projectile.velocity.Y > 16f)
 As you can see, the Projectile AiStyle of 1 without all the ProjectileID specific code is only a few lines of code, and matches up with the fade-in and rotation examples above.
 
 # Bounce and OnTileCollide
-Many projectiles bounce when colliding with a solid tile. This behavior is technically not part of the `AI` as it happens in a method called `OnTileCollide`. 
+Many projectiles bounce when colliding with a solid tile. This behavior is technically not part of the `AI` as it happens in a method called `OnTileCollide`. By default, when a projectile collides with a tile, the velocity is quickly reduced so that the projectile will come to a stop and the projectile will be killed. By overriding `ModProjectile.OnTileCollide` and returning `false`, we can avoid that logic and implement our own logic. If we return `true`, we can add additional logic while keeping the vanilla logic. The most common use of this is to allow your projectile to bounce. Some projectiles bounce realistically by losing some velocity, while others bounce unrealistically and maintain their original speed in a new direction. Some projectiles have limited bounces, this is done usually through taking advantage of `projectile.penetrate`. When overriding `ModProjectile.OnTileCollide`, killing the projectile, spawning tile collision dust, and playing collision sounds are all things that might need to be implemented. 
+
+## OnTileCollide Examples
+
+[ExampleBullet.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleBullet.cs#L34) shows off limited bounces, tile collision dust, tile collision sounds, and bouncing while preserving the velocity completely.
+
+[ExampleCloneProjectile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleCloneProjectile.cs#L24) shows off returning true to keep the original collision logic while also spawning a small eruption of secondary projectiles.
+
+[SparklingBall.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/SparklingBall.cs#L27) is similar to ExampleBullet.cs except the velocity is scaled by `0.75f`, thereby slowing the projectile down on every bounce.
+
+[ExampleFlailProjectile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleFlailProjectile.cs#L134) is also similar, but the speed is reduced to one-fifth of the original speed, making the weapon feel heavy. This code also shows using the speed of the projectile to influence sound and dust spawning. This allow the flail to only make a collision sound if it was traveling fast enough while silencing the sound if the flail is just slowly rolling. `ExampleFlailProjectile` also skips using `projectile.projectile` manipulation, as it doesn't kill itself after bouncing some number of of times as `SparklingBall` and `ExampleBullet` do.
+
+With the above examples, you can craft the tile collision behavior you want. If you are attempting to clone a vanilla projectile behavior, search `Projectile.HandleMovement` for the `ProjectileID` number or the projectile `aiStyle` number to find the relevant code. The [Shadowbeam Staff Clone](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-item-and-projectile-shadowbeam-staff-clone) example in the adaption guide shows this and other thought processes required to find vanilla code fragments not covered by the `AI` code.
 
 # Drawing and Collision
 You may find yourself noticing that your projectile is hitting walls when it shouldn't or otherwise having a weird hitbox. First off, it is worth reiterating that `projectile.width` and `projectile.height` correspond to the hitbox of the projectile, NOT the sprite used. You almost never want `width` or `height` to be different, it should be square. You also never want to use `projectile.scale` since the vanilla drawing code doesn't really take it into account correctly. The drawing of the sprite attempts to overlay the hitbox with the sprite, the drawing of this sprite is influenced by various bits of math done in the `Main.DrawProj` method.
