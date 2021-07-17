@@ -46,7 +46,7 @@ When a projectile collides with a solid tile, the velocity instantly reverses di
 
 ### Acceleration Visualization Examples
 
-In the gif below, we can see a summary of most of the topics above. Red arrows represent velocity, and the blue arrows represent acceleration. In the Shuriken examples, we can see that the acceleration forces point slightly to the left and down. The left force is caused by wind resistance and the down force is caused by gravity. The grenade does not have the same wind resistance force, so we only see a gravity force. When the grenade collides with a tile, we see a large force for an instant. This is the collision force which reverses the projectile velocity.    
+In the gif below, we can see a summary of most of the topics above. Red arrows represent velocity, and the blue arrows represent acceleration. In the Shuriken examples, we can see that the acceleration forces point slightly to the left and down. The left force is caused by wind resistance and the down force is caused by gravity. Also notable is that for one third of a second immediately after being spawned, the Shuriken does not have any forces acting on it. This is done through a timer such as shown in the [delayed gravity](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#delayed-gravity) section and gives the Shuriken an interesting movement behavior. The grenade does not have the same wind resistance force, so we only see a gravity force. When the grenade collides with a tile, we see a large force for an instant. This is the collision force which reverses the projectile velocity.    
 
 ![](https://thumbs.gfycat.com/LittleLeanHalcyon-size_restricted.gif)     
 
