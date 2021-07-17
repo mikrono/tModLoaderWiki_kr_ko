@@ -104,7 +104,7 @@ If you are doing something computer intensive like iterating over many entities 
 ## Vector2 rotation
 Rotating a vector can be useful for many purposes. A common example is giving a weapon inaccuracy. By taking an original Vector2 and calling the `RotatedByRandom` method on it, we can calculate a new Vector2 that has been rotated at most the provided radians. See [ExampleGun.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L61) to see this in action in the Shotgun and Chain gun examples. Note that the resulting distribution is not evenly distributed, which works well for this effect.
 
-We can also rotate a vector by a non-random amount. The `RotatedBy` method does this. For example, we could rotate a vector by `Math.Pi / 2` or `MathHelper.ToRadians(90)` to calculate a vector that is perpendicular to the original vector. We could use that vector to create a splitting projectile. By repeatedly rotating a vector, we can calculate several vectors representing an arc. See [ExampleGun.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L87) to see this in action in the Vampire Knives example. 
+We can also rotate a vector by a non-random amount. The `RotatedBy` method does this. For example, we could rotate a vector by `MathHelper.Pi / 2` or `MathHelper.ToRadians(90)` to calculate a vector that is perpendicular to the original vector. We could use that vector to create a splitting projectile. By repeatedly rotating a vector, we can calculate several vectors representing an arc. See [ExampleGun.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs#L87) to see this in action in the Vampire Knives example. 
 
 // Others?
 
@@ -117,7 +117,7 @@ This approach is the most typical result when a modder wants to make a random ve
 // Normal approach
 Vector2 speed = Main.rand.NextVector2Circular(1f, 1f);
 // Generate vectors within an arc only. 
-Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2) * Main.rand.NextFloat();
+Vector2 speed = Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2) * Main.rand.NextFloat();
 // NextVector2Circular allows supplying the width and height radii, for an oval distribution
 Vector2 speed = Main.rand.NextVector2Circular(0.5f, 1f);
 ```    
@@ -129,8 +129,8 @@ By generating a random vector that reaches the edges, a modder can generate a ra
 ```cs
 // Normal approach
 Vector2 speed = Main.rand.NextVector2Unit();
-// Optional parameters allow for specifying a range of rotations. In this example, the start rotation is  Math.PI / 4 and it can be up to Math.PI / 2 more than that.
-Vector2 speed = Main.rand.NextVector2Unit((float)Math.PI / 4, (float)Math.PI / 2);
+// Optional parameters allow for specifying a range of rotations. In this example, the start rotation is  MathHelper.Pi / 4 and it can be up to MathHelper.Pi / 2 more than that.
+Vector2 speed = Main.rand.NextVector2Unit((float)MathHelper.Pi / 4, (float)MathHelper.Pi / 2);
 ```    
 ![](https://thumbs.gfycat.com/BlandDismalGnu-size_restricted.gif)   ![](https://thumbs.gfycat.com/PlainImpressionableCricket-size_restricted.gif)   
 
@@ -172,6 +172,17 @@ The speed has been reduced to more easily visualize the effect.
 
 ## Shoot at a Target
 In [Example Worm](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/Worm.cs#L36), the basic pattern of an enemy shooting a projectile at the player is shown.
+
+## Face toward a Target
+You can face a target by using [Vector2.ToRotation](https://github.com/tModLoader/tModLoader/wiki/Geometry#vector2torotation). If your entity texture is not oriented to face to the right, you may have to add `MathHelper.Pi / 2` to rotate the entity an additional 90 degrees. Also be aware that sometimes projectile or npc flip the sprite when facing left. This is done via the `spriteDirection` bool. If this bool is true, you may need to add an additional 180 degrees of rotation to compensate by adding `MathHelper.Pi`:
+```cs
+// At the end of ModProjectile.AI
+if (projectile.spriteDirection == -1) { 
+	projectile.rotation += MathHelper.Pi;
+}
+```
+
+// TODO: Explain what happens automatically, where to put various direction and spriteDirection code in both projectile and npc
 
 # Learn More
 After mastering this guide, learning collision could be useful. // TODO: Make a collision guide.
