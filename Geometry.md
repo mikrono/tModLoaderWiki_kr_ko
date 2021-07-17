@@ -66,8 +66,21 @@ float shootVelocity = 10;
 Projectile.NewProjectile(npc.Center, directionFromNpcToPlayer * shootVelocity, ProjectileID.BombSkeletronPrime, 5, 0, Main.myPlayer);
 ```
 
+## Vector2.ToRotation
+Given a Vector2, normalized or unnormalized, we can calculate a rotation value by calling the `ToRotation` method on that vector. Many flying enemies rotate to face their target, such as Demon Eyes. You can use a vector representing the vector from the enemy to the player to set the enemy rotation, or you can use the current enemy velocity to set npc.rotation. For more advanced situation, you may want an enemy npc to slowly rotate towards a target rather than immediately turn to face the player. 
+```cs
+// First, calculate a Vector pointing towards what you want to look at
+Vector2 vectorFromNpcToPlayer = player.Center - npc.Center;
+// Second, use the ToRotation method to turn that Vector2 into a float representing a rotation in radians.
+float desiredRotation = vectorFromNpcToPlayer.ToRotation();
+// Now we can do 1 of 2 things. The simplest approach is to use the rotation value directly
+npc.rotation = desiredRotation;
+// A second approach is to use that rotation to turn the npc while obeying a max rotational speed. Experiment until you get a good value.
+npc.rotation = npc.rotation .AngleTowards(desiredRotation, 0.02f); 
+```
+
 ## Multiplying Vectors
-We can scale vectors by simply multiplying them by a float. We typically scale normalized vectors, such as in the example above. In that example, we had a unit vector representing a direction to the player that we intended to shoot at. By multiplying that vector by our intended shoot velocity, we made a vector that was in the same direction as before but much longer. Since we are using that Vector2 in the `velocity` parameter of the `Projectile.NewProjectile` method, the result is the projectile will spawn with the desired speed in the desired direction.
+We can scale vectors by simply multiplying them by a float. We typically scale normalized vectors, such as in the `Vector2.Normalize` example above. In that example, we had a unit vector representing a direction to the player that we intended to shoot at. By multiplying that vector by our intended shoot velocity, we made a vector that was in the same direction as before but much longer. Since we are using that Vector2 in the `velocity` parameter of the `Projectile.NewProjectile` method, the result is the projectile will spawn with the desired speed in the desired direction.
 
 You can also multiply vectors for other reasons. For example, in [ExampleFlailProjectile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleFlailProjectile.cs#L139) we multiply a projectile velocity vector by `0.2f`, effectively cutting the velocity of the projectile to a fifth of its original velocity. This gives the flail a weighty feel as it bounces off tiles.
 
