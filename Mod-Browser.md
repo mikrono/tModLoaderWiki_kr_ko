@@ -98,7 +98,7 @@ jobs:
           MODBROWSERPASSPHRASE: ${{secrets.MODBROWSERPASSPHRASE}}
           MODNAME: YourModNameHere
 ```
-Now, replace `YourModNameHere` with the internal name of your mod. Commit this file. Next, visit `Settings->Secrets` and create a repository secret called `STEAMID64` with your steamid64 and another secret called `MODBROWSERPASSPHRASE` with your current mod browser passphrase. With these steps complete, the next time you push a commit to your master branch that increases the version in `build.txt`, the mod will automatically be published using the tModLoader version specified. As tModLoader updates, so too will `tModLoaderPublishIntegration`, so be sure to update the version used by changing `JavidPack/tModLoaderPublishIntegration@v0.11.83` to the tModLoader version you wish to publish with.
+Now, replace `YourModNameHere` with the internal name of your mod. Commit this file. Next, visit `Settings->Secrets` and create a repository secret called `STEAMID64` with your steamid64 and another secret called `MODBROWSERPASSPHRASE` with your current mod browser passphrase. With these steps complete, the next time you push a commit to your master branch that increases the version in `build.txt`, the mod will automatically be published using the tModLoader version specified. As tModLoader updates, so too will `tModLoaderPublishIntegration`, so be sure to update the version used by changing `JavidPack/tModLoaderPublishIntegration@v0.11.8.3` to the tModLoader version you wish to publish with.
 
 ## Limitations
 ### Terraria Community Forum Rules
