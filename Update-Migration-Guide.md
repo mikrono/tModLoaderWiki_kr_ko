@@ -7,9 +7,11 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### Namespaces / Classes
 * `Terraria.World.Generation` -> `Terraria.WorldBuilding`
+* `Terraria.ItemText` -> `Terraria.PopupText`
 
 ### Static Methods
 * `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
+* `Terraria.ItemText.NewText(Item, ...)` -> `Terraria.PopupText.NewText(PopupTextContext, Item, ...)`
 * `Terraria.NetMessage.BroadcastChatMessage` -> `Terraria.Chat.ChatHelper.BroadcastChatMessage`
 
 ### Static Fields / Constants / Properties
@@ -66,6 +68,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
+`Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
+
 * //TODO Shoot hook things
 
 ## Big change concepts
@@ -113,7 +117,9 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
 ### Equip Textures
-1.4 includes support for a new streamlined armor texture format. If you would like to continue using the old format, replace `EquipType` usage with corresponding Legacy versions of the `EquipType`. For example, replace `EquipType.Body` with `EquipType.BodyLegacy` in your `AutoloadEquip` attributes. Using the new armor texture layout is much easier and should be used for all new armor sprite sheets. There is no reason to redo all legacy sprite sheets, as they will still work.
+1.4 includes support for a new streamlined armor texture format. Tools to help porting:
+* [Sprite Transformer](https://forums.terraria.org/index.php?threads/sprite-transformer-quickly-transform-body-sprite-sheets-from-1-3-to-1-4.96210/) (Note: The arm and shoulder related frames will most likely be wrong, you have to manually adjust them for now)
+* [Sheet reference](https://cdn.discordapp.com/attachments/176975207800504321/852404448847986718/armor-template-3.png)
 
 ### Tiles
 TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
@@ -121,7 +127,7 @@ TODO mention all the method -> property renames as [per PR](https://github.com/t
 ## Hook Changes
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
 * `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
-
+* `(GlobalTile/GlobalWall/ModTile/ModWall/ModBuff/ModDust/ModMount/ModPrefix).SetDefaults` -> `(X).SetStaticDefaults`. Now all `ModType`s have such a method.
 
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
