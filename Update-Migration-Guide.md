@@ -68,8 +68,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
-`Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
-
+* `Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
 * //TODO Shoot hook things
 
 ## Big change concepts
