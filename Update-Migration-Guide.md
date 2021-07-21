@@ -47,6 +47,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Player.ZoneHoly` -> `Player.ZoneHallow`
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
 * `Player.bee` and similar accessory flags -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
+* `Player.talkNPC = X;` -> `Player.SetTalkNPC(X);` (Changed by vanilla due to the bestiary).  Getting the value of `Player.talkNPC` was not changed, only setting it was.
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
