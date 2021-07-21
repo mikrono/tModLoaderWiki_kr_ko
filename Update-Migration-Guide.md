@@ -22,7 +22,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CountsAsHoming`
 * `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`  
-**Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
+**Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
 * `Main.maxInventory` -> `Main.InventorySlotsTotal`
 * `ItemUseStyleID` has a few renamed fields (`HoldingOut` becomes `Shoot`) and alot more use styles to choose from
 * `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
