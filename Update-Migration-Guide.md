@@ -57,7 +57,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.RecipeGroupHelper` -> `Terraria.ModLoader.Utilities.RecipeGroupHelper`
 * `Terraria.ModLoader.PlayerDrawInfo` -> `Terraria.DataStructures.PlayerDrawSet`
 * `Terraria.ModLoader.ModContent.TextureExists(string)` ->`Terraria.ModLoader.ModContent.HasAsset(string)`
-* `Terraria.ModLoader.ModContent.GetTexture(string)` ->`Terraria.ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`
+* `Terraria.ModLoader.ModContent.GetTexture(string)` ->`Terraria.ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
+**Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
 * `Terraria.ModLoader.Mod.GetTexture(string)` -> `Terraria.ModLoader.Mod.Assets.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
 * `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
