@@ -10,8 +10,10 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Terraria.ItemText` -> `Terraria.PopupText`
 
 ### Static Methods
+* `Terraria.Main.NPCAddHeight(int)` -> `Terraria.Main.NPCAddHeight(NPC)`
 * `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
 * `Terraria.ItemText.NewText(Item, ...)` -> `Terraria.PopupText.NewText(PopupTextContext, Item, ...)`
+* `Terraria.Lighting.BlackOut` -> Terraria.Lighting.Clear`
 * `Terraria.NetMessage.BroadcastChatMessage` -> `Terraria.Chat.ChatHelper.BroadcastChatMessage`
 
 ### Static Fields / Constants / Properties
@@ -19,13 +21,15 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 **Regex:** `Main.font(\w+)]` -> `Terraria.GameContent.FontAssets.$1.Value`
 * `Terraria.Main.*Texture[i]` -> `Terraria.GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`
-* `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
+* `Terraria.Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
+* `Terraria.Main.quickBG` -> `Main.instantBGTransitionCounter`
+* `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CountsAsHoming`
 * `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`  
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
-* `Main.maxInventory` -> `Main.InventorySlotsTotal`
-* `ItemUseStyleID` has a few renamed fields (`HoldingOut` becomes `Shoot`) and alot more use styles to choose from
-* `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
+* `Terraria.Main.maxInventory` -> `Terraria.Main.InventorySlotsTotal`
+* `Terraria.ID.ItemUseStyleID` has a few renamed fields (`HoldingOut` becomes `Shoot`) and alot more use styles to choose from
+* `Terraria.Main.campfire` and similar environmental flags are now in `Terraria.Main.SceneMetrics` and slightly renamed, e.g. `Terraria.Main.SceneMetrics.HasCampfire`
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
@@ -34,7 +38,6 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Main.Rasterizer` is now static
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
-* `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. ModPlayer.player) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
 * `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
 * `Item.prefix` -> `byte` to `int` (Many changes to related methods aswell)
@@ -51,6 +54,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
+* `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. `ModPlayer.player`) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
 * `Terraria.ModLoader.PlayerHooks` -> `Terraria.ModLoader.PlayerLoader`
 * `Terraria.ModLoader.ModHotKey` -> `Terraria.ModLoader.ModKeybind`
 * `Terraria.ModLoader.NPCSpawnHelper` -> `Terraria.ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
@@ -68,17 +72,22 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
+* `Terraria.ModLoader.ModItem.Clone` -> `Terraria.ModLoader.ModItem.Clone(Item)`
+* `Terraria.ModLoader.ModItem.NetRecieve` -> `Terraria.ModLoader.ModItem.NetReceive` (typo)
+* `Terraria.ModLoader.ModItem.NewPreReforge` -> `Terraria.ModLoader.ModItem.PreReforge`
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
+* `Terraria.ModLoader.ModTile.NewRightClick` -> `Terraria.ModLoader.ModTile.RightClick`
 * `Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
 * //TODO Shoot hook things
 
 ## Big change concepts
 
 ### Assets
-Every asset is wrapped now inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = GetTexture("Test");`, you would write `Texture2D test = GetTexture("Test").Value;` You could also technically do `Texture2D test = (Texture2D)GetTexture("Test");`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture. 
+Every asset is now wrapped inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = ModContent.GetTexture("Test");`, you would write `Texture2D test = ModContent.Request<Texture2D>("Test").Value;` (The `Mod` method is `Mod.Assets.Request<Texture2D>("Test")`). You could also technically do `Texture2D test = (Texture2D)GetTexture("Test");`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture.
+In addition to that, tModLoader by default loads textures asynchronously. This means that upon requesting an asset for the first time, the associated value might not be assigned yet. This is usually not a problem (for textures, tModLoader supplies a dummy texture until the real asset is loaded), but it can be for UI things that need texture dimensions on construction (such as `UIImage`). Then, specify `AssetRequestMode.ImmediateLoad` as the second parameter in `Request<T>`.
 
 Texture/Asset paths are now also slightly changed, so any use of something like this: `override string Texture => "Terraria/Item_" + ItemID.IronPickaxe;`, will have to be changed to this: `override string Texture => "Terraria/Images/Item_" + ItemID.IronPickaxe;`
 
@@ -120,7 +129,7 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
 ### Equip Textures
-1.4 includes support for a new streamlined armor texture format. Tools to help porting:
+1.4 includes support for a new streamlined armor texture format. This affects `EquipType.HandsOn/HandsOff/Body`. Tools to help porting:
 * [Sprite Transformer](https://forums.terraria.org/index.php?threads/sprite-transformer-quickly-transform-body-sprite-sheets-from-1-3-to-1-4.96210/) (Note: The arm and shoulder related frames will most likely be wrong, you have to manually adjust them for now)
 * [Sheet reference](https://cdn.discordapp.com/attachments/176975207800504321/852404448847986718/armor-template-3.png)
 
