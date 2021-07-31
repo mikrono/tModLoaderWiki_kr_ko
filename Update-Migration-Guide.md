@@ -13,7 +13,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 * `Terraria.Main.NPCAddHeight(int)` -> `Terraria.Main.NPCAddHeight(NPC)`
 * `Terraria.Main.PlaySound` -> `Terraria.Audio.SoundEngine.PlaySound`
 * `Terraria.ItemText.NewText(Item, ...)` -> `Terraria.PopupText.NewText(PopupTextContext, Item, ...)`
-* `Terraria.Lighting.BlackOut` -> Terraria.Lighting.Clear`
+* `Terraria.Lighting.BlackOut` -> `Terraria.Lighting.Clear`
 * `Terraria.NetMessage.BroadcastChatMessage` -> `Terraria.Chat.ChatHelper.BroadcastChatMessage`
 
 ### Static Fields / Constants / Properties
