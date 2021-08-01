@@ -55,6 +55,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. Here a
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
 * `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. `ModPlayer.player`) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
+* `Terraria.ModLoader.ModWorld` -> `Terraria.ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
 * `Terraria.ModLoader.PlayerHooks` -> `Terraria.ModLoader.PlayerLoader`
 * `Terraria.ModLoader.ModHotKey` -> `Terraria.ModLoader.ModKeybind`
 * `Terraria.ModLoader.NPCSpawnHelper` -> `Terraria.ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
