@@ -78,7 +78,6 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModItem.NewPreReforge` -> `Terraria.ModLoader.ModItem.PreReforge`
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
-* `Terraria.ModLoader.ModPlayer.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `Terraria.ModLoader.ModTile.NewRightClick` -> `Terraria.ModLoader.ModTile.RightClick`
 * `Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
@@ -95,7 +94,7 @@ Texture/Asset paths are now also slightly changed, so any use of something like 
 Finally, when summoning vanilla textures, make sure to call the right variant of "Main.instance.LoadItem(type);" before using it in cases such as "TextureAssets.Item[type].Value" to avoid null errors.
 
 ### Recipes
-Recipes were totally reworked. Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use builder syntax. If you don't know what that is, here's an example of what it looked like before:
+Recipes were totally reworked (don't panic, read below). Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use builder syntax. If you don't know what that is, here's an example of what it looked like before:
 ```
 // this would be in your item
 public override void AddRecipes()
