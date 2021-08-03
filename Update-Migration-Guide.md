@@ -130,6 +130,8 @@ There is a more detailed explanation of how to do this in `ExampleMod/ExampleRec
 
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
+Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;` to `Player.GetDamage(DamageClass.Summon) += 0.1f;`.
+
 ### Equip Textures
 1.4 includes support for a new streamlined armor texture format. This affects `EquipType.HandsOn/HandsOff/Body`. Tools to help porting:
 * [Sprite Transformer](https://forums.terraria.org/index.php?threads/sprite-transformer-quickly-transform-body-sprite-sheets-from-1-3-to-1-4.96210/) (Note: The arm and shoulder related frames will most likely be wrong, you have to manually adjust them for now)
