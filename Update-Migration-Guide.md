@@ -82,6 +82,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `Terraria.ModLoader.ModTile.NewRightClick` -> `Terraria.ModLoader.ModTile.RightClick`
 * `Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
+* `Terraria.ModLoader.Mod.AddItem(string, ModItem)`, `Terraria.ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `Terraria.ModLoader.Mod.AddContent(ILoadable)`
 * //TODO Shoot hook things
 
 ## Big change concepts
