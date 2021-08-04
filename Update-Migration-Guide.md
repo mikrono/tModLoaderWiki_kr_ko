@@ -15,6 +15,19 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The fi
 * `Terraria.ItemText.NewText(Item, ...)` -> `Terraria.PopupText.NewText(PopupTextContext, Item, ...)`
 * `Terraria.Lighting.BlackOut` -> `Terraria.Lighting.Clear`
 * `Terraria.NetMessage.BroadcastChatMessage` -> `Terraria.Chat.ChatHelper.BroadcastChatMessage`
+* `Terraria.Main.PlaySoundInstance(SoundEffectInstance)` -> completely removed
+```cs
+//Example from a ModSound
+SoundEffectInstance instance = sound.CreateInstance();
+Main.PlaySoundInstance(instance);
+return instance;
+
+//Was changed to:
+SoundEffectInstance instance = Sound.Value.CreateInstance();
+instance.Play();
+SoundInstanceGarbageCollector.Track(instance);
+return instance;
+```
 
 ### Static Fields / Constants / Properties
 * `Terraria.Main.font*` -> `Terraria.GameContent.FontAssets.*.Value`<br/>
