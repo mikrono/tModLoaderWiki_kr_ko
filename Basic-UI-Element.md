@@ -75,7 +75,7 @@ In Load(), let's set the two above to actual instances, then feed the MenuBar to
 ```cs
         public override void Load()
         {
-            MenuBar = new CooldownBar();
+            MenuBar = new MenuBar();
             MenuBar.Activate();
             _menuBar = new UserInterface();
             _menuBar.SetState(MenuBar);
