@@ -171,15 +171,15 @@ TODO mention all the method -> property renames as [per PR](https://github.com/t
 With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile.
 {More info on Projectile Sources}
 ### Minion spawning
-Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the damage the projectile spawns with AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
+Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
  
 ```cs
 //1: Used mostly for sentries (in combination with `Player.FindSentryRestingSpot`)
 int index = Projectile.NewProjectile(parameters);
-Main.projectile[index].originalDamage = damage;
+Main.projectile[index].originalDamage = Item.damage;
 
 //2: Sets originalDamage automatically, used mostly for minions
-Player.SpawnMinionOnCursor(parameters);
+Player.SpawnMinionOnCursor(parameters); //Make sure to pass Item.damage for the damage parameter
 ```
 ### Bestiary
 Each mod gets its own filter for the bestiary, by default a "?" icon. You can change it by providing a 30x30 `icon_small.png` in your root folder.
