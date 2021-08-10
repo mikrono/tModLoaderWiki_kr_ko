@@ -29,3 +29,10 @@ if (npc.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 ```
 
 You can emit the `npc.TargetClosest();` code if you already have it in your `AI`. You want to couple this usually with a [timer](https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers), and if you want to spawn it some other way, [ExampleGun](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Weapons/ExampleGun.cs?ts=4) showcases a few variants you can transfer over (logically, don't copy its code into the NPC, it won't work). Visit the [NewProjectile](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectilefloat-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f-) documentation for more info.
+
+# Frequently Asked Questions
+### The spawned projectile deals no damage/disappears immediately
+Make sure the `Owner` parameter in `Projectile.NewProjectile` is set to `Main.myPlayer`. A common misconception is setting it to `npc.whoAmI`, which is not what the game expects. The owner exists to determine for what side/client to execute various logic on, such as dealing damage or handling projectile disappearing.
+
+### The spawned projectile deals way too much damage
+In expert mode, npc.damage is scaled up by 2 (by default). Various NPCs also scale in damage again once reaching hardmode (important if you use npc.damage to spawn the projectile with). In addition to all of that, hostile projectiles gain an automatic x2 damage, with another x2 added for expert mode. If you want to counteract that, halve the damage before spawning the projectile, and again in expert mode.
