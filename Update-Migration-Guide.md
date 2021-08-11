@@ -136,7 +136,7 @@ public override void AddRecipes() => CreateRecipe()
         .AddIngredient(ItemID.Wood, 5)
         .Register();
 ```
-There is a more detailed explanation of how to do this in `ExampleMod/ExampleRecipes.cs`. _Keep in mind that chaining methods is optional, you can still use the old pattern._
+There is a more detailed explanation of how to do this in [ExampleMod/Content/ExampleRecipes.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/ExampleRecipes.cs). _Keep in mind that chaining methods is optional, you can still use the old pattern._
 
 ### Damage Classes
 `Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
