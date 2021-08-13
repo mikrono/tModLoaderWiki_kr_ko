@@ -13,7 +13,7 @@ To make an ammo that belongs to a vanilla ammo class, simply set item.ammo to th
 
 # How do I make a new ammo class?
 A new ammo class can be made by designating one of your ammo items as the AmmoID. For example, Example Mod shows us a new "Wisp" ammo class. The `Wisp` item has `item.ammo = item.type;` to designate it as a the defining ammo of the ammo class. `Spectre Gun` has `item.useAmmo = mod.ItemType("Wisp");` to match the pattern we have established with vanilla ammo items.
-Any further ammo would have `item.useAmmo = mod.ItemType("Wisp")` and any other weapons using that ammo would have `item.useAmmo = mod.ItemType("Wisp")`.
+Any further ammo would have `item.ammo = mod.ItemType("Wisp")` and any other weapons using that ammo would have `item.useAmmo = mod.ItemType("Wisp")`.
 
 # How can I make a new ammo class out of vanilla items?
 Use a GlobalItem class to set `item.ammo` and item.shoot to a new projectile that you've made.
