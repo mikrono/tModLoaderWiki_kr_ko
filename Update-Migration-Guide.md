@@ -36,6 +36,7 @@ return instance;
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `Terraria.GameContent.TextureAssets.Item[$1].Value`
 * `Terraria.Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
 * `Terraria.Main.quickBG` -> `Main.instantBGTransitionCounter`
+* `Terraria.Main.tileValue` -> `Terraria.Main.tileOreFinderPriority`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CountsAsHoming`
 * `Terraria.Localization.GameCulture.*` -> `Terraria.Localization.GameCulture.CultureName.*`  
@@ -64,7 +65,7 @@ return instance;
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
 * `Player.bee` and similar accessory flags that spawn projectiles -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
 * `Player.talkNPC = X;` -> `Player.SetTalkNPC(X);` (Changed by vanilla due to the bestiary).  Getting the value of `Player.talkNPC` was not changed, only setting it was.
-* `Player.extraAccessorySlots` -> `Player.GetAmountOfExtraAccessorySlotsToShow()`;
+* `Player.extraAccessorySlots` -> `Player.GetAmountOfExtraAccessorySlotsToShow()`
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
@@ -80,11 +81,11 @@ _All ModX things listed here apply to GlobalX aswell_
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
 * `Terraria.ModLoader.Mod.GetTexture(string)` -> `Terraria.ModLoader.Mod.Assets.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
-* `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
-* `Terraria.ModLoader.Mod.CreateTranslation(string)` -> `Terraria.ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
 * `Terraria.ModLoader.Mod.AddTranslation(ModTranslation)` -> `Terraria.ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
+* `Terraria.ModLoader.Mod.CreateTranslation(string)` -> `Terraria.ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
+* `Terraria.ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
+* `Terraria.ModLoader.Mod.RegisterKeybind(string, string)` -> `Terraria.ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `Terraria.ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
-* `Terraria.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `Terraria.ModLoader.TryGetMod(string, out Mod)`
 * `Terraria.ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PreDraw(ref Color)`, `Terraria.ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `Terraria.ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
 * `Terraria.ModLoader.ModItem.Clone` -> `Terraria.ModLoader.ModItem.Clone(Item)`
@@ -92,8 +93,14 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Terraria.ModLoader.ModItem.NewPreReforge` -> `Terraria.ModLoader.ModItem.PreReforge`
 * `Terraria.ModLoader.ModItem.UseStyle(Player)` -> `Terraria.ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `Terraria.ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
+* `Terraria.ModLoader.ModTile/ModWall.drop` -> `Terraria.ModLoader.ModTile/ModWall.ItemDrop`
 * `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `Terraria.ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `Terraria.ModLoader.ModTile.NewRightClick` -> `Terraria.ModLoader.ModTile.RightClick`
+* `Terraria.ModLoader.ModTile.disableSmartCursor` -> `Terraria.TileID.Sets.DisableSmartCursor[Type]`
+* `Terraria.ModLoader.ModTile.disableSmartInteract` -> `Terraria.TileID.Sets.DisableSmartInteract[Type]`
+* `Terraria.ModLoader.ModTile.dresser` -> `Terraria.TileID.Sets.BasicDresser[Type]`
+* `Terraria.ModLoader.ModTile.sapling` -> `Terraria.TileID.Sets.TreeSapling[Type]`
+* `Terraria.ModLoader.ModTile.torch` -> `Terraria.TileID.Sets.Torch[Type]`
 * `Terraria.ModLoader.ModPrefix.GetPrefix(byte)` -> `Terraria.ModLoader.PrefixLoader.GetPrefix(int)`
 * `Terraria.ModLoader.Mod.AddItem(string, ModItem)`, `Terraria.ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `Terraria.ModLoader.Mod.AddContent(ILoadable)`
 * //TODO Shoot hook things
@@ -102,7 +109,7 @@ _All ModX things listed here apply to GlobalX aswell_
 
 ### Assets
 Every asset is now wrapped inside an `Asset<T>`. You'll need to use `.Value` to access the actual asset. For example, instead of `Texture2D test = ModContent.GetTexture("Test");`, you would write `Texture2D test = ModContent.Request<Texture2D>("Test").Value;` (The `Mod` method is `Mod.Assets.Request<Texture2D>("Test")`). You could also technically do `Texture2D test = (Texture2D)GetTexture("Test");`, which, depending on your style, might be easier to look at. It does the exact same thing as `.Value`, which is load the texture.
-In addition to that, tModLoader by default loads textures asynchronously. This means that upon requesting an asset for the first time, the associated value might not be assigned yet. This is usually not a problem (for textures, tModLoader supplies a dummy texture until the real asset is loaded), but it can be for UI things that need texture dimensions on construction (such as `UIImage`). Then, specify `AssetRequestMode.ImmediateLoad` as the second parameter in `Request<T>`.
+In addition to that, tModLoader by default loads textures asynchronously. This means that upon requesting an asset for the first time, the associated value might not be assigned yet. This is usually not a problem (for textures, tModLoader supplies a dummy texture until the real asset is loaded), but it can be for UI things that need texture dimensions on construction (such as `UIImageButton`). Then, specify `AssetRequestMode.ImmediateLoad` as the second parameter in `Request<T>`.
 
 Texture/Asset paths are now also slightly changed, so any use of something like this: `override string Texture => "Terraria/Item_" + ItemID.IronPickaxe;`, will have to be changed to this: `override string Texture => "Terraria/Images/Item_" + ItemID.IronPickaxe;`
 
