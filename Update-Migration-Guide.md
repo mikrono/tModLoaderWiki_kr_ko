@@ -160,6 +160,20 @@ Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;
 ### Tiles
 TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
 
+### ModBiome and ModSceneEffect
+ModSceneEffect now does the handling of choosing scene effects instead of separate hooks, so that tML can give proper attention to designated priorities. Notably, it has an IsSceneEffectActive return method, and Priority property associated to it. It should be derived directly when adding scene effects that were controlled by any of the following hooks, with the exemption of ModTypes that derive this class already such as ModBiome. Multiple small, derived classes may be required to accomplish the same functionality. This change does not affect existing ModNPC music implementations at time of writing.
+
+The following changes have been made with respect to ChooseStyle Hooks, with possibly multiple ModSceneEffect classes being required to fully replace the Hook:
+
+ - ModSystem.ChooseWaterStyle Hook -> ModSceneEffect.WaterStyle Property
+ - ModSystem.ChooseMusic Hook -> ModSceneEffect.Music Property
+ - ModSurfaceBgStyle.ChooseStyle Hook -> ModSceneEffect.SurfaceBackgroundStyle Property
+ - ModUgBgStyle.ChooseStyle Hook -> ModSceneEffect.UndergroundBackgroundStyle Property
+
+Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVisuals hooks have been integrated in to the ModBiome class. 
+ - ModPlayer.UpdateBiomes -> ModBiome.IsActive()
+ - ModPlayer.UpdateBiomeVisuals -> ModBiome.UpdateBiomeVisuals()
+
 ## Hook Changes
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
 * `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
