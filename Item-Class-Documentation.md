@@ -67,7 +67,7 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [cartTrack](#carttrack)<a name="carttrack"></a>| bool|false |  |
 | [color](#color)<a name="color"></a>| Color|Transparent| Draws the item sprite with a colored tint. Gel and Sharkfin use this to spawn different colored items from the same ItemID. `NetMessage.SendData(88, ...` needs to be used to sync this if not done in SetDefaults.  |
 | [dye](#dye)<a name="dye"></a>|byte |0 |  |
-| [expertOnly](#expertonly)<a name="expertonly"></a>| bool|false |  |
+| [expertOnly](#expertonly)<a name="expertonly"></a>| bool|false | If true, the accessory won't give any effects unless the world is in Expert mode. |
 | [favorited](#favorited)<a name="favorited"></a>| bool|false    | If the item has been marked as favorited in the inventory. |
 | [flame](#flame)<a name="flame"></a>| bool|false | |
 | [glowMask](#glowmask)<a name="glowmask"></a>|short |-1 |  |
