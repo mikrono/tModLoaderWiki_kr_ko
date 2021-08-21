@@ -142,7 +142,7 @@ An example of uses for each operator is shown below:
 | Operator | Explanation
 |----------|------------
 |   `\|`   | If the bit in Value 1 or the bit in Value 2 is set, the bit in the result is also set.
-|   `$`    | The bit in the result is set only if the bit in Value 1 and Value 2 is set.
+|   `&`    | The bit in the result is set only if the bit in Value 1 and Value 2 is set.
 |   `^`    | The bit in the result is set only if the bit in Value 1 or Value 2 is set, but not both.
 |   `~`    | Every 1 bit becomes a 0 bit and vice versa.
 |   `<<`   | Every bit in Value 1 is shifted to the left Value 2 times.  Zeros are filled in from the right and any bits that overflow past the most significant bit (the first one) are removed.
