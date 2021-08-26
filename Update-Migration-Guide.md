@@ -69,7 +69,7 @@ return instance;
 
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
-* `ModX.mod`, `GlobalX.mod`, and all other lowercase properties (e.g. `ModPlayer.player`) -> `ModX.Mod`, `GlobalX.Mod`, `ModPlayer.Player`
+* All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
@@ -81,13 +81,15 @@ _All ModX things listed here apply to GlobalX aswell_
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
 * `ModLoader.Mod.GetTexture(string)` -> `ModLoader.Mod.Assets.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
+* `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
+* `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
 * `ModLoader.Mod.AddTranslation(ModTranslation)` -> `ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `ModLoader.Mod.CreateTranslation(string)` -> `ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
-* `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
 * `ModLoader.Mod.RegisterKeybind(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PreDraw(ref Color)`, `ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
+* `ModLoader.ModNPC.NPCLoot` -> `ModLoader.ModNPC.OnKill` (Drops will now have to be added in `ModifyNPCLoot`, see the [Bestiary](#Bestiary)<a name="Bestiary"></a> section)
 * `ModLoader.ModItem.Clone` -> `ModLoader.ModItem.Clone(Item)`
 * `ModLoader.ModItem.NetRecieve` -> `ModLoader.ModItem.NetReceive` (typo)
 * `ModLoader.ModItem.NewPreReforge` -> `ModLoader.ModItem.PreReforge`
@@ -204,13 +206,24 @@ Main.projectile[index].originalDamage = Item.damage;
 //2: Sets originalDamage automatically, used mostly for minions
 Player.SpawnMinionOnCursor(parameters); //Make sure to pass Item.damage for the damage parameter
 ```
+
 ### Bestiary
 Each mod gets its own filter for the bestiary, by default a "?" icon. You can change it by providing a 30x30 `icon_small.png` in your root folder.
+
+To add drops to NPCs, you now have to use the `Mod/GlobalNPC.ModifyNPCLoot` (and `GlobalNPC.ModifyGlobalLoot`) hooks (instead of the 1.3 analog of `NPCLoot`, `OnKill`, which is for non-loot (e.g. marking a boss as defeated, spawning ores or projectiles)).
+
+You can customize the bestiary entries using the `ModNPC.SetBestiary` hook, and the appearance of the NPC in the preview and full image by adding your data to `NPCID.Sets.NPCBestiaryDrawOffset`.
 
 //TODO bestiary integration with custom preview images, animation, drop rules etc.
 
 ### Wings
-Wing data is now assigned through an `ArmorIDs` set on load (`ModItem.SetStaticDefaults`) like follows: `ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(wingTimeMax, speed, acceleration);` (Check other constructors for more fine-tuning). Only assign player.wingTimeMax or use `ModItem.HorizontalWingSpeeds` if you need to dynamically adjust those. Failure to add the former code will result in the player not moving horizontally while flying.
+Wing data is now assigned through an `ArmorIDs` set on load (`ModItem.SetStaticDefaults`) like follows: `ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(wingTimeMax, speed, acceleration);` (Check other constructors for more fine-tuning). Only assign `player.wingTimeMax` or use `ModItem.HorizontalWingSpeeds` if you need to dynamically adjust those. Failure to add the former code will result in the player not moving horizontally while flying.
+
+### Misc
+* Flagging a boss as defeated will not have to be manually synced anymore (`MessageID.WorldData` will be sent after the `OnKill` hook), and it will also trigger a lantern night if you use this method:
+`NPC.SetEventFlagCleared(ref myDownedBool, -1);`
+
+* Other
 
 # v0.11.7.5
 
