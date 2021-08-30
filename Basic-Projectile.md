@@ -4,7 +4,7 @@ Before you start modding a projectile, you should be aware of the difference bet
 
 # What uses Projectiles?
 
-Many items in Terraria are functional due to projectiles, including guns and bows (the bullets and arrows respectively), lasers, bombs and other thrown items, and most magic weapons. Some other items you might not think to be projectiles include; grappling hooks, flails, spears, pets, summons, drills, and yoyos. Alot of enemies spawn projectiles aswell.
+Many items in Terraria are functional due to projectiles, including guns and bows (the bullets and arrows respectively), lasers, bombs and other thrown items, and most magic weapons. Some other items you might not think to be projectiles include; grappling hooks, flails, spears, pets, summons, drills, and yoyos. Alot of enemies spawn projectiles as well.
 
 # Making a Projectile
 
