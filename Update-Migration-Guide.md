@@ -193,8 +193,13 @@ Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVis
 ## Terraria 1.4+ vanilla changes
 {1.4 includes several back end changes that we should point out}
 ### IProjectileSource
-With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile.
-{More info on Projectile Sources}
+With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile. This parameter is useful for maintaining proper compatibility with other mods, so you should make sure to use it correctly. Here are some common conditinos and the `IProjectileSource` to use:
+
+* `ModItem.Shoot`: use the `source` passed into the method.    
+* `NPC` spawning projectile in `ModNPC.AI`: use `NPC.GetProjectileSpawnSource()`    
+* Spawning minions or pets in `ModBuff.Update`: use `player.GetProjectileSource_Buff(buffIndex)`    
+* Spawning a projectile from another projectile: use `Projectile.GetProjectileSource_FromThis()`    
+
 ### Minion spawning
 Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
  
