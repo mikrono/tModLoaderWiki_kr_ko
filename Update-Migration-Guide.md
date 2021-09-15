@@ -199,6 +199,7 @@ With 1.4.2, the `Projectile.NewProjectile` method has additional required parame
 * `NPC` spawning projectile in `ModNPC.AI`: use `NPC.GetProjectileSpawnSource()`    
 * Spawning minions or pets in `ModBuff.Update`: use `player.GetProjectileSource_Buff(buffIndex)`    
 * Spawning a projectile from another projectile: use `Projectile.GetProjectileSource_FromThis()`    
+* An accessory spawning a projectile: use `Player.GetProjectileSource_Accessory(iteminstancehere)`
 
 ### Minion spawning
 Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
