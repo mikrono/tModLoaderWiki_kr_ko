@@ -182,6 +182,13 @@ Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVis
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
 * `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
 * `(GlobalTile/GlobalWall/ModTile/ModWall/ModBuff/ModDust/ModMount/ModPrefix).SetDefaults` -> `(X).SetStaticDefaults`. Now all `ModType`s have such a method.
+* ConsumeAmmo changes:
+    * Proper variable names (clarify `item` usage to specify `weapon` and `ammo`)
+    * `ModPlayer.ConsumeAmmo` -> `ModPlayer.CanConsumeAmmo`
+    * `(ModItem/GlobalItem).ConsumeAmmo` -> `(ModItem/GlobalItem).CanConsumeAmmo`, now only invoked on the weapon.
+    * New hook for ammo: `(ModItem/GlobalItem).CanBeConsumedAsAmmo`.
+    * `(ModItem/GlobalItem).OnConsumeAmmo`: now only invoked on the weapon.
+    * New hook for ammo: `(ModItem/GlobalItem).OnConsumedAsAmmo`.
 
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
