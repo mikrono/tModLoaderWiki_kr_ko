@@ -30,7 +30,7 @@ Installing tModLoader is relatively easy.
     * **Option 2, nested**:    
 ![](https://i.imgur.com/YWaqZPO.png)    
     * **DO NOT** install the tModLoader files directly into the Terraria folder. This option not supported for GOG on Mac.
-3. Remove or Add the Steam files depending on which version of the game you own:
+3. [This step applies to 1.3 ONLY] Remove or Add the Steam files depending on which version of the game you own:
     1. If you are using the GOG version of Terraria, delete the Steam file from the folder you just extracted tModLoader into (these files might already be deleted from the zip you downloaded):
         * Windows: `steam_api.dll`
         * Linux: `lib/libsteam_api.so` and `lib64/libsteam_api.so`
