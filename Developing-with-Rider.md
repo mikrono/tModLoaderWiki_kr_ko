@@ -18,12 +18,13 @@ Rider is a lightweight IDE, developed by JetBrains. It is similar to Visual Stud
 
 ## Start
 First, install Rider. Unlike VS, Rider is a paid product, but a free 30 day trial is available. Download here: https://www.jetbrains.com/rider/
-JetBrains entire suite of IDEs is also avaliable through Github's education pack requiring only a .edu email. You can register for this pack here: https://education.github.com
+
+JetBrains' entire suite of IDEs is also avaliable through [Github's education pack](https://education.github.com/pack) requiring only a recognized school email. Sign up [here](https://education.github.com/benefits?type=student).
 
 [Back to TOC](#table-of-contents)
 
 ## Opening an existing VS project
-After launching Rider simply select "Open Solution or Project". Then navigate to your project's .csproj or .sln file and open it. Rider will open a new window and load the project.
+After launching Rider, simply select "Open Solution or Project". Then navigate to your project's `.csproj` or `.sln` file and open it. Rider will open a new window and load the project.
 
 [Back to TOC](#table-of-contents)
 
