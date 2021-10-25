@@ -7,7 +7,7 @@ It is important to clearly understand tiles in your mind. Starting out, you migh
 If you are curious about the `Tile` class itself, such as you would find in `Main.tile[]`, please see [Tile Class Documentation](Tile-Class-Documentation)
 
 ## Tile-Item Pairing
-An Item will place a specific Tile when `item.createTile` is set to the TileType of the ModTile. If a Tile has multiple styles, setting `item.placeStyle` allows you to specify that style. The ModTile can return the ModItem as well. For 1x1 tiles, simply set `drop = mod.ItemType("ItemName");` in `ModTile.SetDefaults`. For larger tiles and tiles with multiple styles, use `ModTile.KillMultiTile` combined with `Item.NewItem` to spawn the appropriate Item to the player. See [Multiple Styles](#multiple-styles) for more details.
+An Item will place a specific Tile when `item.createTile` is set to the TileType of the ModTile. If a Tile has multiple styles, setting `item.placeStyle` allows you to specify that style. The ModTile can return the ModItem as well. For 1x1 tiles, simply set `drop = ModContent.ItemType<ItemName>());` in `ModTile.SetDefaults`. For larger tiles and tiles with multiple styles, use `ModTile.KillMultiTile` combined with `Item.NewItem` to spawn the appropriate Item to the player. See [Multiple Styles](#multiple-styles) for more details.
 
 # Making a Tile
 To add a tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
@@ -27,8 +27,8 @@ namespace ModNamespaceHere
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			dustType = mod.DustType("Sparkle");
-			drop = mod.ItemType("ExampleBlock");
+			dustType = ModContent.DustType<Sparkle>();
+			drop = ModContent.ItemType<ExampleBlock>();
 			AddMapEntry(new Color(200, 200, 200));
 			// Set other values here
 		}
