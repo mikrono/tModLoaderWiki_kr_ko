@@ -43,7 +43,7 @@ public override void AddRecipeGroups()
 	RecipeGroup.RegisterGroup("SummonersAssociation:MagicMirrors", group);
 }
 ```
-As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, Language.GetTextValue("LegacyMisc.37") is just the word "any" in the selected language and requires writing `using Terraria.Localization;` at the top of your code. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use ItemType("ItemName") instead of ItemID.ItemName for ModItems.
+As seen above, first we construct the group, then we call RegisterGroup with the desired name. As a convention, please use "ModName:GroupName". As a note, `Language.GetTextValue("LegacyMisc.37")` is just the word "any" in the selected language and requires writing `using Terraria.Localization;` at the top of your code. The syntax here is a little difficult for newcomers, so please follow it exactly. Note: use `ModContent.ItemType<ItemName>()` instead of `ItemID.ItemName` for ModItems.
 
 Next, we need to use the RecipeGroup. We do this just like with vanilla RecipeGroups, except our RecipeGroup's name will be different:
 ```csharp
@@ -107,7 +107,7 @@ public override void AddRecipeGroups()
 	{
 		int index = RecipeGroup.recipeGroupIDs["Wood"];
 		RecipeGroup group = RecipeGroup.recipeGroups[index];
-		group.ValidItems.Add(ItemType("MyWood"));
+		group.ValidItems.Add(ModContent.ItemType<MyWood>());
 	}
 }
 ```
@@ -152,7 +152,7 @@ if (exampleMod != null) {
 	recipe.AddIngredient(exampleMod.ItemType("ExampleWings"));
 }
 else {
-	recipe.AddIngredient(this.ItemType("MyItem"));
+	recipe.AddIngredient(ModContent.ItemType<MyItem>());
 	recipe.AddIngredient(ItemID.EnchantedSword);
 }
 recipe.SetResult(ItemID.Wood, 999);
