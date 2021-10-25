@@ -73,7 +73,7 @@ Weak References have the same capabilities as Strong references, but they don't 
 
 Weak References necessitate careful programming. For example, if you have the code "ExampleMod.ExampleWorld.downedAbomination = true;" in a method that is called, but ExampleMod isn't loaded, the game will crash. With Weak References, you have to make sure that variables and classes that might not be loaded are never seen by the virtual machine as it runs the c# code. Some examples:
 ```cs
-shop.item[nextSlot].SetDefaults(mod.ItemType("ExampleItem"));
+shop.item[nextSlot].SetDefaults(ModContent.ItemType<ExampleItem>());
 nextSlot++;
 
 // now for a cross-content item
