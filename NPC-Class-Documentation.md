@@ -61,11 +61,11 @@ Static fields are accessed by the classname, not the instance. For example, we w
 Remember that static methods are called by writing the classname and non-static methods use the instance name. `NPC.NewNPC(...)` vs `npc.CloneDefaults(...)`
 ### public static int NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
 Spawns an NPC in the world. Use this to spawn minions from bosses. 
-Example: `NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ExampleBossMinion");` The `ai` parameters can initialize an NPC with particular data if needed for special AI behavior.
+Example: `NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ExampleBossMinion>();` The `ai` parameters can initialize an NPC with particular data if needed for special AI behavior.
 
 ### public static bool AnyNPCs(int Type)
 Returns true if there are any NPC of the supplied type alive in the world. Useful for boss spawning items or anytime you need to check if an NPC is alive. 
-Example: `if (NPC.AnyNPCs(mod.NPCType("CaptiveElement2"))) {`
+Example: `if (NPC.AnyNPCs(ModContent.NPCType<CaptiveElement2>())) {`
 
 ### public static int CountNPCS(int Type)
 Same as `AnyNPCs` except returns the number of active NPC of the supplied type.
