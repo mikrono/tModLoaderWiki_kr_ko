@@ -18,7 +18,7 @@ Adds light to the world at the tile coordinates provided.
 ### public void QuickSpawnItem(int item, int stack = 1)
 Spawns an item right on a player, a simple alternative to Item.NewItem.
 ### public bool HasItem(int type)
-Determines if the player has the specified item in their inventory. Example: `if(player.HasItem(mod.ItemType("SpectreGun"))){...}`
+Determines if the player has the specified item in their inventory. Example: `if(player.HasItem(ModContent.ItemType<SpectreGun>())){...}`
 ### public void AddBuff(int type, int time1, bool quiet = true)
 Adds a buff to a player.
 ### public int FindBuffIndex(int type)
@@ -26,7 +26,7 @@ Returns -1 if the player doesn't have the buff, and an index (0 to 21) if the pl
 
 ## NPC
 ### public static int NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
-Spawns an NPC in the world. Example: `NPC.NewNPC(i, j, mod.NPCType("PuritySpirit"));`
+Spawns an NPC in the world. Example: `NPC.NewNPC(i, j, ModContent.NPCType<PuritySpirit>());`
 ### public void AddBuff(int type, int time, bool quiet = false)
 Adds a buff to an NPC. Example: `Main.npc[i].AddBuff(BuffID.Ichor, 60);`
 ### public int FindBuffIndex(int type)
