@@ -11,7 +11,7 @@ There are 2 places we can put NPC loot code. If our mod adds an NPC and we want 
 Throughout this guide you will see the `Item.NewItem` method being called. See [Useful Vanilla Methods](https://github.com/tModLoader/tModLoader/wiki/Useful-Vanilla-Methods#public-static-int-newitemint-x-int-y-int-width-int-height-int-type-int-stack--1-bool-nobroadcast--false-int-pfix--0-bool-nograbdelay--false-bool-reverselookup--false) to see the parameters. This method spawns an item into the game world. The item is spawned centered into the area specified by the parameters. 
 
 ### How do I specify my item?
-In the examples below, we drop a vanilla item: `ItemID.BeeGun`. This can be swapped for an item from your mod by replacing that with `mod.ItemType("ItemName")`
+In the examples below, we drop a vanilla item: `ItemID.BeeGun`. This can be swapped for an item from your mod by replacing that with `ModContent.ItemType<ItemName>()`
 
 ### Drop 1 item all the time
 The following shows the most basic example. This code will drop 1 Bee Gun every time this ModNPC is killed.
@@ -144,11 +144,11 @@ Many times we want to drop a random item from a set of choices. There is the nai
 int choice = Main.rand.Next(2);
 if (choice == 0)
 {
-	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PuritySpiritMask"));
+	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<PuritySpiritMask>());
 }
 else if (choice == 1)
 {
-	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BunnyMask"));
+	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BunnyMask>());
 }
 ```
 
@@ -171,7 +171,7 @@ This second method is a lot easier to maintain. You can also assign different we
 One more way:
 
 ```c#
-int[] choices = new int[] { mod.ItemType("CarKey"), mod.ItemType("ExampleLightPet"), ItemID.PinkJellyfishJar };
+int[] choices = new int[] { ModContent.ItemType<CarKey>(), ModContent.ItemType<ExampleLightPet>(), ItemID.PinkJellyfishJar };
 int choice = Main.rand.Next(choices);
 Item.NewItem(npc.getRect(), choice);
 ```
