@@ -9,11 +9,11 @@ As a convention, AmmoIDs match the ItemID of the first ammo item. For example, A
 To use vanilla ammo, simply set item.useAmmo to the correct AmmoID. For example, `Example Gun` in ExampleMod has `item.useAmmo = AmmoID.Bullet;`.
 
 # How do I make a vanilla ammo?
-To make an ammo that belongs to a vanilla ammo class, simply set item.ammo to the correct AmmoID. For example, `Example Bullet` has `item.ammo = AmmoID.Bullet;` set in it's SetDefaults method. In addition, the ammo item must also define the projectile that the ammo shoots. `Example Bullet` shows this example: `item.shoot = mod.ProjectileType("ExampleBullet");`
+To make an ammo that belongs to a vanilla ammo class, simply set item.ammo to the correct AmmoID. For example, `Example Bullet` has `item.ammo = AmmoID.Bullet;` set in it's SetDefaults method. In addition, the ammo item must also define the projectile that the ammo shoots. `Example Bullet` shows this example: `item.shoot = ModContent.ProjectileType<ExampleBullet>();`
 
 # How do I make a new ammo class?
-A new ammo class can be made by designating one of your ammo items as the AmmoID. For example, Example Mod shows us a new "Wisp" ammo class. The `Wisp` item has `item.ammo = item.type;` to designate it as a the defining ammo of the ammo class. `Spectre Gun` has `item.useAmmo = mod.ItemType("Wisp");` to match the pattern we have established with vanilla ammo items.
-Any further ammo would have `item.ammo = mod.ItemType("Wisp")` and any other weapons using that ammo would have `item.useAmmo = mod.ItemType("Wisp")`.
+A new ammo class can be made by designating one of your ammo items as the AmmoID. For example, Example Mod shows us a new "Wisp" ammo class. The `Wisp` item has `item.ammo = item.type;` to designate it as a the defining ammo of the ammo class. `Spectre Gun` has `item.useAmmo = ModContent.ItemType<Wisp>();` to match the pattern we have established with vanilla ammo items.
+Any further ammo would have `item.ammo = ModContent.ItemType<Wisp>()` and any other weapons using that ammo would have `item.useAmmo = ModContent.ItemType<Wisp>()`.
 
 # How can I make a new ammo class out of vanilla items?
 Use a GlobalItem class to set `item.ammo` and item.shoot to a new projectile that you've made.
@@ -26,12 +26,12 @@ public class CopperShortsword : GlobalItem
 		if (item.type == ItemID.Rope)
 		{
 			item.ammo = ItemID.Rope;
-			item.shoot = mod.ProjectileType("RopeShot")
+			item.shoot = ModContent.ProjectileType<RopeShot>();
 		}
 		if (item.type == ItemID.VineRope)
 		{
 			item.ammo = ItemID.Rope;
-			item.shoot = mod.ProjectileType("VineRopeShot")
+			item.shoot = ModContent.ProjectileType<VineRopeShot>();
 		}
 		// and so on, for SilkRope and WebRope
 	}
