@@ -18,7 +18,7 @@ NewDust is most commonly used, but NewDustPerfect foregoes the randomization of 
 Here are some examples:
 ```c#
 // Spawning a modded dust from an npc method
-Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType("Sparkle"));
+Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Sparkle>());
 
 // Spawning a random vanilla confetti dust
 int dustType = Main.rand.Next(139, 143);
@@ -38,7 +38,7 @@ for (int d = 0; d < 70; d++)
 }
 ```
 
-Some notes: Position, Width, and Height define a rectangle from which the dust will randomly spawn. The only difference between spawning vanilla dust and modded dust is replacing 4th parameter, which is usually just a number, with `mod.DustType("DustName")`. You can omit optional parameters if you want.
+Some notes: Position, Width, and Height define a rectangle from which the dust will randomly spawn. The only difference between spawning vanilla dust and modded dust is replacing 4th parameter, which is usually just a number, with `ModContent.DustType<DustName>()`. You can omit optional parameters if you want.
 
 ## Finding Vanilla Dust
 
