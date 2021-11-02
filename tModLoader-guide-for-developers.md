@@ -22,7 +22,7 @@ The following links might be useful for you:
 1. [Our website](https://tmodloader.net)
 1. [tModLoader documentation](http://docs.tmodloader.net)
 2. tModLoader wiki (useful information and guides) -- **you are here right now.**
-3. [Join our Discord server](https://tmodloader.net/tmodloader) (requires a DiscordApp account)
+3. [Join our Discord server](https://tmodloader.net/tmodloader) (requires a Discord account)
 4. [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) -- note: it is recommended you use the in-game menu for creating a new mod.
 5. [tModLoader's official release thread on TCF](http://forums.terraria.org/index.php?threads/.23726/)
 6. [tModLoaders help & resources thread](http://forums.terraria.org/index.php?threads/tmodloader-code-examples-handy-code-snippets.28901)
