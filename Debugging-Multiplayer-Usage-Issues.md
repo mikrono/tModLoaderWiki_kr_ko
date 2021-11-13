@@ -7,11 +7,14 @@ This guide is to help those who are having troubles with playing multiplayer wit
 You are trying to connect to a server that is not the correct version. You might be trying to connect to an un-modded server, or you might be connecting to an outdated tModLoader server. 
 
 1. Open tModLoader
-2. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\Terraria` and double clicking on the `tModLoaderServer.exe` file.
+2. Open `tModLoaderServer.exe` directly by opening `C:\Program Files (x86)\Steam\steamapps\common\tModLoader` and double clicking on the `tModLoaderServer.exe` file.
 3. Verify that the tModLoader version of the Client and the Server match exactly. If not, reinstall the latest tModLoader.
 4. You can also verify the filesizes: 
-   * Windows Steam tModLoder v0.11.6.2 Client: 16,925 KB
-   * Windows Steam tModLoder v0.11.6.2 Server: 16,908 KB
+   * Windows Steam tModLoder v0.11.8.5 Client: 17,616 KB
+   * Windows Steam tModLoder v0.11.8.5 Server: 17,600 KB
+
+How it looks like in the folder (for an outdated version):
+
 ![](https://i.imgur.com/lgfzxmp.png)
 
 ## Version is fine
