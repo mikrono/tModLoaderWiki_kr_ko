@@ -35,10 +35,11 @@ return instance;
 * `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `GameContent.TextureAssets.Item[$1].Value`
 * `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
+* `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
 * `Main.quickBG` -> `Main.instantBGTransitionCounter`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
-* `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CountsAsHoming`
+* `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
 * `Main.maxInventory` -> `Main.InventorySlotsTotal`
@@ -65,6 +66,7 @@ return instance;
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
 * `Player.bee` and similar accessory flags that spawn projectiles -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
 * `Player.talkNPC = X;` -> `Player.SetTalkNPC(X);` (Changed by vanilla due to the bestiary).  Getting the value of `Player.talkNPC` was not changed, only setting it was.
+* `Player.flyingPigChest = -1;` -> `Player.piggyBankProjTracker.Clear(); Player.voidLensChest.Clear();` (Changed by vanilla due to the new inventory access projectiles). Setting it is now done using the `Set` method on the respective tracker.
 * `Player.extraAccessorySlots` -> `Player.GetAmountOfExtraAccessorySlotsToShow()`
 
 ### tModLoader changes
