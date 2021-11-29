@@ -65,7 +65,7 @@ Warning! No confirmations are given for the buttons in this menu! You can unpubl
 The default limit for mods is 5 MB. If you have linked the Mod Browser to your GitHub repository, it can be up to 50 MB. If you find that your mod is too big, check your Mod's source folder for large files that shouldn't be there. By default, all files in the folder will be packaged into the .tmod file. Use buildIgnore in build.txt to specify folders or files to ignore, or delete the files in question. Common culprits include photoshop or other image editing project files.
 
 ## Mod Icon
-A Mod icon can be added to a mod by adding an 80x80 icon.png to the root of the Mod's source folder. As an incentive for using GitHub and linking your repository, your Icon will show in the Mod Browser menu in addition to the Mods menu.
+A Mod icon can be added to a mod by adding an 80x80 `icon.png` to the root of the Mod's source folder. As an incentive for using GitHub and linking your repository, your Icon will show in the Mod Browser menu in addition to the Mods menu.
 
 Here is a template if you wish to use it:  
 ![](https://i.imgur.com/uluOTmD.png)
