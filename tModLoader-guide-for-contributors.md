@@ -25,7 +25,7 @@ ___
 
 * [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
-* [Install .NET 5.0 SDK;](https://dotnet.microsoft.com/download/dotnet/5.0) 
+* [Install .NET 6.0 SDK;](https://dotnet.microsoft.com/download/dotnet/6.0) 
 
 * Run the setup.bat that is in the local copy of the repository;
 
