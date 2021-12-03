@@ -33,8 +33,8 @@ You can assign these fields to give your ModProjectile various values. Typically
 | [oldPos](#oldpos)<a name="oldpos"></a>| Vector2[] | |  |
 | [oldRot](#oldrot)<a name="oldrot"></a>| float[] | |  |
 | [oldSpriteDirection](#oldspritedirection)<a name="oldspritedirection"></a>| int[] | |  |
-| [ai](#ai)<a name="ai"></a>| float[] | 0,0 | An array used for any sort of data storage, which is occasionally synced to the server. Call [netUpdate](#netUpdate)<a name="netUpdate"></a> to manually sync. |
-| [localAI](#localai)<a name="localai"></a>| float[] | 0,0 | Acts like `ai`, but does not sync to the server. |
+| [ai](#ai)<a name="ai"></a>| float[] | 0, 0 | An array used for any sort of data storage, which is occasionally synced to the server. Call [netUpdate](#netUpdate)<a name="netUpdate"></a> to manually sync. |
+| [localAI](#localai)<a name="localai"></a>| float[] | 0, 0 | Acts like `ai`, but does not sync to the server. |
 | [noDropItem](#nodropitem)<a name="nodropitem"></a>| bool | false | Set to true if you don't want this item to have a chance to recover the ammo item that shot this. For example, if you shoot the wooden arrow projectile, it will sometimes drop the wooded arrow item. If your weapon shoots multiple arrows for 1 ammo, you might want to consider setting this field to prevent infinite ammo glitches. |
 | [minion](#minion)<a name="minion"></a>| bool | false | Indicates that this projectile is a minion |
 | [minionSlots](#minionslots)<a name="minionslots"></a>| float | 0f | Set to 1f on a minion to count it towards the minion limit of the summoning player (Optic Staff summons two minions at once with 0.5f each) |
