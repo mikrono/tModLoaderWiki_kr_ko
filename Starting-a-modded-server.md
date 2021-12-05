@@ -19,6 +19,9 @@ On your client, create a modpack of all the mods you want to use on the server, 
     modpath=c:\Server\Mods
     modpack=modpackName
 
+If you are creating a local-hosted server, you **do not have to** include the `modpath=` line mentioned above nor create a separate `C:\Server\Mods` folder for your server's mods.  
+By default, tModLoader will use the path to your Mods folder.
+
 ##### Linux (tested on Ubuntu 20.04 LTS)
 
 Go to `/home/<user>/.local/share/Terraria/ModLoader/Mods` and create a new directory called ModPacks:
