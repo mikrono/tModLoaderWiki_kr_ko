@@ -109,8 +109,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModPrefix.GetPrefix(byte)` -> `ModLoader.PrefixLoader.GetPrefix(int)`
 * `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
-* `ModLoader.ModBuff.CanBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff`
-* `ModLoader.ModBuff.LongerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff`
+* `ModLoader.ModBuff.CanBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
+* `ModLoader.ModBuff.LongerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
 * //TODO Shoot hook things
 
 ## Big change concepts
