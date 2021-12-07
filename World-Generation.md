@@ -55,7 +55,7 @@ It is a good idea to test individual steps of a pass before blindly testing a co
 ## The Setup
 
 1. Download and enable the following mods: HEROs Mod and Modders Toolkit 
-2. Add the following code to your project, make sure to fix the namespace. You can replace the `WorldGen.TileRunner` method later once you get confortable with this process:
+2. Add the following code to your project, make sure to fix the namespace. You can replace the `WorldGen.TileRunner` method later once you get comfortable with this process:
 ```cs
 using Terraria;
 using Terraria.ModLoader;
