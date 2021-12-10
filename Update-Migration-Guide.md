@@ -111,6 +111,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
 * `ModLoader.ModBuff.CanBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
 * `ModLoader.ModBuff.LongerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
+* `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
+* `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`
 * //TODO Shoot hook things
 
 ## Big change concepts
