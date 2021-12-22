@@ -22,8 +22,8 @@ You can assign these fields to give your ModItem various values. Typically you'l
 | [consumable](#consumable)<a name="consumable"></a>|bool |false | Whether the item is consumed after use. |
 | [rare](#rare)<a name="rare"></a>| int|0 | Range from -1 to 13.<br>Check wiki link for respective colors: https://terraria.gamepedia.com/Rarity. You can use ItemRarityID for convenience: [ItemRarityID.cs](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria.ID/ItemRarityID.cs), [Sample Usage](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Infinity.cs#L20) |
 | [maxStack](#maxstack)<a name="maxstack"></a>|int | 1| The maximum number of items that can be contained within a single stack. |
-| [width](#width)<a name="width"></a>| int |0 | The width of the item's hitbox in pixels. |
-| [height](#height)<a name="height"></a>|int  | 0| The height of the item's hitbox in pixels. |
+| [width](#width)<a name="width"></a>| int |0 | The width of the dropped item's hitbox in pixels. |
+| [height](#height)<a name="height"></a>|int  | 0| The height of the dropped item's hitbox in pixels. |
 | [scale](#scale)<a name="scale"></a>| float | 1f | The size multiplier of the item's sprite while the item is being used. Also increases range for melee weapons. |
 | [createTile](#createtile)<a name="createtile"></a>| int | -1 | The ID of the tile this item places on use. |
 | [placeStyle](#placestyle)<a name="placestyle"></a>| int | 0| The style of the tile being placed. Used for tiles that have a different look depending on the item used to place them. |
