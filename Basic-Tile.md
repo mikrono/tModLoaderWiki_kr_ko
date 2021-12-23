@@ -237,7 +237,7 @@ Modifies the height of the tiles in tile coordinates:
 Modifies which part of the tile is centered on the mouse, in tile coordinates, from the top right corner:    
 `TileObjectData.newTile.Origin = new Point16(0, 0); // default`    
 ![](https://thumbs.gfycat.com/DeficientNastyImperialeagle-small.gif)    
-`TileObjectData.newTile.Origin = new Point16(2, 0); // To the left 2 tiles`     
+`TileObjectData.newTile.Origin = new Point16(2, 0); // To the right 2 tiles`     
 Note how the cursor is placing the tile using the area marked "3" which is 2 to the right:    
 ![](https://thumbs.gfycat.com/BouncyBriskBurro-small.gif)     
 
