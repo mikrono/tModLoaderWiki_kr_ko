@@ -170,11 +170,8 @@ internal void AddFile(string fileName, byte[] data) {
 	fileTable = null;
 }
 ```
-	
-## Keep Patches Small
-The source code of Terraria is not stored on git, instead tML changes are stored in .patch files in the patches/ directory. Keeping patches as small as possible makes handling Terraria updates and identifying the exact changes tML requires much easier. 
 
-Use block comments rather than removing code
+## Comment out vanilla code, rather than removing it
 ```cs
 else if (buffType[j] == 117) {
 	allDamage += 0.1f;
@@ -186,6 +183,19 @@ else if (buffType[j] == 117) {
 	*/
 }
 ```
+
+Also use a hashtag when multiple changes are part of the same fix/feature/refactor
+```cs
+// TML attempts to make ApplyItemTime calls run on remote players, so this check is removed. #ItemTimeOnAllClients
+// if (whoAmI == Main.myPlayer) {
+if (true) {
+	...
+}
+```
+
+## Keep Patches Small
+The source code of Terraria is not stored on git, instead tML changes are stored in .patch files in the patches/ directory. Keeping patches as small as possible makes handling Terraria updates and identifying the exact changes tML requires much easier. 
+
 Use return/continue or goto to avoid changing indentation. **Only when 5+ lines would be indented**
 ```cs
 if (!WallLoader.PreDraw(j, i, wall, spriteBatch))
