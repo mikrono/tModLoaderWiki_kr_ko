@@ -2,7 +2,7 @@
 
 `TagCompound` is the data format for custom data saved using tModLoader. We use `TagCompound` in `ModWorld`, `ModItem`, `ModPlayer`, `GlobalItem`, and `ModTileEntity`. If you are familiar with the concepts, thinking of `TagCompound` as a nestable dictionary or JSON comes pretty close. Like a dictionary, we provide string keys and values of any supported type.
 
-Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2.7.6.-win) to visualize TagCompounds by opening .twld or .tplr files with it. It can be very helpful to view the data in this manner to verify that data is being saved in a manner that makes sense.
+Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2.8.0-win) to visualize TagCompounds by opening .twld or .tplr files with it. It can be very helpful to view the data in this manner to verify that data is being saved in a manner that makes sense.
 
 # Key Ideas
 Below are some things to keep in mind as you use `TagCompound`.
