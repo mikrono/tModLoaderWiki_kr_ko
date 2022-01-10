@@ -75,7 +75,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
 * `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
 * `ModLoader.Mod.ModifyInterfaceLayers` -> `ModLoader.ModSystem.ModifyInterfaceLayers`
-* `ModLoader.Mod.PostAddRecipes` -> `ModLOader.Modsystem.PostAddRecipes`
+* `ModLoader.Mod.PostAddRecipes` -> `ModLoader.Modsystem.PostAddRecipes`
 * `ModLoader.Mod.AddRecipes` -> `ModLOader.Modsystem.AddRecipes`
 * `ModLoader.Mod.AddRecipesGroups` -> `ModLoader.Modsystem.AddRecipesGroups`
 * `ModLoader.Mod.PostSetupContent` -> `ModLoader.ModSystem.PostSetupContent`
