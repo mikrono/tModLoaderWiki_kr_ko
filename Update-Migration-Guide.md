@@ -48,8 +48,6 @@ return instance;
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
-* `Mod.UpdateUI` -> `ModSystem.UpdateUI`
-* `Mod.ModifyInterfaceLayers` -> `ModSystem.ModifyInterfaceLayers`
 
 ### Non-Static Fields / Constants / Properties
 * `Main.Rasterizer` is now static
@@ -117,6 +115,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`
 * //TODO Shoot hook things
+* `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
+* `ModLoader.Mod.ModifyInterfaceLayers` -> `ModLoader.ModSystem.ModifyInterfaceLayers`
 
 ## Big change concepts
 
