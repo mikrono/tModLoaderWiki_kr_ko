@@ -73,6 +73,12 @@ return instance;
 _All ModX things listed here apply to GlobalX aswell_
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
+* `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
+* `ModLoader.Mod.ModifyInterfaceLayers` -> `ModLoader.ModSystem.ModifyInterfaceLayers`
+* `ModLoader.Mod.PostAddRecipes` -> `ModLOader.Modsystem.PostAddRecipes`
+* `ModLoader.Mod.AddRecipes` -> `ModLOader.Modsystem.AddRecipes`
+* `ModLoader.Mod.AddRecipesGroups` -> `ModLoader.Modsystem.AddRecipesGroups`
+* `ModLoader.Mod.PostSetupContent` -> `ModLoader.ModSystem.PostSetupContent`
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
 * `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
@@ -115,8 +121,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`
 * //TODO Shoot hook things
-* `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
-* `ModLoader.Mod.ModifyInterfaceLayers` -> `ModLoader.ModSystem.ModifyInterfaceLayers`
+
 
 ## Big change concepts
 
