@@ -48,6 +48,8 @@ return instance;
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
+* `Mod.UpdateUI` -> `ModSystem.UpdateUI`
+* `Mod.ModifyInterfaceLayers` -> `ModSystem.ModifyInterfaceLayers`
 
 ### Non-Static Fields / Constants / Properties
 * `Main.Rasterizer` is now static
