@@ -12,7 +12,7 @@ The following are main concepts key to understanding how Terraria works in multi
 1. While connected to this server, the connected clients need to communicate well together through the server, so that things happening in the game are synchronized between these clients.
 
 In essence: network packets are sent across clients to make sure the game is in sync for all players.
-This happens all the time in multiplayer play, even in vanilla.
+This happens all the time in multiplayer play, even in vanilla. **Clients CANNOT send or receive things from other clients - the server has to act as a middleman.**
 
 # Automatic Syncing (non-ModPacket)
 Terraria handles many network syncing things for us, we just have to use them right.
