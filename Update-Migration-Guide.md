@@ -64,6 +64,7 @@ return instance;
 * `Player.showItemIconText` -> `Player.cursorItemIconText`
 * `Player.ZoneHoly` -> `Player.ZoneHallow`
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
+* `Player.dash` -> `Player.dashType`. Player.dash is used for something else now.
 * `Player.bee` and similar accessory flags that spawn projectiles -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
 * `Player.talkNPC = X;` -> `Player.SetTalkNPC(X);` (Changed by vanilla due to the bestiary).  Getting the value of `Player.talkNPC` was not changed, only setting it was.
 * `Player.flyingPigChest = -1;` -> `Player.piggyBankProjTracker.Clear(); Player.voidLensChest.Clear();` (Changed by vanilla due to the new inventory access projectiles). Setting it is now done using the `Set` method on the respective tracker.
