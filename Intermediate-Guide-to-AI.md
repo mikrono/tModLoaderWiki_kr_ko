@@ -10,21 +10,21 @@ public override void AI(){
 We now have a place to put our ai, but it doesn't do anything yet - let's start by changing the npcs velocity.  The velocity is a vector2(which is composed of 2 floats, x and y) corresponding to the x and y change of the npc every frame(60 times a second) in pixels.  A velocity of -5,5 means left 5 and down 5 pixels a frame(Keep in mind in Terraria, adding to y goes down). Changing velocity is the most common way to make your npc move and it's kept in between frames - if I set it to 5,5 it will stay that way till something else changes it. 
 Let's make the npc float upwards by changing the velocity. 
 ```cs
- public override void AI(){
-            npc.velocity = new Vector2(0, -5);//subtract from Y to go up
-            //AI is called every frame.  Anything you put here will happen 60 times a second
-        }
+public override void AI(){
+      npc.velocity = new Vector2(0, -5);//subtract from Y to go up
+      //AI is called every frame.  Anything you put here will happen 60 times a second
+}
 ```
 If you test this code you should see your npc fly upwards.  You probably want your npc to do something more complex though, and to do that we need to keep track of time, and find a player to target. 
 Timers are covered in this guide https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers, which you should read if you haven't already. Lets add a timer like this guide shows 
 ```cs
-        int Time = 0;
-        public override void AI(){
-            Time++;
-            //npc.velocity is the change in pixels of the npc each frame(60 times a second)
-            npc.velocity = new Vector2(0, -5);//subtract from Y to go up
-            //AI is called every frame.  Anything you put here will happen 60 times a second
-        }
+int Time = 0;
+public override void AI(){
+    Time++;
+    //npc.velocity is the change in pixels of the npc each frame(60 times a second)
+    npc.velocity = new Vector2(0, -5);//subtract from Y to go up
+    //AI is called every frame.  Anything you put here will happen 60 times a second
+}
 ```
 Now that we have a variable to keep track of time we can make things happen on a timer with %. % computes the remainder after dividing its left operand by its right operand, and is useful for making things happen every x ticks like this
 ```cs
@@ -56,7 +56,7 @@ Keep in mind that the wooden arrow AI slows and eventually reverses velocity
 As you can see each parameter is filled out with the information about how to create the projectile.  If we add this into our AI we can get are first "Attack"(I also removed the velocity change so that you can better see how the attack will loop endlessly)
 ```cs     
    int Time;
-        public override void AI()
+   public override void AI()
         {
             Time++;
             if (Time % 120 == 0)
@@ -82,7 +82,7 @@ Player target = Main.player[npc.target];
 ```cs
 npc.TargetClosest(false);
 Player p = Main.player[npc.target];//first get the closest just in case all of our checks fail
-for (int i = 0; i < Main.player.Length; i++)
+for (int i = 0; i < Main.maxPlayers; i++)
 {
       if(Main.player[i].active)//add in other checks with &
            p = Main.player[i];
@@ -90,22 +90,22 @@ for (int i = 0; i < Main.player.Length; i++)
 ```
 With our player variable we can do tons of new things.  One common thing people do is to fire a projectile or make the boss move towards the player.  To do this first we get the direction to the player 
 ```cs
-        public override void AI()
-        {
-            npc.TargetClosest(false);//first we setnpc.target to the closest person
-            Player target = Main.player[npc.target]; //then we get the player from the array and store it in a variable.
-            Vector2 ToPlayer = npc.DirectionTo(target.Center);//then we make a vector2 of the direction to the player's center.  
-            //use ToPlayer
-            //If you want whatever you use ToPlayer for to go faster, multiply it by something like npc.Velocity = ToPlayer * 5f
+public override void AI()
+{
+npc.TargetClosest(false);//first we setnpc.target to the closest person
+Player target = Main.player[npc.target]; //then we get the player from the array and store it in a variable.
+Vector2 ToPlayer = npc.DirectionTo(target.Center);//then we make a vector2 of the direction to the player's center.  
+//use ToPlayer
+//If you want whatever you use ToPlayer for to go faster, multiply it by something like npc.Velocity = ToPlayer * 5f
         }
 ```
 Shooting a projectile would look like this  
 ```cs
-        int Time;
-        public override void AI()
-        {
-            Time++;
-            if (Time % 120 == 0 && Main.netMode != NetmodeID.MultiplayerClient)//if its been 120 ticks and we arent a client
+int Time;
+public override void AI()
+{
+Time++;
+     if (Time % 120 == 0 && Main.netMode != NetmodeID.MultiplayerClient)//if its been 120 ticks and we arent a client
             {
                 npc.TargetClosest(false);//set npc.traget to the nearest player
                 Player target = Main.player[npc.target];//get the player we just targeted 
@@ -126,13 +126,13 @@ npc.velocity = ToPlayer;
 ### Making Patterns
 Most of the time we don't want our npc to do just one thing, instead we want to have more then "attack" it can be doing.  To do this you need to have a variable holding what attack is happening.  In order to make this code cleaner, I separated each attack into its own method and used constants to represent the "ID" of each phase.
 ```cs
-        //Constant variables used to make code readable
-        const int ProjectileState = 0;//Instead of checking if state is 0, we can check it is ProjectileSate.  In application they mean the same thing, but the former is much nicer to look at.
-        const int ChaseState = 1;
-        const int CircleProjectileState = 2;
-        int Timer;
-        int state;
-        public override void AI()
+//Constant variables used to make code readable
+const int ProjectileState = 0;//Instead of checking if state is 0, we can check it is ProjectileSate.  In application they mean the same thing, but the former is much nicer to look at.
+const int ChaseState = 1;
+const int CircleProjectileState = 2;
+int Timer;
+int state;
+public override void AI()
         {
             //since all states Increase Timer and use npc.Target, we can put the code all of them would have the same here
             Timer++;
@@ -204,7 +204,8 @@ Most of the time we don't want our npc to do just one thing, instead we want to 
 
         }
 ```
-Theres one last issue with this, if you used random attacks.  If we are in multiplayer, then each client may end up with a different attack, causing the npcs to desync.  To avoid this we need to ensure the state variable is the same on every client.  There's 2 ways to do this -  one is to hold them in one of the npc arrays, which is automatically synced, the other is to use Send and Receive extra ai hooks to sync them.  See https://github.com/tModLoader/tModLoader/wiki/Basic-Netcode
+Theres one last issue with this, if you used random attacks.  If we are in multiplayer, then each client may end up with a different attack, causing the npcs to desync.  
+To avoid this we need to ensure the state variable is the same on every client.  There's 2 ways to do this -  one is to hold them in one of the npc arrays, which is automatically synced, the other is to use Send and Receive extra ai hooks to sync them.  See https://github.com/tModLoader/tModLoader/wiki/Basic-Netcode
 
 ### Using WhoAmI and the Main.  Arrays
 Sometimes we want to spawn a npc and have it do something that requires finding the target, position or some other value from the npc that spawned it, or requires finding out if the spawned npc is alive/what it's hp is or some other property of a npc that isnt us.  To do this, you first need to know what a "WhoAmI" is.  Every npc, projectile, and player that is active(and some that aren't)are held in their arrays(Main.npc, Main.projectile, and Main.player respectively).    The place in the array of something is it's "WhoAmI" or index.  Why does this matter? Because if you have the WhoAmI, you can then get the thing itself with Something x = Main.something[whoami]; If this looks familiar, that's because we have already used this to get our target in the example above.  One other important thing is that NewNPC and NewProjectile both return the place in the array of the spawned projectile, allowing you to access it easily like this. 
@@ -229,49 +230,51 @@ You can make your NPC choose different attacks based on certain factors, and mak
 Let's look one phase from before, but this time make the state be set to a new phase we added if hp is below 50 by checking npc.Life and LifeMax before setting it
 ```cs
 
-                if (npc.life < (npc.lifeMax / 2){//if below 50, set it to something else, like an stage 2 attack
-                    State = Below50Attack;//Random? Main.rand.Next(LowestStageOneAttack , Highest); 
-                }
-                else
-                {
-                    state = ChaseState;//go to a another state
-                                       //state = Main.rand.Next(0,3); - random state
-                }
+if (npc.life < (npc.lifeMax / 2){//if below 50, set it to something else, like an stage 2 attack
+     State = Below50Attack;//Random? Main.rand.Next(LowestStageOneAttack , Highest); 
+}
+else
+{
+     state = ChaseState;//go to a another state
+     //state = Main.rand.Next(0,3); - random state
+}
 ```
 Thing is, if we want it to transition after every attack, we would have to put this code in every single state in the first phase, which is a lot of unnecessary code and causes other issues.
 Instead we can make a method to change the phase
 ```cs
   public int ChoosePhase()
-                {
-                    if (npc.Life < (npc.LifeMax / 2))
-                    {
-                        return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
-                    }
-                    /* else if(somecondtion){//add more like this
-                       return somethingelse;
-                    }*/
-                    return Main.rand.Next(0, 3);//since we will have already returned if below 50, we don't need to do this in an else.  
-                }
-                //then in our each of our states 
-                if (timer == phaselength)
-                { //replace phaselength with the amount of ticks to attack for before swapping
-                    State = ChoosePhase();
-                }
+{
+     if (npc.Life < (npc.LifeMax / 2))
+       {
+            return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
+       }
+       /* else if(somecondtion){//add more like this
+            return somethingelse;
+       }*/
+            return Main.rand.Next(0, 3);//since we will have already returned if below 50, we don't need to do this in an else.  
+       }
+       //then in our each of our states 
+       if (timer == phaselength)
+        {
+            //replace phaselength with the amount of ticks to attack for before swapping
+            State = ChoosePhase();
+        }
 ```
 This way, we avoid having to put the same code over and over, and if we want to edit this code later(like adding another state or removing one) we only need to change it in one spot. 
 ### Making a NPC Despawn
-To despawn a npc, you just need to set npc.active to false.  Of course, you only want your npc to despawn if nobodys around to fight.  To do this we need to check if a valid target exists. 
+To despawn a npc, you just need to set npc.active to false.  Of course, you only want your npc to despawn if nobody is around to fight.  To do this we need to check if a valid target exists. 
 First we check if the current target is dead or if something else would cause us to want to despawn
 ```cs
-            if (!player.active || player.dead)
-            { //if the player is dead or not "active"(meaning the player is no longer playing)
-                npc.TargetClosest(false);//try to find a new target
-                player = Main.player[npc.target];
-                if (!player.active || player.dead) // if the new one is also dead, then we know there is no active player, and can despawn 
-                {
-                    npc.active = false;//set ourselves to inactive, this makes it so we don't drop loot
-                }
-            }
+if (!player.active || player.dead)
+{
+     //if the player is dead or not "active"(meaning the player is no longer playing)
+     npc.TargetClosest(false);//try to find a new target
+     player = Main.player[npc.target];
+          if (!player.active || player.dead) // if the new one is also dead, then we know there is no active player, and can despawn 
+          {
+          npc.active = false;//set ourselves to inactive, this makes it so we don't drop loot
+          }
+}
 ```
 Projectile despawning happens automatically after TimeLeft runs out(which you should set in setdefaults).  If you want to manually get rid of it call projectile.Kill(); If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.  Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
 ### Common behaviors
@@ -330,6 +333,7 @@ using System;
 ```
 Should cover most of them.  If it doesn't and you can't find it make sure you haven't misspelled anything. 
 If "Something" is from your mod, make sure it's spelled correctly.  If it is, go to it's file and make sure you're using it's namespace. 
+
 **Cannot implicitly convert type 'float' to 'int'. An explicit conversion exists (are you missing a cast?)**
 This means you tried to use a float(variable that can hold decimals) for something that uses an int(whole number).  You can solve this easily by "casting it" by adding (int) before, but keep in mind this will cause everything right of the decimal point to be removed.  You can get a rounded number with
 (int)Math.Round(MyFloat);
