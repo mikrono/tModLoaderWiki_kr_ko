@@ -1,6 +1,6 @@
 The following guide aims to teach some of the common ways of creating AI for both projectiles and npcs.  Most things can be used interchangeably between the 2, just remember to replace npc with projectile and vice versa.  
 
-To start, let's make a basic npc. This guide won't cover the things in set defaults, you can look at example mod and the[vanilla field values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) to get an idea of what to put.  Most of the AI we make will go into the AI hook, so override that.  
+To start, let's make a basic npc. This guide won't cover the things in set defaults, you can look at example mod and the [vanilla field values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) to get an idea of what to put.  Most of the AI we make will go into the AI hook, so override that.  
 ```cs
 //other stuff
 public override void AI(){
@@ -56,7 +56,7 @@ Float X is a float of the X coordinate to spawn at, Y is a float of the Y coordi
 velocity respectively to spawn with.  
 
 Type is the type of projectile - is it a wooden arrow? Your modded projectile? This will either be a vanilla projectile ID, like 
-ProjectileID.WoodenArrowHostile or a modded one, like ModContent.ProjectileType<MyClass>().  
+`ProjectileID.WoodenArrowHostile` or a modded one, like `ModContent.ProjectileType<MyClass>().`  
 
 Damage is self explanatory, remember that setting projectile.Damage in the projectile doesn't do anything, it has to be set here.
 Knockback is self explanatory, but notice it's a float, so it can take decimals.  
@@ -68,8 +68,13 @@ This code fires a wooden arrow projectile straight up from the npcs center, with
 ```cs
 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -50, ProjectileID.WoodenArrowHostile, 50, 0f);
 ```
-Keep in mind that the wooden arrow AI slows and eventually reverses velocity 
-As you can see each parameter is filled out with the information about how to create the projectile.  If we add this into our AI we can get are first "Attack"(I also removed the velocity change so that you can better see how the attack will loop endlessly)
+Keep in mind that the wooden arrow AI slows and eventually reverses velocity.  
+
+As you can see each parameter is filled out with the information about how to create the projectile.  
+
+The X and Y to spawn it at are the npcs center, its x velocity should be 0, and the Y should be -50(up 50 pixels a frame).  The projectile should be a hostile wooden arrow, with 50 damage and no knockback.  
+ 
+  If we add this into our AI we can get are first "Attack"(I also removed the velocity change so that you can better see how the attack will loop endlessly)
 ```cs     
 int Time;
 public override void AI(){
@@ -136,7 +141,7 @@ public override void AI(){
      //AI is called every frame.  Anything you put here will happen 60 times a second
 }
 ```
-Hopefully you understand what everything there does 
+Hopefully you understand what everything there does.  
 the Time variable keeps track of the number of ticks the boss has been alive.  `if(Time %120 ==0)` checks if that variable is a multiple of 120, which will be every 120 ticks or 2 seconds.  
 
 `npc.TargetClosest(false)` and `Player target = Main.Player[npc.target];` get the closest players and store it in a Player variable called target.  
@@ -157,12 +162,24 @@ In order to make this code cleaner, I separated each attack into its own method 
 const int ProjectileState = 0;//Instead of checking if state is 0, we can check it is ProjectileSate.  In application they mean the same thing, but the former is much nicer to look at.
 const int ChaseState = 1;
 const int CircleProjectileState = 2;
-int Timer;
-int state;
+//here I create the variable used to hold which state we are in. 
+//Using properties, this variable is effectively the same as npc.ai[0]. setting its value sets ai[0], and getting its value returns ai[0].
+//This is done because if we are in multiplayer, our state might not be the same on different clients/the server, leading to npc desync. To avoid this, we use one of the ai array elements as our state. This array is synced between clients and the server, so our npc won't desync.
+float state { 
+     get => npc.ai[0]; //When getting this variable's value, instead return the vaule of npc.ai[0] 
+     set => npc.ai[0] = value; //when setting this variable to something, instead set the value of npc.ai[0]
+}
+//You could write npc.ai[0] instead of state, and it would work the same, but this makes code more readable. Alternatively, if you are out of npc.ai slots to use or dont want to use it, you could use the receive and send extra ai hooks to sync your vaules. 
+    
+//here I do the same thing, just with our timer and a different ai slot.
+float Timer {
+    get => npc.ai[1];
+    set => npc.ai[1] = value;
+}
 public override void AI(){
      //since all states Increase Timer and use npc.Target, we can put the code all of them would have the same here
-     Timer++;
-     npc.TargetClosest(false);
+     Timer++;//Increase our timer by one
+     npc.TargetClosest(false);//set npc.Target to the closests player.
      if(state == ProjectileState){
           ProjectileAttack();//run the attack method
           if(Timer == 180){
@@ -172,16 +189,16 @@ public override void AI(){
                /*What if I want random attacks, not a set order? 
                use Main.rand.Next(bottom, top +1) to get a random number, so we would use it like this
                state = Main.rand.Next(0,3);
-               Also keep in mind that if I choose a random state, I will have to sync it to other clients.  See the basic netcode guide */
+               */
                }
             }
      else if(state == ChaseState){
-          Chase();
-          if (Timer == 240){
+          Chase(); //call the chase method defined below 
+          if(Timer == 240){
                //if it has been 4 seconds
                Timer = 0;//reset timer
                npc.velocity = Vector2.Zero;//since we change the velocity in this state, we need to reset it before moving to a new stage.
-               state = CircleProjectileState;
+               state = CircleProjectileState; //set our state to another one
                //state = Main.rand.Next(0,3); - random state
                 }
      }
@@ -198,21 +215,22 @@ public override void AI(){
 //outside of ai, we make methods for each state that we then call
 private void ProjectileAttack(){
      if(Timer % 20 == 0 && Main.netMode != NetmodeID.MultiplayerClient){
-          Player target = Main.player[npc.target];
+          Player target = Main.player[npc.target];//get the closest player
           Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//change 3 to change speed
-          Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X, ToPlayer.Y, ProjectileID.WoodenArrowHostile, 50, 0f);//What if I want a modded projectile? Replace the type parameter(ProjectileID.WoodenArrow) with ModContent.ProjectileType<MyClass>() and make sure to be using the  namespace of it
+          Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X, ToPlayer.Y, ProjectileID.WoodenArrowHostile, 50, 0f);//launch the projectile
+          //What if I want a modded projectile? Replace the type parameter(ProjectileID.WoodenArrowHostile) with ModContent.ProjectileType<MyClass>() and make sure to be using the  namespace of it
      }
 }
 private void Chase(){
-     Player target = Main.player[npc.target];
-     Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//change 3 to change speed;
-     npc.velocity = ToPlayer;
+     Player target = Main.player[npc.target];//get the closest player. 
+     Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//Get the direction to the player. Change 3 to change speed;
+     npc.velocity = ToPlayer;//set our velocity to direction to the player, so we move towards it.
 }
 private void CircleProjectile(){
      if(Timer % 60 == 0 && Main.netMode != NetmodeID.MultiplayerClient){
           for(int i = 0; i < 360; i += 12){
                //loop till i = 360, for one full rotation. You can change the interval of rotation by changing the 12 
-               Player target = Main.player[npc.target];
+               Player target = Main.player[npc.target];//get the closest player
                Vector2 ToPlayer = npc.DirectionTo(target.Center).RotatedBy(MathHelper.ToRadians(i));//By default, rotation uses radians.  I prefer to use degrees, and therefore I convert the radians. 
                if (Main.netMode != NetmodeID.MultiplayerClient)
                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X * 5, ToPlayer.Y * 5, ProjectileID.WoodenArrowHostile, 50, 0f);//fire the projectile
@@ -220,8 +238,6 @@ private void CircleProjectile(){
      }
 }
 ```
-Theres one last issue with this, if you used random attacks.  If we are in multiplayer, then each client may end up with a different attack, causing the npcs to desync.  
-To avoid this we need to ensure the state variable is the same on every client.  There's 2 ways to do this -  one is to hold them in one of the npc arrays, which is automatically synced, the other is to use Send and Receive extra ai hooks to sync them.  See [this guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Netcode)
 
 ### Using WhoAmI and the Main.  Arrays
 Sometimes we want to spawn a npc and have it do something that requires finding the target, position or some other value from the npc that spawned it, or requires finding out if the spawned npc is alive/what it's hp is or some other property of a npc that isnt us.
@@ -249,12 +265,12 @@ NPC owner = Main.NPC([(int)projectile.ai[0]];//not how I put (int) here - since 
 One final thing to note is that you can pass npc.Target as an ai parameter and get the target player with Main.player.
 ### Making Phases
 You can make your NPC choose different attacks based on certain factors, and make your code overall more organized by making your phase choosing code in it's own method, then call instead of setting state in the attack.
-Let's look one phase from before, but this time make the state be set to a new phase we added if hp is below 50 by checking npc.Life and LifeMax before setting it
+Let's look one phase from before, but this time make the state be set to a new phase we added if hp is below 50 by checking `npc.life` and `lifeMax` before setting it
 ```cs
 
 if(npc.life < (npc.lifeMax / 2){
      //if below 50, set it to something else, like an stage 2 attack
-     State = Below50Attack;//Random? Main.rand.Next(LowestStageOneAttack , HighestStageAttak + 1); 
+     State = Below50Attack;//Random? Main.rand.Next(LowestStageAttack , HighestStageAttack + 1); 
 }
 else
 {
@@ -264,7 +280,7 @@ else
 Thing is, if we want it to transition after every attack, we would have to put this code in every single state in the first phase, which is a lot of unnecessary code and causes other issues.
 Instead we can make a method to change the phase
 ```cs
-  public int ChoosePhase(){
+  private int ChoosePhase(){
      if(npc.Life < (npc.LifeMax / 2)){
           return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
      }
@@ -288,7 +304,7 @@ To despawn a npc, you just need to set npc.active to false.  Of course, you only
 First we check if the current target is dead or if something else would cause us to want to despawn
 ```cs
 if(!player.active || player.dead){
-     //if the player is dead or not "active"(meaning the player is no longer playing)
+     //if the player we are currently targeting is dead or not "active"(meaning the player is no longer playing)
      npc.TargetClosest(false);//try to find a new target
      player = Main.player[npc.target];
           if(!player.active || player.dead) {
@@ -301,7 +317,7 @@ Projectile despawning happens automatically after TimeLeft runs out(which you sh
 If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
 # Common behaviors
 ### Spawning A NPC
-Spawning another npc in a boss is a lot like a projectile but instead you use NPC.NewNPC
+Spawning npc is a lot like a projectile but instead you use NPC.NewNPC
 
 It's parameters are NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
   
@@ -317,15 +333,15 @@ Example usage - shooting a circle of thing
 for(int i = 0; i < 360; i += 12){
       //loop till i = 360, for one full rotation. You can change the interval of rotation by changing the 12 
       Player target = Main.player[npc.target];
-      Vector2 ToPlayer = npc.DirectionTo(target.Center).RotatedBy(MathHelper.ToRadians(i));//By default, rotation uses radians.  I prefer to use degrees, and therefore I convert the radians. 
+      Vector2 ToPlayer = npc.DirectionTo(target.Center).RotatedBy(MathHelper.ToRadians(i));//By default, rotation uses radians.  I prefer to use degrees, and therefore I convert them to radians. 
       if (Main.netMode != NetmodeID.MultiplayerClient)
             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X * 5, ToPlayer.Y * 5, ProjectileID.WoodenArrowHostile, 50, 0f);//fire the projectile
 }
 ```
 ### How Do I Spawn My NPC Like Vanilla Bosses
-Spawning your boss is simple, just call NPC.SpawnOnPlayer(player.WhoAmI, ModContent.NPCType<Class>()); This even handles the "boss has awoken" in chat
+Spawning your boss is simple, just call `NPC.SpawnOnPlayer(player.WhoAmI, ModContent.NPCType<Class>());`, with player being the person to spawn on.  This even handles the "boss has awoken" in chat.
 ### How Do I Make my NPC/Projectile Give a Debuff
-To do this we need to override OnHitPlayer(Player player, int damage, bool crit) for npcs or ModifyHitPlayer(Player target, ref int damage, ref bool crit) for projectiles and call player(npcs) or target(projectiles).AddBuff(int type, int duration) 
+To do this we need to override `OnHitPlayer(Player player, int damage, bool crit)` for npcs or `ModifyHitPlayer(Player target, ref int damage, ref bool crit)` for projectiles and call player(npcs) or target(projectiles).AddBuff(int type, int duration) 
 Keep in mind that duration is in ticks. 60 = one second
 ```cs
 public override void OnHitPlayer(Player player, int damage, bool crit){
@@ -338,11 +354,11 @@ public override void OnHitPlayer(Player player, int damage, bool crit){
 To print a message in chat, put Main.NewText("Text", New Color(r,g,b)).  R, G, and B are  numbers 0-255 of the message's color. 
 
 ### How do I Give my npc Drops
-Read https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot  
+Read [the drops guide](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot  )
 ### How Do I Make a Worm Boss
 Worm bosses take significantly more code then this guide covers.  Example mod shows an example of what worm code would look like here: 
-1.4:https://github.com/tModLoader/tModLoader/blob/dd44e70738e29e5ded0cb979355b671b41f56efe/ExampleMod/Content/NPCs/Worm.cs  
-1.3: https://github.com/tModLoader/tModLoader/blob/1.3/ExampleMod/NPCs/Worm.cs
+[1.4](https://github.com/tModLoader/tModLoader/blob/dd44e70738e29e5ded0cb979355b671b41f56efe/ExampleMod/Content/NPCs/Worm.cs  ) 
+[1.3]( https://github.com/tModLoader/tModLoader/blob/1.3/ExampleMod/NPCs/Worm.cs)
 # Common Errors
 Remember google is your friend when trying to find how to fix an error. 
 ### The Type or Namespace something Cannot be Found
