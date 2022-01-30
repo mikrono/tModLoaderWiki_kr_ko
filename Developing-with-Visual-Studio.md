@@ -5,7 +5,7 @@
 # Prerequisites
 1. Download [Visual Studio Community](https://visualstudio.microsoft.com/). 
     1. The community edition is free of charge. 
-    1. If you are using tml 1.3, you need to download and install the [2019 edition](https://visualstudio.microsoft.com/vs/older-downloads/), else you get the errors mentioned below. You can use 2022 afterwards if you want to.
+    1. If you are using tml 1.3, you need to download and install the [2019 edition](https://visualstudio.microsoft.com/vs/older-downloads/) (If the community edition is not available there, try [here](https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes)), else you get the errors mentioned below. You can use 2022 afterwards if you want to.
     1. If you are using tml Alpha 1.4, you need 2022.
 1. During installation, check the `.NET desktop development` workload. Nothing else needs to be checked. ([Example](https://i.imgur.com/Y8uZ14h.png)) 
     1. You may be tempted to uncheck items you think you don't need in the `Individual components` tab to save hard drive space or bandwidth. We have not currently determined which individual components are able to be unchecked for tModLoader modding. Many have unchecked things and have been unable to compile mods. If you get an error message similar to "The type 'Object' is defined in an assembly that is not referenced.", you may have this issue and should do the full workload install. 
