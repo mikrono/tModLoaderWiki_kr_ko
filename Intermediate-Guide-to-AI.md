@@ -188,7 +188,8 @@ public override void AI(){
                state = ChaseState;//go to a another state
                /*What if I want random attacks, not a set order? 
                use Main.rand.Next(bottom, top +1) to get a random number, so we would use it like this
-               state = Main.rand.Next(0,3);
+               state = Main.rand.Next(0,3);//get a random number 0-2
+               npc.netUpdate = true;//update our npc this tick
                */
                }
             }
@@ -200,7 +201,8 @@ public override void AI(){
                npc.velocity = Vector2.Zero;//since we change the velocity in this state, we need to reset it before moving to a new stage.
                state = CircleProjectileState; //set our state to another one
                //state = Main.rand.Next(0,3); - random state
-                }
+               //npc.netUpdate = true;
+               }
      }
      else if(state == CircleProjectileState){
           CircleProjectile();
@@ -208,6 +210,7 @@ public override void AI(){
                //if it has been 3 seconds
                Timer = 0;//reset timer
                state = ChaseState;//go to a another state
+               //npc.netUpdate = true;
                //state = Main.rand.Next(0,3); - random state
           }
      }
@@ -281,6 +284,7 @@ Thing is, if we want it to transition after every attack, we would have to put t
 Instead we can make a method to change the phase
 ```cs
   private int ChoosePhase(){
+     npc.netUpdate = true;//update this npc this tick, to sync our state.
      if(npc.Life < (npc.LifeMax / 2)){
           return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
      }
@@ -315,6 +319,73 @@ if(!player.active || player.dead){
 ```
 Projectile despawning happens automatically after TimeLeft runs out(which you should set in setdefaults).  If you want to manually get rid of it call projectile.Kill(); 
 If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
+### Animation
+This segment is still being made, I wouldn't follow it until its completed
+NPC's and projectiles have different ways of animating, so this part will be split into 2.  
+Both of these require a sprite sheet, split into each frame(way the npc/projectile can look) stacked on top of each other evenly.  
+
+For example look at flutter slime from example mods sprite sheet:  
+
+<img src="https://github.com/tModLoader/tModLoader/blob/1.3/ExampleMod/NPCs/FlutterSlime.png?raw=true" alt="FlutterSlime.png"/>  
+
+NPCS:  
+
+Each frame represents a way the npc can look, and your sprite sheets should also look like this.  
+
+The sprite sheet I will be using looks like this:  
+
+//TODO make it
+
+After making our sprite sheet like the one above, we need to register the amount of frames in it in the SetStaticDefaults hook
+```cs
+public override void SetStaticDefaults() {
+     // Other things
+     Main.npcFrameCount[npc.type] = 4; // We want 4 frames in our npc. 
+}
+```
+Now, we need to change the frame in order to animate our npc. To do this, we need to override the `FindFrame(int frameHeight)` hook, and change which frame of our sheet to draw.  
+
+In the FindFrame hook, you may have noticed the one integer parameter, frameHeight. This is the height of one of our frames(if you have a 5 framed sheet thats 50 pixels tall, it will be 10) and should be mutplied by the frame you want to get what to set npc.frame.Y to.  
+
+Setting npc.frame.Y to `frameHeight * 3` will be the 4th frame, setting it to `0 * frameHeight`(or just 0) will be the first frame, as thats the bottom of the frame we want to draw.  
+
+In order to make code easier to read, instead of putting the frame number, like 5, you can assign constants that describe what each frame does.  
+`npc.FrameY = frameHeight * FlyingFrame` means a lot more to someone reading then `npc.FrameY = frameHeight * 3`.  
+
+If your code looks like the example above in the making patterns section, you can check you state variable just like you do in ai.  In fact, we can use some logic very similar to ai to determine which frame we should be. This code shows making a different frame assuming your code looks like the example above.
+//TODO Test/Ensure this code works
+```cs
+const int FrameLaunchingProjectiles = 0;//The first frame will be in the "launching projectiles" state
+const int FrameChaseOne = 1;//the second and third frames will be in the Chase state, and we will loop through them
+const int FrameChaseTwo= 2;
+const int CircleAttackFrame = 3;//the fourth frame will be in the circle attack
+public override void FindFrame(int frameHeight) {
+     //here, we change npc.frame.Y to choose what frame
+     if(state ==  ProjectileState){
+          //if we are in the projectile launching state
+          npc.frame.Y =  frameHeight * FrameLaunchingProjectiles;//set which frame to draw to be the first one. 
+     }
+     else if(state == ChaseState){
+          //if we are in the chase state:
+          //because we have 2 different frames we want to loop through, we must use a frame timer.
+          npc.frameCounter++;//there is already one for npcs, so we use that one.
+          if(npc.frameCounter < 30){
+                //if it has been less then 30 ticks
+                npc.frame.Y = frameHeight * FrameChaseOne;//go to the first frame in our animtation for this state
+          }
+          else if(npc.frameCounter <60){
+               //if it has been more then 30 ticks and less then 60
+               npc.frame.Y = frameHeight * FrameChaseTwo;//go to the second frame
+          }
+          else{
+              npc.frameCounter = 0;//reset the timer, restarting the animation.
+          }
+     }
+     else{
+          npc.frame.Y = frameHeight * CircleAttackFrame;
+    }
+}
+```
 # Common behaviors
 ### Spawning A NPC
 Spawning npc is a lot like a projectile but instead you use NPC.NewNPC
