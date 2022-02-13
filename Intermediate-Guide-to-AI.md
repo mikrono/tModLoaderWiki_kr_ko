@@ -420,7 +420,7 @@ public override void OnHitPlayer(Player player, int damage, bool crit){
 }
 ```
 ### How do I Make Something Talk in Chat
-To print a message in chat, put Main.NewText("Text", New Color(r,g,b)).  R, G, and B are  numbers 0-255 of the message's color. 
+To print a message in chat, put Main.NewText("Text", new Color(r,g,b)).  R, G, and B are  numbers 0-255 of the message's color. 
 
 ### How do I Give my npc Drops
 Read [the drops guide](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot  )
