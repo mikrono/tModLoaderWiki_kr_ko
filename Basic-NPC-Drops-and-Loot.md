@@ -1,5 +1,5 @@
 # Basic NPC Drops and Loot
-This guide will teach the basics of dropping items when enemies are killed. 
+This guide will teach the basics of dropping items when enemies are killed. Please note that this page only applies to 1.3 tModLoader. NPC Loot in 1.4 tModLoader is completely different, see ModifyNPCLoot usages in ExampleMod for examples.
 
 ## Basics
 We use the NPCLoot method in either our ModNPC class or our GlobalNPC class to specify the items the drop from enemies.
