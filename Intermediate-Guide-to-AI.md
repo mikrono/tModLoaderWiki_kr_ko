@@ -321,20 +321,19 @@ Projectile despawning happens automatically after TimeLeft runs out(which you sh
 If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
 ### Animation
 This segment is still being made, I wouldn't follow it until its completed
-NPC's and projectiles have different ways of animating, so this part will be split into 2.  
+NPC's and projectiles have different ways of animating, this part shows a npc. For a projectile change projectile.Frame instead of using the find frame hook.
 Both of these require a sprite sheet, split into each frame(way the npc/projectile can look) stacked on top of each other evenly.  
 
 For example look at flutter slime from example mods sprite sheet:  
 
 <img src="https://github.com/tModLoader/tModLoader/blob/1.3/ExampleMod/NPCs/FlutterSlime.png?raw=true" alt="FlutterSlime.png"/>  
 
-NPCS:  
-
 Each frame represents a way the npc can look, and your sprite sheets should also look like this.  
 
 The sprite sheet I will be using looks like this:  
 
-//TODO make it
+![New Piskel (1)](https://user-images.githubusercontent.com/88946983/153733783-68d06f09-d436-428a-b0e6-ccee462e610b.png)
+
 
 After making our sprite sheet like the one above, we need to register the amount of frames in it in the SetStaticDefaults hook
 ```cs
@@ -352,8 +351,7 @@ Setting npc.frame.Y to `frameHeight * 3` will be the 4th frame, setting it to `0
 In order to make code easier to read, instead of putting the frame number, like 5, you can assign constants that describe what each frame does.  
 `npc.FrameY = frameHeight * FlyingFrame` means a lot more to someone reading then `npc.FrameY = frameHeight * 3`.  
 
-If your code looks like the example above in the making patterns section, you can check you state variable just like you do in ai.  In fact, we can use some logic very similar to ai to determine which frame we should be. This code shows making a different frame assuming your code looks like the example above.
-//TODO Test/Ensure this code works
+If your code looks like the example above in the making patterns section, you can check you state variable just like you do in ai.  In fact, we can use some logic very similar to ai to determine which frame we should be. This code shows making a different frame assuming your code looks like the example above.  
 ```cs
 const int FrameLaunchingProjectiles = 0;//The first frame will be in the "launching projectiles" state
 const int FrameChaseOne = 1;//the second and third frames will be in the Chase state, and we will loop through them
