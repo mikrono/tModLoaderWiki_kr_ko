@@ -283,7 +283,7 @@ else
 Thing is, if we want it to transition after every attack, we would have to put this code in every single state in the first phase, which is a lot of unnecessary code and causes other issues.
 Instead we can make a method to change the phase
 ```cs
-  private int ChoosePhase(){
+private int ChoosePhase(){
      npc.netUpdate = true;//update this npc this tick, to sync our state.
      if(npc.Life < (npc.LifeMax / 2)){
           return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
