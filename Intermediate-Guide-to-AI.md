@@ -1,4 +1,4 @@
-The following guide aims to teach some of the common ways of creating AI for both projectiles and npcs.  Most things can be used interchangeably between the 2, just remember to replace npc with projectile and vice versa.  
+The following guide aims to teach some of the common ways of creating AI for npcs.  Most things can be used interchangeably between projectiles and npcs, just replace npc with projectile and vice versa. Some things cannot, and if there is a projectile alternative, it will be mentioned.   
 
 To start, let's make a basic npc. This guide won't cover the things in set defaults, you can look at example mod and the [vanilla field values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-NPC-Field-Values) to get an idea of what to put.  Most of the AI we make will go into the AI hook, so override that.  
 ```cs
@@ -285,7 +285,7 @@ Instead we can make a method to change the phase
 ```cs
 private int ChoosePhase(){
      npc.netUpdate = true;//update this npc this tick, to sync our state.
-     if(npc.Life < (npc.LifeMax / 2)){
+     if(npc.life < (npc.lifeMax / 2)){
           return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
      }
      /* else if(somecondtion){
