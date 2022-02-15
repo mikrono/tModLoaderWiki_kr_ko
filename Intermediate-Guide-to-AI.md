@@ -105,7 +105,11 @@ npc.TargetClosest(false);
 Player target = Main.player[npc.target];
 //use target
 ```
- If we didn't want the closest but instead wanted some other condition checked, we could loop the Main.Player array to find a valid target. 
+ If we didn't want the closest but instead wanted some other condition checked, we could loop the Main.Player array to find a valid target.  
+
+Additionally, if you are in a projectile and want to home in on a target, this is one way to do it(keep in mind that TargetClosest isn't a thing for projectiles, that part can be omitted).  
+
+A better alternative to the above if you are shooting projectiles from a npc would be to pass the npcs target as an ai parameter(see the below section for how to pass information with ai parameters).
 ```cs
 npc.TargetClosest(false);
 Player p = Main.player[npc.target];//first get the closest just in case all of our checks fail
@@ -248,6 +252,8 @@ To do this, you first need to know what a "WhoAmI" is.  Every npc, projectile, a
 Why does this matter? Because if you have the WhoAmI, you can then get the thing itself with Something x = Main.something[whoami]; If this looks familiar, that's because we have already used this to get our target in the example above.  
 
 One other important thing is that NewNPC and NewProjectile both return the place in the array of the spawned projectile, allowing you to access it easily like this. 
+
+//TODO this will cause desync in multiplayer if not properly synced, add that to the examples. If your reading this guide and want to know how to sync it, use `NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, ProjWhoAmI);`after you do something to it.
 ```cs
 int Index = Projectile.NewProjectile(parameters);//you will obviously need to fill in the parameters
 Projectile p = Main.projectile[Index];//this can be applied to npcs too - use NPC n = Main.npc[Index]; after calling NewNPC
