@@ -326,7 +326,6 @@ if(!player.active || player.dead){
 Projectile despawning happens automatically after TimeLeft runs out(which you should set in setdefaults).  If you want to manually get rid of it call projectile.Kill(); 
 If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
 ### Animation
-This segment is still being made, I wouldn't follow it until its completed
 NPC's and projectiles have different ways of animating, this part shows a npc. For a projectile change projectile.Frame instead of using the find frame hook.
 Both of these require a sprite sheet, split into each frame(way the npc/projectile can look) stacked on top of each other evenly.  
 
