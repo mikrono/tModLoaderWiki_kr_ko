@@ -102,7 +102,7 @@ Sometimes a mod is causing issues, but you can't tell which mod is the problem. 
 ![](https://cdn.discordapp.com/attachments/466247288331829249/481464717043564554/Untitled_Diagram1.png)
 
 # Reading client.log
-Many errors you might experience while playing tModLoader can be identified by reading the `client.log` file. By properly reading the log file, you can identify if an issue is caused by a bug in tModLoader or a bug in a mod you are using. If you are on the 1.4 alpha, a mod that worked yesterday might be broken today. In any case, the logs are a good place to find the issue.
+Many errors you might experience while playing tModLoader can be identified by reading the `client.log` file. (If you are experiencing an error that only happens in multiplayer, you'll need to read both `client.log` and `server.log`). By properly reading the log file, you can identify if an issue is caused by a bug in tModLoader or a bug in a mod you are using. If you are on the 1.4 alpha, a mod that worked yesterday might be broken today. In any case, the logs are a good place to find the issue.
 
 If you are experiencing a bug, first make sure all mods are up to date, then close tModLoader and reopen it. This will reset the log and make it easier to read. Once you experience the bug, close tModLoader and open the log file. The log file is found in `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\client.log` (or `%UserProfile%\Documents\My Games\Terraria\ModLoader\Beta\Logs\client.log` for the 1.4 alpha). Open the file in a normal text editor like notepad if it doesn't have a file association already. 
 
