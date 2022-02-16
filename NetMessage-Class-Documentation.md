@@ -475,7 +475,7 @@ if(TileEntity.ByPosition.TryGetValue(tilePosition, out TileEntity entity)){
     //Assumes that the TileEntity is actually a ModTileEntity, which should be the case if you're using this code
     ModTileEntity existing = entity as ModTileEntity;
     //Kill an entity if it exists at (i, j)
-    entity.Kill(i, j);
+    existing.Kill(i, j);
     
     //Send a net message
     if(Main.netMode == NetmodeID.MultiplayerClient)
