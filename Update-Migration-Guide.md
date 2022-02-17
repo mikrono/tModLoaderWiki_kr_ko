@@ -38,6 +38,7 @@ return instance;
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
 * `Main.quickBG` -> `Main.instantBGTransitionCounter`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
+* `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
