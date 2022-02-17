@@ -179,7 +179,17 @@ Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;
 * [Sheet reference](https://cdn.discordapp.com/attachments/176975207800504321/852404448847986718/armor-template-3.png)
 
 ### Tiles
-TODO mention all the method -> property renames as [per PR](https://github.com/tModLoader/tModLoader/pull/1301) (`Tile.active()` -> `Tile.IsActive`, `Tile.nactive()` -> `Tile.IsActiveUnactuated` etc.)
+* The `Tile` type is no longer a by-reference `class`, but a `readonly struct` that acts as a key to data that is stored elsewhere, actually taking in mind the way computers' processors and memory planks work. Usage of the type for users remains somewhat similar.
+* Memory usage has been heavily reduced. In the case of a Large world, 242/484 less megabytes of data will be used in 32-bit and 64-bit contexts accordingly.
+* Performance has been increased _**up to 30%**_ in some cases.
+* Mods can now define data that will be stored on every tile in the world. It will also be copied and removed alongside vanilla data. However, it is not automatically saved or synchronized.
+* For the good of future developments, `LiquidType` is now a 6-bit integer, with a [0, 64] range.
+* `Tile` is no longer nullable. All `tile == null` checks are useless and will always return false. `Tile tile = default;` will result in a key that points to the [0,0] tile, NOT a null-like value. If you need nullability - use `Tile?`, (C# short-hand for Nullable<Tile>.)
+* You can add custom tile data by declaring a struct that implements the marker `ITileData` interface.
+Tile data structures must be `unmanaged`, that is, they can only contain value data.
+Tile data can be accessed & modified via the `ref T Tile.Get<T>() where T : unmanaged, ITileData` method.
+
+TODO mention all the renames as per [PR #1](https://github.com/tModLoader/tModLoader/pull/1301) and [PR #2](https://github.com/tModLoader/tModLoader/pull/2047) (`Tile.type` -> `Tile.TileType`, `Tile.active()` -> `Tile.HasTile`, `Tile.nactive()` -> `Tile.HasUnactuatedTile` etc.)
 
 ### ModBiome and ModSceneEffect
 ModSceneEffect now does the handling of choosing scene effects instead of separate hooks, so that tML can give proper attention to designated priorities. Notably, it has an IsSceneEffectActive return method, and Priority property associated to it. It should be derived directly when adding scene effects that were controlled by any of the following hooks, with the exemption of ModTypes that derive this class already such as ModBiome. Multiple small, derived classes may be required to accomplish the same functionality. This change does not affect existing ModNPC music implementations at time of writing.
