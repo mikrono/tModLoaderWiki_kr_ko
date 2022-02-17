@@ -48,6 +48,8 @@ return instance;
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
+* `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
+* `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
 
 ### Non-Static Fields / Constants / Properties
 * `Main.Rasterizer` is now static
