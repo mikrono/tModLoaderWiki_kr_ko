@@ -10,11 +10,11 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The fi
 * `ItemText` -> `PopupText`
 
 ### Static Methods
-* `Main.NPCAddHeight(int)` -> `Main.NPCAddHeight(NPC)`
-* `Main.PlaySound` -> `SoundEngine.PlaySound` -> in the `Terraria.Audio` namespace
 * `ItemText.NewText(Item, ...)` -> `PopupText.NewText(PopupTextContext, Item, ...)`
 * `Lighting.BlackOut` -> `Lighting.Clear`
-* `NetMessage.BroadcastChatMessage` -> `Chat.ChatHelper.BroadcastChatMessage`
+* `Main.NPCAddHeight(int)` -> `Main.NPCAddHeight(NPC)`
+* `Main.PlaySound` -> `SoundEngine.PlaySound` -> in the `Terraria.Audio` namespace
+* `Main.IsTileSpelunkable(Tile)` -> `Main.IsTileSpelunkable(int, int)`
 * `Main.PlaySoundInstance(SoundEffectInstance)` -> completely removed
 ```cs
 //Example from a ModSound
@@ -28,6 +28,8 @@ instance.Play();
 SoundInstanceGarbageCollector.Track(instance);
 return instance;
 ```
+* `TileDrawing.IsTileDangerous(Player, Tile, ushort)` -> `TileDrawing.IsTileDangerous(int, int, Player)`
+* `NetMessage.BroadcastChatMessage` -> `Chat.ChatHelper.BroadcastChatMessage`
 
 ### Static Fields / Constants / Properties
 * `Main.font*` -> `GameContent.FontAssets.*.Value`<br/>
@@ -112,6 +114,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModTile/ModWall.drop` -> `ModLoader.ModTile/ModWall.ItemDrop`
 * `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `ModLoader.ModTile.NewRightClick` -> `ModLoader.ModTile.RightClick`
+* `ModLoader.ModTile.Dangersense` -> `ModLoader.ModTile.IsTileDangerous` (`GlobalTile` variant is `bool?` instead of `bool`)
 * `ModLoader.ModTile.disableSmartCursor` -> `TileID.Sets.DisableSmartCursor[Type]`
 * `ModLoader.ModTile.disableSmartInteract` -> `TileID.Sets.DisableSmartInteract[Type]`
 * `ModLoader.ModTile.dresser` -> `TileID.Sets.BasicDresser[Type]`
