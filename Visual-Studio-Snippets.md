@@ -1,4 +1,4 @@
-**When you've figured out the basics of modding, it can be annoying to constantly go to ExampleMod just to copy code that you're too lazy to manually write (believe me, I used to do this all the time). Fortunately, Visual Studio supports the use of custom snippets, which allows you to paste premade code with a few key-presses.**
+**When you've figured out the basics of modding, it can be annoying to constantly go to ExampleMod just to copy code that you're too lazy to manually write (believe me, I used to do this all the time). Fortunately, Visual Studio supports the use of custom snippets, which allow you to paste premade code with a few key-presses.**
 
 ***
 
