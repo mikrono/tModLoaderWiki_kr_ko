@@ -39,6 +39,7 @@ return instance;
 * `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
 * `Main.quickBG` -> `Main.instantBGTransitionCounter`
+* `Main.SmartCursorEnabled` -> `Main.SmartCursorIsUsed`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
@@ -105,6 +106,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PreDraw(ref Color)`, `ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
 * `ModLoader.ModNPC.NPCLoot` -> `ModLoader.ModNPC.OnKill` (Drops will now have to be added in `ModifyNPCLoot`, see the [Bestiary](#Bestiary)<a name="Bestiary"></a> section)
+* `ModLoader.ModNPC.bossBag` -> removed, spawn the treasure bag alongside other loot via `npcLoot.Add(ItemDropRule.BossBag(type))`
 * `ModLoader.ModItem.Clone` -> `ModLoader.ModItem.Clone(Item)`
 * `ModLoader.ModItem.NetRecieve` -> `ModLoader.ModItem.NetReceive` (typo)
 * `ModLoader.ModItem.NewPreReforge` -> `ModLoader.ModItem.PreReforge`
