@@ -15,7 +15,7 @@ Open up your file browser and navigate to the `Documents\My Games\Terraria\ModLo
 1. **[ModName].cs** - This is the `Mod` class. It is the central file to any mod. One and only one `Mod` class can exist in every mod. For simple mods this file will be very sparse, but in this class various global things can happen such as modifying music.     
 2. **description.txt** - Contains text for the description of the mod. Click the `More Info` button in the Mod menu to view in game.    
 3. **build.txt** - Contains the version, author, and display name of your mod. Can contain other [values](https://github.com/tModLoader/tModLoader/wiki/build.txt). Necessary.  
-4. **[ModName].csproj** - A project file for Visual Studio set up for debugging your Mod. Debugging is extremely useful but a takes a bit of learning, don't delete.  
+4. **[ModName].csproj** - A project file for Visual Studio set up for debugging your Mod. Debugging is extremely useful but takes a bit of learning, don't delete it.
 5. **Properties/launchSettings.json** (v0.11) - Related to `[ModName].csproj`, contains the path to Terraria.exe for debugging. Don't remove, you'll want it later as you gain experience.  
 6. **Items/[ItemName].cs** - A simple Sword item. Use this as an example as you learn to make additional ModItem classes.  
 7. **Items/[ItemName].png** - The corresponding sprite.  
