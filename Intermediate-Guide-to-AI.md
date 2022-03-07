@@ -169,80 +169,95 @@ const int CircleProjectileState = 2;
 //here I create the variable used to hold which state we are in. 
 //Using properties, this variable is effectively the same as npc.ai[0]. setting its value sets ai[0], and getting its value returns ai[0].
 //This is done because if we are in multiplayer, our state might not be the same on different clients/the server, leading to npc desync. To avoid this, we use one of the ai array elements as our state. This array is synced between clients and the server, so our npc won't desync.
-float state { 
-     get => npc.ai[0]; //When getting this variable's value, instead return the vaule of npc.ai[0] 
-     set => npc.ai[0] = value; //when setting this variable to something, instead set the value of npc.ai[0]
+float State
+{
+    get => npc.ai[0]; //When getting this variable's value, instead return the vaule of npc.ai[0] 
+    set => npc.ai[0] = value; //when setting this variable to something, instead set the value of npc.ai[0]
 }
 //You could write npc.ai[0] instead of state, and it would work the same, but this makes code more readable. Alternatively, if you are out of npc.ai slots to use or dont want to use it, you could use the receive and send extra ai hooks to sync your vaules. 
-    
+
 //here I do the same thing, just with our timer and a different ai slot.
-float Timer {
+float Timer
+{
     get => npc.ai[1];
     set => npc.ai[1] = value;
 }
-public override void AI(){
-     //since all states Increase Timer and use npc.Target, we can put the code all of them would have the same here
-     Timer++;//Increase our timer by one
-     npc.TargetClosest(false);//set npc.Target to the closests player.
-     if(state == ProjectileState){
-          ProjectileAttack();//run the attack method
-          if(Timer == 180){
-               //if it has been 3 seconds,
-               Timer = 0;//reset timer
-               state = ChaseState;//go to a another state
-               /*What if I want random attacks, not a set order? 
-               use Main.rand.Next(bottom, top +1) to get a random number, so we would use it like this
-               state = Main.rand.Next(0,3);//get a random number 0-2
-               npc.netUpdate = true;//update our npc this tick
-               */
-               }
-            }
-     else if(state == ChaseState){
-          Chase(); //call the chase method defined below 
-          if(Timer == 240){
-               //if it has been 4 seconds
-               Timer = 0;//reset timer
-               npc.velocity = Vector2.Zero;//since we change the velocity in this state, we need to reset it before moving to a new stage.
-               state = CircleProjectileState; //set our state to another one
-               //state = Main.rand.Next(0,3); - random state
-               //npc.netUpdate = true;
-               }
-     }
-     else if(state == CircleProjectileState){
-          CircleProjectile();
-          if(Timer == 180){
-               //if it has been 3 seconds
-               Timer = 0;//reset timer
-               state = ChaseState;//go to a another state
-               //npc.netUpdate = true;
-               //state = Main.rand.Next(0,3); - random state
-          }
-     }
+public override void AI()
+{
+    //since all states Increase Timer and use npc.Target, we can put the code all of them would have the same here
+    Timer++;//Increase our timer by one
+    npc.TargetClosest(false);//set npc.Target to the closests player.
+    if (State == ProjectileState)
+    {
+        ProjectileAttack();//run the attack method
+        if (Timer == 180)
+        {
+            //if it has been 3 seconds,
+            Timer = 0;//reset timer
+            State = ChaseState;//go to a another state
+            /*What if I want random attacks, not a set order? 
+            use Main.rand.Next(bottom, top +1) to get a random number, so we would use it like this
+            state = Main.rand.Next(0,3);//get a random number 0-2
+            npc.netUpdate = true;//update our npc this tick
+            */
+        }
+    }
+    else if (State == ChaseState)
+    {
+        Chase(); //call the chase method defined below 
+        if (Timer == 240)
+        {
+            //if it has been 4 seconds
+            Timer = 0;//reset timer
+            npc.velocity = Vector2.Zero;//since we change the velocity in this state, we need to reset it before moving to a new stage.
+            State = CircleProjectileState; //set our state to another one
+                                           //state = Main.rand.Next(0,3); - random state
+                                           //npc.netUpdate = true;
+        }
+    }
+    else if (State == CircleProjectileState)
+    {
+        CircleProjectile();
+        if (Timer == 180)
+        {
+            //if it has been 3 seconds
+            Timer = 0;//reset timer
+            State = ChaseState;//go to a another state
+                               //npc.netUpdate = true;
+                               //state = Main.rand.Next(0,3); - random state
+        }
+    }
 }
 //outside of ai, we make methods for each state that we then call
-private void ProjectileAttack(){
-     if(Timer % 20 == 0 && Main.netMode != NetmodeID.MultiplayerClient){
-          Player target = Main.player[npc.target];//get the closest player
-          Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//change 3 to change speed
-          Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X, ToPlayer.Y, ProjectileID.WoodenArrowHostile, 50, 0f);//launch the projectile
-          //What if I want a modded projectile? Replace the type parameter(ProjectileID.WoodenArrowHostile) with ModContent.ProjectileType<MyClass>() and make sure to be using the  namespace of it
-     }
+private void ProjectileAttack()
+{
+    if (Timer % 20 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+    {
+        Player target = Main.player[npc.target];//get the closest player
+        Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//change 3 to change speed
+        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X, ToPlayer.Y, ProjectileID.WoodenArrowHostile, 50, 0f);//launch the projectile
+                                                                                                                              //What if I want a modded projectile? Replace the type parameter(ProjectileID.WoodenArrowHostile) with ModContent.ProjectileType<MyClass>() and make sure to be using the  namespace of it
+    }
 }
-private void Chase(){
-     Player target = Main.player[npc.target];//get the closest player. 
-     Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//Get the direction to the player. Change 3 to change speed;
-     npc.velocity = ToPlayer;//set our velocity to direction to the player, so we move towards it.
+private void Chase()
+{
+    Player target = Main.player[npc.target];//get the closest player. 
+    Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;//Get the direction to the player. Change 3 to change speed;
+    npc.velocity = ToPlayer;//set our velocity to direction to the player, so we move towards it.
 }
-private void CircleProjectile(){
-     if(Timer % 60 == 0 && Main.netMode != NetmodeID.MultiplayerClient){
-          for(int i = 0; i < 360; i += 12){
-               //loop till i = 360, for one full rotation. You can change the interval of rotation by changing the 12 
-               Player target = Main.player[npc.target];//get the closest player
-               Vector2 ToPlayer = npc.DirectionTo(target.Center).RotatedBy(MathHelper.ToRadians(i));//By default, rotation uses radians.  I prefer to use degrees, and therefore I convert the radians. 
-               if (Main.netMode != NetmodeID.MultiplayerClient)
-                   Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X * 5, ToPlayer.Y * 5, ProjectileID.WoodenArrowHostile, 50, 0f);//fire the projectile
-          }
-     }
+private void CircleProjectile()
+{
+    if (Timer % 60 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
+    {
+        for (int i = 0; i < 360; i += 12)
+        {
+            //loop till i = 360, for one full rotation. You can change the interval of rotation by changing the 12 
+            Player target = Main.player[npc.target];//get the closest player
+            Vector2 ToPlayer = npc.DirectionTo(target.Center).RotatedBy(MathHelper.ToRadians(i));//By default, rotation uses radians.  I prefer to use degrees, and therefore I convert the radians. 
+            if (Main.netMode != NetmodeID.MultiplayerClient)
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X * 5, ToPlayer.Y * 5, ProjectileID.WoodenArrowHostile, 50, 0f);//fire the projectile
+        }
+    }
 }
 ```
 
@@ -253,12 +268,14 @@ Why does this matter? Because if you have the WhoAmI, you can then get the thing
 
 One other important thing is that NewNPC and NewProjectile both return the place in the array of the spawned projectile, allowing you to access it easily like this. 
 
-//TODO this will cause desync in multiplayer if not properly synced, add that to the examples. If your reading this guide and want to know how to sync it, use `NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, ProjWhoAmI);`after you do something to it.
+
 ```cs
 int Index = Projectile.NewProjectile(parameters);//you will obviously need to fill in the parameters
 Projectile p = Main.projectile[Index];//this can be applied to npcs too - use NPC n = Main.npc[Index]; after calling NewNPC
 // you can now use it's fields/methods
 //for example p.Center or p.Kill()
+NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Index);//after make sure to call this to ensure the projectile gets synced to multiplayer clients
+//if its a npc, replace the first parameter with MessageID.SyncNPC
 ```
 But what if I want my spawned projectile(or npc) to have the WhoAmI of the "parent" that spawned it? This is one of the times we use those optional parameters of the spawning methods.   
 
