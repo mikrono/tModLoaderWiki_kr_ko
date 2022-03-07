@@ -17,7 +17,7 @@ There are 3 places we can put NPC loot rules. If our mod adds an NPC and we want
 In the examples below, we drop a vanilla item: `ItemID.Shackle`. This can be swapped for an item from your mod by replacing that with `ModContent.ItemType<ItemName>()`
 
 # Full Example
-This example shows the basic file layout. The actual rules will be taught in [#Typical-Item-Drop-Rules](Typical Item Drop Rules) below.
+This example shows the basic file layout. The actual rules will be taught in [Typical Item Drop Rules](#typical-item-drop-rules) below.
 
 ## Adding Drops to a ModNPC
 ```cs
