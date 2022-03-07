@@ -17,7 +17,7 @@ The following commonly used methods require `IEntitySource`.
 The most common usages of `IEntitySource` will be listed here. If you absolutely can't figure out a suitable `IEntitySource` for your situation, passing in `null` is acceptable, but be aware that the purpose of `IEntitySource` is to facilitate advanced modding capabilities and your users might be disappointed that their other mods do not work 100% correctly because you didn't use the correct `IEntitySource`.
 
 * NPC spawning projectiles should use `NPC.GetSpawnSource_ForProjectile()`
-* NPC spawning item drops should use `NPC.GetItemSource_Loot()`
+* NPC spawning item drops should use `NPC.GetItemSource_Loot()`. (Note that 99.9% of NPC item drops should be using the new loot system)
 * NPC spawning other NPC, such as boss minions, should use `NPC.GetSpawnSourceForNPCFromNPCAI()`
 * Projectiles spawning items, such as arrow recovery drops, should use `Projectile.GetItemSource_DropAsItem()`
 * Player spawning Projectiles in ModItem.Shoot should use the `source` passed into the method
