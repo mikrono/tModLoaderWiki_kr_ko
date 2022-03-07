@@ -14,7 +14,7 @@ Every item drop rule is an instance of the `IItemDropRule` class. There are many
 There are 3 places we can put NPC loot rules. If our mod adds an NPC and we want specific drops for that NPC, please put the relevant code in the `ModifyNPCLoot` hook in the `ModNPC` class. If we want to add drops to specific vanilla NPCs, put code in the `ModifyNPCLoot` hook in a `GlobalNPC` class. If we want to add drops to all NPC, such as how Dungeon Chest keys or Souls drop, put the code in `GlobalNPC.ModifyGlobalLoot`. Drops added to all NPC are called global rules and do not show in the Bestiary. Remember, organization is key for maintainability of your mod.
 
 ## How do I specify my item?
-In the examples below, we drop a vanilla item: `ItemID.BeeGun`. This can be swapped for an item from your mod by replacing that with `ModContent.ItemType<ItemName>()`
+In the examples below, we drop a vanilla item: `ItemID.Shackle`. This can be swapped for an item from your mod by replacing that with `ModContent.ItemType<ItemName>()`
 
 # Full Example
 This example shows the basic file layout. The actual rules will be taught in [#Typical-Item-Drop-Rules](Typical Item Drop Rules) below.
