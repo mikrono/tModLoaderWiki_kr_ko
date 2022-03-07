@@ -56,6 +56,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic Coordinates Guide](Coordinates)
 - [Geometry](Geometry)
 - [Basic Glowmasks Guide](Basic-glowmask-guide)
+- [IEntitySource](IEntitySource)
 - [Basic Logging Guide](Logging)
 - [Basic Minion Guide](Basic-Minion-Guide)
 - [Basic ModConfig Guide](Basic-JSON-&-ModConfigs)
