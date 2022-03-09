@@ -86,6 +86,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.Mod.AddRecipes` -> `ModLoader.Modsystem.AddRecipes`
 * `ModLoader.Mod.AddRecipesGroups` -> `ModLoader.Modsystem.AddRecipesGroups`
 * `ModLoader.Mod.PostSetupContent` -> `ModLoader.ModSystem.PostSetupContent`
+* `ModLoader.Mod.HotKeyPressed` -> removed, use `ModLoader.ModPlayer.ProcessTriggers`
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
 * `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
@@ -234,14 +235,8 @@ Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVis
 
 ## Terraria 1.4+ vanilla changes
 {1.4 includes several back end changes that we should point out}
-### IProjectileSource
-With 1.4.2, the `Projectile.NewProjectile` method has additional required parameter at the beginning, denoting the source of the projectile. This parameter is useful for maintaining proper compatibility with other mods, so you should make sure to use it correctly. Here are some common conditinos and the `IProjectileSource` to use:
-
-* `ModItem.Shoot`: use the `source` passed into the method.    
-* `NPC` spawning projectile in `ModNPC.AI`: use `NPC.GetProjectileSpawnSource()`    
-* Spawning minions or pets in `ModBuff.Update`: use `player.GetProjectileSource_Buff(buffIndex)`    
-* Spawning a projectile from another projectile: use `Projectile.GetProjectileSource_FromThis()`    
-* An accessory spawning a projectile: use `Player.GetProjectileSource_Accessory(iteminstancehere)`
+### IEntitySource
+Various entity creating methods have received a new parameter denoting its source, read more about it [here](https://github.com/tModLoader/tModLoader/wiki/IEntitySource).
 
 ### Minion spawning
 Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
@@ -258,7 +253,7 @@ Player.SpawnMinionOnCursor(parameters); //Make sure to pass Item.damage for the 
 ### Bestiary
 Each mod gets its own filter for the bestiary, by default a "?" icon. You can change it by providing a 30x30 `icon_small.png` in your root folder.
 
-To add drops to NPCs, you now have to use the `Mod/GlobalNPC.ModifyNPCLoot` (and `GlobalNPC.ModifyGlobalLoot`) hooks (instead of the 1.3 analog of `NPCLoot`, `OnKill`, which is for non-loot (e.g. marking a boss as defeated, spawning ores or projectiles)).
+To add drops to NPCs, you now have to use the `Mod/GlobalNPC.ModifyNPCLoot` (and `GlobalNPC.ModifyGlobalLoot`) hooks (instead of the 1.3 analog of `NPCLoot`, `OnKill`, which is for non-loot e.g. marking a boss as defeated, spawning ores or projectiles)). Read more about it [here](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4).
 
 You can customize the bestiary entries using the `ModNPC.SetBestiary` hook, and the appearance of the NPC in the preview and full image by adding your data to `NPCID.Sets.NPCBestiaryDrawOffset`.
 
