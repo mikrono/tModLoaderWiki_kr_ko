@@ -113,6 +113,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.NewPreReforge` -> `ModLoader.ModItem.PreReforge`
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
+* `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
 * `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
 * `ModLoader.ModTile/ModWall.drop` -> `ModLoader.ModTile/ModWall.ItemDrop`
 * `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
