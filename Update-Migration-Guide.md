@@ -76,6 +76,9 @@ return instance;
 * `Player.flyingPigChest = -1;` -> `Player.piggyBankProjTracker.Clear(); Player.voidLensChest.Clear();` (Changed by vanilla due to the new inventory access projectiles). Setting it is now done using the `Set` method on the respective tracker.
 * `Player.extraAccessorySlots` -> `Player.GetAmountOfExtraAccessorySlotsToShow()`
 
+### Misc changes
+* Shaders registered as `MiscShaderData` now require `float4 uShaderSpecificData;` as a parameter
+
 ### tModLoader changes
 _All ModX things listed here apply to GlobalX aswell_
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
