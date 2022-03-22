@@ -243,10 +243,7 @@ Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVis
 Various entity creating methods have received a new parameter denoting its source, read more about it [here](https://github.com/tModLoader/tModLoader/wiki/IEntitySource).
 
 ### Armor Sheets Changed for Body Style
-The Sprite Styling has changed for some aspects of the armor - namely Body, Arm, and FemaleBody. 
-There exists ample tools such as https://forums.terraria.org/index.php?threads/sprite-transformer-quickly-transform-body-sprite-sheets-from-1-3-to-1-4.96210/ that can be used to facilitate migration
-The extend/special section is important because it is used for eating food, drinking potions, playing guitars, playing golf, using the lawn mower, using the Nightglow, using shortswords, and petting the town pets. 
-Here is a more detailed explanation: https://discord.com/channels/103110554649894912/534215632795729922/935346351393349683
+The Sprite Styling has changed for some aspects of the armor - namely Body, Arm, and FemaleBody. Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../Armor-Texture-Migration-Guide).
 
 ### Minion spawning
 Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
