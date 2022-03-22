@@ -67,6 +67,8 @@ HandsOn and HandsOff accessories need to follow this new format as well. Here we
 
 # Additional Information and Pitfalls
 
+More information about textures can be found on the [Terraria Workshop forum post](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#advancedtexturepack)
+
 ### Texture Size
 
 The final body texture should be 360 × 224
