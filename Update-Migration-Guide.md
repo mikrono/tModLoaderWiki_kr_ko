@@ -11,6 +11,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The fi
 
 ### Static Methods
 * `ItemText.NewText(Item, ...)` -> `PopupText.NewText(PopupTextContext, Item, ...)`
+* `GameContent.Generation.WorldGenLegacyMethod(GenerationProgress)` -> , `GameContent.Generation.WorldGenLegacyMethod(GenerationProgress, GameConfiguration)` (This affects the `GameContent.Generation.PassLegacy` constructor) (and do note the changed namespace of `GenerationProgress`)
 * `Lighting.BlackOut` -> `Lighting.Clear`
 * `Main.NPCAddHeight(int)` -> `Main.NPCAddHeight(NPC)`
 * `Main.PlaySound` -> `SoundEngine.PlaySound` -> in the `Terraria.Audio` namespace
