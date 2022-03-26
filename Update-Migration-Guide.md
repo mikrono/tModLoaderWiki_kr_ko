@@ -198,11 +198,11 @@ Modders previously using `PlayerLayer` and `ModPlayer.ModifyDrawLayers` will now
 Instead of instantiating custom `PlayerLayer` objects, and then adding them to a list of existing layers by using an index in the list, you can now use the self-contained `PlayerDrawLayer` class (use it just like any other `ModX` class), which specifies it's draw order using the `GetDefaultPosition` override by returning objects that define an **unconditional** order/hierarchy (`new Between(layer1, layer2)`, `new BeforeParent(layer)`, `new AfterParent(layer)` (`layer` usually being a vanilla layer found in the `PlayerDrawLayers` class). The `ModPlayer` hooks are not used for inserting anymore. To hide layers (previously done by setting Visible to false), you call the `Hide` method on them, which will also hide any children appended to this layer.
 
 Small overview of the (equivalent) changes:
-* `PlayerLayer` -> `PlayerDrawLayer` (for creating your layers)
-* `PlayerLayer` -> `PlayerDrawLayers` (for referencing vanilla layers)
-* Accessing all layers is done through `PlayerDrawLayerLoader.Layers` (not ordered by draw order!) instead of the `layers` param in `ModPlayer.ModifyDrawLayers`
-* `ModPlayer.ModifyDrawLayers` -> `ModPlayer.HideDrawLayers` (_only_ for hiding (see the above to access all layers if you need to))
-* `ModPlayer.ModifyDrawLayers` -> `ModPlayer.ModifyDrawLayerOrdering` (_only_ for changing the ordering)
+* `ModLoader.PlayerLayer` -> `ModLoader.PlayerDrawLayer` (for creating your layers)
+* `ModLoader.PlayerLayer` -> `DataStructures.PlayerDrawLayers` (for referencing vanilla layers)
+* Accessing all layers is done through `ModLoader.PlayerDrawLayerLoader.Layers` (not ordered by draw order!) instead of the `layers` param in `ModPlayer.ModifyDrawLayers`
+* `ModLoader.ModPlayer.ModifyDrawLayers` -> `ModLoader.ModPlayer.HideDrawLayers` (_only_ for hiding (see the above to access all layers if you need to))
+* `ModLoader.ModPlayer.ModifyDrawLayers` -> `ModLoader.ModPlayer.ModifyDrawLayerOrdering` (_only_ for changing the ordering)
 
 Porting mostly entails moving your insertion code from `ModifyDrawLayers` to `GetDefaultPosition` (must be unconditional, if you need to change the order based on a condition, use the new hook), moving your immediate draw conditions into the `GetDefaultVisibility` hook, the actual draw code into `Draw`, and adding the created `DrawData` to `drawInfo.DrawDataCache`. See the example in ExampleMod for an implementation.
 
