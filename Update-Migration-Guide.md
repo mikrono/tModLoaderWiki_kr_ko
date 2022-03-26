@@ -80,6 +80,7 @@ return instance;
 * Shaders registered as `MiscShaderData` now require `float4 uShaderSpecificData;` as a parameter
 
 ### tModLoader changes
+The following contains smaller scale changes to tModLoader members. More elaborate changes (i.e. things surrounding IEntitySource) are handled in separate categories below
 _All ModX things listed here apply to GlobalX aswell_
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
@@ -190,6 +191,20 @@ Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;
 1.4 includes support for a new streamlined armor texture format. This affects `EquipType.HandsOn/HandsOff/Body`. Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
 
 ![](https://i.imgur.com/0iw2Tw2.png)
+
+### Player Drawing
+Modders previously using `PlayerLayer` and `ModPlayer.ModifyDrawLayers` will now have to adapt to the replacements: `PlayerDrawLayer`, `ModPlayer.HideDrawLayers`, and `ModPlayer.ModifyDrawLayerOrdering`.
+
+Instead of instantiating custom `PlayerLayer` objects, and then adding them to a list of existing layers by using an index in the list, you can now use the self-contained `PlayerDrawLayer` class (use it just like any other `ModX` class), which specifies it's draw order using the `GetDefaultPosition` override by returning objects that define an **unconditional** order/hierarchy (`new Between(layer1, layer2)`, `new BeforeParent(layer)`, `new AfterParent(layer)` (`layer` usually being a vanilla layer found in the `PlayerDrawLayers` class). The `ModPlayer` hooks are not used for inserting anymore. To hide layers (previously done by setting Visible to false), you call the `Hide` method on them, which will also hide any children appended to this layer.
+
+Small overview of the (equivalent) changes:
+* `PlayerLayer` -> `PlayerDrawLayer` (for creating your layers)
+* `PlayerLayer` -> `PlayerDrawLayers` (for referencing vanilla layers)
+* Accessing all layers is done through `PlayerDrawLayerLoader.Layers` (not ordered by draw order!) instead of the `layers` param in `ModPlayer.ModifyDrawLayers`
+* `ModPlayer.ModifyDrawLayers` -> `ModPlayer.HideDrawLayers` (_only_ for hiding (see the above to access all layers if you need to))
+* `ModPlayer.ModifyDrawLayers` -> `ModPlayer.ModifyDrawLayerOrdering` (_only_ for changing the ordering)
+
+Porting mostly entails moving your insertion code from `ModifyDrawLayers` to `GetDefaultPosition` (must be unconditional, if you need to change the order based on a condition, use the new hook), moving your immediate draw conditions into the `GetDefaultVisibility` hook, the actual draw code into `Draw`, and adding the created `DrawData` to `drawInfo.DrawDataCache`. See the example in ExampleMod for an implementation.
 
 ### Tiles
 * The `Tile` type is no longer a by-reference `class`, but a `readonly struct` that acts as a key to data that is stored elsewhere, actually taking in mind the way computers' processors and memory planks work. Usage of the type for users remains somewhat similar.
