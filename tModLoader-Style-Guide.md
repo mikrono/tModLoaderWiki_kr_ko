@@ -10,21 +10,20 @@ If something is not listed in this guide, use your best judgement to pick betwee
 ## Identifier Names
 Use `camelCase` for
 * local variables
-* method arguments
-* instance fields
-* non-public fields in static classes
+* method parameters
+* private fields
 
 Use `PascalCase` for everything else.
 
-_**Why: camelCase indicates a 'normal' variable for the context. No further thought required. internal/private fields on static classes are akin to instance fields on a singleton.**_
+> _**Why: With the exception of method parameters, camelCase indicates a variable that is not part of any public APIs.**_
 
 Use `_camelCase` for 'backing fields' on properties. Private fields may also optionally be prefixed with an _.
 
-_**Why: _ indicates the field is an implementation detail and not key to the overall function of the class.**_
+> _**Why: `_` indicates the field is an implementation detail of specific members, and not key to the overall function of the class.**_
 
-A class should have either public properties or public fields. not both. If you write a public property, convert all public fields to auto properties. Properties are recommended for complex objects or data containers, but simple structs and classes are easier to reason about in game development when only fields are present.
+Classes (and structures that contain logic) should not contain non-private fields, and should instead use properties everywhere. Structures that do not contain logic and are only used as data are better off using fields instead.
 
-_**Why: Avoids confusion and inconsistency in the public 'contract' of the class. Terraria itself rarely uses properties. Microsoft guidelines recommend avoiding public fields entirely.**_
+> _**Why: APIs' implementation details are always likely to change in the long future. Using properties and auto-properties allows us to reduce compatibility breaks from such changes. Using fields in the context of data structures allows for using reference variables. Terraria itself rarely uses properties. Microsoft guidelines recommend avoiding public fields entirely.**_
 
 ## Braces
 Use [K&R Style](https://en.wikipedia.org/wiki/Indentation_style#K&R_style). Braces on the same line for statements, method and property declarations. New line for all other declarations. This is mostly enforced by .editorconfig
