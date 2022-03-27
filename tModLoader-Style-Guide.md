@@ -234,4 +234,36 @@ public void VanillaHitEffect(int hitDirection = 0, double dmg = 10.0) {
 }
 ```
 
-Always check your patches when committing and see if there's a way to minimise them.
+Always check your patches when committing and see if there's a way to minimize them.
+
+## Be Aware of Breaking Changes
+Some changes made to the tModLoader source code will cause issues for modders and players once they become part of an official release. For example, renaming a field used by mods will cause those mods to break when tModLoader updates. Because of this, we have various strategies for maintaining compatibility. Breaking changes come in 2 varieties, binary incompatibilities and source incompatibilities. When a change results in a binary incompatibility, mods built on an earlier version will either not load or not work properly. When a change results in a source incompatibility, the modder will have to change code the next time they build the mod, but the mod will continue to function otherwise.
+
+The lengths we go to preserve compatibility and maintain functionality depends on how stable the release should be. Currently we make breaking changes without maintaining compatibility on the 1.4 branch quite often, but as 1.4 becomes more stable we will need to adapt many of the techniques below.
+
+### New Hook
+Adding a new hook is no issue.
+
+### Adding a parameter to a hook
+If `public virtual void SomeHook()` becomes `public virtual void SomeHook(int someParameter)`, mods using the old approach will find that their mod is limited in functionality since the old method is no longer being called. To preserve compatibility, sometimes we keep the old method and mark it as `Obsolete`
+
+```cs
+// New hook in ModItem.cs
+public virtual void PickAmmo(Item weapon, Player player, ref int type, ref float speed, ref int damage, ref float knockback) {
+}
+
+// Old hook in ModItem.cs
+[Obsolete("PickAmmo now has a weapon parameter that represents the item using the ammo.")]
+public virtual void PickAmmo(Player player, ref int type, ref float speed, ref int damage, ref float knockback) {
+}
+
+// Calling site in ItemLoader.cs
+public static void PickAmmo(Item weapon, Item ammo, Player player, ref int type, ref float speed, ref int damage, ref float knockback) {
+	ammo.modItem?.PickAmmo(weapon, player, ref type, ref speed, ref damage, ref knockback);
+	ammo.modItem?.PickAmmo(player, ref type, ref speed, ref damage, ref knockback); // deprecated
+
+```
+
+
+### Changing a return type
+Changing a return type causes incompatibilities. TODO, more info.
