@@ -135,13 +135,13 @@ for(int i = 0; i < Main.maxPlayers; i++)
 }
 //use p
 ```
-With our player variable we can do tons of new things.  One common thing people do is to fire a projectile or make the boss move towards the player.  To do this first we get the direction to the player 
+With our player variable we can do tons of new things.  One common thing people do is to fire a projectile or make the boss move towards the player.  To do this first we get the direction to the player, and hold it in a Vector2 
 ```cs
 public override void AI(){
      npc.TargetClosest(false);//first we setnpc.target to the closest person
      Player target = Main.player[npc.target]; //then we get the player from the array and store it in a variable.
      Vector2 ToPlayer = npc.DirectionTo(target.Center);//then we make a vector2 of the direction to the player's center.  
-     //use ToPlayer
+     //we can now use ToPlayer, as it contains which way the player is to us
      //If you want whatever you use ToPlayer for to go faster, multiply it by something like npc.Velocity = ToPlayer * 5f
 }
 ```
@@ -164,7 +164,8 @@ Hopefully you understand what everything there does.
 the Time variable keeps track of the number of ticks the boss has been alive.  `if(Time %120 ==0)` checks if that variable is a multiple of 120, which will be every 120 ticks or 2 seconds.  
 
 `npc.TargetClosest(false)` and `Player target = Main.Player[npc.target];` get the closest players and store it in a Player variable called target.  
-`Vector2 ToPlayer = npc.DirectionTo(target.Center);` then stores the velocity we want to fire our projectile with in a Vector 2(In this case the direction to the player from our npc).  Finally we spawn a projectile. 
+`Vector2 ToPlayer = npc.DirectionTo(target.Center);` then stores the velocity we want to fire our projectile with in a Vector2(In this case the direction to the player from our npc).  Finally we spawn a projectile at the npcs center with the direction towards the player as velocity.
+ 
 If we wanted to instead fly to a location we would just set npc.velocity to a direction Vector2 like so:
 ```cs
 npc.TargetClosest(false);
@@ -172,10 +173,19 @@ Player target = Main.player[npc.target];
 Vector2 ToPlayer = npc.DirectionTo(target.Center) * 3;
 npc.velocity = ToPlayer; 
 ```
-### Making Patterns
-Most of the time we don't want our npc to do just one thing, instead we want to have more then "attack" it can be doing.  To do this you need to have a variable holding what attack is happening.  
 
-In order to make this code cleaner, I separated each attack into its own method and used constants to represent the "ID" of each phase.
+If we wanted a dash, we can just move the above code into a if statement like the projectile code. 
+//TODO example + explain why
+### Making Patterns
+Most of the time we don't want our npc to do just one thing, instead we want to have more then "attack" it can be doing.  To do this you need to have a variable holding what attack is happening, so our npc can remember in between frames what it was doing.  
+
+In this case we are using an `int` to hold the current stage. Our first attack will correspond to 0, second to 1, etc. Then, at the start of each ai tick, we can use this to continue doing the attack we did last frame.  
+
+In order to make this code cleaner, I separated each attack into its own method and used constants to represent the "ID" of each phase. These constants mean the same thing as the number they represent, except being easier to read. Its means a lot more when you see `if(stage == ChaseState)` instead of `if(stage == 1)`.  
+
+One other concern with having states is desync. When an npc has different things it could be doing at once, it is necessary that it is doing the same thing across all clients in multiplayer. 
+
+The solution is to hold variables like our state in the npc.ai array. This array(of floats) is automatically synced in between clients, so our npc's state will always be the same across clients.  
 ```cs
 //Constant variables used to make code readable
 const int ProjectileState = 0;//Instead of checking if state is 0, we can check it is ProjectileSate.  In application they mean the same thing, but the former is much nicer to look at.
@@ -264,6 +274,7 @@ private void CircleProjectile()
 {
     if (Timer % 60 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
     {
+        //if it has been 60 ticks and we aren't a Mutliplayer client
         for (int i = 0; i < 360; i += 12)
         {
             //loop till i = 360, for one full rotation. You can change the interval of rotation by changing the 12 
@@ -277,21 +288,34 @@ private void CircleProjectile()
 ```
 
 ### Using WhoAmI and the Main.  Arrays
-Sometimes we want to spawn a npc and have it do something that requires finding the target, position or some other value from the npc that spawned it, or requires finding out if the spawned npc is alive/what it's hp is or some other property of a npc that isnt us.
-To do this, you first need to know what a "WhoAmI" is.  Every npc, projectile, and player that is active(and some that aren't)are held in their arrays(Main.npc, Main.projectile, and Main.player respectively).    The place in the array of something is it's "WhoAmI" or index.
-Why does this matter? Because if you have the WhoAmI, you can then get the thing itself with Something x = Main.something[whoami]; If this looks familiar, that's because we have already used this to get our target in the example above.  
+Sometimes we want to spawn a npc( it could also be a projectile or even a dust) and have it do something that requires finding the target, position or some other value from the npc that spawned it, or requires finding out if the spawned npc is alive/what it's hp is or some other property of a npc that isnt us.
 
-One other important thing is that NewNPC and NewProjectile both return the place in the array of the spawned projectile, allowing you to access it easily like this. 
+Every npc, projectile, dust and player active in the world(and some that aren't active) are all part of their arrays(arrays are like groups of one data type instead of just one. for example, Main.npc is 500 npcs all in one spot. To access one item in the array, you use array[x], where x is the Xth thing in the array). These are how the game keeps track of what things to update, draw sync, etc. They also serve another important function, allowing one thing to effect another thing through these arrays. 
 
+These arrays are:
+//TODO get the rest of the lengths
+
+* Main.projectile, which holds up to 499 projectiles + one dummy projectile(more on these later)
+Main.dust 
+Main.npc
+Main.player, Holding 254 players + one dummy player
+
+When something is created, say a projectile via NewProjectile, a spot in its array(in this case Main.projectile) is given to it, and a new projectile object created for it there. 
+
+When this projectile is created, its whoami is set to its place in the array. Additionally, the method to spawn it(NewProjectile) will return that place in the array. This happens for dust and npcs to. You can use this to modify the projectile after its fired like this:
 
 ```cs
 int Index = Projectile.NewProjectile(parameters);//you will obviously need to fill in the parameters
 Projectile p = Main.projectile[Index];//this can be applied to npcs too - use NPC n = Main.npc[Index]; after calling NewNPC
 // you can now use it's fields/methods
-//for example p.Center or p.Kill()
+//for example p.Center , p.active , or p.Kill()
 NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Index);//after make sure to call this to ensure the projectile gets synced to multiplayer clients
 //if its a npc, replace the first parameter with MessageID.SyncNPC
+//Like: NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, Index); 
 ```
+
+if `Main.projectile[Index];` looks a familiar to you before, its because you have already used something similar to get a player to target. 
+
 But what if I want my spawned projectile(or npc) to have the WhoAmI of the "parent" that spawned it? This is one of the times we use those optional parameters of the spawning methods.   
 
 If you look at either NewNPC/Projectiles parameters, you should see floats like ai0, ai1 etc.  These are used to pass info to the spawned thing.
@@ -303,7 +327,13 @@ Projectile.NewProjectile(npc.Center.X, npc.Center.Y, ToPlayer.X * 5, ToPlayer.Y 
 // In the spawned Projectile
 NPC owner = Main.NPC([(int)projectile.ai[0]];//not how I put (int) here - since the ai parameters are floats and can be decimals, I have to cast them to a whole number to access the array(Note this does not round, it just removes everything past the decimal point.)
 ```
-One final thing to note is that you can pass npc.Target as an ai parameter and get the target player with Main.player.
+
+You can also use the ai parameters to pass other info, such as the whoami of a target player, the amount of time left in an attack, etc.
+
+A common mistake modders make is to assume if something is in its array, and not null, its active in the world. This is not the case. If a npc(or projectile/dust/etc) dies, it remains in the array until its replaced by a new thing spawning.  However, it will have npc/projectile/dust.Active set to false, stopping it from updating. If your loop these arrays yourself, look out for these inactive objects.
+
+Another thing to keep in mind is the "dummy" slots I mentioned earlier. These arrays have one extra slot at the end that is not updated, instead it hold a dummy object that doesn't do anything and should be ignored when looking through the arrays.  When looping them, use Main.maxProjectiles and the other array counterparts to avoid the dummy slot.
+
 ### Making Phases
 You can make your NPC choose different attacks based on certain factors, and make your code overall more organized by making your phase choosing code in it's own method, then call instead of setting state in the attack.
 Let's look one phase from before, but this time make the state be set to a new phase we added if hp is below 50 by checking `npc.life` and `lifeMax` before setting it
