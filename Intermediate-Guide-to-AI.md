@@ -9,9 +9,10 @@ public override void AI(){
 ```
 
 We now have a place to put our ai, but it doesn't do anything yet - let's start by changing the npcs velocity. 
- The velocity is a vector2(which is composed of 2 floats, x and y) corresponding to the x and y change of the npc every frame(60 times a second) in pixels.  
+ The velocity is a vector2(which is composed of 2 floats, x and y) corresponding to the x and y change of the npc every frame(60 times a second) in pixels after your ai happens.
 
 A velocity of -5,5 means left 5 and down 5 pixels a frame(Keep in mind in Terraria, adding to y goes down). Changing velocity is the most common way to make your npc move, and it's kept in between frames - if I set it to 5,5 it will stay that way till something else changes it. 
+
 Let's make the npc float upwards by changing the velocity. 
 ```cs
 public override void AI(){
@@ -19,7 +20,9 @@ public override void AI(){
       //AI is called every frame.  Anything you put here will happen 60 times a second
 }
 ```
-If you test this code you should see your npc fly upwards.  You probably want your npc to do something more complex though, and to do that we need to keep track of time, and find a player to target. 
+If you test this code you should see your npc fly upwards.  You probably want your npc to do something more complex though, and to do that we need to start adding more things to our ai. 
+
+//TODO gif of it in action
 
 Timers are covered in this [guide](https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers), which you should read if you haven't already. Lets add a timer like this guide shows 
 ```cs
@@ -31,6 +34,8 @@ public override void AI(){
     //AI is called every frame.  Anything you put here will happen 60 times a second
 }
 ```
+Every tick our npc is alive, our npc happens, increasing the timer. This allows us to make things happen based on how long our npc has been alive instead of just doing things every tick.
+
 Now that we have a variable to keep track of time we can make things happen on a timer with %. % computes the remainder after dividing its left operand by its right operand, and is useful for making things happen every x ticks like this
 ```cs
 int Time;
@@ -40,41 +45,54 @@ public override void AI(){
      if(Time % 120 == 0){
            //things here happen once every 120 ticks, or 2 seconds
      }
-            //AI is called every frame.  Anything you put here will happen 60 times a second
+     //AI is called every frame.  Anything you put here will happen 60 times a second
 }
 ```
-Now, we need to do something within our if statement.  
+This first tick our npc is alive, our ai method happens. First time increments, making it 1. Next velocity is changed, then the if statement is checked. The Time % 120 takes the remainder of the 2. in this case its the remainder of 1/120, which is 1. Finally we check if its equal to 0 with ==0. 1 isnt, so the code in the brackets runs. Finally, after our ai runs the npc moves based on its velocity. Since our velocity is 0,-5, it moves that many pixels, ending up 5 pixels upwards from where its started.
 
- One of the most common things people want bosses to do is shoot a projectile, which is simple - call the NewProjectile method Like this `Projectile.NewProjectile(Parameters);`
-Parameters will be replaced with the info about the spawned projectile, in this order 
+1/60 of a second later, our ai runs again during the next tick. This time, Time becomes 2(if your wondering why Time kept its value in between ticks, its because its a field - its declared outside the method). Again, Time(2) % 120 is not 0, so our if statement doesn't activate. Finally our velocity is update again.
+
+Our ai continues to run every tick, and our npc will float upward due to its velocity. After 60 ticks its been a second. After 120 ticks, its been 2 seconds, and the code in our if statement will activate, since 120 goes into 120 one time with a remainder of 0. After 240 ticks or 4 seconds, the if statment will activate again, as 240/120 is 2 with a remainder of 0. This pattern of it happening every 2 seconds or 120 ticks will continue until the npcs dies.
+
+//TODO maybe gif with Time drawn above the npc
+ 
+Now we can make something happen periodically, but what good is that if we cant actually do something?
+
+ One of the most common things people want bosses to do is shoot a projectile, which is simple - call the NewProjectile method. But to spawn a projectile, you need to provide some information about the projectile to be spawned. Where should it start? should it do 15 damage or 500? Is it a wooden arrow or a projectile from another mod? 
+
+The order for what information is filled out where is this:
 ```cs
-NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f);
+Projectile.NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f);
 ```
 Note that there is a different overload with Vector2s instead of floats for x/y and Speedx/SpeedY.  For consistency I will not be using it, but it is effectively the same.  
 
-Float X is a float of the X coordinate to spawn at, Y is a float of the Y coordinate to spawn at, SpeedX and SpeedY are both floats of the x and y 
-velocity respectively to spawn with.  
+Float X is a float of the X coordinate to spawn at, Y is a float of the Y coordinate to spawn at(Where is our projectile?). SpeedX and SpeedY are both floats of the x and y velocity respectively to spawn with(What direction should our projectile go?).  
 
-Type is the type of projectile - is it a wooden arrow? Your modded projectile? This will either be a vanilla projectile ID, like 
-`ProjectileID.WoodenArrowHostile` or a modded one, like `ModContent.ProjectileType<MyClass>().`  
+Type is the type of projectile(What projectile should be spawned?) This will either be a vanilla projectile ID, like 
+`ProjectileID.WoodenArrowHostile` or a modded one, like `ModContent.ProjectileType<MyClass>()`  Make sure to be using either `Terraria.ID`or your projectiles class' namespace respectively. 
 
 Damage is self explanatory, remember that setting projectile.Damage in the projectile doesn't do anything, it has to be set here.
-Knockback is self explanatory, but notice it's a float, so it can take decimals.  
 
-Owner, ai0, and ai1 are all optional parameters(see how they have = something after, which shows their default value).  
+//TODO iirc this is doubled and quadrupled in expert, check that
+
+Knockback is also self explanatory, but notice it's a float, so it can take decimals.  
+
+//TODO explain what amount of knockback goes what distances.
+
+Owner, ai0, and ai1 are all optional parameters(see how they have = something after, which shows their default value) and can be safety ommited if you don't know to put.  Owner is the whoami of the player that "owns" the projectile, or 255 for none. ai0 and ai1 are used to pass information to the spawned projectile, and have their own section later in this guide
 
 Seems like a lot, but thankfully it's much simpler to write
 This code fires a wooden arrow projectile straight up from the npcs center, with 50 damage and no knockback 
 ```cs
 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -50, ProjectileID.WoodenArrowHostile, 50, 0f);
-```
-Keep in mind that the wooden arrow AI slows and eventually reverses velocity.  
+```  
 
-As you can see each parameter is filled out with the information about how to create the projectile.  
+As you can see each parameter is filled out with the information about how to create the projectile. We want it to spawn at the npc's center's x and y coordinate, with the a velocity of 0,-50 or up 50 pixels a tick. It should be a Wooden arrow that doest 50 damage and 0 knockback. 
 
-The X and Y to spawn it at are the npcs center, its x velocity should be 0, and the Y should be -50(up 50 pixels a frame).  The projectile should be a hostile wooden arrow, with 50 damage and no knockback.  
  
   If we add this into our AI we can get are first "Attack"(I also removed the velocity change so that you can better see how the attack will loop endlessly)
+
+//TODO combined these next 2 into one and talk about mp syncing sooner
 ```cs     
 int Time;
 public override void AI(){
