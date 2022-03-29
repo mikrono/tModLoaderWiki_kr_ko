@@ -89,43 +89,38 @@ Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -50, ProjectileID.Wooden
 
 As you can see each parameter is filled out with the information about how to create the projectile. We want it to spawn at the npc's center's x and y coordinate, with the a velocity of 0,-50 or up 50 pixels a tick. It should be a Wooden arrow that doest 50 damage and 0 knockback. 
 
- 
-  If we add this into our AI we can get are first "Attack"(I also removed the velocity change so that you can better see how the attack will loop endlessly)
+ However, there, if you add this code into an ai, you may run into strange amounts of projectiles in multiplayer. The reason for this is due to how Terraria handles npcs in multiplayer. Imagine 2 people connected to a mutiplayer game, when your npc spawns.
 
-//TODO combined these next 2 into one and talk about mp syncing sooner
+ In this hypothetical game, your npc will created at 3 locations. On each client, and on the server. Each of these 3 locations will now run your ai code, just like it would be run in single player. On each client and the server, it moves exactly the same since the same ai is ran on each(unless something random is in . Then, the npc calls NewProjectile. On all 3 games the projectile is spawned, but then, all 3 sync their spawned projectiles to the other 2, and we end up with 3 on each - each connected client and the server spawning the projectile.
+
+The solution? Dont shoot the projectile on the connected clients, then let NewProjectile sync them. We do this by checking `Main.netMode` which tells if we are in single player(equal to NetmodeID.SinglePlayer), a client(NetmodeID.MultiplayerClient), or a server(NetmodeID.Server).
 ```cs     
 int Time;
 public override void AI(){
      Time++;
-     if(Time % 120 == 0){
+     if(Time % 120 == 0 && Main.netMode != NetmodeID.MultiplayerClient){
+          //if we arent a multiplayer client and it's been 120 ticks
           //things here happen once every 120 ticks, or 2 seconds
           Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, -5, ProjectileID.WoodenArrowHostile, 50, 0f);
      }
      //AI is called every frame.  Anything you put here will happen 60 times a second
 }
 ```
-This code will work fine in single player, but in multiplayer this will cause extra projectiles to spawn.   
-This is because AI is run on every client, but Projectile.NewProjectile syncs the spawned projectile - every client and the server will spawn it and then sync it to the other clients, causing extra to spawn.  
-
-Solving this is simple, we just need to only spawn the projectile on the server, and let NewProjectile sync it on all clients by adding `if(Main.netMode != NetmodeID.MultiplayerClient)` before spawning a projectile(or a npc).  
-We can add in an extra condition to our if with && and only have to use one if statement
-```cs
- if(Time % 120 == 0 && Main.netMode != NetmodeID.MultiplayerClient)// if we arent a multiplayer client and it's been 120 ticks
-```
 ### Finding a Target
 Now that we know how to shoot projectiles, let's make this attack harder to dodge by firing it at the player.  
 
 To do that we need to find the players we want to target.  For finding the closest near a npc, this is very easy. 
-First call `npc.TargetClosest(true/false)`,with true/false being if you want it the npc to change the sprite direction to face the target.  
-We can then get the player with Main.Player[npc.Target] and store it in a player variable. 
+First call `npc.TargetClosest(true/false)`,with true/false being if you want it the npc to change the sprite direction to face the target(it can also be left empty. This searches for a nearby play that can be target by the npc, then sets the player's whoami(whoamis will be covered in dpeth later, simply they are somethings place in their respective Main array)  to npc.Target.
+
+We can then get the player with Main.Player[npc.Target] and store it in a player variable for use later. 
 ```cs
 npc.TargetClosest(false);
 Player target = Main.player[npc.target];
-//use target
+//we can now do things with target
 ```
  If we didn't want the closest but instead wanted some other condition checked, we could loop the Main.Player array to find a valid target.  
 
-Additionally, if you are in a projectile and want to home in on a target, this is one way to do it(keep in mind that TargetClosest isn't a thing for projectiles, that part can be omitted).  
+Additionally, if you are in a projectile and want to home in on a player target, this is one way to do it(keep in mind that TargetClosest isn't a thing for projectiles, that part at the start can be omitted).  
 
 A better alternative to the above if you are shooting projectiles from a npc would be to pass the npcs target as an ai parameter(see the below section for how to pass information with ai parameters).
 ```cs
@@ -133,8 +128,10 @@ npc.TargetClosest(false);
 Player p = Main.player[npc.target];//first get the closest just in case all of our checks fail
 for(int i = 0; i < Main.maxPlayers; i++)
 {
-      if(Main.player[i].active)//add in other checks with &
+      if(Main.player[i].active){
+           //add in other checks with &
            p = Main.player[i];
+      }
 }
 //use p
 ```
