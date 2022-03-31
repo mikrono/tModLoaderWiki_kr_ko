@@ -186,6 +186,9 @@ In order to make this code cleaner, I separated each attack into its own method 
 One other concern with having states is desync. When an npc has different things it could be doing at once, it is necessary that it is doing the same thing across all clients in multiplayer. 
 
 The solution is to hold variables like our state in the npc.ai array. This array(of floats) is automatically synced in between clients, so our npc's state will always be the same across clients.  
+
+The final change is to keep the code for each attack in its own method, then call them in ai. This is purely for organization, making it easier to read the code in the ai.  
+  
 ```cs
 //Constant variables used to make code readable
 const int ProjectileState = 0;//Instead of checking if state is 0, we can check it is ProjectileSate.  In application they mean the same thing, but the former is much nicer to look at.
@@ -295,10 +298,10 @@ Every npc, projectile, dust and player active in the world(and some that aren't 
 These arrays are:
 //TODO get the rest of the lengths
 
-* Main.projectile, which holds up to 499 projectiles + one dummy projectile(more on these later)
-Main.dust 
-Main.npc
-Main.player, Holding 254 players + one dummy player
+* Main.projectile, which holds up to 499 projectiles + one dummy projectile(more on these later)  
+* Main.dust  
+* Main.npc  
+* Main.player, Holding 254 players + one dummy player
 
 When something is created, say a projectile via NewProjectile, a spot in its array(in this case Main.projectile) is given to it, and a new projectile object created for it there. 
 
@@ -349,9 +352,10 @@ else
 }
 ```
 Thing is, if we want it to transition after every attack, we would have to put this code in every single state in the first phase, which is a lot of unnecessary code and causes other issues.
-Instead we can make a method to change the phase
+Instead we can make a method to change the phase, then call it in our phases.
 ```cs
 private int ChoosePhase(){
+     //notices this is an int, not void. This means it has to return a value(in this case of the type int)  
      npc.netUpdate = true;//update this npc this tick, to sync our state.
      if(npc.life < (npc.lifeMax / 2)){
           return Main.rand.Next(4, 7);//if we are below half our hp, return 4-6.  Then in ai we will check what state is set to 
@@ -363,32 +367,35 @@ private int ChoosePhase(){
      return Main.rand.Next(0, 3);//since we will have already returned if below 50, we don't need to do this in an else.  
 }
 
-//then in our each of our states 
+//then in our each of our states, we call it to run the code above.
 if(timer == phaselength){
      //replace phaselength with the amount of ticks to attack for before swapping
-     State = ChoosePhase();//call the method to get a new state
+     State = ChoosePhase();//call the method to get a new state. This makes the code above happen and sets State to whatever was returned 
 }
 ```
 This way, we avoid having to put the same code over and over, and if we want to edit this code later(like adding another state or removing one) we only need to change it in one spot. 
 ### Making a NPC Despawn
-To despawn a npc, you just need to set npc.active to false.  Of course, you only want your npc to despawn if nobody is around to fight.  To do this we need to check if a valid target exist, and if there isnt, we desapwn.
+To despawn a npc, you just need to set npc.active to false.  Of course, you only want your npc to despawn under some conditions. The most common is to make a npc to despawn if there's nobody around to fight.  To do this we need to check if a valid target exist, and if there isnt, we despawn.
 
 First we check if the current target is dead or if something else would cause us to want to despawn
 ```cs
 if(!player.active || player.dead){
      //if the player we are currently targeting is dead or not "active"(meaning the player is no longer playing)
      npc.TargetClosest(false);//try to find a new target
-     player = Main.player[npc.target];
+     player = Main.player[npc.target];//get the new target we just got
           if(!player.active || player.dead) {
                 // if the new one is also dead, then we know there is no active player, and can despawn 
-                npc.active = false;//set ourselves to inactive, this makes it so we don't drop loot
+                npc.active = false;//set ourselves to inactive, this makes it so we don't drop loot and instead disappear
           }
 }
 ```
-Projectile despawning happens automatically after TimeLeft runs out(which you should set in setdefaults).  If you want to manually get rid of it call projectile.Kill(); 
-If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn.
+//TODO: despawning based on other conditions such as biome(if your reading this, you probably will just need to loop the player array then check if they are not in the biome with !player.desiredzone    
+Projectile despawning happens automatically after TimeLeft runs out(which you should set in setdefaults).  If you want to manually get rid of it call `projectile.Kill();`
+If you don't want the projectile to despawn after a certain amount of time, set projectile.TimeLeft to be greater then 1 in ai.   Since ai is called every tick, it will always never drop to 0 and the projectile will never despawn(however this combined with no tile collide causes some strange side effects, like breaking queen be larva across the map, so use it sparingly).
 ### Animation
+
 NPC's and projectiles have different ways of animating, this part shows a npc. For a projectile change projectile.Frame instead of using the find frame hook.
+
 Both of these require a sprite sheet, split into each frame(way the npc/projectile can look) stacked on top of each other evenly.  
 
 For example look at flutter slime from example mods sprite sheet:  
@@ -398,6 +405,8 @@ For example look at flutter slime from example mods sprite sheet:
 Each frame represents a way the npc can look, and your sprite sheets should also look like this.  
 
 The sprite sheet I will be using looks like this:  
+
+//TODO redo this to make it clear what frame number each one is  + Gifs
 
 ![New Piskel (1)](https://user-images.githubusercontent.com/88946983/153733783-68d06f09-d436-428a-b0e6-ccee462e610b.png)
 
@@ -409,14 +418,20 @@ public override void SetStaticDefaults() {
      Main.npcFrameCount[npc.type] = 4; // We want 4 frames in our npc. 
 }
 ```
+
+When this happens, the game takes our sprite sheet and evenly cuts it up into however many frames we specified(in this case 4). 
+
+//TODO Add a picture of sprite sheet as the game would separate it.
+
 Now, we need to change the frame in order to animate our npc. To do this, we need to override the `FindFrame(int frameHeight)` hook, and change which frame of our sheet to draw.  
 
-In the FindFrame hook, you may have noticed the one integer parameter, frameHeight. This is the height of one of our frames(if you have a 5 framed sheet thats 50 pixels tall, it will be 10) and should be mutplied by the frame you want to get what to set npc.frame.Y to.  
+In the FindFrame hook, you may have noticed the one integer parameter, frameHeight. This is the height of one of our frames(if you have a 5 framed sheet thats 50 pixels tall, it will be 10) and should be mutplied by the frame you want to get what to set npc.frame.Y to.
+  
 
 Setting npc.frame.Y to `frameHeight * 3` will be the 4th frame, setting it to `0 * frameHeight`(or just 0) will be the first frame, as thats the bottom of the frame we want to draw.  
 
 In order to make code easier to read, instead of putting the frame number, like 5, you can assign constants that describe what each frame does.  
-`npc.FrameY = frameHeight * FlyingFrame` means a lot more to someone reading then `npc.FrameY = frameHeight * 3`.  
+`npc.FrameY = frameHeight * FlyingFrame` means a lot more to anyone reading then `npc.FrameY = frameHeight * 3`.  
 
 If your code looks like the example above in the making patterns section, you can check you state variable just like you do in ai.  In fact, we can use some logic very similar to ai to determine which frame we should be. This code shows making a different frame assuming your code looks like the example above.  
 ```cs
@@ -451,19 +466,27 @@ public override void FindFrame(int frameHeight) {
     }
 }
 ```
+//TODO: complete example?
 # Common behaviors
 ### Spawning A NPC
 Spawning npc is a lot like a projectile but instead you use NPC.NewNPC
 
 It's parameters are NewNPC(int X, int Y, int Type, int Start = 0, float ai0 = 0f, float ai1 = 0f, float ai2 = 0f, float ai3 = 0f, int Target = 255)
   
-Remember all the ones with a = after are optional, and you only need to put a value for if you know what you're doing. X and Y are self explanatory, and Type is just like in NewProjectile - vanilla npcs would be NPCID.Name and modded is `Modcontent.NPCType<Class>().`
+Remember all the ones with a = after are optional, and you only need to put a value for if you know what you're doing. X and Y are self explanatory, and Type is just like in NewProjectile - vanilla npcs would be NPCID.Name and modded is `Modcontent.NPCType<Class>().`  
+
+Start is almost never used. Its the index to start looking for a place in the array for the npc to be placed. If its set to 100, then its WhoAmI will be 100 or above. This largely has no practical use, and can be safely left at 0. 
+
+ai0-ai3 are the same as in projectile - their values are copied over to the ai array in npcs.  
+
+Target is  what npc.Target is set to in the spawned npc.  
 ### Fire a burst of something
 You can make code execute more then once in ai with a for loop. If you want to make your projectiles inaccurate or not all fired towards one spot read the "Changing Projectiles Direction" section below, making use of the loop variable. 
 ### Changing Projectiles Direction When Fired
-To change where the projectile is fired you need to affect the Vector2 ToPlayer(assuming you're still using the code from above). There's a number of handy methods that you can use on a Vector2 to change it's contents.  
+To change where the projectile is fired you need to affect the `float SpeedX` and `float SpeedY`(assuming you're still using the code from above, this is ToPlayer X/Y). There's a number of handy methods that you can use on a Vector2 to change it's contents.  
 
-One of the most useful is RotatedBy(double Radians) or RoatatedByRandom. This rotates the Vector 2s contents, making it usefully for shooting ahead of a target or making a spread/shotgun pattern.  Keep in mind it takes Radians not degrees so make sure to use MathHelper.ToRadians if you have a degree measurement.
+One of the most useful is `RotatedBy(double Radians)` or `RoatatedByRandom`. This rotates the Vector2's contents, making it usefully for shooting ahead of a target or making a spread/shotgun pattern.  Keep in mind it takes Radians not degrees so make sure to use `MathHelper.ToRadians` if you have a degree measurement.
+
 Example usage - shooting a circle of thing
  ```cs
 for(int i = 0; i < 360; i += 12){
