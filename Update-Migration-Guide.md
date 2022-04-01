@@ -188,6 +188,34 @@ With the inclusion of throwing damage, thrown weapons/damage class bonuses will 
 
 Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;` to `Player.GetDamage(DamageClass.Summon) += 0.1f;`.
 
+### NPC Buff Immunities
+The old approach to setting buff immunities on NPCs does not work anymore (Reminder: in `SetDefaults`: `npc.buffImmune[type] = true;`).
+The new approach moves it to `SetStaticDefaults` and is using new syntax. Example:
+
+```cs
+// Add these to the top of your file
+using Terraria.DataStructures;
+using Terraria.ID;
+
+// Specify the debuffs it is immune to
+NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData {
+	SpecificallyImmuneTo = new int[] {
+		BuffID.Confused, // Most NPCs have this
+		BuffID.Poisoned,
+		ModContent.BuffType<MyDebuff>(), // Modded buffs
+	}
+};
+NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
+```
+
+If you want to give your NPC immunities to all debuffs (like The Destroyer), use this:
+```cs
+new NPCDebuffImmunityData {
+	ImmuneToAllBuffsThatAreNotWhips = true,
+	ImmuneToWhips = true
+}
+```
+
 ### Equip Textures
 1.4 includes support for a new streamlined armor texture format. This affects `EquipType.HandsOn/HandsOff/Body`. Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
 
