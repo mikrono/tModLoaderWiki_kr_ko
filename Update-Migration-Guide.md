@@ -1,7 +1,7 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here.
 
 # v0.12 (1.4 alpha)
-v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The first thing you need to do is copy your mod sources into the `ModLoader/Beta/Mod Sources/` folder. Next, visit the mod sources menu in game and click on the upgrade .csproj button. After that, you are ready to open Visual Studio and begin working on updating your code. Here are the most relevant changes.
+v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The first thing you need to do is copy your mod sources into the `My Games/Terraria/tModLoader/ModSources/` folder. Next, visit the mod sources menu in game and click on the upgrade .csproj button. After that, you are ready to open Visual Studio and begin working on updating your code. Here are the most relevant changes.
 
 ## Renamed or Moved Members
 
