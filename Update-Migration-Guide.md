@@ -45,6 +45,7 @@ return instance;
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
+* `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode`
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
 * `Main.maxInventory` -> `Main.InventorySlotsTotal`
