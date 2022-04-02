@@ -221,11 +221,12 @@ With the inclusion of throwing damage, thrown weapons/damage class bonuses will 
 Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;` to `Player.GetDamage(DamageClass.Summon) += 0.1f;`.
 
 ### XItem.Shoot
-`Global/ModItem.Shoot` has been split into two methods: `ModifyShootStats` and `Shoot`. Now changing shooting related parameters is separated from creation of the projectiles. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
+`Global/ModItem.Shoot` has been split into three methods: `CanShoot`, `ModifyShootStats`, and `Shoot`. Now allowing shooting and changing shooting related parameters is separated from creation of the projectiles. `CanShoot` simply controls if the item can shoot projectiles or not. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
 The `float speedX/Y` parameters have also been combined into `Vector2 velocity`. If you misuse `Shoot` for i.e. changing damage but not actually spawning any projectiles manually, then returning true, you need to switch (or move that code) to `ModifyShootStats`.
 
 Small overview of the changes:
-* `Global/ModItem.Shoot` -> `Global/ModItem.ModifyShootStats` (for simply changing shooting related parameters)
+* `Global/ModItem.Shoot` -> `Global/ModItem.CanShoot` (for allowing or preventing spawning in projectiles)
+* `Global/ModItem.Shoot` -> `Global/ModItem.ModifyShootStats` (for changing shooting related parameters)
 * `Global/ModItem.Shoot` -> `Global/ModItem.Shoot` (for spawning projectiles and controlling if the default projectile spawns)
 
 ### NPC Buff Immunities
