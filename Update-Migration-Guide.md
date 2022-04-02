@@ -136,7 +136,6 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModBuff.LongerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`
-* //TODO Shoot hook things
 
 
 ## Big change concepts
@@ -219,6 +218,14 @@ Minion and sentry projectiles will have to have `Projectile.DamageType = DamageC
 With the inclusion of throwing damage, thrown weapons/damage class bonuses will go from `thrown` to `Throwing` for example `Player.GetCritChance(DamageClass.Throwing)`.
 
 Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;` to `Player.GetDamage(DamageClass.Summon) += 0.1f;`.
+
+### XItem.Shoot
+`Global/ModItem.Shoot` has been split into two methods: `ModifyShootStats` and `Shoot`. Now changing shooting related parameters is separated from creation of the projectiles. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
+The `float speedX/Y` parameters have also been combined into `Vector2 velocity`. If you misuse `Shoot` for i.e. changing damage but not actually spawning any projectiles manually, then returning true, you need to switch (or move that code) to `ModifyShootStats`.
+
+Small overview of the changes:
+* `Global/ModItem.Shoot` -> `Global/ModItem.ModifyShootStats` (for simply changing shooting related parameters)
+* `Global/ModItem.Shoot` -> `Global/ModItem.Shoot` (for spawning projectiles and controlling if the default projectile spawns)
 
 ### NPC Buff Immunities
 The old approach to setting buff immunities on NPCs does not work anymore (Reminder: in `SetDefaults`: `npc.buffImmune[type] = true;`).
