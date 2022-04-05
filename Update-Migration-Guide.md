@@ -45,7 +45,7 @@ return instance;
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
-* `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode`
+* `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode` (Accessible via `Lighting.LegacyEngine.Mode`)
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
 * `Main.maxInventory` -> `Main.InventorySlotsTotal`
@@ -54,6 +54,7 @@ return instance;
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
+* `Player.GetItem(int, Item, bool, bool)` -> `Player.GetItem(int, Item, GetItemSettings)` (`GetItemSettings` class contains various static instances of it to use for the last parameter)
 * `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
 * `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
 
