@@ -299,8 +299,8 @@ These arrays are:
 //TODO get the rest of the lengths
 
 * Main.projectile, which holds up to 499 projectiles + one dummy projectile(more on these later)  
-* Main.dust  
-* Main.npc  
+* Main.dust, holding 6000 Dusts and a dummy
+* Main.npc
 * Main.player, Holding 254 players + one dummy player
 
 When something is created, say a projectile via NewProjectile, a spot in its array(in this case Main.projectile) is given to it, and a new projectile object created for it there. 
