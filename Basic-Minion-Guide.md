@@ -166,6 +166,14 @@ Now we can move on to the important bits: Actually doing something!
 
 #### Targeting
 
+NOTE: In 1.4, you can simply use Minion_FindTargetInRange in most cases
+
+```
+int startAttackRange = 700f;
+int attackTarget = -1;
+Minion_FindTargetInRange(startAttackRange, ref attackTarget, false);
+```
+
 Your minion wants to attack things, so it needs to know what to attack and most importantly, what not to attack.
 We first create a few variables that we need:
 ```csharp
