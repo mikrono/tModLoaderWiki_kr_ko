@@ -105,7 +105,7 @@ Sometimes a mod is causing issues, but you can't tell which mod is the problem. 
 ## Simple Explanation
 Most bugs in tModLoader will appear as errors logged to the `client.log` file. Read the file to find mods that are potentially causing bugs.
 * Close tModLoader, then reopen tModLoader and repeat the steps necessary to trigger the bug.
-* Open the `client.log` file in a text editor, such as notepad. The `client.log` file is found at `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\client.log` (or `[tModLoaderInstallFolder]\tModLoader-Logs\client.log` for the 1.4 alpha)
+* Open the `client.log` file in a text editor, such as notepad. The `client.log` file is found at `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\client.log` (or `[tModLoaderInstallFolder]\tModLoader-Logs\client.log` for the 1.4 alpha. To get to your install directory on Steam - right click tModLoader in the library, then hover over Manage and click on Browse local files.)
   * To easily open the folder copy `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\` to the clipboard with `ctrl-c` and paste it into the address bar in the file explorer with `ctrl-v`. Press enter and the file explorer will go to the folder.    
 ![](https://i.imgur.com/6jtjyVC.png)    
   * If a window pops up asking "How do you want to open this .log file?", find Notepad in the list, click it, click OK.    
