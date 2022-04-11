@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://standwithukraine.pp.ua)
+
 Coming from Steam? <br>
 Looking for install instructions? [Click here!](tModLoader-guide-for-players) (Steam and non-steam) <br>
 [I don't just want to play mods, I want to create them](tModLoader-guide-for-developers) <br>
