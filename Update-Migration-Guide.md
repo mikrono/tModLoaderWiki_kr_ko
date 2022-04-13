@@ -37,8 +37,10 @@ return instance;
 **Regex:** `Main.font(\w+)]` -> `GameContent.FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `GameContent.TextureAssets.Item[$1].Value`
-* `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
+* `Main.GlobalTime` -> `Main.GlobalTimeWrappedHourly`
+* `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
+* `Main.maxInventory` -> `Main.InventorySlotsTotal`
 * `Main.quickBG` -> `Main.instantBGTransitionCounter`
 * `Main.SmartCursorEnabled` -> `Main.SmartCursorIsUsed`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
@@ -47,8 +49,8 @@ return instance;
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
 * `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode` (Accessible via `Lighting.LegacyEngine.Mode`)
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
+* `Utils.InverseLerp` -> `Utils.GetLerpValue`
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
-* `Main.maxInventory` -> `Main.InventorySlotsTotal`
 * `ID.ItemUseStyleID` has a few renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
 * `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
 
