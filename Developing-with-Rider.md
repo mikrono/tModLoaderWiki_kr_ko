@@ -155,6 +155,28 @@ Verify you can run your configuration by pressing Shift + F10, or by clicking th
 
 [Back to TOC](#table-of-contents)
 
+# Debugging
+## (Temporary) How to solve the debug issue on Rider when it would freeze
+If you use the default setup and all you get is this
+![](https://i.imgur.com/kraWE0v.png)
+(the circled path might be different on your device)
+or this
+![](https://i.imgur.com/ZKoLFS7.png)
+
+then here is some potential solution.\
+(Thanks to the Jetbrains developers, my issue was sent one night and got the response instantly the next day, thanks for their hardwork)\
+Basically, this is some bug with relative path and all that staff with jetbrains debugger, here is a simple fix
+
+
+- go into `Edit Configuration` on the top right hand corner\
+![](https://i.imgur.com/AfMznCl.png)
+- then hit the `+` icon on the left hand corner of the configuration window to add a configuration and select `.NET Executable`\
+![](https://i.imgur.com/pABHO26.png)
+- then create the executable and do the following for the path, point `exe path` to the folder where your dotnet sdk is located in, on windows (it must be at least .net 6.0), it should be  `C:\Program Files\dotnet\dotnet.exe`, put that as the exepath. `Program argument` should be `tModLoader.dll`, need to be case matched, and `working directory` will be `$(the directory of your tml steam install)`, for mine, the path is shown on the image.
+4. set the `runtime` as the `.Net/.Net Core` option and you should be good to go.
+
+
+
 ## Todo
 ### Debugging
 ### Common Issues
