@@ -99,15 +99,18 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
 * `ModLoader.RecipeGroupHelper` -> `ModLoader.Utilities.RecipeGroupHelper`
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
+* `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
 * `ModLoader.ModContent.TextureExists(string)` ->`ModLoader.ModContent.HasAsset(string)`
 * `ModLoader.ModContent.GetTexture(string)` ->`ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
 * `ModLoader.Mod.GetTexture(string)` -> `ModLoader.Mod.Assets.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
 * `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
+* `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`, with the name now being specified through the `Name` property on the `ILoadable`
 * `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
 * `ModLoader.Mod.AddTranslation(ModTranslation)` -> `ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `ModLoader.Mod.CreateTranslation(string)` -> `ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
+* `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> `SoundLoader.GetLegacySoundSlot(Mod, string)`
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
@@ -132,7 +135,6 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModTile.sapling` -> `TileID.Sets.TreeSapling[Type]`
 * `ModLoader.ModTile.torch` -> `TileID.Sets.Torch[Type]`
 * `ModLoader.ModPrefix.GetPrefix(byte)` -> `ModLoader.PrefixLoader.GetPrefix(int)`
-* `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
 * `ModLoader.ModBuff.CanBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
 * `ModLoader.ModBuff.LongerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
@@ -148,7 +150,9 @@ In addition to that, tModLoader by default loads textures asynchronously. This m
 
 Texture/Asset paths are now also slightly changed, so any use of something like this: `"Terraria/Item_" + ItemID.IronPickaxe;`, will have to be changed to this: `"Terraria/Images/Item_" + ItemID.IronPickaxe;`
 
-Finally, when summoning vanilla textures, make sure to call the right variant of "Main.instance.LoadItem(type);" before using it in cases such as "TextureAssets.Item[type].Value" to avoid null errors.
+Finally, when summoning vanilla textures, make sure to call the right variant of `Main.instance.LoadItem(type);` before using it in cases such as `TextureAssets.Item[type].Value` to avoid null errors.
+
+Gores and sounds (`ModGore`/`ModSound`) are now autoloaded from any folder that contains "Gores"/"Sounds" in the path (instead of having to be in the "Gores"/"Sounds" folder in the mod root folder).
 
 ### Recipes
 Recipes were totally reworked (don't panic, read below). Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use fluent api syntax. If you don't know what that is, here's an example of what it looked like before:
