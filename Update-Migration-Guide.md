@@ -65,7 +65,6 @@ return instance;
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
-* `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
 * `Item.prefix` -> `byte` to `int` (Many changes to related methods aswell)
 * `Item.dye` -> `byte` to `int` (Many changes to related methods aswell)
 * `Item.hairDye` -> `short` to `int` (Many changes to related methods aswell)
@@ -126,7 +125,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
 * `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
-* `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now use `ref StatModifier` instead of `ref float/int`s.
+* `ModLoader.ModPlayer/ModItem.ModifyWeaponCrit(..., ref int crit)` -> `(..., ref float crit)`
+* `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now uses a single `ref StatModifier` instead of several `ref float/int`s.
 * `ModLoader.ModTile/ModWall.drop` -> `ModLoader.ModTile/ModWall.ItemDrop`
 * `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `ModLoader.ModTile.NewRightClick` -> `ModLoader.ModTile.RightClick`
@@ -222,13 +222,22 @@ if (ModContent.TryFind<ModItem>("OtherMod", "ItemName", out var modItemName)) {
 ```
 
 ### Damage Classes
-`Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
+`Item.melee`, `Projectile.ranged` etc. are replaced by tModLoaders own `DamageClass` implementation, which utilizes `StatModifier` for consolidated access to base/additive/multiplicative/flat bonuses. This means `item.ranged = true` turns into `Item.DamageType = DamageClass.Ranged;`, and `if (item.ranged)` turns into `if (Item.CountsAsClass(DamageClass.Ranged))`. You can also make your own custom classes through this system. For more information, visit `ExampleMod/Content/DamageClasses/ExampleDamageClass.cs`, and its items and projectiles in general.
 
 Minion and sentry projectiles will have to have `Projectile.DamageType = DamageClass.Summon;` (in case of minions, in addition to `Projectile.minion = true;`).
 
 With the inclusion of throwing damage, thrown weapons/damage class bonuses will go from `thrown` to `Throwing` for example `Player.GetCritChance(DamageClass.Throwing)`.
 
 Accessories giving damage bonuses are changed from `player.minionDamage += 0.1f;` to `Player.GetDamage(DamageClass.Summon) += 0.1f;`.
+Flat increases are done via `Player.GetDamage(DamageClass.Summon).Flat += 4;` for increased damage after applied multipliers, or `.Base += 4;` for before.
+
+Use `Player.GetTotalDamage` to get the effective stat modifier for the damage class (including inheritance, like `Generic`)
+
+Other porting changes:
+* `Player.armorPenetration` -> `Player.GetArmorPenetration(DamageClass.Generic)`
+* `Player.meleeSpeed` -> `GetAttackSpeed(DamageClass.Melee)`
+* `Player.arrowDamage/bulletDamage/rocketDamage` -> Type change to `StatModifier`
+* `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
 
 ### XItem.Shoot
 `Global/ModItem.Shoot` has been split into three methods: `CanShoot`, `ModifyShootStats`, and `Shoot`. Now allowing shooting and changing shooting related parameters is separated from creation of the projectiles. `CanShoot` simply controls if the item can shoot projectiles or not. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
