@@ -33,10 +33,12 @@ return instance;
 * `NetMessage.BroadcastChatMessage` -> `Chat.ChatHelper.BroadcastChatMessage`
 
 ### Static Fields / Constants / Properties
+* `ID.ItemUseStyleID` has renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
 * `Main.font*` -> `GameContent.FontAssets.*.Value`<br/>
 **Regex:** `Main.font(\w+)]` -> `GameContent.FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `GameContent.TextureAssets.Item[$1].Value`
+* `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
 * `Main.GlobalTime` -> `Main.GlobalTimeWrappedHourly`
 * `Main.itemLockoutTime` -> `Main.timeItemSlotCannotBeReusedFor`
@@ -45,14 +47,12 @@ return instance;
 * `Main.SmartCursorEnabled` -> `Main.SmartCursorIsUsed`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
-* `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
-* `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
 * `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode` (Accessible via `Lighting.LegacyEngine.Mode`)
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
-* `Utils.InverseLerp` -> `Utils.GetLerpValue`
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
-* `ID.ItemUseStyleID` has a few renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
-* `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
+* `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
+* `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
+* `Utils.InverseLerp` -> `Utils.GetLerpValue`
 
 ### Non-Static Methods
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
