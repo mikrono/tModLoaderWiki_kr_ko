@@ -1,6 +1,10 @@
 # Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
+### Screen is blurry
+We are looking into a solution, but something you can do as a temporary solution is to change your display scale back to 100%. To do this, right click on your desktop and click `Display Settings`. Next, scroll down to `Scale and Layout` and find the 1st item labeled `Change the size of text, apps, and other items`, make it 100%, then launch the game.    
+![](https://i.imgur.com/9WNLQYr.png)    
+
 ### System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
 Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender. Some more info has been collected [here](https://www.bitdefender.com/consumer/support/answer/2700/).
