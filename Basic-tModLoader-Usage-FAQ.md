@@ -1,6 +1,9 @@
 # Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
+### Unable to find an entry point named 'SteamAPI_ManualDispatch_Init' in DLL 'steam_api64'
+This is caused by pirating other games. Some poorly packaged pirated games put a `steam_api64.dll` file in strange locations on your computer. These broken files are located on the PATH and will be loaded before tModLoader has a chance to load it's own copy. We've seen various reports of `steam_api64.dll` being found on the PATH in places like `C:\Windows\System32`. To determine where, open up a command prompt from the start menu by typing "command prompt" and clicking on the result. Next, type `where steam_api64.dll` and press enter. If the result is `INFO: Could not find files for the given pattern(s).`, then you have some other issue and should come to the Discord and seek support. If you see a result like `c:\Windows\System32\` or other suspicious paths, you will need to fix the issue. Usually this means navigating to the folder and renaming the file from `steam_api64.dll` to `steam_api64_backup.dll`. This should fix the issue, but if it doesn't come to Discord.
+
 ### Screen is blurry
 We are looking into a solution, but something you can do as a temporary solution is to change your display scale back to 100%. To do this, right click on your desktop and click `Display Settings`. Next, scroll down to `Scale and Layout` and find the 1st item labeled `Change the size of text, apps, and other items`, make it 100%, then launch the game.    
 ![](https://i.imgur.com/9WNLQYr.png)    
