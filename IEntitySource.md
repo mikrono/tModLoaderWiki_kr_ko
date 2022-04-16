@@ -27,4 +27,4 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 * Player spawning Projectiles in ModItem.Shoot should use the `source` passed into the method
 * Player.QuickSpawnItem usage for a bag type item should use `player.GetItemSource_OpenItem(Type)`
 * Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
-* Player spawning an item due to dropping or being unable to recover an item from a UISlot should use `player.GetItemSource_Misc(ItemSourceID.PlayerDropItemCheck)`
+* Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `player.GetItemSource_Misc(ItemSourceID.PlayerDropItemCheck)`
