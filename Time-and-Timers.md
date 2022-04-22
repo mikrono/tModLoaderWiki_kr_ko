@@ -1,6 +1,20 @@
 # Time and Timers
 When dealing with various aspects of Terraria modding, you'll find yourself wanting to delay actions of make things happen less frequently. In short, you'll want to utilize time and timers to accomplish your modding goals. This guide will go over many time related concepts so that you don't unknowingly make a mistake in your code.
 
+## Don't use Loops
+When dealing with timers, the most important thing to remember is that the game loop is what is calling all the hooks and methods. Loops within your code will not act as a timer, they will loop the number of times within nanoseconds and then continue executing the code below it. Timers must be programmed taking into account that the game loop will call the methods once a tick. The following show common mistakes modders make.
+
+### Mistake Examples
+This example mistakenly assumes that the while loop will cause this code to wait 60 ticks and then run the code below. That is not the case, the while loop will run 60 times and then immediately run the code below. The correct approach necessitates storing the timer in a non-local variable and removing the loops, as shown in other examples.
+```cs
+int timer = 60;
+while (timer > 0)
+{
+    timer--;
+}
+// Other code intended to run after timer expires
+```
+
 # Wall Time vs Game Time vs World Time
 First off, it is important to know the difference between various types of time. 
 
@@ -133,5 +147,5 @@ Here are the important fields relating to World Time:
 * [NPC Spawning](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Spawning)
 * World Update events, such as the [Volcano event in ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs#L405)
 
-## Wall Time
+# Wall Time
 When you are a beginner modder, you may find yourself googling "c# timer" in an attempt to code up something for your mod. If you did, you found examples of using `System.Timers`. Those concepts do not apply to video games or tModLoader modding at all, as they are examples of Wall Time. You'll need to consult [World Time](#world-time) and [Game Time](#game-time) above to determine the correct approach. Again, any usage of `System.Timers` is almost certainly the wrong approach. It'll be buggy and incorrect when the user pauses the game or uses an enchanted sundial.
