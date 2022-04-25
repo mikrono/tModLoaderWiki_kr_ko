@@ -18,7 +18,9 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 
 * NPC spawning projectiles should use `NPC.GetSpawnSource_ForProjectile()`
 * NPC spawning item drops should use `NPC.GetItemSource_Loot()`. (Note that 99.9% of NPC item drops should be using the new loot system)
+  * 2022.4+ use `NPC.GetSource_Loot`
 * NPC spawning other NPC, such as boss minions, should use `NPC.GetSpawnSourceForNPCFromNPCAI()`
+  * 2022.4+ use `NPC.GetSource_FromAI`
 * Projectiles spawning items, such as arrow recovery drops, should use `Projectile.GetItemSource_DropAsItem()`
 * Projectiles spawning other projectiles, like a splitting projectile or a shooting minion, should use `Projectile.GetProjectileSource_FromThis()`
 * Held projectile weapons spawning other projectiles using ammo should use `player.GetProjectileSource_Item_WithPotentialAmmo(player.HeldItem, usedAmmoItemId)`
@@ -27,4 +29,5 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 * Player spawning Projectiles in ModItem.Shoot should use the `source` passed into the method
 * Player.QuickSpawnItem usage for a bag type item should use `player.GetItemSource_OpenItem(Type)`
 * Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
-* Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `player.GetItemSource_Misc(ItemSourceID.PlayerDropItemCheck)`
+* Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `player.GetItemSource_Misc(ItemSourceID.PlayerDropItemCheck)` 
+  * 2022.4+ use `player.GetSource_Misc("PlayerDropItemCheck")`
