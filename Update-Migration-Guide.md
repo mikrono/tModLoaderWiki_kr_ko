@@ -84,6 +84,7 @@ return instance;
 
 ### Misc changes
 * Shaders registered as `MiscShaderData` now require `float4 uShaderSpecificData;` as a parameter
+* Armor shaders now require the `float2 uTargetPosition`, `float4 uLegacyArmorSourceRect` and `float2 uLegacyArmorSheetSize` parameters
 
 ### tModLoader changes
 The following contains smaller scale changes to tModLoader members. More elaborate changes (i.e. things surrounding IEntitySource) are handled in separate categories below
