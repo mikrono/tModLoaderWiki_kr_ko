@@ -55,8 +55,9 @@ return instance;
 * `Utils.InverseLerp` -> `Utils.GetLerpValue`
 
 ### Non-Static Methods
-* `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
 * `Player.GetItem(int, Item, bool, bool)` -> `Player.GetItem(int, Item, GetItemSettings)` (`GetItemSettings` class contains various static instances of it to use for the last parameter)
+* `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
+* `Player.SporeSac` -> `Player.SporeSac(Item)`
 * `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
 * `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
 
