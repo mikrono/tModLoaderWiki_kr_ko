@@ -34,6 +34,7 @@ return instance;
 
 ### Static Fields / Constants / Properties
 * `ID.ItemUseStyleID` has renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
+* `Main.ActivePlayerCount` -> `Main.CurrentFrameFlags.ActivePlayersCount`
 * `Main.font*` -> `GameContent.FontAssets.*.Value`<br/>
 **Regex:** `Main.font(\w+)]` -> `GameContent.FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
