@@ -15,6 +15,17 @@ while (timer > 0)
 // Other code intended to run after timer expires
 ```
 
+This example will also fail, `timer` will never reach above 60 because it is defined in the same scope, meaning it will start at 0, increment to 1, and then next tick will start at 0 again. To avoid this, put your timer definition (`int timer = 0;`) outside the method (usually the class). See the "Timer Using New Field" section for details.
+```cs
+int timer = 0;
+timer++;
+if (timer > 60)
+{
+    // Other code intended to run after timer expires
+    timer = 0;
+}
+```
+
 # Wall Time vs Game Time vs World Time
 First off, it is important to know the difference between various types of time. 
 
