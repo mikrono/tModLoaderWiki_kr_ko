@@ -13,6 +13,7 @@ v0.12 updates tModLoader to Terraria 1.4. This update changed everything. The fi
 * `ItemText.NewText(Item, ...)` -> `PopupText.NewText(PopupTextContext, Item, ...)`
 * `GameContent.Generation.WorldGenLegacyMethod(GenerationProgress)` -> , `GameContent.Generation.WorldGenLegacyMethod(GenerationProgress, GameConfiguration)` (This affects the `GameContent.Generation.PassLegacy` constructor) (and do note the changed namespace of `GenerationProgress`)
 * `Lighting.BlackOut` -> `Lighting.Clear`
+* `Main.NewText` -> unchanged, but now you need a `Main.netMode != NetmodeID.Server` check whenever you use it (if it's not a client-only context), otherwise it will crash
 * `Main.NPCAddHeight(int)` -> `Main.NPCAddHeight(NPC)`
 * `Main.PlaySound` -> `SoundEngine.PlaySound` -> in the `Terraria.Audio` namespace
 * `Main.IsTileSpelunkable(Tile)` -> `Main.IsTileSpelunkable(int, int)`
@@ -197,7 +198,7 @@ String-based mod content fetching (such as `Mod.ItemType("ItemName")` or `Mod.Pr
 The same methods also exist in `ModContent`, the string parameter then expects the format "ModName/XName" (which is by the way what `baseObj.FullName` would return).
 
 Other methods unified to the new approach:
-* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type)
+* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`)
 
 Examples:
 ```cs
