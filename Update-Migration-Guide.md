@@ -126,6 +126,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.Clone` -> `ModLoader.ModItem.Clone(Item)`
 * `ModLoader.ModItem.NetRecieve` -> `ModLoader.ModItem.NetReceive` (typo)
 * `ModLoader.ModItem.NewPreReforge` -> `ModLoader.ModItem.PreReforge`
+* `ModLoader.ModItem.UseItem` -> return type changed from `bool` to `bool?`
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
 * `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
