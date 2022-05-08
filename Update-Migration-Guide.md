@@ -194,6 +194,31 @@ There is a more detailed explanation of how to do this in [ExampleMod/Content/Ex
 #### RecipeFinder and RecipeEditor
 The two classes were removed. Now just use any `PostAddRecipes` hook (such as in `ModSystem`) and manually iterate over `Main.recipe` to find and edit what you need.
 
+#### Custom ModRecipe class/extension
+As ModRecipe is gone, and Recipe is sealed, you cannot extend from it anymore. Any 1.3 patters that utilized custom classes and its methods will need to use the new methods.
+Porting notes for methods:
+* `ConsumeItem`: write your code as a method for `AddConsumeItemCallback`:
+```cs
+.AddConsumeItemCallback(delegate (Recipe recipe, int type, ref int amount) {
+	//Code here
+})
+```
+
+* `OnCraft`: write your code as a method for `AddCraftItemCallback`:
+```cs
+.AddOnCraftCallback(delegate (Recipe recipe, Item item) {
+	//Code here
+})
+```
+
+* `RecipeAvailable`: write your code as a method for the condition constructor within `AddCondition` (You find more about it in ExampleRecipes, aswell as how to use vanilla conditions):
+```cs
+var conditionDescription = NetworkText.FromKey("Mods.MyMod.MyConditionKey"); //You are encouraged to localize your conditions properly (it would be <MyConditionKey: My Condition> in the localization file). If you don't want that, use NetworkText.FromLiteral("My Condition")
+.AddCondition(conditionDescription , recipe => {
+	//Code here
+})
+```
+
 ### Mod.XType, Content Fetching
 String-based mod content fetching (such as `Mod.ItemType("ItemName")` or `Mod.ProjectileType("ProjectileName")`) have been replaced and unified under `Mod.Find<ModX>("XName").Type` (rarely`.Type` is `.Slot`). Instead of returning 0 if said content is not found, it will now throw an exception, encouraging use of the compile-time safe generic methods (which still exist, such as `ModContent.ItemType<ItemName>()`), or if using the generic method is not possible (such as cross mod), `Mod.TryFind<ModX>("XName", out var baseObj)` (and then using `baseObj.Type` if the method returned `true`).
 The same methods also exist in `ModContent`, the string parameter then expects the format "ModName/XName" (which is by the way what `baseObj.FullName` would return).
