@@ -194,7 +194,7 @@ class MyGlobalNPC : GlobalNPC
 ```
 
 ### Special Cases
-Some vanilla bosses require special conditions to detect when it they are killed and ready to drop their loot.
+Some vanilla bosses require special conditions to detect when they are killed and ready to drop their loot.
 
 Eater of Worlds:
 ```c#
