@@ -196,7 +196,7 @@ The two classes were removed. Now just use any `PostAddRecipes` hook (such as in
 
 #### Custom ModRecipe class/extension
 As ModRecipe is gone, and Recipe is sealed, you cannot extend from it anymore. Any 1.3 patters that utilized custom classes and its methods will need to use the new methods.
-Porting notes for methods:
+Porting notes for methods (delegates are interchangeable with passing in a method directly):
 * `ConsumeItem`: write your code as a method for `AddConsumeItemCallback`:
 ```cs
 .AddConsumeItemCallback(delegate (Recipe recipe, int type, ref int amount) {
@@ -211,7 +211,7 @@ Porting notes for methods:
 })
 ```
 
-* `RecipeAvailable`: write your code as a method for the condition constructor within `AddCondition` (You find more about it in ExampleRecipes, aswell as how to use vanilla conditions):
+* `RecipeAvailable`: write your code as a method for `AddCondition` (You find more about it in ExampleRecipes, aswell as how to use vanilla conditions):
 ```cs
 var conditionDescription = NetworkText.FromKey("Mods.MyMod.MyConditionKey"); //You are encouraged to localize your conditions properly (it would be <MyConditionKey: My Condition> in the localization file). If you don't want that, use NetworkText.FromLiteral("My Condition")
 .AddCondition(conditionDescription , recipe => {
