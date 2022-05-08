@@ -53,6 +53,31 @@ namespace MyMod
 }
 ```
 
+### Special Cases
+Some vanilla bosses require special conditions and rules to detect when they are killed and ready to drop their loot.
+
+Eater of Worlds:
+```c#
+if (System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
+{
+	LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
+	leadingConditionRule.OnSuccess(/*Your rule goes here*/);
+	//leadingConditionRule.OnSuccess(/*Additional rules as new lines*/);
+	npcLoot.Add(leadingConditionRule);
+}
+```
+
+The Twins:
+```c#
+if (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)
+{
+	LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.MissingTwin());
+	leadingConditionRule.OnSuccess(/*Your rule goes here*/);
+	//leadingConditionRule.OnSuccess(/*Additional rules as new lines*/);
+	npcLoot.Add(leadingConditionRule);
+}
+```
+
 ## Adding Drops to all NPC (Global Rule)
 ```cs
 namespace MyMod
