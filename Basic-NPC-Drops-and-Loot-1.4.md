@@ -161,7 +161,7 @@ This requires a custom condition, see below. You can look at the code of `Condit
 See [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs#L193) for an example of using `DropOneByOne`.
 
 ## Boss Bag
-See Full Boss Example below
+See [Full Boss Example](#full-boss-example) below
 
 ## Instanced or Per Player
 
@@ -201,9 +201,25 @@ npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.HiveWand
 ```
 
 # Full Boss Example
-In Terraria, bosses drop different items depending on the game mode. In expert mode, a boss bag is dropped for each player. In normal mode, the items that would come out of a boss bag except expert only items are dropped instead. This example shows this pattern, as well as the corresponding boss bag ModItem code:
+In Terraria, bosses drop different items depending on the game mode. In expert mode, a boss bag is dropped for each player. In normal mode, the items that would come out of a boss bag except expert only items are dropped instead. This example shows this pattern.
+You can view the `ModifyNPCLoot` code on the [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs) and the corresponding `OpenBossBag` code on the [MinionBossBag](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/MinionBossBag.cs), below is a minimal example to showcase it:
 ```cs
-// TODO
+//The important parts to handle proper difficulty drops and the boss bag are the following:
+//1. The boss:
+//1.1. In the ModifyNPCLoot hook
+npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));
+//1.2. Put any loot that belongs in the bag based on the "not expert" condition
+LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
+
+//2. The bag:
+//2. In the ModItem
+public override int BossBagNPC => ModContent.NPCType<MinionBossBody>();
+//2.1. In the OpenBossBag hook, replicate the drops using runtime code (Main.rand, QuickSpawnItem, etc.)
+if (Main.rand.NextBool(7)) {
+	player.QuickSpawnItem(entitySource, ModContent.ItemType<MinionBossMask>());
+}
+//Most often you will use ItemDropRule.Common which we can fully replicate using Main.rand.NextBool(7) and player.QuickSpawnItem, other rules may require different code, which is not covered here
 ```
 
 # Consulting vanilla drop code
