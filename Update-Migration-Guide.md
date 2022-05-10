@@ -223,6 +223,8 @@ var conditionDescription = NetworkText.FromKey("Mods.MyMod.MyConditionKey"); //Y
 String-based mod content fetching (such as `Mod.ItemType("ItemName")` or `Mod.ProjectileType("ProjectileName")`) have been replaced and unified under `Mod.Find<ModX>("XName").Type` (rarely`.Type` is `.Slot`). Instead of returning 0 if said content is not found, it will now throw an exception, encouraging use of the compile-time safe generic methods (which still exist, such as `ModContent.ItemType<ItemName>()`), or if using the generic method is not possible (such as cross mod), `Mod.TryFind<ModX>("XName", out var baseObj)` (and then using `baseObj.Type` if the method returned `true`).
 The same methods also exist in `ModContent`, the string parameter then expects the format "ModName/XName" (which is by the way what `baseObj.FullName` would return).
 
+**IMPORTANT: Do NOT replace/remove the `<ModX>` part!**
+
 Other methods unified to the new approach:
 * `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`)
 
