@@ -62,6 +62,7 @@ return instance;
 * `Player.SporeSac` -> `Player.SporeSac(Item)`
 * `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
 * `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
+* `Main.instance.DrawPlayer(...)` -> `Main.PlayerRenderer.DrawPlayer(Main.Camera, ...)`
 
 ### Non-Static Fields / Constants / Properties
 * `Main.Rasterizer` is now static
