@@ -20,6 +20,8 @@ Specifies the folder to look for .tmod files. Useful for hosted servers as typic
 Client Command Line Argument  
 Useful for modders who wish to quickly test their mod. This flag will automatically select the 1st player and world in the list, allowing the modder to launch directly into the game. Very useful when building and launching from Visual Studio.
 
+If you wish to specify a specific player and world, you can use `-skipselect "MyPlayer:MyWorld"`
+
 ### build [pathToModSource]
 Server Client Command Line Argument  
 Builds the mod specified by the folder from source, useful for modders.
