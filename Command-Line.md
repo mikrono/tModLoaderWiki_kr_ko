@@ -1,5 +1,12 @@
 In addition to all the Command Line and Server Config settings available in [vanilla Terraria](https://terraria.gamepedia.com/Server), tModLoader adds a few which are listed below.
 
+### TOBEADDEDLIST
+1) -loadlib
+2) -publish, -ciprep, -publishedmodfiles, -uploadfolder
+3) -noupnp
+4) -experimental
+5) /gldevice:OpenGL
+
 ### savedirectory [pathToSaveDirectoryFolder]
 Server and Client Command Line Argument    
 Specifies the save directory. The save directory will usually be `%UserProfile%\Documents\My Games\Terraria\ModLoader​` on Windows, `/Users/account/Library/Application Support/Terraria/ModLoader` on Mac, and `~/.local/share/Terraria/ModLoader` OR `$XDG_DATA_HOME/Terraria/ModLoader` on Linux. The directory `/ModLoader` will automatically be appended to the provided path. Use this argument to specify a different save directory. The save directory is the parent directory of the worlds directory and mods directory, so you can use only this parameter rather than both of those.
