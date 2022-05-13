@@ -23,7 +23,7 @@ At this point, you could check the `#alpha-update-log` channel on the [tModLoade
 
 At this point, open up Visual Studio and navigate to the location of the error. You should be able to immediately see red underlines indicating an error:    
 ![image](https://user-images.githubusercontent.com/4522492/168201563-48c70e41-95f2-4161-92ef-4b421faa3e6e.png)    
-Using the information provided in the update log message or other methods, fix the error by changing `DefaultToPlacableWall` to `DefaultToPlaceableWall`.
+Using the information provided in the update log message or other methods, fix the error by changing `DefaultToPlacableWall` to `DefaultToPlaceableWall`. (Notice the missing "e" in the original "Placeable" spelling.)
 
 This quick example should teach the basic steps for fixing JIT Exceptions, but feel free to come by the `#alpha-modding-help` channel if you have trouble figuring out how to fix your issue. There is a slight possibility that there are no errors in Visual Studio, but your original published mod fails to load. In this case, building the mod and publishing again should fix the issue. This is typically caused by a new optional argument being added to a method you were previously using.
 
