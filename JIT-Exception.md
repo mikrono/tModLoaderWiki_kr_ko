@@ -19,7 +19,7 @@ First, we see at the top the the mod causing the error is called "BannerBonanza"
 From this, we know that in the `BannerRackItem` class in the `BannerBonanza.Items` namespace, the `SetDefaults` method is where this particular error is happening. The error says that the method `Void Terraria.Item.DefaultToPlacableWall(UInt16)` doesn't exist. When this mod was built, the method did exist, but apparently it doesn't anymore. 
 
 At this point, you could check the `#alpha-update-log` channel on the [tModLoader Discord](https://tmodloader.net/discord) and look for recent messages talking about this. Here is an example of what that would look like:    
-![image](https://user-images.githubusercontent.com/4522492/168201319-507a5301-6eea-4073-8b36-bf7e15888965.png)    
+![image](https://user-images.githubusercontent.com/4522492/168232320-c63110a8-776f-4e35-9a57-bde54fa69f5d.png)
 
 At this point, open up Visual Studio and navigate to the location of the error. You should be able to immediately see red underlines indicating an error:    
 ![image](https://user-images.githubusercontent.com/4522492/168201563-48c70e41-95f2-4161-92ef-4b421faa3e6e.png)    
