@@ -14,7 +14,8 @@ You'll need to change the code in your mod to fix all the errors now present and
 Here is a typical `JITException` message, this example will go through interpreting and fixing this specific error:    
 ![image](https://user-images.githubusercontent.com/4522492/168198434-efe69dc0-91f0-4de3-98e2-9c1a464c06f4.png)    
 First, we see at the top the the mod causing the error is called "BannerBonanza". In the next section, we see the actual `JITException` message, it says that:
-> In BannerBonanza.Items.BannerRackItem.SetDefaults, Method not found: 'Void Terraria.Item.DefaultToPlacableWall(UInt16)'." 
+> In BannerBonanza.Items.BannerRackItem.SetDefaults, Method not found: 'Void Terraria.Item.DefaultToPlacableWall(UInt16)'."    
+
 From this, we know that in the `BannerRackItem` class in the `BannerBonanza.Items` namespace, the `SetDefaults` method is where this particular error is happening. The error says that the method `Void Terraria.Item.DefaultToPlacableWall(UInt16)` doesn't exist. When this mod was built, the method did exist, but apparently it doesn't anymore. 
 
 At this point, you could check the `#alpha-update-log` channel on the [tModLoader Discord](https://tmodloader.net/discord) and look for recent messages talking about this. Here is an example of what that would look like:    
