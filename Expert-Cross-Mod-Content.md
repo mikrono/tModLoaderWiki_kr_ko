@@ -119,6 +119,7 @@ The best practice is to put all code that directly uses a weakReference (potenti
 ## 1.4 Specific Instructions
 On 1.4 tModLoader, you'll additionally need to annotate these methods/properties/classes to allow your mod to load. See [JIT Exception weak references](https://github.com/tModLoader/tModLoader/wiki/JIT-Exception#weak-references) for more info.
 
+### ExtendsFromMod
 If you are inheriting from a base class in the mod you are weakly referencing, you can use the `[ExtendsFromMod(...)]` attribute to specify that the mod should not be autoloaded or considered at all when mods inspect other mods. Here is an example:    
 
 ```cs
