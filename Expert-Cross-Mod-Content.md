@@ -119,6 +119,15 @@ The best practice is to put all code that directly uses a weakReference (potenti
 ## 1.4 Specific Instructions
 On 1.4 tModLoader, you'll additionally need to annotate these methods/properties/classes to allow your mod to load. See [JIT Exception weak references](https://github.com/tModLoader/tModLoader/wiki/JIT-Exception#weak-references) for more info.
 
+If you are inheriting from a base class in the mod you are weakly referencing, you can use the `[ExtendsFromMod(...)]` attribute to specify that the mod should not be autoloaded or considered at all when mods inspect other mods. Here is an example:    
+
+```cs
+[ExtendsFromMod("ExampleMod")]
+public class ExampleItemSubclass : ExampleItem
+{
+}
+```
+
 # No References, aka reflection (Expert)
 
 Using reflection to do cross mod is not ideal. For one, reflection relies on strings for accessing classes and fields of the target mod. As the target mod updates and changes, your mod will fail as well. This option is not cooperative and can be inefficient. This approach will not be explained here as it is a poor choice. It is much better if you work together with the author(s) of the other mod(s), so they can open up their mod for modifications you want to make with your mod. Using Github together is your best bet!
