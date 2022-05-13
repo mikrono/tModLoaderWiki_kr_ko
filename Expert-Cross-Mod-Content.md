@@ -116,6 +116,9 @@ You may mistakenly think that your weak reference is working because you disable
 ## Recommendations
 The best practice is to put all code that directly uses a weakReference (potentially optional one), in a separate class. This can make sure the JIT (Just-In-Time) compiler never has to resolve such references when they aren't available, preventing a crash.
 
+## 1.4 Specific Instructions
+On 1.4 tModLoader, you'll additionally need to annotate these methods/properties/classes to allow your mod to load. See [JIT Exception weak references](https://github.com/tModLoader/tModLoader/wiki/JIT-Exception#weak-references) for more info.
+
 # No References, aka reflection (Expert)
 
 Using reflection to do cross mod is not ideal. For one, reflection relies on strings for accessing classes and fields of the target mod. As the target mod updates and changes, your mod will fail as well. This option is not cooperative and can be inefficient. This approach will not be explained here as it is a poor choice. It is much better if you work together with the author(s) of the other mod(s), so they can open up their mod for modifications you want to make with your mod. Using Github together is your best bet!
