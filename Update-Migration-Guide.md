@@ -345,18 +345,19 @@ Tile data can be accessed & modified via the `ref T Tile.Get<T>() where T : unma
 TODO mention all the renames as per [PR #1](https://github.com/tModLoader/tModLoader/pull/1301) and [PR #2](https://github.com/tModLoader/tModLoader/pull/2047) (`Tile.type` -> `Tile.TileType`, `Tile.active()` -> `Tile.HasTile`, `Tile.nactive()` -> `Tile.HasUnactuatedTile` etc.)
 
 ### ModBiome and ModSceneEffect
-ModSceneEffect now does the handling of choosing scene effects instead of separate hooks, so that tML can give proper attention to designated priorities. Notably, it has an IsSceneEffectActive return method, and Priority property associated to it. It should be derived directly when adding scene effects that were controlled by any of the following hooks, with the exemption of ModTypes that derive this class already such as ModBiome. Multiple small, derived classes may be required to accomplish the same functionality. This change does not affect existing ModNPC music implementations at time of writing.
+`ModSceneEffect` now does the handling of choosing scene effects instead of separate hooks, so that tML can give proper attention to designated priorities. Notably, it has an `IsSceneEffectActive` return method, and a `Priority` property associated to it. It should be derived directly when adding scene effects that were controlled by any of the following hooks, with the exemption of `ModType`s that derive this class already such as `
+ModBiome`. Multiple small, derived classes may be required to accomplish the same functionality. This change does not affect existing ModNPC music implementations at the time of writing.
 
-The following changes have been made with respect to ChooseStyle Hooks, with possibly multiple ModSceneEffect classes being required to fully replace the Hook:
+The following changes have been made with respect to `ChooseStyle` Hooks, with possibly multiple `ModSceneEffect` classes being required to fully replace the Hook (If not otherwise specified, `ModSceneEffect` also counts as `ModBiome`, as the latter inherits from the former):
 
- - ModSystem.ChooseWaterStyle Hook -> ModSceneEffect.WaterStyle Property
- - ModSystem.ChooseMusic Hook -> ModSceneEffect.Music Property
- - ModSurfaceBgStyle.ChooseStyle Hook -> ModSceneEffect.SurfaceBackgroundStyle Property
- - ModUgBgStyle.ChooseStyle Hook -> ModSceneEffect.UndergroundBackgroundStyle Property
+* `ModWorld.ChooseWaterStyle()` -> `ModSceneEffect.WaterStyle`
+* `Mod.UpdateMusic()` -> `ModSceneEffect.Music and .Priority`, aswell as `ModSceneEffect.IsSceneEffectActive()`
+* `ModSurfaceBgStyle.ChooseStyle()` -> `ModSceneEffect.SurfaceBackgroundStyle`
+* `ModUgBgStyle.ChooseStyle()` -> `ModSceneEffect.UndergroundBackgroundStyle`
 
-Likewise, with the introduction of ModBiome, the UpdateBiomes and UpdateBiomeVisuals hooks have been integrated in to the ModBiome class. 
- - ModPlayer.UpdateBiomes -> ModBiome.IsActive()
- - ModPlayer.UpdateBiomeVisuals -> ModBiome.UpdateBiomeVisuals()
+Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBiomeVisuals` hooks have been integrated in to the `ModBiome` class. 
+* `ModPlayer.UpdateBiomes()` -> `ModBiome.IsBiomeActive()`
+* `ModPlayer.UpdateBiomeVisuals()` -> `ModSceneEffect.SpecialVisuals()`
 
 ## Hook Changes
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
