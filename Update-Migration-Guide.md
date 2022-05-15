@@ -36,9 +36,9 @@ return instance;
 ### Static Fields / Constants / Properties
 * `ID.ItemUseStyleID` has renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
 * `Main.ActivePlayerCount` -> `Main.CurrentFrameFlags.ActivePlayersCount`
-* `Main.font*` -> `GameContent.FontAssets.*.Value`<br/>
-**Regex:** `Main.font(\w+)]` -> `GameContent.FontAssets.$1.Value`
-* `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
+* `Main.font*` -> `FontAssets.*.Value`<br/>
+**Regex:** `Main.font(\w+)]` -> `FontAssets.$1.Value`
+* `Main.*Texture[i]` -> `TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `TextureAssets.Item[$1].Value`
 * `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
