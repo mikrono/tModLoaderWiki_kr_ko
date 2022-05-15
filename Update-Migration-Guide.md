@@ -39,7 +39,7 @@ return instance;
 * `Main.font*` -> `GameContent.FontAssets.*.Value`<br/>
 **Regex:** `Main.font(\w+)]` -> `GameContent.FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `GameContent.TextureAssets.*[i].Value`<br/>
-**Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `GameContent.TextureAssets.Item[$1].Value`
+**Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `TextureAssets.Item[$1].Value`
 * `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
 * `Main.GlobalTime` -> `Main.GlobalTimeWrappedHourly`
