@@ -284,39 +284,6 @@ Small overview of the changes:
 * `Global/ModItem.Shoot` -> `Global/ModItem.ModifyShootStats` (for changing shooting related parameters)
 * `Global/ModItem.Shoot` -> `Global/ModItem.Shoot` (for spawning projectiles and controlling if the default projectile spawns)
 
-### NPC Buff Immunities
-The old approach to setting buff immunities on NPCs does not work anymore (Reminder: in `SetDefaults`: `npc.buffImmune[type] = true;`).
-The new approach moves it to `SetStaticDefaults` and is using new syntax. Example:
-
-```cs
-// Add these to the top of your file
-using Terraria.DataStructures;
-using Terraria.ID;
-
-// Specify the debuffs it is immune to
-NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData {
-	SpecificallyImmuneTo = new int[] {
-		BuffID.Confused, // Most NPCs have this
-		BuffID.Poisoned,
-		ModContent.BuffType<MyDebuff>(), // Modded buffs
-	}
-};
-NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
-```
-
-If you want to give your NPC immunities to all debuffs (like The Destroyer), use this:
-```cs
-new NPCDebuffImmunityData {
-	ImmuneToAllBuffsThatAreNotWhips = true,
-	ImmuneToWhips = true
-}
-```
-
-### Equip Textures
-1.4 includes support for a new streamlined armor texture format. This affects `EquipType.HandsOn/HandsOff/Body`. Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
-
-![](https://i.imgur.com/0iw2Tw2.png)
-
 ### Player Drawing
 Modders previously using `PlayerLayer` and `ModPlayer.ModifyDrawLayers` will now have to adapt to the replacements: `PlayerDrawLayer`, `ModPlayer.HideDrawLayers`, and `ModPlayer.ModifyDrawLayerOrdering`.
 
@@ -383,11 +350,13 @@ Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBio
 ### IEntitySource
 Various entity creating methods have received a new parameter denoting its source, read more about it [here](https://github.com/tModLoader/tModLoader/wiki/IEntitySource).
 
-### Armor Sheets Changed for Body Style
-The Sprite Styling has changed for some aspects of the armor - namely Body, Arm, and FemaleBody. Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
+### Equip Textures and Armor Sheets
+The Sprite Styling has changed for some aspects of the armor - namely `EquipType.HandsOn/HandsOff/Body` (the latter affecting the 1.3 Arm and FemaleBody textures too). Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
+
+![](https://i.imgur.com/0iw2Tw2.png)
 
 ### Minion spawning
-Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it a suitable place). Here are the two most common approaches:
+Summon damage (minions, sentries, and minion/sentry-shot projectiles) now scales dynamically instead of fixed on spawn. Modders now have to manually assign `Projectile.originalDamage` to the base damage (usually `Item.damage`) AFTER it is created (NOT in `SetDefaults`, `Shoot` in the item that spawns it is a suitable place). Here are the two most common approaches:
  
 ```cs
 //1: Used mostly for sentries (in combination with `Player.FindSentryRestingSpot`)
@@ -406,6 +375,34 @@ To add drops to NPCs, you now have to use the `Mod/GlobalNPC.ModifyNPCLoot` (and
 You can customize the bestiary entries using the `ModNPC.SetBestiary` hook, and the appearance of the NPC in the preview and full image by adding your data to `NPCID.Sets.NPCBestiaryDrawOffset`.
 
 //TODO bestiary integration with custom preview images, animation, drop rules etc.
+
+### NPC Buff Immunities
+The old approach to setting buff immunities on NPCs does not work anymore (Reminder: in `SetDefaults`: `npc.buffImmune[type] = true;`).
+The new approach moves it to `SetStaticDefaults` and is using new syntax. Example:
+
+```cs
+// Add these to the top of your file
+using Terraria.DataStructures;
+using Terraria.ID;
+
+// Specify the debuffs it is immune to
+NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData {
+	SpecificallyImmuneTo = new int[] {
+		BuffID.Confused, // Most NPCs have this
+		BuffID.Poisoned,
+		ModContent.BuffType<MyDebuff>(), // Modded buffs
+	}
+};
+NPCID.Sets.DebuffImmunitySets[Type] = debuffData;
+```
+
+If you want to give your NPC immunities to all debuffs (like The Destroyer), use this:
+```cs
+new NPCDebuffImmunityData {
+	ImmuneToAllBuffsThatAreNotWhips = true,
+	ImmuneToWhips = true
+}
+```
 
 ### Wings
 Wing data is now assigned through an `ArmorIDs` set on load (`ModItem.SetStaticDefaults`) like follows: `ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(wingTimeMax, speed, acceleration);` (Check other constructors for more fine-tuning). Only assign `player.wingTimeMax` or use `ModItem.HorizontalWingSpeeds` if you need to dynamically adjust those. Failure to add the former code will result in the player not moving horizontally while flying.
