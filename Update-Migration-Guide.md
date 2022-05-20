@@ -106,11 +106,13 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.RecipeGroupHelper` -> `ModLoader.Utilities.RecipeGroupHelper`
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
 * `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
-* `ModLoader.ModContent.TextureExists(string)` ->`ModLoader.ModContent.HasAsset(string)`
-* `ModLoader.ModContent.GetTexture(string)` ->`ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
+* `ModLoader.ModContent.TextureExists(string)` -> `ModLoader.ModContent.HasAsset(string)`
+* `ModLoader.ModContent.GetTexture(string)` -> `ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
 * `ModLoader.Mod.GetTexture(string)` -> `ModLoader.Mod.Assets.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
+* `ModLoader.ModContent.GetEffect(string)` -> `ModContent.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
+* `ModLoader.Mod.GetEffect(string)` -> `ModLoader.Mod.Assets.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
 * `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
 * `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`, with the name now being specified through the `Name` property on the `ILoadable`
 * `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
