@@ -38,4 +38,4 @@ Player data is very large, so special data syncing is used to minimize how often
 # Improving & beyond pre-defined hooks
 Many examples can be found in ExampleMod for packets. For example you can use the Notepad++ "Find in files" feature and look for `GetPacket()` in the ExampleMod folder. Make sure 'Match case' and 'In all sub-folders' are checked. You'll find all locations in which a packet is created and likely sent.
 
-If you feel you want to delve even deeper to learn how to send ModPakcets and optimize your networking more, read our [intermediate netcode guide](intermediate-netcode).
+If you feel you want to delve even deeper to learn how to send ModPackets and optimize your networking more, read our [intermediate netcode guide](intermediate-netcode).
