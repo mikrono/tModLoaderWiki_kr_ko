@@ -9,23 +9,48 @@ ___
 ## Steam Installation
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
 Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
-The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. If you are using family share and it is not installing, you can read the manual install instructions below.
+The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
+Note that tModLoader does NOT currently support Family Share due to an issue with Valve's implementation. Active dialogs are still being had to fix it, we ask for your patience!
+
+By Default, 1.4 tModLoader will be installed by Steam.
+
+To access 1.3 (Legacy tModLoader), use either the manual install instructions below (look for Release version 0.11.8.9) or take the following steps:
+ Go to Library: 
+![image](https://user-images.githubusercontent.com/59670736/169886058-3eb1b43c-a113-468b-8213-ef0bcccc8e01.png)
+ Find tModLoader:
+![image](https://user-images.githubusercontent.com/59670736/169886128-43f95278-a2a4-4b13-bb7c-1b670c81b657.png)
+ Right Click tModLoader
+![image](https://user-images.githubusercontent.com/59670736/169886174-dfe0612b-75d9-4469-8f13-be3649fd35fc.png)
+ Click Properties to Open the Steam Game Control Panel
+![image](https://user-images.githubusercontent.com/59670736/169886269-f3a0e854-bbe6-4c2f-ab4c-6980406fea51.png)
+ Select Betas
+![image](https://user-images.githubusercontent.com/59670736/169886307-e60be211-d331-443f-bcde-109f61c23323.png)
+ In the dropdown, select "Public-1.3-beta"
+![image](https://user-images.githubusercontent.com/59670736/169886370-5a340164-ccfe-4520-a3f5-515fd81671cf.png)
+ Close the Prompt (no code required)
+![image](https://user-images.githubusercontent.com/59670736/169886435-b9cd7a18-eeb9-46f8-a41f-3dc450be8702.png)
+
 
 ### How to uninstall?
 Simply right-click tModLoader -> Manage -> Uninstall.
 Your vanilla install will be unharmed.
 
 ### Steam Family Share Installation
-For some reason, if you don't own Terraria and are instead using a family shared Terraria, tModLoader won't launch and will take you to the Steam store. We are looking into the issue, but an easy fix is to install tModLoader through steam as normal and then copy the `steam_appid.txt` file from the Terraria install folder to the tModLoader install folder, replacing the existing file.
+For some reason, if you don't own Terraria and are instead using a family shared Terraria, tModLoader won't launch and will take you to the Steam store. We are looking into the issue, there is no known workaround for the 1.4 version.
+
+On the 1.3 version, a workaround is to install tModLoader through steam as normal and then copy the `steam_appid.txt` file from the Terraria install folder to the tModLoader install folder, replacing the existing file. This does however break multiplayer.
 
 ## Manual Installation
-This installation is necessary for players who have purchased Terraria from GOG or who can't get Steam Family Share to work.
+This installation is necessary for players who have purchased Terraria from GOG or who otherwise want to install a particular version of tModLoader.
 
 Installing tModLoader is relatively easy.
 
 1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tML release you want. (usually the **[latest](https://github.com/tModLoader/tModLoader/releases/latest)**)
 2. Unzip the **contents** of the zip you downloaded to a folder named `tModLoader` either next to or nested inside the Terraria install folder. 
-On 1.4, if the folder contains a 'Build' folder, you will need to remove this intermediate folder and bring the contents up one level. (GOG usually installs to `C:\GOG Games`, and Steam to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`. See [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike) to find the steam installation location if you customized it.) (If you are on linux and own the game on GOG, the nested option inside `Terraria\game` is preferred) If you don't know how to unzip a zip file, get someone who knows how to use a computer to help you.
+On 1.4, if the folder contains a 'Build' folder, you will need to remove this intermediate folder and bring the contents up one level. (GOG usually installs to `C:\GOG Games`, and Steam to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`. 
+
+See [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike) to find the steam installation location if you customized it.) (If you are on linux and own the game on GOG, the nested option inside `Terraria\game` is preferred) If you don't know how to unzip a zip file, get someone who knows how to use a computer to help you.
+
     * **Option 1, side-by-side (Recommended)**:    
 ![](https://i.imgur.com/gmrBMSO.png)    
     * **Option 2, nested**:    
@@ -51,7 +76,7 @@ Tip: Here is an easy way to find where your Terraria files are located: ([video 
 3. You are now in your Terraria folder (this is where you should install tModLoader)
 
 ### Manual Installation Common Issues
-Windows only: If the game doesn't launch at all, you might not have .NET 4.5 or XNA 4.0 installed. Download and run both installers:
+Windows 1.3 only: If the game doesn't launch at all, you might not have .NET 4.5 or XNA 4.0 installed. Download and run both installers:
 1. [Microsoft .NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=30653)
 2. [Microsoft XNA Framework Redistributable 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
 
@@ -76,7 +101,9 @@ If the automatic copy doesn't work, copy the "World" and "Player" folders from `
 tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods.
 
 ## I have too little memory to run multiple mods!
-Terraria and tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit version of tModLoader.
+Terraria and 1.3 tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit version of 1.3 tModLoader.
+
+1.4 tModLoader is 64 bit by default, which alleviates this problem.
 
 ## I use macOS Catalina. What do I do?
 If you experience any problems, try using the 64-bit version of tModLoader or talk to us on Discord.
