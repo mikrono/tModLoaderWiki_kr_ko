@@ -124,9 +124,14 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
 * `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
-* `ModLoader.ModPlayer/ModItem.ModifyWeaponCrit(..., ref int crit)` -> `(..., ref float crit)`
-* `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback/ModifyWeaponDamage` now uses a single `ref StatModifier` instead of several `ref float/int`s.
+* `ModLoader.ModPlayer/ModItem.GetWeaponDamage` -> removed/deprecated
+* `ModLoader.ModPlayer/ModItem.GetWeaponCrit(..., ref int)` -> `ModLoader.ModPlayer/ModItem.ModifyWeaponCrit(..., ref float)`
+* `ModLoader.ModPlayer/ModItem.GetWeaponKnockback(..., ref bool)` -> `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback(..., ref StatModifier)`
+* `ModLoader.ModPlayer/ModItem.ModifyWeaponDamage(..., float, float)` -> removed/deprecated
+* `ModLoader.ModPlayer/ModItem.ModifyWeaponDamage(..., float, float, float)` -> `ModLoader.ModPlayer/ModItem.ModifyWeaponDamage(..., ref StatModifier)`
 * `ModLoader.ModTile/ModWall.drop` -> `ModLoader.ModTile/ModWall.ItemDrop`
+* `ModLoader.ModTile/ModWall.soundType` -> `ModLoader.ModTile/ModWall.HitSound`
+* `ModLoader.ModTile/ModWall.soundStyle` -> removed/integrated into `HitSound`
 * `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `ModLoader.ModTile.NewRightClick` -> `ModLoader.ModTile.RightClick`
 * `ModLoader.ModTile.Dangersense` -> `ModLoader.ModTile.IsTileDangerous` (`GlobalTile` variant is `bool?` instead of `bool`)
