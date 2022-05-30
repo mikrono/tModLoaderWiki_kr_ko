@@ -103,7 +103,7 @@ NPC.HitSound = SoundID.NPCHit4 with {
 Volume defaults to `1f` (100%) and can range from `0f` to `1f`.
 
 ## Pitch
-Pitch can be adjusted up or down and defaults to `0f`. The lower limit, `-1f`, is down one octive and the upper limit, `1f`, is up one octive.
+Pitch can be adjusted up or down and defaults to `0f`. The lower limit, `-1f`, is down one octave and the upper limit, `1f`, is up one octave.
 
 ## Pitch Variance
 Pitch variance is a randomness added to the pitch each time the sound is played. This can add some variety to sounds to make them less repetitive. 
