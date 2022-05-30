@@ -156,7 +156,7 @@ Finally, when summoning vanilla textures, make sure to call the right variant of
 Gores (`ModGore`) are now autoloaded from any folder that contains "Gores" in the path (instead of having to be in the "Gores" folder in the mod root folder).
 
 ### Sounds
-Sounds are now greatly simplified, there is only one way to play a sound, and one object to represent a sound. See the updated [Basic Sounds](https://github.com/tModLoader/tModLoader/wiki/Basic-Sounds) guide for more info. To migrate existing code, use `SoundEngine.PlaySound`, `SoundID` fields, and `new SoundStyle(pathtosoundwithoutextension)` as taught in the guide.
+Sounds are now greatly simplified, there is only one way to play a sound, and one object to represent a sound. See the updated [Basic Sounds](https://github.com/tModLoader/tModLoader/wiki/Basic-Sounds) guide for more info. To migrate existing code, use `SoundEngine.PlaySound`, `SoundID` fields, and `new SoundStyle(pathtosoundwithoutextension)` as taught in the guide. For more info and a few examples, see the corresponding [Pull Request](https://github.com/tModLoader/tModLoader/commit/1f8670de56611833db64bb7082bbd2f17b9c0877).
 
 ### Recipes
 Recipes were totally reworked (don't panic, read below). Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use fluent api syntax. If you don't know what that is, here's an example of what it looked like before:
