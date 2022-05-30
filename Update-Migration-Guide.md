@@ -18,18 +18,6 @@ v2022.X updates tModLoader to Terraria 1.4. This update changed everything. The 
 * `Main.PlaySound` -> `SoundEngine.PlaySound` -> in the `Terraria.Audio` namespace
 * `Main.IsTileSpelunkable(Tile)` -> `Main.IsTileSpelunkable(int, int)`
 * `Main.PlaySoundInstance(SoundEffectInstance)` -> completely removed
-```cs
-//Example from a ModSound
-SoundEffectInstance instance = sound.CreateInstance();
-Main.PlaySoundInstance(instance);
-return instance;
-
-//Was changed to:
-SoundEffectInstance instance = Sound.Value.CreateInstance();
-instance.Play();
-SoundInstanceGarbageCollector.Track(instance);
-return instance;
-```
 * `TileDrawing.IsTileDangerous(Player, Tile, ushort)` -> `TileDrawing.IsTileDangerous(int, int, Player)`
 * `NetMessage.BroadcastChatMessage` -> `Chat.ChatHelper.BroadcastChatMessage`
 
@@ -108,6 +96,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.RecipeGroupHelper` -> `ModLoader.Utilities.RecipeGroupHelper`
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
 * `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
+* `ModLoader.ModSound` -> removed
 * `ModLoader.ModContent.TextureExists(string)` -> `ModLoader.ModContent.HasAsset(string)`
 * `ModLoader.ModContent.GetTexture(string)` -> `ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
@@ -120,7 +109,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
 * `ModLoader.Mod.AddTranslation(ModTranslation)` -> `ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `ModLoader.Mod.CreateTranslation(string)` -> `ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
-* `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> `SoundLoader.GetLegacySoundSlot(Mod, string)`
+* `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> removed
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
@@ -164,7 +153,10 @@ Texture/Asset paths are now also slightly changed, so any use of something like 
 
 Finally, when summoning vanilla textures, make sure to call the right variant of `Main.instance.LoadItem(type);` before using it in cases such as `TextureAssets.Item[type].Value` to avoid null errors.
 
-Gores and sounds (`ModGore`/`ModSound`) are now autoloaded from any folder that contains "Gores"/"Sounds" in the path (instead of having to be in the "Gores"/"Sounds" folder in the mod root folder).
+Gores (`ModGore`) are now autoloaded from any folder that contains "Gores" in the path (instead of having to be in the "Gores" folder in the mod root folder).
+
+### Sounds
+Sounds are now greatly simplified, there is only one way to play a sound, and one object to represent a sound. See the updated [Basic Sounds](https://github.com/tModLoader/tModLoader/wiki/Basic-Sounds) guide for more info. To migrate existing code, use `SoundEngine.PlaySound`, `SoundID` fields, and `new SoundStyle(pathtosoundwithoutextension)` as taught in the guide.
 
 ### Recipes
 Recipes were totally reworked (don't panic, read below). Instead of creating a `ModRecipe` (now just `Recipe`), and calling methods on that, recipes can now use fluent api syntax. If you don't know what that is, here's an example of what it looked like before:
