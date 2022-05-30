@@ -23,7 +23,7 @@ v2022.X updates tModLoader to Terraria 1.4. This update changed everything. The 
 
 ### Static Fields / Constants / Properties
 * `ID.ItemUseStyleID` has renamed fields (`SwingThrow` -> `Swing` (1), `EatingUsing` -> `EatFood` (2), `Stabbing` -> `Thrust` (3), `HoldingUp` -> `HoldUp` (4), `HoldingOut` -> `Shoot` (5)) and alot more use styles to choose from
-* `Main.ActivePlayerCount` -> `Main.CurrentFrameFlags.ActivePlayersCount`
+* `Main.ActivePlayersCount` -> `Main.CurrentFrameFlags.ActivePlayersCount`
 * `Main.font*` -> `FontAssets.*.Value`<br/>
 **Regex:** `Main.font(\w+)]` -> `FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `TextureAssets.*[i].Value`<br/>
@@ -78,7 +78,9 @@ v2022.X updates tModLoader to Terraria 1.4. This update changed everything. The 
 
 ### tModLoader changes
 The following contains smaller scale changes to tModLoader members. More elaborate changes (i.e. things surrounding IEntitySource) are handled in separate categories below
+
 _All ModX things listed here apply to GlobalX aswell_
+
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
 * `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
