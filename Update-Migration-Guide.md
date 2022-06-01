@@ -137,6 +137,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref Color, ref int)` -> `ModLoader.ModTile.DrawEffects(int, int, SpriteBatch, ref TileDrawInfo)`
 * `ModLoader.ModTile.NewRightClick` -> `ModLoader.ModTile.RightClick`
 * `ModLoader.ModTile.Dangersense` -> `ModLoader.ModTile.IsTileDangerous` (`GlobalTile` variant is `bool?` instead of `bool`)
+* `ModLoader.ModTile.HasSmartInteract` -> `HasSmartInteract(int i, int j, SmartInteractScanSettings settings)` (`SmartInteractScanSettings` requires `using Terraria.GameContent.ObjectInteractions;`)
 * `ModLoader.ModTile.disableSmartCursor` -> `TileID.Sets.DisableSmartCursor[Type]`
 * `ModLoader.ModTile.disableSmartInteract` -> `TileID.Sets.DisableSmartInteract[Type]`
 * `ModLoader.ModTile.dresser` -> `TileID.Sets.BasicDresser[Type]`
