@@ -92,6 +92,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.Mod.HotKeyPressed` -> removed, use `ModLoader.ModPlayer.ProcessTriggers`
 * `ModLoader.Mod.AddEquipTexture` -> removed, use `ModLoader.EquipLoader.AddEquipTexture` with Mod as the first parameter
 * `ModLoader.Mod.GetEquipSlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter
+* `ModLoader.Mod.GetAccessorySlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter, cast to `sbyte` if necessary
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
 * `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
