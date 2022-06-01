@@ -71,7 +71,7 @@ When using an existing `SoundStyle`, you inherit the playback settings assigned 
 
 To play a sound manually, use the `SoundEngine.PlaySound` method. This method is in the `Terraria.Audio;` namespace, so make sure you have `using Terraria.Audio;` at the top of your .cs file.
 
-The `SoundEngine.PlaySound` method has 2 parameters. The first is the `SoundStyle`, this is required. The 2nd parameter is an optional `Vector2` representing the position of the sound in world coordinates. If the position is ommitted, the sound is played without any panning effect as if it were happening in the center of the screen.
+The `SoundEngine.PlaySound` method has 2 parameters. The first is the `SoundStyle`, this is required. The 2nd parameter is an optional `Vector2` representing the position of the sound in world coordinates. If the position is omitted, the sound is played without any panning effect as if it were happening in the center of the screen.
 
 To play an existing sound, simply call the method:
 ```cs
@@ -113,6 +113,60 @@ This dicatates how many instances of a sound can be playing at the same time. Th
 
 ## SoundLimitBehavior
 When the `MaxInstances` limit is reached, this tweak adjusts what will happen. The default is to `ReplaceOldest`, which will restart the sound. The other option is `IgnoreNew`, which will ignore the latest attempt to play the sound.
+
+# Adapting Vanilla Code or Code From Past tModLoader Versions
+Previous versions of tModLoader and code taken from decompiled Terraria do not use the same `SoundStyle` approach to playing sounds. To use code using old approaches, you'll need to fix the code. For example you might find code like `SoundEngine.PlaySound(12);` or `SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);`, but attempting to use this code in a mod will result in errors such as `No overload for method 'PlaySound' takes 4 arguments`.
+
+To fix these, you'll want to look up the sound on the [Sound IDs page on the Official Terraria wiki](https://terraria.wiki.gg/wiki/Sound_IDs), find the row corresponding to the parameters you have, and change it to use the `SoundID` entry instead. There might be some slight discrepancies, for example	
+"NPC Hit 50" corresponds to `SoundID.NPCHit50` and "NPC Killed 18" corresponds to `SoundID.NPCDeath18`. Rely on good judgement and [Intellisense](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) if you still get errors.
+
+Here is a simple example:
+```cs
+// Old code
+SoundEngine.PlaySound(12);
+```
+Now, we open up the wiki and find the entry with the ID of 12:    
+![image](https://user-images.githubusercontent.com/4522492/171317783-e1dc3817-13e5-4444-abd9-4451f23a04aa.png)    
+With this information, we can update our code:  
+```cs
+// Fixed code
+SoundEngine.PlaySound(SoundID.MenuTick);
+```
+
+Sometimes vanilla code uses `-1` for the 2nd and 3rd parameters. These parameters represent a null position, so you can safely ignore them. Sometimes you also see a `1` as the "Style" parameter for a sound that only has 1 entry on the wiki. You can ignore those as well:
+```cs
+// Old
+SoundEngine.PlaySound(12, -1, -1, 1);
+// Fixed
+SoundEngine.PlaySound(SoundID.MenuTick);
+```
+
+Sometimes there are 2 numbers (a "Type" and a "Style"), these will show up on the wiki as a number followed by another number in parenthesis.
+```cs
+// Old code
+SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);
+```
+Now, we open up the wiki and find the entry with the ID of 4 and style of 7. This will appear as `4 (7)` on the wiki:
+![image](https://user-images.githubusercontent.com/4522492/171318331-62a11319-12a1-48d3-b905-87df52a199b7.png)    
+With this information, we can update our code. Also, since the second parameter of `SoundEngine.PlaySound` is a `Vector2` now, we can pass in the position directly rather than passing in `X` and `Y` coordinates separately:  
+```cs
+// Fixed code
+SoundEngine.PlaySound(SoundID.NPCDeath7, base.position);
+```
+
+Rarely, old code set volume or pitch offset. To fix these, use the `with` syntax shown in the [Customizing Sound Playback](#Customizing-Sound-Playback) section above. 
+```cs
+// Old
+SoundEngine.PlaySound(12, -1, -1, 1, 0.75f, 0.3f);
+// Fixed code A: Taking into account the volume and pitch settings of the existing SoundStyle, if any. This is a direct adaptation of the old code
+SoundStyle adjusted = SoundID.MenuTick with {
+	Volume = SoundID.MenuTick.Volume * 0.75f,
+	Pitch = SoundID.MenuTick.Pitch + 0.3f,
+};
+SoundEngine.PlaySound(adjusted);
+// Fixed code B: Ignoring the existing volume and pitch settings inherited by the existing SoundStyle. This is technically different, but might be useful to know. Note that pitch has 1f added to it.
+SoundEngine.PlaySound(SoundID.MenuTick with { Volume= 0.75f, Pitch = 1.3f });
+```
 
 # Finding Sounds
 For many mods, reusing sounds that come with Terraria is a great idea. Terraria comes with over 700 sounds, but it can be difficult to remember or find a specific sound. There are several approaches to finding a Terraria sound to use. 
