@@ -95,7 +95,6 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.Mod.GetAccessorySlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter, cast to `sbyte` if necessary
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
-* `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper`
 * `ModLoader.SpawnCondition` -> `ModLoader.Utilities.SpawnCondition`
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
 * `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
