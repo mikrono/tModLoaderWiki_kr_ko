@@ -96,7 +96,6 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
 * `ModLoader.NPCSpawnHelper` -> `ModLoader.Utilities.NPCSpawnHelper` (This mainly affects `SpawnConditions`)
-* `ModLoader.RecipeGroupHelper` -> `ModLoader.Utilities.RecipeGroupHelper`
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
 * `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
 * `ModLoader.ModSound` -> removed
