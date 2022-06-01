@@ -168,6 +168,8 @@ SoundEngine.PlaySound(adjusted);
 SoundEngine.PlaySound(SoundID.MenuTick with { Volume= 0.75f, Pitch = 1.3f });
 ```
 
+To adapt old code from your mod, you'll need to make a `SoundStyle` as taught in the [SoundStyle](#SoundStyle) section above.
+
 # Finding Sounds
 For many mods, reusing sounds that come with Terraria is a great idea. Terraria comes with over 700 sounds, but it can be difficult to remember or find a specific sound. There are several approaches to finding a Terraria sound to use. 
 1. Extract all the sounds and play them in your media player
