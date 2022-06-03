@@ -101,6 +101,9 @@ Windows 1.3 only: If the game doesn't launch at all, you might not have .NET 4.5
 
 If you use GOG, simply delete the tModLoader folder you made before. Your worlds and players will be saved.
 
+## Downgrade tModLoader
+Sometimes a mod you are using fails to update in a timely manner and will cease to work with the latest tModLoader release. You can manually downgrade if this is the case. To manually downgrade, find the latest release for the version you used to use on **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download it. It is a `tModLoader.zip` file. For example, if you launch tModLoader and it recently updated to `v2022.06+` and it stopped working with an important mod, you can find the latest `v2022.05+` release and download it. After downloading, open up the tModLoader install directory and delete all the files. Make sure you are in the install folder and not the saves folder. To find the install directory, right click on tModLoader, click `Manage`, then `Browse Local Files`. This [video](https://giant.gfycat.com/SoulfulImpoliteBigmouthbass.mp4) shows that process. After deleting the original files, you can take the files from the .zip you downloaded and put them in the install folder. This [video](https://giant.gfycat.com/RashHardAmurstarfish.mp4) shows this process. Once you know the outdated mod updated, you can delete all files in the install directory and use steam to verify game integrity to upgrade back to the current tModLoader release. 
+
 ## My worlds and characters disappeared when I installed!
 **tModLoader DOES NOT use your vanilla world and player files.**
 The in-game should give you the option to _copy over_ your original vanilla files. This option won't work for players and worlds you have used in Terraria 1.4.
