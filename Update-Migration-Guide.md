@@ -280,13 +280,13 @@ Other porting changes:
 * `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
 
 ### XItem.Shoot
-`Global/ModItem.Shoot` has been split into three methods: `CanShoot`, `ModifyShootStats`, and `Shoot`. Now allowing shooting and changing shooting related parameters is separated from creation of the projectiles. `CanShoot` simply controls if the item can shoot projectiles or not. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
+`ModPlayer/GlobalItem/ModItem.Shoot` has been split into three methods: `CanShoot`, `ModifyShootStats`, and `Shoot`. Now allowing shooting and changing shooting related parameters is separated from creation of the projectiles. `CanShoot` simply controls if the item can shoot projectiles or not. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
 The `float speedX/Y` parameters have also been combined into `Vector2 velocity`. If you misuse `Shoot` for i.e. changing damage but not actually spawning any projectiles manually, then returning true, you need to switch (or move that code) to `ModifyShootStats`.
 
 Small overview of the changes:
-* `Global/ModItem.Shoot` -> `Global/ModItem.CanShoot` (for allowing or preventing spawning in projectiles)
-* `Global/ModItem.Shoot` -> `Global/ModItem.ModifyShootStats` (for changing shooting related parameters)
-* `Global/ModItem.Shoot` -> `Global/ModItem.Shoot` (for spawning projectiles and controlling if the default projectile spawns)
+* `ModPlayer/GlobalItem/ModItem.Shoot` -> `ModPlayer/GlobalItem/ModItem.CanShoot` (for allowing or preventing spawning in projectiles)
+* `ModPlayer/GlobalItem/ModItem.Shoot` -> `ModPlayer/GlobalItem/ModItem.ModifyShootStats` (for changing shooting related parameters)
+* `ModPlayer/GlobalItem/ModItem.Shoot` -> `ModPlayer/GlobalItem/ModItem.Shoot` (for spawning projectiles and controlling if the default projectile spawns)
 
 ### Player Drawing
 Modders previously using `PlayerLayer` and `ModPlayer.ModifyDrawLayers` will now have to adapt to the replacements: `PlayerDrawLayer`, `ModPlayer.HideDrawLayers`, and `ModPlayer.ModifyDrawLayerOrdering`.
@@ -334,8 +334,8 @@ Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBio
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
 * `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
 * `(GlobalTile/GlobalWall/ModTile/ModWall/ModBuff/ModDust/ModMount/ModPrefix).SetDefaults` -> `(X).SetStaticDefaults`. Now all `ModType`s have such a method.
-* ConsumeAmmo changes:
-    * Proper variable names + additional context (clarify `item` usage to specify `weapon` and `ammo`, and add each one missing as context)
+* Ammo changes:
+    * Proper variable names + additional context for `ConsumeAmmo` (clarify `item` usage to specify `weapon` and `ammo`, and add each one missing as context)
     * `ModPlayer.ConsumeAmmo` -> `ModPlayer.CanConsumeAmmo`
     * `(ModItem/GlobalItem).ConsumeAmmo` -> `(ModItem/GlobalItem).CanConsumeAmmo`, now only invoked on the weapon.
     * New hook for ammo: `(ModItem/GlobalItem).CanBeConsumedAsAmmo`.
