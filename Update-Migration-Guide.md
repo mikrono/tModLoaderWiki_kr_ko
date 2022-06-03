@@ -48,6 +48,7 @@ v2022.X updates tModLoader to Terraria 1.4. This update changed everything. The 
 * `Player.GetItem(int, Item, bool, bool)` -> `Player.GetItem(int, Item, GetItemSettings)` (`GetItemSettings` class contains various static instances of it to use for the last parameter)
 * `Player.Spawn` -> `Player.Spawn(PlayerSpawnContext)`
 * `Player.SporeSac` -> `Player.SporeSac(Item)`
+* `void Player.PickAmmo(Item, ref int, ref float, ref bool, ref int, ref float, bool)` -> `bool Player.PickAmmo(Item, out int, out float, out bool, out int, out float, out int, bool)` with the return representing previous `canShoot`
 * `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
 * `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
 * `Main.instance.DrawPlayer(...)` -> `Main.PlayerRenderer.DrawPlayer(Main.Camera, ...)`
