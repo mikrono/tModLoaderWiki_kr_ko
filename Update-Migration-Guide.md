@@ -84,13 +84,9 @@ The following contains smaller scale changes to tModLoader members. More elabora
 _All ModX things listed here apply to GlobalX aswell_
 
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
-* `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context)
-* `ModLoader.Mod.UpdateUI` -> `ModLoader.ModSystem.UpdateUI`
-* `ModLoader.Mod.ModifyInterfaceLayers` -> `ModLoader.ModSystem.ModifyInterfaceLayers`
-* `ModLoader.Mod.PostAddRecipes` -> `ModLoader.Modsystem.PostAddRecipes`
-* `ModLoader.Mod.AddRecipes` -> `ModLoader.Modsystem.AddRecipes`
-* `ModLoader.Mod.AddRecipesGroups` -> `ModLoader.Modsystem.AddRecipesGroups`
-* `ModLoader.Mod.PostSetupContent` -> `ModLoader.ModSystem.PostSetupContent`
+* `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context: `ModSystem.LoadWorldData/SaveWorldData/OnWorldLoad`)
+* Many methods were moved from `ModLoader.Mod` to `ModLoader.ModSystem`: `ModifyTransformMatrix, UpdateUI, PreUpdateEntities, PostUpdateEverything, ModifyInterfaceLayers, ModifySunLightColor, ModifyLightingBrightness, PostDrawFullscreenMap, PostUpdateInput, PreSaveAndQuit, PostDrawInterface`
+* `ModLoader.Mod.MidUpdateX` hooks were moved to `ModLoader.ModSystem` and split, with slightly different names: `Pre/PostUpdatePlayers, Pre/PostUpdateNPCs, Pre/PostUpdateGores, Pre/PostUpdateProjectiles, Pre/PostUpdateItems, Pre/PostUpdateDusts, Pre/PostUpdateTime, Pre/PostUpdateInvasions`
 * `ModLoader.Mod.HotKeyPressed` -> removed, use `ModLoader.ModPlayer.ProcessTriggers`
 * `ModLoader.Mod.AddEquipTexture` -> removed, use `ModLoader.EquipLoader.AddEquipTexture` with Mod as the first parameter
 * `ModLoader.Mod.GetEquipSlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter
