@@ -107,12 +107,12 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModContent.GetEffect(string)` -> `ModContent.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
 * `ModLoader.Mod.GetEffect(string)` -> `ModLoader.Mod.Assets.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
 * `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
-* `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`, with the name now being specified through the `Name` property on the `ILoadable`
 * `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
 * `ModLoader.Mod.AddTranslation(ModTranslation)` -> `ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `ModLoader.Mod.CreateTranslation(string)` -> `ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
 * `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> removed
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
+* `ModLoader.ModGore.GetGoreSlot`-> `ModLoader.ModContent.GetGoreSlot`
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PreDraw(ref Color)`, `ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
@@ -140,13 +140,17 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModTile.HasSmartInteract` -> `HasSmartInteract(int i, int j, SmartInteractScanSettings settings)` (`SmartInteractScanSettings` requires `using Terraria.GameContent.ObjectInteractions;`)
 * `ModLoader.ModTile.disableSmartCursor` -> `TileID.Sets.DisableSmartCursor[Type]`
 * `ModLoader.ModTile.disableSmartInteract` -> `TileID.Sets.DisableSmartInteract[Type]`
-* `ModLoader.ModTile.dresser` -> `TileID.Sets.BasicDresser[Type]`
-* `ModLoader.ModTile.sapling` -> `TileID.Sets.TreeSapling[Type]`
+* `ModLoader.ModTile.dresser` -> `ContainerName.SetDefault("Dresser Name")`, also concider `TileID.Sets.BasicChest`
+* `ModLoader.ModTile.chest` -> `ContainerName.SetDefault("Chest Name")`, also concider `TileID.Sets.BasicDresser`
+* `ModLoader.ModTile.bed` -> `TileID.Sets.CanBeSleptIn[Type]`
+* `ModLoader.ModTile.sapling` -> `TileID.Sets.TreeSapling[Type]`, also concider `TileID.Sets.CommonSapling`
 * `ModLoader.ModTile.torch` -> `TileID.Sets.Torch[Type]`
 * `ModLoader.ModPrefix.GetPrefix(byte)` -> `ModLoader.PrefixLoader.GetPrefix(int)`
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
 * `ModLoader.ModBuff.canBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
 * `ModLoader.ModBuff.longerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
+* `ModLoader.ModWaterStyle.Type` -> `ModLoader.ModWaterStyle.Slot`
+* `ModLoader.ModWaterfallStyle.Type` -> `ModLoader.ModWaterfallStyle.Slot`
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`, this means you should be assigning your data to the passed in tag.
 
@@ -274,10 +278,13 @@ Flat increases are done via `Player.GetDamage(DamageClass.Summon).Flat += 4;` fo
 Use `Player.GetTotalDamage` to get the effective stat modifier for the damage class (including inheritance, like `Generic`)
 
 Other porting changes:
+* `Player.allDamage` -> `Player.GetDamage(DamageClass.Generic)` (when using += on it)
+* `Player.allDamageMult` -> `Player.GetDamage(DamageClass.Generic)` (when using *= on it)
 * `Player.armorPenetration` -> `Player.GetArmorPenetration(DamageClass.Generic)`
 * `Player.meleeSpeed` -> `GetAttackSpeed(DamageClass.Melee)`
 * `Player.arrowDamage/bulletDamage/rocketDamage` -> Type change to `StatModifier`
 * `Item.thrown` -> While normally removed in 1.4, it is reimplemented by tML through Damage Classes (detailed further below).
+* `Projectile.thrown` -> Same as `Item.thrown`
 
 ### XItem.Shoot
 `ModPlayer/GlobalItem/ModItem.Shoot` has been split into three methods: `CanShoot`, `ModifyShootStats`, and `Shoot`. Now allowing shooting and changing shooting related parameters is separated from creation of the projectiles. `CanShoot` simply controls if the item can shoot projectiles or not. `ModifyShootStats` contains all the parameters as `ref`, while `Shoot` doesn't.
@@ -344,6 +351,14 @@ Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBio
     * New hook for ammo: `(ModItem/GlobalItem).OnConsumedAsAmmo`.
     * New hooks for ammo **selection**: `(ModItem/GlobalItem).CanChooseAmmo` and `(ModItem/GlobalItem).CanBeChosenAsAmmo`
 * `(ModNPC/GlobalNPC).OnCatchNPC`: Now has additional context and is no longer used to modify the item the caught NPC is turned into. to modify the caught NPC's item, use `OnSpawn` and check if the source `is EntitySource_CatchEntity`.
+
+### Autoload
+Autoloading and type structure of classes within tML have changed. Classes implementing `ILoadable` are now autoloaded. The most notable implementation is the `ModType` class, which is used for all ModX and GlobalX classes, unifying various behavior. Previous `Autoload` hooks have been replaced with `IsLoadingEnabled(Mod)` and the `Autoload` attribute:
+* `IsLoadingEnabled` allows for simple "can be loaded or not" behavior (i.e. config)
+* `Autoload` attribute for classes, which can be supplied with `true/false` (allowing you to choose to manually add and control content using `Mod.AddContent` elsewhere), and `ModSide` (allowing creation of side-specific content, i.e. `ModGore`, which is clientside)
+* `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`, with the name now being specified through the `Name` property on the `ILoadable`
+
+//TODO more detailed porting notes for parameters in old Autoload hook, and how to add content manually now
 
 ## tModLoader .NET Upgrade
 {Some info on .NET5 and AnyCPU targetting}
