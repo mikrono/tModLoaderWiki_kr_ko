@@ -88,7 +88,40 @@ In order to be considered "in darkness", the following is evaluated:
 This method updates the player's Y-position to account for `Player::HeightOffsetBoost`, a property that either uses `Mount::HeightBoost` if the player is on a mount or `PortableStoolUsage::HeightBoost` if the player is on a Step Stool, or `0` if neither are the case.
 
 ### Player::UpdateBuffs(int)
-// TODO
+This method is responsible for updating the remaining time for all of the player's active buffs as well as applying their effects.
+
+1. If the player is currently hitting NPCs with the Life Drain item (`soulDrain > 0`) and they're this client's player (`whoAmI == Main.myPlayer`),
+    * The **Life Drain** (ID 151) buff is granted for 2 game ticks
+1. If the world is The Constant (`Main.dontStarveWorld`),
+    * `Player::UpdateStarvingState(bool)` is invoked
+        * [Explanation](#playerupdatestarvingstatebool)
+1. For each active buff on the player (buff index = `j`):
+    1. If the player is this client's player (`whoAmI == Main.myPlayer`) and the buff's remaining time can decrease (`!BuffID.Sets.TimeLeftDoesNotDecrease[buffType[j]]`)
+        * `buffTime[j]` is decremented by `1`
+    1. The following buffs are checked in order.  If the current iterating buff matches any of the following, its affects are applied:
+        1. **Obsidian Skin** (ID 1)
+            * `Player::lavaImmune` is set (Prevents lava damage)
+            * `Player::fireWalk` is set (Prevents receiving the **Burning** debuff)
+            * `Player::buffImmune[24]` is set (ID 24 = **On Fire!** debuff)
+        1. Any mount buff (`BuffID.Sets.BasicMountData[buffType[j]] != null`)
+            * `Player::mount` is initialized with the buff's mount data
+            * `Player::buffTime[j]` is set to `10`
+        1. **Star in a Bottle** (ID 158)
+            * `Player::manaRegenBonus` is incremented by `2`
+        1. **Sharpened** (ID 159)
+            * `Player::GetArmorPenetration(DamageClass.Melee)` is increased by `12`
+        1. **Sugar Rush** (ID 192)
+            * `Player::pickSpeed` is decremented by `0.2`
+            * `Player::moveSpeed` is incremented by `0.2`
+        1. **Cerebral Mindtrick** (ID 321)
+            * `Player::allCrit` is increased by `10`
+            * `Player::minionDamage` is increased by `0.1`
+        1. **Regeneration** (ID 2)
+            * `Player::lifeRegen` is incremented by `4`
+// TODO: finish explanation
 
 ### Player::UpdateFrame()
+// TODO
+
+### Player::UpdateStarvingState(bool)
 // TODO
