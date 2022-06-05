@@ -1,28 +1,33 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Basic-Ammo/3ac8255f8a511bc25d15090d52fcd045febccb4f)
+***
+
 # What is Ammo?
-Ammo is a system that links Weapon items, ammo items, and projectiles together. The basic idea is this: Weapon items have `item.useAmmo` set to an AmmoID, Ammo items that weapon should use have `item.ammo` set to that same AmmoID, and that Ammo item has `item.shoot` set to the particular projectile that will be shot by the weapon when the ammo is used.
+Ammo is a system that links Weapon items, ammo items, and projectiles together. The basic idea is this: Weapon items have `Item.useAmmo` set to an AmmoID, Ammo items that weapon should use have `Item.ammo` set to that same AmmoID, and that Ammo item has `Item.shoot` set to the particular projectile that will be shot by the weapon when the ammo is used.
 
-As an example, let's consider `Wooden Bow` and `Flaming Arrow`. The `Wooden Bow` has `item.useAmmo = AmmoID.Arrow;` and `Flaming Arrow` has `item.shoot = ProjectileID.FireArrow;` and `item.ammo = AmmoID.Arrow;`. When the player is shooting their `Wooden Bow`, Terraria looks in the player's inventory and searches for items with `item.ammo` matching `Wooden Bow`'s `item.useAmmo`. If an ammo item is found, the ammo item's `item.shoot` projectile is spawned and the ammo is consumed.
+As an example, let's consider `Wooden Bow` and `Flaming Arrow`. The `Wooden Bow` has `Item.useAmmo = AmmoID.Arrow;` and `Flaming Arrow` has `Item.shoot = ProjectileID.FireArrow;` and `Item.ammo = AmmoID.Arrow;`. When the player is shooting their `Wooden Bow`, Terraria looks in the player's inventory and searches for items with `Item.ammo` matching `Wooden Bow`'s `Item.useAmmo`. If an ammo item is found, the ammo item's `Item.shoot` projectile is spawned and the ammo is consumed.
 
-As a convention, AmmoIDs match the ItemID of the first ammo item. For example, AmmoID.Arrow and ItemID.WoodenArrow are both equal to 40. All other arrows have `item.ammo = AmmoID.Arrow;`.
+As a convention, AmmoIDs match the ItemID of the first ammo item. For example, AmmoID.Arrow and ItemID.WoodenArrow are both equal to 40. All other arrows have `Item.ammo = AmmoID.Arrow;`.
 
 # How do I use vanilla ammo for my weapon?
-To use vanilla ammo, simply set item.useAmmo to the correct AmmoID. For example, `Example Gun` in ExampleMod has `item.useAmmo = AmmoID.Bullet;`.
+To use vanilla ammo, simply set Item.useAmmo to the correct AmmoID. For example, `Example Gun` in ExampleMod has `Item.useAmmo = AmmoID.Bullet;`.
 
 # How do I make a vanilla ammo?
-To make an ammo that belongs to a vanilla ammo class, simply set item.ammo to the correct AmmoID. For example, `Example Bullet` has `item.ammo = AmmoID.Bullet;` set in it's SetDefaults method. In addition, the ammo item must also define the projectile that the ammo shoots. `Example Bullet` shows this example: `item.shoot = ModContent.ProjectileType<ExampleBullet>();`
+To make an ammo that belongs to a vanilla ammo class, simply set Item.ammo to the correct AmmoID. For example, `Example Bullet` has `Item.ammo = AmmoID.Bullet;` set in it's SetDefaults method. In addition, the ammo item must also define the projectile that the ammo shoots. `Example Bullet` shows this example: `Item.shoot = ModContent.ProjectileType<Projectiles.ExampleBullet>();`
 
 # How do I make a new ammo class?
-A new ammo class can be made by designating one of your ammo items as the AmmoID. For example, Example Mod shows us a new "Wisp" ammo class. The `Wisp` item has `item.ammo = item.type;` to designate it as a the defining ammo of the ammo class. `Spectre Gun` has `item.useAmmo = ModContent.ItemType<Wisp>();` to match the pattern we have established with vanilla ammo items.
-Any further ammo would have `item.ammo = ModContent.ItemType<Wisp>()` and any other weapons using that ammo would have `item.useAmmo = ModContent.ItemType<Wisp>()`.
+A new ammo class can be made by designating one of your ammo items as the AmmoID. For example, Example Mod shows us a new "ExampleCustomAmmo" ammo class. The `ExampleCustomAmmo` item has `Item.ammo = Item.type;` to designate it as a the defining ammo of the ammo class. `ExampleCustomAmmoGun` has `Item.useAmmo = ModContent.ItemType<ExampleCustomAmmo>();` to match the pattern we have established with vanilla ammo items.
+Any further ammo would have `Item.ammo = ModContent.ItemType<ExampleCustomAmmo>()` and any other weapons using that ammo would have `Item.useAmmo = ModContent.ItemType<ExampleCustomAmmo>()`.
 
 # How can I make a new ammo class out of vanilla items?
-Use a GlobalItem class to set `item.ammo` and item.shoot to a new projectile that you've made.
+Use a GlobalItem class to set `Item.ammo` and `Item.shoot` to a new projectile that you've made.
 
 ```cs
-public class CopperShortsword : GlobalItem
+public class AmmoModificationsGlobalItem : GlobalItem
 {
 	public override void SetDefaults(Item item)
 	{
+		// We type "item" here instead of "Item" because this item is a parameter named "item".
 		if (item.type == ItemID.Rope)
 		{
 			item.ammo = ItemID.Rope;
@@ -38,4 +43,4 @@ public class CopperShortsword : GlobalItem
 }
 ```
 
-Note that using vanilla items to make new items runs the risk of conflict with other mods.
+Note that using vanilla items to make new items runs the risk of conflict with other mods, so use it sparingly to maintain compatibility and to prevent your players from getting confused.
