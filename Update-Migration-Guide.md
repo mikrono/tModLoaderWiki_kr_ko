@@ -1,9 +1,9 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here. For migration information from past versions, see [Update Migration Guide Previous Versions](Update-Migration-Guide-Previous-Versions)
 
-# v2022.X (1.4 alpha)
+# v2022.X (1.4)
 v2022.X updates tModLoader to Terraria 1.4. This update changed everything. The first thing you need to do is copy your mod sources into the `My Games/Terraria/tModLoader/ModSources/` folder. Next, visit the Workshop->Develop Mods menu in game and click on the "upgrade .csproj" button. After that, click on the "Run tModPorter" button (This requires having the dotnet 6.0 SDK installed, which you get from installing VS 2022 [here](Developing-with-Visual-Studio)). After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions. You can "Run tModPorter" multiple times after big tModLoader updates, it is updated regularly and handles inter-1.4 changes too.
 
- Here are the most relevant changes.
+Here are the most relevant changes.
 
 ## Renamed or Moved Members
 
