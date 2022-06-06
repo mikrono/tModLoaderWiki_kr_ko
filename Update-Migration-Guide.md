@@ -109,6 +109,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.PlayerDrawInfo` -> `DataStructures.PlayerDrawSet`
 * `ModLoader.SoundType` -> removed, modded sounds are not categorized anymore
 * `ModLoader.ModSound` -> removed
+* `ModLoader.ModMountData` -> `ModLoader.ModMount`
+* `ModLoader.ModMountData.JumpHeight/JumpSpeed` without the `Player` parameter -> removed/deprecated
 * `ModLoader.ModContent.TextureExists(string)` -> `ModLoader.ModContent.HasAsset(string)`
 * `ModLoader.ModContent.GetTexture(string)` -> `ModLoader.ModContent.Request<Texture2D>(string)`, similar for other assets like `Effect`  
 **Regex:** `ModContent\.GetTexture\(([^)]+).` -> `ModContent.Request<Texture2D>($1)`
