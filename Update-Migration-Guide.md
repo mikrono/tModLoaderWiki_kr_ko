@@ -95,7 +95,7 @@ _All ModX things listed here apply to GlobalX aswell_
 
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context: `ModSystem.LoadWorldData/SaveWorldData/OnWorldLoad`)
-* `ModLoader.ModWorld.TileCountsAvailable(int[])` -> ``ModLoader.ModSystem.TileCountsAvailable(ReadOnlySpan<int>)` (requires `using System;`)
+* `ModLoader.ModWorld.TileCountsAvailable(int[])` -> `ModLoader.ModSystem.TileCountsAvailable(ReadOnlySpan<int>)` (requires `using System;`)
 * Many methods were moved from `ModLoader.Mod` to `ModLoader.ModSystem`: `ModifyTransformMatrix, UpdateUI, PreUpdateEntities, PostUpdateEverything, ModifyInterfaceLayers, ModifySunLightColor, ModifyLightingBrightness, PostDrawFullscreenMap, PostUpdateInput, PreSaveAndQuit, PostDrawInterface`
 * `ModLoader.Mod.MidUpdateX` hooks were moved to `ModLoader.ModSystem` and split, with slightly different names: `Pre/PostUpdatePlayers, Pre/PostUpdateNPCs, Pre/PostUpdateGores, Pre/PostUpdateProjectiles, Pre/PostUpdateItems, Pre/PostUpdateDusts, Pre/PostUpdateTime, Pre/PostUpdateInvasions`
 * `ModLoader.Mod.HotKeyPressed` -> removed, use `ModLoader.ModPlayer.ProcessTriggers`
