@@ -367,6 +367,7 @@ Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBio
 * `(GlobalTile/GlobalWall/ModTile/ModWall/ModBuff/ModDust/ModMount/ModPrefix).SetDefaults` -> `(X).SetStaticDefaults`. Now all `ModType`s have such a method.
 * Ammo changes:
     * `(ModItem/GlobalItem).PickAmmo` changed `ref int damage` to `ref StatModifier damage`, with caveats. Read more on this [here](https://github.com/tModLoader/tModLoader/pull/2288)
+    * `(ModItem/GlobalItem).PickAmmo` without the `Item weapon` parameter -> removed/deprecated
     * Proper variable names + additional context for `ConsumeAmmo` (clarify `item` usage to specify `weapon` and `ammo`, and add each one missing as context)
     * `ModPlayer.ConsumeAmmo` -> `ModPlayer.CanConsumeAmmo`
     * `(ModItem/GlobalItem).ConsumeAmmo` -> `(ModItem/GlobalItem).CanConsumeAmmo`, now only invoked on the weapon.
