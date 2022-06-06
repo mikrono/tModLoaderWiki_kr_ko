@@ -25,4 +25,4 @@ Basically, just make sure the .cs file and .png file exist in the same directory
 '.' becoming '\\' in the folder structure.)
 
 A visual explanation:  
-![](https://i.imgur.com/XLeNQCs.png)
+![](https://i.imgur.com/9z50wHh.png)
