@@ -40,6 +40,13 @@ Here are the most relevant changes.
 * `Main.SmartCursorEnabled` -> `Main.SmartCursorIsUsed`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
+* `Tile.Liquid_Water/Liquid_Honey/Liquid_Lava` -> `ID.LiquidID.Water/Honey/Lava`
+* `Tile.Type_Solid` -> `(int)BlockType.Solid`
+* `Tile.Type_Halfbrick` -> `(int)BlockType.HalfBlock`
+* `Tile.Type_SlopeDownRight` -> `(int)BlockType.SlopeDownLeft`
+* `Tile.Type_SlopeDownLeft` -> `(int)BlockType.SlopeDownRight`
+* `Tile.Type_SlopeUpRight` -> `(int)BlockType.SlopeUpLeft`
+* `Tile.Type_SlopeUpLeft` -> `(int)BlockType.SlopeUpRight`
 * `Lighting.lightMode` -> `Graphics.Light.LegacyLighting.Mode` (Accessible via `Lighting.LegacyEngine.Mode`)
 * `Localization.GameCulture.*` -> `Localization.GameCulture.CultureName.*`  
 **Regex for replacing ModTranslation.AddTranslation uses:** `\bGameCulture\.([^,]+)+` -> `GameCulture.FromCultureName(GameCulture.CultureName.$1)`
@@ -58,6 +65,7 @@ Here are the most relevant changes.
 
 ### Non-Static Fields / Constants / Properties
 * `Main.Rasterizer` is now static
+* `GenBase._worldWidth/_worldHeight/_random/_tiles` are now static
 * `UIElement.Id` -> `UIElement.UniqueId`<br/>
 (changed from string to automatically assigned auto-incrementing int)
 * `Player.hideVisual` -> `Player.hideVisibleAccessory`
@@ -87,12 +95,14 @@ _All ModX things listed here apply to GlobalX aswell_
 
 * All lowercase properties are now capitalized (e.g. `ModX.mod`, `ModProjectile.aiType`, and `ModPlayer.player` -> `ModX.Mod`, `ModProjectile.AIType`, `ModPlayer.Player`)
 * `ModLoader.ModWorld` -> `ModLoader.ModSystem` (With some additions from `Mod`. `ModWorld.Load/Save/Initialize` have been changed to accomodate for the world context: `ModSystem.LoadWorldData/SaveWorldData/OnWorldLoad`)
+* `ModLoader.ModWorld.TileCountsAvailable(int[])` -> ``ModLoader.ModSystem.TileCountsAvailable(ReadOnlySpan<int>)` (requires `using System;`)
 * Many methods were moved from `ModLoader.Mod` to `ModLoader.ModSystem`: `ModifyTransformMatrix, UpdateUI, PreUpdateEntities, PostUpdateEverything, ModifyInterfaceLayers, ModifySunLightColor, ModifyLightingBrightness, PostDrawFullscreenMap, PostUpdateInput, PreSaveAndQuit, PostDrawInterface`
 * `ModLoader.Mod.MidUpdateX` hooks were moved to `ModLoader.ModSystem` and split, with slightly different names: `Pre/PostUpdatePlayers, Pre/PostUpdateNPCs, Pre/PostUpdateGores, Pre/PostUpdateProjectiles, Pre/PostUpdateItems, Pre/PostUpdateDusts, Pre/PostUpdateTime, Pre/PostUpdateInvasions`
 * `ModLoader.Mod.HotKeyPressed` -> removed, use `ModLoader.ModPlayer.ProcessTriggers`
 * `ModLoader.Mod.AddEquipTexture` -> removed, use `ModLoader.EquipLoader.AddEquipTexture` with Mod as the first parameter
 * `ModLoader.Mod.GetEquipSlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter
 * `ModLoader.Mod.GetAccessorySlot` -> removed, use `ModLoader.EquipLoader.GetEquipSlot` with Mod as the first parameter, cast to `sbyte` if necessary
+* `ModLoader.MusicPriority` -> `ModLoader.SceneEffectPriority`
 * `ModLoader.PlayerHooks` -> `ModLoader.PlayerLoader`
 * `ModLoader.ModHotKey` -> `ModLoader.ModKeybind`
 * `ModLoader.SpawnCondition` -> `ModLoader.Utilities.SpawnCondition`
@@ -113,19 +123,29 @@ _All ModX things listed here apply to GlobalX aswell_
 * `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> removed
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModGore.GetGoreSlot`-> `ModLoader.ModContent.GetGoreSlot`
+* `ModLoader.ModGore.DrawBehind`-> removed, ise `ID.GoreID.Sets.DrawBehind[Type]` in `SetStaticDefaults`
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
+* `ModLoader.ModProjectile.CanDamage` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `false`
+* `ModLoader.ModProjectile.TileCollideStyle(ref int, ref int, ref bool)` -> `ModLoader.ModProjectile.TileCollideStyle(ref int, ref int, ref bool, ref Vector2)`
 * `ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PreDraw(ref Color)`, `ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
-* `ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2,Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
+* `ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2, Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
 * `ModLoader.ModNPC.NPCLoot` -> `ModLoader.ModNPC.OnKill` (Drops will now have to be added in `ModifyNPCLoot`, see the [Bestiary](#Bestiary)<a name="Bestiary"></a> section)
+* `ModLoader.ModNPC.PreNPCLoot` -> `ModLoader.ModNPC.PreKill`
+* `ModLoader.ModNPC.SpecialNPCLoot` -> `ModLoader.ModNPC.SpecialOnKill`
 * `ModLoader.ModNPC.bossBag` -> removed, spawn the treasure bag alongside other loot via `npcLoot.Add(ItemDropRule.BossBag(type))`
 * `ModLoader.ModItem.Clone` -> `ModLoader.ModItem.Clone(Item)`
+* `ModLoader.ModItem.CloneNewInstances` -> Changed from `public` to `protected`
 * `ModLoader.ModItem.NetRecieve` -> `ModLoader.ModItem.NetReceive` (typo)
 * `ModLoader.ModItem.NewPreReforge` -> `ModLoader.ModItem.PreReforge`
-* `ModLoader.ModItem.UseItem` -> return type changed from `bool` to `bool?`
+* `ModLoader.ModItem.UseItem` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `false`
+* `ModLoader.ModItem.HoldStyle(Player)` -> `ModLoader.ModItem.HoldStyle(Player, Rectangle)`
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
 * `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
+* `ModLoader.ModItem.UpdateVanity` -> `ModLoader.ModItem.EquipFrameEffects`
+* `ModLoader.ModPlayer.SetupStartInventory(IList<Item>)` -> removed/deprecated
+* `ModLoader.ModPlayer.SetupStartInventory(IList<Item>, bool)` -> `ModLoader.ModPlayer.AddStartingItems(bool)`, returns an `IEnumerable<Item>`. Use ModifyStartingInventory for modifying if needed
 * `ModLoader.ModPlayer/ModItem.GetWeaponDamage` -> removed/deprecated
 * `ModLoader.ModPlayer/ModItem.GetWeaponCrit(..., ref int)` -> `ModLoader.ModPlayer/ModItem.ModifyWeaponCrit(..., ref float)`
 * `ModLoader.ModPlayer/ModItem.GetWeaponKnockback(..., ref bool)` -> `ModLoader.ModPlayer/ModItem.ModifyWeaponKnockback(..., ref StatModifier)`
@@ -151,6 +171,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModBuff.longerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
 * `ModLoader.ModWaterStyle.Type` -> `ModLoader.ModWaterStyle.Slot`
 * `ModLoader.ModWaterfallStyle.Type` -> `ModLoader.ModWaterfallStyle.Slot`
+* `ModLoader.EquipTexture.mod` -> removed
+* `ModLoader.EquipTexture.UpdateVanity` -> `ModLoader.EquipTexture.FrameEffects`
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`, this means you should be assigning your data to the passed in tag.
 
