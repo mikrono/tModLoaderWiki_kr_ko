@@ -8,7 +8,7 @@ This is caused by pirating other games. Some poorly packaged pirated games put a
 This is caused by FNA3D.dll or SDL2.dll on the PATH.
 
 ### Multiple extensions for asset
-This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `"D:\Documents\My Games\Terraria\tModLoader\config.json"` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
+This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `"\Documents\My Games\Terraria\tModLoader\config.json"` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
 
 ### Screen is blurry or resolution resets to 1536x864
 We are looking into a solution, but something you can do as a temporary solution is to change your display scale back to 100%. To do this, right click on your desktop and click `Display Settings`. Next, scroll down to `Scale and Layout` and find the 1st item labeled `Change the size of text, apps, and other items`, make it 100%, then launch the game.    
