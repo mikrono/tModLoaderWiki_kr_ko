@@ -126,6 +126,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModGore.GetGoreSlot`-> `ModLoader.ModContent.GetGoreSlot`
 * `ModLoader.ModGore.DrawBehind`-> removed, ise `ID.GoreID.Sets.DrawBehind[Type]` in `SetStaticDefaults`
+* `ModLoader.ModGore.OnSpawn(Gore)`-> `ModLoader.ModGore.OnSpawn(Gore, IEntitySource)` (`using Terraria.DataStructures;`)
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
 * `ModLoader.ModProjectile.CanDamage` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `false`
