@@ -63,7 +63,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic ModDust Guide](Basic-Dust)
 - [Basic ModItem Guide](Basic-Item)
 - [Basic ModProjectile Guide](Basic-Projectile)
-- [Basic ModRecipe Guide](Basic-Recipes)
+- [Basic Recipe Guide](Basic-Recipes)
 - [Basic ModTile Guide](Basic-Tile)
 - [Basic ModTileEntity Guide](Basic-Tile-Entity)
 - [Basic Netcode Guide](Basic-Netcode)
