@@ -1,3 +1,7 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers/ecf72a76ff8f2643414d2dd2095a7c0f7b01024e)
+***
+
 # Time and Timers
 When dealing with various aspects of Terraria modding, you'll find yourself wanting to delay actions of make things happen less frequently. In short, you'll want to utilize time and timers to accomplish your modding goals. This guide will go over many time related concepts so that you don't unknowingly make a mistake in your code.
 
@@ -54,24 +58,24 @@ Implementing a timer that counts in ticks is easy, you simply increment a field 
 
 ## Examples
 In these examples, we'll use `ModNPC.AI` or `ModProjectile.AI` to advance our timers. 
-### Timer Using projectile.ai[] (or npc.ai[])
-(This example uses `projectile.ai[]` as an example, but `npc.ai[]` also works the same way)
+### Timer Using Projectile.ai[] (or NPC.ai[])
+(This example uses `Projectile.ai[]` as an example, but `NPC.ai[]` also works the same way)
 If you are using an original AI, or know that the aiStyle you are using doesn't use one of the 2 ai slots (4 for npc), you can use projectile.ai[] as a timer. Since projectile.ai[] is automatically synced, this could be convenient, but it does require some investigation to make sure the ai slot is free to use:
 ```cs
-projectile.ai[0]++;
-if(projectile.ai[0] > 120) {
+Projectile.ai[0]++;
+if(Projectile.ai[0] > 120) {
     // Our timer has finished, do something here:
-    // Main.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
-    projectile.ai[0] = 0;
+    // SoundEngine.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
+    Projectile.ai[0] = 0;
 }
 ```
-[ExampleAnimatedPierce.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Projectiles/ExampleAnimatedPierce.cs#L74) shows using a timer to start fading out the projectile after 50 ticks.    
+[ExampleAdvancedAnimatedProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs#L80) shows using a timer to fade in the Projectile for 50 ticks, then fade back out.    
 
 We can use a property to make the code much easier to read:   
 ```cs
 public float Timer {
-	get => projectile.ai[0];
-	set => projectile.ai[0] = value;
+	get => Projectile.ai[0];
+	set => Projectile.ai[0] = value;
 }
 
 public override void AI() {
@@ -79,16 +83,16 @@ public override void AI() {
 	Timer++;
 	if (Timer > 120) {
 		// Our timer has finished, do something here:
-		// Main.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
+		// SoundEngine.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
 		Timer = 0;
 	}
 	// Other code...
 }
 ```
-[FlutterSlime.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/FlutterSlime.cs#L67) shows this approach in practice.
+[ExampleCustomAISlimeNPC.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExampleCustomAISlimeNPC.cs#L176) shows this approach in practice.
 
 ### Timer Using New Field
-`npc.ai[]` and `projectile.ai[]` are synced automatically over the multiplayer network by the game, but you can make new fields in your `ModNPC` or `ModProjectile` class. This makes the code much easier to read, but you might need to sync this extra data. Read [Multiplayer Compatibility](https://github.com/tModLoader/tModLoader/wiki/Multiplayer-Compatibility#npc--modnpc) if you want to learn more. Some data won't need to be synced, so try to familiarize yourself with when data needs to be synced.
+`NPC.ai[]` and `Projectile.ai[]` are synced automatically over the multiplayer network by the game, but you can make new fields in your `ModNPC` or `ModProjectile` class. This makes the code much easier to read, but you might need to sync this extra data. Read [Multiplayer Compatibility](https://github.com/tModLoader/tModLoader/wiki/Multiplayer-Compatibility#npc--modnpc) if you want to learn more. Some data won't need to be synced, so try to familiarize yourself with when data needs to be synced.
 
 Making a new field to act as a timer is simple:
 ```cs
@@ -104,19 +108,19 @@ public class ExampleBullet : ModProjectile
 		Timer++;
 		if (Timer > 120) {
 			// Our timer has finished, do something here:
-			// Main.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
+			// SoundEngine.PlaySound, Dust.NewDust, Projectile.NewProjectile, etc. Up to you.
 			Timer = 0;
 		}
 	}
 }
 ```    
-ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/Abomination/Abomination.cs#L228). [More Examples](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
+ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Old/NPCs/Abomination/Abomination.cs#L231). [More Examples](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
 
-### Projectile One Time Timer Using projectile.timeLeft
-If you need something to happen once X ticks after spawning, you can take advantage of `projectile.timeLeft` (you may want to change `projectile.timerLeft` in `ModProjectile.SetDefaults` to something smaller):
+### Projectile One Time Timer Using Projectile.timeLeft
+If you need something to happen once X ticks after spawning, you can take advantage of `Projectile.timeLeft` (you may want to change `Projectile.timeLeft` in `ModProjectile.SetDefaults` to something smaller):
 ```cs
 // when the projectile has 1 seconds left in its life 
-if(projectile.timeLeft == 60) {
+if(Projectile.timeLeft == 60) {
     // do something here.
 } 
 ```
@@ -127,27 +131,27 @@ if(Main.GameUpdateCount % 60 == 0) {
    // Dust.NewDust or some other visual effect.
 }
 ```
-Here is another example showing cycling between 4 colors with 1 second between. Dividing GameUpdateCount by 60 turns the value into counting seconds, and using modulo 4 lets it cycle. This code came from a ModifyTooltips method, but the idea can be in other situations.
+Here is another example showing cycling between 4 colors with 1 second between. Dividing `GameUpdateCount` by 60 turns the value into counting seconds, and using modulo 4 lets it cycle. This code came from a `ModifyTooltips` method, but the idea can be in other situations.
 ```cs
 switch (Main.GameUpdateCount / 60 % 4)
 {
 	case 0:
-		line.overrideColor = new Color(254, 105, 47);
+		line.OverrideColor = new Color(254, 105, 47);
 		break;
 	case 1:
-		line.overrideColor = new Color(34, 221, 151);
+		line.OverrideColor = new Color(34, 221, 151);
 		break;
 	case 2:
-		line.overrideColor = new Color(190, 30, 209);
+		line.OverrideColor = new Color(190, 30, 209);
 		break;
 	case 3:
-		line.overrideColor = new Color(0, 106, 185);
+		line.OverrideColor = new Color(0, 106, 185);
 		break;
 }
 ```
 
 # World Time
-World Time usually advances at the same pace as Game Time, but there are several situations where the difference is critical. While the game is paused, world time does not progress. While an enchanted sundial is in use, time progresses 60 times faster than usual. Be aware that mods could also change how fast time progresses. For example, time can be paused in HerosMod, so relying on World Time for gameplay effects would fail. 
+World Time usually advances at the same pace as Game Time, but there are several situations where the difference is critical. While the game is paused, world time does not progress. While an enchanted sundial is in use, time progresses 60 times faster than usual. Journey Mode also allows adjusting world time. Be aware that mods could also change how fast time progresses. For example, time can be paused in HerosMod, so relying on World Time for gameplay effects would fail. 
 
 ## Important Fields
 Here are the important fields relating to World Time: 
@@ -158,7 +162,7 @@ Here are the important fields relating to World Time:
 
 ## Intended Use
 * [NPC Spawning](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Spawning)
-* World Update events, such as the [Volcano event in ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs#L405)
+* World Update events, such as the TODO: [Volcano event in ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs#L405)
 
 # Wall Time
 When you are a beginner modder, you may find yourself googling "c# timer" in an attempt to code up something for your mod. If you did, you found examples of using `System.Timers`. Those concepts do not apply to video games or tModLoader modding at all, as they are examples of Wall Time. You'll need to consult [World Time](#world-time) and [Game Time](#game-time) above to determine the correct approach. Again, any usage of `System.Timers` is almost certainly the wrong approach. It'll be buggy and incorrect when the user pauses the game or uses an enchanted sundial.
