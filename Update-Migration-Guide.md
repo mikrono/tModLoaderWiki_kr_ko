@@ -346,6 +346,7 @@ Tile data structures must be `unmanaged`, that is, they can only contain value d
 Tile data can be accessed & modified via the `ref T Tile.Get<T>() where T : unmanaged, ITileData` method or via `TileMap.GetData<T>()`.
 * Most of the tile get/set methods are now internal, replaced by properties for consistency and ease of use. tModPorter will handle all of them.
   * Except `isTheSameAs(Tile)`. This method is only used by vanilla for network compression, and probably doesn't do what you want. You should compare the fields you care about directly. If you're doing something like schematics, take a look at `Get<TileWallWireStateData>().NonFrameBits`
+* `Main.tile`s type is changed from `Tile[,]` to `TileMap`.
 
 ### ModBiome and ModSceneEffect
 `ModSceneEffect` now does the handling of choosing scene effects instead of separate hooks, so that tML can give proper attention to designated priorities. Notably, it has an `IsSceneEffectActive` return method, and a `Priority` property associated to it. It should be derived directly when adding scene effects that were controlled by any of the following hooks, with the exemption of `ModType`s that derive this class already such as `
