@@ -112,3 +112,13 @@ The tModLoader installation should have come with a script called `tModLoaderSer
 If the script is refusing to behave properly (e.g. it is not running as expected), then there might be a permission issue. Simply type `sudo chmod u+x tModLoaderServer` while being on the installation directory of tModLoader to fix this issue.
 
 Optional: it is recommended running the server inside of a screen or tmux session. This way, when you need to close the terminal, you don't have to close the server. This is especially useful for headless servers where the owner will only be connecting via SSH.
+
+### Starting server headless
+
+To start the server headless (and not prompt anything) use the command:
+
+`start-tmodloader.sh/bat`
+
+With the arguments:
+
+`-server -config serverconfig.txt <other parameters desired>`
