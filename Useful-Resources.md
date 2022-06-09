@@ -3,17 +3,17 @@ The following covers a list of useful resources, adapted from the [help thread o
 ## Sites
 * [Our website](https://tmodloader.net/)
 * tModloader Github wiki | You are here
-* [tModloader documentation](http://tmodloader.github.io/tModLoader/html/index.html)
+* [tModloader documentation](http://tmodloader.github.io/tModLoader/)
 * [tModloader Github repository](https://github.com/tModLoader/tModLoader)
 * [tModloader TCF thread](https://forums.terraria.org/index.php?threads/.23726/)
 * [tConfig wiki](http://tconfig.wikia.com/wiki/TConfig_Wiki) | This is an old wikipedia, used with tConfig
-* [tAPI docs](http://tapi.axxim.net/docs/) | This is an old documentation site, used with tAPI
-* [tModloader Discord Server](http://discord.me/tmodloader) | You can chat with developers and fellow modders on our Discord server
+* [tAPI docs](http://tapi.axxim.net/docs/) | This is an old documentation site, used with tAPI (WARNING: SSL SECURITY ISSUE)
+* [tModloader Discord Server](http://discord.gg/tmodloader) | You can chat with developers and fellow modders on our Discord server
 * [tModloader TCF help thread](https://forums.terraria.org/index.php?threads/official-tmodloader-help-thread.28901/)
 
 ## Utilities/Other
 
-* [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) (by @jopojelly)
+* [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) (by jopojelly)
 * [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) | Extract images and sounds from Terraria. Useful for viewing various sprites.
 * [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) | Quickly create armor animation sprites with this tool
 * [Item name updater](https://cdn.discordapp.com/attachments/103110554649894912/321756918609870858/Item_Name_Updater_Fixed.zip) | A tool that can automatically change SetDefaults to SetStaticDefaults, used for migration to v0.10 (by @imkSushi)
