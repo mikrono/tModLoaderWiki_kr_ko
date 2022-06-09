@@ -177,6 +177,39 @@ You can create your own condition if needed.
 
 See `ExampleDropCondition` in ExampleMod and the usages of it for an example of custom conditions.
 
+### First Time Boss Defeated Condition
+Plantera has a guaranteed drop of the Grenade Launcher and 50-149 Rocket I. Here is that code:
+```cs
+// First, a not expert rule is created
+LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+npcLoot.Add(type, notExpertRule);
+
+// When the not expert rule is true, this firstTimeKillingPlanteraRule is attempted
+LeadingConditionRule firstTimeKillingPlanteraRule = new LeadingConditionRule(new Conditions.FirstTimeKillingPlantera());
+notExpertRule.OnSuccess(firstTimeKillingPlanteraRule);
+
+// This rule drops a GrenadeLauncher and 50-149 RocketI as well
+IItemDropRule greanadeLauncherRule = ItemDropRule.Common(ItemID.GrenadeLauncher);
+greanadeLauncherRule.OnSuccess(ItemDropRule.Common(ItemID.RocketI, 1, 50, 150), hideLootReport: true);
+
+// When the firstTimeKillingPlanteraRule succeeds, the greanadeLauncherRule will be attempted, dropping the items
+firstTimeKillingPlanteraRule.OnSuccess(greanadeLauncherRule, hideLootReport: true);
+// Otherwise, one out of these 7 rules will be attempted
+firstTimeKillingPlanteraRule.OnFailedConditions(new OneFromRulesRule(1, greanadeLauncherRule, ItemDropRule.Common(ItemID.VenusMagnum), ItemDropRule.Common(ItemID.NettleBurst), ItemDropRule.Common(ItemID.LeafBlower), ItemDropRule.Common(ItemID.FlowerPow), ItemDropRule.Common(ItemID.WaspGun), ItemDropRule.Common(ItemID.Seedler)));
+```
+From this setup, the rules dictate that when not in expert mode, if it is the first time killing Plantera, then the Grenade Launcher is guaranteed to drop. When it is not the first time, one of the 7 rules will drop. The important part is the `Conditions.FirstTimeKillingPlantera` condition. This code is shown below:
+```cs
+public class FirstTimeKillingPlantera : IItemDropRuleCondition, IProvideItemConditionDescription
+{
+	public bool CanDrop(DropAttemptInfo info) => !NPC.downedPlantBoss;
+	public bool CanShowItemDropInUI() => true;
+	public string GetConditionDescription() => null;
+}
+```
+The important part is the `CanDrop` method, which simply checks `!NPC.downedPlantBoss` (meaning it can drop when the boss hasn't been defeated), which is how the game tracks Plantera being defeated in the world. Crucially, NPC drops are calculated before boss flags like `NPC.downedPlantBoss` are set to true, that allows this to work.
+
+This same approach can be used for other vanilla and modded bosses. Only `FirstTimeKillingPlantera` exists in the code, but a modder can create a `IItemDropRuleCondition` for any other boss by using the appropriate [NPC.downedX bool](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#downedboss1). Modded bosses can also be done in the same manner, except tracked with the [boss bool from your ModSystem class](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L17)
+
 # Chaining Rules
 Rules can be chained together to form more complex item drop logic. For example, one of the Queen Bee drops is 1 of 4 options. 33% chance Hive Wand, 11% chance for each of Bee Hat, Bee Shirt, and Bee Pants. To form this logic, the following code is used:
 ```cs
