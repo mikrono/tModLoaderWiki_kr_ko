@@ -1,3 +1,9 @@
+___
+
+**[1.4 update and migration](1.4-Update-and-FAQ)**
+
+___
+
 **Looking for install instructions? [Click here!](tModLoader-guide-for-players) (Steam and non-steam)**
 
 ___
@@ -26,6 +32,7 @@ If you wish to contribute, please view our **[contribution guide](https://github
 
 ## Informative pages
 These pages tend to describe certain files or folders.
+- [1.4 update and migration](1.4-Update-and-FAQ)
 - [Information about build.txt](build.txt)
 - [Information about description.txt](description.txt)
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
