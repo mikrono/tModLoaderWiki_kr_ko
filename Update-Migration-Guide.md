@@ -397,7 +397,7 @@ Autoloading and type structure of classes within tML have changed. Classes imple
 ## Terraria 1.4+ vanilla changes
 {1.4 includes several back end changes that we should point out}
 ### IEntitySource
-Various entity creating methods (`Item.NewItem`, `Projectile.NewProjectile`, `NPC.NewNPC`, `Player.QuickSpawnItem`, `Gore.NewGore`) have received a new parameter denoting its source, read more about it [here](https://github.com/tModLoader/tModLoader/wiki/IEntitySource).
+Various entity creating methods (`Item.NewItem`, `Projectile.NewProjectile`, `NPC.NewNPC`, `Player.QuickSpawnItem` `Player.QuickSpawnClonedItem` (tML only), `Gore.NewGore`) have received a new parameter denoting its source, read more about it [here](https://github.com/tModLoader/tModLoader/wiki/IEntitySource).
 
 ### Equip Textures and Armor Sheets
 The Sprite Styling has changed for some aspects of the armor - namely `EquipType.HandsOn/HandsOff/Body` (the latter affecting the 1.3 Arm and FemaleBody textures too). Tools and guides on migrating to the new armor texture format can be found in [Armor Texture Migration Guide](../wiki/Armor-Texture-Migration-Guide).
