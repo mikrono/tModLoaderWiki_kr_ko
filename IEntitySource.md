@@ -9,10 +9,14 @@ Do not store `IEntitySource` in fields. The validity of the information they enc
 # Methods requiring IEntitySource
 The following commonly used methods require `IEntitySource`.
 * Gore.NewGore
+* Gore.NewGoreDirect
+* Gore.NewGorePerfect
 * Player.QuickSpawnItem
+* Player.QuickSpawnClonedItem
 * Item.NewItem
 * NPC.NewNPC
 * Projectile.NewProjectile
+* Projectile.NewProjectileDirect
 
 # Common Usage
 The most common usages of `IEntitySource` will be listed here. If you absolutely can't figure out a suitable `IEntitySource` for your situation, passing in `null` is acceptable, but be aware that the purpose of `IEntitySource` is to facilitate advanced modding capabilities and your users might be disappointed that their other mods do not work 100% correctly because you didn't use the correct `IEntitySource`.
