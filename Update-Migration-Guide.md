@@ -168,6 +168,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModTile.bed` -> `TileID.Sets.CanBeSleptIn[Type]`
 * `ModLoader.ModTile.sapling` -> `TileID.Sets.TreeSapling[Type]`, also concider `TileID.Sets.CommonSapling`
 * `ModLoader.ModTile.torch` -> `TileID.Sets.Torch[Type]`
+* `ModLoader.ModPrefix.AutoDefaults` -> `ModLoader.ModPrefix.AutoStaticDefaults`
 * `ModLoader.ModPrefix.GetPrefix(byte)` -> `ModLoader.PrefixLoader.GetPrefix(int)`
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
 * `ModLoader.ModBuff.canBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
