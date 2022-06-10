@@ -18,15 +18,19 @@ using Terraria.ModLoader;
 ## Create Recipe and Assign Recipe Result
 To start a recipe we create an instance of the `Recipe` class. We do this through the `Mod.CreateRecipe` method or the `ModItem.CreateRecipe` method. When creating a recipe, we need to assign the recipe result type and result stack. The `ModItem.CreateRecipe` method assumes that the recipe results in the current ModItem, so only the stack size is needed. The stack size is optional and defaults to 1:
 
+In `Mod` class, we type "CreateRecipe" to use the Mod.CreateRecipe method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
 ```cs
-// In Mod class, we type "CreateRecipe" to use the Mod.CreateRecipe method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes. 
 Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ); 
 Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ, 5); 
 Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>());
 Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>(), 10);
-// In ModSystem class, we need to use "Mod.CreateRecipe":
+```
+In `ModSystem` class, we need to use "Mod.CreateRecipe":
+```cs
 Recipe recipe = Mod.CreateRecipe(ItemID.AlphabetStatueZ); 
-// In ModItem class, we can use "Mod.CreateRecipe" to create a recipe that doesn't have this ModItem as a result:
+```
+In `ModItem` class, we can use "Mod.CreateRecipe" to create a recipe that doesn't have this ModItem as a result:
+```cs
 Recipe recipe = Mod.CreateRecipe(ItemID.AlphabetStatueZ); 
 // ... And we can use "CreateRecipe" directly to create a recipe that results in this ModItem. We can optionally provide a stack size:
 Recipe recipe = CreateRecipe(); 
