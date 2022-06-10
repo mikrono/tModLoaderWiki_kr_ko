@@ -117,7 +117,7 @@ Optional: it is recommended running the server inside of a screen or tmux sessio
 
 To start the server headless (and not prompt anything) use the command:
 
-`start-tmodloader.sh/bat`
+`start-tModLoader.sh/bat`
 
 With the arguments:
 
