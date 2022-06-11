@@ -262,7 +262,7 @@ The same methods also exist in `ModContent`, the string parameter then expects t
 **IMPORTANT: Do NOT replace/remove the `<ModX>` part!**
 
 Other methods unified to the new approach:
-* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`)
+* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`) (Also important: Find/TryFind will now not require the `Gores/` in `"Gores/GoreName"` anymore)
 
 Examples:
 ```cs
