@@ -61,6 +61,7 @@ Here are the most relevant changes.
 * `void Player.PickAmmo(Item, ref int, ref float, ref bool, ref int, ref float, bool)` -> `bool Player.PickAmmo(Item, out int, out float, out bool, out int, out float, out int, bool)` with the return representing previous `canShoot`
 * `Item.IsTheSameAs` -> removed, use `item.type == compareItem.type` directly
 * `Item.IsNotTheSameAs` -> `Item.IsNotSameTypePrefixAndStack`
+* `public override void GenPass.Apply(GenerationProgress)` -> `protected override void GenPass.ApplyPass(GenerationProgress, GameConfiguration)` (only the override, invocation is through `Apply` still, though with the new parameters)
 * `Main.instance.DrawPlayer(...)` -> `Main.PlayerRenderer.DrawPlayer(Main.Camera, ...)`
 
 ### Non-Static Fields / Constants / Properties
@@ -146,7 +147,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
 * `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
 * `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
-* `ModLoader.ModItem.UpdateVanity` -> `ModLoader.ModItem.EquipFrameEffects`
+* `ModLoader.ModItem.UpdateVanity` -> `ModLoader.ModItem.EquipFrameEffects`, the UpdateVanity hook still exists, just for a different purpose
 * `ModLoader.ModPlayer.SetupStartInventory(IList<Item>)` -> removed/deprecated
 * `ModLoader.ModPlayer.SetupStartInventory(IList<Item>, bool)` -> `ModLoader.ModPlayer.AddStartingItems(bool)`, returns an `IEnumerable<Item>`. Use ModifyStartingInventory for modifying if needed
 * `ModLoader.ModPlayer/ModItem.GetWeaponDamage` -> removed/deprecated
