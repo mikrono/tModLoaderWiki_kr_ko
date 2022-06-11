@@ -250,7 +250,7 @@ Basically, all values should be 16 in most cases. Use 18 on the bottom so that t
    
 Here we see the white pixels peeking out from behind the grass. Grass tiles don't completely cover their 16x16 area, leaving tiny holes. Correctly doing this will help the tile look like it's actually there and sitting in the soil, obviously modders should draw the sprite correctly and not with white. (note that it seems solid must be false for this.)    
 ![](http://i.imgur.com/CDzrin7.png)    
-TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 }; // Don't extend into grass.`    
+`TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 }; // Don't extend into grass.`    
 Notice how the grass doesn't completely cover its area, so our tile seems to float a little.    
 ![](http://i.imgur.com/PMBuMum.png)    
 
