@@ -367,7 +367,7 @@ Likewise, with the introduction of `ModBiome`, the `UpdateBiomes` and `UpdateBio
 
 ## Hook Changes
 * `(ModItem/GlobalItem).UseTimeMultiplier`: Now accepts an actual multiplier instead of divisor. Invert your values by dividing 1.0 by them.
-* `(ModItem/GlobalItem).MeleeTimeMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
+* `(ModItem/GlobalItem).MeleeSpeedMultiplier`: Replaced with `UseAnimationMultiplier` and `UseSpeedMultiplier`. Use the former if you want to increase `itemAnimation` value (risking increasing the amount of uses/shots), use the latter if you just want to safely speed up the item/weapon while keeping the ratio between `itemAnimation` and `itemTime` the same.
 * `(GlobalTile/GlobalWall/ModTile/ModWall/ModBuff/ModDust/ModMount/ModPrefix).SetDefaults` -> `(X).SetStaticDefaults`. Now all `ModType`s have such a method.
 * Ammo changes:
     * `(ModItem/GlobalItem).PickAmmo` changed `ref int damage` to `ref StatModifier damage`, with caveats. Read more on this [here](https://github.com/tModLoader/tModLoader/pull/2288)
