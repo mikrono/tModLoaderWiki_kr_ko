@@ -122,3 +122,5 @@ To start the server headless (and not prompt anything) use the command:
 With the arguments:
 
 `-server -config serverconfig.txt <other parameters desired>`
+
+For example, on windows, you can create a `start-tModLoaderServer-NoAsk-CoolWorld.bat` file in the install folder and place the text `start-tModLoader.bat -server -config serverconfig.txt -world "C:\Documents\My Games\Terraria\tModLoader\Worlds\Cool_World.wld"` in it and save. When launched, the sever will launch and load the specified world. Change the world argument filename as necessary. You can also change serverconfig.txt or another config file and use the world argument in there as well. Adding the usual `-steam -lobby friends` or `-steam -lobby private` will make the server joinable via steam invites or friends. You can create a desktop shortcut to this .bat file for convenience.
