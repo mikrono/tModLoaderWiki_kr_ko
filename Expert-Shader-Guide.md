@@ -416,9 +416,9 @@ These are pretty much all the building blocks you need to make your own shaders.
 
 # Compiling your shader
 
-Once you have finished writing a shader, you'll need to compile it before you can use it. There are two ways to do this: the most straightforward is to use [fxcompiler](https://cdn.discordapp.com/attachments/271236615823687680/459821438405181470/fxcompiler.zip) ([Reach version](https://cdn.discordapp.com/attachments/103110554649894912/686875686501220363/fxcompiler_reach.exe)), an application that can compile .fx files into .xnb without having to build them with a XNA application, which is the second way.
+Once you have finished writing a shader, you'll need to compile it before you can use it. There are two ways to do this: the most straightforward is to use an application that can compile .fx files into .xnb such as [fxcompiler](https://cdn.discordapp.com/attachments/271236615823687680/459821438405181470/fxcompiler.zip) ([Reach version](https://cdn.discordapp.com/attachments/103110554649894912/686875686501220363/fxcompiler_reach.exe)), or [EasyXnb](https://github.com/SuperAndyHero/EasyXnb/releases) (Required for shader model 3). The second way is to build them with a XNA application.
 
-Using fxcompiler is very simple: just put the files you want to compile into the same folder as fxcompiler.exe, run it, and you're done. Move the .xnb files to your mod folder (_YourModName/Effects_ is a good place to put them) and you're done. If you build them with a XNA application, they will end up in your bin folder.
+Using fxcompiler or EasyXnb is very simple: just put the files you want to compile into the same folder as the exe, run it, and you're done. Move the .xnb files to your mod folder (_YourModName/Effects_ is a good place to put them) and you're done. If you build them with a XNA application, they will end up in your bin folder.
 
 A additional option is to use the Modders Toolkit Shader Tool. The Shader tool allows live testing and development of your shader in-game. More info can be found on the [Modders Toolkit Wiki](https://github.com/JavidPack/ModdersToolkit/wiki/Shader-Tool).
 
