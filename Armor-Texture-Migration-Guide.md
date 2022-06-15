@@ -2,13 +2,13 @@
 
 # Body Texture
 The previous `Body`, `Arms`, and `FemaleBody` textures have been combined into one new texture. The new texture contains "extended" arm sprites. These extended arm sprites are used in:
-* Eating food (`UseStyleID.DrinkOld`)
-* Playing golf (`UseStyleID.GolfPlay` and `HoldStyleID.HoldGolfClub`)
-* Drinking potions (`UseStyleID.DrinkLiquid`)
-* Using the Lawn Mower (`UseStyleID.MowTheLawn`)
-* Playing guitars (`UseStyleID.Guitar` and `HoldStyleID.HoldGuitar`)
-* Swinging shortswords (`UseStyleID.Rapier`)
-* Using the Nightglow (`UseStyleID.RaiseLamp` and `HoldStyleID.HoldLamp`)
+* Eating food (`ItemUseStyleID.EatFood`)
+* Playing golf (`ItemUseStyleID.GolfPlay` and `ItemHoldStyleID.HoldGolfClub`)
+* Drinking potions (`ItemUseStyleID.DrinkLiquid`)
+* Using the Lawn Mower (`ItemUseStyleID.MowTheLawn`)
+* Playing guitars (`ItemUseStyleID.Guitar` and `ItemHoldStyleID.HoldGuitar`)
+* Swinging shortswords (`ItemUseStyleID.Rapier`)
+* Using the Nightglow (`ItemUseStyleID.RaiseLamp` and `ItemHoldStyleID.HoldLamp`)
 * Petting the Town Pets.
 
 You can see examples of these Use Styles on the [Terraria Wiki](https://terraria.wiki.gg/wiki/Use_Style_IDs).
