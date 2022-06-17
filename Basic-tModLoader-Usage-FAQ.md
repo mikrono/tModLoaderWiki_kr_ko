@@ -31,7 +31,7 @@ If you try to install tModLoader through Steam and it gives you a message with "
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
 
-This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add tModLoader.exe to your whitelist, for further instructions on how to do this continue reading below.
+This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add "dotnet.exe" (or "tModLoader.exe" if 1.3) to your whitelist, for further instructions on how to do this continue reading below.
 
 (If you follow the directions below and still can't solve the issue, a last resort is to tell tModLoader to save to the install directory instead. You can do this by creating a `savehere.txt` file in the install directory.)
 
@@ -55,13 +55,13 @@ Left-Click "Allow an app through controlled folder access"
 Left-Click "Add an allowed app", and select "Recently blocked apps"
 
 ![](https://i.imgur.com/tsXmj1b.png)  
-Scroll through the list until you find "tModLoader.exe", and click the + and then close, after this you're done! (If you cannot find "tModLoader.exe" on your list, then continue with the below steps)
+Scroll through the list until you find "dotnet.exe" (or "tModLoader.exe" if 1.3), and click the + and then close, after this you're done! (If you cannot find "tModLoader.exe" on your list, then continue with the below steps)
 
 ![Extra Step 1](https://i.imgur.com/0ruiXoA.png)  
 Back in the "Add allowed app" selection, left-click "Browse all apps"
 
 ![Extra Step 2](https://i.imgur.com/E7pnDZo.png)  
-Navigate to wherever you installed your tModLoader (refer to video linked below on how to find an installation directory through Steam if you don't know how to do this) and double-click or select and left-click then open "tModloader.exe" this will add the file to your whitelist. Done!
+Navigate to wherever you installed your tModLoader (refer to video linked below on how to find an installation directory through Steam if you don't know how to do this) and double-click or select and left-click then open "dotnet.exe" (or "tModLoader.exe" if 1.3) this will add the file to your whitelist. Done!
 
 [How to find a game install location on Steam](https://gfycat.com/SelfreliantAssuredIsabellineshrike)  
 Use the process shown in the above linked video to find your tModLoader install location, the gif is showing how to do this for Terraria, but you will need to do the same process except with tModLoader on Steam (you must have it installed first).
