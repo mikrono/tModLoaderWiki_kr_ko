@@ -55,13 +55,13 @@ Left-Click "Allow an app through controlled folder access"
 Left-Click "Add an allowed app", and select "Recently blocked apps"
 
 ![](https://i.imgur.com/tsXmj1b.png)  
-Scroll through the list until you find "dotnet.exe" (or "tModLoader.exe" if 1.3), and click the + and then close, after this you're done! (If you cannot find "tModLoader.exe" on your list, then continue with the below steps)
+Scroll through the list until you find "dotnet.exe" (or "tModLoader.exe" if 1.3), and click the + and then close, after this you're done! (If you cannot find "dotnet.exe" (or "tModLoader.exe" if 1.3) on your list, then continue with the below steps)
 
 ![Extra Step 1](https://i.imgur.com/0ruiXoA.png)  
 Back in the "Add allowed app" selection, left-click "Browse all apps"
 
 ![Extra Step 2](https://i.imgur.com/E7pnDZo.png)  
-Navigate to wherever you installed your tModLoader (refer to video linked below on how to find an installation directory through Steam if you don't know how to do this) and double-click or select and left-click then open "dotnet.exe" (or "tModLoader.exe" if 1.3) this will add the file to your whitelist. Done!
+Navigate to wherever you installed your tModLoader (refer to video linked below on how to find an installation directory through Steam if you don't know how to do this) and double-click or select and left-click then open "dotnet/6.0.0/dotnet.exe" (or "tModLoader.exe" if 1.3) this will add the file to your whitelist. Done!
 
 [How to find a game install location on Steam](https://gfycat.com/SelfreliantAssuredIsabellineshrike)  
 Use the process shown in the above linked video to find your tModLoader install location, the gif is showing how to do this for Terraria, but you will need to do the same process except with tModLoader on Steam (you must have it installed first).
