@@ -79,8 +79,16 @@ To see the vanilla textures for yourself, use a tool like [TConvert](https://for
 
 ### "When I extract vanilla `Acc_HandsOn_#` or `Acc_HandsOff_#` accessories I still get the old texture format!"
 
-Look in the `Images/Accessories` for the new style of textures. The `Acc_HandsOn_#` and `Acc_HandsOff_#` textures located in just the `Images` folder are the old format.
+Look in the `Images/Accessories` folder for the new style of textures. The `Acc_HandsOn_#` and `Acc_HandsOff_#` textures located in just the `Images` folder are the old format.
 
-### "When I use Sprite Converter, my output texture is just black and white!"
+### "When I use Sprite Transformer, my output texture is just black and white!"
 
 Set your source images to RGB colors instead of Indexed colors.
+
+### "When I use Sprite Transformer, clicking Transform does nothing!"
+
+Set your source images to RGB colors instead of Grayscale colors.
+
+### "When I use Sprite Transformer, my output texture has strange dithering and a black background!"
+
+Set your source images to 32-bit depth.
