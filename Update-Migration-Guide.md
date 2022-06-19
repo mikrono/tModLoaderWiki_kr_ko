@@ -30,6 +30,9 @@ Here are the most relevant changes.
 **Regex:** `Main.font(\w+)]` -> `FontAssets.$1.Value`
 * `Main.*Texture[i]` -> `TextureAssets.*[i].Value`<br/>
 **Regex for items:** `Main.itemTexture\[([^\]]*)\]` -> `TextureAssets.Item[$1].Value`
+* `Main.blackTileTexture` -> `TextureAssets.BlackTile.Value`
+* `Main.magicPixel` -> `TextureAssets.MagicPixel.Value`
+* `Main.fishingLineTexture` -> `TextureAssets.FishingLine.Value`
 * `Main.campfire` and similar environmental flags are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.HasCampfire`
 * `Main.jungleTiles` and similar surrounding tile counts are now in `Main.SceneMetrics` and slightly renamed, e.g. `Main.SceneMetrics.JungleTileCount`
 * `Main.dresserX/Y` -> `Main.interactedDresserTopLeftX/Y`
