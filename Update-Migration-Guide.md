@@ -43,6 +43,13 @@ Here are the most relevant changes.
 * `Main.SmartCursorEnabled` -> `Main.SmartCursorIsUsed`
 * `Main.tileValue` -> `Main.tileOreFinderPriority`
 * `Main.worldRate` -> `Main.desiredWorldTilesUpdateRate`
+* `Main.expertDebuffTime` -> `Main.GameModeInfo.DebuffTimeMultiplier`
+* `Main.expertNPCDamage ` -> `Main.GameModeInfo.TownNPCDamageMultiplier`
+* `Main.expertLife ` -> `Main.GameModeInfo.EnemyMaxLifeMultiplier`
+* `Main.expertDamage ` -> `Main.GameModeInfo.EnemyDamageMultiplier`
+* `Main.expertKnockBack ` -> `Main.GameModeInfo.KnockbackToEnemiesMultiplier`
+* `Main.knockBackMultiplier ` -> `Main.GameModeInfo.KnockbackToEnemiesMultiplier`
+* `Main.damageMultiplier ` -> `Main.GameModeInfo.EnemyDamageMultiplier`
 * `Tile.Liquid_Water/Liquid_Honey/Liquid_Lava` -> `ID.LiquidID.Water/Honey/Lava`
 * `Tile.Type_Solid` -> `(int)BlockType.Solid`
 * `Tile.Type_Halfbrick` -> `(int)BlockType.HalfBlock`
@@ -56,6 +63,14 @@ Here are the most relevant changes.
 * `NPCID.Sets.TechnicallyABoss` -> `NPCID.Sets.ShouldBeCountedAsBoss`
 * `ProjectileID.Sets.Homing` -> `ProjectileID.Sets.CultistIsResistantTo`
 * `Utils.InverseLerp` -> `Utils.GetLerpValue`
+* `Utils.PerLinePoint` -> `Utils.TileActionAttempt`
+* `WorldGen.CopperTierOre` -> `WorldGen.SavedOreTiers.Copper`
+* `WorldGen.IronTierOre` -> `WorldGen.SavedOreTiers.Iron`
+* `WorldGen.SilverTierOre` -> `WorldGen.SavedOreTiers.Silver`
+* `WorldGen.GoldTierOre` -> `WorldGen.SavedOreTiers.Gold`
+* `WorldGen.oreTier1` -> `WorldGen.SavedOreTiers.Cobalt`
+* `WorldGen.oreTier2` -> `WorldGen.SavedOreTiers.Mythril`
+* `WorldGen.oreTier3` -> `WorldGen.SavedOreTiers.Adamantite`
 
 ### Non-Static Methods
 * `Player.GetItem(int, Item, bool, bool)` -> `Player.GetItem(int, Item, GetItemSettings)` (`GetItemSettings` class contains various static instances of it to use for the last parameter)
@@ -77,10 +92,12 @@ Here are the most relevant changes.
 * `Item.dye` -> `byte` to `int` (Many changes to related methods aswell)
 * `Item.hairDye` -> `short` to `int` (Many changes to related methods aswell)
 * `Item.owner` -> `Item.playerIndexTheItemIsReservedFor`
+* `ObjectData.TileObjectData.HookCheck` ->  `ObjectData.TileObjectData.HookCheckIfCanPlace`
 * `Player.showItemIcon` -> `Player.cursorItemIconEnabled`
 * `Player.showItemIcon2` -> `Player.cursorItemIconID`
 * `Player.showItemIconText` -> `Player.cursorItemIconText`
 * `Player.ZoneHoly` -> `Player.ZoneHallow`
+* `Player.activeNPCs` -> `Player.nearbyActiveNPCs`
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
 * `Player.dash` -> `Player.dashType`. Player.dash is used for something else now.
 * `Player.bee` and similar accessory flags that spawn projectiles -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
@@ -133,7 +150,7 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModGore.OnSpawn(Gore)`-> `ModLoader.ModGore.OnSpawn(Gore, IEntitySource)` (`using Terraria.DataStructures;`)
 * `ModLoader.ModPlayer.CatchFish(Item, Item, int, int, int, int, int, ref int)` -> `ModLoader.ModPlayer.CatchFish(FishingAttempt, ref int, ref int, ref AdvancedPopupRequest, ref Vector2)`
 * `ModLoader.ModPlayer.DrawEffects(PlayerDrawInfo, ...)` -> `ModLoader.ModPlayer.DrawEffects(PlayerDrawSet, ...)`
-* `ModLoader.ModProjectile.CanDamage` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `false`
+* `ModLoader.ModProjectile.CanDamage` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `true`
 * `ModLoader.ModProjectile.TileCollideStyle(ref int, ref int, ref bool)` -> `ModLoader.ModProjectile.TileCollideStyle(ref int, ref int, ref bool, ref Vector2)`
 * `ModLoader.ModProjectile.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PreDraw(ref Color)`, `ModLoader.ModProjectile.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModProjectile.PostDraw(Color)`, and `PreDrawExtras(SpriteBatch)` -> `PreDrawExtras()`, so use `Main.EntitySpriteDraw` instead of `spriteBatch.Draw` (using the same parameters (except the last one is float -> int, which should stay at 0)).
 * `ModLoader.ModNPC.PreDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PreDraw(SpriteBatch, Vector2, Color)` and `ModLoader.ModNPC.PostDraw(SpriteBatch, Color)` -> `ModLoader.ModNPC.PostDraw(SpriteBatch, Vector2, Color)`, this means you should use the new parameter instead of `Main.screenPosition` so things draw correctly in the bestiary.
@@ -148,8 +165,8 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModItem.UseItem` -> return type changed from `bool` to `bool?`, concider returning `null` instead of `false`
 * `ModLoader.ModItem.HoldStyle(Player)` -> `ModLoader.ModItem.HoldStyle(Player, Rectangle)`
 * `ModLoader.ModItem.UseStyle(Player)` -> `ModLoader.ModItem.UseStyle(Player, Rectangle)`
-* `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true` to specify these qualities of an equip texture.
-* `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` (in `SetStaticDefaults`), for other uses check the other sets in `ArmorIDs.Head.Sets`
+* `ModLoader.ModItem.DrawX` -> now use `ArmorIDs.X.Sets.Draw/Hide/etc[equipSlotID] = true/false` to specify these qualities of an equip texture.
+* `ModLoader.ModItem.DrawHair` -> Removed. Porting: `drawAltHair = true` -> `ArmorIDs.Head.Sets.DrawHatHair[Item.headSlot] = true` and `drawHair = true` -> `ArmorIDs.Head.Sets.DrawFullHair[Item.headSlot] = true` (in `SetStaticDefaults`)
 * `ModLoader.ModItem.UpdateVanity` -> `ModLoader.ModItem.EquipFrameEffects`, the UpdateVanity hook still exists, just for a different purpose
 * `ModLoader.ModPlayer.SetupStartInventory(IList<Item>)` -> removed/deprecated
 * `ModLoader.ModPlayer.SetupStartInventory(IList<Item>, bool)` -> `ModLoader.ModPlayer.AddStartingItems(bool)`, returns an `IEnumerable<Item>`. Use ModifyStartingInventory for modifying if needed
@@ -175,12 +192,12 @@ _All ModX things listed here apply to GlobalX aswell_
 * `ModLoader.ModPrefix.AutoDefaults` -> `ModLoader.ModPrefix.AutoStaticDefaults`
 * `ModLoader.ModPrefix.GetPrefix(byte)` -> `ModLoader.PrefixLoader.GetPrefix(int)`
 * `ModLoader.BuffLoader.CanBeCleared(int)` -> removed
-* `ModLoader.ModBuff.canBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]`
+* `ModLoader.ModBuff.canBeCleared` -> `BuffID.Sets.NurseCannotRemoveDebuff[Type]` with inverted logic
 * `ModLoader.ModBuff.longerExpertDebuff` -> `BuffID.Sets.LongerExpertDebuff[Type]`
 * `ModLoader.ModWaterStyle.Type` -> `ModLoader.ModWaterStyle.Slot`
 * `ModLoader.ModWaterfallStyle.Type` -> `ModLoader.ModWaterfallStyle.Slot`
 * `ModLoader.EquipTexture.mod` -> removed
-* `ModLoader.EquipTexture.UpdateVanity` -> `ModLoader.EquipTexture.FrameEffects`
+* `ModLoader.EquipTexture.UpdateVanity` -> `ModLoader.EquipTexture.FrameEffects` (only for initial 1.3 porting, the UpdateVanity hook still exist albeit for a different purpose)
 * `ModLoader.ModX.Load(TagCompound)` -> `ModLoader.ModX.LoadData(TagCompound)`
 * `ModLoader.ModX.Save()` -> `ModLoader.ModX.SaveData(TagCompound)` - now returns `void`, this means you should be assigning your data to the passed in tag.
 
@@ -265,7 +282,7 @@ The same methods also exist in `ModContent`, the string parameter then expects t
 **IMPORTANT: Do NOT replace/remove the `<ModX>` part!**
 
 Other methods unified to the new approach:
-* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`) (Also important: Find/TryFind will now not require the `Gores/` in `"Gores/GoreName"` anymore)
+* `Mod.GetGoreSlot` with `ModGore` (Important to note: this will error if called serverside, as `ModGore` is now a clientside type, so check for `Main.netMode != NetmodeID.Server`) (Also important: Find/TryFind will now **not** require the `Gores/` in `"Gores/GoreName"` anymore)
 
 Examples:
 ```cs
@@ -389,6 +406,7 @@ Autoloading and type structure of classes within tML have changed. Classes imple
 * `IsLoadingEnabled` allows for simple "can be loaded or not" behavior (i.e. config)
 * `Autoload` attribute for classes, which can be supplied with `true/false` (allowing you to choose to manually add and control content using `Mod.AddContent` elsewhere), and `ModSide` (allowing creation of side-specific content, i.e. `ModGore`, which is clientside)
 * `ModLoader.Mod.AddItem(string, ModItem)`, `ModLoader.Mod.AddProjectile(string, ModProjectile)` and other similar methods -> `ModLoader.Mod.AddContent(ILoadable)`, with the name now being specified through the `Name` property on the `ILoadable`
+* `Mod.Properties` and `ModProperties` are removed. Assign `ContentAutoloadingEnabled, GoreAutoloadingEnabled, MusicAutoloadingEnabled, and BackgroundAutoloadingEnabled` directly
 
 //TODO more detailed porting notes for parameters in old Autoload hook, and how to add content manually now
 
