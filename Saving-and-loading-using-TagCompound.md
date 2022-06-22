@@ -1,6 +1,10 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Saving-and-loading-using-TagCompound/a03f9a9c9530ff209853233efd9e6dbbfea879d7)
+***
+
 # What is TagCompound
 
-`TagCompound` is the data format for custom data saved using tModLoader. We use `TagCompound` in `ModWorld`, `ModItem`, `ModPlayer`, `GlobalItem`, and `ModTileEntity`. If you are familiar with the concepts, thinking of `TagCompound` as a nestable dictionary or JSON comes pretty close. Like a dictionary, we provide string keys and values of any supported type.
+`TagCompound` is the data format for custom data saved using tModLoader. We use `TagCompound` in `ModSystem`, `ModItem`, `ModPlayer`, `ModNPC`, `GlobalItem`, `GlobalNPC`, and `ModTileEntity`. If you are familiar with the concepts, thinking of `TagCompound` as a nestable dictionary or JSON comes pretty close. Like a dictionary, we provide string keys and values of any supported type.
 
 Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2.8.0-win) to visualize TagCompounds by opening .twld or .tplr files with it. It can be very helpful to view the data in this manner to verify that data is being saved in a manner that makes sense.
 
@@ -8,7 +12,7 @@ Please use [NBTExplorer](https://github.com/jaquadro/NBTExplorer/releases/tag/v2
 Below are some things to keep in mind as you use `TagCompound`.
 
 ## Compatible Data Types
-All primitive data types are supported as well as `byte[]`, `int[]` and `List`s of other supported data types. Usually we use the methods like `GetInt` or `GetBool`, but we can use `Get<Type>` for Types without specific methods defined. See the [TagCompound documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_i_o_1_1_tag_compound.html) or rely on your IDEs [autocomplete](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) to find the method you want. In addition to the types suggested by the method names, `ushort`, `uint`, `ulong`, `Vector2`, `Vector3`, `Item`, `Color`, `Point16`, and `Rectangle` are also supported. Additional support can be implemented either by implementing `TagSerializable` or by nesting `TagCompound`s manually.
+All primitive data types are supported as well as `byte[]`, `int[]` and `List`s of other supported data types. Usually we use the methods like `GetInt` or `GetBool`, but we can use `Get<Type>` for Types without specific methods defined. See the [TagCompound documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_i_o_1_1_tag_compound.html) or rely on your IDEs [autocomplete](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#autocomplete--intellisense) to find the method you want. In addition to the types suggested by the method names, `ushort`, `uint`, `ulong`, `Vector2`, `Vector3`, `Item`, `Color`, `Point16`, `Rectangle`, and `EntityDefinition` are also supported. Additional support can be implemented by implementing the `TagSerializable` interface, creating a class that inherits from `TagSerializer`, or by nesting `TagCompound`s manually.
 
 ## Mod Version Updates
 Using `TagCompound` helps modders update mods smoothly. For example, if v1.0 of a mod saves only `a`, but v2.0 saves both `a` and `b`, the modder doesn't need to make extra checks validating the value or presence of `b` for most situations. They'd only need to do extra effort if `b` has a non-default value. For example, `b = tag.GetInt("b");` will return the default value of int if the value does not exist in the `TagCompound`, and the default value of int is 0. If 0 is the value the mod would expect for a missing entry, this works out well. If a non-default value is what the mod expects for a missing entry, the following approach can be used:
@@ -19,94 +23,80 @@ public override void Initialize()
 	QuestsLeft = 10;
 }
 
-public override void Load(TagCompound tag)
+public override void LoadData(TagCompound tag)
 {
 	if (tag.ContainsKey("QuestsLeft"))
-		QuestsLeft= tag.GetInt("QuestsLeft");
+		QuestsLeft = tag.GetInt("QuestsLeft");
 }
 ```
 
-Notice how initialize sets the value to 10, the default value our mod expects. We then check that the tag has an entry for "QuestsLeft", and if it does, we retrieve that value. Without this check, `tag.GetInt` would return 0 if the key did not exist. Designing your variables such that the default values correspond to the expected default values might be useful if you wish to avoid checking `ContainsKey`.
+Notice how `Initialize` sets the value to 10, the default value our mod expects. We then check that the tag has an entry for "QuestsLeft", and if it does, we retrieve that value. Without this check, `tag.GetInt` would return 0 if the key did not exist. Designing your variables such that the default values correspond to the expected default values might be useful if you wish to avoid checking `ContainsKey`. This example used the `Initialize` method in `ModPlayer` to show this concept, but other classes have similar methods that are suitable for initializing data. For `ModItem`, for example, initial values can be set in `SetDefaults`. 
 
 ## Initialize
-Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because Load will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModWorld` values in `ModWorld.Initialize`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
+Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because `LoadData` will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModSystem` values in `ModSystem.OnWorldLoad`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
 
 ```cs
-internal class MyModWorld : ModWorld
+internal class MyWorldModSystem : ModSystem
 {
 	public static bool MySpecialBool;
 
-	public override void Initialize()
+	public override void OnWorldLoad()
 	{
 		MySpecialBool = false;
 	}
 
-	public override void Load(TagCompound tag)
+	public override void LoadWorldData(TagCompound tag)
 	{
 		MySpecialBool = tag.GetBool("MySpecialBool");
 	}
 
-	public override TagCompound Save()
+	public override void SaveWorldData(TagCompound tag)
 	{
-		return new TagCompound {
-			{"MySpecialBool", MySpecialBool }
-		};
+		tag["MySpecialBool"] = MySpecialBool;
 	}
 }
 ```
 
-In the above example, we make sure to set `MySpecialBool` to false in `ModWorld.Initialize`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have `TagCompound` data yet, so `Load` is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
+In the above example, we make sure to set `MySpecialBool` to false in `ModSystem.OnWorldLoad`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have `TagCompound` data yet, so `Load` is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
 
 # Examples
 Here are links to various examples in ExampleMod and other mods, in order of complexity:
-* [ExampleCustomData](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleCustomData.cs) - ModItem - Simple Example, 1 number
-* [ExamplePlayer](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExamplePlayer.cs) - ModPlayer - Simple Example, 2 numbers
-* [ExampleWorld](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/ExampleWorld.cs) - ModWorld - List of strings
-* [TEScoreBoard](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs) - ModTileEntity - Simple Dictionary
-* [ExampleInstancedGlobalItem](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs) - GlobalItem - Shows using NeedsSaving so we don't waste storage space.
-* [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/master/DisableCorruptionSpread.cs) - ModWorld - Shows `nameof` and `tag.ContainsKey` usage.
-* [AutoTrashPlayer](https://github.com/JavidPack/AutoTrash/blob/master/AutoTrashPlayer.cs) - ModPlayer - Saving and Loading a list of `Item`s.
-* [Item](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria/Item_tML.cs) (and [ItemIO](https://github.com/tModLoader/tModLoader/blob/master/patches/tModLoader/Terraria.ModLoader.IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
+* [ExampleLifeFruitPlayer](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/ExampleLifeFruit.cs#L85) - ModPlayer - Simple Example, 1 number indicating life boost item consumption
+* [DownedBossSystem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L32) - ModSystem - Saves bools indicating which bosses from ExampleMod have been defeated in the world
+* [ExamplePerson](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExamplePerson.cs#L352) - ModNPC - Saves an int to this town NPC to indicate talk activity
+* [ExampleInstancedItem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/ExampleInstancedItem.cs#L66) - ModItem - Saves an array of Color pertaining solely to the specific instance of the item
+* [ExampleCanStackItem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/ExampleCanStackItem.cs#L66) - ModItem Saves a string
+* [ExampleGlobalNPC](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExampleGlobalNPC.cs#L41) - GlobalNPC - Saves a bool
+* [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/1.4/DisableCorruptionSpreadModWorld.cs#L166) - ModSystem - Shows `nameof` and `tag.ContainsKey` usage.
+* [AutoTrashPlayer](https://github.com/JavidPack/AutoTrash/blob/1.4/AutoTrashPlayer.cs#L30) - ModPlayer - Saving and Loading a list of `Item`s.
+* [BossChecklist](https://github.com/JavidPack/BossChecklist/blob/1.4/DataManager.cs) - TagSerializable - Shows several examples of implementing TagSerializable, including nesting
+* [Item](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/Item.TML.cs) (and [ItemIO](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/ModLoader/IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
+* [TagSerializer](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/ModLoader/IO/TagSerializer.cs#L154) - TagSerializer - Shows inheriting from TagSerializer to facilitate serializing existing classes
 
 # Simple Example
 
-Lets start with ExamplePlayer.cs:
+Lets start with ExampleLifeFruitPlayer from ExampleLifeFruit.cs:
 
 ```cs
-public override TagCompound Save()
-{
-	return new TagCompound {
-		{"score", score},
-		{"exampleLifeFruits", exampleLifeFruits},
-	};
+public override void SaveData(TagCompound tag) {
+	tag["exampleLifeFruits"] = exampleLifeFruits;
 }
 
-public override void Load(TagCompound tag)
-{
-	score = tag.GetInt("score");
-	exampleLifeFruits = tag.GetInt("exampleLifeFruits");
+public override void LoadData(TagCompound tag) {
+	exampleLifeFruits = (int)tag["exampleLifeFruits"];
 }
 ```
 
-Here we see a very simple example of saving and loading 2 int variables. In `Save`, we create a single `TagCompound` and add data to it. In Load we are provided a `TagCompound` named tag and retrieve values from it. We must use the appropriate methods in Load that match the data type of the data stored. If you are confused by this `Save` example, see below for an example that does the same thing, but is a little easier to understand if you are unfamiliar with some c# syntax:
-
-```cs
-TagCompound saveData = new TagCompound();
-saveData.Add("score", score);
-saveData.Add("exampleLifeFruits", exampleLifeFruits);
-return saveData;
-```
+Here we see a very simple example of saving and loading an int variable. In `SaveData`, we add data to the `TagCompound` provided. In `LoadData` we are provided a `TagCompound` named tag and retrieve values from it. We must use the appropriate methods in Load that match the data type of the data stored. 
 
 # List Example
 A common mistake that modders make with `TagCompound` is saving lists of data as individual entries in a `TagCompound`. For example, the following is a bad approach:
 
 ```cs
-TagCompound saveData = new TagCompound();
 for (int i = 0; i < stats.Count; i++)
 {
-	saveData.Add("stats_" + i, stats[i]);
+	tag.Add("stats_" + i, stats[i]);
 }
-return saveData;
 ```
 
 Saving individual entries like this is not how we should be using `TagCompound`. Here is what this approach looks like in NBTExplorer:    
@@ -115,12 +105,10 @@ Saving individual entries like this is not how we should be using `TagCompound`.
 `TagCompound` supports Lists of compatible data types, here is a proper approach:
 
 ```cs
-// Save
-TagCompound saveData = new TagCompound();
-saveData.Add("stats", stats);
-return saveData;
+// SaveData
+tag.Add("stats", stats);
 
-// Load
+// LoadData
 stats = tag.GetList<int>("stats");
 // or
 stats = tag.Get<List<int>>("stats");
@@ -134,20 +122,18 @@ Saving and loading a dictionary can be done, but take a little effort. One appro
 
 ```cs
 // This code can be found in TEScoreBoard in ExampleMod: https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/TEScoreBoard.cs
+// NOTE: TEScoreBoard hasn't been updated to 1.4 yet, the linked example is 1.3 code.
 using System.Linq;
 
 internal Dictionary<string, int> scores = new Dictionary<string, int>();
 
-public override TagCompound Save()
+public override void SaveData(TagCompound tag)
 {
-	return new TagCompound
-	{
-		{"scoreNames", scores.Keys.ToList()},
-		{"scoreValues", scores.Values.ToList()}
-	};
+	tag["scoreNames"] = scores.Keys.ToList();
+	tag["scoreValues"] = scores.Values.ToList();
 }
 
-public override void Load(TagCompound tag)
+public override void LoadData(TagCompound tag)
 {
 	var names = tag.Get<List<string>>("scoreNames");
 	var values = tag.Get<List<int>>("scoreValues");
@@ -164,7 +150,7 @@ public override void Initialize()
 	complexDictionary = new Dictionary<ulong, Tuple<string, int>>();
 }
 
-public override TagCompound Save()
+public override void SaveData(TagCompound tag)
 {
 	var list = new List<TagCompound>();
 	foreach (var item in complexDictionary)
@@ -175,10 +161,7 @@ public override TagCompound Save()
 			{ "deaths", item.Value.Item2 },
 		});
 	}
-	return new TagCompound
-	{
-		{ "complexDictionary", list },
-	};
+	tag["complexDictionary"] = list;
 }
 
 public override void Load(TagCompound tag)
@@ -208,7 +191,7 @@ A common task for modders is saving an Item. Don't attempt to hack out your own 
 **TODO: Finish this section with an example.**
 
 # TagSerializer and TagSerializable Examples
-Creating a `TagSerializer` or implementing the `TagSerializable` interface is another approach to simplifying saving and loading custom data to `TagCompound`s. We can create and register a `TagSerializer` for classes that are not a part of our mod, while implementing `TagSerializable` is preferable for classes defined in our mod.
+Creating a class that inherits from `TagSerializer` or a class that implements the `TagSerializable` interface is another approach to simplifying saving and loading custom data to `TagCompound`s. We can create a `TagSerializer` for classes that are not a part of our mod, while implementing `TagSerializable` is preferable for classes defined in our mod.
 
 ## TagSerializer Examples
 We create `TagSerializer`s for classes not under the control of our mod. Adding `TagSerializer`s allows us to save and load the class directly in `TagCompound`. Here is an example:
@@ -226,21 +209,14 @@ public class RectangleSerializer : TagSerializer<Rectangle, TagCompound>
 
 	public override Rectangle Deserialize(TagCompound tag) => new Rectangle(tag.GetInt("x"), tag.GetInt("y"), tag.GetInt("width"), tag.GetInt("height"));
 }
-
-// In Mod class:
-public override void Load()
-{
-	Terraria.ModLoader.IO.TagSerializer.AddSerializer(new RectangleSerializer());
 ```
 
-Having registered the `TagSerializer`, we can now freely use `Rectangle` as if it were a natively supported data type:
+We can now freely use `Rectangle` as if it were a natively supported data type:
 ```cs
-public override TagCompound Save()
+public override void SaveData(TagCompound tag)
 {
-	return new TagCompound {
-		{"rectangle", rectangle},
-		{"rectangles", rectangles},
-	};
+	tag["rectangle"] = rectangle;
+	tag["rectangles"] = rectangles;
 }
 
 public override void Load(TagCompound tag)
@@ -289,15 +265,13 @@ namespace ExampleMod
 			*/
 		}
 
-		public override TagCompound Save()
+		public override void SaveData(TagCompound tag)
 		{
-			return new TagCompound {
-				[nameof(listOfMyData)] = listOfMyData,
-				[nameof(specialMyData)] = specialMyData,
-			};
+			tag[nameof(listOfMyData)] = listOfMyData;
+			tag[nameof(specialMyData)] = specialMyData;
 		}
 
-		public override void Load(TagCompound tag)
+		public override void LoadData(TagCompound tag)
 		{
 			listOfMyData = tag.Get<List<MyData>>(nameof(listOfMyData));
 			specialMyData = tag.Get<MyData>(nameof(specialMyData));
@@ -347,11 +321,11 @@ Here is the data that is saved for this example:
 ![](https://i.imgur.com/ZcUDRuO.png)    
 
 # Other Topics
-## GlobalItem.NeedsSaving
-Saving data in GlobalItem will quickly explode the filesize of player and world saves. Use the NeedsSaving method to prevent saving useless data. See [ExampleInstancedGlobalItem](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/ExampleInstancedGlobalItem.cs)
+## GlobalItem Optimization
+Saving data in `GlobalItem` will quickly explode the filesize of player and world saves. Make sure to only assign values to the `TagCompound` if there is non-default data to save. For example, if you are tracking how many times an item has been reforged, if the reforge count for the item is 0, don't save the value at all.
 
 ## nameof operator
-The `nameof` operator is available to those using c#6, it can simplify some things, but be careful. (See [nameof documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)) The `nameof` operator can help avoid spelling mistakes between Load and Save. Be careful, however, of refactor-renaming variables in your mod (the F2 command in Visual Studio). If you rename a ModPlayer variable that is saved using `nameof`, for example, your mod will lose data when your users update the mod. See below for an example. Notice how we don't need to write `"CorruptionSpreadDisabled"` to specify the key, risking a spelling error that would be hard to catch. 
+The `nameof` operator can simplify some things, but be careful. (See [nameof documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/nameof)) The `nameof` operator can help avoid spelling mistakes between `LoadData` and `SaveData`. Be careful, however, of refactor-renaming variables in your mod (the F2 command in Visual Studio). If you rename a `ModPlayer` variable that is saved using `nameof`, for example, your mod will lose data when your users update the mod. See below for an example. Notice how we don't need to write `"CorruptionSpreadDisabled"` to specify the key, risking a spelling error that would be hard to catch. 
 
 ```cs
 public override void Load(TagCompound tag)
@@ -359,26 +333,8 @@ public override void Load(TagCompound tag)
 	CorruptionSpreadDisabled = tag.GetBool(nameof(CorruptionSpreadDisabled));
 }
 
-public override TagCompound Save()
+public override void Save(TagCompound tag)
 {
-	return new TagCompound {
-		{nameof(CorruptionSpreadDisabled), CorruptionSpreadDisabled}
-	};
+	tag[nameof(CorruptionSpreadDisabled)] = CorruptionSpreadDisabled;
 }
-```
-
-## Indexer Initializers
-If you are using c#6, you can use this slightly simpler syntax. Compare the two below:
-```cs
-// The usual approach
-return new TagCompound {
-	{"score", score},
-	{"exampleLifeFruits", exampleLifeFruits},
-};
-// Indexer Initializers approach
-return new TagCompound
-{
-	["score"] = score,
-	["exampleLifeFruits"] = exampleLifeFruits
-};
 ```
