@@ -1,3 +1,7 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ/8a86002d330cd4aa54d17012d31322c73bacd94a)
+***
+
 # Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
@@ -5,7 +9,7 @@ If you pirated Terraria, we can't help you. tModLoader won't work. Please don't 
 This is caused by pirating other games. Some poorly packaged pirated games put a `steam_api64.dll` file in strange locations on your computer. These broken files are located on the PATH and will be loaded before tModLoader has a chance to load it's own copy. We've seen various reports of `steam_api64.dll` being found on the PATH in places like `C:\Windows\System32`. To determine where, open up a command prompt from the start menu by typing "command prompt" and clicking on the result. Next, type `where steam_api64.dll` and press enter. If the result is `INFO: Could not find files for the given pattern(s).`, then you have some other issue and should come to the Discord and seek support. If you see a result like `c:\Windows\System32\` or other suspicious paths, you will need to fix the issue. Usually this means navigating to the folder and renaming the file from `steam_api64.dll` to `steam_api64_backup.dll`. This should fix the issue, but if it doesn't come to Discord.
 
 ### System.DllNotFoundException: Unable to load DLL '\steam\steamapps\common\tModLoader\Libraries\Native\Windows\FNA3D.dll' or one of its dependencies: The specified procedure could not be found. (0x8007007F)
-This is caused by FNA3D.dll or SDL2.dll on the PATH.
+This is caused by `FNA3D.dll` or `SDL2.dll` on the PATH. Follow the same instructions as the `steam_api64.dll` issue directly above, but for `FNA3D.dll` and `SDL2.dll` instead.
 
 ### Multiple extensions for asset
 This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `"\Documents\My Games\Terraria\tModLoader\config.json"` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
