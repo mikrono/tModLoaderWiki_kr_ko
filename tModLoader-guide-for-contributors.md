@@ -20,10 +20,8 @@ Further, if command line inherently scares you, additional tools such as [GitHub
 
 # Code patcher
 ___
-## Current TEMPORARY steps for developer setup:**
+## Current steps for developer setup:**
 * Pull the 1.4 branch. You HAVE to use git for this, downloading source code as a zip file won't work;
-
-* [Install .NET Core 3.1 developer pack;](https://dotnet.microsoft.com/download/visual-studio-sdks)
 
 * [Install .NET 6.0 SDK;](https://dotnet.microsoft.com/download/dotnet/6.0) 
 
