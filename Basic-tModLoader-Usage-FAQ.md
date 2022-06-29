@@ -5,6 +5,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 # Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
+# Launch Issues
 ### Unable to find an entry point named 'SteamAPI_ManualDispatch_Init' in DLL 'steam_api64'
 This is caused by pirating other games. Some poorly packaged pirated games put a `steam_api64.dll` file in strange locations on your computer. These broken files are located on the PATH and will be loaded before tModLoader has a chance to load it's own copy. We've seen various reports of `steam_api64.dll` being found on the PATH in places like `C:\Windows\System32`. To determine where, open up a command prompt from the start menu by typing "command prompt" and clicking on the result. Next, type `where steam_api64.dll` and press enter. If the result is `INFO: Could not find files for the given pattern(s).`, then you have some other issue and should come to the Discord and seek support. If you see a result like `c:\Windows\System32\` or other suspicious paths, you will need to fix the issue. Usually this means navigating to the folder and renaming the file from `steam_api64.dll` to `steam_api64_backup.dll`. This should fix the issue, but if it doesn't come to Discord.
 
@@ -31,6 +32,31 @@ This is most likely related to your antivirus blocking access to the `ModLoader`
 
 ### Disk Write Error
 If you try to install tModLoader through Steam and it gives you a message with "Disk Write Error" in it, it is usually caused by Avast. Disable it temporarily and install tModLoader.
+
+### Controlled Folder Access
+![](https://i.imgur.com/Zn40Ohq.png)    
+
+Controlled Folder Access is a Windows 10+ security feature intended to prevent ransomware. It is a useful feature, but it will get in the way of tModLoader saving files to the Documents folder where game save files are typically installed. If you have this feature enabled, you can add an exception to tModLoader to allow it to work. You can also just disable the feature completely, but don't do that unless you know what you are doing.
+
+The easiest way to add an exception for tModLoader is to press `OK` on the error, then click on the notification that appears:    
+![image](https://user-images.githubusercontent.com/4522492/176323144-fa85ff75-8759-414c-aeff-22ac0be0bf69.png)    
+
+Click on the first result:    
+![image](https://user-images.githubusercontent.com/4522492/176323195-14185202-e1be-4cf8-a62e-08b2c9a84a96.png)    
+
+Click `Yes` when asked "Do you want to allow this app to make changes to your device":    
+![image](https://user-images.githubusercontent.com/4522492/176323236-8f69f573-78be-4335-af93-5cd05cc51d56.png)    
+
+You should now see information explaining that "dotnet.exe" was blocked from accessing the "My Games\Terraria\tModLoader" folder:    
+![image](https://user-images.githubusercontent.com/4522492/176323400-53b3235e-7be1-4e62-8733-2de967532eb2.png)    
+
+Click `Actions` and then `Allow on Device`:    
+![image](https://user-images.githubusercontent.com/4522492/176323452-28e6c171-796e-49a9-87d1-77cbf1579733.png)    
+
+You will once again be asked "Do you want to allow this app to make changes to your device", click `Yes`:    
+![image](https://user-images.githubusercontent.com/4522492/176323236-8f69f573-78be-4335-af93-5cd05cc51d56.png)    
+
+tModLoader should now be able to create the save files it needs. Launch the game again.
 
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
