@@ -114,6 +114,19 @@ This dicatates how many instances of a sound can be playing at the same time. Th
 ## SoundLimitBehavior
 When the `MaxInstances` limit is reached, this tweak adjusts what will happen. The default is to `ReplaceOldest`, which will restart the sound. The other option is `IgnoreNew`, which will ignore the latest attempt to play the sound.
 
+## Variation
+It is possible to assign multiple sound assets to a sound style and have them randomly play. To do this, the sound assets must be named the same but postfixed with a final number at the end. For example, `SoundStyle ExampleGunsSoundStyle = new SoundStyle("ExampleMod/Assets/Sounds/Items/Guns/ExampleGun_", 3);` would randomly play `ExampleGun_1`, `ExampleGun_2`, or `ExampleGun_3` with equal chance. 
+
+### Weighted Chance and Specific Variant Postfixes
+Weighted chance and more control over the specific postfixes can be achieved through the other `SoundStyle` constructor overloads.     
+![image](https://user-images.githubusercontent.com/4522492/176332504-3d5f41a1-0420-48bf-ae38-ed3adb62334e.png)    
+
+The vanilla duck sound is a good example. There are 2 main variations, `Zombie_10` and `Zombie_11`. There is also an extremely rare `Zombie_12`, which is a human saying "quack". Quite unsettling. The code for this uses weights to strongly favor the 2 normal quack sounds. The `Zombie_10` and `Zombie_11` sounds are weighted to 300f each, and the `Zombie_12` sound is weighted to 1f. This means that the `Zombie_12` sound will play about 1 out of every 601 quacks:  
+  
+```cs
+SoundStyle quack = new SoundStyle("Terraria/Sounds/Zombie_", stackalloc (int, float)[] { (10, 300f), (11, 300f), (12, 1f) });
+```    
+
 # Adapting Vanilla Code or Code From Past tModLoader Versions
 Previous versions of tModLoader and code taken from decompiled Terraria do not use the same `SoundStyle` approach to playing sounds. To use code using old approaches, you'll need to fix the code. For example you might find code like `SoundEngine.PlaySound(12);` or `SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);`, but attempting to use this code in a mod will result in errors such as `No overload for method 'PlaySound' takes 4 arguments`.
 
