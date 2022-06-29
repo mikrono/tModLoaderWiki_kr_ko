@@ -38,7 +38,8 @@ If you try to install tModLoader through Steam and it gives you a message with "
 
 Controlled Folder Access is a Windows 10+ security feature intended to prevent ransomware. It is a useful feature, but it will get in the way of tModLoader saving files to the Documents folder where game save files are typically installed. If you have this feature enabled, you can add an exception to tModLoader to allow it to work. You can also just disable the feature completely, but don't do that unless you know what you are doing.
 
-The easiest way to add an exception for tModLoader is to press `OK` on the error, then click on the notification that appears:    
+The easiest way to add an exception for tModLoader is to press `OK` on the error, then click on the notification that appears:  
+* If the notification doesn't appear within 5 seconds, you can visit the action center at the bottom right corner of the screen and find it there. If it is not there, search "Controlled folder access" in the start menu, click it, then click "Block History"    
 ![image](https://user-images.githubusercontent.com/4522492/176323144-fa85ff75-8759-414c-aeff-22ac0be0bf69.png)    
 
 Click on the first result:    
