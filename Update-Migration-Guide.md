@@ -248,7 +248,7 @@ public override void AddRecipes() => CreateRecipe()
 There is a more detailed explanation of how to do this in [ExampleMod/Content/ExampleRecipes.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/ExampleRecipes.cs). _Keep in mind that chaining methods is optional, you can still use the old pattern._
 
 #### RecipeFinder and RecipeEditor
-The two classes were removed. Now just use any `PostAddRecipes` hook (such as in `ModSystem`) and manually iterate over `Main.recipe` to find and edit what you need.
+The two classes were removed. Now just use any `PostAddRecipes` hook (such as in `ModSystem`) and manually iterate over `Main.recipe` to find and edit what you need. To delete a recipe, call `DisableRecipe()` on it.
 
 #### Custom ModRecipe class/extension
 As ModRecipe is gone, and Recipe is sealed, you cannot extend from it anymore. Any 1.3 patters that utilized custom classes and its methods will need to use the new methods.
