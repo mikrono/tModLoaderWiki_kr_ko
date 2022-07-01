@@ -3,7 +3,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 ***
 
 # Basic Recipe
-Recipes can be added to the game in 3 places. In `Mod.AddRecipes`, `ModItem.AddRecipes`, and `ModSystem.AddRecipes`. Where you add your recipes is up to your organizational preferences, but do note that the `CreateRecipe` method used in code below has different behavior depending on where you use it. 
+Recipes can be added to the game in 3 places. In `Mod.AddRecipes`, `ModItem.AddRecipes`, and `ModSystem.AddRecipes`. Where you add your recipes is up to your organizational preferences, but do note that the `ModItem.CreateRecipe` method cannot be used everywhere as is, use `Recipe.Create` where it is not possible. 
 
 Recipes consist of Ingredients (Items consumed to craft the result), Tiles (Tiles you need to stand by), and Results (Item created).
 
@@ -16,22 +16,22 @@ using Terraria.ID;
 using Terraria.ModLoader;
 ```
 ## Create Recipe and Assign Recipe Result
-To start a recipe we create an instance of the `Recipe` class. We do this through the `Recipe.CreateRecipe` method or the `ModItem.CreateRecipe` method. When creating a recipe, we need to assign the recipe result type and result stack. The `ModItem.CreateRecipe` method assumes that the recipe results in the current ModItem, so only the stack size is needed. The stack size is optional and defaults to 1:
+To start a recipe we create an instance of the `Recipe` class. We do this through the `Recipe.Create` method or the `ModItem.CreateRecipe` method. When creating a recipe, we need to assign the recipe result type and result stack. The `ModItem.CreateRecipe` method assumes that the recipe results in the current ModItem, so only the stack size is needed. The stack size is optional and defaults to 1:
 
-In `Mod` class, we type "CreateRecipe" to use the Recipe.CreateRecipe method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
+In `Mod` class, we type "Recipe.Create" to use the `Recipe.Create` method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
 ```cs
 Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ); 
 Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ, 5); 
 Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>());
 Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>(), 10);
 ```
-In `ModSystem` class, we need to use "Recipe.CreateRecipe":
+In `ModSystem` class, we need to use "Recipe.Create":
 ```cs
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueZ); 
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
 ```
-In `ModItem` class, we can use "Recipe.CreateRecipe" to create a recipe that doesn't have this ModItem as a result:
+In `ModItem` class, we can use "Recipe.Create" to create a recipe that doesn't have this ModItem as a result:
 ```cs
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueZ); 
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
 // ... And we can use "CreateRecipe" directly to create a recipe that results in this ModItem. We can optionally provide a stack size:
 Recipe recipe = CreateRecipe(); 
 Recipe recipe = CreateRecipe(10); 
@@ -89,7 +89,7 @@ recipe.AddIngredient(ModContent.ItemType<Content.Items.ExampleItem>()); // Modde
 Here are a few full basic recipe example. This first example resides in a ModSystem class. The recipe takes 1 Chain and 10 Stone Blocks, it is crafted at a workbench and anvil, and the resulting item is 1 AlphabetStatueA.
 
 ```cs
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueA);
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueA);
 recipe.AddIngredient(ItemID.StoneBlock, 10);
 recipe.AddIngredient(ItemID.Chain);
 recipe.AddTile(TileID.WorkBenches);
@@ -108,7 +108,7 @@ recipe.Register();
 # Chain Syntax
 The code in this guide is quite wordy. Using the chaining syntax, we can reduce the verbosity of our code. This approach may be more pleasing to the modder. Only the final line has a semi-colon.
 ```cs
-Recipe.CreateRecipe(ItemID.AlphabetStatueA)
+Recipe.Create(ItemID.AlphabetStatueA)
 	.AddIngredient(ItemID.StoneBlock, 10)
 	.AddIngredient(ItemID.Chain)
 	.AddTile(TileID.WorkBenches)
@@ -143,17 +143,17 @@ Intermediate?
 With multiple Recipes in the same AddRecipes, make sure not to re-declare your variable name. The following will cause errors: 
 
 ```cs
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueA); 
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueA); 
 // other code
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueB);
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueB);
 // other code
 ```
 You can name your variables recipe1, recipe2, and so on, but a cleaner approach would be to just reuse the same variable:
 
 ```cs
-Recipe recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueA); 
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueA); 
 // other code
-recipe = Recipe.CreateRecipe(ItemID.AlphabetStatueB); 
+recipe = Recipe.Create(ItemID.AlphabetStatueB); 
 // other code
 ```
 
