@@ -1,3 +1,7 @@
+*** 
+This Page Has Been Updated for 1.4. For 1.3 Instructions, Click [Here](https://github.com/tModLoader/tModLoader/wiki/Starting-a-modded-server/dac6879dd891bfc74695d51a822379189d69f189)
+***
+
 # Server
 
 For the most part, launching a tModLoader server is the exact same as launching a Terraria server.
