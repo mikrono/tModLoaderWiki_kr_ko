@@ -4,37 +4,46 @@ This Page Has Been Updated for 1.4. For 1.3 Instructions, Click [Here](https://g
 
 # Server
 
-For the most part, launching a tModLoader server is the exact same as launching a Terraria server.
+There are a few options for establishing a Dedicated Server on 1.4 tModLoader.
+We will cover just one of these options for simplicity, but do not be discouraged to experiment!
 
 ## Setting Up a Dedicated Server
 
 If you have an extra old computer sitting around or leave your computer on all the time, you can use that computer to host a dedicated server.
 
-### Configure the server
+Grab a download of tModLoader from the [github releases](https://github.com/tModLoader/tModLoader/releases)
+and extract it to the following location: 
+1) Linux: `/home/<user>/.local/share/Steam/tmod`
 
-You can change `serverconfig.txt` with your server configurations which will be loaded by the tModLoader server when using the instructions below.
+## Prepare the Server
 
-#### Getting the server to load mods
+In the `tmod` folder, you can change `serverconfig.txt` with your server configurations which will be loaded by the tModLoader server when using the instructions below. Change modpath=steamapps.
 
-##### Windows
+## Getting mods on to the Server
 
-On your client, create a modpack of all the mods you want to use on the server, then copy that `modpackName.json` file to the server.  Create a folder to hold the mods `C:\Server\Mods` then create a ModPacks folder in that folder.  Copy your modpack.json file in the ModPacks folder and the associated tmod files into the Mods folder.  In your `serverconfig.txt` file, add the following two lines at the end of the file:
+On your client, create a modpack of all the mods you want to use on the server.
+Open the Mod Pack Folder.
+Go in to the <ModPackName>/Mods folder.
+Grab a copy of all the files - the .tmod(s), install.txt, and enabled.json
 
-    modpath=c:\Server\Mods
-    modpack=modpackName
+On the server, in the `tmod` folder,
+Create a folder to hold the files `steamapps`
+Paste all the files to this created folder. 
 
-If you are creating a local-hosted server, you **do not have to** include the `modpath=` line mentioned above nor create a separate `C:\Server\Mods` folder for your server's mods.  
-By default, tModLoader will use the path to your Mods folder.
+### Downloading & Updating Workshop Mods
+In order to quickly install and be able to quickly update your mods, we recommend using SteamCMD and the Setup_tModLoaderServer.sh script provided.
 
-##### Linux (tested on Ubuntu 20.04 LTS)
+Start by setting up a folder called `steamcmd` under the `Steam` folder.
+Setup steamcmd in that folder
+Place Setup_tModLoaderServer.sh, instructions.txt, and a copy of install.txt in that folder.
+Run Setup_tModLoaderServer.sh to bulk download every mod listed in install.txt.
 
-Go to `/home/<user>/.local/share/Terraria/ModLoader/Mods` and create a new directory called ModPacks:
+The downloaded mods will appear in `Steam/tmod/steamapps`
 
-`mkdir ModPacks`
+Alternatively, if you are just after getting mods on to the server and not concerned with updating them, you can copy the entirety of the `steamapps/workshop/1281930` folder from your computer to `Steam/tmod/steamapps/1281930`
 
-Upload your mod pack JSON file there. You are required to upload mods manually to the mod folder.
 
-#### Server Configuration
+## Server Configuration
 
 If you are missing `serverconfig.txt`, you have to create one manually. You can use config preset from the internet or make one yourself.
 
@@ -97,15 +106,12 @@ You can type this number in your internet browser to navigate to the router webp
 
 The tModLoader installation should've come with several .bat files, including:
 1. `start-tModLoaderServer.bat`
-    1. Launch a server normally, people with the server IP and port can join the server.
-1. `start-tModLoaderServer-steam-friends.bat`
-    1. Launch a server open to your steam friends, who can join using the steam UI. You can also send invites to them.
-1. `start.tModLoaderServer-steam-private.bat`
-    1. Launch a server explicitly with a closed steam lobby so steam friends cannot join you through the steam UI.
+    1. Launches a server with serverconfig.txt and some questions about Steam.
+2. If you want to customize your server start via launch args only, we recommend using the following: `start-tModLoader.bat -server <LaunchArgs>`
 
 ### Starting server on Linux or Mac
 
-The tModLoader installation should have come with a script called `tModLoaderServer`. This script will start an instance of a server.
+The tModLoader installation should have come with a script called `start-tModLoaderServer.sh`. This script will start an instance of a server.
 
 1. Browse to the directory of installation using `cd /desiredPath/`.
    1. desiredPath is the installation folder path name of your Terraria Server patched with tModLoader.
