@@ -16,6 +16,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Elemental Unleash Mod](https://github.com/blushiemagic/ElementalUnleash) -- Good resource for learning how to code Boss AI
 * [Enigma](https://github.com/Laugic/Laugicality) -- Adds a new level-up system, a few bosses, weapons, and accessories. 
 * [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
+* [Fargo's Soul Mod](https://github.com/Fargowilta/FargowiltasSouls) -- A new mode that overrides vanilla boss AI
 * [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything.
