@@ -77,9 +77,9 @@ For example, `world=/home/<user>/.local/share/Terraria/ModLoader/Worlds/<worldna
 
 `modpath=/home/<user>/.local/share/Terraria/ModLoader/Mods`
 
-##### Select the modpack to load for the specific world
+##### Select the modpack to load for the specific world. The `.json` is optional
 
-`modpack=<name of modpack without .json>` (maybe works with .json too, not sure)
+`modpack=/home/<user>/.local/share/Terraria/ModLoader/Mods/ModPacks/<modpack name>/mods/enabled.json>`
 
 For full list go to: https://terraria.gamepedia.com/Server#Server_config_file
 
@@ -134,3 +134,7 @@ With the arguments:
 `-server -config serverconfig.txt <other parameters desired>`
 
 For example, on windows, you can create a `start-tModLoaderServer-NoAsk-CoolWorld.bat` file in the install folder and place the text `start-tModLoader.bat -server -config serverconfig.txt -world "C:\Documents\My Games\Terraria\tModLoader\Worlds\Cool_World.wld"` in it and save. When launched, the sever will launch and load the specified world. Change the world argument filename as necessary. You can also change serverconfig.txt or another config file and use the world argument in there as well. Adding the usual `-steam -lobby friends` or `-steam -lobby private` will make the server joinable via steam invites or friends. You can create a desktop shortcut to this .bat file for convenience.
+
+#### Additional server arguments
+##### Set the Steam workshop content directory, useful for using SteamCMD to install workshop items to a custom directory
+`-steamworkshopfolder /home/<user>/<Custom Workshop Mod Folder>/steamapps/workshop/`
