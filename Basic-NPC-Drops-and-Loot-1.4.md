@@ -20,7 +20,8 @@ In the examples below, we drop a vanilla item: `ItemID.Shackle`. This can be swa
 This example shows the basic file layout. The actual rules will be taught in [Typical Item Drop Rules](#typical-item-drop-rules) below.
 Although the following examples exclude the using statements typically found in code for brevity, the following using is required for drop rules and drop conditions:
 ```cs
-using Terraria.GameContent.ItemDropRules;```
+using Terraria.GameContent.ItemDropRules;
+```
 There may be other missing using statements necessary for these examples which will not be written here.
 
 ## Adding Drops to a ModNPC
