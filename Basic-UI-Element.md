@@ -61,7 +61,7 @@ Notice the following:
 # Drawing the UIState/Canvas to the Screen
 Now comes the fun part. We currently have a button that is placed on a menuBar UIState/canvas. Now we'll make a copy of that to give to the user interface class, and then tell the game to draw it. Think of the menuBar UIState/canvas as the original and the user interface as the copy, or the menuBar as a stamp and user interface as the ink.
 
-The following code is required to go in your class file that inherited from Mod.
+The following code is required to go in your class file that inherited from ModSystem.
 
 First, we'll declare a variable of UIState we made above which holds our single button.
 ```cs
