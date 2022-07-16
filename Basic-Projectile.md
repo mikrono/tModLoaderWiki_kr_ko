@@ -27,12 +27,12 @@ namespace ModNamespaceHere
 
 		public override void SetDefaults()
 		{
-			projectile.arrow = true;
-			projectile.width = 10;
-			projectile.height = 10;
-			projectile.aiStyle = 1;
-			projectile.friendly = true;
-			projectile.ranged = true;
+			Projectile.arrow = true;
+			Projectile.width = 10;
+			Projectile.height = 10;
+			Projectile.aiStyle = 1;
+			Projectile.friendly = true;
+			Projectile.ranged = true;
 			aiType = ProjectileID.WoodenArrowFriendly;
 		}
 
