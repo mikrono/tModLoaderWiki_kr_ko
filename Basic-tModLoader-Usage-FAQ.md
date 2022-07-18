@@ -97,6 +97,24 @@ Navigate to wherever you installed your tModLoader (refer to video linked below 
 [How to find a game install location on Steam](https://gfycat.com/SelfreliantAssuredIsabellineshrike)  
 Use the process shown in the above linked video to find your tModLoader install location, the gif is showing how to do this for Terraria, but you will need to do the same process except with tModLoader on Steam (you must have it installed first).
 
+# Not Responding
+When the game stops responding, that is indicative of the game logic being stuck in an infinite loop. This type of issue can be very hard to diagnose. A capable programmer can use a minidump file to investigate the cause of the issue. If the issue is in a mod, hopefully that modder will fix their mod, if it is in tModLoader we can work on fixing it.
+
+## Minidump Instructions
+If your tModLoader stops responding and goes white, you can provide us with a minidump file and it will help us debug the issue.    
+![unknown (2)](https://user-images.githubusercontent.com/4522492/179609389-3eafa688-1039-4448-a35d-c1aef6f3d037.png)    
+To do this, download https://download.sysinternals.com/files/Procdump.zip and extract the zip. Open a command prompt in that folder by typing `cmd` in the file explorer address bar and then pressing enter.    
+![unknown (3)](https://user-images.githubusercontent.com/4522492/179609489-f7115dfc-1c27-4ec3-a945-1e1c5aa46f44.png)    
+This will open a command prompt:    
+![unknown (4)](https://user-images.githubusercontent.com/4522492/179609511-d507817b-8734-4db2-9b1e-77f71342758c.png)    
+Next, open task manger by pressing ctrl-shift-escape. Click Details, then scroll down to the dotnet.exe that is Not Responding:    
+![unknown (5)](https://user-images.githubusercontent.com/4522492/179609519-92cdfca1-0791-46ff-9bc2-9ae11d82325e.png)    
+Take note of the PID. In this image, it is 20680, but yours will be different. Go back to the command prompt and type `procdump.exe -mm 20680`, except change 20680 to your number. After a few seconds it will be done:    
+![unknown (6)](https://user-images.githubusercontent.com/4522492/179609528-13ab0f1e-eec9-4606-8f05-5f4966aa79eb.png)    
+Back in the file explorer, you can see the .dmp file:    
+![unknown (7)](https://user-images.githubusercontent.com/4522492/179609674-8ac1b5f4-27fd-48d6-a42d-1aad83e75de6.png)     
+Find some way of uploading this file to us on the Discord support channel. We have nitro boosts so you should just be able to drag and drop the file into the support thread.
+
 # Load Mod
 ### "Failed to resolve assembly: 'Terraria, Version=1.3.5.1, Culture=neutral, PublicKeyToken=null'"
 This seems to happen when users rename the tModLoader exe to something other than Terraria.exe. Rename it back to Terraria.exe and it should still work.
