@@ -108,8 +108,8 @@ public override void AddRecipeGroups()
 ```
 Note that checking `if (RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not *necessary*, but it will prevent errors if some other mod completely removes that recipe group for one reason or another. This can also be used for [cross-mod compatibility](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content).
 
-# Editing Vanilla Recipes
-We can edit vanilla recipes from within a `ModSystem.PostAddRecipes` method. Basically, we iterate over the recipes to find the recipe we want to tweak, then modify ingredients, tiles, or even disable the recipe entirely.
+# Editing Recipes
+We can edit vanilla recipes or recipes from other mods from within a `ModSystem.PostAddRecipes` method. Basically, we iterate over the recipes to find the recipe we want to tweak, then modify ingredients, tiles, or even disable the recipe entirely.
 
 ## Complete Example
 This code removes the "Chain" item from all vanilla recipes. The second half of this example finds and disables an exact recipe. Do not remove entries from `Main.recipe`, that will break many things.
