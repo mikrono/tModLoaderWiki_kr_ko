@@ -250,11 +250,9 @@ Make sure you are only overriding AddRecipes in Mod, ModSystem, or ModItem.
 ## Not covered in Basic level
 There are other aspects of Recipes that will be covered in more advanced guides:
 * [RecipeGroups](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#recipegroups) -- Intermediate -- Allows a single ingredient to be 1 of a large group, like how most recipes involving wood can take Boreal Wood or Pearl Wood. ("any wood")
-* Editing Recipes
-* Deleteing Recipes
+* [Editing Recipes](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-recipes) -- Intermediate -- Edit existing recipes or disable existing recipes
 * Ordering Recipes
 * OnCraftCallback
 * ConsumeItemCallback
 * RecipeAvailable
-* [RecipeFinder/RecipeEditor](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-vanilla-recipes) -- Intermediate -- Allows you to modify and delete vanilla recipes.
 * [Cross-Mod Content](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) -- Intermediate -- Use Items or Tiles from other mods in your Recipe.
