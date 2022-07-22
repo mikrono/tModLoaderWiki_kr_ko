@@ -98,6 +98,8 @@ Here are the most relevant changes.
 * `Player.showItemIconText` -> `Player.cursorItemIconText`
 * `Player.ZoneHoly` -> `Player.ZoneHallow`
 * `Player.activeNPCs` -> `Player.nearbyActiveNPCs`
+* `Player.hasBanner` -> `Main.SceneMetrics.hasBanner`
+* `Player.NPCBannerBuff` -> `Main.SceneMetrics.NPCBannerBuff`
 * `Player.doubleJumpCloud` and other jumps -> `Player.hasJumpOption_Cloud` etc.
 * `Player.dash` -> `Player.dashType`. Player.dash is used for something else now.
 * `Player.bee` and similar accessory flags that spawn projectiles -> `Player.honeyCombItem` etc. To check if they are enabled: `X != null && !X.IsAir`; To enable them: assign your own accessory to it.
