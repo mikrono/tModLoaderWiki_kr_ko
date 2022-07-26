@@ -139,3 +139,31 @@ Terraria and 1.3 tModLoader are 32-bit applications. In short, this means they a
 
 ## I use macOS Catalina. What do I do?
 If you experience any problems, try using the 64-bit version of tModLoader or talk to us on Discord.
+
+## How Do I Use Mod Packs in 1.4?
+1.4 tModLoader significantly overhauls the Mod Pack feature to provide several additional functionalities.
+
+To start with, save your Enabled Mods as usual.
+The UI will now show a lot of buttons. Let's walkthrough them.
+![image](https://user-images.githubusercontent.com/59670736/180901414-3ca8f2f4-c053-4851-8de7-fa617f182db1.png)
+
+First and foremost, I will use two different terms moving forward: 
+A mod pack will refer to a frozen copy of mods that don't update with time.
+A mod collection will refer to a list of mods that are always the latest.
+
+The first 2 buttons operate on the 'Mod Collection' style. 
+Enable Only this List - disables all mods, and than loads only those defined in the collection
+Enable this List - loads mods defined in the collection on top of any existing loaded mods. Useful for stacking collections
+
+View List & View Mods in Mod Browser allow you to see what the mods in the pack/collection are, and download them freshly on the mod browser for yourself.
+
+Update List with Enabled - Updates the mod pack or collection with the currently enabled set of mods. Will delete or add to the collection/pack as required
+
+Import Pack (Local) - Tells tModLoader to check the mod pack for the frozen set of mods to load. Any mods loaded from the Pack, while active, will override any existing mods you have downloaded. When a Mod Pack is active, it will shows as such in the Top Right Corner.
+
+Remove Pack (Local) - Undoes the changes made by Import Pack (Local)
+
+Export Pack Instance - Exports a copy of the ModConfigs and <ModPackName>/Mods folder to InstallDirectory/<ModPackName> so that you can either setup a second instance of tModLoader with an older version OR quickly setup a server with the pack. Check InstallDirectory/<ModPackName>/SaveData/Mods for an install.txt file listing all the workshop publish ids and a tmlversion.txt labelling the tml version to use.
+
+Delete Instance - Deletes the exported instance files created by Export Pack Instance
+
