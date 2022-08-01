@@ -157,6 +157,8 @@ recipe = Recipe.Create(ItemID.AlphabetStatueB);
 // other code
 ```
 
+If you are using the [Chain Syntax](#Chain-Syntax), then simply do the same approach for each recipe on subsequent lines.
+
 ## Making an "upgraded" vanilla tile
 As an aside, you may want your ModTile to count as, say, a workbench or anvil. To do this, add the following to your `ModTile.SetStaticDefaults`:
 
