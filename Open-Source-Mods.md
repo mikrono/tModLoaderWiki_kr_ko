@@ -25,6 +25,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Spirit Mod](https://github.com/PhoenixBladez/SpiritMod) -- Large content mod with alot of worldgen, and custom visuals utilizing primitive drawing.
 * [Starflower](https://github.com/AlurienFlame/Starflower) -- Adds a herb that spawns on sky islands, a planter box to go with it, and three potions crafted from it.
 * [Summoners Association](https://github.com/JavidPack/SummonersAssociation) -- Projectile and Minion related code. Uses TerrariaHooks' detours (On.) to simulate a minion target.
+* [Team Fortress 2](https://github.com/Pure-Epic/TF2Mod) -- Heavy emphasis on weapons. Adds a reloading system, healing weapons, and an ability for NPCs to scale their health and damage based on the player.
 * [The Amulet Of Many Minions](https://github.com/westphallm1/tModLoader_Minions) -- Adds new minions and associated items, aswell as a "squire" summoner subclass. Heavy utilization of inheritance, and has custom networking/netcode.
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
