@@ -81,7 +81,7 @@ For example, `world=/home/<user>/.local/share/Terraria/ModLoader/Worlds/<worldna
 
 `modpack=/home/<user>/.local/share/Terraria/ModLoader/Mods/ModPacks/<modpack name>/mods/enabled.json>`
 
-For full list go to: https://terraria.gamepedia.com/Server#Server_config_file
+For full list go to: https://terraria.wiki.gg/Server#Server_config_file
 
 **Note**: Journey's End config commands are NOT going to work because tModLoader runs on an older version of terraria!
 
