@@ -9,8 +9,9 @@ if (mouseItemIndex != -1) layers.Insert(mouseItemIndex, ...);
 | Interface layer	| Description
 | :--             	| :--
 | Vanilla: Interface Logic 1 | |
-| Vanilla: Interface Logic 1 | |
+| Vanilla: MP Player Names | |
 | Vanilla: Emote Bubbles | |
+| Vanilla: Entity Markers | |
 | Vanilla: Smart Cursor Targets | |
 | Vanilla: Laser Ruler | |
 | Vanilla: Ruler | |
@@ -29,7 +30,6 @@ if (mouseItemIndex != -1) layers.Insert(mouseItemIndex, ...);
 | Vanilla: Diagnose Net | |
 | Vanilla: Diagnose Video | |
 | Vanilla: Sign Tile Bubble | |
-| Vanilla: MP Player Names | |
 | Vanilla: Hair Window | |
 | Vanilla: Dresser Window | |
 | Vanilla: NPC / Sign Dialog | |
