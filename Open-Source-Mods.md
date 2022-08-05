@@ -10,6 +10,7 @@ The following is a list of Open Source Mods (not all are technically "Open Sourc
 These mods are mods that add common things such as items, enemies, furniture, pets and so forth.
 * [All The Walls](https://github.com/JavidPack/AllTheWalls) -- A good example of NOT using Autoload. Learn from this mod how to programmatically add items to write clean code.
 * [Antiaris Mod](https://github.com/zadum4ivii/Antiaris) -- Adds several generated structures, quest system and other content, including bosses, enemies & items.
+* [Calamity Vanities](https://github.com/PotatoPersonThing/CalValEX) -- This mod aims to add more vanity items/pets to the Calamity mod. This is a great example of adding new more complex pets.
 * [Cave Story](https://github.com/JavidPack/CaveStory) -- Adds a bit of everything.
 * [Clicker Class](https://github.com/SamsonAllen13/ClickerClass) -- Adds a custom class and associated items. Comes with armor glowmasks, custom mod.Call API including an example mod, and translation/localization support.
 * [Dragon Ball Terraria](https://github.com/NuovaPrime/DBZMOD) -- Adds a custom energy system with some UI elements, a custom damage type, quite a few unique weapons and transformational effects.
@@ -18,7 +19,6 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Fargo's Soul Mod](https://github.com/Fargowilta/FargowiltasSouls) -- A new mode that overrides vanilla boss AI
 * [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
-* [Calamity Vanities](https://github.com/PotatoPersonThing/CalValEX) -- This mod aims to add more vanity items/pets to the Calamity mod. This is a great example of adding new more complex pets.
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything.
 * [The Celestial Overtaking](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of almost everything.
