@@ -135,7 +135,7 @@ If you wish to use items or tiles from other mods in your recipes, you need to p
 ```cs
 ModLoader.TryGetMod("ExampleMod", out Mod exampleMod);
 Recipe recipe = Recipe.Create(ItemID.Wood, 999);
-if (exampleMod != null && Mod.TryFind<ModItem>("ExampleWings", out ModItem ExampleWings)) {
+if (exampleMod != null && exampleMod.TryFind<ModItem>("ExampleWings", out ModItem ExampleWings)) {
 	recipe.AddIngredient(ExampleWings.Type);
 }
 else {
