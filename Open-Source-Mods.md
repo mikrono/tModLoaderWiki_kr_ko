@@ -18,6 +18,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Example Mod](https://github.com/tModLoader/tModLoader/tree/master/ExampleMod) -- Offers a wide variety of code examples covering Beginner to Expert.
 * [Fargo's Soul Mod](https://github.com/Fargowilta/FargowiltasSouls) -- A new mode that overrides vanilla boss AI
 * [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
+* [Calamity Vanities](https://github.com/PotatoPersonThing/CalValEX) -- This mod aims to add more vanity items/pets to the Calamity mod. This is a great example of adding new more complex pets.
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything.
 * [The Celestial Overtaking](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of almost everything.
