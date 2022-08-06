@@ -150,7 +150,7 @@ If your sprite is upside-down when shot to the left, you'll want to set this: `p
 ## Dust
 Spawn dust in AI for a visual effect. Randomizing placement, dustid, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, aiType ProjectileID.EnchantedBoomerang):    
 ```cs
-if (Main.rand.Next(5) == 0) // only spawn 20% of the time
+if (Main.rand.NextBool(5)) // only spawn 20% of the time
 {
 	int choice = Main.rand.Next(3); // choose a random number: 0, 1, or 2
 	if (choice == 0) // use that number to select dustID: 15, 57, or 58
