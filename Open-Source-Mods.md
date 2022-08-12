@@ -21,6 +21,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [Kalciphoz's RPG Mod](https://github.com/Kalciphoz/kRPG) -- This mod aims to overhaul Terraria by adding RPG elements, and includes a leveling system, an item upgrade system, an elemental damage system, procedurally generated weapons, and much more. For more detailed information, see the [wiki](http://krpgmod.wikidot.com/)
 * [Magic Storage](https://github.com/blushiemagic/MagicStorage) -- A lot of UI, inheritance, and networking.
 * [Miscellania](https://github.com/goldenapple3/Miscellania) -- Small content mod with a bit of everything.
+* [Orchid Mod](https://github.com/pitchrat/Orchid-Mod) -- A big content mod which adds multiple new damage classes and one full damage class.
 * [The Celestial Overtaking](https://github.com/DaRubyMiner360/MoTools) -- Adds a lot of almost everything.
 * [Qwerty's Bosses and Items](https://github.com/qwerty3-14/QwertysRandomContent) -- Adds a lot of interesting things. Has a lot uses of custom npc AIs (including bosses), an invasion, custom minion/sentry AIs, player layers and more.
 * [Spirit Mod](https://github.com/PhoenixBladez/SpiritMod) -- Large content mod with alot of worldgen, and custom visuals utilizing primitive drawing.
