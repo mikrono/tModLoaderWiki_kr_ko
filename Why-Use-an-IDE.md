@@ -60,10 +60,26 @@ In this video, we see 2 Example Gun spawned. After the first is spawned, a break
 In the [Basic Projectile: Drawing and Collision](https://github.com/tModLoader/tModLoader/wiki/Basic-Projectile#drawing-and-collision) guide, an example is shown using a breakpoint to test values for `ModProjectile.SetDefaults`: [Video](https://gfycat.com/WebbedUntimelyHarborseal)
 
 # Documentation
-tModLoader will automatically provide documentation XMLdoc files, you can see documentation for a method when you hover it. 
+tModLoader will automatically provide documentation XMLdoc files, you can see documentation for a method when you hover it. For example, when the `override` menu is active, clicking on an entry will show the documentation for that method where the purpose and potential usages of that method can be viewed:    
+![image](https://user-images.githubusercontent.com/4522492/184468884-b177fc6f-9050-4ae5-bff1-e9fab0140a7c.png)    
+
+Hovering over an existing overridden method will also show the documentation:    
+![image](https://user-images.githubusercontent.com/4522492/184468903-31fa6b84-a1d4-4754-b6d0-9aacf226a00c.png)    
+
+Hover over a method parameter to see details on what the parameter does:    
+![image](https://user-images.githubusercontent.com/4522492/184468932-a82c9cc9-6562-4ffd-be0c-0bed8e9ebecb.png)   
+
+Hover over fields or methods to see details:     
+![image](https://user-images.githubusercontent.com/4522492/184469232-b8333cff-a678-46e4-a33f-707cbbb63318.png)    
+![image](https://user-images.githubusercontent.com/4522492/184469241-39eb4c8e-aeb9-48c4-8bc2-1c21c78d2747.png)    
+
+Note that the amount and distribution of documentation is driven by modder feedback. If you find something that needs documentation, feel free to suggest it in the Discord chat.
+
+## Documenting your own Mod
+Documenting your own mod can be useful, once the mod becomes complex. Try to document things that are important, but don't feel pressured to document everything, this is all for your own benefit. Writing readable code is better than documenting nonsensical code, after all. For more information on writing documentation, see [XML documentation](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/). The easiest way to document a method is to type `///` the line above a method, Visual Studio will autocomplete the template and you can type notes.
 
 ## Mod Documentation
-As of v0.11.5, modders making mods with API to be used by other mods can include [ModName].xml files in their mod and they will be automatically extracted alongside their .dll file and placed in `ModLoader\references\mods` for easy collaboration (provided `hideCode` is not true, which would be counter-productive for a mod expecting to be referenced by other mods.). XMLdoc files for mods can be generated in Visual Studio during a regular build and should be named [ModName].xml and placed in the root of the mod's source folder.
+Modders making mods with API to be used by other mods can include [ModName].xml files in their mod and they will be automatically extracted alongside their .dll file and placed in `tModLoader\references\mods` for easy collaboration (provided `hideCode` is not true, which would be counter-productive for a mod expecting to be referenced by other mods.). XMLdoc files for mods can be generated in Visual Studio during a regular build and should be named [ModName].xml and placed in the root of the mod's source folder.
 
 # Find All References (Ctrl-K, R)
 Find all references makes it easy to locate all usages of a variable in your whole project. Simply right click on a variable and click `Find all references`. This is very useful to see where you assign and use your variables.
