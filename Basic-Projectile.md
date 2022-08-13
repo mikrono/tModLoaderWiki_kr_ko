@@ -151,7 +151,7 @@ Projectile.rotation = Projectile.velocity.ToRotation(); // projectile faces spri
 If your sprite is upside-down when shot to the left, you'll want to set this: `Projectile.spriteDirection = Projectile.direction;` See [Drawing and Collision](#drawing-and-collision) for an explanation and example.
 
 ## Dust
-Spawn dust in AI for a visual effect. Randomizing placement, `DustID`, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, AiType ProjectileID.EnchantedBoomerang):    
+Spawn dust in AI for a visual effect. Randomizing placement, `DustID`, and frequency is visually pleasing. Here is the Enchanted boomerang dust spawn (aiStyle 3, AIType ProjectileID.EnchantedBoomerang):    
 ```cs
 if (Main.rand.NextBool(5)) // only spawn 20% of the time
 {
