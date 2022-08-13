@@ -2,10 +2,10 @@
 This guide will teach the basics of dropping items when enemies are killed. Please note that this page only applies to 1.4 tModLoader. NPC Loot in 1.3 tModLoader is completely different, see [Basic NPC Drops and Loot](Basic-NPC-Drops-and-Loot) for details.
 
 # Basics
-Terraria maintains a database of rules that dictate the items that each NPC type drops. This database is populated during mod loading. This data can be viewed by the user by visiting the Bestiary. We use the `ModifyNPCLoot` method in either our `ModNPC` class or our `GlobalNPC` class to register the rules that dictate the items that drop from enemies.
+Terraria maintains a database of rules that dictate the items that each NPC type drops. This database is populated during mod loading. This data can be viewed by the user by visiting the Bestiary. We use the `ModifyNPCLoot` method in either our `ModNPC` class or our `GlobalNPC` class to register the rules that dictate the items that drop from enemies. In addition, all bag items that drop items are also structured in a similar manner through `ModifyItemLoot`.
 
 ## Why did loot change from the old system?
-The 1.3 system of loot relied solely on code to dictate the drops and as such the resulting item drops for a particular NPC could not be reliably determined. The new system maintains a database or rules that helps populate the Bestiary feature as well as facilitate mods tweaking item drops. For example, in 1.3 it was impossible to add an item to a set of item drops without risking breaking other mods. The new system allows item drops to be much more reliably adjusted.
+The 1.3 system of loot relied solely on code to dictate the drops and as such the resulting item drops for a particular NPC could not be reliably determined. The new system maintains a database of rules that helps populate the Bestiary feature as well as facilitate mods tweaking item drops. For example, in 1.3 it was impossible to add an item to a set of item drops without risking breaking other mods. The new system allows item drops to be much more reliably adjusted.
 
 ## IItemDropRule
 Every item drop rule is an instance of the `IItemDropRule` class. There are many varieties of `IItemDropRule` which will be explained later. Each rule has logic that dictates the item, stack size, and chances of the item dropping.
@@ -169,6 +169,7 @@ See [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMo
 See [Full Boss Example](#full-boss-example) below
 
 ## Instanced or Per Player
+// TODO
 
 ## Etc
 // TODO: Add other common rules here
@@ -240,24 +241,30 @@ npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.HiveWand
 
 # Full Boss Example
 In Terraria, bosses drop different items depending on the game mode. In expert mode, a boss bag is dropped for each player. In normal mode, the items that would come out of a boss bag except expert only items are dropped instead. This example shows this pattern.
-You can view the `ModifyNPCLoot` code on the [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs) and the corresponding `OpenBossBag` code on the [MinionBossBag](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/MinionBossBag.cs), below is a minimal example to showcase it:
+You can view the `ModifyNPCLoot` code on the [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs) and the corresponding `ModifyItemLoot` code on the [MinionBossBag](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/MinionBossBag.cs), below is a minimal example to showcase it:
 ```cs
 //The important parts to handle proper difficulty drops and the boss bag are the following:
 //1. The boss:
 //1.1. In the ModifyNPCLoot hook
-npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>()));
+npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<MinionBossBag>())); // BossBag rule automatically checks expert mode itself
 //1.2. Put any loot that belongs in the bag based on the "not expert" condition
 LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
 notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7));
 
 //2. The bag:
 //2. In the ModItem
-public override int BossBagNPC => ModContent.NPCType<MinionBossBody>();
-//2.1. In the OpenBossBag hook, replicate the drops using runtime code (Main.rand, QuickSpawnItem, etc.)
-if (Main.rand.NextBool(7)) {
-	player.QuickSpawnItem(entitySource, ModContent.ItemType<MinionBossMask>());
+//2.1. In SetStaticDefaults, set ItemID.Sets.BossBag to true
+ItemID.Sets.BossBag[Type] = true;
+//2.2. Return true in CanRightClick
+public override bool CanRightClick() {
+	return true;
 }
-//Most often you will use ItemDropRule.Common which we can fully replicate using Main.rand.NextBool(7) and player.QuickSpawnItem, other rules may require different code, which is not covered here
+//2.3. In the ModifyItemLoot hook, replicate the drops from ModNPC.ModifyNPCLoot and add expert specific drops and money
+public override void ModifyItemLoot(ItemLoot itemLoot) {
+	itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinionBossMask>(), 7)); // copy of non-expert drops from ModNPC.ModifyNPCLoot
+	itemLoot.Add(ItemDropRule.Common(ItemID.JungleYoyo)); // expert specific drop example
+	itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<MinionBossBody>())); // drop money
+}
 ```
 
 # Consulting vanilla drop code
@@ -279,6 +286,9 @@ if (!Main.player[playerIndex].active || Main.player[playerIndex].dead)
 Player player = Main.player[playerIndex];
 // Other code affecting the player. Might need ModPackets if relevant.
 ```
+
+# Editing drops
+You can edit drops as well. See [ExampleNPCLoot](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/GlobalNPCs/ExampleNPCLoot.cs) to learn more.
 
 # Not covered in Basic level
 * Let us know.
