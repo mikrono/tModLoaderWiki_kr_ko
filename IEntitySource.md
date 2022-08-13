@@ -41,7 +41,12 @@ Using the information provided by `IEntitySource` is the other half of the purpo
 
 For example, in `GlobalProjectile.OnSpawn`, there is a `IEntitySource source` parameter. We can use casting to cast the `IEntitySource` to the source that we wish to check. This code uses the `is` operator and the [property pattern](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern) to quickly match a specific set of conditions.
 ```cs
+// Property pattern approach
 if(source is EntitySource_Parent { Entity: NPC { type: NPCID.Paladin } } && projectile.type == ProjectileID.PaladinsHammerHostile) {
+	// Do things here to PaladinsHammerHostile spawned by the Paladin enemy
+}
+// Non property pattern approach
+if(source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.type == NPCID.Paladin && projectile.type == ProjectileID.PaladinsHammerHostile) {
 	// Do things here to PaladinsHammerHostile spawned by the Paladin enemy
 }
 ```
