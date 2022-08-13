@@ -35,3 +35,15 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 * Player.QuickSpawnItem usage for a bag type item should use `player.GetSource_OpenItem(itemtype)`
 * Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
 * Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `player.GetSource_Misc("PlayerDropItemCheck")`
+
+# Retrieving Information from IEntitySource
+Using the information provided by `IEntitySource` is the other half of the purpose of this feature. There are various methods available that provide the source to the modder, all called `OnSpawn`.
+
+For example, in `GlobalProjectile.OnSpawn`, there is a `IEntitySource source` parameter. We can use casting to cast the `IEntitySource` to the source that we wish to check. This code uses the `is` operator and the [property pattern](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern) to quickly match a specific set of conditions.
+```cs
+if(source is EntitySource_Parent { Entity: NPC { type: NPCID.Paladin } } && projectile.type == ProjectileID.PaladinsHammerHostile) {
+	// Do things here to PaladinsHammerHostile spawned by the Paladin enemy
+}
+```
+
+Note that for most things, you'll have to manually sync changes. OnSpawn happens on the client or server that spawns the entity, any changes that should reflect on other clients need to by synced in some manner. The files in [ExampleMod/Common/EntitySources](https://github.com/tModLoader/tModLoader/tree/1.4/ExampleMod/Common/EntitySources) show examples of this.
