@@ -72,7 +72,7 @@ You can assign these fields to give your `ModProjectile` various values. Typical
 | [ArmorPenetration](#armorpenetration)<a name="armorpenetration"></a>| int | 0 | The number of defense points that this projectile can ignore on its own. Cannot be set to negative values. On spawn, if this projectile was fired from a weapon, this value has the total armor penetration of the weapon that made the projectile added to itself. |
 | [CritChance](#critchance)<a name="critchance"></a>| int | 0 | The critical strike chance modifier of this projectile. Cannot be set to negative values. On spawn, if this projectile was fired from a weapon, this value has the total critical strike chance of the weapon that made the projectile added to itself. |
 | [DamageType](#damagetype)<a name="damagetype"></a>| DamageClass | DamageClass.Default | The damage class of the projectile, relates to damage bonuses and crit. Vanilla options can be assigned via the `DamageClass` fields, and modded through `ModContent.GetInstance<CustomDamageClassNameHere>()` |
-| [ContinuouslyUpdateDamage](#continuouslyupdatedamage )<a name="continuouslyupdatedamage "></a>| bool | false | If set, Projectile.damage will be recalculated based on `originalDamage`, `DamageType` and the owning player, just like minions and sentries. |
+| [ContinuouslyUpdateDamage](#continuouslyupdatedamage )<a name="continuouslyupdatedamage "></a>| bool | false | If set, `damage` will be recalculated based on `originalDamage`, `DamageType` and the owning player, just like minions and sentries. |
 | [ModProjectile](#modprojectile)<a name="modprojectile"></a>| ModProjectile | null | The ModProjectile instance that controls the behavior of this projectile. This property is null if this is not a modded projectile. |
 | [Globals](#globals)<a name="globals"></a>| RefReadOnlyArray<Instanced<GlobalProjectile>> | | Do not touch. Use `Projectile.GetGlobalProjectile` |
 | [](#)<a name=""></a>| | |  |
@@ -118,7 +118,7 @@ Gets the GlobalProjectile instance (of the specified Type) associated with this 
 
 Allows you to copy the defaults of a different type of projectile.
 
-### public bool CountsAsClass<T>() where T : DamageClass
+### public bool CountsAsClass\<T\>() where T : DamageClass
 
 Returns true if the projectile counts as the given damage class (of the specified type) towards effects.
 
