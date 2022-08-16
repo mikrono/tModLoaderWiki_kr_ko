@@ -75,6 +75,19 @@ override void UpdateInventory (Player player)
 We can greatly simplify the process of overriding hooks by using [Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Why-Use-an-IDE#override).    
 Now that we have a hook in our ModItem class, we can add code inside it. The code we write will depend on the effects we wish to achieve. ExampleMod and the [Advanced Vanilla Code Adaption](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption) guide can be helpful for finding similar snippets of code to experiment with.
 
+# Index and Type
+There are two big concepts that both correspond to integers. These two usages of integers can be inadvertently mixed up by new modders leading to code that compiles but is buggy. 
+
+In Terraria, all content has a unique identifier called a `Type`. This is an integer that lets the game uniquely identify different bits of content. For example, the type of the `Shuriken` projectile is the number `3`. We can use a projectiles `Type` to run code that should affect only projectiles of that type. For example, if we use the `GlobalProjectile.OnHitNPC` hook, we can check `if(projectile.type == ProjectileID.Shuriken)` and then run some Shuriken specific code, such as applying a debuff to the npc. Item, NPC, Projectile, Dust, and many more varieties of content in Terraria all operate using a `Type` identifier to identify the various varieties of content.
+
+The second concept is `Index`. In Terraria, the game uses various arrays to hold all the active content in the world. For example, the `Main.projectile[]` array holds all the instances of all the projectiles currently in the game world. Each `Projectile` knows it's own index within that array by the `whoAmI` field.
+
+Both `Type` and `Index` are integers, leading to a situation where new modders can make a big mistake using one or the other incorrectly. For example, a modder might make the mistake of thinking `Projectile projectile = Main.projectile[ProjectileID.Shuriken]` would retrieve the active Shuriken projectile, but it won't, it'll return whatever projectile is at that index. As a modder goes through different guides and examples, they will see proper usage of `Type` and `Index`. 
+
+This diagram illustrates this point, showing how `Type` and `Index` are separate concepts while showing how they are stored in an array:     
+![ProjectileArrayExplaination](https://user-images.githubusercontent.com/4522492/184989136-c83e4bcf-18a1-4cb5-b798-60b190be5591.png)    
+
+
 # How are modded classes setup?
 
 tModLoader provides a number of classes you can use to create your own mod content. You will base your own classes off of these by using what's called `class derivation` or `class inheritance`. To keep this simple, it basically means your class will use one of ours as its base. For example, your items will be based on ModItem: `MyItemClass : ModItem`, where the `: ModItem` denotes it inherits from the ModItem class, which is present in the Terraria.ModLoader namespace. (if you come from Java, this is the same as `extends ModItem`) This means everything we made for ModItem becomes available to you in your class, such as the [SetDefaults](http://tmodloader.github.io/tModLoader/html_alpha/class_terraria_1_1_mod_loader_1_1_mod_item.html#a6d9fbbb1dec7e25959a345a9e4f78428) hook. Note that you can only derive from one class, so a ModItem cannot be a ModProjectile and so forth. 
