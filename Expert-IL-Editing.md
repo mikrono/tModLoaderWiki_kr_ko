@@ -21,7 +21,7 @@ You can put patches anywhere you want, but `Mod.Load` or any of the `Autoload` m
 
 # Example - Hive Pack Upgrade
 ## Goal
-The goal that this guide will work toward is making the various bee related items stronger when wearing an upgrade to the [Hive Pack](https://terraria.gamepedia.com/Hive_Pack). Various items will spawn bees as weapons. If the player is wearing the Hive Pack, `player.strongBees` will be true and spawned bees will have a random chance of spawning as GiantBee instead. To implement our Hive Pack upgrade, we need to modify the code referencing `player.strongBees` to give it a chance to spawn a Beenade as well.
+The goal that this guide will work toward is making the various bee related items stronger when wearing an upgrade to the [Hive Pack](https://terraria.wiki.gg/wiki/Hive_Pack). Various items will spawn bees as weapons. If the player is wearing the Hive Pack, `player.strongBees` will be true and spawned bees will have a random chance of spawning as GiantBee instead. To implement our Hive Pack upgrade, we need to modify the code referencing `player.strongBees` to give it a chance to spawn a Beenade as well.
 
 Here is how Bee weapons currently work while the Hive Pack is equipped ([video](https://gfycat.com/MagnificentLividHuia)):    
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    

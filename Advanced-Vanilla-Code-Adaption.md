@@ -326,7 +326,7 @@ I like this one, so I'll crop the image and edit it to fit ExampleMod art style.
 
 ![](https://i.imgur.com/LFGJANI.png)
 
-Make sure to save the file, then do the same for the Item image. I just looked up the ItemID on the [wiki](https://terraria.gamepedia.com/Lamp). Turns out we used the Rich Mahogany Lamp as our guide, lets first do the ModItem by searching the source for 2087, the ItemID of Rich Mahogany Lamp. In our initial search, we found no results! Looking at ItemID.cs, we can see that RichMahoganyLamp is next to many other lamp items. Sometimes the source code uses ranges to apply code to many different item types. The lamp item furthest above `RichMahoganyLamp` is `CactusLamp = 2082;`, lets search for 2082. This time we find the code we need for our `ModItem.SetDefaults()`:
+Make sure to save the file, then do the same for the Item image. I just looked up the ItemID on the [wiki](https://terraria.wiki.gg/wiki/Lamps). Turns out we used the Rich Mahogany Lamp as our guide, lets first do the ModItem by searching the source for 2087, the ItemID of Rich Mahogany Lamp. In our initial search, we found no results! Looking at ItemID.cs, we can see that RichMahoganyLamp is next to many other lamp items. Sometimes the source code uses ranges to apply code to many different item types. The lamp item furthest above `RichMahoganyLamp` is `CactusLamp = 2082;`, lets search for 2082. This time we find the code we need for our `ModItem.SetDefaults()`:
 
 ```cs
 if (type >= 2082 && type <= 2091)

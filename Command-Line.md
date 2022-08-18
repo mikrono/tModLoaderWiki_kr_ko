@@ -1,4 +1,4 @@
-In addition to all the Command Line and Server Config settings available in [vanilla Terraria](https://terraria.gamepedia.com/Server), tModLoader adds a few which are listed below.
+In addition to all the Command Line and Server Config settings available in [vanilla Terraria](https://terraria.wiki.gg/wiki/Server), tModLoader adds a few which are listed below.
 
 ### TOBEADDEDLIST
 1) -loadlib
