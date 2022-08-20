@@ -3,7 +3,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 ***
 
 # Basic Recipe
-Recipes can be added to the game in 3 places. In `Mod.AddRecipes`, `ModItem.AddRecipes`, and `ModSystem.AddRecipes`. Where you add your recipes is up to your organizational preferences, but do note that the `ModItem.CreateRecipe` method cannot be used everywhere as is, use `Recipe.Create` where it is not possible. 
+Recipes can be added to the game in 3 places. In `ModItem.AddRecipes`, `GlobalItem.AddRecipes`, and `ModSystem.AddRecipes`. Where you add your recipes is up to your organizational preferences, but do note that the `ModItem.CreateRecipe` method cannot be used everywhere as is, use `Recipe.Create` where it is not possible. 
 
 Recipes consist of Ingredients (Items consumed to craft the result), Tiles (Tiles you need to stand by), and Results (Item created).
 
@@ -16,20 +16,20 @@ using Terraria.ID;
 using Terraria.ModLoader;
 ```
 ## Create Recipe and Assign Recipe Result
-To start a recipe we create an instance of the `Recipe` class. We do this through the `Recipe.Create` method or the `ModItem.CreateRecipe` method. When creating a recipe, we need to assign the recipe result type and result stack. The `ModItem.CreateRecipe` method assumes that the recipe results in the current ModItem, so only the stack size is needed. The stack size is optional and defaults to 1:
+To start a recipe we create an instance of the `Recipe` class. We do this through the `Recipe.Create` method or the `ModItem.CreateRecipe` method. When creating a recipe, we need to assign the recipe result type and result stack. The `ModItem.CreateRecipe` method assumes that the recipe results in the current `ModItem`, so only the stack size is needed. The stack size is optional and defaults to 1:
 
-In `Mod` class, we type "Recipe.Create" to use the `Recipe.Create` method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
+In `GlobalItem` class, we type "Recipe.Create" to use the `Recipe.Create` method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
 ```cs
 Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
 Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ, 5); 
 Recipe recipe = Recipe.Create(ModContent.ItemType<Content.Items.ExampleItem>());
 Recipe recipe = Recipe.Create(ModContent.ItemType<Content.Items.ExampleItem>(), 10);
 ```
-In `ModSystem` class, we need to use "Recipe.Create":
+In `ModSystem` class, we also use `Recipe.Create`:
 ```cs
 Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
 ```
-In `ModItem` class, we can use "Recipe.Create" to create a recipe that doesn't have this ModItem as a result:
+In `ModItem` class, we can use `Recipe.Create` to create a recipe that doesn't have this `ModItem` as a result:
 ```cs
 Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
 // ... And we can use "CreateRecipe" directly to create a recipe that results in this ModItem. We can optionally provide a stack size:
@@ -58,6 +58,11 @@ recipe.AddIngredient<Content.Items.ExampleItem>(10);
 recipe.AddIngredient(ModContent.ItemType<Content.Items.ExampleItem>());
 recipe.AddIngredient(ModContent.GetInstance<Content.Items.ExampleItem>());
 recipe.AddIngredient(Mod, "ExampleItem");
+```
+
+If you are in a `ModItem` class, you can also use that ModItem directly in a recipe:
+```cs
+recipe.AddIngredient(this, 5);
 ```
 
 Next, we can specify the crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs).
