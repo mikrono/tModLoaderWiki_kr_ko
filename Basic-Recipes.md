@@ -20,10 +20,10 @@ To start a recipe we create an instance of the `Recipe` class. We do this throug
 
 In `Mod` class, we type "Recipe.Create" to use the `Recipe.Create` method. Here are various examples, showing vanilla and modded ingredients as well as default stack sizes and custom stack sizes:
 ```cs
-Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ); 
-Recipe recipe = CreateRecipe(ItemID.AlphabetStatueZ, 5); 
-Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>());
-Recipe recipe = CreateRecipe(ModContent.ItemType<Content.Items.ExampleItem>(), 10);
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ); 
+Recipe recipe = Recipe.Create(ItemID.AlphabetStatueZ, 5); 
+Recipe recipe = Recipe.Create(ModContent.ItemType<Content.Items.ExampleItem>());
+Recipe recipe = Recipe.Create(ModContent.ItemType<Content.Items.ExampleItem>(), 10);
 ```
 In `ModSystem` class, we need to use "Recipe.Create":
 ```cs
