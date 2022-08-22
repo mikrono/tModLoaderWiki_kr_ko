@@ -67,10 +67,10 @@ To this:
     return condition ? .1f : 0f;
 
 # NPCSpawnInfo
-NPCSpawnInfo is a struct that contains all the info pertaining to the spawn position that Terraria wishes to spawn an NPC. See [documentation](http://tmodloader.github.io/tModLoader/html/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html) for the fields. We will use the values from this struct to guide our logic and arrive at a final decision.
+NPCSpawnInfo is a struct that contains all the info pertaining to the spawn position that Terraria wishes to spawn an NPC. See [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html) for the fields. We will use the values from this struct to guide our logic and arrive at a final decision.
 
 ## Player Biomes
-Use the player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer to use player biomes in spawn logic. [List of Zone Booleans](http://tmodloader.github.io/tModLoader/html/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html#a894868167c60f17bea09fba0aea811a8)
+Use the player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer to use player biomes in spawn logic. [List of Zone Booleans](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html#a894868167c60f17bea09fba0aea811a8)
 
 ```cs
 if(spawnInfo.player.ZoneJungle) // Vanilla Biome aka Zone
@@ -110,7 +110,7 @@ In addition to NPCSpawnInfo, we can also use other fields in our SpawnChance log
 * Need More? Ask for help from us on Discord and we can add more to this list.
 
 # SpawnCondition
-SpawnCondition is a class that contains a set of ready-to-use fields that mimic the logic of various Vanilla NPC spawn conditions. See [Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_spawn_condition.html) for available SpawnConditions. Using SpawnCondition fields can simplify you SpawnChance logic. For example, a daytime slime can easily be implemented like this:
+SpawnCondition is a class that contains a set of ready-to-use fields that mimic the logic of various Vanilla NPC spawn conditions. See [Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_spawn_condition.html) for available SpawnConditions. Using SpawnCondition fields can simplify you SpawnChance logic. For example, a daytime slime can easily be implemented like this:
 ```c#
 return SpawnCondition.OverworldDaySlime.Chance * 0.1f;
 ```
@@ -191,9 +191,9 @@ would need to be fixed like this:
 This means you probably forgot to use your logic to decide on a value to return. See above.
 
 # Relevant References
-* [ModNPC.SpawnChance Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#ae7713bbbd313012944b958e8eafc35e0)
-* [NPCSpawnInfo Documentation](http://tmodloader.github.io/tModLoader/html/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html)
-* [SpawnCondition Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_spawn_condition.html)
+* [ModNPC.SpawnChance Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#ae7713bbbd313012944b958e8eafc35e0)
+* [NPCSpawnInfo Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html)
+* [SpawnCondition Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_utilities_1_1_spawn_condition.html)
 
 # Not covered in Basic level
 * ModNPC.CheckConditions - Custom TownNPC House conditions (like Truffle)

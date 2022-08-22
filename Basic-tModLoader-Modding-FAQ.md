@@ -49,7 +49,7 @@ If you are using Visual Studio, you might need to add a [reference to Relogic.dl
 
 ### Error CS0161: 'ExampleItem.UseItem(Player)' (or some other hook): not all code paths return a value
 ___
-Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://tmodloader.github.io/tModLoader/html/index.html) to know what value to return.
+Some methods return values. When using tModLoader hooks, you need to be aware that methods return values and not returning a value is an error. For example, UseItem has the method signature of: `bool UseItem(Player player)`, and that `bool` there tells us that we have to return a bool value. Consult the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/annotated.html) to know what value to return.
 
 ### System.Threading.ThreadStateException: FNA3D graphics functions must be called on the main thread
 ___

@@ -251,8 +251,8 @@ Make sure you are only overriding AddRecipes in Mod, ModSystem, or ModItem.
 ## Relevant References
 * [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs)
 * [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
-* [ModRecipe Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
-* [Mod Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod.html)
+* [ModRecipe Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
+* [Mod Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod.html)
 
 ## Not covered in Basic level
 There are other aspects of Recipes that will be covered in more advanced guides:

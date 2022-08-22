@@ -150,7 +150,7 @@ These are more rarely used and won't be explained. See vanilla source code if yo
 This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
 	
 ## ModTile fields: dustType, drop, adjTiles, etc
-These are explained in the [documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
+These are explained in the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
 
 ## AddToArray(ref TileID.Sets.RoomNeeds.????);
 Used to make a ModTile act as a lightsource, chair or table for the purposes of housing. Some examples:    
@@ -359,7 +359,7 @@ Do not change frameX or frameY of the tile for animation. The tile and its value
 
 ## Relevant References
 * [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
-* [ModTile Documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_tile.html)
+* [ModTile Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_tile.html)
 
 ## Not covered in Basic level
 There are other aspects of ModTiles that will be covered in more advanced guides:

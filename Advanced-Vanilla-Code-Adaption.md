@@ -33,7 +33,7 @@ Now we go through the 9 results in search of what we want to know. 2 of the resu
 
 ![](http://i.imgur.com/UyxK0l6.png)
 
-Now let's look in the [documentation](http://tmodloader.github.io/tModLoader/html/class_terraria_1_1_mod_loader_1_1_mod_player.html#a48027ba9e2e4188d3b73b49fa60071f2)! As you can see, the documentation also agrees, this is the hook to use to spawn dust and other effects.
+Now let's look in the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_player.html#a48027ba9e2e4188d3b73b49fa60071f2)! As you can see, the documentation also agrees, this is the hook to use to spawn dust and other effects.
 
 The last 3 results are in Projectile.cs. They do the same thing that earlier results did, but for melee projectiles instead of melee items. (Dust, Hit NPC, Hit PvP) The corresponding hooks we use to replicate this behavior is in: ModPlayer.ModifyHitNPCWithProj, ModPlayer.ModifyHitPvpWithProj, and GlobalProjectile.PostAI.
 
