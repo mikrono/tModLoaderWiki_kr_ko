@@ -183,14 +183,31 @@ else if (buffType[j] == 117) {
 }
 ```
 
+When modifying a single line. Leave a commented version of the vanilla code **only when** it is not obvious what has been added by tML and what is vanilla.
+
 Also use a hashtag when multiple changes are part of the same fix/feature/refactor
 ```cs
+//if (item.maxStack == 1 && item.Prefix(-3))
+if (item.IsCandidateForReforge && item.Prefix(-3)) // TML: #StackablePrefixWeapons
+
+
+//if (stack <= 0)
+if (stack <= 0 && mouseItem.maxStack == 1) // TML: #StackablePrefixWeapons: Gameplay impact: stackable items will not get a prefix on craft
+
+
 // TML attempts to make ApplyItemTime calls run on remote players, so this check is removed. #ItemTimeOnAllClients
 // if (whoAmI == Main.myPlayer) {
 if (true) {
 	...
 }
 ```
+
+❌ Unnecessary comment
+```cs
+//if (Main.mouseItem.IsTheSameAs(inv[slot])) {
+if (Main.mouseItem.IsTheSameAs(inv[slot]) && ItemLoader.CanStack(inv[slot], Main.mouseItem)) {
+```
+
 
 ## Keep Patches Small
 The source code of Terraria is not stored on git, instead tML changes are stored in .patch files in the patches/ directory. Keeping patches as small as possible makes handling Terraria updates and identifying the exact changes tML requires much easier. 
