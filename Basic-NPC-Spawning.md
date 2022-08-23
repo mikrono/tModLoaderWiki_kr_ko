@@ -8,7 +8,7 @@ There are a few ideas you need to understand first:
 It is hard to guess a good value for the return of ModNPC.SpawnChance. We don't want our NPC spawning too often compared to vanilla NPC. Usually a value of 0.1f or something smaller is good, but you should use [Modders Toolkit's](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) NPC Spawn Tool to compare your NPC's spawn rate to vanilla and other Mod's NPCs.
 
 ## Terraria Spawning
-Terraria spawns NPC by first deciding on a position to spawn the NPC, and then asking each NPC if they would like to spawn at that position. Each time Terraria decides to spawn an NPC, it will be in conjunction with a Player object (NPCSpawnInfo.player). In Multiplayer, the server handles all spawning decisions. If you make a custom biome in your mod and notice that spawning doesn't work correctly in multiplayer, your ModPlayer.SendCustomBiomes and related hooks need to be implemented correctly so the server knows the correct values of the custom biome booleans, so that it can make the correct decisions.
+Terraria spawns NPC by first deciding on a position to spawn the NPC, and then asking each NPC if they would like to spawn at that position. Each time Terraria decides to spawn an NPC, it will be in conjunction with a Player object (NPCSpawnInfo.Player). In Multiplayer, the server handles all spawning decisions. If you make a custom biome in your mod and notice that spawning doesn't work correctly in multiplayer, your ModPlayer.SendCustomBiomes and related hooks need to be implemented correctly so the server knows the correct values of the custom biome booleans, so that it can make the correct decisions.
 
 ## Return values
 The ModNPC.SpawnChance hook returns a float. Google that if you don't understand. The ModNPC.CanTownNPCSpawn hook returns a bool.
@@ -70,12 +70,12 @@ To this:
 NPCSpawnInfo is a struct that contains all the info pertaining to the spawn position that Terraria wishes to spawn an NPC. See [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html) for the fields. We will use the values from this struct to guide our logic and arrive at a final decision.
 
 ## Player Biomes
-Use the player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer to use player biomes in spawn logic. [List of Zone Booleans](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html#a894868167c60f17bea09fba0aea811a8)
+Use the Player object passed in inside NPCSpawnInfo rather than Main.LocalPlayer to use player biomes in spawn logic. [List of Zone Booleans](http://tmodloader.github.io/tModLoader/docs/1.4-stable/struct_terraria_1_1_mod_loader_1_1_n_p_c_spawn_info.html#a894868167c60f17bea09fba0aea811a8)
 
 ```cs
-if(spawnInfo.player.ZoneJungle) // Vanilla Biome aka Zone
+if(spawnInfo.Player.ZoneJungle) // Vanilla Biome aka Zone
 
-if(spawnInfo.player.GetModPlayer<ExamplePlayer>().ZoneExample) // Mod Biome
+if(spawnInfo.Player.GetModPlayer<ExamplePlayer>().ZoneExample) // Mod Biome
 ```
 
 ## Heights
@@ -84,7 +84,7 @@ When worlds are generated, a few values are saved with the world to specify vari
 
 On the right side of the image we see the Zones that are predefined for us, and on the left we see the math that drives those zones. For example, the following are equivalent:    
 ```c#
-if(spawnInfo.player.ZoneRockLayerHeight)
+if(spawnInfo.Player.ZoneRockLayerHeight)
 ```   
 ```c#
 if(spawnInfo.spawnTileY <= Main.maxTilesY - 200 && spawnInfo.spawnTileY > Main.rockLayer)
@@ -129,7 +129,7 @@ Each of the following examples will be as if they were inside a ModNPC.SpawnChan
 ### Spawn on my ModTile
     return spawnInfo.spawnTileType == mod.TileType<Tiles.CrystalBlock>() ? .1f : 0f;
 ### Spawn if player in custom Biome/Zone
-    return spawnInfo.player.GetModPlayer<CrystalPlayer>().ZoneCrystal ? .1f : 0f;
+    return spawnInfo.Player.GetModPlayer<CrystalPlayer>().ZoneCrystal ? .1f : 0f;
 ### Spawn in Jungle Temple
     return spawnInfo.spawnTileType == TileID.LihzahrdBrick && spawnInfo.lihzahrd ? .1f : 0f;
     // or
@@ -140,9 +140,9 @@ Each of the following examples will be as if they were inside a ModNPC.SpawnChan
     return SpawnCondition.SolarEclipse.Chance * 0.05f; // Remember to test this value for balance
 ### Player standing on Sunplate tile
     // Here I show off 2 ways of converting a boolean to an int. (False is 0, True is 1)
-    return (Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate).ToInt() * 0.2f;
+    return (Main.tile[spawnInfo.playerFloorX, spawnInfo.PlayerFloorY].type == TileID.Sunplate).ToInt() * 0.2f;
     // or
-    return Convert.ToInt32(Main.tile[spawnInfo.playerFloorX, spawnInfo.playerFloorY].type == TileID.Sunplate) * 0.2f; // using System;
+    return Convert.ToInt32(Main.tile[spawnInfo.PlayerFloorX, spawnInfo.PlayerFloorY].type == TileID.Sunplate) * 0.2f; // using System;
 
 # Combining Snippets
 Just like in Examples above, we combine pieces of logic to construct our final decision. See !, &&, and || above.
