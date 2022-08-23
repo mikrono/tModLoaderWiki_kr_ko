@@ -15,7 +15,7 @@
 First we must create a new project for our mod. To do this, follow the instructions in [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide) for generating a Mod Skeleton, which will contain the project files.
 
 ## Creating or Updating an existing project for an old mod
-If you are updating a mod from 1.3, you can use the "Upgrade .csproj file" button in the Mod Sources menu. This will create a fully working project for you to open and continue working on.    
+If you are updating a mod from before 1.4, you can use the "Upgrade .csproj file" button in the Mod Sources menu. This will create a fully working project for you to open and continue working on.    
 ![](https://i.imgur.com/woTP4Sf.png)
 
 # Opening your Project
