@@ -118,7 +118,7 @@ This rule will drop the item at the chance given by the parameters provided. The
 ItemDropRule.Common(ItemID.BeeGun) // Always drop 1 Bee Gun
 ItemDropRule.Common(ItemID.BeeGun, 8) // Drop 1 Bee Gun 1 out of every 8 times (12.5% chance)
 ItemDropRule.Common(ItemID.Torch, 4, 10, 15) // Drop a stack of 10 to 15 torches with 1 in 4 chance (25% chance)
-new CommonDrop(ItemID.Torch, 2, 10, 15, 5) // Drop a stack of 10 to 15 torches with 2 in 5 chance (40% chance)
+new CommonDrop(ItemID.Torch, 5, 10, 15, 2) // Drop a stack of 10 to 15 torches with 2 in 5 chance (40% chance)
 ```
 
 ## Drop One of Many Items
