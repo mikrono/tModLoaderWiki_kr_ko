@@ -12,7 +12,7 @@ ___
 ___
 - [Getting started Guides](./home#getting-started)
 - [Development guides](./home#development)
-- [Easy guides](./home#easy-guides)
+- [Easy guides](./wiki#easy-guides)
 - [Intermediate guides](./home#intermediate-guides)
 - [Advanced guides](./home#advanced-guides)
 - [Expert guides](./home#expert-guides)
