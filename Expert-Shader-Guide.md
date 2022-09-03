@@ -430,7 +430,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
+using Terraria.ModLoader;
 
 public class MyMod : Mod
 {
@@ -448,21 +448,21 @@ public class MyMod : Mod
             // and you'll have to do it for every shader file.
             // This example assumes you have both armour and screen shaders.
 
-            Ref<Effect> dyeRef = new Ref<Effect>(GetEffect("Effects/MyDyes"));
-            Ref<Effect> specialRef = new Ref<Effect>(GetEffect("Effects/MySpecials"));
-            Ref<Effect> filterRef = new Ref<Effect>(GetEffect("Effects/MyFilters"));
+            Ref<Effect> dyeRef = new Ref<Effect>(this.GetEffect("Effects/MyDyes"));
+            Ref<Effect> specialRef = new Ref<Effect>(this.GetEffect("Effects/MySpecials"));
+            Ref<Effect> filterRef = new Ref<Effect>(this.GetEffect("Effects/MyFilters"));
 
             // To add a dye, simply add this for every dye you want to add.
             // "PassName" should correspond to the name of your pass within the *technique*,
             // so if you get an error here, make sure you've spelled it right across your effect file.
 
-            GameShaders.Armor.BindShader(ItemType<MyDyeItem>(), new ArmorShaderData(dyeRef, "PassName"));
+            GameShaders.Armor.BindShader(ModContent.ItemType<MyDyeItem>(), new ArmorShaderData(dyeRef, "PassName"));
 
             // If your dye takes specific parameters such as color, you can append them after binding the shader.
             // IntelliSense should be able to help you out here.   
 
-            GameShaders.Armor.BindShader(ItemType<MyColorDyeItem>(), new ArmorShaderData(dyeRef, "ColorPass")).UseColor(1.5f, 0.15f, 0f);
-            GameShaders.Armor.BindShader(ItemType<MyNoiseDyeItem>(), new ArmorShaderData(dyeRef, "NoisePass")).UseImage("Images/Misc/noise"); // Uses the default Terraria noise map.
+            GameShaders.Armor.BindShader(ModContent.ItemType<MyColorDyeItem>(), new ArmorShaderData(dyeRef, "ColorPass")).UseColor(1.5f, 0.15f, 0f);
+            GameShaders.Armor.BindShader(ModContent.ItemType<MyNoiseDyeItem>(), new ArmorShaderData(dyeRef, "NoisePass")).UseImage("Images/Misc/noise"); // Uses the default Terraria noise map.
 
             // To bind a miscellaneous, non-filter effect, use this.
             // If you're actually using this, you probably already know what you're doing anyway.
