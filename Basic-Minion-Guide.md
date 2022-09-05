@@ -42,7 +42,7 @@ This is your weapon that you use to summon the minion.
 // So the weapon doesn't damage like a sword while swinging 
 item.noMelee = true;
 // The damage type of this weapon
-item.summon = true;
+item.DamageType = DamageClass.Summon;
 item.buffType = BuffType<ExampleMinionBuff>();
 item.shoot = ProjectileType<ExampleMinion>();
 ```
