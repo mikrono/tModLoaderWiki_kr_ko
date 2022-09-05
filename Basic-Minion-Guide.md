@@ -40,11 +40,11 @@ This is your weapon that you use to summon the minion.
  It is for the most part similar to other weapons, here are some notable differences for `SetDefaults()`:
 ```csharp
 // So the weapon doesn't damage like a sword while swinging 
-item.noMelee = true;
+Item.noMelee = true;
 // The damage type of this weapon
-item.DamageType = DamageClass.Summon;
-item.buffType = BuffType<ExampleMinionBuff>();
-item.shoot = ProjectileType<ExampleMinion>();
+Item.DamageType = DamageClass.Summon;
+Item.buffType = BuffType<ExampleMinionBuff>();
+Item.shoot = ProjectileType<ExampleMinion>();
 ```
 Notice how there is no `item.buffTime` and `item.shootSpeed` usually associated with the bottom two lines.
 It is because buff time would be displayed on the item tooltip ('1 minute duration' for example, which doesn't make sense because minion duration is infinite),
