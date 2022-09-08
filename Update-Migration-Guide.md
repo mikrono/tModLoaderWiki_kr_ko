@@ -141,11 +141,11 @@ _All ModX things listed here apply to GlobalX aswell_
 **Regex:** `mod\.GetTexture\(([^)]+).` -> `Mod.Assets.Request<Texture2D>($1).Value`
 * `ModLoader.ModContent.GetEffect(string)` -> `ModContent.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
 * `ModLoader.Mod.GetEffect(string)` -> `ModLoader.Mod.Assets.Request<Effect>(string).Value` (Second parameter of `Request` has to be `ReLogic.Content.AssetRequestMode.ImmediateLoad`)
-* `ModLoader.Mod.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.TryGetMod(string, out Mod)`
+* `ModLoader.ModLoader.GetMod(string)` now throws if the mod is not loaded, use `ModLoader.ModLoader.TryGetMod(string, out Mod)`
 * `ModLoader.Mod.AddBossHeadTexture(string, int)` now returns `int` which is the head texture slot.
 * `ModLoader.Mod.AddTranslation(ModTranslation)` -> `ModLoader.LocalizationLoader.AddTranslation(ModTranslation)`
 * `ModLoader.Mod.CreateTranslation(string)` -> `ModLoader.LocalizationLoader.CreateTranslation(Mod, string)`
-* `Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> removed
+* `ModLoader.Mod.GetLegacySoundSlot(ModLoader.SoundType, string)` -> removed
 * `ModLoader.Mod.RegisterHotKey(string, string)` -> `ModLoader.KeybindLoader.RegisterKeybind(Mod, string, string)`
 * `ModLoader.ModGore.GetGoreSlot`-> `ModLoader.ModContent.GetGoreSlot`
 * `ModLoader.ModGore.DrawBehind`-> removed, ise `ID.GoreID.Sets.DrawBehind[Type]` in `SetStaticDefaults`
