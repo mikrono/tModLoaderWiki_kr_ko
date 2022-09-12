@@ -57,6 +57,8 @@ else {
 }
 ```
 
+**Exception**: ExampleMod contributions; _single_ line statements and method bodies should receive braces. Only properties (i.e. `bool SomeProperty => true;`) can be kept as defined above.
+
 _**Why: Balance between good visual separation and keeping code on-screen when Terraria is full of small control flow statements.**_
 
 ## Comments
