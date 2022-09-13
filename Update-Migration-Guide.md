@@ -50,6 +50,7 @@ Here are the most relevant changes.
 * `Main.expertKnockBack ` -> `Main.GameModeInfo.KnockbackToEnemiesMultiplier`
 * `Main.knockBackMultiplier ` -> `Main.GameModeInfo.KnockbackToEnemiesMultiplier`
 * `Main.damageMultiplier ` -> `Main.GameModeInfo.EnemyDamageMultiplier`
+* `ReLogic.OS.Platform.Current.Clipboard` -> `ReLogic.OS.Platform.Get<IClipboard>().Value`
 * `Tile.Liquid_Water/Liquid_Honey/Liquid_Lava` -> `ID.LiquidID.Water/Honey/Lava`
 * `Tile.Type_Solid` -> `(int)BlockType.Solid`
 * `Tile.Type_Halfbrick` -> `(int)BlockType.HalfBlock`
