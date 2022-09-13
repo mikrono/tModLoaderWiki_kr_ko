@@ -2,9 +2,9 @@ The following is a list of constants found in the Terraria.ID.ItemID class. Simp
 
 As a reminder you use these values either by writing `ItemID.Name` or just `Number`, do NOT write `ItemID.Number`:
 ```cs
-recipe.AddIngredient(ItemID.Gel);       // Good
-recipe.AddIngredient(23);               // Good
-recipe.AddIngredient(ItemID.23);        // Wrong
+recipe.AddIngredient(ItemID.Gel);  // Good
+recipe.AddIngredient(23);          // Good
+recipe.AddIngredient(ItemID.23);   // Wrong
 ```
 
 | Item	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
