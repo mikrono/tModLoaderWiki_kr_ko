@@ -1,6 +1,6 @@
 # Vanilla Buff IDs
 
-The following is a list of constants found in the Terraria.ID.BuffID class.
+The following is a list of constants found in the `Terraria.ID.BuffID` class.
 
 | Buff	| ID/Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 | :-- 	| :--                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
