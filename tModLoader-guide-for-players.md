@@ -9,8 +9,8 @@ ___
 ___
 
 ## Steam Installation
-To install [tModLoader](http://goo-gl.me/sODLr) on Steam, you need to own [Terraria](http://goo-gl.me/sODLr) on Steam.
-Simply browse for [tModLoader](http://goo-gl.me/sODLr) on Steam and install it.
+To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
+Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
 Note that tModLoader does NOT currently support Family Share due to an issue with Valve's implementation. Active dialogs are still being had to fix it, we ask for your patience!
 
@@ -62,7 +62,7 @@ This installation is necessary for players who have purchased Terraria from GOG 
 
 Installing tModLoader is relatively easy.
 
-1. Goto the **[releases](http://goo-gl.me/sODLr)** page and download the tML release you want. (usually the **[latest](http://goo-gl.me/sODLr)** for 1.4. For 1.3, the latest is [v0.11.8.9](http://goo-gl.me/sODLr))
+1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tML release you want. (usually the **[latest](https://github.com/tModLoader/tModLoader/releases/latest)** for 1.4. For 1.3, the latest is [v0.11.8.9](https://github.com/tModLoader/tModLoader/releases/tag/v0.11.8.9))
 2. Unzip the **contents** of the zip you downloaded to a folder named `tModLoader` either next to or nested inside the Terraria install folder. 
 On 1.4, if the folder contains a 'Build' folder, you will need to remove this intermediate folder and bring the contents up one level. (GOG usually installs to `C:\GOG Games`, and Steam to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`. See [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike) to find the steam installation location if you customized it.) (If you are on linux and own the game on GOG, the nested option inside `Terraria\game` is preferred) If you don't know how to unzip a zip file, get someone who knows how to use a computer to help you.
 
