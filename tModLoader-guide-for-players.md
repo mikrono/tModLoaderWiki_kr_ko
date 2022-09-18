@@ -9,8 +9,8 @@ ___
 ___
 
 ## Steam Installation
-To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
-Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
+To install [tModLoader](http://goo-gl.me/sODLr) on Steam, you need to own [Terraria](http://goo-gl.me/sODLr) on Steam.
+Simply browse for [tModLoader](http://goo-gl.me/sODLr) on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
 Note that tModLoader does NOT currently support Family Share due to an issue with Valve's implementation. Active dialogs are still being had to fix it, we ask for your patience!
 
