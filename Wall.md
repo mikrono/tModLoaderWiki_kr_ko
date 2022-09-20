@@ -2,7 +2,7 @@
 Walls are fairly straightforward and creating a `ModWall` is mostly an exercise in following the existing patterns. Like tiles, walls are comprised of 2 parts, the `ModItem` that places the wall, and the `ModWall` itself.
 
 ## Wall-Item Pairing
-An `Item` will place a specific `Wall` when `Item.createWall` is set to the `WallType` of the `ModWall`. The `ModWall` will typically return the `ModItem` as well. Simply set `ItemDrop = ModContent.ItemType<ItemName>());` in `ModWall.SetStaticDefaults`.
+An `Item` will place a specific `Wall` when `Item.createWall` is set to the `WallType` of the `ModWall`. The `ModWall` will typically return the `ModItem` as well. Simply set `ItemDrop = ModContent.ItemType<ItemName>();` in `ModWall.SetStaticDefaults`.
 
 # Basic Example
 `ExampleWall` in ExampleMod is a basic example. It has 4 files:
