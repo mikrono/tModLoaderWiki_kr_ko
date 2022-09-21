@@ -53,7 +53,7 @@ public override void AnimateWall(ref byte frame, ref byte frameCounter) {
 	// Or, more succinctly:
 	if (++frameCounter >= 10) {
 		frameCounter = 0;
-		frame  = ++frame % 7;
+		frame = (byte)(++frame % 7);
 	}
 }
 ```
