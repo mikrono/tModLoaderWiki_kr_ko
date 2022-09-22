@@ -81,3 +81,6 @@ public override bool WallFrame(int i, int j, bool randomizeFrame, ref int style,
 ```
 Here is the comparison between this example and WallID.Cog, which has a similar texture, note how rare the WallFrameNumber 0 is:    
 ![]( https://i.imgur.com/9Irak3p.png)
+
+## Don't use for Game Logic
+Make sure not to use wall framing for game logic, only visuals. Wall framing is not synced and each player sees their own pattern of wall framing.
