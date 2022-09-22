@@ -128,6 +128,7 @@ public class ExampleItemSubclass : ExampleItem
 {
 }
 ```
+If your `ModX` class depends on another mod being loaded, but not necessarily inheriting from classes in that mod, you can still use `ExtendsFromMod` to prevent it from being loaded.  
 
 # No References, aka reflection (Expert)
 
