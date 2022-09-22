@@ -69,14 +69,14 @@ With `ModTile.WallFrame`, a modder can implement whatever framing logic they des
 ![image](https://user-images.githubusercontent.com/4522492/191853500-0208243b-68cd-4302-8984-79d5c2f81468.png)
 
 ```cs
-public override bool WallFrame(int i, int j, bool resetFrame, ref int style, ref int frameNumber) {
-	if (resetFrame) {
+public override bool WallFrame(int i, int j, bool randomizeFrame, ref int style, ref int frameNumber) {
+	if (randomizeFrame) {
 		// Here we make the chance of WallFrameNumber 0 very rare, just for visual variety: https://i.imgur.com/9Irak3p.png
 		if (frameNumber == 0 && WorldGen.genRand.NextBool(3, 4)) {
 			frameNumber = WorldGen.genRand.Next(1, 3);
 		}
 	}
-	return base.WallFrame(i, j, resetFrame, ref style, ref frameNumber);
+	return base.WallFrame(i, j, randomizeFrame, ref style, ref frameNumber);
 }
 ```
 Here is the comparison between this example and WallID.Cog, which has a similar texture, note how rare the WallFrameNumber 0 is:    
