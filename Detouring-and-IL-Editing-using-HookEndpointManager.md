@@ -1,5 +1,3 @@
-# Detouring and IL-Editing using HookEndpointManager
-
 There is also another way to modify other mod methods. If you looked into dlls generated with MonoMod's HookGen, you would see that it uses `HookEndpointManager`:
 ```cs
 public static event ILContext.Manipulator Initialize
@@ -39,7 +37,7 @@ public class DetourManagerExample : Mod
 
 ## Detouring
 
-If the method has more than 1-2 parameters, or `ref`, `out` or `in` parameters, add separate delegate for original method:
+If the method has more than 1-2 parameters, or any `ref`, `out` or `in` parameters, add separate delegate for original method:
 ```cs
 public class DetourManagerExample : Mod
 {
@@ -129,7 +127,7 @@ public void VoidMethod(int integer) { ... }
 public string StringMethod(int integer) { ... }
 ```
 
-In dome cases Action or Func can't be used, for example, method with `ref`, `out` or `in` parameter(s)
+In some cases Action or Func can't be used, for example, if method has any `ref`, `out` or `in` parameter(s)
 
 ```cs
 public int OutMethod(ref int refInt) { ... }
@@ -139,7 +137,7 @@ public int RefMethod(out int outInt) { ... }
 
 ## IL Editing
 
-IL Editing is easier to setup than detouring, just create a method thar retuns `void` and has single parameter - `ILContext` to manipulate IL and call `HookEndpointManager.Modify`.
+IL Editing is easier to setup than detouring, just create a method that retuns `void` and has single parameter - `ILContext` to manipulate IL and call `HookEndpointManager.Modify`.
 ```cs
 public class ILEditManagerExample : Mod
 {
