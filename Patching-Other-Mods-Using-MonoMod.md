@@ -130,6 +130,9 @@ And now, we should be finished! To confirm, let's test it ingame. Geyser project
 
 As expected, none spawned with the edit active. Usually, a lot of debugging is necessary before IL edits will work, as they often do not, the first time. Errors thrown by it are almost meaningless, and so your best chance if you are stuck is asking somebody else, or attempting to use a different approach such as the simpler `On`.
 
+### Alternative patch setup methods
+If you don't want to use an external dll for patching, you can use `HookEndpointManager` method, which is described [here](https://github.com/tModLoader/tModLoader/wiki/Detouring-and-IL-Editing-using-HookEndpointManager). Note that it requires more Reflection knowledge.
+
 ### Addendum
 In rare cases, the method you want to IL edit may not be in any namespaces. This could happen under certain conditions like the method being private, or you may not want your mod to depend on strong referencing other mods. If this happens, you can still IL edit using events and reflection, which I will give an example for below.
 
