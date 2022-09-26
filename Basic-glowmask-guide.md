@@ -23,7 +23,7 @@ For drawing your glowmask on top of the original sprite, you will want to use th
 ```csharp
 public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float  scale, int whoAmI) 	
 {
-	Texture2D texture = mod.GetTexture("items/MyItem_Glowmask");
+	Texture2D texture = ModContent.Request<Texture2D>("YourModName/Items/MyItem_Glowmask", AssetRequestMode.ImmediateLoad).Value;
 	spriteBatch.Draw
 	(
 		texture,
@@ -49,5 +49,6 @@ You don't _have to_ use this code as it only serves as example. Generally there 
 * Make sure to draw with a center origin (if required)
   * You can get the center origin with: `texture.Size() * 0.5f`
 * Make sure the original sprite and the glowmask sprite have the same size
+** Better to cache Texture2D requested with ModContent.Request, e.g. request it beforehand and save into variable, and use that variable instead
 
 
