@@ -49,6 +49,6 @@ You don't _have to_ use this code as it only serves as example. Generally there 
 * Make sure to draw with a center origin (if required)
   * You can get the center origin with: `texture.Size() * 0.5f`
 * Make sure the original sprite and the glowmask sprite have the same size
-** Better to cache Texture2D requested with ModContent.Request, e.g. request it beforehand and save into variable, and use that variable instead
+* Better to cache Texture2D requested with ModContent.Request, e.g. request it beforehand and save into variable, and use that variable instead
 
 
