@@ -15,13 +15,13 @@ If you are going to be IL editing specifically, then the prerequisites for that 
 ## Step 1: Creating an MMHook dll
 An MMHook dll is a special reference file, that contains the `On` and `IL` variants of all the methods in your chosen mod. It is highly important that you have one, or it will make the process much more difficult. If you want to do this with only reflection, scroll to the bottom. To acquire one, you must follow these steps:
 * Get the dll of your chosen mod. You can do this by extracting ingame. Go to the Mods menu, and click the question mark icon on the mod of your choice, which will bring you to the Mod Info screen. Once you've done this, you will see an Extract button: ![](https://i.imgur.com/SxAm09D.png)
-* Click it, and the extraction will begin. Once it's complete, the dll will be output to the path `C:\Users\%userprofile%\Documents\My Games\Terraria\ModLoader\references\mods`.
+* Click it, and the extraction will begin. Once it's complete, folder with mod contents including mod's dll will open.
 
 
-* Download MonoMod from [here](https://github.com/MonoMod/MonoMod/releases). Always download the latest version for `net40`, rather than `net35`. Extract it to a location of your choice.
+* Download MonoMod from [here](https://github.com/MonoMod/MonoMod/releases). Always download the latest version for `net50` or `net60`, rather than `net35` or `net40`. Extract it to a location of your choice.
 * Copy the mod dll you extracted previously into the MonoMod folder, and drag and drop it on top of the `MonoMod.RuntimeDetour.HookGen` executable. It should look like this: ![](https://i.imgur.com/PNElana.png)
 * This should open a CMD window, which will start creating your MMHook dll. The time taken will vary by hardware and mod size, but it shouldn't take more than a few minutes in most cases.
-* Once it is done, you should find a dll in the same folder called `MMHook_NameOfMod_VersionNumber`: ![](https://i.imgur.com/KsAcmRD.png)
+* Once it is done, you should find a dll in the same folder called `MMHook_NameOfMod`: ![](https://i.imgur.com/1SV3IyK.png)
 * Please note: MMHook dlls created for a specific mod version will likely only work for that particular version. It is therefore advisable to make a new MMHook dll for each new update the mod you are editing receives. 
 
 ## Step 2: Adding the MMHook dll as a Reference
