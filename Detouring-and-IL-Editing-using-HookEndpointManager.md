@@ -1,5 +1,3 @@
-# Detouring and IL-Editing using HookEndpointManager
-
 There is also another way to modify other mod methods. If you looked into dlls generated with MonoMod's HookGen, you would see that it uses `HookEndpointManager`:
 ![](https://i.imgur.com/nKp8Vt3.png)
 
