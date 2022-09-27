@@ -13,7 +13,13 @@ ___
 If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
 
 ## Developing with tModLoader
-Choose your favorite IDE to mod with tModLoader. Refer to the [development section](home#development) on the homepage.
+Before you begin, you will two things, the ".NET 6 SDK" and a suitable IDE. Once you have these installed, you should start with the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide).
+
+### IDE
+Choose your favorite IDE to mod with tModLoader. Refer to the [development section](https://github.com/tModLoader/tModLoader/wiki#development) on the homepage. For the best mod making experience, using Visual Studio is highly recommended.
+
+### .NET 6 SDK
+If you installed any IDE other than Visual Studio, you will have to manually install the [.NET 6 SDK](https://aka.ms/vscDocs/dotnet/download).
 
 ## I am new to modding
 If you are new to modding, it is recommended to start with [the starter guide](Basic-tModLoader-Modding-Guide). You can then move on to the [easy guides](home#easy-guides).
@@ -23,6 +29,6 @@ The following links might be useful for you:
 1. [tModLoader documentation](https://tmodloader.github.io/tModLoader/)
 2. tModLoader wiki (useful information and guides) -- **you are here right now.**
 3. [Join our Discord server](https://discord.gg/tmodloader) (requires a Discord account)
-4. [Mod skeleton generator](http://javid.ddns.net/tModLoader/generator/ModSkeletonGenerator.html) -- note: it is recommended you use the in-game menu for creating a new mod.
-5. [tModLoader's official release thread on TCF](http://forums.terraria.org/index.php?threads/.23726/)
-6. [tModLoaders help & resources thread](http://forums.terraria.org/index.php?threads/tmodloader-code-examples-handy-code-snippets.28901)
+4. [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide)
+5. [Example Mod](https://github.com/tModLoader/tModLoader/tree/1.4-stable/ExampleMod) - A mod showcasing and teaching various tModLoader mod capabilities
+6. [tModLoader's official release thread on TCF](http://forums.terraria.org/index.php?threads/.23726/)
