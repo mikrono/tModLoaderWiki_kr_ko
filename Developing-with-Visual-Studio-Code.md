@@ -4,8 +4,13 @@
 - **This guide is not meant to learn C# fundamentals**
 
 # Prerequisites
+
+## .NET Coding Pack
+You can install the ".NET Coding Pack" to install "Visual Studio Code", the "C# for Visual Studio Code" extension, and the ".NET 6 SDK" all at once. To do this, follow the instructions [here](https://code.visualstudio.com/docs/languages/dotnet#_net-coding-pack).
+## Install Manually
 1. Download [Visual Studio Code](https://code.visualstudio.com/). 
-1. Install Visual Studio Code by running the downloaded installer. Allow the program to run and accept licence agreements as you would normally do. The default options should be suitable.
+1. Install Visual Studio Code by running the downloaded installer. Allow the program to run and accept license agreements as you would normally do. The default options should be suitable.
+1. Install the [.NET 6 SDK](https://aka.ms/vscDocs/dotnet/download) by downloading and following the instructions.
 1. Launch Visual Studio Code
 1. Install the C# Extension
     1. You should see something similar to the following: [Welcome Page](https://i.imgur.com/YwNh3x6.png)
