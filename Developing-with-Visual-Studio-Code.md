@@ -19,7 +19,7 @@ You can install the ".NET Coding Pack" to install "Visual Studio Code", the "C# 
     1. Wait for the installation to complete. The output window will show several files being downloaded and installed. These 3 files are about 140 MB total, so this step might take a while depending on your internet speed. After all 3 files are downloaded and installed, it will say "Finished": [Successful Install Output](https://i.imgur.com/qcDMLVe.png) 
 
 # Creating a Mod
-Follow the v0.11 instructions in [Basic tModLoader Modding Guide](Basic-tModLoader-Modding-Guide)
+Follow the instructions in [Basic tModLoader Modding Guide](Basic-tModLoader-Modding-Guide)
 
 # Open your Mod Source
 1. It is very important that you installed the C# Extension listed in [Prerequisites](#prerequisites)
