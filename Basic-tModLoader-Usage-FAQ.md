@@ -193,9 +193,9 @@ In the above excerpt from `client.log`, we can see an error is being logged. The
 ![](http://i.imgur.com/TSKfacG.png)  
 Solution: You didn't unzip the files prior to installation. Don't know how to unzip, or don't have software for it? -> Try [7-Zip](https://www.7-zip.org). It's free and open source, like tModLoader.
 
-### System.DllNotFoundException: Unable to load DLL'CSteamworks'.....
+### System.DllNotFoundException: Unable to load DLL 'CSteamworks'.....
 ![](http://i.imgur.com/ZbbskuQ.png)  
-Solution: You didn't run the installer, or you are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file. If you pirated Terraria, you can't use tModLoader.
+Solution: You are trying to run tModLoader from somewhere other than the Steam Terraria Install directory. Or, you have the GOG version and you downloaded the wrong file. Or, the CSteamworks.dll file was removed by your antivirus. Doing a fresh install after deleting your install should help. clear If you pirated Terraria, you can't use tModLoader.
 
 ### System.EntryPointNotFoundException: Unable to find an entry point named 'Init' in DLL 'CSteamworks'.
 ![](https://i.imgur.com/lp7yQQj.png)  
