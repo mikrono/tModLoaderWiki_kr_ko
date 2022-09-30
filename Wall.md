@@ -22,6 +22,9 @@ The texture for a wall has several sections for drawing the wall in different po
 If `Main.wallLargeFrames` is used, a 4th `WallFrameNumber` is added to the mix for each `style` to add even more variety. That template is shown here:    
 ![Wall_179](https://user-images.githubusercontent.com/4522492/191140372-60a897bf-f69c-4615-bab5-57cefc84066c.png)
 
+This template shows how `Main.wallLargeFrames` values of 1 ("Phlebas") and 2 ("Lazure") produce a deterministic pattern rather than a random pattern.    
+![image](https://user-images.githubusercontent.com/4522492/193192050-91e6502d-8f39-4c28-8221-297562ca0f51.png)
+
 ## Animated
 If the wall is animated, the pattern is repeated. This is only supported for non-`Main.wallLargeFrames` walls.
 ![Wall_225](https://user-images.githubusercontent.com/4522492/191140761-06536d43-3b87-4ffc-b036-d3b9cf1739f0.png)
