@@ -117,6 +117,10 @@ After fixing:
 ## The SDK 'Microsoft.NET.Sdk' specified could not be found.
 This means you skipped installing the `.NET desktop development` workload mentioned at the top of this page. [Prerequisites](#Prerequisites)
 
+## The project doesn't know how to run the profile with the name 'Terraria' and the command 'Executable'
+![unknown (8)](https://user-images.githubusercontent.com/4522492/193676280-b8d1cd7c-5b64-4a98-b7d8-d3ce7e936429.png)    
+This means you skipped installing the `.NET desktop development` workload mentioned at the top of this page. [Prerequisites](#Prerequisites)
+
 ## Error CS0246 The type or namespace name 'ReLogic' could not be found
 Make sure you are using the updated .csproj and this error will automatically fix itself. See [Creating or Updating an existing project for an old mod](#creating-or-updating-an-existing-project-for-an-old-mod) to update your csproj.
 
