@@ -32,3 +32,27 @@ Now that you have a backup of the latest save, open the newest .zip file for the
 ![](https://i.imgur.com/kesLiid.png)    
 ![](https://i.imgur.com/8QSH6sF.png)    
 Now, open tModLoader and attempt to load the World. If it succeeds, great, if it fails, try again with the 2nd most recent backup. You can use cheat mods like Cheat Sheet or Heros Mod to restore lost items, if you wish. If you can't get backups to load, your issue is likely a broken mod. You can look at `Terraria\ModLoader\Logs\client.log` for hints as to which mod is erroring, or come to the Discord chat for help.
+
+# Paths
+Here are some useful default paths:
+
+## Saves
+Windows Saves: `%UserProfile%\Documents\My Games\Terraria\tModLoader` (This is typically found in `C:\Documents\`)    
+Linux Saves: `~/.local/share/Terraria/tModLoader/` or `$XDG_DATA_HOME/Terraria/tModLoader/`    
+Mac Saves: `~/Library/Application support/Terraria/tModLoader/`    
+
+## Install
+In Steam right click on `tModLoader` in the library, then hover over `Manage` and click on `Browse local files`. The folder that opens is the install folder. [Video example](https://giant.gfycat.com/SoulfulImpoliteBigmouthbass.mp4)
+
+If you use GOG, the game is installed wherever you installed it, most likely `"C:\GOG Games\tModLoader"`. 
+
+### Default Install Locations
+Windows Install: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`    
+Linux Install: `~/.local/share/Steam/steamapps/common/tModLoader` or `~/.steam/steam/steamapps/common/tModLoader`    
+Mac Install: `Library/Application Support/Steam/steamapps/common/tModLoader/tModLoader.app/Contents/MacOS`    
+
+## Mods
+Your manually installed mods are stored in a subfolder of the [Saves](#saves) folder called `/Mods`. Workshop mods are stored in `C:\Program Files (x86)\Steam\steamapps\workshop\content\1281930`, but you shouldn't touch the folder and instead unsubscribe in steam.
+
+## Logs
+The Logs are found in a subfolder of the [Install](#install) folder called `/tModLoader-Logs`
