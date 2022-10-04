@@ -66,20 +66,20 @@ ___
 3. Create a new commit to commit the patches/ folder
     * Before you push your commit, please check our [contribution article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks.
 
-## Getting Example Mod into the Mod Sources folder
+## Getting Example Mod into the ModSources folder
 ___
-As you add features to tModLoader, you'll want to add examples of using those features to Example Mod. Example Mod, however, needs to be located in the Mod Sources folder to build and test the mod. While you could copy and paste the folder back and forth between your Mod Sources folder and this repository folder whenever you wish to push your changes, a better approach can be achieved by using a symbolic link. A symbolic link allows a single folder to exist in 2 places at once. By creating a symbolic link in Mod Sources pointing to the ExampleMod folder in this repository, you can easily keep ExampleMod up to date and push changes to Github. Here is the command for creating the symbolic link on Windows. 
+As you add features to tModLoader, you'll want to add examples of using those features to Example Mod. Example Mod, however, needs to be located in the ModSources folder to build and test the mod. While you could copy and paste the folder back and forth between your ModSources folder and this repository folder whenever you wish to push your changes, a better approach can be achieved by using a symbolic link. A symbolic link allows a single folder to exist in 2 places at once. By creating a symbolic link in ModSources pointing to the ExampleMod folder in this repository, you can easily keep ExampleMod up to date and push changes to Github. Here is the command for creating the symbolic link on Windows. 
 1. Open the Command Prompt as Administrator by right clicking on it in the start menu and selecting "Run as Administrator" 
-2. Find the path to both your Mod Sources folder and the ExampleMod folder within your local copy of this repo.
-3. Make sure the Mod Sources folder doesn't already have an old ExampleMod folder, delete it if it exists.
+2. Find the path to both your ModSources folder and the ExampleMod folder within your local copy of this repo.
+3. Make sure the ModSources folder doesn't already have an old ExampleMod folder, delete it if it exists.
 4. Run the command using your folder paths: (Below is just an example)
 ```cmd
-mklink /D "C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod" "C:\Users\MyNameHere\Source\Repos\tModLoader\ExampleMod"
+mklink /D "C:\Documents\My Games\Terraria\tModLoader\ModSources\ExampleMod" "C:\Users\MyNameHere\Source\Repos\tModLoader\ExampleMod"
 ```
 ![](https://i.imgur.com/UmiWFha.png)    
-5. You should see a message "symbolic link created for ..." in the command prompt. In Mod Sources, you'll see that the ExampleMod folder now has a little icon similar to desktop shortcuts. Now, you can edit ExampleMod and the changes will reflect wherever you cloned this repo to.    
+5. You should see a message "symbolic link created for ..." in the command prompt. In ModSources, you'll see that the ExampleMod folder now has a little icon similar to desktop shortcuts. Now, you can edit ExampleMod and the changes will reflect wherever you cloned this repo to.    
 ![](https://i.imgur.com/pHVnAYN.png)  
-6. To properly open ExampleMod.csproj, you need to navigate to `C:\Documents\My Games\Terraria\ModLoader\Mod Sources\ExampleMod` and open the ExampleMod.csproj file from File Explorer. Opening it from within Visual Studio with `File->Open->Project/Solution...` won't work, it will have the wrong working directory. Build ExampleMod once it is open to make sure there are no problems before starting.
+6. To properly open ExampleMod.csproj, you need to navigate to `C:\Documents\My Games\Terraria\tModLoader\ModSources\ExampleMod` and open the ExampleMod.csproj file from File Explorer. Opening it from within Visual Studio with `File->Open->Project/Solution...` won't work, it will have the wrong working directory. Build ExampleMod once it is open to make sure there are no problems before starting.
 
 Before you're about to make a contribution, please check [this article](https://github.com/tModLoader/tModLoader/blob/master/.github/CONTRIBUTING.md). Thanks in advance.
 
