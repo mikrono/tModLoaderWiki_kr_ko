@@ -55,4 +55,4 @@ Mac Saves: `~/Library/Application support/Terraria/tModLoader/`
 Your manually installed mods are stored in a subfolder of the [Saves](#saves) folder called `/Mods`. Workshop mods are stored in `C:\Program Files (x86)\Steam\steamapps\workshop\content\1281930`, but you shouldn't touch the folder and instead unsubscribe in steam.
 
 ## Logs
-The Logs are found in a subfolder of the [Install](#install) folder called `/tModLoader-Logs`
+The Logs are found in a subfolder of the [Install](#install) folder called `/tModLoader-Logs`. If you are sharing logs for support with game-breaking issues, please post all log files. Just `client.log` and/or `server.log` (if relevant) is sufficient if the issue happens in-game. 
