@@ -5,16 +5,11 @@
 [Read our install instructions](tModLoader-guide-for-players)
 
 # Installing Mods
-- Mods are files with the ".tmod" extension. They go in the Mods directory.
-  - Windows: `%UserProfile%\Documents\My Games\Terraria\ModLoader\Mods`
-  - Linux: `~/.local/share/Terraria/ModLoader/Mods` OR `$XDG_DATA_HOME/Terraria`
-  - Mac: `/Users/account/Library/Application Support/Terraria`
-- **Most mods are hosted in the "Mod Browser". You can easily browse mods and use the download button to download mods. Downloaded mods aren't enabled by default.**
-- If you use the Steam version, you can also get mods from the Steam Workshop **when it is available.**
-- You can also find mods in other places and add them to the Mods folder, this is useful when the Mod Browser is down or the mod is too big for the Mod Browser.  
+- Mods are files with the ".tmod" extension. The most common way to get mods is through the in-game Steam workshop menus. This will work for GOG users as well. From the main menu, click `Workshop` and then `Download Mods`. You can then search and find mods to download. Alternatively you can visit the [tModLoader Steam workshop](https://steamcommunity.com/app/1281930/workshop/) directly and subscribe to mods on that website.
+- If you manually download a mod, you can place it in the [Mods](#mods) folder. Note that this mod will not auto-update and will appear as purple in the mods menu to remind you that it is manually installed. Manually installing mods is mostly useful for users helping to test a mod, normal users should always use the workshop approach. 
 
 # Enabling Mods
-Use the Mods menu to set the mods you wish to use, then click reload.
+Use the `Workshop->Manage Mods` menu to set the mods you wish to use, then click reload.
 
 # Playing with non-tModLoader users
 **tModloader will not connect to non-tModLoader Terraria servers.**
