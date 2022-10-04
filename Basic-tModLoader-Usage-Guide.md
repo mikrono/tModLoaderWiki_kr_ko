@@ -36,11 +36,6 @@ Now, open tModLoader and attempt to load the World. If it succeeds, great, if it
 # Paths
 Here are some useful default paths:
 
-## Saves
-Windows Saves: `%UserProfile%\Documents\My Games\Terraria\tModLoader` (This is typically found in `C:\Documents\`)    
-Linux Saves: `~/.local/share/Terraria/tModLoader/` or `$XDG_DATA_HOME/Terraria/tModLoader/`    
-Mac Saves: `~/Library/Application support/Terraria/tModLoader/`    
-
 ## Install
 In Steam right click on `tModLoader` in the library, then hover over `Manage` and click on `Browse local files`. The folder that opens is the install folder. [Video example](https://giant.gfycat.com/SoulfulImpoliteBigmouthbass.mp4)
 
@@ -50,6 +45,11 @@ If you use GOG, the game is installed wherever you installed it, most likely `"C
 Windows Install: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`    
 Linux Install: `~/.local/share/Steam/steamapps/common/tModLoader` or `~/.steam/steam/steamapps/common/tModLoader`    
 Mac Install: `Library/Application Support/Steam/steamapps/common/tModLoader/tModLoader.app/Contents/MacOS`    
+
+## Saves
+Windows Saves: `%UserProfile%\Documents\My Games\Terraria\tModLoader` (This is typically found in `C:\Documents\`)    
+Linux Saves: `~/.local/share/Terraria/tModLoader/` or `$XDG_DATA_HOME/Terraria/tModLoader/`    
+Mac Saves: `~/Library/Application support/Terraria/tModLoader/`    
 
 ## Mods
 Your manually installed mods are stored in a subfolder of the [Saves](#saves) folder called `/Mods`. Workshop mods are stored in `C:\Program Files (x86)\Steam\steamapps\workshop\content\1281930`, but you shouldn't touch the folder and instead unsubscribe in steam.
