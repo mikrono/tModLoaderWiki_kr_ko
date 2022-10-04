@@ -71,22 +71,22 @@ First of all we need a bunch of code that makes the projectile classify as a min
 In `SetStaticDefaults()`:
 ```csharp
 // Denotes that this projectile is a pet or minion
-Main.projPet[projectile.type] = true;
+Main.projPet[Projectile.type] = true;
 // This is needed so your minion can properly spawn when summoned and replaced when other minions are summoned
-ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
 // Don't mistake this with "if this is true, then it will automatically home". It is just for damage reduction for certain NPCs
-ProjectileID.Sets.Homing[projectile.type] = true;
+ProjectileID.Sets.Homing[Projectile.type] = true;
 ```
 In `SetDefaults()`:
 ```csharp 
 // Only controls if it deals damage to enemies on contact (more on that later)
-projectile.friendly = true;
+Projectile.friendly = true;
 // Only determines the damage type
-projectile.minion = true;
+Projectile.minion = true;
 // Amount of slots this minion occupies from the total minion slots available to the player (more on that later)
-projectile.minionSlots = 1f;
+Projectile.minionSlots = 1f;
 // Needed so the minion doesn't despawn on collision with enemies or tiles
-projectile.penetrate = -1;
+Projectile.penetrate = -1;
 ```
 
 #### Contact Damage
@@ -102,18 +102,18 @@ public override bool MinionContactDamage() {
 	return true;
 }
 ```
-And in `AI()`, you need to set `projectile.friendly` to the boolean that says if the minion has a target or not (more on that below).
+And in `AI()`, you need to set `Projectile.friendly` to the boolean that says if the minion has a target or not (more on that below).
 This is needed so the minion doesn't damage target dummies while idling.
 
 #### 'Active Check'
 In `AI()`, the first code you write should always be this, just replace `ExampleMinionBuff` accordingly:
 ```csharp
-Player player = Main.player[projectile.owner];
+Player player = Main.player[Projectile.owner];
 if (player.dead || !player.active) {
 	player.ClearBuff(BuffType<ExampleMinionBuff>());
 }
 if (player.HasBuff(BuffType<ExampleMinionBuff>())) {
-	projectile.timeLeft = 2;
+	Projectile.timeLeft = 2;
 }
 ```
 
@@ -155,9 +155,9 @@ idlePosition.Y -= 48f;
 float minionPositionOffsetX = (10 + projectile.minionPos * 40) * -player.direction;
 idlePosition.X += minionPositionOffsetX;
 ```
-`projectile.minionPos` is its place in the summoned minion list. For further movement, we will also create these variables:
+`Projectile.minionPos` is its place in the summoned minion list. For further movement, we will also create these variables:
 ```csharp
-Vector2 vectorToIdlePosition = idlePosition - projectile.Center;
+Vector2 vectorToIdlePosition = idlePosition - Projectile.Center;
 float distanceToIdlePosition = vectorToIdlePosition.Length();
 ```
 For more things that can be done here, look at `ExampleMinion's` `General behavior` region.
@@ -179,7 +179,7 @@ We first create a few variables that we need:
 ```csharp
 // Starting search distance
 float distanceFromTarget = 700f;
-Vector2 targetCenter = projectile.position;
+Vector2 targetCenter = Projectile.position;
 bool foundTarget = false;
 ```
 
@@ -203,10 +203,10 @@ for (int i = 0; i < Main.maxNPCs; i++) {
 
 In there you can now write whatever conditions you want related to the NPC and your minion, such as (examples):
 ```csharp
-float between = Vector2.Distance(npc.Center, projectile.Center);
-bool closest = Vector2.Distance(projectile.Center, targetCenter) > between;
+float between = Vector2.Distance(npc.Center, Projectile.Center);
+bool closest = Vector2.Distance(Projectile.Center, targetCenter) > between;
 bool inRange = between < distanceFromTarget;
-bool lineOfSight = Collision.CanHitLine(projectile.position, projectile.width, projectile.height, npc.position, npc.width, npc.height);
+bool lineOfSight = Collision.CanHitLine(Projectile.position, Projectile.width, Projectile.height, npc.position, npc.width, npc.height);
 bool abovePlayer = player.Center.Y > npc.Center.Y;
 ```
 
@@ -226,7 +226,7 @@ foundTarget = true;
 After finding a target, if your minion deals contact damage, you also need to set its friendly status properly.
 In combination with `MinionContactDamage()` this makes sure to only damage things if it has a target.
 ```csharp
-projectile.friendly = foundTarget;
+Projectile.friendly = foundTarget;
 ```
 
 #### Intermission: Targeting
@@ -234,7 +234,7 @@ If your summon weapon should support right-click targeting, you need the followi
 ```csharp
 if (player.HasMinionAttackTargetNPC) {
 	NPC npc = Main.npc[player.MinionAttackTargetNPC];
-	float between = Vector2.Distance(npc.Center, projectile.Center);
+	float between = Vector2.Distance(npc.Center, Projectile.Center);
 	// Reasonable distance away so it doesn't target across multiple screens
 	if (between < 2000f) {
 		distanceFromTarget = between;
@@ -249,7 +249,7 @@ if (!foundTarget) {
 
 And this in your `SetStaticDefaults()`:
 ```csharp
-ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
 ```
 
 Finally, the full code can be seen in the `ExampleMinion's` `Find target` region.
@@ -264,13 +264,13 @@ float inertia = 40f;
 Vector2 direction = end - start;
 direction.Normalize();
 direction *= speed;
-projectile.velocity = (projectile.velocity * (inertia - 1) + direction) / inertia;
+Projectile.velocity = (Projectile.velocity * (inertia - 1) + direction) / inertia;
 ```
 `speed` is self-explanatory: its desired speed when it's flying straight.
 `inertia` is how 'slow' the minion accellerates towards its `direction`.
 Higher values means it will turn 'slower', lower values means its movement will be more twitchy.
 `end` should be the `Vector2` of its destination (enemy target or idle position),
-while `start` should preferably always be `projectile.Center`.
+while `start` should preferably always be `Projectile.Center`.
 
 We can put this simply into code if we concider `foundTarget` (then we use `targetCenter` as the `end`, 
 else we use `vectorToIdlePosition` as `direction`),
@@ -292,12 +292,12 @@ Your minion is moving, but not animating (assuming you have a spritesheet for it
 Here is a simple 'cycle through all frames from top to bottom at a given frequency' code snippet.
 ```csharp
 int frameSpeed = 5;
-projectile.frameCounter++;
+Projectile.frameCounter++;
 if (projectile.frameCounter >= frameSpeed) {
-	projectile.frameCounter = 0;
-	projectile.frame++;
-	if (projectile.frame >= Main.projFrames[projectile.type]) {
-		projectile.frame = 0;
+	Projectile.frameCounter = 0;
+	Projectile.frame++;
+	if (Projectile.frame >= Main.projFrames[Projectile.type]) {
+		Projectile.frame = 0;
 	}
 }
 ```
@@ -310,18 +310,18 @@ Here are a few easy ones:
 
 **Lean towards its direction in the x axis:**
 ```csharp
-projectile.rotation = projectile.velocity.X * 0.05f;
+Projectile.rotation = Projectile.velocity.X * 0.05f;
 ```
 
 **Create light:**
 ```csharp
-Lighting.AddLight(projectile.Center, Color.White.ToVector3() * 0.78f);
+Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.78f);
 ```
 
 **Create dust:**
 ```csharp
 if (Main.rand.NextBool(5)) {
-Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire);
+Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Fire);
 }
 ```
 
@@ -331,7 +331,7 @@ You can see the full code [here](https://github.com/tModLoader/tModLoader/blob/m
 
 **I want my weapon to summon two minions at the same time, like the Optic Staff**
 
-1. In your `ModProjectile`, set `projectile.minionSlots` to 0.5f.
+1. In your `ModProjectile`, set `Projectile.minionSlots` to 0.5f.
 2. In your `ModItem`, in the `Shoot()` hook, spawn another projectile via `Projectile.NewProjectile()`.
 
 **I want to summon a projectile that occupies more than one minion slot, or more than one minion (total summoned minion slots bigger than 1)**
@@ -352,7 +352,7 @@ Consider the point below.
 If your minion is not flying, you want to use the `TileCollideStyle()` hook. You might want to have `foundTarget`, `targetCenter` and others be fields in your `ModProjectile` instead of inside `AI()`, so you don't need to do the target finding code again here (see [Targeting](#targeting)). If you do that, make sure to reset them back to their defaults in `AI()` so everything resets itself.
 ```csharp
 if (foundTarget) {
-	Vector2 toTarget = targetCenter - projectile.Center;
+	Vector2 toTarget = targetCenter - Projectile.Center;
 	// Here we check if the NPC is below the minion and 300/16 = 18.25 tiles away horizontally
 	if (toTarget.Y > 0 && Math.Abs(toTarget.X) < 300) {
 		fallThrough = true;
