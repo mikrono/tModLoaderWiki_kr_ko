@@ -51,6 +51,8 @@ Now that you have setup Visual Studio, your mod development speed can increase g
 # Manual Setup
 Setting up a project for your mod manually is not recommended. Modders should use the automatic mod project generation. The info in this section is for informational purposes only.
 
+<details><summary>Expand for Manual Setup instructions</summary><blockquote>
+
 ## Creating a Project
 1. Open Visual Studio and go to New -> Project
 1. Select the "Class Library" template
@@ -97,6 +99,8 @@ This will let you edit the source code and recompile the mod during debugging, w
 
 1. Simply add `-eac "$(TargetPath)"` to the end of your Post-build event command line
 
+</blockquote></details>
+
 # Common issues
 These issues usually only apply if you have not upgraded to the 0.11 .csproj. Please update your csproj in the Mod Sources menu first.
 
@@ -136,3 +140,19 @@ If it does not, you can attempt removing the .vs folder in your mod source root,
 
 ## Failed to load pre-compiled edit and continue dll System.IO.FileNotFoundException: Could not find file 'C:\...\YYY.pdb'.
 This error occurs when the project wasn't created with the mod skeleton generator. To fix this error, go under your project's properties (right-click the project under the Solution Explorer and click `Properties`), go to the `Build` tab, click the `Advanced` button and change the value of `Debugging Information` to `Full`.
+
+# Miscellaneous
+## Determining issues from screenshots
+If you are helping someone online that is struggling to get Visual Studio to work, these visual clues will help identify their issues:
+
+![image](https://user-images.githubusercontent.com/4522492/194128001-f4b38ca6-bb45-4b60-bc2a-0c4458bb83f7.png)     
+The `Save All` icon is an easy way to recognize if they are in the wrong Visual Studio version.
+
+![image](https://user-images.githubusercontent.com/4522492/194130930-c0bf7aef-a397-4666-9c49-858d7f91aad5.png)    
+The guidelines in Visual Studio are a dotted line, Visual Studio Code has solid lines, and Notepad++ has dotted lines with very small dots. Also note how Notepad++ fails to do complete syntax highlighting.
+
+![image](https://user-images.githubusercontent.com/4522492/194131467-a47a0e90-692a-40c3-af8b-290566b6aabd.png)    
+If you see "Miscellaneous Files" instead of the mod name, the user didn't open their .csproj and instead opened the .cs file directly.
+
+
+
