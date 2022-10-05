@@ -6,7 +6,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. You can use `ctrl-F` to use your web browser to search this page for a word (such as an exception name or error message). If you can't find anything relevant, please try all the suggestions in [General Troubleshooting Steps](#general-troubleshooting-steps). If nothing there helps, you can pursue direct support in the [Getting Support section](#getting-support). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
 
 ## Note on tModLoader 64 bit
-Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no longer useful and will prevent the game from launching correctly. If you have previously installed it and are experiencing issues, your first troubleshooting step is to do a [fresh install](#fresh-install). 
+Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no longer useful and will prevent the game from launching correctly. If you have previously installed it and are experiencing issues, your first troubleshooting step is to do a [fresh install](#fresh-install). You will also need to clear out the `Launch Options` by following [these instructions](#failed-to-start-process-for-tmodloader-the-system-cannot-find-the-path-specified).
 
 ## Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
@@ -99,6 +99,9 @@ If you see this, the mod might be out of date. tModLoader updates every month an
 ### Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
 
+**Launch tModLoader Manually**    
+Sometimes launching manually can bypass certain launch issues. Open up the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and double click on "start-tModLoaderServer.bat". If this works, you should still try to fix the issue through other steps here or in [tModLoader Support](#tmodLoader-support) since launching this way is inconvenient.
+
 **Fresh Install**    
 Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
 
@@ -116,6 +119,12 @@ Even if you don't think you have RGB keyboard, this can help. Follow the [RGB Ke
 
 **Restart Computer**    
 Restarting the computer solves many issues tModLoader users face. It may seem trite, but it works, give it a try.
+
+### An error occurred while updating tModLoader (missing executable)
+This is usually solved by restarting the computer after confirming that you have switched to the `None` branch for tModLoader and verifying game integrity, and following the next section.
+
+### Failed to start process for tModLoader: "The system cannot find the path specified"
+This is caused by previously installing `tModLoader 64 bit`. First do a [fresh install](#fresh-install) if you haven't already, then right click on `tModLoader` in `Steam` and select `Properties`. Make sure `Launch Options` is completely empty, then close the window.
 
 ### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
 If you are on Windows 7, you'll need to install the [directX package from Microsoft](https://support.microsoft.com/en-us/topic/update-for-the-d3dcompiler-47-dll-component-on-windows-server-2012-windows-7-and-windows-server-2008-r2-769c6690-ed30-4dee-8bf8-dfa30e2f8088). Restart your computer after running and finishing the installer.
