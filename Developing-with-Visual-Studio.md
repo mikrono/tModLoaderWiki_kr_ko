@@ -1,5 +1,5 @@
 - **This guide supports VS 2019 and VS 2022 edition**
-- **It does not cover Visual Studio Code.**
+- **It does not cover [Visual Studio Code](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio-Code).**
 - **This guide is not meant to learn C# fundamentals**
 
 # Prerequisites
@@ -19,7 +19,7 @@ If you are updating a mod from before 1.4, you can use the "Upgrade .csproj file
 ![](https://i.imgur.com/woTP4Sf.png)
 
 # Opening your Project
-It is very important that you open the .csproj file from the file explorer. If you open individual .cs files, Visual Studio will be completely useless. To open the csproj, navigate to `Documents\My Games\Terraria\ModLoader\Mod Sources\[ModName]\` and double-click on `[ModName].csproj`. Make sure you aren't opening the `[ModName].csproj.user` or `[ModName].cs` files. This will likely happen if you do not have file extensions shown. Watch [this](https://gfycat.com/SleepyDisfiguredGuanaco) to see how to toggle file extensions. Now that Visual Studio is open, make sure you see the following:    
+It is very important that you open the `.csproj` file from the file explorer. If you open individual `.cs` files, Visual Studio will be completely useless. To open the `.csproj`, navigate to `Documents\My Games\Terraria\tModLoader\ModSources\[ModName]\` and double-click on `[ModName].csproj`. Make sure you aren't opening the `[ModName].csproj.user` or `[ModName].cs` files. This will likely happen if you do not have file extensions shown. Watch [this](https://gfycat.com/SleepyDisfiguredGuanaco) to see how to toggle file extensions. Now that Visual Studio is open, make sure you see the following:    
 ![](https://i.imgur.com/NreIujY.png)    
 Click the `Solution Explorer` button to see the `.cs` files in your mod. You must open `.cs` files from here in order to correctly use Visual Studio. Let's make sure autocomplete is working. Open up `Items\TutorialSword.cs` and type `item.` on a new line after the existing `item.autoReuse = true;`. You should see the autocomplete popup show up:    
 ![](https://i.imgur.com/2WOzFND.png)    
@@ -145,14 +145,14 @@ This error occurs when the project wasn't created with the mod skeleton generato
 ## Determining issues from screenshots
 If you are helping someone online that is struggling to get Visual Studio to work, these visual clues will help identify their issues:
 
+### Wrong Visual Studio Version
 ![image](https://user-images.githubusercontent.com/4522492/194128001-f4b38ca6-bb45-4b60-bc2a-0c4458bb83f7.png)     
-The `Save All` icon is an easy way to recognize if they are in the wrong Visual Studio version.
+The `Save All` icon is an easy way to recognize if they are in the wrong Visual Studio version. Direct them to [Prerequisites](#prerequisites) to download Visual Studio 2022.
 
+### Wrong Program
 ![image](https://user-images.githubusercontent.com/4522492/194130930-c0bf7aef-a397-4666-9c49-858d7f91aad5.png)    
-The guidelines in Visual Studio are a dotted line, Visual Studio Code has solid lines, and Notepad++ has dotted lines with very small dots. Also note how Notepad++ fails to do complete syntax highlighting.
+The guidelines in Visual Studio are a dotted line, Visual Studio Code has solid lines, and Notepad++ has dotted lines with very small dots. Also note how Notepad++ fails to do complete syntax highlighting. Direct them to [Prerequisites](#prerequisites) to download Visual Studio 2022.
 
+### Miscellaneous Files
 ![image](https://user-images.githubusercontent.com/4522492/194131467-a47a0e90-692a-40c3-af8b-290566b6aabd.png)    
-If you see "Miscellaneous Files" instead of the mod name, the user didn't open their .csproj and instead opened the .cs file directly.
-
-
-
+If you see "Miscellaneous Files" instead of the mod name, the user didn't open their `.csproj` and instead opened the `.cs` file directly. Other clues include a lack of syntax highlighting for classes and method invocations. Direct them to [Opening your Project](#opening-your-project).
