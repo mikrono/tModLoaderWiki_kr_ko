@@ -102,6 +102,12 @@ Deleting the `dotnet` folder in the [tModLoader install folder](https://github.c
 **Disable Proton**    
 Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete dotnet folder](#delete-dotnet-folder) after disabling Proton for tModLoader.
 
+**Check launch.log**    
+Open up `launch.log` found in the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). If the word "FAudio" shows up in your log, you might want to try the [IAudioClient-workaround.zip](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856)
+
+### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
+If you are on Windows 7, you'll need to install the [directX package from Microsoft](https://support.microsoft.com/en-us/topic/update-for-the-d3dcompiler-47-dll-component-on-windows-server-2012-windows-7-and-windows-server-2008-r2-769c6690-ed30-4dee-8bf8-dfa30e2f8088). Restart your computer after running and finishing the installer.
+
 ### Multiple extensions for asset
 This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
 
@@ -183,6 +189,34 @@ Back in the "Add allowed app" selection, left-click "Browse all apps"
 Navigate to the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and then navigate to and select "dotnet/6.0.0/dotnet.exe", then press `Open`. This will add the file to your whitelist. Done!
 
 </details>
+
+# Audio Issues
+### IAudioClient workaround
+Try the [IAudioClient workaround](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856).
+
+## Audio Troubleshooting
+Audio issues are particularly hard to identify, try these troubleshooting steps if your issue is not listed. For each of these make sure tModLoader is closed while you try these changes:
+
+**Fresh Install**    
+Manually installed wave banks can cause issues, following the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps will ensure that those files are removed. You might not remember manually installing wavebanks, but other things like installing `tModLoader 64 bit` could do this incidentally.
+
+**Disable All Resource Packs**    
+Follow the [Disable All Resource Packs](#disable-all-resource-packs) instructions. 
+
+**Change audio devices**    
+For example if you are using headphones, switch to your speakers. If you don't have speakers, try plugging some in. Try launching tModLoader.
+
+**Unplug Controllers**    
+Some controllers have speakers in them that might be causing issues with our audio playback code, try unplugging them and then launching tModLoader.
+
+**Reset config.json**    
+Follow the [Reset config.json](#reset-configjson) instructions. 
+
+**Try the IAudioClient workaround**    
+Try the [IAudioClient workaround](#iaudioclient-workaround).
+
+**Set Volume to 0**    
+If audio issues prevent the game from launching, open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find "VolumeMusic", "VolumeAmbient", and "VolumeSound". For each of these, change the number to `0`. Save the file. If this works, the issue is audio related, other steps in this guide might be able to restore audio so you can turn the volumes back up.
 
 # Not Responding
 When the game stops responding, that is indicative of the game logic being stuck in an infinite loop. This type of issue can be very hard to diagnose. A capable programmer can use a minidump file to investigate the cause of the issue. If the issue is in a mod, hopefully that modder will fix their mod, if it is in tModLoader we can work on fixing it.
