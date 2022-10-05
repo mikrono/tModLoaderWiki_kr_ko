@@ -190,6 +190,13 @@ If you are curious which mods are using your limited Ram, you can enable the "Sh
 ![](https://i.imgur.com/3Pl6tG2.png)
 
 # Players/Worlds
+### "(LaterVersion)" on player or world
+This means that you migrated a player or world from a version of Terraria newer than the version of Terraria your version of tModLoader was built for. When Terraria updates, it takes a while for tModLoader to update, you'll have to be patient and wait for tModLoader to update to use that player or world.
+
+### "(Unknown error)" on player
+![unknown (11)](https://user-images.githubusercontent.com/4522492/194117229-e0345d6f-7852-4f5d-916f-7a3a0e01b4d3.png)
+This means that tModLoader can't load the player for some reason. We are constantly looking into causes of this. To fix this issue, you'll need to [restore the player from a backup](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#world-and-player-backups). If you notice that your player consistently corrupts after restoring backups, it may be a broken mod. You can try [Getting Support](#getting-support), someone may be able to diagnose the issue.
+
 ### "HELP, all my players and worlds are gone!"
 tModLoader saves are kept separate from vanilla Terraria saves. You can copy back and forth between save locations, but be aware that you will lose Modded Tile and Items if you use tModloader worlds/characters in vanilla.
 
