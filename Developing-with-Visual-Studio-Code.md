@@ -1,4 +1,4 @@
-- **This guide does not cover Visual Studio, but Visual Studio Code.**
+- **This guide does not cover [Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio), but Visual Studio Code.**
 - **Visual Studio Code can not be used to debug, but takes less hard drive space than Visual Studio.**
 - **If you have space on your computer, it is highly recommended to get Visual Studio instead.**
 - **This guide is not meant to learn C# fundamentals**
