@@ -3,7 +3,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 ***
 
 # Basic Troubleshooting Information
-This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. If you can't find anything relevant, please try all the suggestions in [Generic Troubleshooting Steps](#generic-troubleshooting-steps). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-troubleshooting-steps)
+This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. If you can't find anything relevant, please try all the suggestions in [Generic Troubleshooting Steps](#generic-troubleshooting-steps). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
 
 ## Note on tModLoader 64 bit
 Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no longer useful and will prevent the game from launching correctly. If you have previously installed it and are experiencing issues, your first troubleshooting step is to do a [fresh install](#fresh-install). 
@@ -22,12 +22,12 @@ Make sure you opened the install folder, not the saves folder. The saves folder 
 * GOG install: Install as normal, to the same folder as before.
 
 ## Disable All Mods
-If you are experiencing an issue, it is useful to confirm whether the issue is caused by a Mod or by tModLoader. Usually the cause of issues can be determined by reading the error messages in-game or by [Reading client.log](#reading-client.log), but if not, disabling all mods and confirming that the issue still happens or doesn't happen is useful. 
+If you are experiencing an issue, it is useful to confirm whether the issue is caused by a Mod or by tModLoader. Usually the cause of issues can be determined by reading the error messages in-game or by [Reading client.log](#reading-clientlog), but if not, disabling all mods and confirming that the issue still happens or doesn't happen is useful. 
 
 First, visit the mods menu and click `disable all` (if your issue is preventing you from getting to the main menu, you can either hold the shift key while the game is launching to skip loading mods or find "enabled.json" in the Mods folder in the saves folder and delete it). Close tModLoader and launch it again. Attempt to replicate the error you experienced before. If the error still happens, it is a tModLoader issue and you should try [Getting Support](#getting-support). If the error doesn't happen, you will need to use the [Flowchart](#flowchart) to identify the mod causing the issue. After
 
 ## Disable All Resource Packs
-Resource packs can cause issues, disabling all resource packs and then testing again can rule out the resource packs as being the issue. To disable resource packs, you can visit the `Workshop->Use Resource Packs` menu and disable all packs. If you can't get to that menu, close the game, open up "\Documents\My Games\Terraria\tModLoader\config.json" in a text editor, find the "ResourcePacks" section, then change all true to false, save the file. 
+Resource packs can cause issues, disabling all resource packs and then testing again can rule out the resource packs as being the issue. To disable resource packs, you can visit the `Workshop->Use Resource Packs` menu and disable all packs. If you can't get to that menu, close the game, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all true to false, save the file. 
 
 ## Flowchart
 Sometimes a mod is causing issues, but you can't tell which mod is the problem. Use this flowchart to diagnose and determine the bad mod:    
@@ -73,7 +73,7 @@ If a specific mod is causing your issue, you should visit the [mod's workshop pa
 
 # Launch Issues
 ### Multiple extensions for asset
-This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `"\Documents\My Games\Terraria\tModLoader\config.json"` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
+This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
 
 ### System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
@@ -179,7 +179,7 @@ You can skip loading mods by holding shift while tModLoader is loading until it 
 ### Begin cannot be called again until End has been successfully called
 (Also applies to "Cannot access a disposed object" errors)    
 ![](https://i.imgur.com/jzbyghT.png)    
-This error is an error usually caused by an unhandled error in a mod. This makes it hard for users to know which mod is broken. Much of the time this error will only happen after reloading mods (improperly unloaded Texture2D references), but it can happen due to other errors (for example, dividing by zero.) As a user of mods, it can be hard to figure out which mod is causing the issue. To determine the broken mod, follow the steps in [Reading client.log](#reading-client.log). The mod causing the error causing this crash should be in the last or second to last entry. If you find a mod mentioned in one of those errors, that is likely the mod causing the error. If in doubt, ask in #support-forum on the [tModLoader discord](http://www.discord.me/tModLoader). As a last resort, use the [flowchart](#flowchart).
+This error is an error usually caused by an unhandled error in a mod. This makes it hard for users to know which mod is broken. Much of the time this error will only happen after reloading mods (improperly unloaded Texture2D references), but it can happen due to other errors (for example, dividing by zero.) As a user of mods, it can be hard to figure out which mod is causing the issue. To determine the broken mod, follow the steps in [Reading client.log](#reading-clientlog). The mod causing the error causing this crash should be in the last or second to last entry. If you find a mod mentioned in one of those errors, that is likely the mod causing the error. If in doubt, ask in #support-forum on the [tModLoader discord](http://www.discord.me/tModLoader). As a last resort, use the [flowchart](#flowchart).
 
 ### OutOfMemoryException
 This error means that tModLoader does not have enough RAM to load all the mods that you are trying to load. Large mods that add lots of items are the main culprit. You may have to cut down on the number of large mods you are trying to load at the same time. You can also try loading Small or Medium worlds instead of Large. Another possibility is that you have other large programs running. If you can close them, do so. Press Ctrl+Shift+Escape to bring up the Task Manager. In the Task Manager's Processes tab, look for processes that take up a large amount of memory. Anything taking more than 100,000 K is a good candidate. Also make sure that you are on 64 bit Windows and that you actually have more than 4 GB of RAM.
