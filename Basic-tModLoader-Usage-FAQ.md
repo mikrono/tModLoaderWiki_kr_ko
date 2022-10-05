@@ -99,7 +99,7 @@ If you see this, the mod might be out of date. tModLoader updates every month an
 ### Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
 
-**Fresh Install**
+**Fresh Install**    
 Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
 
 **Delete `dotnet` folder**    
@@ -111,10 +111,10 @@ Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete
 **Check launch.log**    
 Open up `launch.log` found in the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). If the word "FAudio" shows up in your log, you might want to try the [IAudioClient-workaround.zip](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856)
 
-**Disable RGB Keyboard Features**
+**Disable RGB Keyboard Features**    
 Even if you don't think you have RGB keyboard, this can help. Follow the [RGB Keyboard Bug (Port 53664)](#rgb-keyboard-bug-port-53664) instructions.
 
-**Restart Computer**
+**Restart Computer**    
 Restarting the computer solves many issues tModLoader users face. It may seem trite, but it works, give it a try.
 
 ### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
