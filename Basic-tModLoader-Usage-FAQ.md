@@ -89,6 +89,12 @@ If you do not find your issue in the issue tracker, you should visit the `#suppo
 ## Mod Issues
 If a specific mod is causing your issue, you should visit the [mod's workshop page](https://steamcommunity.com/app/1281930/workshop/). Read the `Description` and see if the mod maker has a preferred contact method for bugs, such as a `GitHub` or `Discord`. If there is one, use it. If not, making a comment on the workshop page with your issue should let the creator know. If the bug is game-breaking, you will have to disable the mod or wait for it to be fixed by the author.
 
+### It has been detected that this mod was built for `tModLoader vX.Y`
+This message is a boiler-plate message, it is purely informational. If the version starts with `v0.X`, then you are trying to load a legacy mod and it won't work, you need to delete the mod and find it or a replacement on the current mod browser. If the version starts with `v202X`, then you should look at the next paragraph in the error message for the real error. If multiple mod names show up in the error, it may be a mod incompatibility. The author will be able to figure it out.
+
+### JITException 
+If you see this, the mod might be out of date. tModLoader updates every month and sometimes those updates will break mods. If it is the start of a month, the author might just be slow in updating. You will have to disable this mod until it is fixed. If you manually installed a mod, the mod will be purple on the `Mods` menu and you should delete it and use the workshop version.
+
 # Launch Issues
 ### Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
