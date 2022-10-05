@@ -3,7 +3,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 ***
 
 # Basic Troubleshooting Information
-This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. If you can't find anything relevant, please try all the suggestions in [Generic Troubleshooting Steps](#generic-troubleshooting-steps). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
+This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. You can use `ctrl-F` to use your web browser to search this page for a word (such as an exception name or error message). If you can't find anything relevant, please try all the suggestions in [Generic Troubleshooting Steps](#generic-troubleshooting-steps). If nothing there helps, you can pursue direct support in the [Getting Support section](#getting-support). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
 
 ## Note on tModLoader 64 bit
 Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no longer useful and will prevent the game from launching correctly. If you have previously installed it and are experiencing issues, your first troubleshooting step is to do a [fresh install](#fresh-install). 
@@ -14,12 +14,18 @@ If you pirated Terraria, we can't help you. tModLoader won't work. Please don't 
 # Generic Troubleshooting Steps
 These steps should be followed if your specific issue is not found in the later sections of this guide.
 
+## Verify Game Integrity
+Verifying game integrity will restore all files installed by tModLoader in the install folder to their original state. In Steam right click on `tModLoader` in the library, then click on `Properties` click on `Local Files`. Click on `Verify integrity of game files...`. ([Video instructions](https://gfycat.com/ScaredOrdinaryBangeltiger)). This should start a download of the now missing files. Once that is done, try tModLoader again to see if you issue is resolved. If it isn't, or you are on GOG, follow the [Fresh Install](#fresh-install) instructions.
+
 ## Fresh Install
 A fresh install solves many issues preventing the game from launching. After doing a fresh install, **do not** place any other files in the install directory. First, open up the [install location](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install).     
 
-Make sure you opened the install folder, not the saves folder. The saves folder has folders named "Players" and "Worlds" while the install folder has folders such as "tModLoader-Logs" and "LaunchUtils". Now that the install folder is open select all the files and folders and delete them. Next, reinstall tModLoader:
+Make sure you opened the install folder, not the saves folder. The saves folder has folders named "Players" and "Worlds" while the install folder has folders such as "tModLoader-Logs" and "LaunchUtils". Now that the install folder is open select all the files and folders and **delete them all**. Next, reinstall tModLoader:
 * Steam install: In Steam right click on `tModLoader` in the library, then click on `Properties` click on `Local Files`. Click on `Verify integrity of game files...`. This should start a download of the now missing files. In the install folder, you should see the files start to appear again. 
 * GOG install: Install as normal, to the same folder as before.
+
+### Fresh Install Terraria
+tModLoader loads files from the Terraria install folder. Do the same steps above but for Terraria.
 
 ## Disable All Mods
 If you are experiencing an issue, it is useful to confirm whether the issue is caused by a Mod or by tModLoader. Usually the cause of issues can be determined by reading the error messages in-game or by [Reading client.log](#reading-clientlog), but if not, disabling all mods and confirming that the issue still happens or doesn't happen is useful. 
@@ -28,6 +34,11 @@ First, visit the mods menu and click `disable all` (if your issue is preventing 
 
 ## Disable All Resource Packs
 Resource packs can cause issues, disabling all resource packs and then testing again can rule out the resource packs as being the issue. To disable resource packs, you can visit the `Workshop->Use Resource Packs` menu and disable all packs. If you can't get to that menu, close the game, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all true to false, save the file. 
+
+## Reset config.json
+The `config.json` holds user preference information. Sometimes a buggy value in it can cause issues. You can delete or rename the file to reset preferences to default values to test if it was causing your issue. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`. Rename `config.json` to `configOld.json`. Renaming it lets you restore it later if you want. When you launch tModLoader, you should see the `Select Language` menu, if you don't, you might have edited the wrong file. If doing this doesn't change anything for your issue, you can close tModLoader and rename the file back to `config.json` after deleting the newly generated `config.json`.
+
+You can do the same for the `input profiles.json` file if your issue is related to keyboard, mouse, or gamepad issues.
 
 ## Flowchart
 Sometimes a mod is causing issues, but you can't tell which mod is the problem. Use this flowchart to diagnose and determine the bad mod:    
@@ -59,19 +70,38 @@ Next, you'll want to look through the file looking for words like "error" or "ex
 In the above excerpt from `client.log`, we can see an error is being logged. The error begins at line 41, with a brief summary on line 42 shown in blue. After the error summary, there will be a "stack trace" that shows where in the code the error is happening. Take note of the indentation of the lines of the stack trace, shown in green. This indentation is very useful for quickly finding errors logged in the log file rather than using `crtl-f`. Next, you'll want to look through the stack trace for the names of mods you have enabled. The first word after "at" on the lines and before the period is the key word you'll want to look at. Words like "Terraria", "Microsoft", and "MonoMod" can usually be ignored, you want to find the mod or mods that show in the error. In this example, we see a mod named "GadgetGalore" in the stack trace and can make the assumption that it is the cause of the error. If there are multiple mod names in a single stack trace, either mod could be at fault, or both, you'll have to do some testing. Now that we found a mod that is erroring, you can disable the mod and try again. Not every error logged in the logs will an actual bug, so some experimentation may be required. If you need help reading your client.log, you can ask for help in the support channels on the [tModLoader Discord chat](https://tmodloader.net/discord).
 
 # Getting Support
-## tModLoader Issues
+If everything in this guide fails to solve your issue, you may need direct support.   
+
+Support issues fall into two categories: [Issues specific to a mod](#mod-issues) and [tModLoader Support](#tmodLoader-support)
+
+## tModLoader Support
+If you need basic support to get the game running, see [Discord Support](#discord-support), otherwise start at [GitHub Issue Tracker](#github-issue-tracker)
+### GitHub Issue Tracker
 If your issue is not solved by this guide and you still need help first check [the tModLoader Issue Tracker](https://github.com/tModLoader/tModLoader/issues) and search for your issue to see if it has already been reported. If you find your issue, please add a :thumbsup: reaction to the issue to help us prioritize issues. To add the :thumbsup: reaction, click on the smile icon on the top right, then click on :thumbsup:: 
 
 ![](https://i.imgur.com/EDBwXtc.png)
 
 It might also be useful to add a comment to the issue with `client.log` and other useful information you can provide to help identify the cause of the issue. There might also be a workaround in the comments that you can follow to fix the issue on your end.
 
+### Discord Support
 If you do not find your issue in the issue tracker, you should visit the `#support-forum` channel on the [tModLoader discord](http://www.discord.me/tModLoader). Discord is a free chat service you can access in your browser. We will not provide support for support issues here on GitHub. Once you find the `#support-forum` channel, make a new thread and describe your issue. You'll also need to post all your logs by opening up the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs) and dragging the files into the chat. ([Video example](https://gfycat.com/CarefreeVastFrillneckedlizard)). Someone there should be able to help you.
 
 ## Mod Issues
 If a specific mod is causing your issue, you should visit the [mod's workshop page](https://steamcommunity.com/app/1281930/workshop/). Read the `Description` and see if the mod maker has a preferred contact method for bugs, such as a `GitHub` or `Discord`. If there is one, use it. If not, making a comment on the workshop page with your issue should let the creator know. If the bug is game-breaking, you will have to disable the mod or wait for it to be fixed by the author.
 
 # Launch Issues
+### Black windows appears and closes but nothing else
+There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
+
+**Fresh Install**
+Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
+
+**Delete `dotnet` folder**    
+Deleting the `dotnet` folder in the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) might help. If the issue persists, check that your antivirus isn't quarantining any of the files. The `dotnet\6.0.0\shared\Microsoft.NETCore.App\6.0.0` folder should have 223 items in it. If it doesn't, ensure that your OS is 64 bit and install the [dependencies](https://learn.microsoft.com/en-us/dotnet/core/install/windows?tabs=net60#additional-deps) listed for your OS before deleting the `dotnet` folder and trying again. 
+
+**Disable Proton**    
+Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete dotnet folder](#delete-dotnet-folder) after disabling Proton for tModLoader.
+
 ### Multiple extensions for asset
 This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
 
