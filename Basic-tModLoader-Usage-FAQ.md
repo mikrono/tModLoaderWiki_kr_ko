@@ -50,9 +50,9 @@ Most bugs in tModLoader will appear as errors logged to the `client.log` file. R
 * If you need help reading your client.log, you can ask for help in the support-forum channel on the [tModLoader Discord chat](https://tmodloader.net/discord).
 
 ### Complicated Explanation
-Many errors you might experience while playing tModLoader can be identified by reading the `client.log` file. (If you are experiencing an error that only happens in multiplayer, you'll need to read both `client.log` and `server.log`). By properly reading the log file, you can identify if an issue is caused by a bug in tModLoader or a bug in a mod you are using. If you are on 1.4, a mod that worked yesterday might be broken today. In any case, the logs are a good place to find the issue.
+Many errors you might experience while playing tModLoader can be identified by reading the `client.log` file. (If you are experiencing an error that only happens in multiplayer, you'll need to read both `client.log` and `server.log`). By properly reading the log file, you can identify if an issue is caused by a bug in tModLoader or a bug in a mod you are using. Since tModLoader updates to new versions every month, a mod that worked yesterday might be broken today. In any case, the logs are a good place to find the issue.
 
-If you are experiencing a bug, first make sure all mods are up to date, then close tModLoader and reopen it. This will reset the log and make it easier to read. Once you experience the bug, close tModLoader and open the log file. The log file is found in `%UserProfile%\Documents\My Games\Terraria\ModLoader\Logs\client.log` (or `[tModLoaderInstallFolder]\tModLoader-Logs\client.log` for 1.4). Open the file in a normal text editor like notepad if it doesn't have a file association already. 
+If you are experiencing a bug, first make sure all mods are up to date, then close tModLoader and reopen it. This will reset the log and make it easier to read. Once you experience the bug, close tModLoader and open the log file. The log file is the `client.log` file found in the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). Open the file in a normal text editor like notepad if it doesn't have a file association already. 
 
 Next, you'll want to look through the file looking for words like "error" or "exception". Using `ctrl-f` to use the Find feature of your text editor. You'll typically want to focus on the earliest error you can find in the log file. Errors that come after earlier errors might be caused by those earlier errors, so fixing the earlier errors might fix the later errors. Once you find the word "error" or "exception", you should see something similar to this:    
 ![](https://i.imgur.com/5rA3yR6.png)     
@@ -90,6 +90,8 @@ If you try to install tModLoader through Steam and it gives you a message with "
 
 Controlled Folder Access is a Windows 10+ security feature intended to prevent ransomware. It is a useful feature, but it will get in the way of tModLoader saving files to the Documents folder where game save files are typically installed. If you have this feature enabled, you can add an exception to tModLoader to allow it to work. You can also just disable the feature completely, but don't do that unless you know what you are doing.
 
+<details><summary>Adding an exception</summary>
+
 The easiest way to add an exception for tModLoader is to press `OK` on the error, then click on the notification that appears:  
 * If the notification doesn't appear within 5 seconds, you can visit the action center at the bottom right corner of the screen and find it there. If it is not there, search "Controlled folder access" in the start menu, click it, then click "Block History"    
 ![image](https://user-images.githubusercontent.com/4522492/176323144-fa85ff75-8759-414c-aeff-22ac0be0bf69.png)    
@@ -111,12 +113,16 @@ You will once again be asked "Do you want to allow this app to make changes to y
 
 tModLoader should now be able to create the save files it needs. Launch the game again.
 
+</details>
+
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
 
 This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add "dotnet.exe" to your whitelist, for further instructions on how to do this continue reading below.
 
 (If you follow the directions below and still can't solve the issue, a last resort is to tell tModLoader to save to the install directory instead. You can do this by creating a `savehere.txt` file in the install directory.)
+
+<details><summary>Adding "dotnet.exe" to your whitelist</summary>
 
 ![Right-Click and open security dashboard.](https://i.imgur.com/2Lj2Wrx.png)  
 Right-Click Windows Security in your system tray and select "View Security Dashboard"
@@ -138,16 +144,15 @@ Left-Click "Allow an app through controlled folder access"
 Left-Click "Add an allowed app", and select "Recently blocked apps"
 
 ![](https://i.imgur.com/tsXmj1b.png)  
-Scroll through the list until you find "dotnet.exe" (or "tModLoader.exe" if 1.3), and click the + and then close, after this you're done! (If you cannot find "dotnet.exe" (or "tModLoader.exe" if 1.3) on your list, then continue with the below steps)
+Scroll through the list until you find "dotnet.exe", and click the + and then close, after this you're done! (If you cannot find "dotnet.exe" on your list, then continue with the below steps)
 
 ![Extra Step 1](https://i.imgur.com/0ruiXoA.png)  
 Back in the "Add allowed app" selection, left-click "Browse all apps"
 
 ![Extra Step 2](https://i.imgur.com/E7pnDZo.png)  
-Navigate to wherever you installed your tModLoader (refer to video linked below on how to find an installation directory through Steam if you don't know how to do this) and double-click or select and left-click then open "dotnet/6.0.0/dotnet.exe" (or "tModLoader.exe" if 1.3) this will add the file to your whitelist. Done!
+Navigate to the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and then navigate to and select "dotnet/6.0.0/dotnet.exe", then press `Open`. This will add the file to your whitelist. Done!
 
-[How to find a game install location on Steam](https://gfycat.com/SelfreliantAssuredIsabellineshrike)  
-Use the process shown in the above linked video to find your tModLoader install location, the gif is showing how to do this for Terraria, but you will need to do the same process except with tModLoader on Steam (you must have it installed first).
+</details>
 
 # Not Responding
 When the game stops responding, that is indicative of the game logic being stuck in an infinite loop. This type of issue can be very hard to diagnose. A capable programmer can use a minidump file to investigate the cause of the issue. If the issue is in a mod, hopefully that modder will fix their mod, if it is in tModLoader we can work on fixing it.
