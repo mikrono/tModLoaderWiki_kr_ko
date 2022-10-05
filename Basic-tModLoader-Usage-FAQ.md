@@ -160,6 +160,9 @@ When the game stops responding, that is indicative of the game logic being stuck
 ## Minidump Instructions
 If your tModLoader stops responding and goes white, you can provide us with a minidump file and it will help us debug the issue.    
 ![unknown (2)](https://user-images.githubusercontent.com/4522492/179609389-3eafa688-1039-4448-a35d-c1aef6f3d037.png)    
+
+<details><summary>Expand for Minidump Instructions</summary><blockquote>
+
 To do this, download https://download.sysinternals.com/files/Procdump.zip and extract the zip. Open a command prompt in that folder by typing `cmd` in the file explorer address bar and then pressing enter.    
 ![unknown (3)](https://user-images.githubusercontent.com/4522492/179609489-f7115dfc-1c27-4ec3-a945-1e1c5aa46f44.png)    
 This will open a command prompt:    
@@ -171,6 +174,8 @@ Take note of the PID. In this image, it is 20680, but yours will be different. G
 Back in the file explorer, you can see the .dmp file:    
 ![unknown (7)](https://user-images.githubusercontent.com/4522492/179609674-8ac1b5f4-27fd-48d6-a42d-1aad83e75de6.png)     
 Find some way of uploading this file to us on the Discord support channel. We have nitro boosts so you should just be able to drag and drop the file into the support thread.
+
+</blockquote></details>
 
 # Load Mod
 ### "A Mod is crashing when I try to open tModLoader"
@@ -191,10 +196,11 @@ If you are curious which mods are using your limited Ram, you can enable the "Sh
 
 # Players/Worlds
 ### "(LaterVersion)" on player or world
+![dotnet_2022-10-05_11-04-59](https://user-images.githubusercontent.com/4522492/194119673-44d0ad77-613b-4e6e-8198-20213d2b45c4.png)    
 This means that you migrated a player or world from a version of Terraria newer than the version of Terraria your version of tModLoader was built for. When Terraria updates, it takes a while for tModLoader to update, you'll have to be patient and wait for tModLoader to update to use that player or world.
 
 ### "(Unknown error)" on player
-![unknown (11)](https://user-images.githubusercontent.com/4522492/194117229-e0345d6f-7852-4f5d-916f-7a3a0e01b4d3.png)
+![unknown (11)](https://user-images.githubusercontent.com/4522492/194117229-e0345d6f-7852-4f5d-916f-7a3a0e01b4d3.png)    
 This means that tModLoader can't load the player for some reason. We are constantly looking into causes of this. To fix this issue, you'll need to [restore the player from a backup](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#world-and-player-backups). If you notice that your player consistently corrupts after restoring backups, it may be a broken mod. You can try [Getting Support](#getting-support), someone may be able to diagnose the issue.
 
 ### "HELP, all my players and worlds are gone!"
