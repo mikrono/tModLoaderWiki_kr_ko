@@ -3,7 +3,7 @@ This Guide has been updated to 1.4. If you need to view the old 1.3 version of t
 ***
 
 # Basic Troubleshooting Information
-This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. You can use `ctrl-F` to use your web browser to search this page for a word (such as an exception name or error message). If you can't find anything relevant, please try all the suggestions in [Generic Troubleshooting Steps](#generic-troubleshooting-steps). If nothing there helps, you can pursue direct support in the [Getting Support section](#getting-support). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
+This guide will attempt to help users fix many common issues. Please search through this document for the error you are experiencing. You can use `ctrl-F` to use your web browser to search this page for a word (such as an exception name or error message). If you can't find anything relevant, please try all the suggestions in [General Troubleshooting Steps](#general-troubleshooting-steps). If nothing there helps, you can pursue direct support in the [Getting Support section](#getting-support). Do note that this guide mostly concerns issues with tModLoader itself. If you have an issue with a specific Mod or combination of Mods, see [Mod Troubleshooting Steps](#mod-issues)
 
 ## Note on tModLoader 64 bit
 Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no longer useful and will prevent the game from launching correctly. If you have previously installed it and are experiencing issues, your first troubleshooting step is to do a [fresh install](#fresh-install). 
@@ -11,7 +11,7 @@ Please do not attempt to install "tModLoader 64 bit" into tModLoader, it is no l
 ## Note on Piracy
 If you pirated Terraria, we can't help you. tModLoader won't work. Please don't bother us by asking how to get it to work.
 
-# Generic Troubleshooting Steps
+# General Troubleshooting Steps
 These steps should be followed if your specific issue is not found in the later sections of this guide.
 
 ## Verify Game Integrity
@@ -104,6 +104,9 @@ Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete
 
 **Check launch.log**    
 Open up `launch.log` found in the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). If the word "FAudio" shows up in your log, you might want to try the [IAudioClient-workaround.zip](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856)
+
+**Disable RGB Keyboard Features**
+Even if you don't think you have RGB keyboard, this can help. Follow the [RGB Keyboard Bug (Port 53664)](#rgb-keyboard-bug-port-53664) instructions.
 
 ### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
 If you are on Windows 7, you'll need to install the [directX package from Microsoft](https://support.microsoft.com/en-us/topic/update-for-the-d3dcompiler-47-dll-component-on-windows-server-2012-windows-7-and-windows-server-2008-r2-769c6690-ed30-4dee-8bf8-dfa30e2f8088). Restart your computer after running and finishing the installer.
@@ -289,3 +292,7 @@ tModLoader shares the cloud storage space with Terraria (about 150 MB of it). Ex
 ![](https://i.imgur.com/JTtOMbq.png)
 
 Steam workshop sometimes goes offline for maintenance, try in a few hours or the next day.
+
+# Other Issues
+### RGB Keyboard Bug (Port 53664)
+Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
