@@ -125,6 +125,9 @@ Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-i
 **Delete `dotnet` folder**    
 Deleting the `dotnet` folder in the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) might help. If the issue persists, check that your antivirus isn't quarantining any of the files. The `dotnet\6.0.0\shared\Microsoft.NETCore.App\6.0.0` folder should have 223 items in it. If it doesn't, ensure that your OS is 64 bit and install the [dependencies](https://learn.microsoft.com/en-us/dotnet/core/install/windows?tabs=net60#additional-deps) listed for your OS before deleting the `dotnet` folder and trying again. 
 
+**Check Natives.log**    
+In the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs), open up `Natives.log`. If it says "An assembly specified in the application dependencies manifest (Microsoft.NETCore.App.deps.json) was not found" or something similar, double check that you followed all the steps in **Delete `dotnet` folder** suggestion above.    
+
 **Disable Proton**    
 Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete dotnet folder](#delete-dotnet-folder) after disabling Proton for tModLoader.
 
