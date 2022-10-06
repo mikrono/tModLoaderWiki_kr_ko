@@ -14,6 +14,20 @@ If you pirated Terraria, we can't help you. tModLoader won't work. Please don't 
 # General Troubleshooting Steps
 These steps should be followed if your specific issue is not found in the later sections of this guide.
 
+## Switch to Stable tModLoader or to Preview tModLoader
+If you are on `1.4-preview` tModLoader, there is a greater possibility of tModLoader breaking, so you should switch back to `None` (Stable tModLoader) to see if that solves your problem. Conversely, sometimes bugs are fixed in `1.4-preview`, so you can switch to `1.4-preview` from `None` to test and see if the upcoming monthly release has a fix for your issue.
+
+<details><summary>Switching tModLoader branches</summary><blockquote>
+
+In Steam, right click on `tModLoader`, select `Properties`, select `Betas`, then select `1.4-preview` or `None` in the dropdown. Ignore the access code section. Close the Properties window, you should see tModLoader downloading an update, once it finishes you can launch it.    
+![image](https://user-images.githubusercontent.com/4522492/194370076-031e912f-4795-47e4-8d3a-79381a9727d6.png)     
+
+([Video instructions](https://gfycat.com/AcidicDangerousAmericanwirehair))     
+
+If you switched to `1.4-preview` and your issue is resolved, remember that `1.4-preview` is mostly for mod makers and testers and you may find that some mods you use are now broken. The fixes being tested in `1.4-preview` will arrive in stable tModLoader near the start of each month. If you can avoid the issue, waiting until the start of next month might be better than staying on `1.4-preview`.
+
+</blockquote></details>
+
 ## Verify Game Integrity
 Verifying game integrity will restore all files installed by tModLoader in the install folder to their original state. In Steam right click on `tModLoader` in the library, then click on `Properties` click on `Local Files`. Click on `Verify integrity of game files...`. ([Video instructions](https://gfycat.com/ScaredOrdinaryBangeltiger)). This should start a download of the now missing files. Once that is done, try tModLoader again to see if you issue is resolved. If it isn't, or you are on GOG, follow the [Fresh Install](#fresh-install) instructions.
 
