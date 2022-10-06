@@ -142,7 +142,7 @@ If it does not, you can attempt removing the .vs folder in your mod source root,
 This error occurs when the project wasn't created with the mod skeleton generator. To fix this error, go under your project's properties (right-click the project under the Solution Explorer and click `Properties`), go to the `Build` tab, click the `Advanced` button and change the value of `Debugging Information` to `Full`.
 
 ## VS 2019 keeps opening instead of VS 2022
-If you find that opening your `.csproj` file is opening VS 2019 when you have 2022 installed, the issue can be solved by updating the `.sln` file. First, open up VS 2022, then use `File->Open->Project/Solution` to open the `.csproj` directly. Next, open the `Solution Explorer` panel and click on the `Solution` line at the top. Click `File->Save SolutionName.sln as...` and then click `Save`. This will update the `.sln` file that the `.csproj` is bound to. You can now close VS and try double clicking on the .csproj to verify that it opens VS 2022 now.
+If you find that opening your `.csproj` file is opening VS 2019 when you have 2022 installed, the issue can be solved by updating the `.sln` file. First, open up VS 2022, then use `File->Open->Project/Solution...` to open the `.csproj` directly. Next, open the `Solution Explorer` panel and click on the `Solution` line at the top. Click `File->Save SolutionName.sln as...` and then click `Save`. This will update the `.sln` file that the `.csproj` is bound to. You can now close VS and try double clicking on the .csproj to verify that it opens VS 2022 now.
 
 # Miscellaneous
 ## Determining issues from screenshots
