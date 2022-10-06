@@ -120,10 +120,12 @@ Even if you don't think you have RGB keyboard, this can help. Follow the [RGB Ke
 **Restart Computer**    
 Restarting the computer solves many issues tModLoader users face. It may seem trite, but it works, give it a try.
 
-### An error occurred while updating tModLoader (missing executable)
+### An error occurred while updating tModLoader (missing executable)    
+![image](https://user-images.githubusercontent.com/4522492/194225008-48810974-7292-4b5b-974a-e03363b4383f.png)    
 This is usually solved by restarting the computer after confirming that you have switched to the `None` branch for tModLoader and verifying game integrity, and following the next section.
 
 ### Failed to start process for tModLoader: "The system cannot find the path specified"
+![image](https://user-images.githubusercontent.com/4522492/194225054-b0d9cac7-10fd-4864-87e9-0d16c9418ed1.png)    
 This is caused by previously installing `tModLoader 64 bit`. First do a [fresh install](#fresh-install) if you haven't already, then right click on `tModLoader` in `Steam` and select `Properties`. Make sure `Launch Options` is completely empty, then close the window.
 
 ### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
