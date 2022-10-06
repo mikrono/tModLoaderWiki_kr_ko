@@ -17,6 +17,9 @@ These steps should be followed if your specific issue is not found in the later 
 ## Verify Game Integrity
 Verifying game integrity will restore all files installed by tModLoader in the install folder to their original state. In Steam right click on `tModLoader` in the library, then click on `Properties` click on `Local Files`. Click on `Verify integrity of game files...`. ([Video instructions](https://gfycat.com/ScaredOrdinaryBangeltiger)). This should start a download of the now missing files. Once that is done, try tModLoader again to see if you issue is resolved. If it isn't, or you are on GOG, follow the [Fresh Install](#fresh-install) instructions.
 
+## Verify Game Integrity Terraria
+tModLoader loads files from the Terraria install folder. Do the same steps above but for Terraria.
+
 ## Fresh Install
 A fresh install solves many issues preventing the game from launching. After doing a fresh install, **do not** place any other files in the install directory. First, open up the [install location](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install).     
 
