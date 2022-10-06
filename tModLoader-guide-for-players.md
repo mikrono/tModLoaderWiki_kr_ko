@@ -114,13 +114,13 @@ You can keep 1.3 and 1.4 tModLoader installed at the same time if you utilize St
 ## Migrate Everything From 1.3 to 1.4
 For the most part, the transition from 1.3 to 1.4 should be a clean start. The 2 are practically different games, and available mods won't match up. If you want to, however, you can migrate existing mods, worlds, and players.
 ### Mods
-Be aware the most of the mods you used on 1.3 might not be on 1.4. You can manually search for mods in the "Download Mods" menu, or you can use a modpack file to attempt to download all of them in one go. First, open up the 1.3 saves folder and find the enabled.json file in the Mods folder, this might be in "\Documents\My Games\Terraria\ModLoader\Mods\enabled.json". Open up 1.4 tModLoader, click "Workshop", "Mod Packs", and then click "Open Mod Pack Folder". Paste the enabled.json file that you copied earlier into this folder. Click "Back" and then "Mod Packs" to refresh the menu. You should see an entry for "enabled". Click "View Mods in Mod Browser" then click "Download All". You'll most likely get a message that not all mods were found on the mod browser. If you do, simply click the download button on each mod in the listing. 
+Be aware the most of the mods you used on 1.3 might not be on 1.4. You can manually search for mods in the "Download Mods" menu, or you can use a modpack file to attempt to download all of them in one go. First, open up the 1.3 saves folder and find the enabled.json file in the Mods folder, this might be in `\Documents\My Games\Terraria\ModLoader\Mods\enabled.json`. Open up 1.4 tModLoader, click `Workshop`, `Mod Packs`, and then click `Open Mod Pack Folder`. Paste the enabled.json file that you copied earlier into this folder. Click `Back` and then `Mod Packs` to refresh the menu. You should see an entry for "enabled". Click `View Mods in Mod Browser` then click `Download All`. You'll most likely get a message that not all mods were found on the mod browser. If you do, simply click the download button on each mod in the listing. 
 
 ### Players
-Use the in-game menu to migrate players. Cloud players will not show up so you will have to switch to 1.3-legacy and take them off the cloud if you wish to copy them over.
+Use the in-game menu to migrate players. Cloud players will not show up so you will have to switch to `1.3-legacy` and take them off the cloud if you wish to copy them over.
 
 ### Worlds
-Use the in-game menu to migrate worlds. Cloud worlds will not show up so you will have to switch to 1.3-legacy and take them off the cloud if you wish to copy them over.
+Use the in-game menu to migrate worlds. Cloud worlds will not show up so you will have to switch to `1.3-legacy` and take them off the cloud if you wish to copy them over.
 
 ## My worlds and characters disappeared when I installed!
 **tModLoader DOES NOT use your vanilla world and player files.**
