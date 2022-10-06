@@ -341,3 +341,12 @@ Steam workshop sometimes goes offline for maintenance, try in a few hours or the
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
 Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
+
+### Low FPS
+There are many things you should try:
+1. First, make sure none of your mods are throwing errors in the log. See [Reading client.log](#reading-clientlog) to see how to check logs for error messages from mods.
+2. Next, confirm that the issue happens even with 0 mods enabled.
+3. Try changing "Frame Skip" settings
+4. You can try a different graphics options. To do this, close the game and then in Steam, right click on `tModLoader`, select `Properties`, and then find the `Launch Options` box. Type `/gldevice:OpenGL` or `/gldevice:Vulkan` into the box and close the window. Launch the game and check your frame rate. Do these same steps to try the other option. If these have no effect, remove them in the same manner.      
+![image](https://user-images.githubusercontent.com/4522492/194379953-0392ca08-8ac3-4610-8486-595620e3d1d7.png)    
+5. Come to [tModLoader Discord Support](#discord-support).
