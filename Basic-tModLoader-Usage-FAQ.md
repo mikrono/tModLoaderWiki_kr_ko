@@ -350,3 +350,6 @@ There are many things you should try:
 4. You can try a different graphics options. To do this, close the game and then in Steam, right click on `tModLoader`, select `Properties`, and then find the `Launch Options` box. Type `/gldevice:OpenGL` or `/gldevice:Vulkan` into the box and close the window. Launch the game and check your frame rate. Do these same steps to try the other option. If these have no effect, remove them in the same manner.      
 ![image](https://user-images.githubusercontent.com/4522492/194379953-0392ca08-8ac3-4610-8486-595620e3d1d7.png)    
 5. Come to [tModLoader Discord Support](#discord-support).
+
+### Ghost Mouse 
+If your mouse is invisible and still highlights buttons, you might be running into an issue with "Monect Virtual Controller". If your `client.log` has "Monect Virtual Controller" in it, follow [these steps](https://community.monect.com/d/39-fuk-monect-hid-device) to uninstall that. Plugging in a separate controller has also been reported to fix this problem if you don't have "Monect Virtual Controller".
