@@ -353,3 +353,5 @@ There are many things you should try:
 
 ### Ghost Mouse 
 If your mouse is invisible and still highlights buttons, you might be running into an issue with "Monect Virtual Controller". If your `client.log` has "Monect Virtual Controller" in it, follow [these steps](https://community.monect.com/d/39-fuk-monect-hid-device) to uninstall that. Plugging in a separate controller has also been reported to fix this problem if you don't have "Monect Virtual Controller".
+
+Another solution is to close the game, then edit `config.json`, found in [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves), in a text editor and change the "InvisibleCursorForGamepad" and "SettingBlockGamepadsEntirely" settings to `false` and then save the file.
