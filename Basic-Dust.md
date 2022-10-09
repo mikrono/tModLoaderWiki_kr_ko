@@ -21,20 +21,20 @@ Here are some examples:
 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Sparkle>());
 
 // Spawning a random vanilla confetti dust
-int dustType = Main.rand.Next(139, 143);
+int dustType = Main.rand.Next(DustID.Confetti, DustID.Paint);
 int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
 
-// Spawn dust 73 in ModProjectile.AI, but only 1/6th of the time (so it is less frequent). Also, scaling down velocity.
+// Spawn dust 73 (DustID.PinkFairy) in ModProjectile.AI, but only 1/6th of the time (so it is less frequent). Also, scaling down velocity.
 if (Main.rand.Next(6) == 0)
 {
-	int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 73, 0f, 0f, 200, default(Color), 0.8f);
+	int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.PinkFairy, 0f, 0f, 200, default(Color), 0.8f);
 	Main.dust[dustnumber].velocity *= 0.3f;
 }
 
 // Use a for loop to spawn a lot of dust at once. Here is a Magic Mirror style dust spawning. 
 for (int d = 0; d < 70; d++)
 {
-	Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, default(Color), 1.5f);
+	Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default(Color), 1.5f);
 }
 ```
 
@@ -44,11 +44,13 @@ Some notes: Position, Width, and Height define a rectangle from which the dust w
 
 To find vanilla dust, please consult the image below. Note that it is read left to right, starting from 0. Each row is 100 dust long and each row is actually 3 frames of the same dust, meaning there are 3 rows total.
 
-![](https://i.imgur.com/A2YlbEl.png)
+![](https://i.imgur.com/s4usYv4.png)
 
 This diagram should help explain how to read the image.
 
-![](https://i.imgur.com/Z8tpu1p.png)
+![](https://i.imgur.com/n4iScrV.png)
+
+A list of all of the dusts can also be found on the [Terraria Wiki](https://terraria.wiki.gg/wiki/Dust_IDs).
 
 The easiest way to try out Dust, however, is to download [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) and use the Dust spawning tool to find the dust you need. [Video of Dust Tool](https://gfycat.com/VengefulDearBluetonguelizard)
 
