@@ -21,7 +21,7 @@ Here are some examples:
 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Sparkle>());
 
 // Spawning a random vanilla confetti dust
-int dustType = Main.rand.Next(DustID.Confetti, DustID.Paint);
+int dustType = Main.rand.Next(DustID.Confetti_Blue, DustID.Confetti_Yellow + 1);
 int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
 
 // Spawn dust 73 (DustID.PinkFairy) in ModProjectile.AI, but only 1/6th of the time (so it is less frequent). Also, scaling down velocity.
