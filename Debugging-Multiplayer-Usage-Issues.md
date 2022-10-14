@@ -18,6 +18,7 @@ How it looks like in the folder (for an outdated version):
 ![](https://i.imgur.com/lgfzxmp.png)
 
 ## Version is fine
+If version is the same, but the client still reports it's not the same version, check that the host doesn't also have a vanilla/unmodded server running on the same port (usually 7777).
 If version isn't the issue, read [My connection is fine but my friend or I am stuck on "Connecting..."](#my-connection-is-fine-but-my-friend-or-i-am-stuck-on-connecting) below
 
 ## Stuck on "Found Server"
