@@ -338,6 +338,9 @@ tModLoader shares the cloud storage space with Terraria (about 150 MB of it). Ex
 
 Steam workshop sometimes goes offline for maintenance, try in a few hours or the next day.
 
+### Can't redownload mod
+If you find that you can't redownload a mod in-game, you'll need to close the game, then visit the [tModLoader workshop](https://steamcommunity.com/app/1281930/workshop/). There, find the mod you are interested and subscribe. If you are already subscribed, unsubscribe and then subscribe again. Finally, restart steam by fully closing it (Steam->Exit), then launching it again. You may also need to follow the [Verify Game Integrity](#verify-game-integrity) steps to force steam to redownload mods you subscribed to.
+
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
 Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
