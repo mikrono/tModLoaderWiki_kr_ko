@@ -40,7 +40,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [AutoTrash](https://github.com/JavidPack/AutoTrash) -- UI, a slot that auto trashes items you pick up.
 * [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication.
 * [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support with FK's Mod Settings Configurator).
-* [Craftable Treasure Bags](https://github.com/Setnour6/CraftableTreasureBags) -- Many examples of cross mod recipes and other recipes.
+* [Craftable Treasure Bags](https://github.com/Setnour6/CraftableTreasureBags) -- Many examples of cross mod recipes and use of recipe groups.
 * [Craftable Lunar Tools](https://github.com/Jofairden/CraftableLunarTools) -- Makes normally unobtainable lunar tools craftable.
 * [Dye Easy](https://github.com/goldenapple3/DyeEasy) -- Automatically editing recipes in complicated ways (without using RecipeEditor).
 * [Eternal Mods](https://github.com/Eternal-Team) -- Tile Entities, UI and a bunch of framework stuff.
