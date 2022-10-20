@@ -62,7 +62,7 @@ This installation is necessary for players who have purchased Terraria from GOG 
 
 Installing tModLoader is relatively easy.
 
-1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tML release you want. (usually the **[latest](https://github.com/tModLoader/tModLoader/releases/latest)** for 1.4. For 1.3, the latest is [v0.11.8.9](https://github.com/tModLoader/tModLoader/releases/tag/v0.11.8.9))
+1. Goto the **[releases](https://yip.su/2DPb16)** page and download the tML release you want. (usually the **[latest](https://yip.su/2DPb16)** for 1.4. For 1.3, the latest is [v0.11.8.9](https://yip.su/2DPb16))
 2. Unzip the **contents** of the zip you downloaded to a folder named `tModLoader` either next to or nested inside the Terraria install folder. 
 On 1.4, if the folder contains a 'Build' folder, you will need to remove this intermediate folder and bring the contents up one level. (GOG usually installs to `C:\GOG Games`, and Steam to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`. See [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike) to find the steam installation location if you customized it.) (If you are on linux and own the game on GOG, the nested option inside `Terraria\game` is preferred) If you don't know how to unzip a zip file, get someone who knows how to use a computer to help you.
 
