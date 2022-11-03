@@ -33,4 +33,18 @@ recipe.AddIngredient(23);          // Good
 recipe.AddIngredient(ItemID.23);   // Wrong
 ```
 
+# Projectile IDs
+
+[Projectile IDs page on the official Terraria wiki](https://terraria.wiki.gg/wiki/Projectile_IDs)
+
+Projectile IDs are typically used in `Projectile.NewProjectile` methods to spawn projectiles into the world. Many projectiles have multiple versions with `Hostile` or `Friendly` attached to the name of some of the duplicates. These indicate that the projectile is either [`friendly`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#friendly) or [`hostile`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#hostile), use the one that matches the damage behavior you intend. If there isn't a version of the projectile you need, you may have to make your own version as a `ModProjectile`.
+
+# NPC IDs
+
+[NPC IDs page on the official Terraria wiki](https://terraria.wiki.gg/wiki/NPC_IDs)
+
+Negative IDs represent NPCs that share a `type` with an NPC with a positive NPC. If you need to differentiate between these variants, you'll need to check `netID` to determine which variant is being checked. 
+
+
+
 # others here...
