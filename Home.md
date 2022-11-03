@@ -122,6 +122,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Player Item Animation](Player-Item-Animation)
 - [Useful Vanilla Fields](Useful-Vanilla-Fields)
 - [Useful Vanilla Methods](Useful-Vanilla-Methods)
+- [Vanilla Content IDs](Vanilla-Content-IDs) -- ItemID, ProjectileID, TileID, NPCID, etc. 
 - [Vanilla Interface Changes](Vanilla-Class-Changes)
 - [Vanilla Interface layers values](Vanilla-Interface-layers-values)
 - [Vanilla Item Field Values](Vanilla-Item-Field-Values)
