@@ -1,7 +1,7 @@
 The Mod Browser is an online component of tModLoader where Mod Makers can publish their mods. Users are able to easily find, download, and install mods they are interested in directly from tModLoader. It is highly recommended that you visit the website and/or read the description of mods you want to download.
 
 ### Direct Download
-If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `%userprofile%/Documents/My Games/Terraria/ModLoader/Mods/`
+If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `%userprofile%/Documents/My Games/Terraria/TModLoader/Mods/`
 
 ***
 **Modders wishing to publish their mod to the Mod Browser should continue reading.**
