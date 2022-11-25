@@ -1,4 +1,6 @@
-The number one rule of collaborative development is _pick a style and stick to it_. The following style guidelines should apply to all future contributions to tModLoader. Please be mindful of past developers and don't reformat code just for the sake of it.
+The number one rule of collaborative development is _pick a style and stick to it_. The following style guidelines should apply to all future contributions to tModLoader. 
+
+Please be mindful of past developers and don't reformat code just for the sake of it. Reformatting PRs will only be considered when there is an active need for change in the associated piece of code.
 
 The following are useful resources for general C# design and style
 * https://google.github.io/styleguide/csharp-style.html
