@@ -113,6 +113,9 @@ This message is a boiler-plate message, it is purely informational. If the versi
 If you see this, the mod might be out of date. tModLoader updates every month and sometimes those updates will break mods. If it is the start of a month, the author might just be slow in updating. You will have to disable this mod until it is fixed. If you manually installed a mod, the mod will be purple on the `Mods` menu and you should delete it and use the workshop version.
 
 # Launch Issues
+### hostpolicy.dll error
+Follow the instructions in the next section.
+
 ### Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
 
