@@ -2,7 +2,7 @@
 - If you run into problems, see the [Usage FAQ](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ)  
 
 # Installing tModLoader
-[Read our install instructions](tModLoader-guide-for-players)
+[Read our install instructions](https://tracker.iplocation.net/pfop/)
 
 # Installing Mods
 - Mods are files with the ".tmod" extension. The most common way to get mods is through the in-game Steam workshop menus. This will work for GOG users as well. From the main menu, click `Workshop` and then `Download Mods`. You can then search and find mods to download. Alternatively you can visit the [tModLoader Steam workshop](https://steamcommunity.com/app/1281930/workshop/) directly and subscribe to mods on that website.
