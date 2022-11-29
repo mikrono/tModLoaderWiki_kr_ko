@@ -18,7 +18,7 @@ An MMHook dll is a special reference file, that contains the `On` and `IL` varia
 * Click it, and the extraction will begin. Once it's complete, the dll will be output to the path `C:\Users\%userprofile%\Documents\My Games\Terraria\tModLoader\ModSources\ModAssemblies`.
 
 
-* Download MonoMod from [here](https://tracker.iplocation.net/pfoj/). Always download the latest version for `net50` or `net60`, rather than `net35` or `net40`. Extract it to a location of your choice.
+* Download MonoMod from [here](https://github.com/MonoMod/MonoMod/releases). Always download the latest version for `net50` or `net60`, rather than `net35` or `net40`. Extract it to a location of your choice.
 * Copy the mod dll you extracted previously into the MonoMod folder, and drag and drop it on top of the `MonoMod.RuntimeDetour.HookGen` executable. It should look like this: ![](https://i.imgur.com/PNElana.png)
 * This should open a CMD window, which will start creating your MMHook dll. The time taken will vary by hardware and mod size, but it shouldn't take more than a few minutes in most cases.
 * Once it is done, you should find a dll in the same folder called `MMHook_NameOfMod_VersionNumber`: ![](https://i.imgur.com/KsAcmRD.png)
