@@ -8,24 +8,24 @@ This image explains the general classes and process you will follow to draw a si
 # Making a Button
 Making a button is fairly straight forward. You'll want to make a new class and inherit from UIElement from vanilla code. 
 ```cs
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-    using Terraria.UI;
-    using Terraria;
-    using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.UI;
+using Terraria;
+using Terraria.ModLoader;
 
-    namespace YourMod.UI
+namespace YourMod.UI
+{
+    class PlayButton : UIElement
     {
-        class PlayButton : UIElement
-        {
-            Color color = new Color(50, 255, 153);
+        Color color = new Color(50, 255, 153);
 
-            public override void Draw(SpriteBatch spriteBatch)
-            {
-                spriteBatch.Draw(ModContent.GetTexture("Terraria/UI/ButtonPlay"), new Vector2(Main.screenWidth + 20, Main.screenHeight -20) / 2f, color);
-            }   
-        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(ModContent.GetTexture("Terraria/UI/ButtonPlay"), new Vector2(Main.screenWidth + 20, Main.screenHeight -20) / 2f, color);
+        }   
     }
+}
 ```
 Notice a few things:
 * I named my class after the element it will be. This will be a button that displays a play symbol
@@ -37,22 +37,22 @@ The correct terminology (and class) is UIState. However, I think it's easier to 
 
 For a lack of a better idea, we'll call this state/canvas that the button will go on a menu bar even though it will only hold one button for now.
 ```cs
-    using Terraria.UI;
+using Terraria.UI;
 
-    namespace YourMod.UI
+namespace YourMod.UI
+{
+    class MenuBar : UIState
     {
-        class MenuBar : UIState
+        public PlayButton playButton;
+
+        public override void OnInitialize()
         {
-            public PlayButton playButton;
+            playButton = new PlayButton();
 
-            public override void OnInitialize()
-            {
-                playButton = new PlayButton();
-
-                Append(playButton);
-            }
+            Append(playButton);
         }
     }
+}
 ```
 Notice the following:
 * Only one of our newly made play buttons is used, and it's using whatever default it has back in the the PlayButton class (drawn in center of screen)
@@ -65,46 +65,47 @@ The following code is required to go in your class file that inherited from ModS
 
 First, we'll declare a variable of UIState we made above which holds our single button.
 ```cs
-        internal MenuBar MenuBar;
+internal MenuBar MenuBar;
 ```
 Next, we'll declare a variable of the UserInterface that will use the MenuBar later. We did not need to create this class or inherit from it.
 ```cs
-        private UserInterface _menuBar;
+private UserInterface _menuBar;
 ```
 In Load(), let's set the two above to actual instances, then feed the MenuBar to the UserInterface. If you don't Activate() the UI element here while the mod is loading, you will crash once the game starts. It will throw a _Object reference not set to an instance of an object_ error.
 ```cs
-        public override void Load()
-        {
-            MenuBar = new MenuBar();
-            MenuBar.Activate();
-            _menuBar = new UserInterface();
-            _menuBar.SetState(MenuBar);
-        }
+public override void Load()
+{
+    MenuBar = new MenuBar();
+    MenuBar.Activate();
+    _menuBar = new UserInterface();
+    _menuBar.SetState(MenuBar);
+}
 ```
 I'm unclear on the next part but assume it's needed so here it is.
 ```cs
-        public override void UpdateUI(GameTime gameTime)
-        {
-            _menuBar?.Update(gameTime);
-        }
+public override void UpdateUI(GameTime gameTime)
+{
+    _menuBar?.Update(gameTime);
+}
 ```
 And finally, we end with the most complicated part. I was told all of this code is required and cannot explain to you how it works. Essentially this is where the drawing actually occurs after we've fed the UserInterface everything it needed. If you do not use this code, your entire UI will disappear!
 ```cs
-        public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-        {
-            int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-            if (mouseTextIndex != -1)
+public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
+{
+    int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+    if (mouseTextIndex != -1)
+    {
+        layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+            "YourMod: A Description",
+            delegate
             {
-                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                    "YourMod: A Description",
-                    delegate
-                    {
-                            _menuBar.Draw(Main.spriteBatch, new GameTime());
-                        return true;
-                    },
-                    InterfaceScaleType.UI)
-                );
-            }
+                _menuBar.Draw(Main.spriteBatch, new GameTime());
+                return true;
+            },
+            InterfaceScaleType.UI)
+        );
+    }
+}
 ```
 # Results
 At this point, your screen should have a button just like this. Notice it's not a menu bar... yet. You'd simply add and arrange more UIElements to it in the future.
