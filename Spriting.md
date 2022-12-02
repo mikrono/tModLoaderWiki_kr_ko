@@ -34,7 +34,7 @@ Other spriting programs that are recommended include, but are not limited to:
 ## Vanilla Sprite Resources
 Before getting started, we recommend extracting the vanilla sprites to a folder you can easily access. We will be using the `C:\Documents\My Games\Terraria\ModLoader\VanillaTextures` folder in this guide. To do this, follow [this guide](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Prerequisites#vanilla-texture-file-reference). We will be using these textures as guides for sizing and orientation of similar content we will be making in our mod. 
 
-If you just need a reference for how big various vanilla textures are, you can consult this [text file](https://forums.terraria.org/index.php?attachments/sprite-information-spreadsheet-tsv.314022/). 
+If you just need a reference for how big various vanilla textures are, you can consult this [text file](https://forums.terraria.org/index.php?attachments/sprite-information-spreadsheet-tsv.384515/). 
 
 ## Live Editing Sprites
 If you need to make slight adjustments to a tile or armor texture, it can be very time consuming to make sprite changes, rebuild the mod, reload mods, then test in-game to see if the changes were correct. You can use a mod called "Modders Toolkit" to edit textures live in-game. Follow the video below to see how that is done. After making changes, you'll need to copy the changed png back to the mod sources folder.
