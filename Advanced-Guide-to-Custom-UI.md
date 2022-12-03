@@ -5,108 +5,130 @@ In this guide you will learn about the various UI classes present in vanilla you
 * Object oriented programming (in relation to class inheritance)
 
 # Brief
-UI in Terraria consists of various classes, most notably: UIElement, UIState and UserInterface. We will go over each class and its importance in the process of creating a UI.
+UI in Terraria consists of various classes, most notably: UIElement, UIState, and UserInterface. We will go over each class and its importance in the process of creating a UI.
 
 # Object relation
-A custom UI is nothing more than a custom `UserInterface` which's state is set to a custom `UIState`. In general, a UserInterface can have one _active_ UIState (it can however hold a history of states, up to cap, which you can go back to), that state is then currently shown in that UserInterface. 
+A custom UI is nothing more than a custom `UserInterface` which's state is set to a custom `UIState`. In general, a UserInterface can have one _active_ UIState (it can however hold a history of states, up to a cap, which you can go back to), that state is then currently shown in that UserInterface. 
 
 # UserInterface
-There is no reason to create a custom class that derives from `UserInterface`. (Although you could, since the class isn't sealed) For most cases, simply declare a new field of type UserInterface in your mod class (or a dedicated UI class). We will come back to this later.
+There is no reason to create a custom class that derives from `UserInterface`. (Although you could, since the class isn't sealed) For most cases, simply declare a new field of type UserInterface in your ModSystem class. We will come back to this later.
 
 # UIState
-A `UIState` represents the state an interface is in. The class itself is very simple: it's actually a `UIElement`that spans across the entire screen width and height, allowing you to add an element anywhere on the screen.
+A `UIState` represents the state an interface is in. The class itself is very simple: it's actually a `UIElement` that spans across the entire screen width and height, allowing you to add an element anywhere on the screen.
 
 # UIElement
 The `UIElement` represents a class that is any kind of UIElement that can be part of an interface. Vanilla examples are the classes `UIPanel`, `UIImage` and `UIImageButton`. Each of which has a certain functionality to it. (Show a background panel, show an image or show a clickable button image respectively) You can make your own custom elements by deriving your class from UIElement. We will come back to this.
 
 # Initial setup
-So, you need a UserInterface and UIState. Begin by defining these new fields on your Mod class:
+First, you need a class that inherits from `ModSystem`, you can use an existing one or create a new one:
 
-    internal UserInterface MyInterface;
+```cs
+class MyUISystem : ModSystem { }
+```
+
+Then you'll need a UserInterface and UIState. You can define these new fields in your ModSystem class:
+
+```cs
+internal UserInterface MyInterface;
+```
 
 For your UIState, you should make a new custom class:
 
-    class TheUI : UIState { }
+```cs
+class TheUI : UIState { }
+```
 
-Then create a field for it in your Mod class:
+Then create a field for it in your ModSystem class:
 
-    internal TheUI MyUI;
+```cs
+internal TheUI MyUI;
+```
 
 ## Initialize the UI
-Because UI is something only to be seen by players, you shouldn't initialize UI on the server. This wastes resources and the server doesn't play the game nor see any graphics. Only initialize on the client. In your Mod.Load(), initialize your UI:
+Because UI is something only to be seen by players, you shouldn't initialize UI on the server. This wastes resources and the server doesn't play the game nor see any graphics. Only initialize on the client. In your `ModSystem.Load()`, initialize your UI:
 
 ```cs
 if (!Main.dedServ) {
-	MyInterface = new UserInterface();
-    
-	MyUI = new TheUI();
-	MyUI.Activate(); // Activate calls Initialize() on the UIState if not initialized, then calls OnActivate and then calls Activate on every child element
+    MyInterface = new UserInterface();
+
+    MyUI = new TheUI();
+    MyUI.Activate(); // Activate calls Initialize() on the UIState if not initialized and calls OnActivate, then calls Activate on every child element.
 }
 ```
 
-In your Mod.Unload() you can call any unload action you might need on your UI, and then set it to null:
+In your `ModSystem.Unload()` you can call any unload action you might need on your UI, and then set it to null:
+
 ```cs
 MyUI?.SomeKindOfUnload(); // If you hold data that needs to be unloaded, call it in OO-fashion
 MyUI = null;
 ```
+
 Unload on the UI as shown above is not recommended, as it in general is bad practice to make UI responsible for data. However, it is useful if your UI holds static references such as textures.
 
 
 ## Updating and drawing the UI
-Setting the state of your interface is nice, but the UI isn't magically called to update or draw itself. To do this you must override `Mod.UpdateUI(Gametime gameTime)` and `Mod.ModifyInterfaceLayers(List<GameInterfaceLayer> layers)`:
+Setting the state of your interface is nice, but the UI isn't magically called to update or draw itself. To do this you must override `ModSystem.UpdateUI(Gametime gameTime)` and `ModSystem.ModifyInterfaceLayers(List<GameInterfaceLayer> layers)`:
 
 ```cs
 private GameTime _lastUpdateUiGameTime;
 
 public override void UpdateUI(GameTime gameTime) {
-  _lastUpdateUiGameTime = gameTime;
-  if (MyInterface?.CurrentState != null) {
-  	MyInterface.Update(gameTime);
-  }
+    _lastUpdateUiGameTime = gameTime;
+    if (MyInterface?.CurrentState != null) {
+        MyInterface.Update(gameTime);
+    }
 }
 ```
 The above snippet will call .Update on your interface and propagate it to its state and underlying elements.
 
 ```cs
 public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers) {
-  int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
-  if (mouseTextIndex != -1) {
-    layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-    	"MyMod: MyInterface",
-    	delegate
-   	 	{
-    		if ( _lastUpdateUiGameTime != null && MyInterface?.CurrentState != null) {
-    			MyInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
-    		}
-   			return true;
-    	},
-   		InterfaceScaleType.UI));
-  }
+    int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+    if (mouseTextIndex != -1) {
+        layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+            "MyMod: MyInterface",
+    	    delegate
+            {
+                if ( _lastUpdateUiGameTime != null && MyInterface?.CurrentState != null) {
+                    MyInterface.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+                }
+                return true;
+            },
+            InterfaceScaleType.UI));
+    }
 }
 ```
 The above snippet adds a custom layer to the vanilla layer list that will call .Draw on your interface if it has a state. This will make your UI actually draw and show up on screen. Set the InterfaceScaleType to UI for appropriate UI scaling.
 
-## Showing the UI
-For testing purposes, it is recommended to add a hotkey or other easily accessible means to toggle the UI. To show your UI, you need to set the interface's state to your UI instance. You should do it by accessing the instance of your mod and calling .SetState:
+- Notice that, in this case you're adding your UI layer below the "Mouse Text" layer, this means your UI will be drawn before that layer. You can add your custom layer next to other layers (vanilla or not) by looking for layers with other names. For a list of vanilla interface layers you can go [here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Interface-layers-values).
 
-    MyMod.Instance.MyInterface.SetState(MyMod.Instance.MyUI)
+## Showing the UI
+For testing purposes, it is recommended to add a hotkey or other easily accessible means to toggle the UI. To show your UI, you need to set the interface's state to your UI instance. You should do it by accessing the instance of your ModSystem and calling .SetState:
+
+```cs
+MyUISystem uiSystemInstance = ModContent.GetInstance<MyUISystem>();
+uiSystemInstance.MyInterface.SetState(uiSystemInstance.MyUI);
+```
 
 This snippet will set the state to your UI, causing it to show. If you want to hide the UI, simply pass `null` into the method call.
 
 You can see why it is useful to use a dedicated class for your UIs. It is useful to make helper methods for this, such as:
 ```cs
 internal void ShowMyUI() {
-	MyInterface?.SetState(MyUI);
+    MyInterface?.SetState(MyUI);
 }
 
 internal void HideMyUI() {
-	MyInterface?.SetState(null);
+    MyInterface?.SetState(null);
 }
 ```
+
 And then simply call them:
 
-    MyMod.Instance.ShowMyUI();
-    MyMod.Instance.HideMyUI();
+```cs
+ModContent.GetInstance<MyUISystem>().ShowMyUI();
+ModContent.GetInstance<MyUISystem>().HideMyUI();
+```
 
 
 ## State history
@@ -115,20 +137,20 @@ The interface keeps track of a state history. If you wish to go back to the prev
 
 # Adding elements
 
-If you activate your UI now, you might be confused since nothing shows. This is because your UI is empty.
+If you activate your UI now, you might be confused since nothing shows. This is because your UI is empty.  
 You can add any elements you want to the UIState, and they will then show up.
 
 In your MyUI class, override the `OnInitialize` method. For example add a new UIPanel to the state:
 ```cs
 public override void OnInitialize() { // 1
-  UIPanel panel = new UIPanel(); // 2
-  panel.Width.Set(300, 0); // 3
-  panel.Height.Set(300, 0); // 3
-  Append(panel); // 4
+    UIPanel panel = new UIPanel();    // 2
+    panel.Width.Set(300, 0);          // 3
+    panel.Height.Set(300, 0);         // 3
+    Append(panel);                    // 4
 }
 ```
 1) Override the OnInitialize method. This is called when we initialize the UI when our mod loads.
-2) Create a new UIPanel instance. This is a vanilla class that will draw a vanilla styled  backdrop on this element.
+2) Create a new UIPanel instance. This is a vanilla class that will draw a vanilla styled backdrop on this element.
 3) Set the width and height to something bigger so we can see it.
 4) Append the panel to our UIState. Append is a method on the UIElement class and it allows you to add child elements to that element. Children are placed relative to that element. Since UIState covers the entire screen, our UIPanel will show up in the top left origin of the screen.
 
@@ -137,16 +159,16 @@ public override void OnInitialize() { // 1
 Let's spice things up by adding some text to our UIPanel. We can do this in the same fashion, but this time appending the element to our panel variable:
 ```cs
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    Append(panel);
 
-  UIText text = new UIText("Hello world!"); // 1
-  panel.Append(text); // 2
+    UIText text = new UIText("Hello world!"); // 1
+    panel.Append(text);                       // 2
 }
 ```
-1) Initialize the UIText
+1) Initialize the UIText.
 2) The UIText element is now a child of the UIPanel element. The text should show in the UIPanel.
 
 ## Centering element
@@ -176,32 +198,32 @@ public float VAlign;
 Centering an element is a common use case for modders. Centering an element relative to it's parent is easy. To center the text in our UIPanel, we can use HAlign and VAlign, and set both to 0.5f:
 ```cs
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    Append(panel);
 
-  UIText text = new UIText("Hello world!");
-  text.HAlign = 0.5f; // 1
-  text.VAlign = 0.5f; // 1
-  panel.Append(text);
+    UIText text = new UIText("Hello world!");
+    text.HAlign = 0.5f; // 1
+    text.VAlign = 0.5f; // 1
+    panel.Append(text);
 }
 ```
 This is basically setting our horizontal and vertical alignment to 50%, centering our element.
 
 ### Header-like text
-We can use these alignment tricks to perfectly align our text like  a header, if we want. We can set HAlign to 50% to horizontally center our text, we can either set VAlign to a low value or a fixed absolute value by setting the Top position. The latter is recommended:
+We can use these alignment tricks to perfectly align our text like a header, if we want. We can set HAlign to 50% to horizontally center our text, we can either set VAlign to a low value or a fixed absolute value by setting the Top position. The latter is recommended:
 ```cs
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    Append(panel);
 
-  UIText header = new UIText("My UI Header");
-  header.HAlign = 0.5f; // 1
-  header.Top.Set(15, 0); // 2
-  panel.Append(header);
+    UIText header = new UIText("My UI Header");
+    header.HAlign = 0.5f;  // 1
+    header.Top.Set(15, 0); // 2
+    panel.Append(header);
 }
 ```
 1) Set the horizontal alignment to 50%
@@ -213,11 +235,11 @@ Your UI probably still shows in the top-left corner of your UIState. Most modder
 
 ```cs
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  panel.HAlign = panel.VAlign = 0.5f; // 1
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    panel.HAlign = panel.VAlign = 0.5f; // 1
+    Append(panel);
 }
 ```
 
@@ -227,36 +249,36 @@ This trick however will not work if you change how your UIState spans across the
 
 
 # Interaction with UIElements
-The most common interaction modders want is doing something when an item is clicked, such as a button.
+The most common interaction modders want is doing something when an item is clicked, such as a button.  
 Let's add a button to the UI with an interaction:
 
 ```cs
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    Append(panel);
 
-  UIText header = new UIText("My UI Header");
-  header.HAlign = 0.5f;
-  header.Top.Set(15, 0);
-  panel.Append(header);
+    UIText header = new UIText("My UI Header");
+    header.HAlign = 0.5f;
+    header.Top.Set(15, 0);
+    panel.Append(header);
 
-  UIPanel button = new UIPanel(); // 1
-  button.Width.Set(100, 0);  
-  button.Height.Set(50, 0);
-  button.HAlign = 0.5f;
-  button.Top.Set(25, 0); // 2
-  button.OnClick += OnButtonClick; // 3
-  panel.Append(button);
-  
-  UIText text = new UIText("Click me!");
-  text.HAlign = text.VAlign = 0.5f; // 4
-  button.Append(text); // 5
+    UIPanel button = new UIPanel();   // 1
+    button.Width.Set(100, 0);
+    button.Height.Set(50, 0);
+    button.HAlign = 0.5f;
+    button.Top.Set(25, 0);            // 2
+    button.OnClick += OnButtonClick;  // 3
+    panel.Append(button);
+
+    UIText text = new UIText("Click me!");
+    text.HAlign = text.VAlign = 0.5f; // 4
+    button.Append(text);              // 5
 }
 
 private void OnButtonClick(UIMouseEvent evt, UIElement listeningElement) {
-  // We can do stuff in here!
+    // We can do stuff in here!
 }
 ```
 1) Initialize a new UIPanel. Because there is no UIButton class (only UIImageButton), we will use UIPanel and UIText for this.
@@ -270,15 +292,15 @@ OnButtonClick currently does nothing. Let's change our text. In order to do this
 private UIText text; // Init later
 
 public override void OnInitialize() {
-	// ... code
+    // ... code
     text = new UIText("Click me!");
-	// ... other code
+    // ... other code
 }
 ```
 Now we can access text in our OnButtonClick method:
 ```cs
 private void OnButtonClick(UIMouseEvent evt, UIElement listeningElement) {
-	text.SetText("I was clicked!");
+    text.SetText("I was clicked!");
 }
 ```
 
@@ -308,14 +330,16 @@ public event UIElement.MouseEvent OnXButton2MouseUp;
 public event UIElement.MouseEvent OnXButton2Click;
 public event UIElement.MouseEvent OnXButton2DoubleClick;
 public event UIElement.ScrollWheelEvent OnScrollWheel;
+public event UIElement.ElementEvent OnUpdate;
 ```
 
 # Tooltip on hover
-Another useful interaction modders commonly want is showing a tooltip when hovering an element. This is best done by overriding the OnUpdate method and checking if the mouse hovers the element, and then change Main.hoverItemName. Let's show this tooltip if we hover the button: (you'll need to make button a field on class level just like we did with the text)
+Another useful interaction modders commonly want is showing a tooltip when hovering an element. This can be done either by subscribing to the OnUpdate event or overriding the Update method and checking if the mouse hovers the element (Note that if you override Update you also need to call base.Update in it), and then change Main.hoverItemName. Let's show this tooltip if we hover the button: (you'll need to make button a field on class level just like we did with the text)
 ```cs
 public override void Update(GameTime gameTime) {
-	if (text.IsMouseHovering || button.isMouseHovering) {
-    	Main.hoverItemName = "Click to see what happens";
+    base.Update(gameTime); // This ensures the Update call is propagated to the children.
+    if (text.IsMouseHovering || button.isMouseHovering) {
+        Main.hoverItemName = "Click to see what happens";
     }
 }
 ```
@@ -326,53 +350,54 @@ Override the methods .OnActivate() and .OnDeactivate() to do things when your UI
 # Custom UIElement
 Making your own element is easy. You will have to make a custom class that inherits the `UIElement` class. The OnInitialize, OnActivate, OnDeactivate, DrawSelf and Update methods will be the staple methods to override.
 
-A trivial example is making our own custom button class to facilitate what we do above.
-Let's start with the basics: first define what our class is and should do.
-The button class must show some text and be clickable, when clicked an assigned action can be performed.
+A trivial example is making our own custom button class to facilitate what we do above.  
+Let's start with the basics: first define what our class is and should do.  
+The button class must show some text and be clickable, when clicked an assigned action can be performed.  
 Good, now that we know the use-case for the class, we can model it:
 ```cs
 public class UIClickableButton : UIElement {
 
-	// 1
-	private object _text;
-	private UIElement.MouseEvent _clickAction;
-	private UIPanel _uiPanel;
-	private UIText _uiText;
-	
-	// 2
-	public string Text 
-	{
-		get => _uiText?.Text ?? string.Empty; // 3
-		set => _text = value;
-	}
+    // 1
+    private object _text;
+    private UIElement.MouseEvent _clickAction;
+    private UIPanel _uiPanel;
+    private UIText _uiText;
 
-	public UIClickableButton(object text, UIElement.MouseEvent clickAction) : base() { // 4
-		_text = text?.toString() ?? string.Empty;
-		_clickAction = clickAction;
-	}
+    // 2
+    public string Text 
+    {
+        get => _uiText?.Text ?? string.Empty; // 3
+        set => _text = value;
+    }
 
-	public override void OnInitialize() { 
-		_uiPanel = new UIPanel(); // 5
-		_uiPanel.Width = StyleDimension.Fill; // 5
-		_uiPanel.Height = StyleDimension.Fill; // 5
-		Append(_uiPanel);
-		
-		_uiText = new UIText(""); // 6
-		_uiText.VAlign = _uiText.HAlign = 0.5f; // 6
-		_uiPanel.Append(_uiText);	
-		
-		_uiPanel.OnClick += _clickAction; // 7
-	}
-	
-	public override void Update(GameTime gameTime) {
-		if (_text != null) { // 8
-			_uiText.SetText(_text.ToString());
-			_text = null;
-			Recalculate(); // 9
-            base.MinWidth = _uiText.MinWidth; // 9
+    public UIClickableButton(object text, UIElement.MouseEvent clickAction) : base() { // 4
+        _text = text?.toString() ?? string.Empty;
+        _clickAction = clickAction;
+    }
+
+    public override void OnInitialize() { 
+        _uiPanel = new UIPanel();               // 5
+        _uiPanel.Width = StyleDimension.Fill;   // 5
+        _uiPanel.Height = StyleDimension.Fill;  // 5
+        Append(_uiPanel);
+
+        _uiText = new UIText("");               // 6
+        _uiText.VAlign = _uiText.HAlign = 0.5f; // 6
+        _uiPanel.Append(_uiText);
+
+        _uiPanel.OnClick += _clickAction;       // 7
+    }
+
+    public override void Update(GameTime gameTime) {
+        base.Update(gameTime); // Propagate update to child elements.
+        if (_text != null) {                    // 8
+            _uiText.SetText(_text.ToString());
+            _text = null;
+            Recalculate();                      // 9
+            base.MinWidth = _uiText.MinWidth;   // 9
             base.MinHeight = _uiText.MinHeight; // 9
-		}
-	}
+        }
+    }
 }
 ```
 There's a lot going on, let's see:
@@ -392,25 +417,25 @@ Now we can use this class, instead of what we did before:
 private UIClickableButton _button;
 
 public override void OnInitialize() {
-  UIPanel panel = new UIPanel();
-  panel.Width.Set(300, 0);
-  panel.Height.Set(300, 0);
-  Append(panel);
+    UIPanel panel = new UIPanel();
+    panel.Width.Set(300, 0);
+    panel.Height.Set(300, 0);
+    Append(panel);
 
-  UIText header = new UIText("My UI Header");
-  header.HAlign = 0.5f;
-  header.Top.Set(15, 0);
-  panel.Append(header);
+    UIText header = new UIText("My UI Header");
+    header.HAlign = 0.5f;
+    header.Top.Set(15, 0);
+    panel.Append(header);
 
-  _button = new UIClickableButton("Click me!", OnButtonClick);
-  _button.Width.Set(100, 0);  
-  _button.Height.Set(50, 0);
-  _button.HAlign = 0.5f;
-  _button.Top.Set(25, 0);
-   panel.Append(_button);
+    _button = new UIClickableButton("Click me!", OnButtonClick);
+    _button.Width.Set(100, 0);  
+    _button.Height.Set(50, 0);
+    _button.HAlign = 0.5f;
+    _button.Top.Set(25, 0);
+     panel.Append(_button);
 }
 
 private void OnButtonClick(UIMouseEvent evt, UIElement listeningElement) {
-	_button.Text = "I was clicked!";
+    _button.Text = "I was clicked!";
 }
 ```
