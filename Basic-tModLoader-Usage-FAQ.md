@@ -248,9 +248,6 @@ Navigate to the [tModLoader install folder](https://github.com/tModLoader/tModLo
 </details>
 
 # Audio Issues
-### IAudioClient workaround
-Try the [IAudioClient workaround](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856).
-
 ## Audio Troubleshooting
 Audio issues are particularly hard to identify, try these troubleshooting steps if your issue is not listed. For each of these make sure tModLoader is closed while you try these changes:
 
