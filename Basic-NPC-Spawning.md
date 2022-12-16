@@ -1,7 +1,7 @@
 # Basic NPC Spawning
 This guide will teach the basics of spawning enemies.
 
-# Basic Ideas
+# Basic Ideas g8h
 There are a few ideas you need to understand first:
 
 ## Balance
