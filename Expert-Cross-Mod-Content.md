@@ -6,15 +6,14 @@ When inter-operating with other mods, there are several things to note. The bigg
 
 The easiest form of cross-mod content is utilizing items or tiles in recipes, shops, or drops. The first thing to note is that the mod may or may not exist. To determine if it exists, we first ask tModLoader for the Mod object.
 ```cs
-Mod exampleMod = ModLoader.GetMod("ExampleMod");
+ModLoader.TryGetMod("ExampleMod", out Mod exampleMod);
 ```
-The exampleMod object is now either Null or a valid reference to the Mod class of ExampleMod. We want to check if exampleMod is null, and if it isn't we can do other things with it. In this example, we will add an item to our Town NPC's shop.
+The exampleMod object is now either Null or a valid reference to the Mod class of ExampleMod. There are two ways to determine whether a mod is loaded when using `ModLoader.TryGetMod`, you can either use the boolean value returned by the method or check if the `Mod` instance is null. In this example, it's easier to check if the method returned `true`. We will add an item to our Town NPC's shop.
 ```cs
 public override void SetupShop(Chest shop, ref int nextSlot)
 {
     // other code
-    Mod exampleMod = ModLoader.GetMod("ExampleMod");
-    if (exampleMod != null)
+    if (ModLoader.TryGetMod("ExampleMod", out Mod exampleMod))
     {
         shop.item[nextSlot].SetDefaults(exampleMod.ItemType("ExampleWings"));
         nextSlot++;
