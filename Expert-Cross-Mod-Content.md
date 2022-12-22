@@ -106,7 +106,7 @@ public bool ThoriumModDownedScout
 ```
 Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I suggest setting that static bool like this:
 ```cs
-thoriumLoaded = ModLoader.GetMod("ThoriumMod") != null;
+thoriumLoaded = ModLoader.HasMod("ThoriumMod");
 ```
 Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
 
