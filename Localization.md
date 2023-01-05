@@ -6,7 +6,7 @@ These localization files are easy to work with, allowing users without technical
 This wiki page will cover localization topics intended for a mod developer. If you are interested in localizing an existing mod, or providing localization to tModLoader itself, please read the [Contributing Localization wiki page](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization).
 
 # Migrating from 1.4.3 to 1.4.4
-Beginning in tModLoader v2023.01, all localization is now done completely in the .hjson files. Declaring translations in code is no longer supported. This change will greatly streamline localization management and make mod translations. See the [Major Localization Changes feature proposal](https://github.com/tModLoader/tModLoader/issues/3074) if you are interested in more of the rationale for these changes.
+Beginning in tModLoader v2023.01, all localization is now done completely in the .hjson files. Declaring translations in code is no longer supported. This change will greatly streamline localization management and make mod translations. See the [Major Localization Changes feature proposal](https://github.com/tModLoader/tModLoader/issues/3074) if you are interested in more of the rationale for these changes. **If you are not using Git or some form of version control, it is recommended that you make a backup of your mod's source folder.**
 
 ## Generate Localization Files on 1.4.3
 To begin, we need to use an older tModLoader to export localization files.
@@ -22,13 +22,13 @@ You'll need to use Steam to switch to the branch where 1.4.4 tModLoader. This br
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
 After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. (Make backups of these files first if you aren't using Git to backup your files.) Delete the `.hjson` files and then rename the `.hjson.new` files to `.hjson`.
 
-Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work.
+Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used.
 
 # Automatic Localization Files
 tModLoader will automatically update .hjson files using the English files as a guide. 
 
 ## Prefix
-Modders can use a special filename pattern to indicate that all localization entries in a file share a common prefix. The most common usage of this is to omit the "Mods" and "ModNameHere" entries from localization files. By omitting these, the file is less indented and easier for some to work with.
+Modders can use a special filename pattern to indicate that all localization entries in a file share a common prefix. The most common usage of this is to omit the "Mods" and "ModNameHere" entries from localization files. By omitting these, the file is less indented and easier for some to work with. The vast majority of mods won't use localization values outside their mods prefix.
 
 For example, a file called "Localization/en-US_Mods.ExampleMod.hjson" will inherit the "Mods.ExampleMod" prefix, meaning that the file can start directly with an entry for "Items".
 
