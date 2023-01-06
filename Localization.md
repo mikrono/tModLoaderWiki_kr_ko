@@ -22,7 +22,7 @@ You'll need to use Steam to switch to the branch where 1.4.4 tModLoader. This br
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
 After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. (Make backups of these files first if you aren't using Git to backup your files.) Delete the `.hjson` files and then rename the `.hjson.new` files to `.hjson`.
 
-Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used.
+Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for `.SetDefault(` to easily find most of these.)
 
 # Automatic Localization Files
 tModLoader will automatically update .hjson files using the English files as a guide. 
