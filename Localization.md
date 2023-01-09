@@ -1,28 +1,32 @@
 # What is Localization?
-Localization provides the ability for a mod to be played and enjoyed by users who speak a language different from the language the mod author uses. ExampleMod Every piece of text that a user might see while playing a mod is contained in text files called localization files. For example, ExampleMod has an item called "Paper Airplane" in English, but "Бумажный самолётик" in Russian. Through the use of localization, Russian users can understand and enjoy the content of ExampleMod without learning English.
+Localization provides the ability for a mod to be played and enjoyed by users who speak a language different from the language the mod author uses. Every piece of text that a user might see while playing a mod is contained in text files called localization files. For example, ExampleMod has an item called "Paper Airplane" in English, but "Бумажный самолётик" in Russian. Through the use of localization, Russian users can understand and enjoy the content of ExampleMod without learning English.
 
 These localization files are easy to work with, allowing users without technical skills to translate mods. These translations can then be provided to the mod author or published as a new mod, allowing more people to enjoy the mod.
 
 This wiki page will cover localization topics intended for a mod developer. If you are interested in localizing an existing mod, or providing localization to tModLoader itself, please read the [Contributing Localization wiki page](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization).
 
 # Migrating from 1.4.3 to 1.4.4
-Beginning in tModLoader v2023.01, all localization is now done completely in the .hjson files. Declaring translations in code is no longer supported. This change will greatly streamline localization management and make mod translations. See the [Major Localization Changes feature proposal](https://github.com/tModLoader/tModLoader/issues/3074) if you are interested in more of the rationale for these changes. **If you are not using Git or some form of version control, it is recommended that you make a backup of your mod's source folder.**
+Beginning in tModLoader v2023.01, all localization is now done completely in the `.hjson` files. Declaring translations in code is no longer supported. This change will greatly streamline localization management and make mod translations easier to create. See the [Major Localization Changes feature proposal](https://github.com/tModLoader/tModLoader/issues/3074) if you are interested in more of the rationale for these changes. 
+
+**If you are not using Git or some form of version control, it is recommended that you make a backup of your mod's source code folder before continuing.**
 
 ## Generate Localization Files on 1.4.3
-To begin, we need to use an older tModLoader to export localization files.
+To begin, we need to use an older tModLoader to export localization files. You'll need to use Steam to switch to the `None` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
-Open up tModLoader, enable the mod, and visit the Mod Sources menu. Find your mod. You will find a green arrow that says "Export 1.4.4+ localization files", press it.    
+Once the game is on the right version, open up tModLoader, enable the mod, and visit the `Mod Sources` menu. Find your mod in the listing. You will find a green arrow that says "Export 1.4.4+ localization files" when hovered, press it.    
 ![image](https://user-images.githubusercontent.com/4522492/210681409-a659670d-5908-4e5d-bd45-74c0545f4666.png)    
-Now navigate to the ModSources folder and navigate to your mod's localization files. You should see newly generated `.hjson.new` files:    
+Now navigate to the `"ModSources"` folder and navigate to your mod's localization files. You should see newly generated `.hjson.new` files:    
 ![image](https://user-images.githubusercontent.com/4522492/210681629-8aad2234-bd56-40c8-b03f-7e36b98d4486.png)    
-Open up the new files in a text editor and confirm that they look correct. There should be entries that were previously in the current .hjson files as well as newly generated entries for all other content in the mod. If it looks good, continue to the next steps.
+Open up the new files in a text editor and confirm that they look correct. There should be all the entries that were previously in the current `.hjson` files as well as newly generated entries for all other content in the mod. If it looks good, continue to the next steps.
 
 ## Switch to 1.4.4 tModLoader and Build Mod
-You'll need to use Steam to switch to the branch where 1.4.4 tModLoader. This branch is currently the `1.4-preview` branch. After launching tModLoader, you'll notice that your mod (and most likely all other mods you had enabled) fails to load, this is expected. Visit the Mod Sources menu and press the "Run tModPorter" button. Along with other changes, this will remove all code using the old localization approaches.     
-![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
-After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. (Make backups of these files first if you aren't using Git to backup your files.) Delete the `.hjson` files and then rename the `.hjson.new` files to `.hjson`.
+Use Steam to switch to the `1.4-preview` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
-Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for `.SetDefault(` to easily find most of these.)
+After launching tModLoader, you'll notice that your mod (and most likely all other mods you had enabled) fails to load, this is expected. Visit the Mod Sources menu and press the "Run tModPorter" button. Along with other changes, this will remove all code using the old localization approach.     
+![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
+After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. Delete the current `.hjson` files and then rename the `.hjson.new` files to the `.hjson` extension. (If you can't rename the extensions for the files, you'll need to [enable "File Name Extensions"](https://gfycat.com/TheseSameGrasshopper) so you can.)
+
+Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for the search term `.SetDefault(` to easily find most of these lines.)
 
 # Automatic Localization Files
 tModLoader will automatically update .hjson files using the English files as a guide. 
