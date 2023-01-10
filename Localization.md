@@ -28,8 +28,73 @@ After this, you'll want to find those `.hjson.new` files and use them to replace
 
 Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for the search term `.SetDefault(` to easily find most of these lines.)
 
+# How Localization Works
+Every piece of text in the game, from the names of items to the words on the main menu, use localization. Each piece of text in the game is actually a pair of data: a localization key and a localization value. For example, when the player is creating a small world, the game uses the localization key of `UI.WorldSizeSmall` to look up the correct translation value for the currently loaded language, and displays the word "Small" to the user if English is selected. If another language is selected, the game still looks up `UI.WorldSizeSmall` but the localization value will be different. As the creators of Terraria write code in English, most localization keys are very similar to their English translation value.
+
+In tModLoader, mods use `.hjson` files to cleanly contain localization keys and localization values. Each language has their own `.hjson` file. If you are familiar with JSON, these `.hjson` files will be familiar. 
+
+Here is a simple example:
+
+Filename: **tModLoader/ModSources/ExampleMod/en-US.hjson**
+```
+Mods: {
+	ExampleMod: {
+		Items: {
+			ExampleItem: {
+				DisplayName: Example Item
+				Tooltip: This is a modded Item.
+			}
+		}
+	}
+}
+```
+
+In this example, we can see 2 main concepts: localization keys and localization translations. The localization key is derived from the combination of all the text to the left of `:` at each level of nesting. The text to the right of the `:` is the localization value. This example communicates 2 localization keys and their corresponding localization values: `Mods.ExampleMod.Items.ExampleItem.Displayname` corresponds to `Example Item` and `Mods.ExampleMod.Items.ExampleItem.Tooltip` corresponds to `This is a modded Item.`. If the syntax seems complicated, do not worry, modders do not need to manually edit these files, the game will update them automatically.
+
+When this mod is loaded, tModLoader will find all localization files corresponding to the current language and store them in memory. When the game needs to display text to the user, a key is used to query the stored data and retrieve the correct text. Translations are stored in memory as a `LocalizedText` object, modders can use the `Language.GetText` method to retrieve the `LocalizedText` object from a localization key. The `Value` property can be used to retrieve the localization value from the `LocalizedText` object. Alternatively, the `Language.GetTextValue` method returns the localization value directly from a localization key:
+
+```cs
+string hivePackDialogue = Language.GetTextValue("Mods.ExampleMod.Dialogue.ExampleTravelingMerchant.HiveBackpackDialogue");
+or
+string hivePackDialogue = Language.GetText("Mods.ExampleMod.Dialogue.ExampleTravelingMerchant.HiveBackpackDialogue").Value;
+or
+LocalizedText hivePackDialogueLocalizedText = Language.GetText("Mods.ExampleMod.Dialogue.ExampleTravelingMerchant.HiveBackpackDialogue");
+string hivePackDialogue = hivePackDialogueLocalizedText.Value;
+```
+
+## Localization Keys
+tModLoader will automatically assign translation keys to most content. The key patters is `Mods.{ModName}.{Category}.{ContentName}.{DataName}`, where `ModName` is the internal name of the mod, `Category` is supplied by the type of content, `ContentName` is the internal name of the content (commonly the classname), and `DataName` specifies the key within the class. 
+
+For example, `ModItem` has the `Category` set as `Items`. It also has 2 separate pieces of data, the `DisplayName` and the `Tooltip`. If a mod named `ExampleMod` adds a `ModItem` class named `ExampleItem`, then 2 keys will be generated and added to the `.hjson` files: `Mods.ExampleMod.Items.ExampleItem.DisplayName` and `Mods.ExampleMod.Items.ExampleItem.Tooltip`.
+
 # Automatic Localization Files
-tModLoader will automatically update .hjson files using the English files as a guide. 
+tModLoader will automatically update `.hjson` files when new content or translation keys are used. The English files will be used as the template for other languages, which will inherit comments and layout automatically. 
+
+## Adding Content
+When a modder adds new content to their mod, such as a `ModItem`, that piece of content will initially not be localized. The modder should build and reload their mod. Once the mod loads, the `.hsjon` files will automatically update. The English files will now contain default translation entries for the new content. The non-English files will contain those same entries, but commented out. To localize the content, the modder needs to edit the .hjson files with the desired text, save, and build and reload their mod again.
+
+## HJSON syntax
+`.hjson` files contain Hjson data. Hjson is similar to JSON, but is intended to be human readable. See [the Hjson website](https://hjson.github.io/) explains the details of the Hjson syntax, but most modders can just follow examples to get a feel for the syntax. 
+
+## Comments
+`.hjson` files can contain a variety of comment styles. tModLoader uses Hjson comments to convey 2 separate concepts. 
+
+Comments using the `#` at the beginning of the line are actual comments, useable by mod authors to remind themselves of useful things. These comments should be placed immediately above the key they pertain to. Failure to place comments above the item will result in the comment being lost or misplaced when tModLoader automatically updates the localization files.
+
+Example:
+```
+...
+			ExampleCanStackItem: {
+				DisplayName: Example CanStack Item: Gift Bag
+				# References a language key that says "Right Click To Open" in the language of the game
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+...
+```
+
+These comments will be copied from the English files to the non-English files as well, where they can remind translators of where custom translation keys are used, for example.
+
+Comments using the `/* */` or `//` style are used by tModLoader to indicate that a non-English translation key has yet to be translated. This serves as an indicator to the modder about which languages are missing translations. A translator can translated the translation value into their language and remove the comment syntax. Modders should not use this comment syntax for normal comments as they will be lost when the game automatically updates the `.hjson` files.
 
 ## Prefix
 Modders can use a special filename pattern to indicate that all localization entries in a file share a common prefix. The most common usage of this is to omit the "Mods" and "ModNameHere" entries from localization files. By omitting these, the file is less indented and easier for some to work with. The vast majority of mods won't use localization values outside their mods prefix.
@@ -43,17 +108,35 @@ Localization/en-US_Mods.ExampleMod.hjson
 Localization/en-US/Mods.ExampleMod.hjson
 en-US_Mods.ExampleMod.hjson
 en-US/Mods.ExampleMod.hjson
+Localization/CoolBoss_en-US_Mods.ExampleMod.hjson
 ```
 
-# Adding new Translations
+## Multiple Files
+Modders can use multiple `.hjson` files to organize their translations. For example, if a mod contained `en-US_Mods.ExampleMod.Items.hjson` and `en-US_Mods.ExampleMod.hjson`, the `en-US_Mods.ExampleMod.Items.hjson` file could contain all item localization while the other file contains the rest of the localization entries. New content will automatically end up in an existing `.hjson` file that has existing entries most similar to the translation key.
+
+If you split up localization files, you only need to edit the English files and then build and reload the mod. The other languages will automatically adjust themselves to match the same layout.
+
+# Adding new Translation Keys
+Entries for new content will automatically populate the `.hjson` files, but custom translation keys can also be added to the files.
+
 ## Custom Keys
-To add new translations, simply follow the hjson syntax. For example, a modder could add a category
+To add custom keys, a modder can follow the `.hjson` syntax to add the localization entry directly. For example, ExampleMod has a category called "Common", these entries were all manually added as they are not used by tModLoader classes directly.
 
 ## Custom Fields
-Modders can add `LocalizedText` properties to their classes.
+Modders can add `LocalizedText` properties to their classes. For example, the following property could be added to a `ModItem` class:
+
+```cs
+public LocalizedText SwitchingToMessage => this.GetOrRegisterLocalization(nameof(SwitchingToMessage), () => "");
+```
+
+Elsewhere in the code, that property can be used to display localized text to the user:
+
+```cs
+Main.NewText(Language.GetTextValue(this.GetLocalizationKey("SwitchingToMessage")));
+```
 
 # Adding a new Language
 By default, tModLoader will only generate localization files for languages it sees the mod supports. To add a new language, simple make a text file and name it in the same manner as your existing localization files. You only need to make one. The file or folder path needs to contain the language code for the language: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), or Polish ("pl-PL"). Once the file is made and has the correct file extension, rebuilt the mod. The file will update with entries ready for translating. Other files will also be generated following the organization of the English hjson files.
 
 # ModType and ILocalizedModType
-Mods implementing a custom `ModType` can implement `ILocalizedModType` to easily facilitate localization. This is as simple as adding `, ILocalizedModType` to the class inheritance and implementing the `LocalizationCategory` property by adding `public string LocalizationCategory => "MyModTypeCategory";`. For each `LocalizedText` in your custom `ModType` class, you can use `public virtual LocalizedText DisplayName => this.GetOrAddLocalization(nameof(DisplayName), PrettyPrintName);`, allowing them to be categorized properly in hjson files as other existing ModType classes.
+Mods implementing a custom `ModType` can implement `ILocalizedModType` to easily facilitate localization. This is as simple as adding `, ILocalizedModType` to the class inheritance and implementing the `LocalizationCategory` property by adding `public string LocalizationCategory => "MyModTypeCategory";`. For each `LocalizedText` in your custom `ModType` class, you can use `public virtual LocalizedText DisplayName => this.GetOrAddLocalization(nameof(DisplayName), PrettyPrintName);`, allowing them to be categorized properly in `.hjson` files as other existing `ModType` classes.
