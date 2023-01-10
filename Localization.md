@@ -67,6 +67,26 @@ tModLoader will automatically assign translation keys to most content. The key p
 
 For example, `ModItem` has the `Category` set as `Items`. It also has 2 separate pieces of data, the `DisplayName` and the `Tooltip`. If a mod named `ExampleMod` adds a `ModItem` class named `ExampleItem`, then 2 keys will be generated and added to the `.hjson` files: `Mods.ExampleMod.Items.ExampleItem.DisplayName` and `Mods.ExampleMod.Items.ExampleItem.Tooltip`.
 
+### Custom Localization Keys
+If many items in your mod share a common translation, you can have them all point to the same translation key. To do this, override the property and return the result of `Language.GetText` using the translation key you wish to use:
+```cs
+public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Common.SomeSharedTooltip");
+```
+If you are using inheritance, you only need to do this in the base class and can even override it again in child classes if a specific child class needs a different localization.
+
+## Substitutions
+If there is text that repeats often in your localization files, or if you wish to use existing text in the game, you can use substitutions to keep your localization files clean and organized. Substitutions take the form of `{$KeyHere}` in localization values. When the game loads, these sections will be replaced by the localized text corresponding to the key provided.
+
+For example, the game already has translations for the text `Right Click To Open`, stored in the `CommonItemTooltip.RightClickToOpen` key. A mod can utilize substitutions to reuse that value. The entry `Tooltip: "{$CommonItemTooltip.RightClickToOpen}"` would end up with the text `Right Click To Open` in the users language for this item. Other existing translations such as item names and other common tooltips are also available for use.
+
+Translations from within the mod can also be used. For example in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), `DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"` is used to reuse the translations contained in the `Mods.ExampleMod.Common.PaperAirplane` key.
+
+## String Formatting
+Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting.
+
+## Chat Tags
+Color and item icons can be added to localization values using [Chat Tags](https://terraria.wiki.gg/wiki/Chat#Tags). Find `ExampleTooltipsItem` in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson) for an example of this.
+
 # Automatic Localization Files
 tModLoader will automatically update `.hjson` files when new content or translation keys are used. The English files will be used as the template for other languages, which will inherit comments and layout automatically. 
 
