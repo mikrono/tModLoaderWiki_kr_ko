@@ -97,11 +97,11 @@ These comments will be copied from the English files to the non-English files as
 Comments using the `/* */` or `//` style are used by tModLoader to indicate that a non-English translation key has yet to be translated. This serves as an indicator to the modder about which languages are missing translations. A translator can translated the translation value into their language and remove the comment syntax. Modders should not use this comment syntax for normal comments as they will be lost when the game automatically updates the `.hjson` files.
 
 ## Prefix
-Modders can use a special filename pattern to indicate that all localization entries in a file share a common prefix. The most common usage of this is to omit the "Mods" and "ModNameHere" entries from localization files. By omitting these, the file is less indented and easier for some to work with. The vast majority of mods won't use localization values outside their mods prefix.
+Modders can use a special filename pattern to indicate that all localization entries in a file share a common prefix. The most common usage of this is to omit the `Mods` and `ModNameHere` entries from localization files. By omitting these, the file is less indented and easier for some to work with. The vast majority of mods won't use localization values outside their mods prefix.
 
-For example, a file called "Localization/en-US_Mods.ExampleMod.hjson" will inherit the "Mods.ExampleMod" prefix, meaning that the file can start directly with an entry for "Items".
+For example, a file called `Localization/en-US_Mods.ExampleMod.hjson` will inherit the `Mods.ExampleMod` prefix, meaning that the file can start directly with an entry for `Items`.
 
-The pattern for this is as follows: The file path is split by folder, then by underscore. After culture is found, the next result will be used as the prefix. The following are all examples of options to indicate that a file is intended for English and should use the "Mods.ExampleMod" prefix.
+The pattern for this is as follows: The file path is split by folder, then by underscore. After culture is found, the next result will be used as the prefix. The following are all examples of options to indicate that a file is intended for English and should use the `Mods.ExampleMod` prefix.
 
 ```
 Localization/en-US_Mods.ExampleMod.hjson
