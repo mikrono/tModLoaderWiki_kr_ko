@@ -63,7 +63,7 @@ string hivePackDialogue = hivePackDialogueLocalizedText.Value;
 ```
 
 ## Localization Keys
-tModLoader will automatically assign translation keys to most content. The key patters is `Mods.{ModName}.{Category}.{ContentName}.{DataName}`, where `ModName` is the internal name of the mod, `Category` is supplied by the type of content, `ContentName` is the internal name of the content (commonly the classname), and `DataName` specifies the key within the class. 
+tModLoader will automatically assign translation keys to most content. The key pattern is `Mods.{ModName}.{Category}.{ContentName}.{DataName}`, where `ModName` is the internal name of the mod, `Category` is supplied by the type of content, `ContentName` is the internal name of the content (commonly the classname), and `DataName` specifies the key within the class. 
 
 For example, `ModItem` has the `Category` set as `Items`. It also has 2 separate pieces of data, the `DisplayName` and the `Tooltip`. If a mod named `ExampleMod` adds a `ModItem` class named `ExampleItem`, then 2 keys will be generated and added to the `.hjson` files: `Mods.ExampleMod.Items.ExampleItem.DisplayName` and `Mods.ExampleMod.Items.ExampleItem.Tooltip`.
 
