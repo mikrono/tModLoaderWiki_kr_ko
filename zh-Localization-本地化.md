@@ -1,4 +1,4 @@
-#### [Original Page (English) | 原页面 (英语)](https://github.com/tModLoader/tModLoader/wiki/Localization)
+[Original Page (English) | 原页面 (英语)](https://github.com/tModLoader/tModLoader/wiki/Localization)
 
 ---
 
