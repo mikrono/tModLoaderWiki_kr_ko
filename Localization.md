@@ -32,6 +32,19 @@ After this, you'll want to find those `.hjson.new` files and use them to replace
 
 Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for the search term `.SetDefault(` to easily find most of these lines.)
 
+# Localization Workflow
+Localization files are updated at the end of mod loading. This means that a modder will need to build and load a mod after adding content in order for the localization files to update. After they update, the modder can edit the `.hjson` files to add translations. After this is done, the mod can be built and reloaded once again for the translations to appear in-game.
+
+To avoid losing work, please be aware of the intended workflow:
+
+1. Add new content to mod, such as a new `ModItem`
+2. Build and Reload Mod
+3. Edit `.hjson` files to give new content an English name
+4. Build and Reload Mod
+5. Non-English `.hjson` files are now updated with appropriate placeholders and can be updated as well by translators or mod makers
+
+If a translator sends you an updated `.hjson` file to add to your mod directly, be aware that it might get overwritten if the mod loads and tModLoader detects that the `.tmod` file is newer than the `.hjson` file for some reason. If this is the case, you might need to copy the file into the mod sources folder after the mod loads.
+
 # How Localization Works
 Every piece of text in the game, from the names of items to the words on the main menu, use localization. Each piece of text in the game is actually a pair of data: a localization key and a localization value. For example, when the player is creating a small world, the game uses the localization key of `UI.WorldSizeSmall` to look up the correct translation value for the currently loaded language, and displays the word "Small" to the user if English is selected. If another language is selected, the game still looks up `UI.WorldSizeSmall` but the localization value will be different. As the creators of Terraria write code in English, most localization keys are very similar to their English translation value.
 
