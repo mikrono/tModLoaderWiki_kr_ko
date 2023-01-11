@@ -90,7 +90,10 @@ public override LocalizedText Tooltip => Language.GetOrRegister("Mods.ExampleMod
 If you are using inheritance, you only need to do this in the base class and can even override it again in child classes if a specific child class needs a different localization. See [Adding Localizable Properties](#adding-localizable-properties) for how to add extra localizations to your content, beyond the default properties provided by tModLoader.
 
 ## String Formatting
-Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting.
+Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting. The [Placeholders section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders) has more info on this.
+
+## Pluralization
+When using placeholders for numbers, such as in `{0} minutes ago`, you'll run into issues in English when the number is exactly 1. When the number is 1, the text should say "1 minute ago" instead of "1 minutes ago". This issue can be solved with pluralization. The [Plurals section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals) has more info on this feature. 
 
 ## Chat Tags
 Color and item icons can be added to localization values using [Chat Tags](https://terraria.wiki.gg/wiki/Chat#Tags). Find `ExampleTooltipsItem` in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson) for an example of this.
