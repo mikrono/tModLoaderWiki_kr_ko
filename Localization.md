@@ -1,3 +1,7 @@
+[中文版 | Chinese version](https://github.com/tModLoader/tModLoader/wiki/zh-Localization-%E6%9C%AC%E5%9C%B0%E5%8C%96)
+
+---
+
 # What is Localization?
 Localization provides the ability for a mod to be played and enjoyed by users who speak a language different from the language the mod author uses. Every piece of text that a user might see while playing a mod is contained in text files called localization files. For example, ExampleMod has an item called "Paper Airplane" in English, but "Бумажный самолётик" in Russian. Through the use of localization, Russian users can understand and enjoy the content of ExampleMod without learning English.
 
