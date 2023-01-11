@@ -130,7 +130,7 @@ Comments using the `/* */` or `//` style are used by tModLoader to indicate that
 ## Translation File Names
 tModLoader will attempt to load all `.hsjon` files in the mod as localization files. As such, localization files can be placed in any folder path, but by convention we recommend placing them in a folder named "Localization" at the root of your mod's source folder. The mod generator follows this convention and will generate `Localization/en-US.hjson` in your mod to get started.
 
-The filename will be parsed using the following pattern: The file path is split by folder, then by underscore, then read from left to right. After a matching culture is found, the next result, if present, will be used as the [prefix](#prefix). 
+A valid culture code must be present at the start of the file-name, or as the name of a containing folder to determine the language.
 
 ### Culture
 
@@ -148,7 +148,7 @@ Localization/en-US_Mods.ExampleMod.hjson
 Localization/en-US/Mods.ExampleMod.hjson
 en-US_Mods.ExampleMod.hjson
 en-US/Mods.ExampleMod.hjson
-Localization/CoolBoss_en-US_Mods.ExampleMod.hjson
+Localization/CoolBoss/en-US_Mods.ExampleMod.hjson
 ```
 
 ## Multiple Files
@@ -203,14 +203,16 @@ Modders can add `LocalizedText` properties to their classes. When correctly impl
 For example, the following property could be added to a `ModItem` class:
 
 ```cs
-public LocalizedText SwitchingToMessage => this.GetOrRegisterLocalization(nameof(SwitchingToMessage), () => "");
+public LocalizedText SwitchingToMessage => this.GetOrRegisterLocalization(nameof(SwitchingToMessage));
 ```
 
-The above code defines a get-only property of `Type` `LocalizedText`. The `GetOrRegisterLocalization` method will attempt to retrieve the localization for the derived key. If this localization is not found, the key will be remembered and added to the localization files when they are updated. The 2nd parameter defines a function that will be used to make the default value that will be assumed if the localization does not exist. This example, `() => ""`, will result in the default value being an empty string. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. 
+The above code defines a get-only property of `Type` `LocalizedText`. The `GetOrRegisterLocalization` method will attempt to retrieve the localization for the derived key. If this localization is not found, the key will be remembered and added to the localization files when they are updated. The localization value automatically added to the `hjson` files will be the key itself, hinting that the entry has not been translated yet.
 
-The key `GetOrRegisterLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here", makeDefaultValue);` instead. Note that `GetOrRegisterLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be ommitted.
+The key `GetOrRegisterLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetOrRegisterLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted.
 
 **In Depth:** `GetOrRegisterLocalization` is a helper method to simplify code and avoid typos. `GetOrRegisterLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalanet to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
+
+`GetOrRegisterLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
 
 ### Registering Localizable Properties
 
@@ -246,6 +248,15 @@ The result of this code is that the localization file now contains these keys, r
 ExampleChest: {
 	MapEntry0: Example Chest
 	MapEntry1: Locked Example Chest
+}
+```
+
+Elsewhere in ExampleChest.cs, these localization keys are dynamically retrieved using `GetLocalizationKey`:
+
+```cs
+public override LocalizedText ContainerName(int frameX, int frameY) {
+	int option = frameX / 36;
+	return Language.GetText(this.GetLocalizationKey("MapEntry" + option));
 }
 ```
 
