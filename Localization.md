@@ -93,7 +93,7 @@ Translations from within the mod can also be used. For example in [ExampleMod's 
 
 ### Scope Simplification
 
-If substitution keys share a scope with the value for a localization key they are being used in, the substitution key can be simplified. For example, in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), the entry for `Mods.ExampleMod.ExamplePetItem.DisplayName` is `"{$Common.PaperAirplane}"`. In this case, the game knows to check for keys within the current scope resulting in the value of `Mods.ExampleMod.Common.PaperAirplane` being found and substituted in. Using this technique, for example, `Mods.ModName` can be omitted from substitution keys.
+If substitution keys share a scope with the value for a localization key they are being used in, the substitution key can be simplified. For example, in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), the value of the `Mods.ExampleMod.ExamplePetItem.DisplayName` key is set to `"{$Common.PaperAirplane}"`. In this case, the game knows to check for keys within the current scope resulting in the value of the key `Mods.ExampleMod.Common.PaperAirplane` being found and substituted in. Using this technique, for example, `Mods.ModName` can be omitted from substitution keys.
 
 ### Overriding Content Localization Keys
 If many items in your mod share a common translation, you can have them all point to the same translation key. To do this, override the property and return the result of `Language.GetText` using the translation key you wish to use:
