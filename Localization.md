@@ -216,16 +216,16 @@ Modders can add `LocalizedText` properties to their classes. When correctly impl
 For example, the following property could be added to a `ModItem` class:
 
 ```cs
-public LocalizedText SwitchingToMessage => this.GetOrRegisterLocalization(nameof(SwitchingToMessage));
+public LocalizedText SwitchingToMessage => this.GetLocalization(nameof(SwitchingToMessage));
 ```
 
-The above code defines a get-only property of `Type` `LocalizedText`. The `GetOrRegisterLocalization` method will attempt to retrieve the localization for the derived key. If this localization is not found, the key will be remembered and added to the localization files when they are updated. The localization value automatically added to the `hjson` files will be the key itself, hinting that the entry has not been translated yet.
+The above code defines a get-only property of `Type` `LocalizedText`. The `GetLocalization` method will attempt to retrieve the localization for the derived key. If this localization is not found, the key will be remembered and added to the localization files when they are updated. The localization value automatically added to the `hjson` files will be the key itself, hinting that the entry has not been translated yet.
 
-The key `GetOrRegisterLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetOrRegisterLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted.
+The key `GetLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted.
 
-**In Depth:** `GetOrRegisterLocalization` is a helper method to simplify code and avoid typos. `GetOrRegisterLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalanet to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
+**In Depth:** `GetLocalization` is a helper method to simplify code and avoid typos. `GetLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalanet to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
 
-`GetOrRegisterLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
+`GetLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
 
 ### Registering Localizable Properties
 
@@ -249,11 +249,11 @@ Main.NewText(SwitchingToMessage.Value);
 
 ### Another Example
 
-[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) serves as an example of using a custom key. By default, tModLoader will register a single translation key for each `ModTile` in the form `Mods.{ModName}.Tiles.{ContentName}.MapEntry`. This key makes it easy to add a map entry to a tile. (Map entries control the text shown to the user when the tile is hovered over in the fullscreen map.) `ExampleChest`, however, needs 2 map entries. Using `GetOrRegisterLocalization`, new keys can easily be added to the localization files:
+[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) serves as an example of using a custom key. By default, tModLoader will register a single translation key for each `ModTile` in the form `Mods.{ModName}.Tiles.{ContentName}.MapEntry`. This key makes it easy to add a map entry to a tile. (Map entries control the text shown to the user when the tile is hovered over in the fullscreen map.) `ExampleChest`, however, needs 2 map entries. Using `GetLocalization`, new keys can easily be added to the localization files:
 
 ```cs
-AddMapEntry(new Color(200, 200, 200), this.GetOrRegisterLocalization("MapEntry0"), MapChestName);
-AddMapEntry(new Color(0, 141, 63), this.GetOrRegisterLocalization("MapEntry1"), MapChestName);
+AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
+AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry1"), MapChestName);
 ```
 
 The result of this code is that the localization file now contains these keys, ready for localizing into other languages:
@@ -264,12 +264,12 @@ ExampleChest: {
 }
 ```
 
-Elsewhere in ExampleChest.cs, these localization keys are dynamically retrieved using `GetLocalizationKey`:
+Elsewhere in ExampleChest.cs, these localization keys are dynamically retrieved using `GetLocalization`:
 
 ```cs
 public override LocalizedText ContainerName(int frameX, int frameY) {
 	int option = frameX / 36;
-	return Language.GetText(this.GetLocalizationKey("MapEntry" + option));
+	return this.GetLocalization("MapEntry" + option);
 }
 ```
 
