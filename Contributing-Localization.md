@@ -11,7 +11,7 @@ Mods that host their code on GitHub are the easiest to contribute translations t
 If a mod does not have a public GitHub, you might want to consider contacting the mod developer. They might be happy to accept translations directly from the community and integrate them into their mod.
 
 ### New Translation Mod
-If a mod developer can't be contacted or doesn't want to deal with translations, a last resort is making a new mod that contains the translations for the mod. This approach is less convenient for users and more work for the translators, but it is an option. (Another option is a resource pack, but that option doesn't currently work.)
+If a mod developer can't be contacted or doesn't want to deal with translations, a last resort is making a new mod that contains the translations for the mod. This approach is less convenient for users and more work for the translators, but it is an option. (In the future, we plan to support localizations in resource packs.)
 
 # Localization Template Files
 The first step to localizing a mod is to obtain the localization files. These files have the file extension `.hjson` and can be edited in any normal text editor.
