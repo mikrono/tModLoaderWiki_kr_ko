@@ -1,6 +1,106 @@
 - **Learn how to contribute localization (translations) to your favorite mod or even to tModLoader itself**
 - **This guide also covers a brief introduction for the [Git version control](https://en.wikipedia.org/wiki/Git) system, but if you want a full guide you should read the [Git & mod management](Intermediate-Git-&-mod-management)**
 
+# Localization Approaches
+There are a few approaches to localizing a mod. Some mod developers welcome translators to contribute translations directly to their project, either through GitHub or in some other manner. Other mod developers would prefer that translations are done as separate mods dependent on the original mod. Whatever the approach, this guide will cover how to localize a mod and how to get your localizations available to other users.
+
+### GitHub
+Mods that host their code on GitHub are the easiest to contribute translations to. A translator can download the mods source code and work directly in it. 
+
+### Contact Mod Developer
+If a mod does not have a public GitHub, you might want to consider contacting the mod developer. They might be happy to accept translations directly from the community and integrate them into their mod.
+
+### New Translation Mod
+If a mod developer can't be contacted or doesn't want to deal with translations, a last resort is making a new mod that contains the translations for the mod. This approach is less convenient for users and more work for the translators, but it is an option. (Another option is a resource pack, but that option doesn't currently work.)
+
+# Localization Template Files
+The first step to localizing a mod is to obtain the localization files. These files have the file extension `.hjson` and can be edited in any normal text editor.
+
+***
+
+### GitHub
+If you are working via GitHub, look for the `hjson` files belonging to the language you wish to use. If no files exist for the language, see the [Adding a new Language](https://github.com/tModLoader/tModLoader/wiki/Localization#adding-a-new-language) section to learn how to generate the files.
+
+### Contact Mod Developer or New Translation Mod
+If you are working without the source code, you'll need to extract the localization files for the mod. First, open up tModLoader and switch the game language to the language you wish to contribute. Next, navigate to the Mods menu and make sure the mod is enabled. Reload mods if necessary. In the Mods menu, click the `More Info` button. On the bottom right is a button for `Extract Localization`, press it. Once you press the button, the file explorer should appear opened to `Terraria\tModLoader\ModLocalization\ModNameHere`. This folder now contains all localization files in the same layout as the original mod. Do not move or rename files within this folder, that would make it harder for the original mod developer to integrate your changes. You'll likely only find a single `.hjson` file, this is typical.
+
+***
+
+# Editing Localization Files
+
+Now that you have the `.hjson` file or files for your language, open it in a text editor. You should see entries for content in the mod. As a translator, you only need to edit the right side of lines with the format `key: translation`. Leave category names and keys untouched (text to the left of `:`). For example:
+
+```
+Mods: {
+	ExampleMod: {
+		Config: {
+			# This is a comment
+			ExampleWingsToggle: {
+				/* Label: ExampleWings Toggle */
+				/* Tooltip: Enables or disables the ExampleWings item */
+			}
+		}
+
+		Keybinds.RandomBuff.DisplayName: 随机增益
+	}
+}
+```
+This example shows 3 translation entries: `Mods.ExampleMod.ExampleWingsToggle.Label`, `Mods.ExampleMod.ExampleWingsToggle.Tooltip`, and `Mods.ExampleMod.Keybinds.RandomBuff.DisplayName`. The `Label` and `Tooltip` entries are "commented out", while the `Keybinds.RandomBuff.DisplayName` entry has already been translated into Chinese. After translating the right side of the `Label` and `Tooltip` entries, the translator should remember to un-comment the entry by deleting the `/*` and `*/` surrounding the line. 
+
+You will also see lines with comments in the form `# Comment here`. These lines should not be translated, they are simply there for context and other notes the original author wrote down. 
+
+After translating, make sure to save the file.
+
+# Testing Localization Files
+If there are any localization keys that are complicated or seem ambiguous, you may want to test your edits.
+
+***
+
+### GitHub
+If you are working on the source code directly, you simply need to build and reload your mod in game. The [Learn how to Build the Mod](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#learn-how-to-build-the-mod) section can teach you how to do that.
+
+### Contact Mod Developer
+Since you don't have the mod code, you'll have to leave this step up to the mod author, or follow the `New Translation Mod` steps below to make a temporary mod to test your changes. If you do, remember not to publish the mod.
+
+### New Translation Mod
+Follow the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#your-first-mod) to generate a mod skeleton. I'd recommend that the mod be named: `{OriginalModInternalNameHere}{LanguageCodeHere}`. For example, a French translation of `ExampleMod` might be named `ExampleModFr`. The display name should follow a similar pattern, maybe `Example Mod Traduction française`. While making the mod skeleton, don't generate the template sword item by leaving the entry for `BasicSword` blank.
+
+Now, find the translation files from earlier and copy them into your mod's mod sources folder. One last thing we need to do is make this translation mod depend on the original mod. To do this, open `build.txt` in a text editor and add the following line: `modReferences = ExampleMod`. Make sure to save the file. This line ensures the players can't enable your translation mod without also enabling the original mod. 
+
+You can now build the mod in game. You should see your translations working. 
+
+***
+
+# Publishing Localization Files
+Once you have checked over everything and made necessary changes, you'll want to publish your localization. This step also depends on which localization approach you are using. 
+
+### GitHub
+If you are familiar with GitHub, or want to learn how, you can make a pull request. More info on how to work with GitHub is found in the []() section below. If learning to use GitHub is too much work, there are other ways to contact the author with your translations. One simple way is to make an Issue on their GitHub page and post the files there. If you intent to localize many mods, it may be worth it to learn the basics of GitHub. 
+
+### Contact Mod Developer
+Send the finished files to the mod developer. The mod developer will then use your files in their code. The mod developer might want to track translation credits in a comment at the top of their English translation file, and also on their workshop homepage.
+
+### New Translation Mod
+If you would like, make an icon for your translation mod. With permission, you might be able to modify the original mods icon. [Mod Skeleton Contents](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents) has info on the dimensions of the icon files. You'll also want to edit `description.txt` with information about the translation mod. Once everything is ready, should build the mod once more and then publish the mod. This is done in the Mod Sources menu.
+
+# Maintaining Localization Files
+The mod you localized might update with new content. If that happens, you might want to update the translations.
+
+### GitHub
+Pull or download the latest code. The template file should be updated already with missing translations. If it isn't, build and reload the mod.
+
+### Contact Mod Developer
+Follow the same steps as before with the updated mod downloaded.
+
+### New Translation Mod
+Follow the same steps as before.
+
+
+***
+**Old Instructions Below**
+***
+
+
 # Contributing Localization
 Most mods should have their code on github, this guide will give a primer on how to provide translations if they do. _If the mod you are interested has their source code private (or doesn't have a Github), you will have to contact the mod developers and ask them how to go about contributing localization._
 
