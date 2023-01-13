@@ -1,6 +1,13 @@
 - **Learn how to contribute localization (translations) to your favorite mod or even to tModLoader itself**
 - **This guide also covers a brief introduction for the [Git version control](https://en.wikipedia.org/wiki/Git) system, but if you want a full guide you should read the [Git & mod management](Intermediate-Git-&-mod-management)**
 
+# Localization Workflow
+1. [Choose an approch](#Localization-Approaches)
+2. [Get a template](#Localization-Template-Files)
+3. [Translate](#Editing-Localization-Files)
+4. [Publish translation](#Publishing-Localization-Files)
+5. [Maintain translation](#Maintaining-Localization-Files)
+
 # Localization Approaches
 There are a few approaches to localize a mod. Some mod developers welcome translators to contribute translations directly to their project, either through GitHub or in some other manner. Other mod developers would prefer that translations are done as separate mods dependent on the original mod. Whatever the approach, this guide will cover how to localize a mod and how to get your localizations available to other users.
 
