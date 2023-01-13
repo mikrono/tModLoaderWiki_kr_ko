@@ -2,7 +2,7 @@
 - **This guide also covers a brief introduction for the [Git version control](https://en.wikipedia.org/wiki/Git) system, but if you want a full guide you should read the [Git & mod management](Intermediate-Git-&-mod-management)**
 
 # Localization Approaches
-There are a few approaches to localizing a mod. Some mod developers welcome translators to contribute translations directly to their project, either through GitHub or in some other manner. Other mod developers would prefer that translations are done as separate mods dependent on the original mod. Whatever the approach, this guide will cover how to localize a mod and how to get your localizations available to other users.
+There are a few approaches to localize a mod. Some mod developers welcome translators to contribute translations directly to their project, either through GitHub or in some other manner. Other mod developers would prefer that translations are done as separate mods dependent on the original mod. Whatever the approach, this guide will cover how to localize a mod and how to get your localizations available to other users.
 
 ### GitHub
 Mods that host their code on GitHub are the easiest to contribute translations to. A translator can download the mods source code and work directly in it. 
