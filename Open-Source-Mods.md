@@ -51,6 +51,7 @@ These mods cover everything except mods that are primarily about new content. So
 * [Item Checklist](https://github.com/JavidPack/ItemChecklist) -- UI, TagCompound, saving Items in TagCompounds.
 * [Item Customizer](https://github.com/gamrguy/ItemCustomizer) -- Messing with shaders.
 * [Modders Toolkit](https://github.com/JavidPack/ModdersToolkit) -- A lot of UI. Very useful in-game to visualize the effects of code as well. In-game c# interpreter also very useful.
+* [Quality of Life](https://github.com/487666123/ImproveGame) -- All the basic and advanced modding: UI, shader, save and load data, multiplayer, On, IL, localization and a lot more. 
 * [Shader Lib](https://github.com/gamrguy/ShaderLib) -- Messing with shaders.
 * [Shorter Respawn](https://github.com/JavidPack/ShorterRespawn) -- Integrating with other mods through Call. (Cheat Sheet and HEROs Mod).
 * [Terraria Sound Suite](https://github.com/direwolf420/TerrariaSoundSuite) -- Everything Terraria sounds: Lets see sounds, their exact values, etc. without needing to search in the source code. You can also select any sound you want and play it in its extensive config. Uses TerrariaHooks' detours (On.) and reflection.
