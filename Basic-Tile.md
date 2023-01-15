@@ -1,3 +1,7 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile/166add9cb77cce9848277575dc9c4f925ecfb69e)
+***
+
 # Basic Tile
 This guide serves to explain the basics of Tiles.
 
@@ -7,12 +11,13 @@ It is important to clearly understand tiles in your mind. Starting out, you migh
 If you are curious about the `Tile` class itself, such as you would find in `Main.tile[]`, please see [Tile Class Documentation](Tile-Class-Documentation)
 
 ## Tile-Item Pairing
-An Item will place a specific Tile when `item.createTile` is set to the TileType of the ModTile. If a Tile has multiple styles, setting `item.placeStyle` allows you to specify that style. The ModTile can return the ModItem as well. For 1x1 tiles, simply set `drop = ModContent.ItemType<ItemName>());` in `ModTile.SetDefaults`. For larger tiles and tiles with multiple styles, use `ModTile.KillMultiTile` combined with `Item.NewItem` to spawn the appropriate Item to the player. See [Multiple Styles](#multiple-styles) for more details.
+An Item will place a specific Tile when `Item.createTile` is set to the TileType of the ModTile. If a Tile has multiple styles, setting `item.placeStyle` allows you to specify that style. The ModTile can return the ModItem as well. For 1x1 tiles, simply set `ItemDrop = ModContent.ItemType<ItemName>());` in `ModTile.SetStaticDefaults`. For larger tiles and tiles with multiple styles, use `ModTile.KillMultiTile` combined with `Item.NewItem` to spawn the appropriate Item to the player. See [Multiple Styles](#multiple-styles) for more details.
 
 # Making a Tile
-To add a tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\ModLoader\Mod Sources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
+To add a tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\tModLoader\ModSources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
 
 ```cs
+using ExampleMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -21,14 +26,14 @@ namespace ModNamespaceHere
 {
 	public class NameHere : ModTile
 	{
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
 			Main.tileLighted[Type] = true;
-			dustType = ModContent.DustType<Sparkle>();
-			drop = ModContent.ItemType<ExampleBlock>();
+			DustType = ModContent.DustType<Sparkle>();
+			ItemDrop = ModContent.ItemType<ExampleBlock>();
 			AddMapEntry(new Color(200, 200, 200));
 			// Set other values here
 		}
@@ -58,8 +63,8 @@ Tile coordinates are 1/16th the size of World coordinates. Remember this if you 
 # Padding
 When making a sprite, it is important to know proper dimensions. For the most part, every individual tile will be 16x16 pixels with 2 pixels of padding to the right and below each, for a total of 18x18.
 
-# SetDefaults
-Now that we've gone through some preliminary info, lets focus on SetDefaults and what to put in it. This section will explain most of the common items in SetDefaults. The point of SetDefaults is to define how the tile acts, such as is it solid, can things stand on it, and does lava kill it. Consulting similar tiles that you wish to emulate in ExampleMod is probably better than trying to do this from scratch. Many of the lines below set something to true, this means the default value is false. Don't bother including lines setting the value to the default, it just clutters your code.
+# SetStaticDefaults
+Now that we've gone through some preliminary info, lets focus on SetStaticDefaults and what to put in it. This section will explain most of the common items in SetStaticDefaults. The point of SetStaticDefaults is to define how the tile acts, such as is it solid, can things stand on it, and does lava kill it. Consulting similar tiles that you wish to emulate in ExampleMod is probably better than trying to do this from scratch. Many of the lines below set something to true, this means the default value is false. Don't bother including lines setting the value to the default, it just clutters your code.
 
 For this guide, many gifs will refer to this tile sprite:    
 ![](https://i.imgur.com/b009P8f.png)    
@@ -94,7 +99,7 @@ false (default):
 ## Main.tileShine[Type] = true;
 ## Main.tileShine2[Type] = true;
 ## Main.tileValue[Type] = true;
-These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleOre.cs)
+These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleOre.cs)
 
 ## Main.tileBlockLight[Type] = true;	
 If set to true, light is blocked by this tile and the light will decrease as it passes through.     
@@ -118,7 +123,7 @@ False (default):
 ![](https://thumbs.gfycat.com/AshamedHoarseAnt-size_restricted.gif)    
 
 ### Main.tileCut[Type] = true;
-The tile can be destroyed by weapons. See [ExampleCutTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs)
+The tile can be destroyed by weapons.
 
 ## Other
 These are more rarely used and won't be explained. See vanilla source code if you need hints with these.
@@ -149,8 +154,8 @@ These are more rarely used and won't be explained. See vanilla source code if yo
 ## Main.tileFrameImportant[Type] = true;
 This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
 	
-## ModTile fields: dustType, drop, adjTiles, etc
-These are explained in the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). 
+## ModTile properties: DustType, ItemDrop, AdjTiles, etc
+These are explained in the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). You may need to press on "Inherits [Terraria.ModLoader.ModBlockType](https://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_block_type.html)" to see other available methods and properties.
 
 ## AddToArray(ref TileID.Sets.RoomNeeds.????);
 Used to make a ModTile act as a lightsource, chair or table for the purposes of housing. Some examples:    
@@ -166,18 +171,18 @@ AddMapEntry is for setting the color and optional text associated with the Tile 
 
 <a name="tileobjectdata"></a>
 # TileObjectData or FrameImportant/MultiTiles
-If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetDefaults`. FrameImportant tiles can be any size, from 1x1 to anything bigger. They can also have many different "styles". Each style can also have "alternates" which are alternate placements of the particular style. 
+If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetStaticDefaults`. FrameImportant tiles can be any size, from 1x1 to anything bigger. They can also have many different "styles". Each style can also have "alternates" which are alternate placements of the particular style. 
 
 For this guide, many gifs will refer to this tile sprite:    
 ![](https://i.imgur.com/b009P8f.png)    
 
 ## Multiple Styles
-You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `item.createTile` but will have different `item.placeStyle` to differentiate which style to place. See [BossTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/BossTrophy.cs) for an example of the code and notice how [BunnyTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Placeable/BunnyTrophy.cs) and [PuritySpiritTrophy](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Placeable/PuritySpiritTrophy.cs) items use the same createTile but different placeStyle values. Notice how `frameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined. See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
+You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `Item.createTile` but will have different `Item.placeStyle` to differentiate which style to place. Usually, `TileFrameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined, see [ExampleBar](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleBar.cs). See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
 
 ![](https://i.imgur.com/O923oDq.png)    
 
 ## Basic TileObjectData.newTile structure
-In `SetDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
+In `SetStaticDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
 
 ## CopyFrom
 Use this to utilize an existing template. The names are self explanatory usually.
@@ -205,12 +210,12 @@ Style3x3Wall
 ```
 
 Typically, you'll want to start out by copying a template, and modifying it as needed.
-For example, [MonsterBanner.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/MonsterBanner.cs#L17) first does:
-`TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);`    
+For example, [ExampleChair.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChair.cs) first does:
+`TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);`    
 ....and then it makes adjustments such as:     
 ```cs
-TileObjectData.newTile.Height = 3; // because the template is for 1x2 not 1x3
-TileObjectData.newTile.CoordinateHeights = new int[]{ 16, 16, 16 }; // because height changed
+TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 }; // the default is 16, 16
+TileObjectData.newTile.CoordinatePaddingFix = new Point16(0, 2); // We added two more pixels
 ```
 ....and finally calls:    
 ```TileObjectData.addTile(Type);```
@@ -287,7 +292,8 @@ Here is an example of a custom AnchorBottom. The 2nd variable in the AnchorData 
 Here is an example of an AnchorTop that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
 `TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);`
 
-[ExampleCutTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleCutTile.cs) shows a custom `AnchorTop` as well as clearing out a copied AnchorBottom.
+Usually, you also want to clear out other anchors that apply to that particular style by default, like this:
+`TileObjectData.newTile.AnchorBottom = AnchorData.Empty;`
 
 ## StyleHorizontal
 By default, tile styles are oriented vertically on the spritesheet:     
@@ -313,7 +319,7 @@ Coral also randomly places a style:
 Should always be true. If you copied a template it will already be true, but be sure you set it if you aren't copying from a template.
 
 ## Wires, Toggles, Changing Frame
-Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleLamp.cs) to see how HitWire changes the frameX to change which sprite is drawn.    
+Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleLamp.cs) to see how HitWire changes the TileFrameX to change which sprite is drawn.    
 ![](https://i.imgur.com/Xq13Slr.png)     
 
 ## Other
@@ -350,7 +356,7 @@ Be sure to call this or your mod won't load properly.
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
 
 # Animation
-Do not change frameX or frameY of the tile for animation. The tile and its values should stay the same as it is animating. [VoidMonolith.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/VoidMonolith.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
+Do not change TileFrameX or TileFrameY of the tile for animation. The tile and its values should stay the same as it is animating. [ExampleAnimatedGlowmaskTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleAnimatedGlowmaskTile.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
 
 # Full Examples
 ## Framed Tile
