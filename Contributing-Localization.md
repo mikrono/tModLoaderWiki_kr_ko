@@ -29,7 +29,13 @@ The first step to localizing a mod is to obtain the localization files. These fi
 If you are working via GitHub, look for the `hjson` files belonging to the language you wish to use. If no files exist for the language, see the [Adding a new Language](https://github.com/tModLoader/tModLoader/wiki/Localization#adding-a-new-language) section to learn how to generate the files.
 
 ### Contact Mod Developer or New Translation Mod
-If you are working without the source code, you'll need to extract the localization files for the mod. First, open up tModLoader and switch the game language to the language you wish to contribute. Next, navigate to the Mods menu and make sure the mod is enabled. Reload mods if necessary. In the Mods menu, click the `More Info` button. On the bottom right is a button for `Extract Localization`, press it. Once you press the button, the file explorer should appear opened to `Terraria\tModLoader\ModLocalization\ModNameHere`. This folder now contains all localization files in the same layout as the original mod. Do not move or rename files within this folder, that would make it harder for the original mod developer to integrate your changes. You'll likely only find a single `.hjson` file, this is typical.
+If you are working without the source code, the easiest method is to make a new translation mod. Follow the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#your-first-mod) to generate a mod skeleton. I'd recommend that the mod be named: `{OriginalModInternalNameHere}{LanguageCodeHere}`. For example, a French translation of `ExampleMod` might be named `ExampleModFr`. The display name should follow a similar pattern, maybe `Example Mod Traduction française`. While making the mod skeleton, don't generate the template sword item by leaving the entry for `BasicSword` blank.
+
+Now, find `build.txt` in your mod's ModSources folder and open it in a text editor. Add the following line: `modReferences = OriginalModInternalNameHere`, replacing `OriginalModInternalNameHere` with the appropriate internal mod name (A mods internal mod name can be seen by finding the mod in `enabled.json` in the [Mods folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#mods)). Next, add another line with `translationMod = true`. Save `build.txt`. Next, find `en-US.hjson` in `ModSources\YourModNameHere\Localization` and delete it, then make a `.hjson` file for the language you wish to support using the [culture abbreviation](https://github.com/tModLoader/tModLoader/wiki/Localization#culture). 
+
+You can now build the mod in game. Make sure the mod you wish to translate is also enabled and reload mods. Your mods source code folder will now be populated with `.hjson` files. Note that the files will be organized according to the original mods layout, so you might need to look around for the `.hjson` files. If you take this approach, follow the `New Translation Mod` steps in the `Testing Localization Files` section.
+
+An alternate approach to generating a new mod if you intend to contribute the translations to the original mod developer is extracting the localization files directly. This approach is simple but will require more work later on. First, open up tModLoader and switch the game language to the language you wish to contribute. Next, navigate to the Mods menu and make sure the mod is enabled. Reload mods if necessary. In the Mods menu, click the `More Info` button. On the bottom right is a button for `Extract Localization`, press it. Once you press the button, the file explorer should appear opened to `Terraria\tModLoader\ModLocalization\ModNameHere`. This folder now contains all localization files in the same layout as the original mod. Do not move or rename files within this folder, that would make it harder for the original mod developer to integrate your changes. You'll likely only find a single `.hjson` file, this is typical. If you take this approach, follow the `Contact Mod Developer` steps in the `Testing Localization Files` section.
 
 ***
 
@@ -70,11 +76,7 @@ If you are working on the source code directly, you simply need to build and rel
 Since you don't have the mod code, you'll have to leave this step up to the mod author, or follow the `New Translation Mod` steps below to make a temporary mod to test your changes. If you do, remember not to publish the mod.
 
 ### New Translation Mod
-Follow the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#your-first-mod) to generate a mod skeleton. I'd recommend that the mod be named: `{OriginalModInternalNameHere}{LanguageCodeHere}`. For example, a French translation of `ExampleMod` might be named `ExampleModFr`. The display name should follow a similar pattern, maybe `Example Mod Traduction française`. While making the mod skeleton, don't generate the template sword item by leaving the entry for `BasicSword` blank.
-
-Now, find the translation files from earlier and copy them into your mod's mod sources folder. One last thing we need to do is make this translation mod depend on the original mod. To do this, open `build.txt` in a text editor and add the following line: `modReferences = ExampleMod`. Make sure to save the file. This line ensures the players can't enable your translation mod without also enabling the original mod. 
-
-You can now build the mod in game. You should see your translations working. 
+To test a translation mod, fist make sure the original mod is enabled, then build and reload your mod in game. You should see your translations working. 
 
 ***
 
@@ -97,10 +99,12 @@ The mod you localized might update with new content. If that happens, you might 
 Pull or download the latest code. The template file should be updated already with missing translations. If it isn't, build and reload the mod.
 
 ### Contact Mod Developer
-Follow the same steps as before with the updated mod downloaded.
+If you made a translation mod, reload the mods to update the localization files. Find new untranslated entries, translate them, and get the new files to the mod developer once again.
+
+If you extracted the localization files instead, follow the same steps as before with the updated mod downloaded. If the author integrated your translations from earlier into the latest release, those entries should already be translated in the newly extracted localization files.
 
 ### New Translation Mod
-Follow the same steps as before.
+Reloading the mods should update the localization files. Find new untranslated entries, translate them, and publish.
 
 
 ***
