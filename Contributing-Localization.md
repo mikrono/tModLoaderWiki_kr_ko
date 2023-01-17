@@ -35,7 +35,7 @@ Now, find `build.txt` in your mod's ModSources folder and open it in a text edit
 
 You can now build the mod in game. Make sure the mod you wish to translate is also enabled and reload mods. Your mods source code folder will now be populated with `.hjson` files. Note that the files will be organized according to the original mods layout, so you might need to look around for the `.hjson` files. If you take this approach, follow the `New Translation Mod` steps in the `Testing Localization Files` section.
 
-An alternate approach to generating a new mod if you intend to contribute the translations to the original mod developer is extracting the localization files directly. This approach is simple but will require more work later on. First, open up tModLoader and switch the game language to the language you wish to contribute. Next, navigate to the Mods menu and make sure the mod is enabled. Reload mods if necessary. In the Mods menu, click the `More Info` button. On the bottom right is a button for `Extract Localization`, press it. Once you press the button, the file explorer should appear opened to `Terraria\tModLoader\ModLocalization\ModNameHere`. This folder now contains all localization files in the same layout as the original mod. Do not move or rename files within this folder, that would make it harder for the original mod developer to integrate your changes. You'll likely only find a single `.hjson` file, this is typical. If you take this approach, follow the `Contact Mod Developer` steps in the `Testing Localization Files` section.
+**An alternate approach** to generating a new mod if you intend to contribute the translations to the original mod developer is extracting the localization files directly. This approach is simple but will require more work later on. First, open up tModLoader and switch the game language to the language you wish to contribute. Next, navigate to the Mods menu and make sure the mod is enabled. Reload mods if necessary. In the Mods menu, click the `More Info` button. On the bottom right is a button for `Extract Localization`, press it. Once you press the button, the file explorer should appear opened to `Terraria\tModLoader\ModLocalization\ModNameHere`. This folder now contains all localization files in the same layout as the original mod. Do not move or rename files within this folder, that would make it harder for the original mod developer to integrate your changes. You'll likely only find a single `.hjson` file, this is typical. If you take this approach, follow the `Contact Mod Developer` steps in the `Testing Localization Files` section.
 
 ***
 
@@ -76,7 +76,7 @@ If you are working on the source code directly, you simply need to build and rel
 Since you don't have the mod code, you'll have to leave this step up to the mod author, or follow the `New Translation Mod` steps below to make a temporary mod to test your changes. If you do, remember not to publish the mod.
 
 ### New Translation Mod
-To test a translation mod, fist make sure the original mod is enabled, then build and reload your mod in game. You should see your translations working. 
+To test a translation mod, first make sure the original mod is enabled, then build and reload your mod in game. You should see your translations working. 
 
 ***
 
