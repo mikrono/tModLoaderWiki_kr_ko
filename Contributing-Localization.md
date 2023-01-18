@@ -1,3 +1,7 @@
+***
+This Guide has been updated to 1.4.4, an upcoming version of tModLoader. If you need to view the current 1.4 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization/5c2723d318427b2ed8ac35ef0ce4d8f9cc3f450f)
+***
+
 - **Learn how to contribute localization (translations) to your favorite mod or even to tModLoader itself**
 - **This guide also covers a brief introduction for the [Git version control](https://en.wikipedia.org/wiki/Git) system, but if you want a full guide you should read the [Git & mod management](Intermediate-Git-&-mod-management)**
 
