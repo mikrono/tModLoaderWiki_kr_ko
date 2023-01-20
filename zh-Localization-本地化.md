@@ -151,6 +151,41 @@ ExamplePetBuff: {
 }
 ```
 
+### tModLoader的HJSON特性
+
+#### 颜色
+
+`[c/color:text]`可显示带颜色的文本.  
+其`color`是16位颜色代码.  
+
+例: 
+
+```
+		Yes: "[c/008000:yes]"
+		No: "[c/FF0000:no]"
+```
+显示时, ‘yes’是绿色的而’no’是红色的. 
+
+#### 物品
+
+`[i:ItemID]`和`[i:ItemClassName]`可以在消息中显示物品.  
+`ItemID`是物品的`type`. 由于模组物品没有固定的`type`, 你可以用`[i:ModName/ItemName]`.  
+`ModName`是模组的类名, `ItemName`是物品的类名. 
+
+`[i/pPrefixID:ItemID]`可以显示带前缀的物品.  
+`PrefixID`是前缀的`type`.  
+
+`[i/sStack:ItemID]`可以显示特定堆叠的物品.  
+`Stack`是物品的堆叠数. 
+
+例: 
+```
+		Label: "[i:ImproveGame/StarburstWand] 超模启动!"
+		Tooltip: "[i/p57:HiveBackpack] is a funky accessory while [i/s1145:2] is just dirt"
+```
+In this example, `Label` will display `(An icon of Wand of Starburst) tIMBALoader`, `StarburstWand` is a modded item from Quality of Life.  
+`Tooltip` will have a `Ruthless Hive Backpack` and a `Dirt Block` stacks at 1145. 
+
 ## 注释
 `.hjson`文件可以包含多种注释. tML用两种Hjson注释表达不同的含义. 
 
