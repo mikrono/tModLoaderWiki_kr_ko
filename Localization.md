@@ -124,6 +124,25 @@ When a modder adds new content to their mod, such as a `ModItem`, that piece of 
 ## HJSON syntax
 `.hjson` files contain Hjson data. Hjson is similar to JSON, but is intended to be human readable. See [the Hjson website](https://hjson.github.io/) explains the details of the Hjson syntax, but most modders can just follow examples to get a feel for the syntax. 
 
+### Multiline
+If a line of text needs multiple lines, use the following syntax. Make sure the indentation is consistent:
+```
+			SomeKey: 
+			'''
+			This translation key has 2 lines.
+			This is the 2nd line!
+			'''
+```
+
+### Special Characters
+If a translation value needs to start with `{}[],:` or whitespace, you'll need to quote the translation. You can omit quotes in other situations. If your value needs a literal `"`, you can use the multiline syntax:
+```
+ExamplePetBuff: {
+	DisplayName: "{$Mods.ExampleMod.Common.PaperAirplane}"
+	Description: '''"Let this pet be an example to you!"'''
+}
+```
+
 ## Comments
 `.hjson` files can contain a variety of comment styles. tModLoader uses Hjson comments to convey 2 separate concepts. 
 
