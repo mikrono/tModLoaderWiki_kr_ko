@@ -181,10 +181,21 @@ ExamplePetBuff: {
 例: 
 ```
 		Label: "[i:ImproveGame/StarburstWand] 超模启动!"
-		Tooltip: "[i/p57:HiveBackpack] is a funky accessory while [i/s1145:2] is just dirt"
+		Tooltip: "[i/p57:HiveBackpack]是个有趣的饰品但[i/s1145:2]只是土块"
 ```
-In this example, `Label` will display `(An icon of Wand of Starburst) tIMBALoader`, `StarburstWand` is a modded item from Quality of Life.  
-`Tooltip` will have a `Ruthless Hive Backpack` and a `Dirt Block` stacks at 1145. 
+在这个例子中, `Label`将会显示成`(星爆魔杖的物品图标) 超模启动!`, `StarburstWand`是_更好的体验_中一个模组物品的类名.  
+`Tooltip`中会有一个`无情的 蜂巢背包`和一个堆叠到1145的`土块`. 
+
+#### 键位
+
+`<键位名称>`可以显示绑定至某键位的按键.  
+`键位名称`是键位的内部名称. 
+
+例: 
+```
+		Tip: "<right>以使用其特殊攻击"
+```
+`<right>`会被显示为绑定至鼠标右键的按键. 
 
 ## 注释
 `.hjson`文件可以包含多种注释. tML用两种Hjson注释表达不同的含义. 
