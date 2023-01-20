@@ -133,6 +133,10 @@ If a line of text needs multiple lines, use the following syntax. Make sure the 
 			This is the 2nd line!
 			'''
 ```
+You can also use `\n` as an alternative, but for readability this is not recommended: 
+```
+			SomeKey: "This translation key has 5 lines and low readability.\nThis is the 2nd line!\nThis is the 3rd line!\nThis is the 4th line!\nThis is the 5th line!"
+```
 
 ### Special Characters
 If a translation value needs to start with `{}[],:` or whitespace, you'll need to quote the translation. You can omit quotes in other situations. If your value needs a literal `"`, you can use the multiline syntax:
@@ -142,6 +146,51 @@ ExamplePetBuff: {
 	Description: '''"Let this pet be an example to you!"'''
 }
 ```
+
+### tModLoader HJSON Features
+
+#### Color
+
+`[c/color:text]` can display colored texts.  
+The `color` is a Hex Color Code. 
+
+Here is an example: 
+```
+		Yes: "[c/008000:yes]"
+		No: "[c/FF0000:no]"
+```
+When displayed, the 'yes' will be in green and the 'no' will be in red.
+
+#### Items
+
+`[i:ItemID]` and `[i:ItemClassName]` can display items in a message.  
+The `ItemID` is the `type` of the item. Since modded items don't have a fixed `type`, you can use `[i:ModName/ItemName]` instead.  
+The `ModName` is your mod's class name and the `ItemName` is your item's class name. 
+
+`[i/pPrefixID:ItemID]` can display an item with a prefix.  
+The `PrefixID` is the `type` of the prefix.  
+
+`[i/sStack:ItemID]` can display an item at a certain stack.  
+The `Stack` is amount of the item stacked. 
+
+Here is an example: 
+```
+		Label: "[i:ImproveGame/StarburstWand] tIMBALoader"
+		Tooltip: "[i/p57:HiveBackpack] is a funky accessory while [i/s1145:2] is just dirt"
+```
+In this example, `Label` will display `(An icon of Wand of Starburst) tIMBALoader`, `StarburstWand` is a modded item from Quality of Life.  
+`Tooltip` will have a `Ruthless Hive Backpack` and a `Dirt Block` stacks at 1145. 
+
+#### Keybinds
+
+`<KeybindName>` can display a key binded to a keybind.  
+`KeybindName` is the name of the keybind. 
+
+Here is an example: 
+```
+		Tip: "<right> to use it's special attack"
+```
+The `<right>` will be shown as the key binded to mouse right. 
 
 ## Comments
 `.hjson` files can contain a variety of comment styles. tModLoader uses Hjson comments to convey 2 separate concepts. 
