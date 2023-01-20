@@ -183,7 +183,7 @@ ExamplePetBuff: {
 		Label: "[i:ImproveGame/StarburstWand] 超模启动!"
 		Tooltip: "[i/p57:HiveBackpack]是个有趣的饰品但[i/s1145:2]只是土块"
 ```
-在这个例子中, `Label`将会显示成`(星爆魔杖的物品图标) 超模启动!`, `StarburstWand`是_更好的体验_中一个模组物品的类名.  
+在这个例子中, `Label`将会显示成`(星爆魔杖的物品图标) 超模启动!`, `StarburstWand`是*更好的体验*中一个模组物品的类名.  
 `Tooltip`中会有一个`无情的 蜂巢背包`和一个堆叠到1145的`土块`. 
 
 #### 键位
