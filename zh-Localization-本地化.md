@@ -1,3 +1,7 @@
+***
+此指南是为1.4.4版tModLoader, 一个即将到来的版本而作. 在当前版本的tML中, 本地化文件不会自动更新, 此指南中的一些方法也不存在. 基本的概念仍有效.
+***
+
 [Original Page (English) | 原页面 (英语)](https://github.com/tModLoader/tModLoader/wiki/Localization)
 
 ---
