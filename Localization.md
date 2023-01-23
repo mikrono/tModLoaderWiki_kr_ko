@@ -527,7 +527,7 @@ ExampleHealingPotion: {
 ```
 
 **Note**
-`LocalizedText` instances are meant to be statically stored. Ideally you should register and retrieve them once during loading. The `ExampleHealingPotion ` example does the registering in `SetStaticDefaults` and caches the retrieved `LocalizedText` into the `RestoreLifeText` property. If caching is too much effort, you can access the property every time you need it for a small performance cost. Note that for translations to be automatically populated to the ``.hjson files, you need to access the property at least once during load time.
+`LocalizedText` instances are meant to be statically stored. Ideally you should register and retrieve them once during loading. The `ExampleHealingPotion ` example does the registering in `SetStaticDefaults` and caches the retrieved `LocalizedText` into the `RestoreLifeText` property. If caching is too much effort, you can access the property every time you need it for a small performance cost. Note that for translations to be automatically populated to the `.hjson` files, you need to access the property at least once during load time.
 
 ### Retrieving text from Localizable Properties
 
