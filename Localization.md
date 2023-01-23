@@ -305,15 +305,15 @@ When a modder adds new content to their mod, such as a `ModItem`, that piece of 
 ### Multiline
 If a line of text needs multiple lines, use the following syntax. Make sure the indentation is consistent:
 ```
-			SomeKey: 
-			'''
-			This translation key has 2 lines.
-			This is the 2nd line!
-			'''
+SomeKey: 
+	'''
+	This translation key has 2 lines.
+	This is the 2nd line!
+	'''
 ```
 You can also use `\n` as an alternative, but for readability this is not recommended: 
 ```
-			SomeKey: "This translation key has 5 lines and low readability.\nThis is the 2nd line!\nThis is the 3rd line!\nThis is the 4th line!\nThis is the 5th line!"
+SomeKey: "This translation key has 5 lines and low readability.\nThis is the 2nd line!\nThis is the 3rd line!\nThis is the 4th line!\nThis is the 5th line!"
 ```
 
 ### Special Characters
@@ -334,8 +334,8 @@ The `color` is a Hex Color Code.
 
 Here is an example: 
 ```
-		Yes: "[c/008000:yes]"
-		No: "[c/FF0000:no]"
+Yes: "[c/008000:yes]"
+No: "[c/FF0000:no]"
 ```
 When displayed, the 'yes' will be in green and the 'no' will be in red.
 
@@ -353,8 +353,8 @@ The `Stack` is amount of the item stacked.
 
 Here is an example: 
 ```
-		Label: "[i:ImproveGame/StarburstWand] tIMBALoader"
-		Tooltip: "[i/p57:HiveBackpack] is a funky accessory while [i/s1145:2] is just dirt"
+Label: "[i:ImproveGame/StarburstWand] tIMBALoader"
+Tooltip: "[i/p57:HiveBackpack] is a funky accessory while [i/s1145:2] is just dirt"
 ```
 In this example, `Label` will display `(An icon of Wand of Starburst) tIMBALoader`, `StarburstWand` is a modded item from Quality of Life.  
 `Tooltip` will have a `Ruthless Hive Backpack` and a `Dirt Block` stacks at 1145. 
@@ -366,7 +366,7 @@ In this example, `Label` will display `(An icon of Wand of Starburst) tIMBALoade
 
 Here is an example: 
 ```
-		Tip: "<right> to use it's special attack"
+Tip: "<right> to use it's special attack"
 ```
 The `<right>` will be shown as the key binded to mouse right. 
 
@@ -377,13 +377,11 @@ Comments using the `#` at the beginning of the line are actual comments, useable
 
 Example:
 ```
-...
-			ExampleCanStackItem: {
-				DisplayName: Example CanStack Item: Gift Bag
-				# References a language key that says "Right Click To Open" in the language of the game
-				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-			}
-...
+ExampleCanStackItem: {
+	DisplayName: Example CanStack Item: Gift Bag
+	# References a language key that says "Right Click To Open" in the language of the game
+	Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+}
 ```
 
 These comments will be copied from the English files to the non-English files as well, where they can remind translators of where custom translation keys are used, for example.
