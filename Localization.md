@@ -95,6 +95,8 @@ For example, the game already has translations for the text `Right Click To Open
 
 Translations from within the mod can also be used. For example in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), `ExamplePylonTile.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"` is used to reuse the translations contained in the `Mods.ExampleMod.ItemName.ExamplePylonItem` key.
 
+Many substitutions have `{0}` or `{1}` in them, these are placeholders for values modders can provide. This functionality is explained in the [String Formatting section](#string-formatting).
+
 ### Existing Tooltips
 Using the existing tooltips provided by the game in your modded items is a good idea. Using consistent language and existing translations makes your mod more appealing to more people. Expand the section below to view a listing of existing common tooltips. Remember that the key for all of these will start with `CommonItemTooltip.`. 
 
@@ -209,7 +211,81 @@ public override LocalizedText Tooltip => Language.GetOrRegister("Mods.ExampleMod
 If you are using inheritance, you only need to do this in the base class and can even override it again in child classes if a specific child class needs a different localization. See [Adding Localizable Properties](#adding-localizable-properties) for how to add extra localizations to your content, beyond the default properties provided by tModLoader.
 
 ## String Formatting
-Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting. The [Placeholders section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders) has more info on this.
+Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting. The [Placeholders section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders) has more info on this. 
+
+### Binding Values to Localizations
+Many translation entries have placeholders like `{0}` or `{1}` in them, indicating places where the modder can supply a value. For example, the translation key `CommonItemTooltips.IncreasesMaxMinionsBy` has a value of `Increases your max number of minions by {0}`. In order to use this in an accessory item, we need to be able to provide a number to be used in place of the `{0}` placeholder.
+
+First, in the `.hjson` file, we assign the tooltip for our item:
+```
+ExampleMinionBoostAccessory: {
+	DisplayName: Minion Booster
+	Tooltip: "{$CommonItemTooltip.IncreasesMaxMinionsBy}"
+}
+```
+
+Next, we need to "bind" our intended value to this tooltip. This accessory is intended to boost max minions by 3. To do this, we override the `Tooltip` property and call the `WithFormatArgs` method on the original tooltip. This will populate the placeholder with the value provided. We recommend using a `static int` field in your class to store these stats. In the example below, `MaxMinionIncrease` is used in 2 separate places. Using a field allows the modder to change the behavior and tooltip at the same time. This approach prevents typos that could potentially result in the tooltip and behavior being out of sync.
+
+```cs
+public class ExampleBreastplate : ModItem
+{
+	public static int MaxMinionIncrease = 3;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease);
+
+	public override void UpdateEquip(Player player) {
+		player.maxMinions += MaxMinionIncrease; // Increase how many minions the player can have by three
+	}
+	
+	// other code...
+}
+```
+### Multiple Formattable Substitutions
+When a localization references multiple substitutions, there might be an issue of repeated placeholders. For example, an accessory that uses `CommonItemTooltip.IncreasesMaxManaBy` and `CommonItemTooltip.IncreasesMaxMinionsBy` will find that they both use the `{0}` placeholder. Attempting to bind values to a tooltip that uses both of these text substitutions will not work without additional work. Modders can use special syntax to offset indexes within a specific substitution key. Adding an `@` followed by a number after a substitution key will increase the placeholders within that key by the number specified. In short, the syntax is `{$KeyHere@OffsetNumberHere}`. [ExampleBreastplate.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs) serves as a good example of this feature:
+
+**Existing CommonItemTooltip Entries**
+```
+"CommonItemTooltip": {
+	"IncreasesMaxManaBy": "Increases maximum mana by {0}",
+	"IncreasesMaxMinionsBy": "Increases your max number of minions by {0}",
+	// and so on
+```
+
+**ExampleMod/Localization/en-US.hjson**
+```
+ExampleBreastplate: {
+	DisplayName: Example Breastplate
+	Tooltip:
+		'''
+		This is a modded body armor.
+		Immunity to 'On Fire!'
+		{$CommonItemTooltip.IncreasesMaxManaBy}
+		{$CommonItemTooltip.IncreasesMaxMinionsBy@1}
+		'''
+}
+```
+
+**ExampleMod/Content/Items/Armor/ExampleBreastplate.cs**
+```cs
+public class ExampleBreastplate : ModItem
+{
+	public static int MaxManaIncrease = 20;
+	public static int MaxMinionIncrease = 1;
+
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease);
+
+	public override void UpdateEquip(Player player) {
+		player.buffImmune[BuffID.OnFire] = true; // Make the player immune to Fire
+		player.statManaMax2 += MaxManaIncrease; // Increase how many mana points the player can have by 20
+		player.maxMinions += MaxMinionIncrease; // Increase how many minions the player can have by one
+	}
+}
+```
+From this example, we can see that `Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease)` is attempting to bind `MaxManaIncrease` to `{0}` and `MaxMinionIncrease` to `{1}`. Because `@1` was added to `{$CommonItemTooltip.IncreasesMaxMinionsBy@1}` in the localization entry, the original placeholder of `{0}` was interpreted as `{1}` instead, allowing the game to bind the value of `MaxMinionIncrease` to the correct spot in the resulting tooltip text.
+
+This may seem a bit complicated, it might be simpler to ignore text substitutions and `WithFormatArgs` altogether and just type out the tooltip text directly in the localization file, but the benefits of this approach significant. With this approach, much of your mod will automatically be localized to other languages. This approach also significantly reduces the chance of a typo causing confusion at a later date.
+
+See [ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) and the corresponding [en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155) entry for an even more complex example of this feature.
 
 ## Pluralization
 When using placeholders for numbers, such as in `{0} minutes ago`, you'll run into issues in English when the number is exactly 1. When the number is 1, the text should say "1 minute ago" instead of "1 minutes ago". This issue can be solved with pluralization. The [Plurals section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals) has more info on this feature. 
