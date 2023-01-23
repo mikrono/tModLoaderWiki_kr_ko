@@ -43,11 +43,11 @@ To avoid losing work, please be aware of the intended workflow:
 
 1. Add new content to mod, such as a new `ModItem`
 2. Build and Reload Mod
-3. Edit `.hjson` files to give new content an English name
+3. At this point, the `.hjson` files will have automatically been updated with entries for new content. Edit `.hjson` files to give new content an English name
 4. Build and Reload Mod
 5. Non-English `.hjson` files are now updated with appropriate placeholders and can be updated as well by translators or mod makers
 
-If a translator sends you an updated `.hjson` file to add to your mod directly, be aware that it might get overwritten if the mod loads and tModLoader detects that the `.tmod` file is newer than the `.hjson` file for some reason. If this is the case, you might need to copy the file into the mod sources folder after the mod loads.
+If a translator sends you an updated `.hjson` file to add to your mod directly, be aware that it might get overwritten if the mod loads and tModLoader detects that the `.tmod` file is newer than the `.hjson` file for some reason. If this is the case, the best option is to build the mod before loading or reloading the mod. You can build in Visual Studio while tModLoader is closed, or you can skip loading mods when launching tModLoader by holding down the shift key, then immediately visit the Mod Sources menu to build the mod. If you forget to do this and find that tModLoader reverted the newly translated `.hjson` files to their old content, copy the updated `.hjson` files into the mod sources folder again and then build and reload.
 
 # How Localization Works
 Every piece of text in the game, from the names of items to the words on the main menu, use localization. Each piece of text in the game is actually a pair of data: a localization key and a localization value. For example, when the player is creating a small world, the game uses the localization key of `UI.WorldSizeSmall` to look up the correct translation value for the currently loaded language, and displays the word "Small" to the user if English is selected. If another language is selected, the game still looks up `UI.WorldSizeSmall` but the localization value will be different. As the creators of Terraria write code in English, most localization keys are very similar to their English translation value.
@@ -94,6 +94,108 @@ If there is text that repeats often in your localization files, or if you wish t
 For example, the game already has translations for the text `Right Click To Open`, stored in the `CommonItemTooltip.RightClickToOpen` key. A mod can utilize substitutions to reuse that value. The entry `Tooltip: "{$CommonItemTooltip.RightClickToOpen}"` would end up with the text `Right Click To Open` in the users language for this item. Other existing translations such as item names and other common tooltips are also available for use.
 
 Translations from within the mod can also be used. For example in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), `ExamplePylonTile.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"` is used to reuse the translations contained in the `Mods.ExampleMod.ItemName.ExamplePylonItem` key.
+
+### Existing Tooltips
+Using the existing tooltips provided by the game in your modded items is a good idea. Using consistent language and existing translations makes your mod more appealing to more people. Expand the section below to view a listing of existing common tooltips. Remember that the key for all of these will start with `CommonItemTooltip.`. 
+
+<details><summary>CommonItemTooltip Keys</summary>
+
+```
+// Added by Terraria
+"UsesLife": "Uses {0} life",
+"UsesMana": "Uses {0} mana",
+"RestoresLife": "Restores {0} life",
+"RestoresLifeRange": "Restores from {0} to {1} life",
+"RestoresMana": "Restores {0} mana",
+"MinuteDuration": "{0} minute duration",
+"SecondDuration": "{0} second duration",
+"PlaceableOnXmasTree": "Placeable on a christmas tree",
+"String": "Increases yoyo range",
+"Counterweight": "Throws a counterweight after hitting an enemy with a yoyo",
+"BannerBonus": "Nearby players get a bonus against: ",
+"BannerBonusReduced": "Nearby players get a small bonus against: ",
+"SpecialCrafting": "Used for special crafting",
+"DevItem": "'Great for impersonating devs!'",
+"FlightAndSlowfall": "Allows flight and slow fall",
+"PressDownToHover": "Press Down to toggle hover\nPress Up to deactivate hover",
+"PressUpToBooster": "Hold Up to boost faster!",
+"RightClickToOpen": "<right> to open",
+"RightClickToClose": "<right> to close",
+"MinorStats": "Minor improvements to all stats",
+"MediumStats": "Medium improvements to all stats",
+"MajorStats": "Major improvements to all stats",
+"TipsyStats": "Minor improvements to melee stats & lowered defense",
+"EtherianManaCost10": "Costs 10 Etherian Mana per use while defending an Eternia Crystal",
+"GolfBall": "Can be hit with a golf club",
+"Sentry": "Summons a sentry",
+"GolfIron": "A well-rounded club best for mid-range distances\nGolf balls will carry a good distance with decent vertical loft",
+"GolfPutter": "A specialized club for finishing holes\nGolf balls will stay close to the ground over short distances for precision shots",
+"GolfWedge": "A specialized club for sand pits or tall obstacles\nGolf balls will gain tons of vertical loft but will not carry very far",
+"GolfDriver": "A powerful club for long distances\nGolf balls will carry very far, with little vertical loft",
+"Kite": "Kites can be flown on windy days\nReel it in with <right>",
+"LavaFishing": "Allows fishing in lava",
+"CreativeSacrificeNeeded": "Research {0} more to unlock duplication",
+"CreativeSacrificeComplete": "Duplication unlocked",
+"TeleportationPylon": "Teleport to another pylon when 2 villagers are nearby\nYou can only place one per type and in the matching biome",
+"Whips": "Your summons will focus struck enemies",
+"WizardHatDuringAnniversary": "Increases your max number of minions by 1",
+"MechSummonDuringEverything": "'Part of a set'",
+"MechdusaSummonNotDuringEverything": "'It has no effect in this world'",
+"LuminiteVariant": "'A forbidden building material from beyond'",
+"IncreasesDefenseBy": "Increases defense by {0}",
+"IncreasesArmorPenBy": "Increases armor penetration by {0}",
+
+// Added by tModLoader
+"IncreasesMaxLifeBy": "Increases maximum life by {0}",
+"IncreasesMaxManaBy": "Increases maximum mana by {0}",
+"IncreasesMaxLifeByPercent": "Increases maximum life by {0}%",
+"IncreasesMaxManaByPercent": "Increases maximum mana by {0}%",
+
+"IncreasesBowDamageByPercent": "Increases bow damage by {0}%",
+"IncreasesGunDamageByPercent": "Increases gun damage by {0}%",
+"IncreasesSpecialistDamageByPercent": "Increases specialist ranged damage by {0}%",
+
+"IncreasesWhipRangeByPercent": "Increases whip range by {0}%",
+"IncreasesMaxMinionsBy": "Increases your max number of minions by {0}",
+"IncreasesMaxSentriesBy": "Increases your max number of sentries by {0}",
+
+"IncreasesFishingPowerBy": "Increases fishing power by {0}",
+
+"PermanentlyIncreasesMaxLifeBy": "Permanently increases maximum life by {0}",
+"PermanentlyIncreasesMaxManaBy": "Permanently increases maximum mana by {0}",
+
+"ReducesDamageTakenByPercent": "Reduces damage taken by {0}%",
+
+"PercentChanceToSaveAmmo": "{0}% chance to save ammo",
+"PercentReducedManaCost": "{0}% reduced mana cost",
+
+"PercentIncreasedMiningSpeed": "{0}% increased mining speed",
+"PercentIncreasedMovementSpeed": "{0}% increased movement speed",
+
+"ArmorPenetration": "{0} armor penetration",
+"PercentIncreasedDamage": "{0}% increased damage",
+"PercentIncreasedCritChance": "{0}% increased critical strike chance",
+"PercentIncreasedDamageCritChance": "{0}% increased damage and critical strike chance",
+
+"PercentIncreasedMagicDamage": "{0}% increased magic damage",
+"PercentIncreasedMagicCritChance": "{0}% increased magic critical strike chance",
+"PercentIncreasedMagicDamageCritChance": "{0}% increased magic damage and critical strike chance",
+
+"PercentIncreasedMeleeDamage": "{0}% increased melee damage",
+"PercentIncreasedMeleeCritChance": "{0}% increased melee critical strike chance",
+"PercentIncreasedMeleeDamageCritChance": "{0}% increased melee damage and critical strike chance",
+"PercentIncreasedMeleeSpeed": "{0}% increased melee speed",
+
+"PercentIncreasedRangedDamage": "{0}% increased ranged damage",
+"PercentIncreasedRangedCritChance": "{0}% increased ranged critical strike chance",
+"PercentIncreasedRangedDamageCritChance": "{0}% increased ranged damage and critical strike chance",
+
+"PercentIncreasedSummonDamage": "{0}% increased summon damage",
+"SummonTagDamage": "{0} summon tag damage",
+"PercentSummonTagCritChance": "{0}% summon tag critical strike chance"
+```
+
+</details>
 
 ### Scope Simplification
 
