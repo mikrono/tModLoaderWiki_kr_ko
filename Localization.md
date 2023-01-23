@@ -296,6 +296,8 @@ Color and item icons can be added to localization values using [Chat Tags](https
 # Automatic Localization Files
 tModLoader will automatically update `.hjson` files when new content or translation keys are used. The English files will be used as the template for other languages, which will inherit comments and layout automatically. 
 
+Note that localization files will update only in situations where the game thinks appropriate, for efficiency. For example, the mod must exist in the `ModSources` folder. The mod that is loading must also be a locally built mod. Localization files will only update if the file modified timestamp is older than the mod or any mods referenced by the mod. Be aware that testing an old `.tmod` file directly might overwrite your `.hjson` files with old content, so using Git or making a backup of your mods source code is recommended so you can restore the files. 
+
 ## Adding Content
 When a modder adds new content to their mod, such as a `ModItem`, that piece of content will initially not be localized. The modder should build and reload their mod. Once the mod loads, the `.hsjon` files will automatically update. The English files will now contain default translation entries for the new content. The non-English files will contain those same entries, but commented out. To localize the content, the modder needs to edit the .hjson files with the desired text, save, and build and reload their mod again.
 
