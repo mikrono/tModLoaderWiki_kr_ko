@@ -227,11 +227,11 @@ ExampleMinionBoostAccessory: {
 Next, we need to "bind" our intended value to this tooltip. This accessory is intended to boost max minions by 3. To do this, we override the `Tooltip` property and call the `WithFormatArgs` method on the original tooltip. This will populate the placeholder with the value provided. We recommend using a `static int` field in your class to store these stats. In the example below, `MaxMinionIncrease` is used in 2 separate places. Using a field allows the modder to change the behavior and tooltip at the same time. This approach prevents typos that could potentially result in the tooltip and behavior being out of sync.
 
 ```cs
-public class ExampleBreastplate : ModItem
+public class ExampleMinionBoostAccessory : ModItem
 {
 	public static int MaxMinionIncrease = 3;
 
-	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease);
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxMinionIncrease);
 
 	public override void UpdateEquip(Player player) {
 		player.maxMinions += MaxMinionIncrease; // Increase how many minions the player can have by three
@@ -286,6 +286,28 @@ From this example, we can see that `Tooltip.WithFormatArgs(MaxManaIncrease, MaxM
 This may seem a bit complicated, it might be simpler to ignore text substitutions and `WithFormatArgs` altogether and just type out the tooltip text directly in the localization file, but the benefits of this approach significant. With this approach, much of your mod will automatically be localized to other languages. This approach also significantly reduces the chance of a typo causing confusion at a later date.
 
 See [ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) and the corresponding [en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155) entry for an even more complex example of this feature.
+
+### Combining Translations for Dynamic Content
+In rare situations, you may need a translation which references the name of content from another mod, but you are unable to create a specific translation because the combinations are generated at runtime.
+
+**ADVICE:** 
+> Avoid the temptation to create combination translations just because English always follows a certain pattern, as there may not be a suitable pattern in all languages. Instead try and make as many unique and detailed translations as possible. For example, you might be tempted to make `{0} damage` and substitute in the damage class names (`melee`, `ranged`, `magic`) etc. This would work in English, but other languages may require changing the structure of the phrase or adding additional grammar based on the substitution. Eg, `ranged damage` may translate to `remote damage` but `melee damage` may translate to `damage in arms reach` and attempts like `in arms reach damage` or `arms reach damage` may not make sense.
+
+A classic example would be a mod which automatically adds infinite ammo items to every ammo item in the game. `WithFormatArgs` can accept other `LocalizedText` as parameters. You can also override a `LocalizedText` property to return an entirely different `LocalizedText` all together (see `Tooltip` in the example below)
+```
+InfiniteAmmoItem.DisplayName: "Infinite {0}"
+```
+
+```cs
+public class InfiniteAmmoItem : ModItem
+{
+    Item baseAmmoItem;
+    
+    public override LocalizedText DisplayName => base.DisplayName.WithFormatArgs(baseAmmoItem.DisplayName);
+
+    public override LocalizedText Tooltip => baseAmmoItem.Tooltip;
+}
+```
 
 ## Pluralization
 When using placeholders for numbers, such as in `{0} minutes ago`, you'll run into issues in English when the number is exactly 1. When the number is 1, the text should say "1 minute ago" instead of "1 minutes ago". This issue can be solved with pluralization. The [Plurals section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals) has more info on this feature. 
@@ -461,41 +483,96 @@ Do note that when the localization files are automatically updated, tModLoader w
 
 
 ## Adding Localizable Properties
-Modders can add `LocalizedText` properties to their classes. When correctly implemented, these properties will automatically populate the `.hjson` files and be ready for localization work. 
+Modders can add `LocalizedText` properties to their classes, for a variety of purposes. When correctly implemented, these properties will automatically populate the `.hjson` files and be ready for localization work. 
 
-For example, the following property could be added to a `ModItem` class:
+[ExampleHealingPotion.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) shows one such use for this. `ExampleHealingPotion` uses a `LocalizedText` property called `RestoreLifeText` that is used in a dynamic tooltip.
 
+The basic approach is the following:
+1. Add a static `LocalizedText` property to your class
+2. Assign that property in `SetStaticDefaults` using `this.GetLocalization` method
+3. Retrieve the localized text value when needed by accessing the property
+
+For example:
 ```cs
-public LocalizedText SwitchingToMessage => this.GetLocalization(nameof(SwitchingToMessage));
+public class ExampleHealingPotion : ModItem
+{
+	// Step 1: Make a static LocalizedText property
+	public static LocalizedText RestoreLifeText { get; private set; }
+
+	public override void SetStaticDefaults() {
+		// Step 2: Assign RestoreLifeText to the result of GetLocalization
+		RestoreLifeText = this.GetLocalization(nameof(RestoreLifeText));
+	}
+
+	public override void ModifyTooltips(List<TooltipLine> tooltips) {
+		TooltipLine line = tooltips.FirstOrDefault(x => x.Mod == "Terraria" && x.Name == "HealLife");
+
+		if (line != null) {
+			// Change the text to 'Heals max/2 (max/4 when quick healing) life'
+			// Step 3: Retrieve the localized text. This example uses the Format method because it has placeholders to populate, but the Value property could be used otherwise
+			line.Text = Language.GetTextValue("CommonItemTooltip.RestoresLife", RestoreLifeText.Format(Main.LocalPlayer.statLifeMax2 / 2, Main.LocalPlayer.statLifeMax2 / 4));
+		}
+	}
+}
+
 ```
 
-The above code defines a get-only property of `Type` `LocalizedText`. The `GetLocalization` method will attempt to retrieve the localization for the derived key. If this localization is not found, the key will be remembered and added to the localization files when they are updated. The localization value automatically added to the `hjson` files will be the key itself, hinting that the entry has not been translated yet.
-
-The key `GetLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted.
-
-**In Depth:** `GetLocalization` is a helper method to simplify code and avoid typos. `GetLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalanet to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
-
-`GetLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
-
-### Registering Localizable Properties
-
-To facilitate automatically registering these keys so that they populate the `.hjson` files, modders will need to access the getter during mod loading. An easy way to do this would be in a `SetDefaults` or `SetStaticDefaults` method:
-
-```cs
-public override void SetDefaults() {
-	_ = SwitchingToMessage;
-
-    ... other code
+In the above example, the `.hjson` file is automatically populated with an entry for `RestoreLifeText` alongside the existing `DisplayName` and `Tooltip` entries. The modder then updated it with the English text seen:
+```
+ExampleHealingPotion: {
+	DisplayName: Example Healing Potion
+	Tooltip: ""
+	RestoreLifeText: "{0} ({1} when quick healing)"
 }
 ```
 
 ### Retrieving text from Localizable Properties
 
-Elsewhere in the code, that property can be used to display localized text to the user:
+In the class, the `LocalizedText` property can be used to display localized text to the user:
 
 ```cs
-Main.NewText(SwitchingToMessage.Value);
+Main.NewText(SomeLocalizedTextProperty.Value);
 ```
+
+If the text has placeholders, those can be populated with the `Format` method, which accepts as many arguments as there are placeholders:
+
+```cs
+Main.NewText(SomeLocalizedTextPropertyWithPlaceholders.Format(Main.LocalPlayer.statLifeMax2, Main.LocalPlayer.statManaMax2));
+```
+
+### Inheritable Localized Properties
+When using inheritance, rather than a static property, a get-only property in the base class or a non-static property in the inheriting classes can be used to the same effect. The nature of inheritance allows logic and translations to be reused, keeping code and `.hjson` files clean and without needless repetition.
+
+For example, imagine a base class shared by several items in a mod. A property can be added to the base class that holds the `LocalizedText` for each inheriting item. The property must be accessed during `SetStaticDefaults` for it to automatically appear in the `.hjson` files.
+
+**Base class: MyBaseClass** 
+```cs
+public LocalizedText SpecialMessage => this.GetLocalization(nameof(SpecialMessage));
+
+public override void SetStaticDefaults() {
+	_ = SpecialMessage;
+}
+```
+
+If classes `ClassA` and `ClassB` both inherit from `MyBaseClass`, then the `.hjson` file will be automatically populated with stub entries for the `SpecialMessage` key:
+
+```
+ClassA: {
+	DisplayName: Class A 
+	Tooltip: ""
+	SpecialMessage: Mods.ExampleMod.Items.ClassA.SpecialMessage
+}
+
+ClassB: {
+	DisplayName: Class B
+	Tooltip: ""
+	SpecialMessage: Mods.ExampleMod.Items.ClassB.SpecialMessage
+}
+```
+
+If `ClassA` or `ClassB` override `SetStaticDefaults`, make sure to keep `base.SetStaticDefaults()` so the original code is executed.
+
+The key `GetLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted. By using a full key in an inherited property, the shared localization can exist in a single common translation key, with inheriting classes that need their own key overriding the property and using their own key via `this.GetLocalization`.
 
 ### Another Example
 
@@ -526,7 +603,11 @@ public override LocalizedText ContainerName(int frameX, int frameY) {
 This approach is useful for localization keys that are dynamic.
 
 ### ModType and ILocalizedModType
-Mods implementing a custom `ModType` can implement `ILocalizedModType` to easily facilitate localization. This is as simple as adding `, ILocalizedModType` to the class inheritance and implementing the `LocalizationCategory` property by adding `public string LocalizationCategory => "MyModTypeCategory";`. For each `LocalizedText` in your custom `ModType` class, you can use `public virtual LocalizedText DisplayName => this.GetOrAddLocalization(nameof(DisplayName), PrettyPrintName);`, allowing them to be categorized properly in `.hjson` files as other existing `ModType` classes.
+Mods implementing a custom `ModType` can implement `ILocalizedModType` to easily facilitate localization. This is as simple as adding `, ILocalizedModType` to the class inheritance and implementing the `LocalizationCategory` property by adding `public string LocalizationCategory => "MyModTypeCategory";`. For each `LocalizedText` in your custom `ModType` class, you can use `public virtual LocalizedText DisplayName => this.GetLocalization(nameof(DisplayName), PrettyPrintName);`, allowing them to be categorized properly in `.hjson` files as other existing `ModType` classes.
+
+**In Depth:** `GetLocalization` is a helper method to simplify code and avoid typos. `GetLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalanet to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
+
+`GetLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
 
 # Adding a new Language
 By default, tModLoader will only generate and update localization files for languages already appearing in `.hjson` files. To add a new language, simply make a text file and name it in the same manner as your existing localization files. You only need to make one. The file or folder path needs to contain the language code for the language: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), or Polish ("pl-PL"). Once the file is made and has the correct file extension, rebuilt the mod. The file will update with entries ready for translating. Other files will also be generated following the organization of the English hjson files.
