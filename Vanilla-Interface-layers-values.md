@@ -2,7 +2,7 @@ This is a list of the vanilla interface layers stored in the layers parameter wi
 
 In order to use those, write your code like this:
 ```cs
-int mouseItemIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Item / NPC Head"));
+int mouseItemIndex = layers.FindIndex(layer => layer.Name == "Vanilla: Mouse Item / NPC Head");
 if (mouseItemIndex != -1) layers.Insert(mouseItemIndex, ...);
 ```
 
