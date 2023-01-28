@@ -265,7 +265,7 @@ Note that the distance between `WorldGen.rockLayerLow` and `Main.maxTilesY` is a
 
 Also note that not all of these values persist into in-game. For example, Worldgen.worldSurfaceLow and Worldgen.worldSurfaceHigh are forgotten, and only Main.worldSurface remains. Main.worldSurface is equal to Worldgen.worldSurfaceHigh + 25.0. Make sure that if you are doing in-game world generation code that you are referenceing variables that are actually loaded, you can check `Terraria.IO.WorldFile.LoadHeader` to double check.
 
-The underworld is located on the bottom 200 tiles of the map. `Main.maxTilesX - 200` and below will result in underworld coordinates.
+The underworld is located on the bottom 200 tiles of the map. `Main.maxTilesY - 200` and below will result in underworld coordinates.
 
 ## Biome
 We can check the existing Tile at random coordinates to determine the biome at the choosen location. For example, if we wanted to place ores only near Snow, we could check for snow tiles:
