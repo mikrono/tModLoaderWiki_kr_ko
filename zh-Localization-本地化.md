@@ -104,11 +104,130 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 
 模组内的翻译也可以换元. 比如[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中的例子, `ExamplePylonTile.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"`就复用了键`Mods.ExampleMod.ItemName.ExamplePylonItem`对应的翻译. 
 
+许多替换里有`{0}`或`{1}`, 它们是可供模组作者传值的占位符. 这一点在[格式化字符串](#格式化字符串)有解释. 
+
+### 已有的物品描述 (Tooltip)
+在你的模组中使用游戏提供的描述是个好主意. 使用统一的语言和既有的翻译能提升你模组的吸引力. 仔细看看下面这个常见物品描述列表. 所有这些的键都以`CommonItemTooltip.`开头. 
+
+<details>
+
+<summary>CommonItemTooltip包含的键</summary>
+
+```
+// 由泰拉瑞亚添加
+"UsesLife": "Uses {0} life",
+"UsesMana": "Uses {0} mana",
+"RestoresLife": "Restores {0} life",
+"RestoresLifeRange": "Restores from {0} to {1} life",
+"RestoresMana": "Restores {0} mana",
+"MinuteDuration": "{0} minute duration",
+"SecondDuration": "{0} second duration",
+"PlaceableOnXmasTree": "Placeable on a christmas tree",
+"String": "Increases yoyo range",
+"Counterweight": "Throws a counterweight after hitting an enemy with a yoyo",
+"BannerBonus": "Nearby players get a bonus against: ",
+"BannerBonusReduced": "Nearby players get a small bonus against: ",
+"SpecialCrafting": "Used for special crafting",
+"DevItem": "'Great for impersonating devs!'",
+"FlightAndSlowfall": "Allows flight and slow fall",
+"PressDownToHover": "Press Down to toggle hover\nPress Up to deactivate hover",
+"PressUpToBooster": "Hold Up to boost faster!",
+"RightClickToOpen": "<right> to open",
+"RightClickToClose": "<right> to close",
+"MinorStats": "Minor improvements to all stats",
+"MediumStats": "Medium improvements to all stats",
+"MajorStats": "Major improvements to all stats",
+"TipsyStats": "Minor improvements to melee stats & lowered defense",
+"EtherianManaCost10": "Costs 10 Etherian Mana per use while defending an Eternia Crystal",
+"GolfBall": "Can be hit with a golf club",
+"Sentry": "Summons a sentry",
+"GolfIron": "A well-rounded club best for mid-range distances\nGolf balls will carry a good distance with decent vertical loft",
+"GolfPutter": "A specialized club for finishing holes\nGolf balls will stay close to the ground over short distances for precision shots",
+"GolfWedge": "A specialized club for sand pits or tall obstacles\nGolf balls will gain tons of vertical loft but will not carry very far",
+"GolfDriver": "A powerful club for long distances\nGolf balls will carry very far, with little vertical loft",
+"Kite": "Kites can be flown on windy days\nReel it in with <right>",
+"LavaFishing": "Allows fishing in lava",
+"CreativeSacrificeNeeded": "Research {0} more to unlock duplication",
+"CreativeSacrificeComplete": "Duplication unlocked",
+"TeleportationPylon": "Teleport to another pylon when 2 villagers are nearby\nYou can only place one per type and in the matching biome",
+"Whips": "Your summons will focus struck enemies",
+"WizardHatDuringAnniversary": "Increases your max number of minions by 1",
+"MechSummonDuringEverything": "'Part of a set'",
+"MechdusaSummonNotDuringEverything": "'It has no effect in this world'",
+"LuminiteVariant": "'A forbidden building material from beyond'",
+"IncreasesDefenseBy": "Increases defense by {0}",
+"IncreasesArmorPenBy": "Increases armor penetration by {0}",
+// 由tModLoader加入
+"IncreasesMaxLifeBy": "Increases maximum life by {0}",
+"IncreasesMaxManaBy": "Increases maximum mana by {0}",
+"IncreasesMaxLifeByPercent": "Increases maximum life by {0}%",
+"IncreasesMaxManaByPercent": "Increases maximum mana by {0}%",
+"IncreasesBowDamageByPercent": "Increases bow damage by {0}%",
+"IncreasesGunDamageByPercent": "Increases gun damage by {0}%",
+"IncreasesSpecialistDamageByPercent": "Increases specialist ranged damage by {0}%",
+"IncreasesWhipRangeByPercent": "Increases whip range by {0}%",
+"IncreasesMaxMinionsBy": "Increases your max number of minions by {0}",
+"IncreasesMaxSentriesBy": "Increases your max number of sentries by {0}",
+"IncreasesFishingPowerBy": "Increases fishing power by {0}",
+"PermanentlyIncreasesMaxLifeBy": "Permanently increases maximum life by {0}",
+"PermanentlyIncreasesMaxManaBy": "Permanently increases maximum mana by {0}",
+"ReducesDamageTakenByPercent": "Reduces damage taken by {0}%",
+"PercentChanceToSaveAmmo": "{0}% chance to save ammo",
+"PercentReducedManaCost": "{0}% reduced mana cost",
+"PercentIncreasedMiningSpeed": "{0}% increased mining speed",
+"PercentIncreasedMovementSpeed": "{0}% increased movement speed",
+"ArmorPenetration": "{0} armor penetration",
+"PercentIncreasedDamage": "{0}% increased damage",
+"PercentIncreasedCritChance": "{0}% increased critical strike chance",
+"PercentIncreasedDamageCritChance": "{0}% increased damage and critical strike chance",
+"PercentIncreasedMagicDamage": "{0}% increased magic damage",
+"PercentIncreasedMagicCritChance": "{0}% increased magic critical strike chance",
+"PercentIncreasedMagicDamageCritChance": "{0}% increased magic damage and critical strike chance",
+"PercentIncreasedMeleeDamage": "{0}% increased melee damage",
+"PercentIncreasedMeleeCritChance": "{0}% increased melee critical strike chance",
+"PercentIncreasedMeleeDamageCritChance": "{0}% increased melee damage and critical strike chance",
+"PercentIncreasedMeleeSpeed": "{0}% increased melee speed",
+"PercentIncreasedRangedDamage": "{0}% increased ranged damage",
+"PercentIncreasedRangedCritChance": "{0}% increased ranged critical strike chance",
+"PercentIncreasedRangedDamageCritChance": "{0}% increased ranged damage and critical strike chance",
+"PercentIncreasedSummonDamage": "{0}% increased summon damage",
+"SummonTagDamage": "{0} summon tag damage",
+"PercentSummonTagCritChance": "{0}% summon tag critical strike chance"
+```
+
+</details>
+
 ### 简化作用域声明
 如果用于换元的键与其所在的值有重合的作用域, 相同的部分可以被省去. 例如, 在[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中, `Mods.ExampleMod.ExamplePetItem.DisplayName`的值是`"{$Common.PaperAirplane}"`. 在这个例子中, tML知道在当前作用域检索, 结果是键`Mods.ExampleMod.ExamplePetItem.DisplayName`的值被检索到并且被替换进去. 在此情况下, `Mods.模组名`可以被省去. 
 
 ## 格式化字符串
 模组作者可以使用[字符串格式化](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string)在翻译中给要填的文本留出空位. 这是个C#的普通特性. 你可以用方法`string.Format`或`Language.GetTextValue`来格式化字符串. 章节[占位符](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders)有关于此特性的更多信息. 
+
+### 往本地化中传入值
+许多翻译条目中有类似于`{0}`, `{1}`或`{MyParam}`的占位符, 表示模组作者可以往这些地方传值. 比如, 键`CommonItemTooltips.IncreasesMaxMinionsBy`对应这个值`Increases your max number of minions by {0}`. 为了在饰品中使用它, 我们要提供一个填入`{0}`的数值. 
+
+首先, 在`hjson`文件中, 把这条翻译放进我们的物品描述中: 
+```
+ExampleMinionBoostAccessory: {
+	DisplayName: 仆从增幅器
+	Tooltip: "{$CommonItemTooltip.IncreasesMaxMinionsBy}"
+}
+```
+
+接下来, 我们需要将要传入的值与这条描述`"绑定". 这个饰品提高3仆从上限. 为了传入这个数值, 我们重写属性`Tooltip`并调用方法`WithFormatArgs`. 这会向占位符输入你提供的值. 推荐使用一个`static`字段来储存此类数据. 在下面这个例子中, `MaxMinionIncrease`被用在了两个不同的地方. 用字段储存数据允许模组作者同步更改实际效果与描述. 这样可以避免打错或者描述与效果不一致. 
+
+```cs
+public class ExampleMinionBoostAccessory : ModItem
+{
+	public static int MaxMinionIncrease = 3; // 以一个静态字段储存数值
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxMinionIncrease); // 重写Tooltip并传入数值
+	public override void UpdateEquip(Player player) {
+		player.maxMinions += MaxMinionIncrease; // 将玩家的仆从上限提高3
+	}
+	
+	// 其它代码...
+}
+```
 
 ## 复数化
 现代汉语采用词汇手段（名词前加数词和量词）和语法手段（名词后加“们”）表示名词的复数, 故不存在诸如`{0} minutes ago`导致的复数化问题. 但是由中文翻译成其它语言时可能要注意这一点. 参阅章节[复数化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals)
