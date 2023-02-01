@@ -518,7 +518,7 @@ ExampleHealingPotion: {
 
 **注意**
 
-`LocalizedText`实例从设计上来说要以静态储存. 理想情况下你应该在加载时注册并获取它. `ExampleHealingPotion `的例子中, `LocalizedText`在`SetStaticDefaults`里注册并缓存进属性`RestoreLifeText`. 如果缓存不了, 也可以以一点性能作为代价, 每当需要时提取一次. 
+`LocalizedText`实例从设计上来说要以静态储存. 理想情况下你应该在加载时注册并获取它. `ExampleHealingPotion`的例子中, `LocalizedText`在`SetStaticDefaults`里注册并缓存进属性`RestoreLifeText`. 如果缓存不了, 也可以以一点性能作为代价, 每当需要时提取一次. 
 
 为了自动在`.hjson`里生成与`LocalizedText`属性对应的条目, 至少要在加载期间访问一次对应的属性
 
