@@ -229,6 +229,56 @@ public class ExampleMinionBoostAccessory : ModItem
 }
 ```
 
+### 多个占位替换
+当一个本地化条目中包含多个替换引用时, 可能会有替换名重复的问题. 例如, 一个描述用了`CommonItemTooltip.IncreasesMaxManaBy`和`CommonItemTooltip.IncreasesMaxMinionsBy`的饰品会有两个占位符`{0}`. 直接传值是无效的. 模组作者可以使用特殊语法修改特定替换中的占位符. 在一个换元键后加上`@数值`可以使其中的占位符增加其所声明的`数值`. 简单来说, 就是`{$键@增加的数值}`. [示例胸甲](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs)是个很好的例子: 
+
+**已有的CommonItemTooltip条目**
+```
+"CommonItemTooltip": {
+	"IncreasesMaxManaBy": "Increases maximum mana by {0}",
+	"IncreasesMaxMinionsBy": "Increases your max number of minions by {0}",
+	// 还有更多
+```
+
+**ExampleMod/Localization/en-US.hjson**
+```
+ExampleBreastplate: {
+	DisplayName: Example Breastplate
+	Tooltip:
+		'''
+		This is a modded body armor.
+		Immunity to 'On Fire!'
+		{$CommonItemTooltip.IncreasesMaxManaBy}
+		{$CommonItemTooltip.IncreasesMaxMinionsBy@1}
+		'''
+}
+```
+
+**ExampleMod/Content/Items/Armor/ExampleBreastplate.cs**
+```cs
+public class ExampleBreastplate : ModItem
+{
+	public static int MaxManaIncrease = 20;
+	public static int MaxMinionIncrease = 1;
+	public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease);
+	public override void UpdateEquip(Player player) {
+		player.buffImmune[BuffID.OnFire] = true; // 使玩家免疫着火了!
+		player.statManaMax2 += MaxManaIncrease; // 使魔力上限增加20
+		player.maxMinions += MaxMinionIncrease; // 使仆从上限增加1
+	}
+}
+```
+
+我们可以看出`Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease)`尝试将`MaxManaIncrease`同`{0}`绑定并将`MaxMinionIncrease`同`{1}`绑定. 因为`{$CommonItemTooltip.IncreasesMaxMinionsBy@1}`里加入了`@1`, 原本的占位符`{0}`被视为了`{1}`, 允许游戏将`MaxMinionIncrease`的值绑定到正确的位置, 显示出物品描述. 
+
+或许这看着有点复杂, 你可能觉得 "我不管什么替换, 直接写出描述不是更简单吗?", 但使用替换是大有优势的. 有了这些已有的条目, 你模组的许多文本将自动完成本地化. 这还能显著减少人工失误. 
+
+更复杂的示例参见[ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs)和与之对应的[en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155)
+
+### 为动态内容生成翻译
+
+在少数情况下, 你需要其它模组内容的翻译, 但你无法创建一个特定的翻译, 因为
+
 ## 复数化
 现代汉语采用词汇手段（名词前加数词和量词）和语法手段（名词后加“们”）表示名词的复数, 故不存在诸如`{0} minutes ago`导致的复数化问题. 但是由中文翻译成其它语言时可能要注意这一点. 参阅章节[复数化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals)
 
