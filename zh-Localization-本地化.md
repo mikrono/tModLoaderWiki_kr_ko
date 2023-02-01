@@ -214,7 +214,7 @@ ExampleMinionBoostAccessory: {
 }
 ```
 
-接下来, 我们需要将要传入的值与这条描述`"绑定". 这个饰品提高3仆从上限. 为了传入这个数值, 我们重写属性`Tooltip`并调用方法`WithFormatArgs`. 这会向占位符输入你提供的值. 推荐使用一个`static`字段来储存此类数据. 在下面这个例子中, `MaxMinionIncrease`被用在了两个不同的地方. 用字段储存数据允许模组作者同步更改实际效果与描述. 这样可以避免打错或者描述与效果不一致. 
+接下来, 我们需要将要传入的值与这条描述"绑定". 这个饰品提高3仆从上限. 为了传入这个数值, 我们重写属性`Tooltip`并调用方法`WithFormatArgs`. 这会向占位符输入你提供的值. 推荐使用一个`static`字段来储存此类数据. 在下面这个例子中, `MaxMinionIncrease`被用在了两个不同的地方. 用字段储存数据允许模组作者同步更改实际效果与描述. 这样可以避免打错或者描述与效果不一致. 
 
 ```cs
 public class ExampleMinionBoostAccessory : ModItem
@@ -275,9 +275,27 @@ public class ExampleBreastplate : ModItem
 
 更复杂的示例参见[ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs)和与之对应的[en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155)
 
-### 为动态内容生成翻译
+### 为动态内容组合翻译
 
-在少数情况下, 你需要其它模组内容的翻译, 但你无法创建一个特定的翻译, 因为
+在少数情况下, 你需要引用其它模组内容的翻译, 但你无法创建一个特定的翻译, 因为翻译组合是在运行时生成的. 
+
+**建议:**
+> 避免用某种语言的语法来组合翻译, 因为在其它语言中可能就会出错. 相反, 你应该尽可能使用独特且详尽的翻译. 比如说, 你也许会用`你`, `是`和`谁`三条文本拼成一句话`你是谁?`, 但翻译成英语时, 这句话会被组合成`youarewho?`而不是正确的`Who are you?`, 因为你是逐字拼接的. 更合适的做法是为这句话添加一条独有的翻译`SomeKey: "你是谁?"`, 这样它可以被翻译为`SomeKey: "Who are you?"`
+
+一个典例是 "为所有弹药添加对应的无限弹药". `WithFormatArgs`能接受`LocalizedText`作为参数. 你也可以重写一个`LocalizedText`属性以返回一个完全不同的`LocalizedText` (见下)
+
+```
+InfiniteAmmoItem.DisplayName: "Infinite {0}"
+```
+```cs
+public class InfiniteAmmoItem : ModItem
+{
+    Item baseAmmoItem;
+    
+    public override LocalizedText DisplayName => base.DisplayName.WithFormatArgs(baseAmmoItem.DisplayName);
+    public override LocalizedText Tooltip => baseAmmoItem.Tooltip;
+}
+```
 
 ## 复数化
 现代汉语采用词汇手段（名词前加数词和量词）和语法手段（名词后加“们”）表示名词的复数, 故不存在诸如`{0} minutes ago`导致的复数化问题. 但是由中文翻译成其它语言时可能要注意这一点. 参阅章节[复数化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals)
@@ -287,6 +305,8 @@ public class ExampleBreastplate : ModItem
 
 # 自动更新本地化
 tML会在有新内容或本地化键加入时自动更新`.hjson`文件. 英语的文件`en-US.hjson`将会被用作其它语言的模板, 注释和排版将会被自动继承. 
+
+注意, 为了效率, 游戏只会在它认为合适的时候更新本地化文件. 例如, 模组必须被放在`ModSources`文件夹里. 模组必须是本地生成的. 仅在本地化文件的修改时间早于其模组或其模组引用的模组时更新. 要当心, 如果你加载旧版的`.tmod`文件, 你的`.hjson`文件的内容也可能会被换成旧版的, 推荐使用Git或手动备份进行版本控制. 
 
 ## 加入新内容
 当模组作者向模组中添加内容时, 就拿一个`ModItem`来说, 一开始并没有被本地化. 模组作者应该生成并重载模组. 一旦重载完成, `.hjson`文件将会自动更新. 英语的文件`en-US.hjson`会包含所有新内容的默认本地化条目. 非英语的文件也会包含一样的条目, 但是都被注释掉了. 为了进行本地化, 需要修改`.hjson`文件, 填入翻译, 保存 (译注: 记得以`UTF-8`编码保存), 重新生成并加载. 
@@ -455,15 +475,52 @@ Mods: {
 请注意, 当本地化文件被自动更新时, tML会决定如何排版, 导致条目的位置发生变化, 但不会丢失. 
 
 ## 添加可本地化的属性
-模组作者可以向他们的类中添加`LocalizedText`属性. 正确地实现之后, 这些属性会被自动添加进`.hjson`文件里且可以被本地化. 
+模组作者可以向他们的类中添加`LocalizedText`属性以达到多种目的. 正确地实现之后, 这些属性会被自动添加进`.hjson`文件里且可以被本地化. 
 
-下面的例子向一个`ModItem`类中加入了属性: 
+[示例治疗药水](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) 展示了一种用法. `ExampleHealingPotion`把一个叫做`RestoreLifeText`的`LocalizedText`属性用于动态物品描述.
 
+基本的套路是: 
+
+1. 向你的类中添加一个静态`LocalizedText`属性
+2. 在`SetStaticDefaults`中用`this.GetLocalization`为那个属性分配一个值
+3. 在需要的地方用那个属性获取翻译
+
+例: 
 ```cs
-public LocalizedText 随便什么信息 => this.GetLocalization(nameof(随便什么信息));
+public class ExampleHealingPotion : ModItem
+{
+	// 第一步: 创建一个静态LocalizedText属性
+	public static LocalizedText RestoreLifeText { get; private set; }
+	public override void SetStaticDefaults() {
+		// 第二步: 将RestoreLifeText的值设为GetLocalization的结果
+		RestoreLifeText = this.GetLocalization(nameof(RestoreLifeText));
+	}
+	public override void ModifyTooltips(List<TooltipLine> tooltips) {
+		TooltipLine line = tooltips.FirstOrDefault(x => x.Mod == "Terraria" && x.Name == "HealLife");
+		if (line != null) {
+			// 将文本改为 "回复生命上限一半 (快速治疗时为四分之一) 的生命
+			// 第三步: 获取翻译. 因为要替换占位符, 这里用了方法Format, 但其属性Value也是可以用的
+			line.Text = Language.GetTextValue("CommonItemTooltip.RestoresLife", RestoreLifeText.Format(Main.LocalPlayer.statLifeMax2 / 2, Main.LocalPlayer.statLifeMax2 / 4));
+		}
+	}
+}
 ```
 
-上面的代码定义了一个只能`get`的`Type` `LocalizedText`属性. 方法`GetLocalization`会尝试从其生成的键获取翻译. 若没有找到对应的翻译, 则会记录下该键并在下一次更新的时候添加进`.hjson`文件. 自动添加的值是键本身, 表示那个条目尚未被翻译. 
+在上面的例子中, 除了`DisplayName`和`Tooltip`, `.hjson`文件里还会自动生成`RestoreLifeText`的条目. 然后模组作者就能更新这些条目: 
+
+```
+ExampleHealingPotion: {
+	DisplayName: Example Healing Potion
+	Tooltip: ""
+	RestoreLifeText: "{0} ({1} when quick healing)"
+}
+```
+
+**注意**
+
+`LocalizedText`实例从设计上来说要以静态储存. 理想情况下你应该在加载时注册并获取它. `ExampleHealingPotion `的例子中, `LocalizedText`在`SetStaticDefaults`里注册并缓存进属性`RestoreLifeText`. 如果缓存不了, 也可以以一点性能作为代价, 每当需要时提取一次. 
+
+为了自动在`.hjson`里生成与`LocalizedText`属性对应的条目, 至少要在加载期间访问一次对应的属性
 
 `GetLocalization`会以`Mods.{模组名}.{类别名}.{内容名}.{后缀}`的格式生成键. 如果需要一个不符合此格式的键, 应当改用`Language.GetOrRegister("完整的键");`. 注意, 由于C#的设计, `GetLocalization`必须以`this.`调用, 这不可被省略. 
 
