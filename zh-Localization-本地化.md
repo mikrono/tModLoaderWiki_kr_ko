@@ -520,13 +520,55 @@ ExampleHealingPotion: {
 
 `LocalizedText`实例从设计上来说要以静态储存. 理想情况下你应该在加载时注册并获取它. `ExampleHealingPotion`的例子中, `LocalizedText`在`SetStaticDefaults`里注册并缓存进属性`RestoreLifeText`. 如果缓存不了, 也可以以一点性能作为代价, 每当需要时提取一次. 
 
-为了自动在`.hjson`里生成与`LocalizedText`属性对应的条目, 至少要在加载期间访问一次对应的属性
+为了自动在`.hjson`里生成与`LocalizedText`属性对应的条目, 至少要在加载期间访问一次对应的属性. 
 
-`GetLocalization`会以`Mods.{模组名}.{类别名}.{内容名}.{后缀}`的格式生成键. 如果需要一个不符合此格式的键, 应当改用`Language.GetOrRegister("完整的键");`. 注意, 由于C#的设计, `GetLocalization`必须以`this.`调用, 这不可被省略. 
+### 从LocalizedText属性中提取文本
 
-**深入解析:** `GetLocalization`是一个用于简化代码和防止打错字的helper方法. 其等同于传入了完整键的方法`Language.GetOrRegister`. 相似的, `GetLocalizedValue`等同于对应写法的`Language.GetTextValue`. 若要获取生成的键, 可以使用`GetLocalizationKey`. 
+在类中, `LocalizedText`属性可被用于向玩家显示文本: 
 
-`GetLocalization`和`Language.GetOrRegister`有一个可选的`makeDefaultValue`参数, 决定了键不存在时默认生成的值. 例如, 传入`() => ""`会导致默认值变为一个空字符串而不是键. 若不必进行本地化或内部名已经写得很清楚, 模组作者可以传入`PrettyPrintName`以达到显示加了空格的内部名的效果. 
+```cs
+Main.NewText(SomeLocalizedTextProperty.Value);
+```
+
+如果要显示的文本中有占位符, 可以用方法`Format`填入值, 该方法接受与文本中占位符数量相同的参数: 
+
+
+```cs
+Main.NewText(SomeLocalizedTextPropertyWithPlaceholders.Format(Main.LocalPlayer.statLifeMax2, Main.LocalPlayer.statManaMax2));
+```
+
+### 可继承的本地化属性
+
+使用继承时, 可以在子类中用仅可`get`的属性或非静态属性达到与静态属性一样的效果 (子类不会继承父类的静态属性). 继承的性质允许你复用逻辑和翻译, 保持代码与`.hjson`文件整洁, 减少不必要的重复. 
+
+以物品为例, 想象一下, 一个模组里的数个物品共用一个基类. 基类中可以有一个`LocalizedText`属性给每一个子类. 这个属性得在`SetStaticDefaults`时被访问以自动添加进`.hjson`文件里. 
+
+**基类: MyBaseClass** 
+```cs
+public LocalizedText SpecialMessage => this.GetLocalization(nameof(SpecialMessage));
+public override void SetStaticDefaults() {
+	_ = SpecialMessage;
+}
+```
+
+如果类`ClassA`和`ClassB`都继承自`MyBaseClass`, `.hjson`文件中会自动填入键`SpecialMessage`的条目: 
+
+```
+ClassA: {
+	DisplayName: Class A 
+	Tooltip: ""
+	SpecialMessage: Mods.ExampleMod.Items.ClassA.SpecialMessage
+}
+ClassB: {
+	DisplayName: Class B
+	Tooltip: ""
+	SpecialMessage: Mods.ExampleMod.Items.ClassB.SpecialMessage
+}
+```
+
+如果子类重写了`SetStaticDefaults`, 记得保留`base.SetStaticDefaults()`来执行父类的代码 (以访问LocalizedText属性). 
+
+`GetLocalization`生成的键的格式是: `Mods.{模组名}.{类别名}.{内容名}.{后缀}`的格式生成键. 如果需要一个不符合此格式的键, 应当改用`Language.GetOrRegister("完整的键");`. 注意, 由于C#的设计, `GetLocalization`必须以`this.`调用, 这不可被省略. 通过在被继承的属性中使用完整的键, 该属性的翻译可以用单个键保存 (而不是为每个子类创建一个键), 需要不同翻译的子类仍可以重写该属性, 通过`this.GetLocalization`使用它们自己的键. 
 
 ### 注册可本地化的属性
 要使这些键被自动注册并添加进`.hjson`文件中, 模组作者需要在模组加载时访问`getter`. 比较简单的方法是在方法`SetDefaults`或`SetStaticDefaults`里访问: 
@@ -573,6 +615,13 @@ public override LocalizedText ContainerName(int frameX, int frameY) {
 
 这种方法对动态的键很有用. 
 
+# `ModType`与`ILocalizedModType`
+有实现自定义`ModType`的模组可以实现`ILocalizedModType`来轻松地推行本地化. 仅需在类继承后面加上`, ILocalizedModType`并添加`public string LocalizationCategory => "自定义类别名称";`以实现属性`LocalizationCategory`. 对于你自定义的`ModType`中的每一个`LocalizedText`, 你可以使用`public virtual LocalizedText 随便什么名字 => this.GetOrAddLocalization(nameof(随便什么名字), 默认显示的随便什么名字);`以允许它们像已有`ModType`里的`Localizedtext`属性一样成为`.hjson`文件中分好类的属性. 
+
+**深入解析:** `GetLocalization`是一个用于简化代码和防止打错字的helper方法. 其等同于传入了完整键的方法`Language.GetOrRegister`. 相似的, `GetLocalizedValue`等同于对应写法的`Language.GetTextValue`. 若要获取生成的键, 可以使用`GetLocalizationKey`. 
+
+`GetLocalization`和`Language.GetOrRegister`有一个可选的`makeDefaultValue`参数, 决定了键不存在时默认生成的值. 例如, 传入`() => ""`会导致默认值变为一个空字符串而不是键. 若不必进行本地化或内部名已经写得很清楚, 模组作者可以传入`PrettyPrintName`以达到显示加了空格的内部名的效果. 如果不必要做本地化或者内部名已经写得很清楚了, 你可以用这种方法. 
+
 # 添加新语言
 默认情况下, tML仅会为模组生成和更新已有的`.hjson`文件. 要添加新的语言, 仅需新建一个文本文档并将其重命名为与现有本地化文件相同的格式. 文件名或其路径中需要包含对应的语言代码: 英语 ("en-US"), 德语 ("de-DE"), 意大利语 ("it-IT"), 法语 ("fr-FR"), 西班牙语 ("es-ES"), 俄语 ("ru-RU"), 汉语 ("zh-Hans"), 葡萄牙语 ("pt-BR"), 或波兰语 ("pl-PL"). 创建好文件并确保其有正确的文件扩展名`.hjson`之后, 重新生成模组. 这样该文件就会更新出可供翻译的条目, 其它文件也会依据英语的`.hjson`文件的结构一并生成. 
 
@@ -587,10 +636,6 @@ Note to wiki editors:
 This page is NOT an exact translation of the original page. 
 There are additions, deletions or modifications based on nature the target language. 
 If you want to translate this page, you are suggested to refer to the original page. 
-给维基编辑: 
-此页面 不是 原页面的直接翻译. 
-包含基于目标语言的增删或修改. 
-如果你想翻译此页面, 建议参考原页面. 
 ```
 
 ---
