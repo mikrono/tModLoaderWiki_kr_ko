@@ -115,6 +115,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Expert Cross Mod Content Guide](Expert-Cross-Mod-Content) -- Call, weakReferences, modReferences, recipes
 - [Expert IL Editing](Expert-IL-Editing) -- Patching the game using MonoMod
 - [Expert IL Editing Another Mod](Patching-Other-Mods-Using-MonoMod)
+- [Expert IL Editing with HookEndpointManager](Detouring-and-IL-Editing-using-HookEndpointManager)
 - [Expert Shader Guide](Expert-Shader-Guide) -- Armor dyes and screen shaders
 
 ## Vanilla References
