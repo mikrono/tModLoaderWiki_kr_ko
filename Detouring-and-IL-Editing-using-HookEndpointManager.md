@@ -1,5 +1,7 @@
 ___
 [New to IL editing? Read our other guide about IL editing first, click here!](Expert-IL-Editing)
+
+[This guide involves IL editing other mods, so it will help to read this guide first](https://github.com/tModLoader/tModLoader/wiki/Patching-Other-Mods-Using-MonoMod)
 ___
 
 There is also another way to modify other mod methods. If you looked into dlls generated with MonoMod's HookGen, you would see that it uses `HookEndpointManager`:
