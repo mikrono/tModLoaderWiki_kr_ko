@@ -1,3 +1,7 @@
+___
+[New to IL editing? Read our other guide about IL editing first, click here!](Expert-IL-Editing)
+___
+
 There is also another way to modify other mod methods. If you looked into dlls generated with MonoMod's HookGen, you would see that it uses `HookEndpointManager`:
 ```cs
 public static event ILContext.Manipulator Initialize
