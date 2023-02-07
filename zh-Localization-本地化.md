@@ -155,7 +155,7 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 "IncreasesMaxLifeBy": "最大生命值增加{0}",
 "IncreasesMaxManaBy": "最大魔力值增加{0}",
 "IncreasesMaxLifeByPercent": "最大生命值增加{0}%",
-"IncreasesMaxManaByPercent": "最大生命值增加{0}%",
+"IncreasesMaxManaByPercent": "最大魔力值增加{0}%",
 "IncreasesBowDamageByPercent": "弓的伤害增加{0}%",
 "IncreasesGunDamageByPercent": "枪的伤害增加{0}%",
 "IncreasesSpecialistDamageByPercent": "专业远程武器伤害增加{0}%",
