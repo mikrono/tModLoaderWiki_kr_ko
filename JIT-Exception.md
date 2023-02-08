@@ -18,14 +18,14 @@ First, we see at the top the the mod causing the error is called "BannerBonanza"
 
 From this, we know that in the `BannerRackItem` class in the `BannerBonanza.Items` namespace, the `SetDefaults` method is where this particular error is happening. The error says that the method `Void Terraria.Item.DefaultToPlacableWall(UInt16)` doesn't exist. When this mod was built, the method did exist, but apparently it doesn't anymore. 
 
-At this point, you could check the `#alpha-update-log` channel on the [tModLoader Discord](https://tmodloader.net/discord) and look for recent messages talking about this. Here is an example of what that would look like:    
+At this point, you could check the `#preview-update-log` channel on the [tModLoader Discord](https://tmodloader.net/discord) and look for recent messages talking about this. Here is an example of what that would look like:    
 ![image](https://user-images.githubusercontent.com/4522492/168232320-c63110a8-776f-4e35-9a57-bde54fa69f5d.png)
 
 At this point, open up Visual Studio and navigate to the location of the error. You should be able to immediately see red underlines indicating an error:    
 ![image](https://user-images.githubusercontent.com/4522492/168201563-48c70e41-95f2-4161-92ef-4b421faa3e6e.png)    
 Using the information provided in the update log message or other methods, fix the error by changing `DefaultToPlacableWall` to `DefaultToPlaceableWall`. (Notice the missing "e" in the original "Placeable" spelling.)
 
-This quick example should teach the basic steps for fixing JIT Exceptions, but feel free to come by the `#alpha-modding-help` channel if you have trouble figuring out how to fix your issue. There is a slight possibility that there are no errors in Visual Studio, but your original published mod fails to load. In this case, building the mod and publishing again should fix the issue. This is typically caused by a new optional argument being added to a method you were previously using.
+This quick example should teach the basic steps for fixing JIT Exceptions, but feel free to come by the `#mod-programming-help` channel if you have trouble figuring out how to fix your issue. There is a slight possibility that there are no errors in Visual Studio, but your original published mod fails to load. In this case, building the mod and publishing again should fix the issue. This is typically caused by a new optional argument being added to a method you were previously using.
 
 ## Strong References
 If you get this error with a strongly referenced mod, most likely that mod changed. Extract the latest .dll from that mod and reference the newer .dll file in visual studio instead of the older one. Make sure to update build.txt to reference at least that version number using `modReferences = TheOtherMod@0.2`. Next, fix the errors and publish an update.
