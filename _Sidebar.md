@@ -6,7 +6,7 @@ ___
 - [**Home**](Home)
 - [Useful resources](Useful-resources)
 - [Vanilla references](https://github.com/tModLoader/tModLoader/wiki#Vanilla-references)
-- [Source documentation](https://docs.tmodloader.net/)
+- [Source documentation](http://tmodloader.github.io/tModLoader/)
 - [Mod Browser guide](Mod-Browser)
 - [tModLoader on Terraria Forums](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/)
 ___

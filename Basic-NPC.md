@@ -15,7 +15,7 @@ An NPC is a "non-player character", in Terraria these are enemies, critters, tow
 # Spawn projectiles
 
 If you want your hostile NPC to spawn projectiles, first of all make sure the projectile you spawn is hostile and not friendly, so that it won't damage other hostile NPCs and so that it will damage players and friendly critters.
-This code usually goes in the [AI](https://docs.tmodloader.net/html_alpha/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#a942333fc831a20cfb1f77c1309259040) hook. It shows the most common scenario: shoot one projectile from the NPC directly towards the targeted player (usually the nearest):
+This code usually goes in the [AI](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_n_p_c.html#a942333fc831a20cfb1f77c1309259040) hook. It shows the most common scenario: shoot one projectile from the NPC directly towards the targeted player (usually the nearest):
 
 ```csharp
 NPC.TargetClosest();
