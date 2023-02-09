@@ -1,3 +1,7 @@
+***
+This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content/838b9239b7030e2c7bf3654ef527b4d8b70a3e2d)
+***
+
 # Read First
 
 When inter-operating with other mods, there are several things to note. The biggest thing to note is that the Mod you wish to interact with may or may not actually be loaded. Calling methods, accessing fields, or trying to use Items from mods that aren't loaded will cause problems. You can avoid the issue altogether if you make your mod "strongly" depend on the other mod, but this means that your mod can't be loaded without the other mod present. An alternative to a strong dependency is a weak dependency. Weak dependencies are the most difficult to do correctly but also the most powerful. A 3rd option is less powerful than the other 2 but much easier and relies on Mod.Call, a simple way of passing messages between mods. This option requires the mod you wish to operate with to support it. A 4th option is using reflection, and is a bad approach. A 5th option is for simple things like recipes. These options are explained from simplest to strongest below.
@@ -29,26 +33,24 @@ Similar code can be used for NPC loot and recipes.
 See [here](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) for a recipe example.
 
 ## Determining Internal Names
-If you use the Helpful Hotkeys mod and enable the Show Developer Info setting, then use the Query Mod Origin hotkey while hovering over a modded entity in-game, you can determine the internal name of that entity. Another approach is setting a breakpoint after the `ModLoader.GetMod` method call and inspecting the resulting Mod object. For example, you could inspect the `items` dictionary to find the `Name` field of the `ModItem` you are interested.
+If you use the Helpful Hotkeys mod and enable the Show Developer Info setting, then use the Query Mod Origin hotkey while hovering over a modded entity in-game, you can determine the internal name of that entity. Another approach is setting a breakpoint after the `ModLoader.GetMod` method call and inspecting the resulting Mod object. For example, you could inspect the `items` dictionary to find the `Name` property of the `ModItem` you are interested.
 Another mod you can use is "Which Mod Is This From": Enable everything in its config and it tells you the internal name of that entity on hovering.
 
 # Call, aka Mod.Call (Intermediate)
 
-Call is a method that requires cooperation from both the Called mod and the Calling mod. The Called mod will publish details on the variety of messages they accept and Calling mods wishing to inter-operate with those mods conform to the message format to send messages to the Called mod. To teach this concept, we will inter-operate with the most popular mod utilizing Call: Boss Checklist. (This mod lets us add our mod's bosses to a neat checklist. Very useful for players to know which boss to fight next.) First, we will find the homepage of Boss Checklist. From the mod browser, we are lead to [this page](https://forums.terraria.org/index.php?threads/boss-checklist-in-game-progression-checklist.50668/#post-1123050). Reading this page, we find 2 messages that we can send to Boss Checklist. The page also instructs us to do Call in PostSetupContent, but this could be different for other mods. We now use the same technique as we did earlier and call ModLoader.GetMod to check if the mod is loaded. We must also make sure to follow the message format perfectly or risk errors. Let's now do the code as if we wanted to add Boss Checklist support for ExampleMod:
+Call is a method that requires cooperation from both the Called mod and the Calling mod. The Called mod will publish details on the variety of messages they accept and Calling mods wishing to inter-operate with those mods conform to the message format to send messages to the Called mod. To teach this concept, we will inter-operate with a popular mod utilizing Call: Census - Town NPC Checklist (This mod lets us add our mod's town NPCs to an extended housing panel which lists their conditions. Very useful for players to know when a Town NPC can move in). First, we will find a place to get the Calls in the first place. The mod has a [wiki](https://github.com/JavidPack/Census/wiki/Support-using-Mod-Call) where the calls are explained. Reading this page, we find 1 message that we can send to Census. The page also instructs us to do Call in PostSetupContent, but this could be different for other mods. We now use the same technique as we did earlier and call ModLoader.TryGetMod to check if the mod is loaded. We must also make sure to follow the message format perfectly or risk errors. Let's now do the code as if we wanted to add Census support for ExampleMod:
 ```cs
 public override void PostSetupContent()
 {
-    Mod bossChecklist = ModLoader.GetMod("BossChecklist");
-    if(bossChecklist != null)
+    if (ModLoader.TryGetMod("Census", out Mod censusMod))
     {
-        bossChecklist.Call("AddBossWithInfo", "Abomination", 5.5f, (Func<bool>)(() => ExampleWorld.downedAbomination), "Use a [i:" + ModContent.ItemType<Items.Abomination.FoulOrb>() + "] in the underworld after Plantera has been defeated");
-        bossChecklist.Call("AddBossWithInfo", "Purity Spirit", 15.5f, (Func<bool>)(() => ExampleWorld.downedPuritySpirit), "Kill a [i:" + ItemID.Bunny + "] in front of [i:" + ModContent.ItemType<Items.Placeable.ElementalPurge>() + "]");
+        censusMod.Call("TownNPCCondition", ModContent.NPCType<Content.NPCs.ExamplePerson>(), $"Have either an Example Item [i:{ModContent.ItemType<Content.Items.ExampleItem>()}] or an Example Block [i:{ModContent.ItemType<Content.Items.Placeable.ExampleBlock>()}] in your inventory");
     }
 }
 ```
-Now, if we build our mod, we will see that both of our bosses are added to the Boss Checklist checklist. 
+Now, if we build our mod, we will see that our town NPC is added to the housing panel even if it hasn't moved in yet. 
 
-Mod.Call is very useful, and is a very easy way for mods to communicate with each other. For info on how to implement receiving Mod.Call so other mods can interact with your mod, see the source code for Boss Checklist or other open source mods.
+Mod.Call is very useful, and is a very easy way for mods to communicate with each other. For info on how to implement receiving Mod.Call so other mods can interact with your mod, see the source code for Census or other open source mods. A fully commented showcase of calling other mods' Mod.Calls (including the most popular mod utilizing Call: Boss Checklist) and how to organize them can be found [in ExampleMod (ModIntegrationsSystem)](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/ModIntegrationsSystem.cs).
 
 # Strong References, aka modReferences (Expert)
 
