@@ -1,6 +1,8 @@
 # NetMessage Class Documentation
 This page lists methods pertaining to the NetMessage class.  You can consult this page to get a better understanding of how NetMessage works.  If you want to create custom netcode for your mod, this page is not relevant, see [Basic netcode](https://github.com/tModLoader/tModLoader/wiki/Basic-Netcode) and [Intermediate netcode](https://github.com/tModLoader/tModLoader/wiki/Intermediate-netcode) for that.
 
+Some of this page's contents may contain outdated 1.3 information.
+
 Index|
 -----|
 [Fields](#fields)|
@@ -130,7 +132,50 @@ The client then sends a [MessageID.RequestWorldInfo](#messageidrequestworldinfo-
 // TODO
 
 ## MessageID.SyncEquipment (5)
-// TODO
+Sends information about a slot in one of the player's inventory arrays.  
+The slot to process is determined by the following table:
+
+| Indices    | Inventory
+|------------|----------
+|    `0..58` | `player.inventory` (Main inventory slots)
+|   `59..78` | `player.armor` (vanilla armor, accessory and vanity slots)
+|   `79..88` | `player.dye` (vanilla dye slots)
+|   `89..93` | `player.miscEquips` (pet, light pet, hook, minecart, mount slots)
+|   `94..98` | `player.miscDyes` (vanilla dye slots for `miscEquips` items)
+|  `99..138` | `player.bank` (Piggy Bank slots)
+| `139..178` | `player.bank2` (Safe slots)
+| `179`      | `player.trashItem` (Trash slot)
+| `180..219` | `player.bank3` (Defender's Forge)
+| `220..`    | `player.bank4` (Void Vault)
+
+The `number` parameter is the player `whoAmI` to retrieve information from and the `number2` parameter is which slot to sync.
+
+For ease of use, here's a list of constants that can be used to make using this message more readable:
+```cs
+public const int SyncMainInventory = 0;
+public const int SyncArmorAndEquips = 59;
+public const int SyncArmorDyes = 79;
+public const int SyncMiscEquips = 89;
+public const int SyncMiscEquipDyes = 94;
+public const int SyncPiggyBank = 99;
+public const int SyncSafe = 139;
+public const int SyncTraskSlot = 179;
+public const int SyncDefendersForge = 180;
+public const int SyncVoidVault = 220;
+```
+
+Examples:
+```cs
+// Given a player "player" ...
+// ... sync the 5th item in the player's main inventory
+NetMessage.SendData(MessageID.SyncEquipment, number: player.whoAmI, number2: SyncMainInventory + 4);
+
+// ... sync the 11th item in the player's piggy bank
+NetMessage.SendData(MessageID.SyncEquipment, number: player.whoAmI, number2: SyncPiggyBank + 10);
+```
+
+**NOTE:** There is no bounds check for provinding a slot beyond 260 (`SyncVoidVault` + 40 capacity), so this message will throw an exception if the slot is too large.  
+Furthermore, this message does not support syncing modded accessory slots.
 
 ## MessageID.RequestWorldInfo (6)
 // TODO
