@@ -145,8 +145,8 @@ The slot to process is determined by the following table:
 |  `99..138` | `player.bank` (Piggy Bank slots)
 | `139..178` | `player.bank2` (Safe slots)
 | `179`      | `player.trashItem` (Trash slot)
-| `180..219` | `player.bank3` (Defender's Forge)
-| `220..`    | `player.bank4` (Void Vault)
+| `180..219` | `player.bank3` (Defender's Forge slots)
+| `220..`    | `player.bank4` (Void Vault slots)
 
 The `number` parameter is the player `whoAmI` to retrieve information from and the `number2` parameter is which slot to sync.
 
