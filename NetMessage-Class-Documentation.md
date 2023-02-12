@@ -174,7 +174,7 @@ NetMessage.SendData(MessageID.SyncEquipment, number: player.whoAmI, number2: Syn
 NetMessage.SendData(MessageID.SyncEquipment, number: player.whoAmI, number2: SyncPiggyBank + 10);
 ```
 
-**NOTE:** There is no bounds check for provinding a slot beyond 260 (`SyncVoidVault` + 40 capacity), so this message will throw an exception if the slot is too large.  
+**NOTE:** There is no bounds check for providing a slot beyond 260 (`SyncVoidVault` + 40 capacity), so this message will throw an exception if the slot is too large.  
 Furthermore, this message does not support syncing modded accessory slots.
 
 ## MessageID.RequestWorldInfo (6)
