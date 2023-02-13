@@ -1,6 +1,6 @@
 - **This guide does not cover [Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio), but Visual Studio Code.**
-- **Visual Studio Code can not be used to debug, but takes less hard drive space than Visual Studio.**
-- **If you have space on your computer, it is highly recommended to get Visual Studio instead.**
+- **Visual Studio Code takes less space to store than Visual Studio, but is missing features.**
+- **If you have space on your computer and are on Windows, it is highly recommended to get Visual Studio instead.**
 - **This guide is not meant to learn C# fundamentals**
 
 # Prerequisites
@@ -49,7 +49,28 @@ If you have done the `One Time Steps` above, you are now ready to build your mod
 You might need to wait for the "C# for Visual Studio Code (powered by OmniSharp)" extension to finish updating. It updates fairly often. See the output panel to view download progress. [Update Output](https://i.imgur.com/qcDMLVe.png) 
 
 # Why Use Visual Studio Code
-Please read the [Why Use an IDE](Why-Use-an-IDE) page. Aside from debugging, most of the features apply to Visual Studio Code. If you aren't seeing errors being underlined or fixes being suggested, you might have skipped installing the [C# Extension](#prerequisites).
+Please read the [Why Use an IDE](Why-Use-an-IDE) page. Most of the features apply to Visual Studio Code. If you aren't seeing errors being underlined or fixes being suggested, you might have skipped installing the [C# Extension](#prerequisites).
 
 # Debugging
-You can't debug in Visual Studio Code. To debug, use [Visual Studio](Developing-with-Visual-Studio).
+Debugging can be achieved in VSCode by manually configuring the launch configuration (`.vscode/launch.json`), see this example:
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "/storage/Games/SteamLibrary/steamapps/common/tModLoader/tModLoader.dll",
+            "cwd": "/storage/Games/SteamLibrary/steamapps/common/tModLoader/",
+            "requireExactSource": false,
+            "justMyCode": false,
+            "suppressJITOptimizations": false // true, if the debugger is skipping lines or otherwise acting weirdly, will probably slow down the game significantly
+        }
+    ]
+}
+```
+The `"program"` key corresponds to wherever your tModLoader.dll is located, if using Steam you can find it by right clicking tModLoader and clicking `"Browse local files"`. The `"cwd"` key is that same path, but without `tModLoader.dll` on the end. All the other keys should remain the same. Like is said in the example, `suppressJITOptimizations` may make the debugging experience better, but will also likely slow down the game a bit. Test it out yourself to see if it works well for you.
