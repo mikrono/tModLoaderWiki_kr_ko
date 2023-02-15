@@ -27,6 +27,30 @@ Now navigate to the `"ModSources"` folder and navigate to your mod's localizatio
 ![image](https://user-images.githubusercontent.com/4522492/210681629-8aad2234-bd56-40c8-b03f-7e36b98d4486.png)    
 Open up the new files in a text editor and confirm that they look correct. There should be all the entries that were previously in the current `.hjson` files as well as newly generated entries for all other content in the mod. If it looks good, continue to the next steps.
 
+### Changed Keys
+Note that many key layouts have changed. These will automatically adjust in the export, but any custom keys or code that uses the old key layout will need to be fixed by the modder. For example, `Mods.{ModName}.ItemName.{ContentName}` is now `Mods.{ModName}.Items.{ContentName}.DisplayName`.
+
+<details><summary>Changed Key Layouts</summary>
+
+```
+Mods.{ModName}.DamageClassName.{ContentName}		Mods.{ModName}.DamageClasses.{ContentName}.DisplayName
+Mods.{ModName}.InfoDisplayName.{ContentName}		Mods.{ModName}.InfoDisplays.{ContentName}.DisplayName
+Mods.{ModName}.BiomeName.{ContentName}			Mods.{ModName}.Biomes.{ContentName}.DisplayName
+Mods.{ModName}.BuffName.{ContentName}			Mods.{ModName}.Buffs.{ContentName}.DisplayName
+Mods.{ModName}.BuffDescription.{ContentName}		Mods.{ModName}.Buffs.{ContentName}.Description
+Mods.{ModName}.ItemName.{ContentName}			Mods.{ModName}.Items.{ContentName}.DisplayName
+Mods.{ModName}.ItemTooltip.{ContentName}		Mods.{ModName}.Items.{ContentName}.Tooltip
+Mods.{ModName}.NPCName.{ContentName}			Mods.{ModName}.NPCs.{ContentName}.DisplayName
+Mods.{ModName}.Prefix.{ContentName}			Mods.{ModName}.Prefixes.{ContentName}.DisplayName
+Mods.{ModName}.ProjectileName.{ContentName}		Mods.{ModName}.Projectiles.{ContentName}.DisplayName
+Mods.{ModName}.ResourceDisplaySet.{ContentName}		Mods.{ModName}.ResourceDisplaySets.{ContentName}.DisplayName
+Mods.{ModName}.Containers.{ContentName}			Mods.{ModName}.Tiles.{ContentName}.ContainerName
+Mods.{ModName}.MapObject.{ContentName}			Mods.{ModName}.Tiles.{ContentName}.MapEntry
+Mods.{ModName}.Keybind.{ContentName}			Mods.{ModName}.Keybinds.{ContentName}.DisplayName
+```
+
+</details>
+
 ## Switch to 1.4.4 tModLoader and Build Mod
 Use Steam to switch to the `1.4.4-preview` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
