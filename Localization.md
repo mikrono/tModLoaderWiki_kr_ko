@@ -28,9 +28,9 @@ Now navigate to the `"ModSources"` folder and navigate to your mod's localizatio
 Open up the new files in a text editor and confirm that they look correct. There should be all the entries that were previously in the current `.hjson` files as well as newly generated entries for all other content in the mod. If it looks good, continue to the next steps.
 
 ### Changed Keys
-Note that many key layouts have changed. These will automatically adjust in the export, but any custom keys or code that uses the old key layout will need to be fixed by the modder. For example, `Mods.{ModName}.ItemName.{ContentName}` is now `Mods.{ModName}.Items.{ContentName}.DisplayName`.
+Note that many key patterns have changed. These will automatically adjust in the export, but any custom keys or code that uses the old key pattern will need to be fixed by the modder. For example, `Mods.{ModName}.ItemName.{ContentName}` is now `Mods.{ModName}.Items.{ContentName}.DisplayName`.
 
-<details><summary>Changed Key Layouts</summary>
+<details><summary>Changed Key Patterns</summary>
 
 ```
 Mods.{ModName}.DamageClassName.{ContentName}		Mods.{ModName}.DamageClasses.{ContentName}.DisplayName
