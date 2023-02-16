@@ -27,6 +27,30 @@
 ![image](https://user-images.githubusercontent.com/4522492/210681629-8aad2234-bd56-40c8-b03f-7e36b98d4486.png)  
 在文本编辑器里打开上述文件, 确认一下它们都是好的. 原有`.hjson`里的条目和新生成的条目都应该在新文件里. 如果一切正常, 下一步. 
 
+### 本地化键改动
+从1.4.3到1.4.4, 许多键的布局都改变了. 在导出新版本地化文件时, 它们会自动调整, 但自定义的键或者代码中使用的旧版键不会自动调整, 需要你手动修改. 比如, `Mods.{模组名}.ItemName.{内容名}`在1.4.4变成了`Mods.{模组名}.Items.{内容名}.DisplayName`
+
+<details><summary>布局改动</summary>
+
+```
+Mods.{ModName}.DamageClassName.{ContentName}	-->	Mods.{ModName}.DamageClasses.{ContentName}.DisplayName
+Mods.{ModName}.InfoDisplayName.{ContentName}	-->	Mods.{ModName}.InfoDisplays.{ContentName}.DisplayName
+Mods.{ModName}.BiomeName.{ContentName}		-->	Mods.{ModName}.Biomes.{ContentName}.DisplayName
+Mods.{ModName}.BuffName.{ContentName}		-->	Mods.{ModName}.Buffs.{ContentName}.DisplayName
+Mods.{ModName}.BuffDescription.{ContentName}	-->	Mods.{ModName}.Buffs.{ContentName}.Description
+Mods.{ModName}.ItemName.{ContentName}		-->	Mods.{ModName}.Items.{ContentName}.DisplayName
+Mods.{ModName}.ItemTooltip.{ContentName}	-->	Mods.{ModName}.Items.{ContentName}.Tooltip
+Mods.{ModName}.NPCName.{ContentName}		-->	Mods.{ModName}.NPCs.{ContentName}.DisplayName
+Mods.{ModName}.Prefix.{ContentName}		-->	Mods.{ModName}.Prefixes.{ContentName}.DisplayName
+Mods.{ModName}.ProjectileName.{ContentName}	-->	Mods.{ModName}.Projectiles.{ContentName}.DisplayName
+Mods.{ModName}.ResourceDisplaySet.{ContentName}	-->	Mods.{ModName}.ResourceDisplaySets.{ContentName}.DisplayName
+Mods.{ModName}.Containers.{ContentName}		-->	Mods.{ModName}.Tiles.{ContentName}.ContainerName
+Mods.{ModName}.MapObject.{ContentName}		-->	Mods.{ModName}.Tiles.{ContentName}.MapEntry
+Mods.{ModName}.Keybind.{ContentName}		-->	Mods.{ModName}.Keybinds.{ContentName}.DisplayName
+```
+
+</details>
+
 ## 切换至1.4.4并生成模组
 用Steam将tML的测试版调至`1.4.4-preview`. ([切换tML版本的教程](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
