@@ -107,6 +107,7 @@ Here are the most relevant changes.
 * `Player.talkNPC = X;` -> `Player.SetTalkNPC(X);` (Changed by vanilla due to the bestiary).  Getting the value of `Player.talkNPC` was not changed, only setting it was.
 * `Player.flyingPigChest = -1;` -> `Player.piggyBankProjTracker.Clear(); Player.voidLensChest.Clear();` (Changed by vanilla due to the new inventory access projectiles). Setting it is now done using the `Set` method on the respective tracker.
 * `Player.extraAccessorySlots` -> `Player.GetAmountOfExtraAccessorySlotsToShow()`
+* `StructureMap.AddStructure` -> `StructureMap.AddProtectedStructure` for 1.3 -> 1.4 only, as AddStructure still exists but serves a difference purpose.
 
 ### Misc changes
 * Shaders registered as `MiscShaderData` now require `float4 uShaderSpecificData;` as a parameter
