@@ -174,6 +174,29 @@ internal void AddFile(string fileName, byte[] data) {
 }
 ```
 
+## Cast instead of using `as`
+
+If the cast is meant to succeed, `ClassCastException` is more informative and will be thrown at a more useful line number than a corresponding `NullReferenceException` from `as`. 
+
+For safe type checking, use pattern matching instead of `as` with a `!= null` check. 
+
+```cs
+var exampleItem = (ExampleItem)item.ModItem;
+
+// or
+if (item.ModItem is ExampleItem exampleItem) {
+    ...
+}
+```
+
+❌ Avoid
+```
+var exampleItem = item.ModItem as ExampleItem;
+if (exampleItem != null) {
+    ...
+}
+```
+
 ## Comment out vanilla code, rather than removing it
 ```cs
 else if (buffType[j] == 117) {
