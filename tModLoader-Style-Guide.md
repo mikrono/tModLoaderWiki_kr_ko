@@ -183,14 +183,14 @@ For safe type checking, use pattern matching instead of `as` with a `!= null` ch
 ```cs
 var exampleItem = (ExampleItem)item.ModItem;
 
-// or
+// with pattern matching
 if (item.ModItem is ExampleItem exampleItem) {
     ...
 }
 ```
 
 ❌ Avoid
-```
+```cs
 var exampleItem = item.ModItem as ExampleItem;
 if (exampleItem != null) {
     ...
