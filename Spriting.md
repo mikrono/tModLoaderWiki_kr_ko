@@ -49,6 +49,8 @@ Terraria uses a pixel art style where each pixel is actually a 2x2 block of pixe
 
 If somehow your sprite upscales incorrectly, a common term you may see thrown around is mixels. A "mixel" refers to mixed sized pixels within a sprite, leading to inconsistency and making the sprite appear messy. It is recommended to always sprite in 1x1 pixels and then upscale to 2x2, not the other way around or with a mixture of the two. 
 
+Another concern is players may be tempted to use `Item.scale` to adjust the size of their sprites directly if they appear too small. While this is useful in the sense of converting 1x1 sprites to 2x2, this certainly isn't useful for cases such as converting an already 2x2 sprite to something bigger (say 4x4). The reasoning you wouldn't use this is due to upscaling a sprite in this manner causing both mixels (as discussed prior) as well as it won't match with the 2x2 sprites in the game already.
+
 The left side of this example has inconsistent pixel sizes, whereas the right keeps it consistent. The right ends up looking cleaner since it is consistent within itself.    
 ![](https://i.imgur.com/06pNr1r.png)    
 
