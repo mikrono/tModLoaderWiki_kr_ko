@@ -32,13 +32,13 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [ZoaklenMod](https://github.com/abluescarab/tModLoader-ZoaklenMod) -- Adds a bunch of different weapons and armor.
-* [Bangarang - A Boomerang Overhaul](https://github.com/stormytuna/Bangarang) -- Adds boomerang style projectiles using a Boomerang abstract class
 
 
 
 ## Other Mods
 These mods cover everything except mods that are primarily about new content. Some change mechanics, others make quality of life changes, others do random things. These mods may be a bit harder to contribute to due to their nature.
 * [AutoTrash](https://github.com/JavidPack/AutoTrash) -- UI, a slot that auto trashes items you pick up.
+* [Bangarang - A Boomerang Overhaul](https://github.com/stormytuna/Bangarang) -- Adds boomerang style projectiles using a Boomerang abstract class
 * [Boss Checklist](https://github.com/JavidPack/BossChecklist) -- UI, weak mod references, and using Call for cross-mod communication.
 * [Bouncy Coins](https://github.com/Jofairden/BouncyCoins) -- Makes coins bounce (also showcases weak dependency support with FK's Mod Settings Configurator).
 * [Craftable Treasure Bags](https://github.com/Setnour6/CraftableTreasureBags) -- Many examples of cross mod recipes and use of recipe groups.
