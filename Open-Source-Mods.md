@@ -32,6 +32,7 @@ These mods are mods that add common things such as items, enemies, furniture, pe
 * [The Luggage](https://github.com/JavidPack/TheLuggage) -- A pet that collects loot for you.
 * [WeaponOut](https://github.com/Flashkirby/WeaponOut) -- Complicated items, custom graphics, config file system with JSON.
 * [ZoaklenMod](https://github.com/abluescarab/tModLoader-ZoaklenMod) -- Adds a bunch of different weapons and armor.
+* [Bangarang - A Boomerang Overhaul](https://github.com/stormytuna/Bangarang) -- Adds boomerang style projectiles using a Boomerang abstract class
 
 
 
