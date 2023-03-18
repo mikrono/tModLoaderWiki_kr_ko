@@ -265,7 +265,7 @@ public class ExampleMinionBoostAccessory : ModItem
 }
 ```
 ### Multiple Formattable Substitutions
-When a localization references multiple substitutions, there might be an issue of repeated placeholders. For example, an accessory that uses `CommonItemTooltip.IncreasesMaxManaBy` and `CommonItemTooltip.IncreasesMaxMinionsBy` will find that they both use the `{0}` placeholder. Attempting to bind values to a tooltip that uses both of these text substitutions will not work without additional work. Modders can use special syntax to offset indexes within a specific substitution key. Adding an `@` followed by a number after a substitution key will increase the placeholders within that key by the number specified. In short, the syntax is `{$KeyHere@OffsetNumberHere}`. [ExampleBreastplate.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs) serves as a good example of this feature:
+When a localization references multiple substitutions, there might be an issue of repeated placeholders. For example, an accessory that uses `CommonItemTooltip.IncreasesMaxManaBy` and `CommonItemTooltip.IncreasesMaxMinionsBy` will find that they both use the `{0}` placeholder. Attempting to bind values to a tooltip that uses both of these text substitutions will not work without additional work. Modders can use special syntax to offset indexes within a specific substitution key. Adding an `@` followed by a number after a substitution key will increase the placeholders within that key by the number specified. In short, the syntax is `{$KeyHere@OffsetNumberHere}`. [ExampleBreastplate.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs) serves as a good example of this feature:
 
 **Existing CommonItemTooltip Entries**
 ```
@@ -309,7 +309,7 @@ From this example, we can see that `Tooltip.WithFormatArgs(MaxManaIncrease, MaxM
 
 This may seem a bit complicated, it might be simpler to ignore text substitutions and `WithFormatArgs` altogether and just type out the tooltip text directly in the localization file, but the benefits of this approach significant. With this approach, much of your mod will automatically be localized to other languages. This approach also significantly reduces the chance of a typo causing confusion at a later date.
 
-See [ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) and the corresponding [en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155) entry for an even more complex example of this feature.
+See [ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) and the corresponding [en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson#L160) entry for an even more complex example of this feature.
 
 ### Combining Translations for Dynamic Content
 In rare situations, you may need a translation which references the name of content from another mod, but you are unable to create a specific translation because the combinations are generated at runtime.
@@ -509,7 +509,7 @@ Do note that when the localization files are automatically updated, tModLoader w
 ## Adding Localizable Properties
 Modders can add `LocalizedText` properties to their classes, for a variety of purposes. When correctly implemented, these properties will automatically populate the `.hjson` files and be ready for localization work. 
 
-[ExampleHealingPotion.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) shows one such use for this. `ExampleHealingPotion` uses a `LocalizedText` property called `RestoreLifeText` that is used in a dynamic tooltip.
+[ExampleHealingPotion.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) shows one such use for this. `ExampleHealingPotion` uses a `LocalizedText` property called `RestoreLifeText` that is used in a dynamic tooltip.
 
 The basic approach is the following:
 1. Add a static `LocalizedText` property to your class
@@ -621,7 +621,7 @@ ExampleChest: {
 Elsewhere in ExampleChest.cs, these localization keys are dynamically retrieved using `GetLocalization`:
 
 ```cs
-public override LocalizedText ContainerName(int frameX, int frameY) {
+public override LocalizedText DefaultContainerName(int frameX, int frameY) {
 	int option = frameX / 36;
 	return this.GetLocalization("MapEntry" + option);
 }
