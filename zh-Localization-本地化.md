@@ -248,7 +248,7 @@ public class ExampleMinionBoostAccessory : ModItem
 ```
 
 ### 多个占位替换
-当一个本地化条目中包含多个替换引用时, 可能会有替换名重复的问题. 例如, 一个描述用了`CommonItemTooltip.IncreasesMaxManaBy`和`CommonItemTooltip.IncreasesMaxMinionsBy`的饰品会有两个占位符`{0}`. 直接传值是无效的. 模组作者可以使用特殊语法修改特定替换中的占位符. 在一个换元键后加上`@数值`可以使其中的占位符增加其所声明的`数值`. 简单来说, 就是`{$键@增加的数值}`. [示例胸甲](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs)是个很好的例子: 
+当一个本地化条目中包含多个替换引用时, 可能会有替换名重复的问题. 例如, 一个描述用了`CommonItemTooltip.IncreasesMaxManaBy`和`CommonItemTooltip.IncreasesMaxMinionsBy`的饰品会有两个占位符`{0}`. 直接传值是无效的. 模组作者可以使用特殊语法修改特定替换中的占位符. 在一个换元键后加上`@数值`可以使其中的占位符增加其所声明的`数值`. 简单来说, 就是`{$键@增加的数值}`. [示例胸甲](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Armor/ExampleBreastplate.cs)是个很好的例子: 
 
 **已有的CommonItemTooltip条目**
 ```
@@ -291,7 +291,7 @@ public class ExampleBreastplate : ModItem
 
 或许这看着有点复杂, 你可能觉得 "我不管什么替换, 直接写出描述不是更简单吗?", 但使用替换是大有优势的. 有了这些已有的条目, 你模组的许多文本将自动完成本地化. 这还能显著减少人工失误. 
 
-更复杂的示例参见[ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs)和与之对应的[en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Localization/en-US.hjson#L155)
+更复杂的示例参见[ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs)和与之对应的[en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson#L160)
 
 ### 为动态内容组合翻译
 
@@ -495,7 +495,7 @@ Mods: {
 ## 添加可本地化的属性
 模组作者可以向他们的类中添加`LocalizedText`属性以达到多种目的. 正确地实现之后, 这些属性会被自动添加进`.hjson`文件里且可以被本地化. 
 
-[示例治疗药水](https://github.com/tModLoader/tModLoader/blob/1.4.4-Localization-Overhaul/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) 展示了一种用法. `ExampleHealingPotion`把一个叫做`RestoreLifeText`的`LocalizedText`属性用于动态物品描述.
+[示例治疗药水](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) 展示了一种用法. `ExampleHealingPotion`把一个叫做`RestoreLifeText`的`LocalizedText`属性用于动态物品描述.
 
 基本的套路是: 
 
@@ -625,7 +625,7 @@ ExampleChest: {
 
 在这个文件的另一个地方, 这些键以`GetLocalization`被动态获取: 
 ```cs
-public override LocalizedText ContainerName(int frameX, int frameY) {
+public override LocalizedText DefaultContainerName(int frameX, int frameY) {
 	int option = frameX / 36; // 用 frameY 判断箱子处于第几帧, 对应不同的状态
 	return this.GetLocalization("MapEntry" + option);
 }
