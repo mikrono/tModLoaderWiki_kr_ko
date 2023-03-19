@@ -124,6 +124,8 @@ The other hooks present in `ModTileEntity` are optional and will not be covered 
 ## Making the Tile
 After making a normal `frameImportant` multitile (see the [Basic ModTile Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile) for more information), you only have to add a few lines in order to make it automatically place the tile entity.
 
+**Important - Make sure that your tile has the UsesCustomCanPlace property set to true or the placement hook won't fire**
+
 ### SetDefaults() / SetStaticDefaults()
 Before the `TileObjectData.addTile(Type);` line, add the following:
 ```cs
