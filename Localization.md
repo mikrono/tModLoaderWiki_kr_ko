@@ -60,6 +60,10 @@ After this, you'll want to find those `.hjson.new` files and use them to replace
 
 Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for the search term `.SetDefault(` to easily find most of these lines.)
 
+You can use the following regexes to help find the calls more easily (and replace them with an empty string). 
+- Single-line comments: `\s+// [\w.]+SetDefault\(".+;`
+- Multi-line comments: `\s+/\*[\s\w.]+SetDefault\(".+\*/` Requires using a tool like Notepad++ with the '. matches newline' option enabled
+
 # Localization Workflow
 Localization files are updated at the end of mod loading. This means that a modder will need to build and load a mod after adding content in order for the localization files to update. After they update, the modder can edit the `.hjson` files to add translations. After this is done, the mod can be built and reloaded once again for the translations to appear in-game.
 
