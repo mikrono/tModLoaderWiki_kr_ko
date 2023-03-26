@@ -77,13 +77,17 @@ To play an existing sound, simply call the method:
 ```cs
 SoundEngine.PlaySound(SoundID.Item59); // piggy bank oink
 ```
+To play that sound at a specific location, pass in the location as the 2nd parameter. The location is in world coordinates. This example assumes the code is in a `ModProjectile`:
+```cs
+SoundEngine.PlaySound(SoundID.Item59, Projectile.Center); // piggy bank oink
+```
 
 ### Where do I put this code?
 Wherever makes sense, but commonly `ModNPC.AI` or `ModProjectile.AI` are the most frequent places to manually play sounds. Using randomness or timers can help make your content seem natural.
 
 # Customizing Sound Playback
 
-Many exising `SoundStyle`s found in the `SoundID` class are pre-configured with various playback customization. For example, if you play `SoundID.NPCHit24`, you'll notice that it is half as loud as `new SoundStyle("Terraria/Sounds/NPC_Hit_24")`. Each `SoundStyle` has data attached to it that configures these custom behaviors.
+Many existing `SoundStyle`s found in the `SoundID` class are pre-configured with various playback customization. For example, if you play `SoundID.NPCHit24`, you'll notice that it is half as loud as `new SoundStyle("Terraria/Sounds/NPC_Hit_24")`. Each `SoundStyle` has data attached to it that configures these custom behaviors.
 
 To customize a `SoundStyle`, we will use the [`with` syntax](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression). The `with` syntax basically allows us to create a copy of an existing object except with some specified changes. For example, if we use `NPC.HitSound = SoundID.NPCHit4;` in our `ModNPC` but find that the volume is too high to fit our enemy, we could create a `SoundStyle` copy with custom volume like this: `NPC.HitSound = SoundID.NPCHit4 with { Volume = 0.7f };` 
 
@@ -109,7 +113,7 @@ Pitch can be adjusted up or down and defaults to `0f`. The lower limit, `-1f`, i
 Pitch variance is a randomness added to the pitch each time the sound is played. This can add some variety to sounds to make them less repetitive. 
 
 ## MaxInstances
-This dicatates how many instances of a sound can be playing at the same time. The default is `1`. Adjust this to allow overlapping sounds.
+This dictates how many instances of a sound can be playing at the same time. The default is `1`. Adjust this to allow overlapping sounds.
 
 ## SoundLimitBehavior
 When the `MaxInstances` limit is reached, this tweak adjusts what will happen. The default is to `ReplaceOldest`, which will restart the sound. The other option is `IgnoreNew`, which will ignore the latest attempt to play the sound.
@@ -126,6 +130,74 @@ The vanilla duck sound is a good example. There are 2 main variations, `Zombie_1
 ```cs
 SoundStyle quack = new SoundStyle("Terraria/Sounds/Zombie_", stackalloc (int, float)[] { (10, 300f), (11, 300f), (12, 1f) });
 ```    
+
+## Position
+The position of a sound determines how loud the sound will be played in relation to the screen location. It also controls how the sound will play louder on one side of the sound output to hint at the direction of the sound. Position is not a property of `SoundStyle`, rather it is the 2nd parameter of `SoundEngine.PlaySound`. It is optional, and when not provided the sound will play normally with no panning or volume dampening. 
+
+# Active Sounds
+With sounds in video games, most of the time it is completely sufficient to use the "Fire and Forget" approach. "Fire and Forget" is a video game programming term that refers to starting some action and letting it run it's course without having any way of adjusting it after starting it. For most sound effects, there is no need to stop the sound early or adjust the volume or pitch, since they are usually so short that it would not be worth the effort. 
+
+There are, however, situations that warrant tracking the sound as it is playing and adjusting it dynamically. The most common usage of this functionality is long sounds and looping sounds.
+
+tModLoader refers to these sounds as "Active Sounds".
+
+To properly use active sounds, first we need to familiarize ourselves with the following classes:
+
+### SlotId
+Previous examples in this guide have shown using the `SoundEngine.PlaySound` method to play a sound, but haven't shown doing anything with the return value of the method. The `SoundEngine.PlaySound` method actually does have a return value. The return value of `SoundEngine.PlaySound` is a `SlotId` instance. The returned `SlotId` instance can be stored as a class variable to retrieve the instance of that sound at a later time. 
+
+Using the `SoundEngine.TryGetActiveSound` method, a `SlotId` can retrieve the corresponding `ActiveSound` to act on it.
+
+### ActiveSound
+The `ActiveSound` class corresponds to a single instance of an actual `SoundStyle` that is currently playing. Mod code typically will use a `SlotId` or `SoundStyle` to retrieve a `ActiveSound` to act on it. 
+
+Using `SoundEngine.FindActiveSound`, a `SoundStyle` can be used to retrieve an `ActiveSound` from a `SoundStyle`. It is more common to use the `SoundEngine.TryGetActiveSound` approach, however, as multiple instances of an entity playing the same `SoundStyle` would cause the incorrect `ActiveSound` to be retrieved.
+
+### SoundUpdateCallback
+The 3rd parameter of `SoundEngine.PlaySound`, an optional parameter, is a `SoundUpdateCallback` delegate. Modders can pass in a method that returns a bool and takes a single `ActiveSound` parameter that will be invoked as the sound updates each tick. This callback is the main mechanism for dynamically altering sounds, but the sound can be altered in other methods as suitable to the design of the code.
+
+## Panning Sound or Changing Sound Location
+Now we can use what we have learned so far for the most common usage of "Active Sounds": dynamically adjusting the location of a sound. When an NPC or projectile makes a sound, usually the sound is quick enough that the player does not notice that the sound does not move with the NPC or projectile, but if the sound is long, it is more noticeable if it doesn't pan correctly. To adjust the location of the sound, we can retrieve the `ActiveSound` and modify it's properties. 
+
+### Panning Long Sound Example
+```cs
+public class MyNPC : ModNPC
+{
+	SlotId wooshSoundSlot;
+	SoundStyle wooshSoundStyle = new SoundStyle("ModMod/Sounds/whoosh");
+
+	public override void AI() {
+		// other AI code...
+
+		// Check if the sound is already playing...
+		if (!SoundEngine.TryGetActiveSound(wooshSoundSlot, out var activeSound)) {
+			// if it isn't, play the sound and remember the SlotId
+			wooshSoundSlot = SoundEngine.PlaySound(wooshSoundStyle, NPC.Center);
+		}
+		else {
+			// if it is playing, update the location of the sound to match the NPCs position
+			activeSound.Position = NPC.Center;
+		}
+	}
+}
+```
+
+## Stopping a Sound
+If something interrupts the source of a sound, the sound can be stopped early. To do this, follow the same logic as before, but call the `Stop` method on the `ActiveSound`. This can be done in any relevant place in the code.
+
+## Changing Sound Volume
+In the same manner, the `Volume` field on the `ActiveSound` instance can be changed to dynamically adjust sound volume.
+
+## Changing Sound Pitch
+In the same manner, the `Pitch` field on the `ActiveSound` instance can be changed to dynamically adjust sound volume.
+
+## Looping Sounds
+The techniques discussed so far are sufficient for long sounds, but for looping sounds they can potentially cause sounds that continue playing until the game is closed. For example, a sound set to loop might be started, but then an exception or other buggy code causes the entity tracking the "Active Sound" to be inactivated. The sound, without anything to tell it to stop, will obediently keep playing.
+
+It is for this reason that when dealing with looping sounds, modders should always use the `SoundUpdateCallback` parameter of `SoundEngine.PlaySound`. In fact, many might find the `SoundUpdateCallback` approach more convenient than using the `SlotId` approach explained earlier for non-looping sounds.
+
+### SoundUpdateCallback Example
+WIP
 
 # Adapting Vanilla Code or Code From Past tModLoader Versions
 Previous versions of tModLoader and code taken from decompiled Terraria do not use the same `SoundStyle` approach to playing sounds. To use code using old approaches, you'll need to fix the code. For example you might find code like `SoundEngine.PlaySound(12);` or `SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);`, but attempting to use this code in a mod will result in errors such as `No overload for method 'PlaySound' takes 4 arguments`.
