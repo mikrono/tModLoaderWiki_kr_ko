@@ -23,7 +23,7 @@ To begin, we need to use an older tModLoader to export localization files. You'l
 
 Once the game is on the right version, open up tModLoader, enable the mod, and visit the `Mod Sources` menu. Find your mod in the listing. You will find a green arrow that says "Export 1.4.4+ localization files" when hovered, press it.    
 ![image](https://user-images.githubusercontent.com/4522492/210681409-a659670d-5908-4e5d-bd45-74c0545f4666.png)    
-Now navigate to the `"ModSources"` folder and navigate to your mod's localization files. You should see newly generated `.hjson.new` files:    
+Now navigate to the `"ModSources"` folder and navigate to your mod's localization files. If you did not have localization files previously, navigate to the top level of your mod's folder. You should see newly generated `.hjson.new` files:    
 ![image](https://user-images.githubusercontent.com/4522492/210681629-8aad2234-bd56-40c8-b03f-7e36b98d4486.png)    
 Open up the new files in a text editor and confirm that they look correct. There should be all the entries that were previously in the current `.hjson` files as well as newly generated entries for all other content in the mod. If it looks good, continue to the next steps.
 
