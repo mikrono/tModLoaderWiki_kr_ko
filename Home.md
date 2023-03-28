@@ -72,6 +72,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic Glowmasks Guide](Basic-glowmask-guide)
 - [IEntitySource](IEntitySource)
 - [Localization](Localization)
+  - [Contributing Localization](Contributing-Localization)
 - [Basic Logging Guide](Logging)
 - [Basic Minion Guide](Basic-Minion-Guide)
 - [Basic ModConfig Guide](Basic-JSON-&-ModConfigs)
