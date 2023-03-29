@@ -282,18 +282,26 @@ This is the padding between tiles in the tile spritesheet. Adds a padding of 2 p
 `TileObjectData.newTile.CoordinatePadding = 2;`
 
 ## AnchorBottom/AnchorLeft/AnchorRight/AnchorTop
-Anchors define required neighboring tiles for the placement of the tile to be valid. The most common anchor is AnchorBottom anchored to solid tiles for the full width of the tile, but more complex anchors can be made, such as an anchor only covering half of the side of the tile or anchoring to the left or right. Usually you get appropriate anchors for free when you use `CopyFrom`, but be aware that you'll need to fix anchors if you change the width or height of the TileObjectData if that width or height is used in an Anchor:     
-`TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);`
+Anchors define required neighboring tiles for the placement of the tile to be valid. The most common anchor is `AnchorBottom` anchored to solid tiles for the full width of the tile, but more complex anchors can be made, such as an anchor only covering half of the side of the tile or anchoring to the left or right. Usually you get appropriate anchors for free when you use `CopyFrom`, but be aware that you'll need to fix anchors if you change the width or height of the `TileObjectData` if that width or height is used in an Anchor:     
+```cs
+TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
+```
 
-Here is an example of a custom AnchorBottom. The 2nd variable in the AnchorData constructor is the width and the 3rd is the start of the tiles that require the anchor. If the 1st or 2nd block under this is broken, the tile will break as well, but if the 3rd block is broken it will not break. The 1st Variable is a BitMask describing the types or tiles valid for the anchor.
-`TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width - 1, 0);`    
+Here is an example of a custom `AnchorBottom`. The 2nd variable in the `AnchorData` constructor is the width and the 3rd is the start of the tiles that require the anchor. If the 1st or 2nd block under this is broken, the tile will break as well, but if the 3rd block is broken it will not break. The 1st Variable is a BitMask describing the types or tiles valid for the anchor.
+```cs
+TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width - 1, 0);
+```    
 ![](https://thumbs.gfycat.com/InferiorAfraidAbyssiniangroundhornbill-small.gif)
 
-Here is an example of an AnchorTop that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
-`TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);`
+Here is an example of an `AnchorTop` that requires the tile above to be empty. Place a tile above Coral and you'll see the coral break because of this code:    
+```cs
+TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.EmptyTile, TileObjectData.newTile.Width, 0);
+```
 
-Usually, you also want to clear out other anchors that apply to that particular style by default, like this:
-`TileObjectData.newTile.AnchorBottom = AnchorData.Empty;`
+By default, all anchors are empty, but if you used `CopyFrom` to copy from an existing tile, you might want to clear out an anchor that you inherited. To clear out an anchor set the anchor to `AnchorData.Empty`:
+```cs
+TileObjectData.newTile.AnchorBottom = AnchorData.Empty;
+```
 
 ## StyleHorizontal
 By default, tile styles are oriented vertically on the spritesheet:     
