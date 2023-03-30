@@ -2,6 +2,9 @@ ___
 [New to IL editing? Read our other guide about IL editing first, click here!](Expert-IL-Editing)
 ___
 
+## Notice
+This guide is currently out of date with the current conventions for IL editing and On hooking. See [Expert IL Editing](https://github.com/tModLoader/tModLoader/wiki/Expert-IL-Editing) for examples of IL editing with up to date conventions.
+
 ## Introduction
 This guide will explore the use of MonoMod to patch the code of other mods - a very useful tool for compatibility reasons, as well as a means to allow your mod to better interact with others. Using this, you are essentially given complete freedom of choice as to what changes you wish to make. It involves using techniques that will be familiar to experienced modders - `On` and `IL`, and I recommend trying it with vanilla before moving on to other mods, so you get a grasp of how it works. The expert IL guide can be found [here](https://github.com/tModLoader/tModLoader/wiki/Expert-IL-Editing).
 
