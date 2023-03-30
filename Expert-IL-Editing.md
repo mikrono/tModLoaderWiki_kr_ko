@@ -197,38 +197,47 @@ IL_0042: ret
 By annotating the new IL code, we can see that our logic is neatly contained all before the original `return 566` code. Now lets work on the patch code. Finally!    
 
 ## Patch Code
-Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).
+Since this IL editing will be fairly straightforward, we will detail 3 separate approaches to this patch. Hopefully the repetition will give insight into different ways to approach IL editing. The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/WaspNest.cs).
 
 ### Common Ideas
-The first concept to explore is loading our patch. Since this patch pertains to a new ModItem in our mod, lets add the patch to `ModItem.Autoload`. Simply override `Autoload` and type `IL.Terraria.Player.beeType += HookBeeType;` and then allow Visual Studio to generate the HookBeeType method for us. If Visual Studio doesn't understand the `IL.Terraria` namespace, make sure to add a dll reference to the MonoMod and TerrariaHooks dlls found in `Documents\My Games\Terraria\ModLoader\references`. 
+The first concept to explore is loading our patch. Since this patch pertains to a new ModItem in our mod, lets add the patch to `ModItem.Autoload`. Simply override `Autoload` and type `IL_Player.beeType += HookBeeType;` and then allow Visual Studio to generate the HookBeeType method for us. If Visual Studio doesn't understand `IL_Player` class, make sure to add a dll reference to the MonoMod and TerrariaHooks dlls found in `Documents\My Games\Terraria\ModLoader\references`. 
 
-Next, we begin writing code. To start, we create a Cursor by writing `var c = new ILCursor(il);`. A Cursor allows us to navigate the IL codes in a well organized manner. We need to use Cursor methods such as `TryGotoNext` and `GotoLabel` to navigate to the correct index within the list of IL instructions. We can't rely on hard-coded indexes because we need our patch to work properly when multiple patches edit the same method, or when different builds of tModLoader slightly change the IL instructions. Designing robust patch code is expected, as this is an Expert level technique. 
+Next, we begin writing code. To start, we wrap the entire patch method in a try-catch, in case there are errors during the patching. In the catch part, write `MonoModHooks.DumpIL(ModContent.GetInstance<ExampleMod>(), il, e);`. This dumps the IL to a file to help us debug the patch if it fails. Next, we create a Cursor by writing `var c = new ILCursor(il);`. A Cursor allows us to navigate the IL codes in a well organized manner. We need to use Cursor methods such as `GotoNext` and `GotoLabel` to navigate to the correct index within the list of IL instructions. We can't rely on hard-coded indexes because we need our patch to work properly when multiple patches edit the same method, or when different builds of tModLoader slightly change the IL instructions. Designing robust patch code is expected, as this is an Expert level technique. 
 
-After creating a cursor, we need to advance the cursor to be pointing at the area of code we desire to edit. As we have discovered through compiling in dnSpy, we want to insert our code between the code that sets `makeStrongBee` to true and the code that returns 566. We can write `if (!c.TryGotoNext(i => i.MatchLdcI4(566)))` to advance the cursor to the next IL instructions that matches the OpCode of `ldc.i4` with the operand of `566`. If such an instruction is not found, we would want to exit our patch and possibly log our patch failure to the logs, otherwise, we continue onto our edits in any of the following approaches.
+After creating a cursor, we need to advance the cursor to be pointing at the area of code we desire to edit. As we have discovered through compiling in dnSpy, we want to insert our code between the code that sets `makeStrongBee` to true and the code that returns 566. We can write `v.GotoNext(i => i.MatchLdcI4(566))` to advance the cursor to the next IL instructions that matches the OpCode of `ldc.i4` with the operand of `566`. If such an instruction is not found, an error will be thrown by the method, which will then be caught by the try-catch we wrote earlier, which will dump the IL.
 
 ### Approach 1 - Modifying Evaluation Stack
 This first approach is the simplest. In this approach, we can take advantage of the fact that while `return 566;` is a single line in c#, in IL instructions, it consists of 2 instructions, the first pushing 566 to the stack, and the 2nd returning from the method. By taking advantage of this, we can insert instructions in between those 2 instructions to achieve our desired behavior. In effect, we are changing `return 566;` to `return (this.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10)) ? 183 : 566;`. The first line of code here moves the cursor down: `c.Index++;`. The cursor was pointing at the instruction pushing 566 to the stack earlier, so increasing the index places the cursor right on the ret OpCode. After this, we call `.Emit` on the cursor with an OpCode, which places the specified OpCode at the current cursor index and pushes all the other instructions down, similar to List.Insert. The instruction we provide is Ldarg_0, which will push the current Player instance onto the stack because this is a non-static method. At this point, the stack consists of the Player at the top and an int with the original return value below that.     
-With an int and Player on the stack, we can now use `.EmitDelegate` to write c# code for the rest of our patch, greatly simplifying things. The generic types provided to the Delegate need to match up with the current stack, in order from bottom to top (oldest to most recently pushed). In this case, we will be using a `Func` which takes 2 parameters and returns 1 parameter. The 2 input parameters must be `int` and `Player` as those match the current stack. The output type will be `int` because it will go onto the stack after the int and Player are popped off. When our patch began, there was an int on the stack, so we need to make sure the stack is still the same when our patch completes so we don't crash the game. In our delegate, we simply put our conditional and use the provided original return value and Player instance to drive our logic. Here is the complete code:
+With an int and Player on the stack, we can now use `.EmitDelegate` to write C# code for the rest of our patch, greatly simplifying things. The generic types provided to the Delegate need to match up with the current stack, in order from bottom to top (oldest to most recently pushed). In this case, we will be using a `Func` which takes 2 parameters and returns 1 parameter. The 2 input parameters must be `int` and `Player` as those match the current stack. The output type will be `int` because it will go onto the stack after the int and Player are popped off. When our patch began, there was an int on the stack, so we need to make sure the stack is still the same when our patch completes so we don't crash the game. In our delegate, we simply put our conditional and use the provided original return value and Player instance to drive our logic. Here is the complete code:
 ```cs
-// Start the Cursor at the start
-var c = new ILCursor(il);
-// Try to find where 566 is placed onto the stack
-if (!c.TryGotoNext(i => i.MatchLdcI4(566)))
-	return; // Patch unable to be applied
+// The code is wrapped in a try catch in case of errors with the IL editing
+try {
+	// Start the Cursor at the start
+	var c = new ILCursor(il);
+	// Try to find where 566 is placed onto the stack
+	c.GotoNext(i => i.MatchLdcI4(566));
 
-// Move the cursor after 566 and onto the ret op.
-c.Index++; 
-// Push the Player instance onto the stack
-c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
-// Call a delegate using the int and Player from the stack.
-c.EmitDelegate<Func<int, Player, int>>((returnValue, player) =>
-{
-	// Regular c# code
-	if (player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1)
-		return ProjectileID.Beenade;
-	return returnValue;
-});
-// After the delegate, the stack will once again have an int and the ret instruction will return from this method
+	// Move the cursor after 566 and onto the ret op.
+	c.Index++; 
+	// Push the Player instance onto the stack
+	c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
+	// Call a delegate using the int and Player from the stack.
+	c.EmitDelegate<Func<int, Player, int>>((returnValue, player) =>
+	{
+		// Regular c# code
+		if (player.GetModPlayer<ExamplePlayer>().strongBeesUpgrade && Main.rand.NextBool(10) && Main.ProjectileUpdateLoopIndex == -1)
+			return ProjectileID.Beenade;
+		return returnValue;
+	});
+	// After the delegate, the stack will once again have an int and the ret instruction will return from this method
+}
+catch (Exception e) {
+	// If there are any failures with the IL editing, this method will dump the IL to Logs/ILDumps/{Mod Name}/{Method Name}.txt
+	MonoModHooks.DumpIL(ModContent.GetInstance<ExampleMod>(), il);
+
+	// If the mod cannot run without the IL hook, throw an exception instead. The exception will call DumpIL internally
+	// throw new ILPatchFailureException(ModContent.GetInstance<ExampleMod>(), il, e);
+}
 ```
 
 ### Approach 2 - Labels and Branches
@@ -274,7 +283,7 @@ c.MarkLabel(label); // The cursor is still pointing to the ldc.i4 566 instructio
 ```
 
 ## Results
-The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/Items/Accessories/WaspNest.cs).    
+The full code can be explored on [WaspNest.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/WaspNest.cs).    
 Lets watch a Bee weapon in action after applying our patch ([video](https://gfycat.com/QuerulousParchedJaguar)):    
 ![](https://thumbs.gfycat.com/QuerulousParchedJaguar-size_restricted.gif)    
 
@@ -282,7 +291,7 @@ As a reminder, this is how it used to act ([video](https://gfycat.com/Magnificen
 ![](https://thumbs.gfycat.com/MagnificentLividHuia-size_restricted.gif)    
 
 # Example - Lava Snail Statue Spawn
-See [ExampleCritter.cs](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting.
+See [ExampleCritter.cs (Outdated)](https://github.com/tModLoader/tModLoader/blob/master/ExampleMod/NPCs/ExampleCritter.cs) for another IL editing patch example. This example is much trickier as the method we want to patch is very large. The example is well commented and shows a more complex example of instruction targeting. Keep in mind this is for 1.3, and IL editing conventions have changed since then.
 
 ## Going further
 [Making IL Edits for other mods (Expert)](Patching-Other-Mods-Using-MonoMod)
