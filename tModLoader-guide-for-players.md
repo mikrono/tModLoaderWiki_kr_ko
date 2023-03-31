@@ -16,8 +16,8 @@ Note that tModLoader does NOT currently support Family Share due to an issue wit
 
 By Default, 1.4 tModLoader will be installed by Steam.
 
-### To access 1.3 (Legacy tModLoader)
-Use either the manual install instructions below (look for Release version 0.11.8.9) or take the following steps:
+### To access 1.3 (Legacy tModLoader) and other Beta options
+Use either the manual install instructions below (look for Release version 0.11.8.9 for 1.3) or take the following steps:
 
  Go to Library: 
 
@@ -39,7 +39,7 @@ Use either the manual install instructions below (look for Release version 0.11.
 
 ![image](https://user-images.githubusercontent.com/59670736/169886307-e60be211-d331-443f-bcde-109f61c23323.png)
 
- In the dropdown, select "Public-1.3-beta"
+ In the dropdown, select "Public-1.3-beta" (or whichever beta you want)
 
 ![image](https://user-images.githubusercontent.com/59670736/169886370-5a340164-ccfe-4520-a3f5-515fd81671cf.png)
 
