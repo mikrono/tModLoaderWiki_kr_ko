@@ -10,6 +10,11 @@ The first step in migrating to 1.4.4 is following the [Localization Changes](#lo
 ## Localization Changes
 The largest change to tModLoader is that localization is now done fully in the `.hjson` localization files. You **MUST** follow the [Migrating from 1.4.3 to 1.4.4](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) instructions. Failure to do this step will make porting a mod extremely tedious.
 
+## New Vanilla Features
+Terraria 1.4.4 has many new features and changes. The [1.4.4 changelog](https://terraria.wiki.gg/wiki/1.4.4) details these changes. Modders should be aware of the changes in case they would impact the balance or functionality of their mods. For example, `NPC` can now have 20 buffs and `Player` can now have 44 buffs by default.
+
+Of specific note is the Shimmer, modders should consider how content in their mod would interact with the Shimmer. [ExampleMod](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=shimmer+path:ExampleMod&type=Code) contains examples of various shimmer features, such as transforming NPC, decrafting examples, and transforming items.
+
 ## Renamed or Moved Members
 
 ### Namespaces / Classes
