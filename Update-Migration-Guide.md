@@ -97,7 +97,6 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `Terraria.DataStructures.BossBarDrawParams.LifePercentToShow` removed, use `Life / LifeMax` instead
 * `Terraria.DataStructures.BossBarDrawParams.ShieldPercentToShow` removed, use `Shield / ShieldMax` instead
 * `ModBossBar.ModifyInfo` life and shield current and max values are now separate to allow for hp/shield number text draw
-
 * `ModItem/GlobalItem.ModifyHitNPC/OnHitNPC/ModifyHitPvp/OnHitPvp` -> See Player/NPC damage hooks rework section below
 * `ModNPC/GlobalNPC.HitEffect/ModifyHitPlayer/OnHitPlayer/ModifyHitNPC/OnHitNPC/ModifyHitByItem/OnHitByItem/ModifyHitByProjectile/OnHitByProjectile/ModifyIncomingHit/ModifyCollisionData/StrikeNPC` -> See Player/NPC damage hooks rework section below
 * `ModProjectile/GlobalProjectile.ModifyHitNPC/OnHitNPC/ModifyHitPlayer/OnHitPlayer/ModifyDamageScaling` -> See Player/NPC damage hooks rework section below
@@ -136,7 +135,6 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `GlobalNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
 * `ModPylon.GetNPCShopEntry` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
 * `ModPylon.IsPylonForSale` ->  `ModPylon.GetNPCShopEntry`, see ExamplePylonTile for an example. To register to specific NPC shops, use the new shop system directly in ModNPC.AddShop, GlobalNPC.ModifyShop or ModSystem.PostAddRecipes
-
 
 ## Big change concepts
 
