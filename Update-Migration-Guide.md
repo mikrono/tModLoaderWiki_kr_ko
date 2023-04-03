@@ -5,7 +5,7 @@ The tModLoader team took advantage of the release of Terraria 1.4.4.9 to impleme
 
 This migration guide assumes the mod has already been migrated to 1.4.3. If that is not the case, do that first.
 
-The first step in migrating to 1.4.4 is following the [Localization Changes](localization-changes) section below. Once that is done, switch to the `1.4.4-preview` branch on steam by following the [instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#to-access-13-legacy-tmodloader-and-other-beta-options). Launch tModLoader, make sure it says `Terraria v1.4.4.9` and `tModLoader v2023.4.x.y Preview` in the corner. Next, visit the Workshop->Develop Mods menu in game and click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). As 1.4.4 continues to update during this beta period, you might need to "Run tModPorter" again if an update breaks something.
+The first step in migrating to 1.4.4 is following the [Localization Changes](#localization-changes) section below. Once that is done, switch to the `1.4.4-preview` branch on steam by following the [instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#to-access-13-legacy-tmodloader-and-other-beta-options). Launch tModLoader, make sure it says `Terraria v1.4.4.9` and `tModLoader v2023.4.x.y Preview` in the corner. Next, visit the Workshop->Develop Mods menu in game and click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). As 1.4.4 continues to update during this beta period, you might need to "Run tModPorter" again if an update breaks something.
 
 ## Localization Changes
 The largest change to tModLoader is that localization is now done fully in the `.hjson` localization files. You **MUST** follow the [Migrating from 1.4.3 to 1.4.4](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) instructions. Failure to do this step will make porting a mod extremely tedious.
@@ -115,26 +115,26 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `Condition.InGraveyardBiome` -> `Condition.InGraveyard`
 * `Item.IsCandidateForReforge` removed, use `maxStack == 1 || Item.AllowReforgeForStackableItem` or `Item.Prefix(-3)` to check whether an item is reforgeable
 * `Item.CloneWithModdedDataFrom` removed, use `Clone`, `ResetPrefix` or `Refresh`
-* `ModLoader.Mod.CreateTranslation` removed, use `Localization.Language.GetOrRegister`. See [Localization Changes Details](localization-changes-details) below.
-* `ModLoader.Mod.AddTranslation` removed, use `Localization.Language.GetOrRegister`. See [Localization Changes Details](localization-changes-details) below.
-* `ModLoader.ModTranslation` removed, use `Localization.LocalizedText` instead. See [Localization Changes Details](localization-changes-details) below.
+* `ModLoader.Mod.CreateTranslation` removed, use `Localization.Language.GetOrRegister`. See [Localization Changes Details](#localization-changes-details) below.
+* `ModLoader.Mod.AddTranslation` removed, use `Localization.Language.GetOrRegister`. See [Localization Changes Details](#localization-changes-details) below.
+* `ModLoader.ModTranslation` removed, use `Localization.LocalizedText` instead. See [Localization Changes Details](#localization-changes-details) below.
 * `InfoDisplay.InfoName` -> `InfoDisplay.DisplayName`
 * `InfoDisplay.DisplayValue` -> suggestion: Set displayColor to InactiveInfoTextColor if your display value is "zero" or shows no valuable information
 * `DamageClass.ClassName` -> `DamageClass.DisplayName`
-* `GlobalTile.Drop/CanDrop` and `ModTile.Drop/CanDrop` -> These methods changed drastically. See [Tile Drop Changes](tile-drop-changes) for more information.
-* `ModTile.ChestDrop` -> Now use `ItemDrop`, if needed. See [Tile Drop Changes](tile-drop-changes) for more information.
-* `ModTile.DresserDrop` -> Now use `ItemDrop`, if needed. See [Tile Drop Changes](tile-drop-changes) for more information.
+* `GlobalTile.Drop/CanDrop` and `ModTile.Drop/CanDrop` -> These methods changed drastically. See [Tile Drop Changes](#tile-drop-changes) for more information.
+* `ModTile.ChestDrop` -> Now use `ItemDrop`, if needed. See [Tile Drop Changes](#tile-drop-changes) for more information.
+* `ModTile.DresserDrop` -> Now use `ItemDrop`, if needed. See [Tile Drop Changes](#tile-drop-changes) for more information.
 * `ModTile.ContainerName` -> Removed, override `DefaultContainerName` instead
 * `TileLoader.ContainerName` -> `TileLoader.DefaultContainerName`, parameters changed
 * `ModBuff.ModifyBuffTip` -> `ModBuff.ModifyBuffText`, parameters changed
 * `GlobalBuff.ModifyBuffTip` -> `GlobalBuff.ModifyBuffText`, parameters changed
 * `ModNPC/GlobalNPC.DrawTownAttackSwing` -> Parameters changed
 * `ModNPC/GlobalNPC.DrawTownAttackGun` -> Parameters changed. `closeness` is now `horizontalHoldoutOffset`, use `horizontalHoldoutOffset = Main.DrawPlayerItemPos(1f, itemtype) - originalClosenessValue` to adjust to the change. See docs for how to use hook with an item type.
-* `ModNPC/GlobalNPC.SetupShop` -> `ModifyActiveShop`. Shops have drastically changed, see [Shop Changes](shop-changes) for more information.
+* `ModNPC/GlobalNPC.SetupShop` -> `ModifyActiveShop`. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
 * `ModNPC.OnChatButtonClicked` ->  Parameters changed
-* `ModNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](shop-changes) for more information.
-* `GlobalNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](shop-changes) for more information.
-* `ModPylon.GetNPCShopEntry` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](shop-changes) for more information.
+* `ModNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
+* `GlobalNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
+* `ModPylon.GetNPCShopEntry` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
 * `ModPylon.IsPylonForSale` ->  `ModPylon.GetNPCShopEntry`, see ExamplePylonTile for an example. To register to specific NPC shops, use the new shop system directly in ModNPC.AddShop, GlobalNPC.ModifyShop or ModSystem.PostAddRecipes
 
 
