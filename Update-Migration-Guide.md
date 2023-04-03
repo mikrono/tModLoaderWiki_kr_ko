@@ -1,7 +1,55 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here. For migration information from past versions, see [Update Migration Guide Previous Versions](Update-Migration-Guide-Previous-Versions)
 
-# v2022.X (1.4)
-v2022.X updates tModLoader to Terraria 1.4. This update changed everything. Before starting, you'll need to install the [.NET 6 SDK](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-developers#net-6-sdk). Next, you need to copy your mod sources into the `My Games/Terraria/tModLoader/ModSources/` folder. Next, visit the Workshop->Develop Mods menu in game and click on the "upgrade .csproj" button. After that, click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). You can "Run tModPorter" multiple times after big tModLoader updates, it is updated regularly and handles inter-1.4 changes too.
+# v2023.X (1.4.4)
+The tModLoader team took advantage of the release of Terraria 1.4.4.9 to implement a wide variety of breaking changes. These changes are large features that have been highly requested from the community. The extent of the changes, as well as changes in Terraria, are so large that all mods will need to update to continue working on 1.4.4. tModLoader for 1.4.3 will continue to be available to users. If a modder intends to continue updating their mod for 1.4.3 users, they should use backups or [Git](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management) to maintain copies of their source code for 1.4.3 and 1.4.4. 
+
+This migration guide assumes the mod has already been migrated to 1.4.3. If that is not the case, do that first.
+
+The first step in migrating to 1.4.4 is following the [Localization Changes](localization-changes) section below. Once that is done, switch to the `1.4.4-preview` branch on steam by following the [instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#to-access-13-legacy-tmodloader-and-other-beta-options). Launch tModLoader, make sure it says `Terraria v1.4.4.9` and `tModLoader v2023.4.x.y Preview` in the corner. Next, visit the Workshop->Develop Mods menu in game and click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). As 1.4.4 continues to update during this beta period, you might need to "Run tModPorter" again if an update breaks something.
+
+## Localization Changes
+The largest change to tModLoader is that localization is now done fully in the `.hjson` localization files. You **MUST** follow the [Migrating from 1.4.3 to 1.4.4](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) instructions. Failure to do this step will make porting a mod extremely tedious.
+
+## Renamed or Moved Members
+
+### Namespaces / Classes
+
+### Static Methods
+* `NetMessage.SendObjectPlacment` -> `NetMessage.SendObjectPlacement`
+
+### Static Fields / Constants / Properties
+* `ID.TileID.Sets.TouchDamageSands` -> `ID.TileID.Sets.Suffocate`
+* `ID.TileID.Sets.TouchDamageOther` -> `ID.TileID.Sets.TouchDamageImmediate` and possibly `ID.TileID.Sets.TouchDamageBleeding`
+* `ID.TileID.Sets.TouchDamageVines` -> `ID.TileID.Sets.TouchDamageImmediate` and `ID.TileID.Sets.TouchDamageDestroyTile`
+* `DustID.Fire` -> `DustID.Torch`
+* `` -> ``
+* `` -> ``
+* `` -> ``
+* `` -> ``
+* `` -> ``
+
+### Non-Static Methods
+* `UI.UIElement.MouseDown` -> `UI.UIElement.LeftMouseDown`
+* `UI.UIElement.MouseUp` -> `UI.UIElement.LeftMouseUp`
+* `UI.UIElement.Click` -> `UI.UIElement.LeftClick`
+* `UI.UIElement.DoubleClick` -> `UI.UIElement.LeftDoubleClick`
+
+### Non-Static Fields / Constants / Properties
+* `UI.UIElement.OnMouseDown` -> `UI.UIElement.OnLeftMouseDown`
+* `UI.UIElement.OnMouseUp` -> `UI.UIElement.OnLeftMouseUp`
+* `UI.UIElement.OnClick` -> `UI.UIElement.OnLeftClick`
+* `UI.UIElement.OnDoubleClick` -> `UI.UIElement.OnLeftDoubleClick`
+* `Player.discount` -> `Player.discountAvailable`
+* `Item.canBePlacedInVanityRegardlessOfConditions` -> `Item.hasVanityEffects`
+
+### Misc changes
+
+### tModLoader changes
+
+## Big change concepts
+
+# v2022.X (1.4.3)
+v2022.X updates tModLoader to Terraria 1.4.3.6. This update changed everything. Before starting, you'll need to install the [.NET 6 SDK](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-developers#net-6-sdk). Next, you need to copy your mod sources into the `My Games/Terraria/tModLoader/ModSources/` folder. Next, visit the Workshop->Develop Mods menu in game and click on the "upgrade .csproj" button. After that, click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). You can "Run tModPorter" multiple times after big tModLoader updates, it is updated regularly and handles inter-1.4 changes too.
 
 Here are the most relevant changes.
 
