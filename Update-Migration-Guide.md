@@ -173,19 +173,37 @@ Too many to write here, please read the PR descriptions if you have questions af
 [PR 3219](https://github.com/tModLoader/tModLoader/pull/3219) has changed how NPC shops are done.
 
 **Short Summary:**    
-• NPC shops are now declarative, meaning they get registered, and items can be added to them with conditions, similarly to NPC drops (loot) and recipes    
-• Adding items to shops, or hiding items from shops is now as easy as adding or disabling recipes    
-• Info mods can traverse the NPCShopDatabase to show how to obtain an item. All the conditions for items appearing in shops have been localized.    
-• Registering multiple shops per NPC is perfectly fine, and selecting the shop to be opened when chatting can now be done via the ref string shop parameter in OnChatButtonClicked
+* NPC shops are now declarative, meaning they get registered, and items can be added to them with conditions, similarly to NPC drops (loot) and recipes    
+* Adding items to shops, or hiding items from shops is now as easy as adding or disabling recipes    
+* Info mods can traverse the NPCShopDatabase to show how to obtain an item. All the conditions for items appearing in shops have been localized.    
+* Registering multiple shops per NPC is perfectly fine, and selecting the shop to be opened when chatting can now be done via the ref string shop parameter in OnChatButtonClicked
 
 **Porting Notes:**    
-• `ModPylon.IsPylonForSale` has been replaced by `ModPylon.GetNPCShopEntry`. Please see the documentation and [ExamplePylonTile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExamplePylonTile.cs)    
-• `Mod/GlobalNPC.SetupShop` is now `ModifyActiveShop`. This hook still exists to allow for custom shop modification, but you should consider moving to the new `ModNPC.AddShops` and `GlobalNPC.ModifyShop` hooks    
-• The `Item[]` in `ModifyActiveShop` will now contain null entries. This distinguishes slots which have not been filled, from slots which are intentionally left empty (as in the case of DD2 Bartender)    
-• Please take a look at the changes to Example Mod in the PR to more easily understand the new system.    
+* `ModPylon.IsPylonForSale` has been replaced by `ModPylon.GetNPCShopEntry`. Please see the documentation and [ExamplePylonTile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExamplePylonTile.cs)    
+* `Mod/GlobalNPC.SetupShop` is now `ModifyActiveShop`. This hook still exists to allow for custom shop modification, but you should consider moving to the new `ModNPC.AddShops` and `GlobalNPC.ModifyShop` hooks    
+* The `Item[]` in `ModifyActiveShop` will now contain null entries. This distinguishes slots which have not been filled, from slots which are intentionally left empty (as in the case of DD2 Bartender)    
+* Please take a look at the changes to Example Mod in the PR to more easily understand the new system.    
 
 ### Tile Drop Changes
 WIP
+
+### Improve Player.clientClone performance
+[PR 3174](https://github.com/tModLoader/tModLoader/pull/3174) has added new approaches to `Player.clientClone` to improve performance.
+
+**Short Summary:**   
+`Item.Clone` can become very performance expensive with many mods. Only type, stack and prefix are required to tell if an item has changed in the inventory and needs to be re-synced.
+
+This PR replaces usages of `Item.Clone` in `Player.clientClone` with `Item.CopyNetStateTo`. Additionally, a single Player (and `ModPlayer`) instance is reused for all `clientClone`/`CopyClientStateTo` calls, acting as a 'storage copy' rather than making a new one each frame.
+
+Please note that tModPorter is not smart enough to identify `Item.Clone` usages in `ModPlayer.CopyClientStateTo` calls automatically. You will need to replace these yourself or an exception will be thrown at runtime.
+
+**Porting Notes:**    
+* `ModPlayer.clientClone` -> `ModPlayer.CopyClientState`
+* Use `Item.CopyNetStateTo` instead of `Item.Clone` in `ModPlayer.CopyClientState`
+* Use `Item.IsNetStateDifferent` instead of `Item.IsNotSameTypePrefixAndStack` in `ModPlayer.SendClientChanges`
+* Item instances altered by `CopyNetStateTo` are not initialized! Do not attempt to read properties or retrieve `ModItem` or `GlobalItem` instances from them! The only valid operation on an `Item` which was updated with `CopyNetStateTo` is `IsNetStateDifferent`
+
+[HoldStyleShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/HoldStyleShowcase.cs), [HitModifiersShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/HitModifiersShowcase.cs), and [UseStyleShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/UseStyleShowcase.cs) briefly show usage of `Item.NetStateChanged();` to trigger an item to sync.
 
 ## Smaller Changes
 ### [PR 3063](https://github.com/tModLoader/tModLoader/pull/3063): Fix Quick Heal and Quick Mana consuming non-consumables
