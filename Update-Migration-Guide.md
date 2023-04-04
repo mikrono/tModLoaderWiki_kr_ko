@@ -215,5 +215,5 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
 **Porting Notes:** Consider replacing overrides of `OnWorldLoad` with `ClearWorld` to reset world related data. Generally no need to override `OnWorldUnload` anymore. Use Unload if you want to fully clean up all memory, but empty lists are nothing to worry about.
 
 ### [PR 3341](https://github.com/tModLoader/tModLoader/pull/3341): Unify Localized Conditions
-**Short Summary:** Terraria.Recipe.Condition has been moved to Terraria.Condition and can now be applied to more things. Recipes, item variants, drops and soon shops. Added SimpleItemDropRuleCondition class to help make drop conditions more easily.    
+**Short Summary:** `Terraria.Recipe.Condition` has been moved to `Terraria.Condition` and can now be applied to more things. Recipes, item variants, drops and shops. Added `SimpleItemDropRuleCondition` class to help make drop conditions more easily.    
 **Porting Notes:** `Terraria.Recipe.Condition` -> `Terraria.Condition` (tModPorter). `Recipe` parameter removed from condition delegate, since it was almost always unused. Custom conditions will have to change from `_ => calculation` or `recipe => calculation` to `() => calculation`
