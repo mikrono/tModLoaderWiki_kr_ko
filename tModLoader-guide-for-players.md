@@ -16,6 +16,14 @@ Note that tModLoader does NOT currently support Family Share due to an issue wit
 
 By Default, 1.4 tModLoader will be installed by Steam.
 
+### Beta Branches
+tModLoader updates regularly. Most users will want to use the default release, but users can use the beta branches feature of Steam to switch to a legacy or preview version of tModLoader. Legacy versions of tModLoader are useful for playing a mod that hasn't been updated to the latest stable tModLoader. Preview versions of tModLoader are useful to test new features or to test new content added in a Terraria update that hasn't made it to stable yet.
+
+Here are the available options:
+* default/None - This is the stable version that we expect players to use. It is currently based on Terraria v1.4.3.6 content.
+* 1.3-legacy - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
+* 1.4.4-preview - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended. It is currently based on Terraria 1.4.4.9 content.
+
 ### To access 1.3 (Legacy tModLoader) and other Beta options
 Use either the manual install instructions below (look for Release version 0.11.8.9 for 1.3) or take the following steps:
 
