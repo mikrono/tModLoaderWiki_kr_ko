@@ -147,10 +147,55 @@ The following contains smaller scale changes to tModLoader members. More elabora
 WIP
 
 ### Player/NPC damage hooks rework. Hit/HurtModifiers and Hit/HurtInfo
-Player and NPC hit hooks (OnHit, ModifyHit, OnHitBy, etc) have been simplified with common architecture, and had many new features added. See [the pull request description](https://github.com/tModLoader/tModLoader/pull/3212) for more information.
+[PR 3212](https://github.com/tModLoader/tModLoader/pull/3212), [PR 3355](https://github.com/tModLoader/tModLoader/pull/3355), and [PR 3359](https://github.com/tModLoader/tModLoader/pull/3359) drastically changes how player and npc hit hooks are structured.   
 
-### Shop Changes
-WIP
+**Short Summary:**    
+Player and NPC hit hooks (`OnHit`, `ModifyHit`, `OnHitBy`, etc) have been simplified with common architecture, and had many new features added.
+
+The goal of this change is to improve mod compatibility by making the damage calculations an explicit equation, where mods contribute modifiers, and tModLoader calculates the result. 
+
+Many examples of how to make hit/hurt modifying accessories and weapon effects have been added, demonstrating the new system.
+* [ExampleDodgeBuff](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Buffs/ExampleDodgeBuff.cs)/ExampleDamageModificationPlayer: `ConsumableDodge` example, similar to 
+* [ExampleDefenseDebuff](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Buffs/ExampleDefenseDebuff.cs): Multiplicative defense debuff, similar to Broken Armor
+* [AbsorbTeamDamageAccessory](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/AbsorbTeamDamageAccessory.cs)/AbsorbTeamDamageBuff/ExampleDamageModificationPlayer: Damage absorption example, similar to Paladins Shield item.
+* [HitModifiersShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/HitModifiersShowcase.cs): Extensive examples of new `ModifyHitNPC` and `OnHitNPC` hooks. Disable damage variation, modify knockback, modify crit bonus damage, flat armor penetration, percentage armor penetration, etc examples.
+* ExampleWhipDebuff and ExampleWhipAdvancedDebuff: Show proper tag damage, both flat and scaling varieties.
+* PartyZombie: Shows an NPC that is "resistant" to a specific damage class, taking less damage
+* ExampleAdvancedFlailProjectile: Shows ModifyDamageScaling replacement, as well as proper usage of various `HitModifiers` fields and properties to scale damage and knockback dynamically.
+* ExamplePaperAirplaneProjectile: Shows a projectile dealing bonus damage to an npc that is weak to it.
+
+tModPorter will be able to convert the hook signatures, but you will need to read the Porting Notes (in particular the FAQ), to figure out how to convert old damage modification code into the new system.
+
+**Porting Notes:**    
+Too many to write here, please read the PR descriptions if you have questions after running tModPorter.
+
+### Shop Changes (aka Declarative Shops)
+[PR 3219](https://github.com/tModLoader/tModLoader/pull/3219) has changed how NPC shops are done.
+
+**Short Summary:**    
+• NPC shops are now declarative, meaning they get registered, and items can be added to them with conditions, similarly to NPC drops (loot) and recipes    
+• Adding items to shops, or hiding items from shops is now as easy as adding or disabling recipes    
+• Info mods can traverse the NPCShopDatabase to show how to obtain an item. All the conditions for items appearing in shops have been localized.    
+• Registering multiple shops per NPC is perfectly fine, and selecting the shop to be opened when chatting can now be done via the ref string shop parameter in OnChatButtonClicked
+
+**Porting Notes:**    
+• `ModPylon.IsPylonForSale` has been replaced by `ModPylon.GetNPCShopEntry`. Please see the documentation and [ExamplePylonTile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExamplePylonTile.cs)    
+• `Mod/GlobalNPC.SetupShop` is now `ModifyActiveShop`. This hook still exists to allow for custom shop modification, but you should consider moving to the new `ModNPC.AddShops` and `GlobalNPC.ModifyShop` hooks    
+• The `Item[]` in `ModifyActiveShop` will now contain null entries. This distinguishes slots which have not been filled, from slots which are intentionally left empty (as in the case of DD2 Bartender)    
+• Please take a look at the changes to Example Mod in the PR to more easily understand the new system.    
 
 ### Tile Drop Changes
 WIP
+
+## Smaller Changes
+### [PR 3063](https://github.com/tModLoader/tModLoader/pull/3063): Fix Quick Heal and Quick Mana consuming non-consumables
+**Short Summary:** Adds `item.consumable` as a check in Quick Heal and Quick Mana.     
+**Porting Notes:** For Quick heal, Quick Mana non-consummables, it is recommended to use `Item.consumable` field instead of overriding `ConsumeItem()`
+
+### [PR 3360](https://github.com/tModLoader/tModLoader/pull/3360): Add ModSystem.ClearWorld
+**Short Summary:** Adds ModSystem.ClearWorld which runs on world clear. The new best place to clear/initialize world related data structures.    
+**Porting Notes:** Consider replacing overrides of `OnWorldLoad` with `ClearWorld` to reset world related data. Generally no need to override `OnWorldUnload` anymore. Use Unload if you want to fully clean up all memory, but empty lists are nothing to worry about.
+
+### [PR 3341](https://github.com/tModLoader/tModLoader/pull/3341): Unify Localized Conditions
+**Short Summary:** Terraria.Recipe.Condition has been moved to Terraria.Condition and can now be applied to more things. Recipes, item variants, drops and soon shops. Added SimpleItemDropRuleCondition class to help make drop conditions more easily.    
+**Porting Notes:** `Terraria.Recipe.Condition` -> `Terraria.Condition` (tModPorter). `Recipe` parameter removed from condition delegate, since it was almost always unused. Custom conditions will have to change from `_ => calculation` or `recipe => calculation` to `() => calculation`
