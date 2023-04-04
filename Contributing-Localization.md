@@ -74,13 +74,13 @@ If there are any localization keys that are complicated or seem ambiguous, you m
 ***
 
 ### GitHub
-If you are working on the source code directly, you simply need to build and reload your mod in game. The [Learn how to Build the Mod](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#learn-how-to-build-the-mod) section can teach you how to do that.
+If you are working on the source code directly, you simply need to build and reload your mod in game. The [Learn how to Build the Mod](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#learn-how-to-build-the-mod) section can teach you how to do that. The [Live Updating feature](https://github.com/tModLoader/tModLoader/wiki/Localization#live-updating) can be used to test changes further while in-game without requiring a rebuild and reload. 
 
 ### Contact Mod Developer
 Since you don't have the mod code, you'll have to leave this step up to the mod author, or follow the `New Translation Mod` steps below to make a temporary mod to test your changes. If you do, remember not to publish the mod.
 
 ### New Translation Mod
-To test a translation mod, first make sure the original mod is enabled, then build and reload your mod in game. You should see your translations working. 
+To test a translation mod, first make sure the original mod is enabled, then build and reload your mod in game. You should see your translations working.  The [Live Updating feature](https://github.com/tModLoader/tModLoader/wiki/Localization#live-updating) can be used to test further changes while in-game without requiring a rebuild and reload.  
 
 ***
 
