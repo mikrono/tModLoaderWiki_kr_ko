@@ -125,7 +125,7 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Player Item Animation](Player-Item-Animation)
 - [Useful Vanilla Fields](Useful-Vanilla-Fields)
 - [Useful Vanilla Methods](Useful-Vanilla-Methods)
-- [Vanilla Content IDs](Vanilla-Content-IDs) -- ItemID, ProjectileID, TileID, NPCID, etc. 
+- [Vanilla Content IDs](Vanilla-Content-IDs) -- ItemID, ProjectileID, TileID, NPCID, SoundID, etc. 
 - [Vanilla Interface Changes](Vanilla-Class-Changes)
 - [Vanilla Interface layers values](Vanilla-Interface-layers-values)
 - [Vanilla Item Field Values](Vanilla-Item-Field-Values)
@@ -137,7 +137,6 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
 - [Vanilla Buff IDs](Vanilla-Buff-IDs)
 - [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
-- [Vanilla Sound IDs](Vanilla-Sound-IDs)
 - [Vanilla Tile IDs](Vanilla-Tile-IDs)
 - [Vanilla Wall IDs](Vanilla-Wall-IDs)
 #### Class Documentation
