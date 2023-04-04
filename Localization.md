@@ -11,6 +11,8 @@ Localization provides the ability for a mod to be played and enjoyed by users wh
 
 These localization files are easy to work with, allowing users without technical skills to translate mods. These translations can then be provided to the mod author or published as a new mod, allowing more people to enjoy the mod.
 
+**Even if don't intend to personally localize your mod to other languages, you will need to use localization files for the one language you do support.**
+
 This wiki page will cover localization topics intended for a mod developer. If you are interested in localizing an existing mod, or providing localization to tModLoader itself, please read the [Contributing Localization wiki page](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization).
 
 # Migrating from 1.4.3 to 1.4.4
