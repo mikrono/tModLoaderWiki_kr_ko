@@ -217,3 +217,22 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
 ### [PR 3341](https://github.com/tModLoader/tModLoader/pull/3341): Unify Localized Conditions
 **Short Summary:** `Terraria.Recipe.Condition` has been moved to `Terraria.Condition` and can now be applied to more things. Recipes, item variants, drops and shops. Added `SimpleItemDropRuleCondition` class to help make drop conditions more easily.    
 **Porting Notes:** `Terraria.Recipe.Condition` -> `Terraria.Condition` (tModPorter). `Recipe` parameter removed from condition delegate, since it was almost always unused. Custom conditions will have to change from `_ => calculation` or `recipe => calculation` to `() => calculation`
+
+### [Commit 56f6657](https://github.com/tModLoader/tModLoader/commit/56f66570219a66095120e64e7f0640d6ba0a6999): Change HookGen Namespace Style
+**Short Summary:**     
+* Hookgen namespaces (`IL.` and `On.`) have been removed in favor of `On_` and `IL_` prepended to the type name.
+* No longer will you get 3 different namespace suggestions when you use VS to import a Terraria type name.
+* Want On Item hooks? Just use `On_Item` it's in the same namespace as `Item`!    
+
+**Porting Notes:**     
+* `On.Terraria.Player` -> `Terraria.On_Player`
+* `IL.Terraria.Player` -> `Terraria.IL_Player`
+* As usual, tModPorter can convert your old code automatically.
+
+### [PR 3242](https://github.com/tModLoader/tModLoader/pull/3242): Default Research Unlock Value changed to 1
+**Short Summary:**     
+* All items will now default to needing 1 item to research. 
+* The previous value of 0 left items unresearchable since many modders don't bother to implement journey mode features
+* Modders can clean up their code. `ModItem`s with `Item.ResearchUnlockCount = 1;` lines can be deleted.
+
+**Porting Notes:** This is almost entirely optional. The only thing is `ModItem`s that should never exist in the inventory, or should otherwise not be researchable, now need `Item.ResearchUnlockCount = 0;` added where previously, they would be unsearchable by default.
