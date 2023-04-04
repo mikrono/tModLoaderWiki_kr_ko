@@ -185,7 +185,17 @@ Too many to write here, please read the PR descriptions if you have questions af
 * Please take a look at the changes to Example Mod in the PR to more easily understand the new system.    
 
 ### Tile Drop Changes
-WIP
+[PR 3210](https://github.com/tModLoader/tModLoader/pull/3210) has changed how tiles drop items.
+
+**Short Summary:**    
+* Tiles and walls now automatically drop the items that place it. This process supports tiles with multiple styles.
+* Block Swap feature now supports modded torches, chests, and drawers. 
+* Other miscellaneous fixes. 
+
+**Porting Notes:**    
+* The vast majority of `ModTile.KillMultitile` code and `ModTile.Drop` code can be deleted or simplified by following the porting notes.
+* All mods with any `ModTile` must follow the porting notes, failure to adjust your code for this major change will result in duplicate drops.
+* There are too many changes to write here. Please read the Porting Notes section in the [Pull Request](https://github.com/tModLoader/tModLoader/pull/3210) after running tModPorter.
 
 ### Improve Player.clientClone performance
 [PR 3174](https://github.com/tModLoader/tModLoader/pull/3174) has added new approaches to `Player.clientClone` to improve performance.
