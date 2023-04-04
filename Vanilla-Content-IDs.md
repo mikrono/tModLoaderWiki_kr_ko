@@ -45,6 +45,10 @@ Projectile IDs are typically used in `Projectile.NewProjectile` methods to spawn
 
 Negative IDs represent NPCs that share a `type` with an NPC with a positive NPC. If you need to differentiate between these variants, you'll need to check `netID` to determine which variant is being checked. 
 
+# Sound IDs
 
+[Sound IDs page on the official Terraria wiki](https://terraria.wiki.gg/wiki/Sound_IDs)
+
+Sound IDs can be used to play specific existing sounds in a mod. The [Adapting Vanilla Code section of the Basic Sounds Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Sounds#adapting-vanilla-code-or-code-from-past-tmodloader-versions) goes over how to use the Sound ID information on the wiki to find and play specific Terraria sounds.
 
 # others here...
