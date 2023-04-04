@@ -243,6 +243,11 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
 **Short Summary:**     
 * All items will now default to needing 1 item to research. 
 * The previous value of 0 left items unresearchable since many modders don't bother to implement journey mode features
-* Modders can clean up their code. `ModItem`s with `Item.ResearchUnlockCount = 1;` lines can be deleted.
+* Modders can clean up their code:
+  * `ModItem.SacrificeTotal` has been removed and tModPorter should have changed it to `Item.ResearchUnlockCount` already.
+  * `CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = #;` lines can be changed to `Item.ResearchUnlockCount = #;`
+  * `ModItem`s with `Item.ResearchUnlockCount = 1;` or `CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;` lines can be deleted, since the default is 1.
 
-**Porting Notes:** This is almost entirely optional. The only thing is `ModItem`s that should never exist in the inventory, or should otherwise not be researchable, now need `Item.ResearchUnlockCount = 0;` added where previously, they would be unsearchable by default.
+**Porting Notes:**    
+* This is almost entirely optional. The only thing is `ModItem`s that should never exist in the inventory, or should otherwise not be researchable, now need `Item.ResearchUnlockCount = 0;` added where previously, they would be unsearchable by default. (Note: `CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 0;` will result in bugs, use `Item.ResearchUnlockCount = 0;`)
+* Modders might consider using this opportunity to add research values matching vanilla values to their `ModItem`: [Journey Mode Research wiki page](https://terraria.wiki.gg/wiki/Journey_Mode#Research).
