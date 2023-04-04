@@ -79,6 +79,13 @@ To avoid losing work, please be aware of the intended workflow:
 
 If a translator sends you an updated `.hjson` file to add to your mod directly, be aware that it might get overwritten if the mod loads and tModLoader detects that the `.tmod` file is newer than the `.hjson` file for some reason. If this is the case, the best option is to build the mod before loading or reloading the mod. You can build in Visual Studio while tModLoader is closed, or you can skip loading mods when launching tModLoader by holding down the shift key, then immediately visit the Mod Sources menu to build the mod. If you forget to do this and find that tModLoader reverted the newly translated `.hjson` files to their old content, copy the updated `.hjson` files into the mod sources folder again and then build and reload.
 
+## Live Updating
+tModLoader will detect when `.hjson` files in the ModSources folders are saved and will reload them automatically while in-game. By using this approach, the modder does not need to rebuild and reload the mod to test the new values. If you are using this feature, remember to rebuild the mod before publishing so that all the changes make it into the published mod.
+
+Here we see the feature in action. The modder edits the `en-US.hjson` file and then saves to change the English display name and tooltip of the `ExampleWings` item. The changes appear in game after a couple seconds:    
+
+https://user-images.githubusercontent.com/4522492/229942438-26604fd7-9073-436c-b2ab-d99b4f2efeb7.mp4
+
 # How Localization Works
 Every piece of text in the game, from the names of items to the words on the main menu, use localization. Each piece of text in the game is actually a pair of data: a localization key and a localization value. For example, when the player is creating a small world, the game uses the localization key of `UI.WorldSizeSmall` to look up the correct translation value for the currently loaded language, and displays the word "Small" to the user if English is selected. If another language is selected, the game still looks up `UI.WorldSizeSmall` but the localization value will be different. As the creators of Terraria write code in English, most localization keys are very similar to their English translation value.
 
