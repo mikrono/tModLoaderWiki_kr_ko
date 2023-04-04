@@ -134,11 +134,11 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `GlobalBuff.ModifyBuffTip` -> `GlobalBuff.ModifyBuffText`, parameters changed
 * `ModNPC/GlobalNPC.DrawTownAttackSwing` -> Parameters changed
 * `ModNPC/GlobalNPC.DrawTownAttackGun` -> Parameters changed. `closeness` is now `horizontalHoldoutOffset`, use `horizontalHoldoutOffset = Main.DrawPlayerItemPos(1f, itemtype) - originalClosenessValue` to adjust to the change. See docs for how to use hook with an item type.
-* `ModNPC/GlobalNPC.SetupShop` -> `ModifyActiveShop`. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
+* `ModNPC/GlobalNPC.SetupShop` -> `ModifyActiveShop`. Shops have drastically changed, see [Shop Changes](#shop-changes-aka-declarative-shops) for more information.
 * `ModNPC.OnChatButtonClicked` ->  Parameters changed
-* `ModNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
-* `GlobalNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
-* `ModPylon.GetNPCShopEntry` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes) for more information.
+* `ModNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes-aka-declarative-shops) for more information.
+* `GlobalNPC.ModifyActiveShop` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes-aka-declarative-shops) for more information.
+* `ModPylon.GetNPCShopEntry` ->  Parameters changed. Shops have drastically changed, see [Shop Changes](#shop-changes-aka-declarative-shops) for more information.
 * `ModPylon.IsPylonForSale` ->  `ModPylon.GetNPCShopEntry`, see ExamplePylonTile for an example. To register to specific NPC shops, use the new shop system directly in ModNPC.AddShop, GlobalNPC.ModifyShop or ModSystem.PostAddRecipes
 
 ## Big change concepts
