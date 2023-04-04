@@ -136,7 +136,6 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 #### IDs / Names
 - [Vanilla Ammo IDs](Vanilla-Ammo-IDs)
 - [Vanilla Projectile AIs](Vanilla-Projectile-AIs)
-- [Vanilla Tile IDs](Vanilla-Tile-IDs)
 #### Class Documentation
 - [Item Class Documentation](Item-Class-Documentation)
 - [NetMessage Class Documentation](NetMessage-Class-Documentation)
