@@ -215,6 +215,27 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
 
 [HoldStyleShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/HoldStyleShowcase.cs), [HitModifiersShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/HitModifiersShowcase.cs), and [UseStyleShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/UseStyleShowcase.cs) briefly show usage of `Item.NetStateChanged();` to trigger an item to sync.
 
+### Max Health and Mana Manipulation API
+[PR 2909](https://github.com/tModLoader/tModLoader/pull/2909) greatly changed the API for modifying the player's max health and mana, rendering custom sprites over the player's hearts and mana stars and even added an API for creating custom display sets.
+
+**Short Summary:**
+* Adds `ModPlayer.ModifyMaxStats` with `StatModifier` arguments for permanent adjustments to max health/mana
+* Adds `Player.ConsumedLifeCrystals`, `ConsumedLifeFruit` and `ConsumedManaCrystals` properties
+  * These properties are directly tied to the vanilla stat increases and can also be manually set by modders
+* Adds helper methods `Player.UseHealthMaxIncreasingItem` and `Player.UseMaxManaIncreasingItem` for displaying the visual effects
+* Adds `ModResourceDisplaySet` allowing for custom life/mana draw styles (similar to boss bar styles) that can be selected in settings
+* Adds `ModResourceOverlay` to allow for drawing custom hearts/mana/effects over the vanilla (or modded) life/mana UI elements
+
+ExampleMod contains examples for a [custom display set](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Common/UI/ExampleDisplaySets) and [custom resource overlays](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Common/UI/ResourceOverlay).
+
+[ExampleStatIncreasePlayer](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Players/ExampleStatIncreasePlayer.cs), [ExampleLifeFruit](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleLifeFruit.cs) and [ExampleManaCrystal](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleManaCrystal.cs) showcase how to handle permanent stat increases.
+
+**Porting Notes:**
+* Refer to `ExampleStatIncreasePlayer`, `ExampleLifeFruit` and `ExampleManaCrystal` on how to properly set permanent stat increases
+* Temporary stat increases to `Player.statLifeMax2` and `Player.statManaMax2` can still be performed as usual
+  * Though they should not be changed in `ModPlayer.ModifyMaxStats`, since that runs too early for the changes to be kept
+* Use `Player.ConsumedLifeCrystals`, `Player.ConsumedLifeFruit` and `Player.ConsumedManaCrystals` instead of checking `Player.statLifeMax` or `Player.statManaMax` due to the stat fields being adjustable by mods
+
 ## Smaller Changes
 ### [PR 3063](https://github.com/tModLoader/tModLoader/pull/3063): Fix Quick Heal and Quick Mana consuming non-consumables
 **Short Summary:** Adds `item.consumable` as a check in Quick Heal and Quick Mana.     
