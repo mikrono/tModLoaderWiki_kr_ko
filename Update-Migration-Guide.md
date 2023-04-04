@@ -8,7 +8,7 @@ This migration guide assumes the mod has already been migrated to 1.4.3. If that
 The first step in migrating to 1.4.4 is following the [Localization Changes](#localization-changes) section below. Once that is done, switch to the `1.4.4-preview` branch on steam by following the [instructions](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#to-access-13-legacy-tmodloader-and-other-beta-options). Launch tModLoader, make sure it says `Terraria v1.4.4.9` and `tModLoader v2023.4.x.y Preview` in the corner. Next, visit the Workshop->Develop Mods menu in game and click on the "Run tModPorter" button. After that completed, you are ready to open Visual Studio and begin working on updating parts of the code that tModPorter either couldn't port or left a comment with instructions (to find all comments, first, go to Tools -> Options -> Environment -> Task List, and add `tModPorter` as a custom token. Then close it, and opening View -> Task List will list all comments, where you can also use the search bar to filter specific comments). As 1.4.4 continues to update during this beta period, you might need to "Run tModPorter" again if an update breaks something.
 
 ## Localization Changes
-The largest change to tModLoader is that localization is now done fully in the `.hjson` localization files. You **MUST** follow the [Migrating from 1.4.3 to 1.4.4](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) instructions. Failure to do this step will make porting a mod extremely tedious.
+The largest change to tModLoader is that localization is now done fully in the `.hjson` localization files. You **MUST** follow the [Migrating from 1.4.3 to 1.4.4](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) instructions. Failure to do this step will make porting a mod extremely tedious. More details can be found in [Localization Changes details](#localization-changes-details).
 
 ## New Vanilla Features
 Terraria 1.4.4 has many new features and changes. The [1.4.4 changelog](https://terraria.wiki.gg/wiki/1.4.4) details these changes. Modders should be aware of the changes in case they would impact the balance or functionality of their mods. For example, `NPC` can now have 20 buffs and `Player` can now have 44 buffs by default.
@@ -144,7 +144,24 @@ The following contains smaller scale changes to tModLoader members. More elabora
 ## Big change concepts
 
 ### Localization Changes Details
-WIP
+[Issue 3074](https://github.com/tModLoader/tModLoader/pull/3074) contains the proposed changes.    
+[PR 3101](https://github.com/tModLoader/tModLoader/pull/3101/files) contains the actual changes, as well as ExampleMod changes.  
+[Localization](https://github.com/tModLoader/tModLoader/wiki/Localization) explains localization and porting instructions for modders.    
+[Contributing Localization](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization) contains instructions for translators and translation mod makers.
+
+**Short Summary**:    
+* Translations are now fully in localization files (.hjson files). `ModItem.DisplayName` and `ModItem.Tooltip`, for example, can no longer be assigned in code.
+* Localization files are automatically updated with entries for new content and managed by tModLoader. More organization options available.
+  * New content will appear in localization files after loading. Edits to .hjson files will be detected by tModLoader and loaded into the game as soon as they are saved, allowing modders and translators to quickly test and update translations.
+* All `ModTranslation` usages are now replaced with `LocalizedText`
+* All translation keys now follow a more predictable pattern: `Mods.ModName.Category.ContentName.DataName`
+* Contributing translations, directly or through translation mods, has been streamlined.
+
+**Porting Notes**:    
+* Modders **MUST** follow the **Migrating from 1.4.3 to 1.4.4** section in the [localization guide on the wiki](https://github.com/tModLoader/tModLoader/wiki/Localization#migrating-from-143-to-144) prior to switching to `1.4.4-preview`.
+* Modders with hardcoded values in localization files, such as "10% increased melee damage", "5 armor penetration", etc should consider updating their code to have less duplication by following the [Binding Values to Localizations](https://github.com/tModLoader/tModLoader/wiki/Localization#binding-values-to-localizations) section on the wiki.
+  * [ExampleStatBonusAccessory](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) showcases our recommended approach for writing clean and maintainable item tooltips. In the example, all the numbers denoting the effects of the accessory only exist in code, not in both code and translation files. Most notably with this new approach, there is no risk of the tooltip and actual behavior being out of sync. Previously a modder could update an accessory but forget to update the tooltip, or forget to update tooltips for other languages, resulting in items that behave differently than how they claim to behave.
+  * [AbsorbTeamDamageBuff](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Buffs/AbsorbTeamDamageBuff.cs), [AbsorbTeamDamageAccessory](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/AbsorbTeamDamageAccessory.cs), and [ExampleDamageModificationPlayer](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Players/ExampleDamageModificationPlayer.cs) further build on this idea. In these examples, the actual damage absorption stat, `DamageAbsorptionPercent` (set to 30), only exists in `AbsorbTeamDamageAccessory`. `AbsorbTeamDamageBuff` references that value for the buff tooltip via `public override LocalizedText Description => base.Description.WithFormatArgs(AbsorbTeamDamageAccessory.DamageAbsorptionPercent);`. `AbsorbTeamDamageAccessory` also references the value in it's own tooltip. `ExampleDamageModificationPlayer` also references that value in `ModifyHurt` and `OnHurt` via the `DamageAbsorptionMultiplier` property. If the modder wished to change this accessory to absorb 35% of damage instead of 30% of damage, the modder would only need to change the value in 1 place, rather than several places in multiple `.cs` and `.hjson` files. This shows the power of properly using localization files and binding values to them.
 
 ### Player/NPC damage hooks rework. Hit/HurtModifiers and Hit/HurtInfo
 [PR 3212](https://github.com/tModLoader/tModLoader/pull/3212), [PR 3355](https://github.com/tModLoader/tModLoader/pull/3355), and [PR 3359](https://github.com/tModLoader/tModLoader/pull/3359) drastically changes how player and npc hit hooks are structured.   
