@@ -30,6 +30,7 @@ It is common for this flow to occur in games when a client is out of sync and th
 If you want to send packets in your mod, you will use the ModPacket class. This class is designed to send data in any of the designated flows described above. A very simple packet could look like this:
 ```cs
 ModPacket myPacket = myMod.GetPacket();
+//The above line could also be written as "ModPacket myPacket = ModContent.GetInstance<yourMod>().GetPacket();
 myPacket.Write("Hello world!");
 ```
 Now you have written a packet with the string data "Hello World!". In order to send the packet to the server, call the `Send` function on ModPacket:
