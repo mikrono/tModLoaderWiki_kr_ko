@@ -58,7 +58,7 @@ Use Steam to switch to the `1.4.4-preview` branch. ([Switching between tModLoade
 
 After launching tModLoader, you'll notice that your mod (and most likely all other mods you had enabled) fails to load, this is expected. Visit the Mod Sources menu and press the "Run tModPorter" button. Along with other changes, this will remove all code using the old localization approach.     
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
-After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. Delete the current `.hjson` files and then rename the `.hjson.new` files to the `.hjson` extension. (If you can't rename the extensions for the files, you'll need to [enable "File Name Extensions"](https://gfycat.com/TheseSameGrasshopper) so you can.)
+After this, you'll want to find those `.hjson.new` files and use them to replace the existing `.hjson` files. To do that, first delete the current `.hjson` files (if any) and then rename the `.hjson.new` files to the `.hjson` extension. (If you can't rename the extensions for the files, you'll need to [enable "File Name Extensions"](https://gfycat.com/TheseSameGrasshopper) so you can.)
 
 Now, you might need to open up Visual Studio and fix any remaining compilation issues. Once you have fixed any remaining issues, you can rebuild your mod and it should work. Once things are working, you can search through your mods source code for lines like `// Tooltip.SetDefault("This is a modded Item.");` or `// DisplayName.SetDefault("Example Sword");` and delete them. They will no longer be used. (You can search all files in the project for the search term `.SetDefault(` to easily find most of these lines.)
 
