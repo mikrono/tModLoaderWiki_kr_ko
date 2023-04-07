@@ -1,5 +1,6 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here. For migration information from past versions, see [Update Migration Guide Previous Versions](Update-Migration-Guide-Previous-Versions)
 
+<!-- Generated with https://luciopaiva.com/markdown-toc/ -->
 # Table of contents
 
 - [v2023.X (1.4.4)](#v2023x-144)
@@ -7,6 +8,12 @@ This page contains guides for migrating your code to new methods and functionali
   - [New Vanilla Features](#new-vanilla-features)
   - [Renamed or Moved Members](#renamed-or-moved-members)
   - [Big change concepts](#big-change-concepts)
+    - [Localization Changes Details](#localization-changes-details)
+    - [Player/NPC damage hooks rework. Hit/HurtModifiers and Hit/HurtInfo](#playernpc-damage-hooks-rework-hithurtmodifiers-and-hithurtinfo)
+    - [Shop Changes (aka Declarative Shops)](#shop-changes-aka-declarative-shops)
+    - [Tile Drop Changes](#tile-drop-changes)
+    - [Improve Player.clientClone performance](#improve-playerclientclone-performance)
+    - [Max Health and Mana Manipulation API](#max-health-and-mana-manipulation-api)
   - [Smaller Changes](#smaller-changes)
 
 # v2023.X (1.4.4)
