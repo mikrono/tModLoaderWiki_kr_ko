@@ -193,10 +193,10 @@ Many examples of how to make hit/hurt modifying accessories and weapon effects h
 * [ExampleDefenseDebuff](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Buffs/ExampleDefenseDebuff.cs): Multiplicative defense debuff, similar to Broken Armor
 * [AbsorbTeamDamageAccessory](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/AbsorbTeamDamageAccessory.cs)/AbsorbTeamDamageBuff/ExampleDamageModificationPlayer: Damage absorption example, similar to Paladins Shield item.
 * [HitModifiersShowcase](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/HitModifiersShowcase.cs): Extensive examples of new `ModifyHitNPC` and `OnHitNPC` hooks. Disable damage variation, modify knockback, modify crit bonus damage, flat armor penetration, percentage armor penetration, etc examples.
-* ExampleWhipDebuff and ExampleWhipAdvancedDebuff: Show proper tag damage, both flat and scaling varieties.
-* PartyZombie: Shows an NPC that is "resistant" to a specific damage class, taking less damage
-* ExampleAdvancedFlailProjectile: Shows ModifyDamageScaling replacement, as well as proper usage of various `HitModifiers` fields and properties to scale damage and knockback dynamically.
-* ExamplePaperAirplaneProjectile: Shows a projectile dealing bonus damage to an npc that is weak to it.
+* [ExampleWhipDebuff](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Buffs/ExampleWhipDebuff.cs) and ExampleWhipAdvancedDebuff: Show proper tag damage, both flat and scaling varieties.
+* [PartyZombie](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/PartyZombie.cs): Shows an NPC that is "resistant" to a specific damage class, taking less damage
+* [ExampleAdvancedFlailProjectile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedFlailProjectile.cs): Shows ModifyDamageScaling replacement, as well as proper usage of various `HitModifiers` fields and properties to scale damage and knockback dynamically.
+* [ExamplePaperAirplaneProjectile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExamplePaperAirplaneProjectile.cs): Shows a projectile dealing bonus damage to an npc that is weak to it.
 
 tModPorter will be able to convert the hook signatures, but you will need to read the Porting Notes (in particular the FAQ), to figure out how to convert old damage modification code into the new system.
 
