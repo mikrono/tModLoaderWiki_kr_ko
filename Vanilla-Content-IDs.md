@@ -29,7 +29,7 @@ Some common items with not obvious names: `Luminite Bar` is actually `LunarBar`,
 As a reminder you use these values either by writing `ItemID.Name` or just `Number`, do NOT write `ItemID.Number`:
 ```cs
 recipe.AddIngredient(ItemID.Gel);  // Good
-recipe.AddIngredient(23);          // Good
+recipe.AddIngredient(23);          // Works, but is hard to read
 recipe.AddIngredient(ItemID.23);   // Wrong
 ```
 
