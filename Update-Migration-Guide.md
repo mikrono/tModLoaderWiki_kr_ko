@@ -1,5 +1,14 @@
 This page contains guides for migrating your code to new methods and functionality of newer tModLoader versions. When a tModLoader update requires rewriting code, we will present the information here. For migration information from past versions, see [Update Migration Guide Previous Versions](Update-Migration-Guide-Previous-Versions)
 
+# Table of contents
+
+- [v2023.X (1.4.4)](#v2023x-144)
+  - [Localization Changes](#localization-changes)
+  - [New Vanilla Features](#new-vanilla-features)
+  - [Renamed or Moved Members](#renamed-or-moved-members)
+  - [Big change concepts](#big-change-concepts)
+  - [Smaller Changes](#smaller-changes)
+
 # v2023.X (1.4.4)
 The tModLoader team took advantage of the release of Terraria 1.4.4.9 to implement a wide variety of breaking changes. These changes are large features that have been highly requested from the community. The extent of the changes, as well as changes in Terraria, are so large that all mods will need to update to continue working on 1.4.4. tModLoader for 1.4.3 will continue to be available to users. If a modder intends to continue updating their mod for 1.4.3 users, they should use backups or [Git](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management) to maintain copies of their source code for 1.4.3 and 1.4.4. 
 
@@ -16,6 +25,7 @@ Terraria 1.4.4 has many new features and changes. The [1.4.4 changelog](https://
 Of specific note is the Shimmer, modders should consider how content in their mod would interact with the Shimmer. [ExampleMod](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=shimmer+path:ExampleMod&type=Code) contains examples of various shimmer features, such as transforming NPC, decrafting examples, and transforming items.
 
 ## Renamed or Moved Members
+All of the changes in this section will be handled by tModPorter and are listed here for completeness. Modders can skip this section and go directly to [Big change concepts](#big-change-concepts) to see the changes that require the modder to make big changes to their mod.
 
 ### Namespaces / Classes
 * `GameContent.UI.ResourceSets.HorizontalBarsPlayerReosurcesDisplaySet` -> `GameContent.UI.ResourceSets.HorizontalBarsPlayerResourcesDisplaySet`
