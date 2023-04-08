@@ -11,6 +11,8 @@
 
 这些本地化文件很容易制作, 使得不懂编程的人也能翻译模组. 然后作者便可以将这些翻译加入模组中, 允许更多人游玩. (译注: 而无需加载翻译补丁)
 
+**即使你只想支持一种语言, 你也需要使用本地化文件**
+
 此指南将涵盖模组作者需要知道的本地化专题教程. 如果你想要翻译一个已有的模组, 或者是翻译tML本身, 请参阅[贡献本地化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization).
 
 # 从1.4.3迁移到1.4.4
@@ -23,7 +25,7 @@
 
 切换至正确的版本后, 启动游戏, 启用模组, 然后进入`开发模组`菜单. 在模组列表里找到你的模组. 你会看到一个绿色箭头按钮, 鼠标停留于其上时显示 "Export 1.4.4+ localization files", 点它.  
 ![image](https://user-images.githubusercontent.com/4522492/210681409-a659670d-5908-4e5d-bd45-74c0545f4666.png)  
-现在去到`ModSources`文件夹, 然后是你模组里的`Localization`文件夹. 你将会看到新生成的`.hjson.new`文件:  
+现在去到`ModSources`文件夹, 然后是你模组里的本地化文件夹. 如果之前没有本地化文件夹, 那就到你模组的根目录. 你将会看到新生成的`.hjson.new`文件:  
 ![image](https://user-images.githubusercontent.com/4522492/210681629-8aad2234-bd56-40c8-b03f-7e36b98d4486.png)  
 在文本编辑器里打开上述文件, 确认一下它们都是好的. 原有`.hjson`里的条目和新生成的条目都应该在新文件里. 如果一切正常, 下一步. 
 
@@ -56,9 +58,13 @@ Mods.{ModName}.Keybind.{ContentName}		-->	Mods.{ModName}.Keybinds.{ContentName}.
 
 启动tML后, 你会发现你的模组 (大概你启用的其它模组也会) 加载失败, 这是正常现象. 进入`开发模组`菜单并点击 "Run tModPorter" 按钮. 这会将过时的本地化方法连同其它过时内容一起移除 (译注: 但这并不能解决所有问题, 该手动改的还是逃不过的).  
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)  
-在此之后, 你应该用`hjson.new`文件替换现有的`.hjson`文件. 删除`.hjson`文件并将`.hjson.new`重命名为`.hjson`文件 (如果你不能修改文件扩展名, 你需要先[启用 "文件扩展名"](https://gfycat.com/TheseSameGrasshopper))
+在此之后, 你应该用`hjson.new`文件替换现有的`.hjson`文件. 首先, 删除`.hjson`文件 (若有), 再将`.hjson.new`重命名为`.hjson`文件 (如果你不能修改文件扩展名, 你需要先[启用 "文件扩展名"](https://gfycat.com/TheseSameGrasshopper))
 
 现在, 你可能需要打开VS, 修复剩下的问题. 修好以后, 你就可以重新生成你的模组. 确保一切正常后, 你就可以在模组源码里搜索`// Tooltip.SetDefault("这是一个模组物品.");`和`// DisplayName.SetDefault("示例剑");`之类的东西, 删掉. 它们不再有用了. (你可以在项目中的所有文件搜索`.SetDefault(`以轻松找到这些该删的代码)
+
+你可以使用以下正则帮助你查找`SetDefault()`调用 (然后用空字符串替换它们).
+- 单行注释: `\s+// [\w.]+SetDefault\(".+;`
+- 多行注释: `\s+/\*[\s\w.]+SetDefault\(".+\*/`, 需要用类似Notepad++的工具并开启 ".匹配新行" 的功能
 
 # 本地化流程
 本地化文件再模组加载过程的最后更新. 这意味着模组作者需要在添加内容后生成并加载模组以更新本地化文件. 更新后即可修改`.hjson`文件以添加翻译. 翻译完以后, 需要重新生成并加载模组来使翻译出现在游戏中. 
@@ -72,6 +78,13 @@ Mods.{ModName}.Keybind.{ContentName}		-->	Mods.{ModName}.Keybinds.{ContentName}.
 5. 非英语`.hjson`文件自动根据英语文件更新并生成合适的占位条目以供译者翻译
 
 如果译者发给你翻译好的`.hjson`文件, 要小心, 如果tML检测到`.tmod`文件新于`.hjson`文件, `.hjson`文件可能被覆盖. 在这种情况下, 最好的办法是在模组加载前生成一遍. 你可以在tML未开启时用VS生成, 也可以在启动tML时按住Shift键跳过模组加载再进入模组源码页面生成模组. 如果你忘了这一步, 发现tML把新翻译重置成旧的了, 你就得再来一遍. 
+
+## 热更新
+tModLoader会在ModSources里的`.hjson`文件保存时检测并自动重载它们. 这样一来, 模组作者就不需要重新生成并加载模组来测试本地化了. 如果你用了热更新, 记得一定要在发布模组前重新生成一次. (译注: 对于代码的热更新也是如此)
+
+让我们来看一个实例. 为了修物品`ExampleWings`的英语名称和描述, 一个模组制作者修改并保存了`en-US.hjson`文件. 几秒后, 改动就出现在游戏内了:
+
+https://user-images.githubusercontent.com/4522492/229942438-26604fd7-9073-436c-b2ab-d99b4f2efeb7.mp4
 
 # 本地化如何运作
 从物品名字到主菜单文字, 每一条文本都使用本地化. 游戏里的每一条文本实际上是一对数据: 一个 "键" 和一个 "值" ("键值对"). 举个例子, 当玩家创建一个小世界时, 游戏用键`UI.WorldSizeSmall`来寻找当前语言的对应翻译, 若为汉语则显示 "小", 若为英语, 游戏依然会寻找键`UI.WorldSizeSmall`, 但此时它的值就不一样了, 是 "Small". 由于泰拉瑞亚的作者用英语写代码, 大部分原版的本地化键很接近它们在英语下的值. 
