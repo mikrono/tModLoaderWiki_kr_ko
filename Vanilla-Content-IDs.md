@@ -39,11 +39,24 @@ recipe.AddIngredient(ItemID.23);   // Wrong
 
 Projectile IDs are typically used in `Projectile.NewProjectile` methods to spawn projectiles into the world. Many projectiles have multiple versions with `Hostile` or `Friendly` attached to the name of some of the duplicates. These indicate that the projectile is either [`friendly`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#friendly) or [`hostile`](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#hostile), use the one that matches the damage behavior you intend. If there isn't a version of the projectile you need, you may have to make your own version as a `ModProjectile`.
 
+# Projectile AI Style IDs
+
+[ProjAIStyleID.cs on the tModLoader GitHub](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/ID/ProjAIStyleID.cs)    
+
+Projectile AI styles (use for `Projectile.aiStyle`) do not have official names. Included in tModLoader is the `Terraria.ID.ProjAIStyleID` class which gives names to each.
+
 # NPC IDs
 
 [NPC IDs page on the official Terraria wiki](https://terraria.wiki.gg/wiki/NPC_IDs)
 
 Negative IDs represent NPCs that share a `type` with an NPC with a positive NPC. If you need to differentiate between these variants, you'll need to check `netID` to determine which variant is being checked. 
+
+# NPC AI Style IDs
+
+[NPCAIStyleID.cs on the tModLoader GitHub](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/ID/NPCAIStyleID.cs)    
+[AI page on the official Terraria wiki](https://terraria.wiki.gg/wiki/AI)    
+
+NPC AI styles (use for `NPC.aiStyle`) do not have official names. Included in tModLoader is the `Terraria.ID.NPCAIStyleID` class which which gives names to each. The official wiki has another listing with more detailed descriptions. Use both pages to find the information desired.
 
 # Tile IDs
 
