@@ -249,6 +249,8 @@ public override LocalizedText Tooltip => Language.GetOrRegister("Mods.ExampleMod
 ```
 If you are using inheritance, you only need to do this in the base class and can even override it again in child classes if a specific child class needs a different localization. See [Adding Localizable Properties](#adding-localizable-properties) for how to add extra localizations to your content, beyond the default properties provided by tModLoader.
 
+Modders can use `public override LocalizedText Tooltip => LocalizedText.Empty;` to indicate that no translation key should be generated. Using this can keep the localization files cleaner.
+
 ## String Formatting
 Modders can use [string formatting](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string) to leave places in translations for text to be filled in when used. This is a normal feature of c#. Modders can use the `string.Format` method or `Language.GetTextValue` overloads to use string formatting. The [Placeholders section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders) has more info on this. 
 
