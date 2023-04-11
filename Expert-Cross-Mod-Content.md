@@ -66,7 +66,9 @@ public override void ProcessTriggers(TriggersSet triggersSet)
 ```
 This example is extremely simple, but all manner of things can be done with a mod reference. Calling methods, accessing public variables, using the generic versions of ItemType and NPCType, and so on.
 
-Note: To properly code in Visual Studio, VS needs a reference to the .dll file contained within the .tmod file. Use the menus in tModLoader to extract the mod and find the .dll files. If no .dll file is extracted, the mod author has chosen not to allow it to be unpacked, so ask them nicely for it. Add the reference by right clicking `Dependencies` in the solution explorer, then clicking `Add Reference`, then `Browse...`, then finding the dll and finally clicking `Add`. 
+## Visual Studio Steps
+
+To properly code in Visual Studio, VS needs a reference to the `.dll` file contained within the `.tmod` file. Use the menus in tModLoader to extract the mod and find the `.dll` files. If no `.dll` file is extracted, the mod author has chosen not to allow it to be unpacked, so ask them nicely for it. By default, these end up in the `ModSources\ModAssemblies` folder of the [saves directory](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves). We recommend using this folder for referencing mod `.dll` files as it will simplify collaboration while avoiding other issues. Do not place mod `.dll` files inside your mod's source folder, it will end up packaged into the `.tmod` and bloat the file. If you do not want to use the recommended location and insist on keeping the mod `.dll` in the mod's source folder, you'll want to use [build.txt](https://github.com/tModLoader/tModLoader/wiki/build.txt) to ignore the file or the folder the file is in. Make sure that folder is not the `lib` folder, or you'll run into other issues. Add the reference by right clicking `Dependencies` in the solution explorer, then clicking `Add Reference`, then `Browse...`, then finding the dll and finally clicking `Add`. 
 
 # Weak References, aka weakReferences (Expert)
 
@@ -110,6 +112,10 @@ Of course, this relies on thoriumLoaded being correctly set. In Mod.Load, I sugg
 thoriumLoaded = ModLoader.HasMod("ThoriumMod");
 ```
 Weak References are hard, but a neat to do. Many things, however, are much better off handled with Mod.Call. I hope this guide will help you choose the best approach to cross-mod content.
+
+## Visual Studio Steps
+
+Weak References also require the `.dll` file to work properly in Visual Studio. Read the [Visual Studio Steps](#visual-studio-steps) instructions in the Strone References section above.
 
 ## Testing
 You may mistakenly think that your weak reference is working because you disabled the weakly referenced mod and your mod still loads. This is a false positive. To properly test weak references, you must disable the referenced mod and then close and re-open tModLoader. 
