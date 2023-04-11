@@ -376,7 +376,7 @@ SomeKey:
 	This is the 2nd line!
 	'''
 ```
-You can also use `\n` as an alternative, but for readability this is not recommended: 
+You can also use `\n` as an alternative, but for readability this is not recommended. The quotes are needed for `\n` to be interpreted as a newline. Note that tModLoader will automatically converted this to the above syntax when it updates the `.hjson` files: 
 ```
 SomeKey: "This translation key has 5 lines and low readability.\nThis is the 2nd line!\nThis is the 3rd line!\nThis is the 4th line!\nThis is the 5th line!"
 ```
