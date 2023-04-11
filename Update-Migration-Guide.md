@@ -255,6 +255,8 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
 **Short Summary:**
 * Adds `ModPlayer.ModifyMaxStats` with `StatModifier` arguments for permanent adjustments to max health/mana
   * While this hook is intended to be used for permanent stat adjustments, it can also easily support temporary adjustments as well
+  * However, do note that this hook runs very early in the player update logic.  It runs shortly after `ModPlayer.ResetEffects`
+    * Temporary adjustments that rely on buffs or other player variables affected by armor, accessories, etc. should still use the old method of modifying `Player.statLifeMax2` in one of the update hooks in `ModPlayer`
 * Adds `Player.ConsumedLifeCrystals`, `ConsumedLifeFruit` and `ConsumedManaCrystals` properties
   * These properties are directly tied to the vanilla stat increases and can also be manually set by modders
 * Adds helper methods `Player.UseHealthMaxIncreasingItem` and `Player.UseMaxManaIncreasingItem` for displaying the visual effects
