@@ -115,7 +115,7 @@ Weak References are hard, but a neat to do. Many things, however, are much bette
 
 ## Visual Studio Steps
 
-Weak References also require the `.dll` file to work properly in Visual Studio. Read the [Visual Studio Steps](#visual-studio-steps) instructions in the Strone References section above.
+Weak References also require the `.dll` file to work properly in Visual Studio. Read the [Visual Studio Steps](#visual-studio-steps) instructions in the Strong References section above.
 
 ## Testing
 You may mistakenly think that your weak reference is working because you disabled the weakly referenced mod and your mod still loads. This is a false positive. To properly test weak references, you must disable the referenced mod and then close and re-open tModLoader. 
