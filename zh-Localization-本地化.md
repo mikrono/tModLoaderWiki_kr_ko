@@ -134,6 +134,8 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 ```
 如果你有其它的物品继承此类, 你只需要在此基类中重写描述. 当然, 如果有需要, 你还可以在子类中继续重写. 
 
+模组制作者可以用`public override LocalizedText Tooltip => LocalizedText.Empty;`代表 "不应生成本地化键". 这样可以使本地化文件更干净.
+
 ## 文本换元
 如果你的本地化文件里有重复出现的文本, 或你想要使用游戏里已有的文本, 你可以使用换元来保持文件整洁. 在值中使用`{$Key}`来换元. 当游戏加载时, 这一段将会被替换为其`Key`所指的文本. 
 
