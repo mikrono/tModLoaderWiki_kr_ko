@@ -78,6 +78,10 @@ Wall IDs are used in `Tile.WallType`. Many walls have 2 variants, and unsafe and
 
 Use these in methods like `Player.AddBuff` and `NPC.AddBuff`. Note that many buffs only affect players or enemies, but not both. If Terraria doesn't have a way to give a buff to an enemy, it likely isn't programmed to work with NPCs. The same is true for buffs that aren't ever applied to players.
 
+# Dust IDs
+
+Due to their nature, dust are hard to identify, use the [Finding Vanilla Dust](https://github.com/tModLoader/tModLoader/wiki/Basic-Dust#finding-vanilla-dust) guide to find Dust IDs.
+
 # Sound IDs
 
 [Sound IDs page on the official Terraria wiki](https://terraria.wiki.gg/wiki/Sound_IDs)
