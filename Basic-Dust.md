@@ -50,7 +50,7 @@ This diagram should help explain how to read the image.
 
 ![](https://i.imgur.com/n4iScrV.png)
 
-A list of all of the dusts can also be found on the [Terraria Wiki](https://terraria.wiki.gg/wiki/Dust_IDs).
+A list of all of the dusts can also be found on the [Terraria Wiki](https://terraria.wiki.gg/wiki/Dust_IDs). Some vanilla dust do not have official names, so tModLoader has added names for them. If an internal name is not listed on the official wiki, consult [DustID.TML.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/ID/DustID.TML.cs) to find the name of the missing dust.
 
 The easiest way to try out Dust, however, is to download [Modders Toolkit](https://forums.terraria.org/index.php?threads/modders-toolkit-a-mod-for-modders-doing-modding.55738/) and use the Dust spawning tool to find the dust you need. [Video of Dust Tool](https://gfycat.com/VengefulDearBluetonguelizard)
 
