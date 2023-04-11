@@ -259,7 +259,7 @@ Please note that tModPorter is not smart enough to identify `Item.Clone` usages 
     * Temporary adjustments that rely on buffs or other player variables affected by armor, accessories, etc. should still use the old method of modifying `Player.statLifeMax2` in one of the update hooks in `ModPlayer`
 * Adds `Player.ConsumedLifeCrystals`, `ConsumedLifeFruit` and `ConsumedManaCrystals` properties
   * These properties are directly tied to the vanilla stat increases and can also be manually set by modders
-* Adds helper methods `Player.UseHealthMaxIncreasingItem` and `Player.UseMaxManaIncreasingItem` for displaying the visual effects
+* Adds helper methods `Player.UseHealthMaxIncreasingItem` and `Player.UseManaMaxIncreasingItem` for displaying the visual effects
 * Adds `ModResourceDisplaySet` allowing for custom life/mana draw styles (similar to boss bar styles) that can be selected in settings
 * Adds `ModResourceOverlay` to allow for drawing custom hearts/mana/effects over the vanilla (or modded) life/mana UI elements
 
