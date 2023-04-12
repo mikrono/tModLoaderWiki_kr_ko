@@ -350,6 +350,9 @@ public class InfiniteAmmoItem : ModItem
 }
 ```
 
+### ModConfig Usage
+The `Label` and `Tooltip` attributes used on `ModConfig` elements can be supplied text substitutions in a similar manner. Through the `LabelArgs` and `TooltipArgs` attributes, values can be provided to the corresponding translation. Note that strings starting with "$" are interpreted as translation keys. The `InterpolatedTextA`, `InterpolatedTextB`, and `InterpolatedTextC` examples in [ModConfigShowcaseLabels.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Configs/ModConfigShowcases/ModConfigShowcaseLabels.cs) show off this capability.
+
 ## Pluralization
 When using placeholders for numbers, such as in `{0} minutes ago`, you'll run into issues in English when the number is exactly 1. When the number is 1, the text should say "1 minute ago" instead of "1 minutes ago". This issue can be solved with pluralization. The [Plurals section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals) has more info on this feature. 
 
