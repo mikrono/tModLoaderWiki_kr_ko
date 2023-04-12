@@ -242,6 +242,8 @@ Using the existing item tooltips provided by the game in your modded items is a 
 
 In addition to the `CommonItemTooltip.` translation keys intended to be used for item tooltips, modders can reference any other translation key in the game. `NPCName.BlueSlime`, for example, is the key to get the localized name of Blue Slime. Modders can view all localization keys by downloading the `.CSV` file mentioned in the [Advanced Language Packs Guide section of the Terraria Workshop guide](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#advancedlanguagepack). 
 
+Note that modded translation keys do not follow the same key pattern as Terraria content. For example, ExampleMod's `PartyZombie` has the translation key of `Mods.ExampleMod.NPCs.PartyZombie.DisplayName`. The translation key of modded content will not necessarily follow a default pattern, so code should not be written with that assumption.
+
 ### Scope Simplification
 
 If substitution keys share a scope with the value for a localization key they are being used in, the substitution key can be simplified. For example, in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), the value of the `Mods.ExampleMod.ExamplePetItem.DisplayName` key is set to `"{$Common.PaperAirplane}"`. In this case, the game knows to check for keys within the current scope resulting in the value of the key `Mods.ExampleMod.Common.PaperAirplane` being found and substituted in. Using this technique, for example, `Mods.ModName` can be omitted from substitution keys.
