@@ -136,8 +136,8 @@ Translations from within the mod can also be used. For example in [ExampleMod's 
 
 Many substitutions have `{0}` or `{1}` in them, these are placeholders for values modders can provide. This functionality is explained in the [String Formatting section](#string-formatting).
 
-### Existing Tooltips
-Using the existing tooltips provided by the game in your modded items is a good idea. Using consistent language and existing translations makes your mod more appealing to more people. Expand the section below to view a listing of existing common tooltips. Remember that the key for all of these will start with `CommonItemTooltip.`. 
+### Existing Item Tooltips
+Using the existing item tooltips provided by the game in your modded items is a good idea. Using consistent language and existing translations makes your mod more appealing to more people. Expand the section below to view a listing of existing common tooltips. Remember that the key for all of these will start with `CommonItemTooltip.`. 
 
 <details><summary>CommonItemTooltip Keys</summary>
 
@@ -237,6 +237,10 @@ Using the existing tooltips provided by the game in your modded items is a good 
 ```
 
 </details>
+
+### Other Existing Translations
+
+In addition to the `CommonItemTooltip.` translation keys intended to be used for item tooltips, modders can reference any other translation key in the game. `NPCName.BlueSlime`, for example, is the key to get the localized name of Blue Slime. Modders can view all localization keys by downloading the `.CSV` file mentioned in the [Advanced Language Packs Guide section of the Terraria Workshop guide](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#advancedlanguagepack). 
 
 ### Scope Simplification
 
