@@ -230,6 +230,11 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 
 </details>
 
+### 其它已有描述
+除了 `CommonItemTooltip` ，模组制作者还可以引用其它本地化键。举个例子，`NPCName.BlueSlime` 是用于获取蓝史莱姆本地化名称的键。模组制作者可以下载[泰拉瑞亚创意工坊语言包进阶指南](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#advancedlanguagepack)中提到的 `.csv` 文件，查看所有的本地化键。
+
+请注意，模组本地化键与原版格式不同。如示例模组中的  `PartyZombie` 有本地化键 `Mods.ExampleMod.NPCs.PartyZombie.DisplayName`。写码时要注意，模组内容的键名不一定遵守默认的格式。
+
 ### 简化作用域声明
 如果用于换元的键与其所在的值有重合的作用域, 相同的部分可以被省去. 例如, 在[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中, `Mods.ExampleMod.ExamplePetItem.DisplayName`的值是`"{$Common.PaperAirplane}"`. 在这个例子中, tML知道在当前作用域检索, 结果是键`Mods.ExampleMod.ExamplePetItem.DisplayName`的值被检索到并且被替换进去. 在此情况下, `Mods.模组名`可以被省去. 
 
@@ -330,6 +335,9 @@ public class InfiniteAmmoItem : ModItem
 }
 ```
 
+### 在ModConfig中的使用
+`ModConfig`的元素的特性`Label`和`Tooltip`也可以接受文本换元。值可以通过特性`LabelArgs`和`TooltipArgs`分配给对应的翻译。注意，以“$”开头的文本会被当作本地化键。[ModConfigShowcaseLabels.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Configs/ModConfigShowcases/ModConfigShowcaseLabels.cs)中的 `InterpolatedTextA` `InterpolatedTextB` 和 `InterpolatedTextC` 展示了这一用法。
+
 ## 复数化
 现代汉语采用词汇手段（名词前加数词和量词）和语法手段（名词后加“们”）表示名词的复数, 故不存在诸如`{0} minutes ago`导致的复数化问题. 但是由中文翻译成其它语言时可能要注意这一点. 参阅章节[复数化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals)
 
@@ -358,7 +366,7 @@ tML会在有新内容或本地化键加入时自动更新`.hjson`文件. 英语�
 			这是第二行!
 			'''
 ```
-你也可以使用`\n`作为备选方案, 但从可读性考虑, 并不推荐使用此方法: 
+你也可以使用 `\n` 作为备选方案, 但从可读性考虑, 并不推荐使用此方法。使用 `\n` 换行时也需要双引号。tModLoader会在自动更新本地化文件时将这种方方案转换为上面那一种。
 ```
 			SomeKey: "这条翻译有五行, 可读性低.\n 这是第二行!\n 这是第三行!\n 这是第四行!\n 这是第五行!"
 ```
