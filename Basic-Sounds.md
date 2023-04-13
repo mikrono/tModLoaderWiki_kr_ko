@@ -118,6 +118,9 @@ This dictates how many instances of a sound can be playing at the same time. The
 ## SoundLimitBehavior
 When the `MaxInstances` limit is reached, this tweak adjusts what will happen. The default is to `ReplaceOldest`, which will restart the sound. The other option is `IgnoreNew`, which will ignore the latest attempt to play the sound.
 
+## IsLooped
+This dictates if the sound should loop. Defaults to false. When using this, it is extremely important that you follow the guidelines in the [Looping Sounds](#looping-sounds) section of this guide.
+
 ## Variation
 It is possible to assign multiple sound assets to a sound style and have them randomly play. To do this, the sound assets must be named the same but postfixed with a final number at the end. For example, `SoundStyle ExampleGunsSoundStyle = new SoundStyle("ExampleMod/Assets/Sounds/Items/Guns/ExampleGun_", 3);` would randomly play `ExampleGun_1`, `ExampleGun_2`, or `ExampleGun_3` with equal chance. 
 
@@ -139,7 +142,9 @@ With sounds in video games, most of the time it is completely sufficient to use 
 
 There are, however, situations that warrant tracking the sound as it is playing and adjusting it dynamically. The most common usage of this functionality is long sounds and looping sounds.
 
-tModLoader refers to these sounds as "Active Sounds".
+tModLoader refers to these sounds as "Active Sounds".    
+
+The [ActiveSoundShowcaseProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ActiveSoundShowcaseProjectile.cs) file can be used as a hand-on guide and reference to active sounds. It is highly recommended to use `ExampleMod` to experiment with the `ActiveSoundShowcase` item in-game. `ActiveSoundShowcaseProjectile.cs` can be seen as a companion guide to this wiki section.    
 
 To properly use active sounds, first we need to familiarize ourselves with the following classes:
 
@@ -191,13 +196,46 @@ In the same manner, the `Volume` field on the `ActiveSound` instance can be chan
 ## Changing Sound Pitch
 In the same manner, the `Pitch` field on the `ActiveSound` instance can be changed to dynamically adjust sound volume.
 
-## Looping Sounds
-The techniques discussed so far are sufficient for long sounds, but for looping sounds they can potentially cause sounds that continue playing until the game is closed. For example, a sound set to loop might be started, but then an exception or other buggy code causes the entity tracking the "Active Sound" to be inactivated. The sound, without anything to tell it to stop, will obediently keep playing.
+## SoundUpdateCallback Approach
+The SoundUpdateCallback approach explained in the looping sounds section is also a good approach. It allows all the sound logic to be contained in a single place. 
 
-It is for this reason that when dealing with looping sounds, modders should always use the `SoundUpdateCallback` parameter of `SoundEngine.PlaySound`. In fact, many might find the `SoundUpdateCallback` approach more convenient than using the `SlotId` approach explained earlier for non-looping sounds.
+## Looping Sounds
+The techniques discussed so far are sufficient for long sounds, but for looping sounds they can potentially cause sounds that continue playing until the game is closed. For example, a sound set to loop might be started, but then an exception or other buggy code causes the entity tracking the "Active Sound" to be inactivated. The sound, without anything to tell it to stop, will obediently keep playing forever.
+
+It is for this reason that when dealing with looping sounds, modders should **always** use the `SoundUpdateCallback` parameter of `SoundEngine.PlaySound`. In fact, many might find the `SoundUpdateCallback` approach more convenient than using the `SlotId` approach explained earlier for non-looping sounds.
+
+To make a looping sound, simply add `IsLooped = true` to the `SoundStyle` that will be played.
 
 ### SoundUpdateCallback Example
-WIP
+Using a `SoundUpdateCallback` delegate as a parameter to `SoundEngine.PlaySound`, the provided method will be called every game update, allowing the sound to update position and other properties. The following example shows a projectile playing a sound that updates its position every update.
+
+```cs
+public class MyProjectile : ModProjectile
+{
+	SlotId loopingSoundSlot;
+	SoundStyle loopingSoundStyle = new SoundStyle("ModMod/Sounds/loopSound") {
+		IsLooped = true,
+	};
+
+	public override void AI() {
+		// other AI code...
+
+		// Check if the sound is already playing...
+		if (!SoundEngine.TryGetActiveSound(loopingSoundSlot, out var activeSound)) {
+			// if it isn't, play the sound and remember the SlotId
+			var tracker = new ProjectileAudioTracker(Projectile);
+			loopingSoundSlot = SoundEngine.PlaySound(loopingSoundStyle, Projectile.position, soundInstance => {
+				// This example is inlined, see ActiveSoundShowcaseProjectile.cs for other approaches
+				soundInstance.Position = Projectile.position;
+				return tracker.IsActiveAndInGame();
+			});
+		}
+	}
+}
+
+```
+
+**Note:** when dealing with Projectiles tracking a sound, the `ProjectileAudioTracker` instance is required in order to avoid rare edge cases. The examples in [ActiveSoundShowcaseProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ActiveSoundShowcaseProjectile.cs) show the proper way to use them.
 
 # Adapting Vanilla Code or Code From Past tModLoader Versions
 Previous versions of tModLoader and code taken from decompiled Terraria do not use the same `SoundStyle` approach to playing sounds. To use code using old approaches, you'll need to fix the code. For example you might find code like `SoundEngine.PlaySound(12);` or `SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);`, but attempting to use this code in a mod will result in errors such as `No overload for method 'PlaySound' takes 4 arguments`.
