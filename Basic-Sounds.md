@@ -207,7 +207,7 @@ It is for this reason that when dealing with looping sounds, modders should **al
 To make a looping sound, simply add `IsLooped = true` to the `SoundStyle` that will be played.
 
 ### SoundUpdateCallback Example
-Using a `SoundUpdateCallback` delegate as a parameter to `SoundEngine.PlaySound`, the provided method will be called every game update, allowing the sound to update position and other properties. The following example shows a projectile playing a sound that updates its position every update.
+Using a `SoundUpdateCallback` delegate as a parameter to `SoundEngine.PlaySound`, the provided method will be called every game update, allowing the sound to update position and other properties. The return value of the delegate controls if the sound should be stopped. The following example shows a projectile playing a sound that updates its position every update. The sound will be stopped when the projectile is no longer active, but other logic can be used as well.
 
 ```cs
 public class MyProjectile : ModProjectile
@@ -235,7 +235,7 @@ public class MyProjectile : ModProjectile
 
 ```
 
-**Note:** when dealing with Projectiles tracking a sound, the `ProjectileAudioTracker` instance is required in order to avoid rare edge cases. The examples in [ActiveSoundShowcaseProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ActiveSoundShowcaseProjectile.cs) show the proper way to use them.
+**Note:** when dealing with `Projectile`s tracking a sound, the `ProjectileAudioTracker` instance is required in order to avoid rare edge cases. The examples in [ActiveSoundShowcaseProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ActiveSoundShowcaseProjectile.cs) show the proper way to use them. For `NPC`, checking `.active` should be sufficient. For other situations, make sure the logic allows the sound to properly stop at some point.  
 
 # Adapting Vanilla Code or Code From Past tModLoader Versions
 Previous versions of tModLoader and code taken from decompiled Terraria do not use the same `SoundStyle` approach to playing sounds. To use code using old approaches, you'll need to fix the code. For example you might find code like `SoundEngine.PlaySound(12);` or `SoundEngine.PlaySound(4, (int)base.position.X, (int)base.position.Y, 7);`, but attempting to use this code in a mod will result in errors such as `No overload for method 'PlaySound' takes 4 arguments`.
