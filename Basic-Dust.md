@@ -20,6 +20,12 @@ Here are some examples:
 // Spawning a modded dust from an npc method
 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Sparkle>());
 
+// Spawning a vanilla dust from an npc method, using DustID
+Dust.NewDust(npc.position, npc.width, npc.height, DustID.Granite);
+
+// Spawning a vanilla dust from an npc method, using DustID number (less readable)
+Dust.NewDust(npc.position, npc.width, npc.height, 240);
+
 // Spawning a random vanilla confetti dust
 int dustType = Main.rand.Next(DustID.Confetti_Blue, DustID.Confetti_Yellow + 1);
 int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
@@ -38,7 +44,7 @@ for (int d = 0; d < 70; d++)
 }
 ```
 
-Some notes: Position, Width, and Height define a rectangle from which the dust will randomly spawn. The only difference between spawning vanilla dust and modded dust is replacing 4th parameter, which is usually just a number, with `ModContent.DustType<DustName>()`. You can omit optional parameters if you want.
+Some notes: Position, Width, and Height define a rectangle from which the dust will randomly spawn. The only difference between spawning vanilla dust and modded dust is replacing 4th parameter, which is usually just a number or `DustID` entry, with `ModContent.DustType<DustName>()`. You can omit optional parameters if you want.
 
 ## Finding Vanilla Dust
 
