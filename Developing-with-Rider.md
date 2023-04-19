@@ -1,3 +1,5 @@
+* **Warning: This guide was written long ago and is no longer completely relevant to current tModLoader.**
+
 # Introductory
 
 Rider is a lightweight IDE, developed by JetBrains. It is similar to Visual Studio but has a different layout more similar to those found in Intellij and PyCharm. If you have previously used other JetBrains IDEs you may have a significantly easier time using Rider than you would Visual Studios. Rider is easier to run than Visual Studio, while still having intellisense and code debugging.
