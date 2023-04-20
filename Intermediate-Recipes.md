@@ -133,9 +133,8 @@ public override void PostAddRecipes() {
 If you wish to use items or tiles from other mods in your recipes, you need to plan ahead. Read [Expert Cross Mod Content](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content) for an idea of some considerations you'll need to keep in mind. For example, the mod you are referencing might change the item name in an update to their mod, breaking your mod in the process. Another issue is planning for the other mod not being enabled. In that case, you might want to skip the recipe altogether or plan an alternate recipe. The example below shows the alternate ingredients approach. 
 
 ```cs
-ModLoader.TryGetMod("ExampleMod", out Mod exampleMod);
 Recipe recipe = Recipe.Create(ItemID.Wood, 999);
-if (exampleMod != null && exampleMod.TryFind<ModItem>("ExampleWings", out ModItem ExampleWings)) {
+if (ModLoader.TryGetMod("ExampleMod", out Mod exampleMod) && exampleMod.TryFind<ModItem>("ExampleWings", out ModItem ExampleWings)) {
 	recipe.AddIngredient(ExampleWings.Type);
 }
 else {
