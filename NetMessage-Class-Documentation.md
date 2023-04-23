@@ -435,7 +435,30 @@ Obsolete.  Use [MessageID.NetModules](#messageidnetmodules-82) instead.
 // TODO
 
 ## MessageID.SpiritHeal (66)
-// TODO
+Used by the projectile orbs from the Spectre Hood armor set bonus.  Increases the player's life and displays the combat text on other clients.  
+`number` is the `Player.whoAmI` of the player to heal and `number2` is how much to heal the player by.
+
+Nothing happens on the receiving client's end if `number2` is not greater than zero.
+
+Example:
+```cs
+// This example showcases a projectile healing its owner player in its AI:
+int plr = Projectile.owner;
+Player player = Main.player[plr];
+
+if (plr == Main.myPlayer && !player.moonLeech) {
+    int amount = 50;
+
+    // Player.Heal() should not be used here since it broadcasts an extra HealEffect call
+    player.statLife += amount;
+    if (player.statLife > player.statLifeMax2)
+        player.statLife = player.statLifeMax2;
+
+    player.HealEffect(amount, broadcast: false);
+
+    NetMessage.SendData(MessageID.SpiritHeal, number: plr, number2: amount);
+}
+```
 
 ## MessageID.Unused67 (67)
 Unused.  Plain and simple.
