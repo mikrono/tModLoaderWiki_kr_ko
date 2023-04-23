@@ -460,6 +460,8 @@ if (plr == Main.myPlayer && !player.moonLeech) {
 }
 ```
 
+**NOTE:** This message ID is not restricted to projectiles.  You can use it to simply sync a player health increase in general as well.
+
 ## MessageID.Unused67 (67)
 Unused.  Plain and simple.
 
