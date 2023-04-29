@@ -95,7 +95,7 @@ Imagine you name a variable or class something stupid and want to change it. Wit
 ![](https://i.imgur.com/PInjsqm.png)    
 
 # Parameter Info (Ctrl-Shift-Space)
-Some Terraria methods have many many parameters. It can be hard to remember the order and types of those parameters. If you'd like to see the parameters of something like Item.NewItem or Projectile.NewProjectile, simeply place your cursor inside the method and press `Ctrl-Shift-Space`. You can navigate left and right and watch the bold parameter change. Press up and down to switch between overloads of the same method. [Watch this in action.](https://gfycat.com/BarrenShorttermAsianpiedstarling)  [2nd Video](https://gfycat.com/BlissfulAccurateKiwi)   
+Some Terraria methods have many many parameters. It can be hard to remember the order and types of those parameters. If you'd like to see the parameters of something like Item.NewItem or Projectile.NewProjectile, simply place your cursor inside the method and press `Ctrl-Shift-Space`. You can navigate left and right and watch the bold parameter change. Press up and down to switch between overloads of the same method. [Watch this in action.](https://gfycat.com/BarrenShorttermAsianpiedstarling)  [2nd Video](https://gfycat.com/BlissfulAccurateKiwi)   
 ![](https://i.imgur.com/D0f2NM6.png)    
 
 # Goto (Ctrl-,)
