@@ -309,7 +309,7 @@ public class ExampleBreastplate : ModItem
 
 我们可以看出`Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease)`尝试将`MaxManaIncrease`同`{0}`绑定并将`MaxMinionIncrease`同`{1}`绑定. 因为`{$CommonItemTooltip.IncreasesMaxMinionsBy@1}`里加入了`@1`, 原本的占位符`{0}`被视为了`{1}`, 允许游戏将`MaxMinionIncrease`的值绑定到正确的位置, 显示出物品描述. 
 
-或许这看着有点复杂, 你可能觉得 "我不管什么替换, 直接写出描述不是更简单吗?", 但使用替换是大有优势的. 有了这些已有的条目, 你模组的许多文本将自动完成本地化. 这还能显著减少人工失误. 
+或许这看着有点复杂, 你可能觉得 "我不管什么替换, 直接写出描述不是更简单吗?". 若使用得当, 替换是大有优势的. 有了这些已有的条目, 你模组的许多文本将自动完成本地化. 这还能显著减少人工失误. 
 
 更复杂的示例参见[ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs)和与之对应的[en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson#L160)
 
