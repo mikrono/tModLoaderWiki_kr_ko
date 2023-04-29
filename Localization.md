@@ -330,7 +330,7 @@ public class ExampleBreastplate : ModItem
 ```
 From this example, we can see that `Tooltip.WithFormatArgs(MaxManaIncrease, MaxMinionIncrease)` is attempting to bind `MaxManaIncrease` to `{0}` and `MaxMinionIncrease` to `{1}`. Because `@1` was added to `{$CommonItemTooltip.IncreasesMaxMinionsBy@1}` in the localization entry, the original placeholder of `{0}` was interpreted as `{1}` instead, allowing the game to bind the value of `MaxMinionIncrease` to the correct spot in the resulting tooltip text.
 
-This may seem a bit complicated, it might be simpler to ignore text substitutions and `WithFormatArgs` altogether and just type out the tooltip text directly in the localization file, but the benefits of this approach significant. With this approach, much of your mod will automatically be localized to other languages. This approach also significantly reduces the chance of a typo causing confusion at a later date.
+This may seem a bit complicated, it might be simpler to ignore text substitutions and `WithFormatArgs` altogether and just type out the tooltip text directly in the localization file, but the benefits of this approach can be significant if used correctly. With this approach, much of your mod will automatically be localized to other languages. This approach also significantly reduces the chance of a typo causing confusion at a later date.
 
 See [ExampleStatBonusAccessory.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleStatBonusAccessory.cs) and the corresponding [en-US.hjson](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson#L160) entry for an even more complex example of this feature.
 
