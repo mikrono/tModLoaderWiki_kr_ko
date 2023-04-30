@@ -31,6 +31,7 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 * Spawning minions or pets in `ModBuff.Update`: use `player.GetSource_Buff(buffIndex)`
 * An accessory spawning a projectile: use `player.GetSource_Accessory(itemInstance)`
 * An armor set bonus spawning a projectile: Not properly definable for modded ones, use `player.GetSource_Misc("SetBonus_MySetName")`
+* Spawning things in `ModItem.UseItem`: `player.GetSource_ItemUse(Item)`
 * Player spawning Projectiles in ModItem.Shoot should use the `source` passed into the method
 * Player.QuickSpawnItem usage for a bag type item should use `player.GetSource_OpenItem(itemtype)`
 * Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
