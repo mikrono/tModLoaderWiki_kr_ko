@@ -46,6 +46,9 @@ for (int d = 0; d < 70; d++)
 
 Some notes: Position, Width, and Height define a rectangle from which the dust will randomly spawn. The only difference between spawning vanilla dust and modded dust is replacing 4th parameter, which is usually just a number or `DustID` entry, with `ModContent.DustType<DustName>()`. You can omit optional parameters if you want.
 
+## Special Patterns
+Use your knowledge of [Geometry](https://github.com/tModLoader/tModLoader/wiki/Geometry) to spawn a number of dust at the same time or over several game updates to make special patterns using dust.
+
 ## Finding Vanilla Dust
 
 To find vanilla dust, please consult the image below. Note that it is read left to right, starting from 0. Each row is 100 dust long and each row is actually 3 frames of the same dust, meaning there are 3 rows total.
