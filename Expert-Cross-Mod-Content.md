@@ -17,9 +17,9 @@ The exampleMod object is now either Null or a valid reference to the Mod class o
 public override void SetupShop(Chest shop, ref int nextSlot)
 {
     // other code
-    if (ModLoader.TryGetMod("ExampleMod", out Mod exampleMod))
+    if (ModLoader.TryGetMod("ExampleMod", out Mod exampleMod) && exampleMod.TryFind("ExampleWings", out ModItem exampleWings))
     {
-        shop.item[nextSlot].SetDefaults(exampleMod.ItemType("ExampleWings"));
+        shop.item[nextSlot].SetDefaults(exampleWings.Type);
         nextSlot++;
         // Add more items to the shop from Example Mod
     }
