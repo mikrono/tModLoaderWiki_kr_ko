@@ -4,7 +4,7 @@ This Guide was written for tModLoader v1.4.4, an upcoming version of tModLoader.
 
 # Condition Class
 
-Conditions are a simple [record](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record) that hold a `LocalizedText` Description and [`Func<bool>`](https://learn.microsoft.com/en-us/dotnet/api/system.func-1?view=net-6.0) Predicate. Conditions are used in Recipes, Town NPC shops, NPC Loot, and can be used anywhere else.
+Conditions are a simple [record](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record) that hold a `LocalizedText` Description and [`Func<bool>`](https://learn.microsoft.com/en-us/dotnet/api/system.func-1?view=net-6.0) Predicate. Conditions are used in Recipes and Town NPC shops. Conditions can also be used in NPC Loot and almost anywhere else.
 
 The `Condition` class is within the `Terraria` namespace.
 
@@ -162,7 +162,7 @@ Condition.TimeDay.ToDropCondition(ShowItemDropInUI.Always)
 
 `ToDropCondition()` takes at least one argument to say if the item will show up in the Bestiary. `ShowItemDropInUI.Always` will make the item always appear in the Bestiary even if the condition isn't met, `ShowItemDropInUI.WhenConditionSatisfied` will make the item appear only when the condition is met, and `ShowItemDropInUI.Never` will make the item never appear in the Bestiary. The second argument of `ToDropCondition()` will determine if the description of the Condition will be shown (true by default).
 
-Here is a full example of an NPC's loot. In this example, the Example Sword will be shown in the Bestiary at all times and will have an addition tooltip line that says "Drops: During daytime".
+Here is a full example of an NPC's loot. In this example, the Example Sword will be shown in the Bestiary at all times and will have an additional tooltip line that says "Drops: During daytime".
 
 ```cs
 npcLoot.Add(ItemDropRule.ByCondition(Condition.TimeDay.ToDropCondition(ShowItemDropInUI.Always), ModContent.ItemType<ExampleSword>()));
