@@ -85,6 +85,7 @@ These guides are easy and should be used if you are new to the API. Their goal i
 - [Basic Time and Timers Guide](Time-and-Timers)
 - [Basic UI Element Guide](Basic-UI-Element)
 - [Wall Guide](Wall)
+- [Conditions](Conditions)
 
 ## Intermediate guides
 The following guides are more advanced than the easy ones, but not advanced or expert level.
