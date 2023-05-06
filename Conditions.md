@@ -170,6 +170,19 @@ npcLoot.Add(ItemDropRule.ByCondition(Condition.TimeDay.ToDropCondition(ShowItemD
 
 See the [Basic NPC Drops and Loot guide](https://github.com/tModLoader/tModLoader/wiki/Basic-NPC-Drops-and-Loot-1.4) for more information on NPC loot.
 
+# In Mod Hair
+
+`ModHair` can use a Condition to determine when the [hairstyle](https://terraria.wiki.gg/wiki/Hairstyles) should be available in the Stylist's shop. In vanilla, most hairstyles are available at all times, but a few require a boss to be defeated.
+
+```cs
+public override IEnumerable<Condition> GetUnlockConditions() {
+	yield return Condition.DownedMartians;
+}
+```
+
+If you want your hairstyle to be always available, simply don't override `GetUnlockConditions()`.
+See [ExampleHair](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Hairs/ExampleHair.cs) for more information on Mod Hair.
+
 # Other Uses For Conditions
 
 Conditions can be used anywhere as bools by adding `.IsMet()`. Using a Condition instead of something else may be easier to understand.
