@@ -159,6 +159,8 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `ModPylon.IsPylonForSale` ->  `ModPylon.GetNPCShopEntry`, see ExamplePylonTile for an example. To register to specific NPC shops, use the new shop system directly in ModNPC.AddShop, GlobalNPC.ModifyShop or ModSystem.PostAddRecipes
 * `ModItem/GlobalItem.PreReforge` return type changed from `bool` to `void`, no longer used to prevent reforging. Use `CanReforge` for that purpose.
 * `Player.CanBuyItem` removed, use `Player.CanAfford` instead. Note that the method will no longer mistakenly attempt to consume custom currencies.
+* `Player.rocketDamage` -> `Player.specialistDamage`
+* `AmmoID.Sets.IsRocket` -> `AmmoID.Sets.IsSpecialist`
 
 ## Big change concepts
 
