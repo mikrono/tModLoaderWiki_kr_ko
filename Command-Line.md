@@ -9,11 +9,11 @@ In addition to all the Command Line and Server Config settings available in [van
 
 ### savedirectory [pathToSaveDirectoryFolder]
 Server and Client Command Line Argument    
-Specifies the save directory. The save directory will usually be `%UserProfile%\Documents\My Games\Terraria\ModLoader​` on Windows, `/Users/account/Library/Application Support/Terraria/ModLoader` on Mac, and `~/.local/share/Terraria/ModLoader` OR `$XDG_DATA_HOME/Terraria/ModLoader` on Linux. The directory `/ModLoader` will automatically be appended to the provided path. Use this argument to specify a different save directory. The save directory is the parent directory of the worlds directory and mods directory, so you can use only this parameter rather than both of those.
+Specifies the save directory. The save directory will usually be `%UserProfile%\Documents\My Games\Terraria\tModLoader​` on Windows, `/Users/account/Library/Application Support/Terraria/tModLoader` on Mac, and `~/.local/share/Terraria/tModLoader` OR `$XDG_DATA_HOME/Terraria/tModLoader` on Linux. The directory `/tModLoader` will automatically be appended to the provided path. Use this argument to specify a different save directory. The save directory is the parent directory of the worlds directory and mods directory, so you can use only this parameter rather than both of those.
 
 ### tmlsavedirectory [pathToSaveDirectoryFolder]
 Server and Client Command Line Argument    
-Same as savedirectory above except `/ModLoader` won't automatically be appended to the provided path.
+Same as savedirectory above except `/tModLoader` won't automatically be appended to the provided path.
 
 ### modpack [modpackname]
 Server and Client Command Line Argument, Server Config.  
@@ -21,7 +21,7 @@ Specifies a modpack to use by name. Omit the .json extension. The mods specified
 
 ### modpath [pathToModsFolder]
 Server Command Line Argument, Server Config.  
-Specifies the folder to look for .tmod files. Useful for hosted servers as typically the default folder location is no accessable on dedicated hosts.
+Specifies the folder to look for `.tmod` files. Useful for hosted servers as typically the default folder location is no accessable on dedicated hosts.
 
 ### skipselect
 Client Command Line Argument  
