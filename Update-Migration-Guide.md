@@ -161,6 +161,7 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `Player.CanBuyItem` removed, use `Player.CanAfford` instead. Note that the method will no longer mistakenly attempt to consume custom currencies.
 * `Player.rocketDamage` -> `Player.specialistDamage`
 * `AmmoID.Sets.IsRocket` -> `AmmoID.Sets.IsSpecialist`
+* `ModPrefix.GetTooltipLines` added. Some modders might want to move prefix specific tooltip lines from `GlobalItem.ModifyTooltips` to it for better code maintainability.
 
 ## Big change concepts
 
