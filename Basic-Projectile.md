@@ -235,7 +235,7 @@ if (Projectile.alpha > 0)
 [`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs) shows using both fading in when spawning and fading out when despawning.
 
 ## Animation/Multiple Frames
-Projectile animation, switching which frame of the sprite to draw, happens in `AI`. Make sure to set `Main.projFrames[Projectile.type] = #;` in `SetStaticDefaults` first. You can set `Projectile.frame` to whatever frame you want to be drawn. 
+Projectile animation, switching which frame of the sprite to draw, happens in `AI`. Make sure to set `Main.projFrames[Projectile.type] = #;` in `SetStaticDefaults` first. You can set `Projectile.frame` to whatever frame you want to be drawn. Do not attempt to use a .gif file for the texture, that will not work and it is not how animation is done.
 
 ### Looping/Cycling
 You can use `Projectile.frameCounter` and `Main.projFrames[Projectile.type]` to implement a looping animation. Example: [`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs)
