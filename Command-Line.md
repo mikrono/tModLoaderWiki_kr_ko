@@ -3,9 +3,8 @@ In addition to all the Command Line and Server Config settings available in [van
 ### TOBEADDEDLIST
 1) -loadlib
 2) -publish, -ciprep, -publishedmodfiles, -uploadfolder
-3) -noupnp
-4) -experimental
-5) /gldevice:OpenGL
+3) -experimental
+4) /gldevice:OpenGL
 
 ### savedirectory [pathToSaveDirectoryFolder]
 Server and Client Command Line Argument    
