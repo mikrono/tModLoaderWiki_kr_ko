@@ -246,7 +246,7 @@ Note that modded translation keys do not follow the same key pattern as Terraria
 
 ### Scope Simplification
 
-If substitution keys share a scope with the value for a localization key they are being used in, the substitution key can be simplified. For example, in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson), the value of the `Mods.ExampleMod.ExamplePetItem.DisplayName` key is set to `"{$Common.PaperAirplane}"`. In this case, the game knows to check for keys within the current scope resulting in the value of the key `Mods.ExampleMod.Common.PaperAirplane` being found and substituted in. Using this technique, for example, `Mods.ModName` can be omitted from substitution keys.
+If substitution keys share a scope with the value for a localization key they are being used in, the substitution key can be simplified. For example, in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson), the value of the `Mods.ExampleMod.ExamplePetItem.DisplayName` key is set to `"{$Common.PaperAirplane}"`. In this case, the game knows to check for keys within the current scope resulting in the value of the key `Mods.ExampleMod.Common.PaperAirplane` being found and substituted in. Using this technique, for example, `Mods.ModName` can be omitted from substitution keys.
 
 ### Overriding Content Localization Keys
 If many items in your mod share a common translation, you can have them all point to the same translation key. To do this, override the property and return the result of `Language.GetText` using the translation key you wish to use:
@@ -363,7 +363,7 @@ The `Label` and `Tooltip` attributes used on `ModConfig` elements can be supplie
 When using placeholders for numbers, such as in `{0} minutes ago`, you'll run into issues in English when the number is exactly 1. When the number is 1, the text should say "1 minute ago" instead of "1 minutes ago". This issue can be solved with pluralization. The [Plurals section](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals) has more info on this feature. 
 
 ## Chat Tags
-Color and item icons can be added to localization values using [Chat Tags](https://terraria.wiki.gg/wiki/Chat#Tags). Find `ExampleTooltipsItem` in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson) for an example of this.
+Color and item icons can be added to localization values using [Chat Tags](https://terraria.wiki.gg/wiki/Chat#Tags). Find `ExampleTooltipsItem` in [ExampleMod's localization files](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson) for an example of this.
 
 # Automatic Localization Files
 tModLoader will automatically update `.hjson` files when new content or translation keys are used. The English files will be used as the template for other languages, which will inherit comments and layout automatically. 
@@ -629,7 +629,7 @@ The key `GetLocalization` generates will be of the form `Mods.{ModName}.{Localiz
 
 ### Another Example
 
-[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) serves as an example of using a custom key. By default, tModLoader will register a single translation key for each `ModTile` in the form `Mods.{ModName}.Tiles.{ContentName}.MapEntry`. This key makes it easy to add a map entry to a tile. (Map entries control the text shown to the user when the tile is hovered over in the fullscreen map.) `ExampleChest`, however, needs 2 map entries. Using `GetLocalization`, new keys can easily be added to the localization files:
+[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) serves as an example of using a custom key. By default, tModLoader will register a single translation key for each `ModTile` in the form `Mods.{ModName}.Tiles.{ContentName}.MapEntry`. This key makes it easy to add a map entry to a tile. (Map entries control the text shown to the user when the tile is hovered over in the fullscreen map.) `ExampleChest`, however, needs 2 map entries. Using `GetLocalization`, new keys can easily be added to the localization files:
 
 ```cs
 AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
