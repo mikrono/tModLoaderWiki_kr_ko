@@ -2,22 +2,24 @@
 Walls are fairly straightforward and creating a `ModWall` is mostly an exercise in following the existing patterns. Like tiles, walls are comprised of 2 parts, the `ModItem` that places the wall, and the `ModWall` itself.
 
 ## Wall-Item Pairing
-An `Item` will place a specific `Wall` when `Item.createWall` is set to the `WallType` of the `ModWall`. The `ModWall` will typically return the `ModItem` as well. Simply set `ItemDrop = ModContent.ItemType<ItemName>();` in `ModWall.SetStaticDefaults`.
+An `Item` will place a specific `Wall` when `Item.createWall` is set to the `WallType` of the `ModWall`. The `ModWall` will typically return the `ModItem` as well. This process is automatic for walls that are placed by the same item they return, otherwise use `RegisterItemDrop(ModContent.ItemType<ItemName>());` in `ModWall.SetStaticDefaults` to manually specify the item drop.
 
 # Basic Example
 `ExampleWall` in ExampleMod is a basic example. It has 4 files:
-* [ExampleMod/Content/Walls/ExampleWall.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Walls/ExampleWall.cs) is the actual `ModWall` class
-  * Note: You can write `Item.DefaultToPlacableWall((ushort)ModContent.WallType<Walls.ExampleWall>());` in `ModWall.SetStaticDefaults` instead of all the existing code if you want to write simpler code.
-* [ExampleMod/Content/Walls/ExampleWall.png](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Walls/ExampleWall.png) is the texture for the `ModWall`
-* [ExampleMod/Content/Items/Placeable/ExampleWall.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Placeable/ExampleWall.cs) is the corresponding `ModItem` class that places the `ExampleWall` `ModWall`.
-* [ExampleMod/Content/Items/Placeable/ExampleWall.png](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Placeable/ExampleWall.png) is the texture for the `ExampleWall` `ModItem`.
+* [ExampleMod/Content/Walls/ExampleWall.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Walls/ExampleWall.cs) is the actual `ModWall` class
+* [ExampleMod/Content/Walls/ExampleWall.png](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Walls/ExampleWall.png) is the texture for the `ModWall`
+* [ExampleMod/Content/Items/Placeable/ExampleWall.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Placeable/ExampleWall.cs) is the corresponding `ModItem` class that places the `ExampleWall` `ModWall`.
+  * Note: The code `Item.DefaultToPlacableWall((ushort)ModContent.WallType<Walls.ExampleWall>());` in `ModWall.SetStaticDefaults` automatically sets `Item.createWall` and all other properties common to wall items.
+* [ExampleMod/Content/Items/Placeable/ExampleWall.png](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Placeable/ExampleWall.png) is the texture for the `ExampleWall` `ModItem`.
+
+`ExampleWallUnsafe` in ExampleMod is also a basic example, but only has 2 files, the `ModWall` class and corresponding texture. `ExampleWallUnsafe` doesn't have an item that places it, so `RegisterItemDrop` is used to register the item drop.
 
 # Advanced Example
-See [ExampleMod/Content/Walls/ExampleWallAdvanced.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Walls/ExampleWallAdvanced.cs) for an advanced example showcasing animation, custom framing, and lighting.
+See [ExampleMod/Content/Walls/ExampleWallAdvanced.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Walls/ExampleWallAdvanced.cs) for an advanced example showcasing animation, custom framing, and lighting.
 
 # Texture
 The texture for a wall has several sections for drawing the wall in different positions depending on which neighbors are the same wall type. Notice how for each orientation, there are 3 options. The sections are referred to as "style" and the options are referred to as "WallFrameNumber". `ExampleWall` is based off of `Gemspark` walls since it is simple to comprehend. Consult other [existing wall textures](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Prerequisites#vanilla-texture-file-reference) for more detailed examples.    
-![](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Walls/ExampleWall.png)
+![](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Walls/ExampleWall.png)
 
 If `Main.wallLargeFrames` is used, a 4th `WallFrameNumber` is added to the mix for each `style` to add even more variety. That template is shown here:    
 ![Wall_179](https://user-images.githubusercontent.com/4522492/191140372-60a897bf-f69c-4615-bab5-57cefc84066c.png)
@@ -68,7 +70,7 @@ public override void AnimateWall(ref byte frame, ref byte frameCounter) {
 Many Terraria walls have safe and unsafe variants. The safe wall variant is the wall placed by the item the player receives when mining the unsafe wall. The unsafe wall is placed during world generation and usually can't be placed by the player. The unsafe wall is used in NPC Spawning calculations. This separation lets players mine walls and use them for decoration without risking enabling various enemies from specifically spawning in their creations. As a mod developer, this pattern is good to follow if NPC spawning logic takes wall types into account.
 
 # Custom Framing
-With `ModTile.WallFrame`, a modder can implement whatever framing logic they desire. This example from [ExampleWallAdvanced](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Walls/ExampleWallAdvanced.cs#L49) shows weighting the 1st option more than the other 2 options:    
+With `ModTile.WallFrame`, a modder can implement whatever framing logic they desire. This example from [ExampleWallAdvanced](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Walls/ExampleWallAdvanced.cs#L48) shows weighting the 1st option more than the other 2 options:    
 ![image](https://user-images.githubusercontent.com/4522492/191853500-0208243b-68cd-4302-8984-79d5c2f81468.png)
 
 ```cs

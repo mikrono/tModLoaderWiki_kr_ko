@@ -141,7 +141,7 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 
 比如说, 游戏里已经有 "右键以打开" 的翻译, 储存在键`CommonItemTooltip.RightClickToOpen`中. 模组可以使用换元复用它的值. HJSON条目`Tooltip: "{$CommonItemTooltip.RightClickToOpen}"`将被展示为用户语言的 "右键以打开" 翻译. 其它已有翻译, 诸如物品名称和常用描述也都可以这样使用. 
 
-模组内的翻译也可以换元. 比如[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中的例子, `ExamplePylonTile.MapEntry: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"`就复用了键`Mods.ExampleMod.ItemName.ExamplePylonItem`对应的翻译. 
+模组内的翻译也可以换元. 比如[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson)中的例子, `MapObject.ExamplePylonTile: "{$Mods.ExampleMod.ItemName.ExamplePylonItem}"`就复用了键`Mods.ExampleMod.ItemName.ExamplePylonItem`对应的翻译. 
 
 许多替换里有`{0}`或`{1}`, 它们是可供模组作者传值的占位符. 这一点在[格式化字符串](#格式化字符串)有解释. 
 

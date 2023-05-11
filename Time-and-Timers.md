@@ -69,7 +69,7 @@ if(Projectile.ai[0] > 120) {
     Projectile.ai[0] = 0;
 }
 ```
-[ExampleAdvancedAnimatedProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs#L80) shows using a timer to fade in the Projectile for 50 ticks, then fade back out.    
+[ExampleAdvancedAnimatedProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs#L79) shows using a timer to fade in the Projectile for 50 ticks, then fade back out.    
 
 We can use a property to make the code much easier to read:   
 ```cs
@@ -89,7 +89,7 @@ public override void AI() {
 	// Other code...
 }
 ```
-[ExampleCustomAISlimeNPC.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExampleCustomAISlimeNPC.cs#L176) shows this approach in practice.
+[ExampleCustomAISlimeNPC.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/ExampleCustomAISlimeNPC.cs#L177) shows this approach in practice.
 
 ### Timer Using New Field
 `NPC.ai[]` and `Projectile.ai[]` are synced automatically over the multiplayer network by the game, but you can make new fields in your `ModNPC` or `ModProjectile` class. This makes the code much easier to read, but you might need to sync this extra data. Read [Multiplayer Compatibility](https://github.com/tModLoader/tModLoader/wiki/Multiplayer-Compatibility#npc--modnpc) if you want to learn more. Some data won't need to be synced, so try to familiarize yourself with when data needs to be synced.
@@ -114,7 +114,7 @@ public class ExampleBullet : ModProjectile
 	}
 }
 ```    
-ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Old/NPCs/Abomination/Abomination.cs#L231). [More Examples](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
+ExampleMod has many examples: [Abomination Send/ReceiveExtraAI](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Old/NPCs/Abomination/Abomination.cs#L231). [More Examples](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=SendExtraAI+path:ExampleMod&type=Code)
 
 ### Projectile One Time Timer Using Projectile.timeLeft
 If you need something to happen once X ticks after spawning, you can take advantage of `Projectile.timeLeft` (you may want to change `Projectile.timeLeft` in `ModProjectile.SetDefaults` to something smaller):

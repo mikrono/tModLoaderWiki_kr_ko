@@ -52,4 +52,4 @@ if(source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.type 
 }
 ```
 
-Note that for most things, you'll have to manually sync changes. OnSpawn happens on the client or server that spawns the entity, any changes that should reflect on other clients need to by synced in some manner. The files in [ExampleMod/Common/EntitySources](https://github.com/tModLoader/tModLoader/tree/1.4/ExampleMod/Common/EntitySources) show examples of this.
+Note that for most things, you'll have to manually sync changes. OnSpawn happens on the client or server that spawns the entity, any changes that should reflect on other clients need to by synced in some manner. The files in [ExampleMod/Common/EntitySources](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Common/EntitySources) show examples of this.

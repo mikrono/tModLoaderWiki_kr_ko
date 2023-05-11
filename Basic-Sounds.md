@@ -10,7 +10,7 @@ There are 2 concepts to be aware of. The first is the actual sound asset. This c
 
 ## Sound Assets
 
-Sound assets can be found in your ModSources folder and in the Terraria install directory. Sound assets can be many different sound file formats including .wav, .ogg, .mp3, and .xnb. For example, [ExampleMod](https://github.com/tModLoader/tModLoader/tree/1.4/ExampleMod/Assets/Sounds/Items/Guns) has an `ExampleGun.ogg` file found in `ExampleMod\Assets\Sounds\Items\Guns\ExampleGun.ogg`. In your Terraria install folder, you'll find hundreds of sound files in the `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Content\Sounds` folder. These files are .xnb files, which is a special format that you can't listen to directly by double clicking. To listen to these sounds on your computer, see the [Extract](#Extract) section below.
+Sound assets can be found in your ModSources folder and in the Terraria install directory. Sound assets can be many different sound file formats including .wav, .ogg, .mp3, and .xnb. For example, [ExampleMod](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Assets/Sounds/Items/Guns) has an `ExampleGun.ogg` file found in `ExampleMod\Assets\Sounds\Items\Guns\ExampleGun.ogg`. In your Terraria install folder, you'll find hundreds of sound files in the `C:\Program Files (x86)\Steam\steamapps\common\Terraria\Content\Sounds` folder. These files are .xnb files, which is a special format that you can't listen to directly by double clicking. To listen to these sounds on your computer, see the [Extract](#Extract) section below.
 
 ## SoundStyle
 

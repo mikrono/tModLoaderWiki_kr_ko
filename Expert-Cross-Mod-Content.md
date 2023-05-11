@@ -50,7 +50,7 @@ public override void PostSetupContent()
 ```
 Now, if we build our mod, we will see that our town NPC is added to the housing panel even if it hasn't moved in yet. 
 
-Mod.Call is very useful, and is a very easy way for mods to communicate with each other. For info on how to implement receiving Mod.Call so other mods can interact with your mod, see the source code for Census or other open source mods. A fully commented showcase of calling other mods' Mod.Calls (including the most popular mod utilizing Call: Boss Checklist) and how to organize them can be found [in ExampleMod (ModIntegrationsSystem)](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/ModIntegrationsSystem.cs).
+Mod.Call is very useful, and is a very easy way for mods to communicate with each other. For info on how to implement receiving Mod.Call so other mods can interact with your mod, see the source code for Census or other open source mods. A fully commented showcase of calling other mods' Mod.Calls (including the most popular mod utilizing Call: Boss Checklist) and how to organize them can be found [in ExampleMod (ModIntegrationsSystem)](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Systems/ModIntegrationsSystem.cs).
 
 # Strong References, aka modReferences (Expert)
 

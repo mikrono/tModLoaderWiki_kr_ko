@@ -49,7 +49,7 @@ Now that you have a .cs file, bring in your texture file (a .png image file that
 Remember that Items and Projectiles are different. A common mistake is modders will make a projectile and not understand that they need to make something use that projectile. For example, for a throwing knife weapon, you need to make both an Item and a Projectile. Ammo items need a unique projectile associated with it as well. You don't always need both and item and a projectile, such as if the projectile is spawned by an NPC. The easiest way to test a projectile is to make an item and set `Item.shoot` to the projectile. For example, `Item.shoot = ModContent.ProjectileType<MyProjectile>();`. See ExampleMod for many examples of Projectiles spawned by Items, they are in separate folders, but they are easy to find. 
 
 # SetDefaults
-The most important part of a Projectile is the `SetDefaults` method. `SetDefaults` is where you set values for the projectile, things like the hitbox width and height, if the projectile is friendly or hostile, and which AI the projectile will use. See [Projectile Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation) to see what values commonly set in `SetDefaults` mean. You can also view vanilla projectile values by visiting [Vanilla Projectile Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Projectile-Field-Values). Many examples of different projectiles can be found in [ExampleMod.Content.Projectiles](https://github.com/tModLoader/tModLoader/tree/1.4/ExampleMod/Content/Projectiles)
+The most important part of a Projectile is the `SetDefaults` method. `SetDefaults` is where you set values for the projectile, things like the hitbox width and height, if the projectile is friendly or hostile, and which AI the projectile will use. See [Projectile Class Documentation](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation) to see what values commonly set in `SetDefaults` mean. You can also view vanilla projectile values by visiting [Vanilla Projectile Field Values](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Projectile-Field-Values). Many examples of different projectiles can be found in [ExampleMod.Content.Projectiles](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Projectiles)
 
 ## Projectile.damage
 A commons mistake is setting `Projectile.damage` in `SetDefaults`, this does not work, as the damage value a projectile has is always overwritten by the value passed into `Projectile.NewProjectile` when the projectile is spawned. Usually the item or the npc spawning the item will determine the damage.
@@ -232,13 +232,13 @@ if (Projectile.alpha > 0)
 	Projectile.alpha -= 15; // Decrease alpha, increasing visibility.
 }
 ```
-[`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs) shows using both fading in when spawning and fading out when despawning.
+[`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs) shows using both fading in when spawning and fading out when despawning.
 
 ## Animation/Multiple Frames
 Projectile animation, switching which frame of the sprite to draw, happens in `AI`. Make sure to set `Main.projFrames[Projectile.type] = #;` in `SetStaticDefaults` first. You can set `Projectile.frame` to whatever frame you want to be drawn. Do not attempt to use a .gif file for the texture, that will not work and it is not how animation is done.
 
 ### Looping/Cycling
-You can use `Projectile.frameCounter` and `Main.projFrames[Projectile.type]` to implement a looping animation. Example: [`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs)
+You can use `Projectile.frameCounter` and `Main.projFrames[Projectile.type]` to implement a looping animation. Example: [`ExampleAdvancedAnimatedProjectile`](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs)
 ```cs
 // Loop through the 4 animation frames, spending 5 ticks on each.
 if (++Projectile.frameCounter >= 5)
@@ -282,13 +282,13 @@ Many projectiles bounce when colliding with a solid tile. This behavior is techn
 
 ## OnTileCollide Examples
 
-[ExampleBullet.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleBullet.cs#L38) shows off limited bounces, tile collision dust, tile collision sounds, and bouncing while preserving the velocity completely.
+[ExampleBullet.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleBullet.cs#L37) shows off limited bounces, tile collision dust, tile collision sounds, and bouncing while preserving the velocity completely.
 
-[ExampleCloneProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleCloneProjectile.cs#L55) shows off multiple random collision sounds and returning true to keep the original collision logic. `Kill` shows off spawning a small eruption of secondary projectiles.
+[ExampleCloneProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleCloneProjectile.cs#L51) shows off multiple random collision sounds and returning true to keep the original collision logic. `Kill` shows off spawning a small eruption of secondary projectiles.
 
-[SparklingBall.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/SparklingBall.cs#L28) is similar to ExampleBullet.cs except the velocity is scaled by `0.75f`, thereby slowing the projectile down on every bounce.
+[SparklingBall.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/SparklingBall.cs#L28) is similar to ExampleBullet.cs except the velocity is scaled by `0.75f`, thereby slowing the projectile down on every bounce.
 
-[ExampleAdvancedFlailProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedFlailProjectile.cs#L315) shows off more dynamic examples of dust and bounce behaviors derived from the flail state and velocity. It also shows off an additional behavior of spawning a sparks visual effect. This dynamic behavior provides the signature feel of Flail weapons.
+[ExampleAdvancedFlailProjectile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedFlailProjectile.cs#L315) shows off more dynamic examples of dust and bounce behaviors derived from the flail state and velocity. It also shows off an additional behavior of spawning a sparks visual effect. This dynamic behavior provides the signature feel of Flail weapons.
 
 With the above examples, you can craft the tile collision behavior you want. If you are attempting to clone a vanilla projectile behavior, search `Projectile.HandleMovement` for the `ProjectileID` number or the projectile `aiStyle` number to find the relevant code. The [Shadowbeam Staff Clone](https://github.com/tModLoader/tModLoader/wiki/Advanced-Vanilla-Code-Adaption#example-item-and-projectile-shadowbeam-staff-clone) example in the adaption guide shows this and other thought processes required to find vanilla code fragments not covered by the `AI` code.
 
@@ -349,7 +349,7 @@ DrawOriginOffsetX = X pixel position of center of hitbox minus Texture Width div
 ```
 Here is a diagram:
 ![](https://i.imgur.com/zQfxXM3.png)    
-If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAdvancedAnimatedProjectile](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs#L102)
+If you don't like fighting against the vanilla projectile rendering code, you can always draw the projectile yourself as seen in [ExampleAdvancedAnimatedProjectile](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Projectiles/ExampleAdvancedAnimatedProjectile.cs#L101)
 
 ### Fixing upside-down sprite problem again
 With the vertical sprite, using `Projectile.spriteDirection` works because it controls a horizontal flip of the projectile sprite. Using a horizontal sprite, a horizontal flip makes the sprite move facing backwards:    

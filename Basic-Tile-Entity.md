@@ -61,7 +61,7 @@ namespace MyMod
 
 # Making a Tile Entity
 There are three components for making a tile entity.  First and foremost, you will need a `ModItem` that places a `ModTile`.  
-The noteworthy line needed is the line in `SetDefaults` which sets `item.createTile` (`Item.createTile` in 1.4).  See [ExampleMod's Placeable Items](https://github.com/tModLoader/tModLoader/tree/1.3/ExampleMod/Items/Placeable) if you're using 1.3 tModLoader or [1.4 ExampleMod's Placeable Items](https://github.com/tModLoader/tModLoader/tree/1.4/ExampleMod/Content/Items/Placeable) if you're using 1.4 tModLoader.
+The noteworthy line needed is the line in `SetDefaults` which sets `item.createTile` (`Item.createTile` in 1.4.4).  See [ExampleMod's Placeable Items](https://github.com/tModLoader/tModLoader/tree/1.3/ExampleMod/Items/Placeable) if you're using 1.3 tModLoader or [1.4.4 ExampleMod's Placeable Items](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Items/Placeable) if you're using 1.4.4 tModLoader.
 
 ## Making the Tile Entity
 Setting up a ModTileEntity requires the usage of a few hooks.

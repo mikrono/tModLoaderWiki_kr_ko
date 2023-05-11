@@ -271,7 +271,7 @@ public override void AddRecipes() => CreateRecipe()
         .AddIngredient(ItemID.Wood, 5)
         .Register();
 ```
-There is a more detailed explanation of how to do this in [ExampleMod/Content/ExampleRecipes.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/ExampleRecipes.cs). _Keep in mind that chaining methods is optional, you can still use the old pattern._
+There is a more detailed explanation of how to do this in [ExampleMod/Content/ExampleRecipes.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/ExampleRecipes.cs). _Keep in mind that chaining methods is optional, you can still use the old pattern._
 
 #### RecipeFinder and RecipeEditor
 The two classes were removed. Now just use any `PostAddRecipes` hook (such as in `ModSystem`) and manually iterate over `Main.recipe` to find and edit what you need. To delete a recipe, call `DisableRecipe()` on it.

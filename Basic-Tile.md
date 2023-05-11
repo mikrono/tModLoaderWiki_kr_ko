@@ -99,7 +99,7 @@ false (default):
 ## Main.tileShine[Type] = true;
 ## Main.tileShine2[Type] = true;
 ## Main.tileValue[Type] = true;
-These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleOre.cs)
+These are related to Metal Detector and ore shining. See [ExampleOre](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleOre.cs)
 
 ## Main.tileBlockLight[Type] = true;	
 If set to true, light is blocked by this tile and the light will decrease as it passes through.     
@@ -177,7 +177,7 @@ For this guide, many gifs will refer to this tile sprite:
 ![](https://i.imgur.com/b009P8f.png)    
 
 ## Multiple Styles
-You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `Item.createTile` but will have different `Item.placeStyle` to differentiate which style to place. Usually, `TileFrameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined, see [ExampleBar](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleBar.cs). See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
+You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `Item.createTile` but will have different `Item.placeStyle` to differentiate which style to place. Usually, `TileFrameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined, see [ExampleBar](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleBar.cs). See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
 
 ![](https://i.imgur.com/O923oDq.png)    
 
@@ -210,7 +210,7 @@ Style3x3Wall
 ```
 
 Typically, you'll want to start out by copying a template, and modifying it as needed.
-For example, [ExampleChair.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChair.cs) first does:
+For example, [ExampleChair.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/Furniture/ExampleChair.cs) first does:
 `TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2);`    
 ....and then it makes adjustments such as:     
 ```cs
@@ -327,7 +327,7 @@ Coral also randomly places a style:
 Should always be true. If you copied a template it will already be true, but be sure you set it if you aren't copying from a template.
 
 ## Wires, Toggles, Changing Frame
-Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleLamp.cs) to see how HitWire changes the TileFrameX to change which sprite is drawn.    
+Sometimes we use extra frames in the spritesheet to allow our tile to toggle between off and on. The placement of extra sprites depends on StyleLineSkip, if necessary, and StyleHorizontal. These extra "states" for our tiles should still be the same style if set up correctly. See [ExampleLamp.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleLamp.cs) to see how HitWire changes the TileFrameX to change which sprite is drawn.    
 ![](https://i.imgur.com/Xq13Slr.png)     
 
 ## Other
@@ -364,7 +364,7 @@ Be sure to call this or your mod won't load properly.
 You may have noticed that things like `Main.tileWaterDeath` are indexed by the tile type. You may have also remembered that both Cursed Torch and Ichor Torch work underwater and are not destroyed when touched by water. If you look in the code, you'll see that Cursed Torch and Ichor Torch are the same tile type as all the other torches. How is this possible? This is possible through `TileObjectData`. `TileObjectData` is a data structure that allows different properties to be applied to different "styles" or "alternates" of the same tile type. Doing this type of conditional behavior is best learned from studying the source and will not be explained further in this guide. Just be aware that it is possible.
 
 # Animation
-Do not change TileFrameX or TileFrameY of the tile for animation. The tile and its values should stay the same as it is animating. [ExampleAnimatedGlowmaskTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleAnimatedGlowmaskTile.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
+Do not change TileFrameX or TileFrameY of the tile for animation. The tile and its values should stay the same as it is animating. [ExampleAnimatedGlowmaskTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleAnimatedGlowmaskTile.cs) shows changing state and animating a tile. [ExampleAnimatedTile.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleAnimatedTile.cs) shows more animated tile options.
 
 # Full Examples
 ## Framed Tile

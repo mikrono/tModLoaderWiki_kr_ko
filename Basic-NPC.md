@@ -33,7 +33,7 @@ if (NPC.HasValidTarget && Main.netMode != NetmodeID.MultiplayerClient)
 }
 ```
 
-You can emit the `NPC.TargetClosest();` code if you already have it in your `AI`. You want to couple this usually with a [timer](https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers), and if you want to spawn it some other way, [ExampleGun](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Weapons/ExampleGun.cs?ts=4) showcases a few variants you can transfer over (logically, don't copy its code into the NPC, it won't work). Visit the [NewProjectile](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectileientitysource-spawnsource-float-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f-) documentation for more info.
+You can emit the `NPC.TargetClosest();` code if you already have it in your `AI`. You want to couple this usually with a [timer](https://github.com/tModLoader/tModLoader/wiki/Time-and-Timers), and if you want to spawn it some other way, [ExampleGun](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Weapons/ExampleGun.cs) showcases a few variants you can transfer over (logically, don't copy its code into the NPC, it won't work). Visit the [NewProjectile](https://github.com/tModLoader/tModLoader/wiki/Projectile-Class-Documentation#public-static-int-newprojectileientitysource-spawnsource-float-x-float-y-float-speedx-float-speedy-int-type-int-damage-float-knockback-int-owner--255-float-ai0--0f-float-ai1--0f-) documentation for more info.
 
 # Frequently Asked Questions
 ### The spawned projectile deals no damage/disappears immediately

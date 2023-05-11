@@ -163,7 +163,7 @@ This requires a custom condition, see below. You can look at the code of `Condit
 
 ## Drop stack of item one by one like Lunar Fragments
 `new DropOneByOne(int itemId, DropOneByOne.Parameters parameters)`    
-See [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs#L193) for an example of using `DropOneByOne`.
+See [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs#L198) for an example of using `DropOneByOne`.
 
 ## Boss Bag
 See [Full Boss Example](#full-boss-example) below
@@ -214,7 +214,7 @@ public class FirstTimeKillingPlantera : IItemDropRuleCondition, IProvideItemCond
 ```
 The important part is the `CanDrop` method, which simply checks `!NPC.downedPlantBoss` (meaning it can drop when the boss hasn't been defeated), which is how the game tracks Plantera being defeated in the world. Crucially, NPC drops are calculated before boss flags like `NPC.downedPlantBoss` are set to true, that allows this to work.
 
-This same approach can be used for other vanilla and modded bosses. Only `FirstTimeKillingPlantera` exists in the code, but a modder can create a `IItemDropRuleCondition` for any other boss by using the appropriate [NPC.downedX bool](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#downedboss1). Modded bosses can also be done in the same manner, except tracked with the [boss bool from your ModSystem class](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L17)
+This same approach can be used for other vanilla and modded bosses. Only `FirstTimeKillingPlantera` exists in the code, but a modder can create a `IItemDropRuleCondition` for any other boss by using the appropriate [NPC.downedX bool](https://github.com/tModLoader/tModLoader/wiki/NPC-Class-Documentation#downedboss1). Modded bosses can also be done in the same manner, except tracked with the [boss bool from your ModSystem class](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L15)
 
 # Chaining Rules
 Rules can be chained together to form more complex item drop logic. For example, one of the Queen Bee drops is 1 of 4 options. 33% chance Hive Wand, 11% chance for each of Bee Hat, Bee Shirt, and Bee Pants. To form this logic, the following code is used:
@@ -241,7 +241,7 @@ npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ItemID.HiveWand
 
 # Full Boss Example
 In Terraria, bosses drop different items depending on the game mode. In expert mode, a boss bag is dropped for each player. In normal mode, the items that would come out of a boss bag except expert only items are dropped instead. This example shows this pattern.
-You can view the `ModifyNPCLoot` code on the [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs) and the corresponding `ModifyItemLoot` code on the [MinionBossBag](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/MinionBossBag.cs), below is a minimal example to showcase it:
+You can view the `ModifyNPCLoot` code on the [MinionBossBody](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/MinionBoss/MinionBossBody.cs) and the corresponding `ModifyItemLoot` code on the [MinionBossBag](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/MinionBossBag.cs), below is a minimal example to showcase it:
 ```cs
 //The important parts to handle proper difficulty drops and the boss bag are the following:
 //1. The boss:

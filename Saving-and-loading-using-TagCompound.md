@@ -61,17 +61,17 @@ In the above example, we make sure to set `MySpecialBool` to false in `ModSystem
 
 # Examples
 Here are links to various examples in ExampleMod and other mods, in order of complexity:
-* [ExampleLifeFruitPlayer](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/ExampleLifeFruit.cs#L85) - ModPlayer - Simple Example, 1 number indicating life boost item consumption
-* [DownedBossSystem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L32) - ModSystem - Saves bools indicating which bosses from ExampleMod have been defeated in the world
-* [ExamplePerson](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExamplePerson.cs#L352) - ModNPC - Saves an int to this town NPC to indicate talk activity
-* [ExampleInstancedItem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/ExampleInstancedItem.cs#L66) - ModItem - Saves an array of Color pertaining solely to the specific instance of the item
-* [ExampleCanStackItem](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Items/Consumables/ExampleCanStackItem.cs#L66) - ModItem Saves a string
-* [ExampleGlobalNPC](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/NPCs/ExampleGlobalNPC.cs#L41) - GlobalNPC - Saves a bool
-* [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/1.4/DisableCorruptionSpreadModWorld.cs#L166) - ModSystem - Shows `nameof` and `tag.ContainsKey` usage.
+* [ExampleStatIncreasePlayer](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Players/ExampleStatIncreasePlayer.cs#L53) - ModPlayer - Simple Example, 1 number indicating life boost item consumption and 1 number indicating mana boss item consuption.
+* [DownedBossSystem](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Systems/DownedBossSystem.cs#L25) - ModSystem - Saves bools indicating which bosses from ExampleMod have been defeated in the world
+* [ExamplePerson](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/ExamplePerson.cs#L382) - ModNPC - Saves an int to this town NPC to indicate talk activity
+* [ExampleInstancedItem](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/ExampleInstancedItem.cs#L62) - ModItem - Saves an array of Color pertaining solely to the specific instance of the item
+* [ExampleCanStackItem](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleCanStackItem.cs#L73) - ModItem Saves a string
+* [ExampleGlobalNPC](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/NPCs/ExampleGlobalNPC.cs#L41) - GlobalNPC - Saves a bool (optionally, for efficiency)
+* [DisableCorruptionSpreadModWorld](https://github.com/JavidPack/DisableCorruptionSpread/blob/1.4/DisableCorruptionSpreadModWorld.cs#L170) - ModSystem - Shows `nameof` and `tag.ContainsKey` usage.
 * [AutoTrashPlayer](https://github.com/JavidPack/AutoTrash/blob/1.4/AutoTrashPlayer.cs#L30) - ModPlayer - Saving and Loading a list of `Item`s.
 * [BossChecklist](https://github.com/JavidPack/BossChecklist/blob/1.4/DataManager.cs) - TagSerializable - Shows several examples of implementing TagSerializable, including nesting
-* [Item](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/Item.TML.cs) (and [ItemIO](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/ModLoader/IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
-* [TagSerializer](https://github.com/tModLoader/tModLoader/blob/1.4/patches/tModLoader/Terraria/ModLoader/IO/TagSerializer.cs#L154) - TagSerializer - Shows inheriting from TagSerializer to facilitate serializing existing classes
+* [Item](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/Item.TML.cs) (and [ItemIO](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/ModLoader/IO/ItemIO.cs)) - TagSerializable - Shows implementing TagSerializable
+* [TagSerializer](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/ModLoader/IO/TagSerializer.cs#L186) - TagSerializer - Shows inheriting from TagSerializer to facilitate serializing existing classes
 
 # Simple Example
 
