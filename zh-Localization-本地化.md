@@ -236,7 +236,7 @@ public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Commo
 请注意，模组本地化键与原版格式不同。如示例模组中的  `PartyZombie` 有本地化键 `Mods.ExampleMod.NPCs.PartyZombie.DisplayName`。写码时要注意，模组内容的键名不一定遵守默认的格式。
 
 ### 简化作用域声明
-如果用于换元的键与其所在的值有重合的作用域, 相同的部分可以被省去. 例如, 在[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中, `Mods.ExampleMod.ExamplePetItem.DisplayName`的值是`"{$Common.PaperAirplane}"`. 在这个例子中, tML知道在当前作用域检索, 结果是键`Mods.ExampleMod.ExamplePetItem.DisplayName`的值被检索到并且被替换进去. 在此情况下, `Mods.模组名`可以被省去. 
+如果用于换元的键与其所在的值有重合的作用域, 相同的部分可以被省去. 例如, 在[示例模组本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson)中, `Mods.ExampleMod.ExamplePetItem.DisplayName`的值是`"{$Common.PaperAirplane}"`. 在这个例子中, tML知道在当前作用域检索, 结果是键`Mods.ExampleMod.ExamplePetItem.DisplayName`的值被检索到并且被替换进去. 在此情况下, `Mods.模组名`可以被省去. 
 
 ## 格式化字符串
 模组作者可以使用[字符串格式化](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=net-7.0#insert-a-string)在翻译中给要填的文本留出空位. 这是个C#的普通特性. 你可以用方法`string.Format`或`Language.GetTextValue`来格式化字符串. 章节[占位符](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#placeholders)有关于此特性的更多信息. 
@@ -342,7 +342,7 @@ public class InfiniteAmmoItem : ModItem
 现代汉语采用词汇手段（名词前加数词和量词）和语法手段（名词后加“们”）表示名词的复数, 故不存在诸如`{0} minutes ago`导致的复数化问题. 但是由中文翻译成其它语言时可能要注意这一点. 参阅章节[复数化](https://github.com/tModLoader/tModLoader/wiki/Contributing-Localization#plurals)
 
 ## 聊天标签 (Chat tag)
-本地化值中可以加入颜色和物品图标等 (译注: 可以参考译者的[内置本地化指南](https://github.com/lyc-Lacewing/tMLAllInOne/blob/master/Explained/LocalizationExplained/InternalLocalization.md)或[泰拉瑞亚中文维基](https://terraria.wiki.gg/zh/wiki/%E8%81%8A%E5%A4%A9)) 聊天标签. 参考[示例模组的本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Localization/en-US.hjson)中的`ExampleTooltipsItem`. 
+本地化值中可以加入颜色和物品图标等 (译注: 可以参考译者的[内置本地化指南](https://github.com/lyc-Lacewing/tMLAllInOne/blob/master/Explained/LocalizationExplained/InternalLocalization.md)或[泰拉瑞亚中文维基](https://terraria.wiki.gg/zh/wiki/%E8%81%8A%E5%A4%A9)) 聊天标签. 参考[示例模组的本地化文件](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Localization/en-US.hjson)中的`ExampleTooltipsItem`. 
 
 # 自动更新本地化
 tML会在有新内容或本地化键加入时自动更新`.hjson`文件. 英语的文件`en-US.hjson`将会被用作其它语言的模板, 注释和排版将会被自动继承. 
@@ -631,7 +631,7 @@ Main.NewText(Language.GetTextValue(this.GetLocalizationKey("随便什么信息")
 
 ### 另一个示例
 
-[示例箱子](https://github.com/tModLoader/tModLoader/blob/1.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs)是一个使用自定义键的例子. 默认情况下, tML会为每个`ModTile`注册一个`Mods.{模组名}.Tiles.{内容名}.MapEntry`格式的键. 这使得为物块添加地图条目变得简单. (地图条目控制大地图中鼠标停留在物块上时显示的文字.) 然而, `ExampleChest`需要两个地图条目. 新的键可以被轻易地添加进本地化文件中: 
+[示例箱子](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs)是一个使用自定义键的例子. 默认情况下, tML会为每个`ModTile`注册一个`Mods.{模组名}.Tiles.{内容名}.MapEntry`格式的键. 这使得为物块添加地图条目变得简单. (地图条目控制大地图中鼠标停留在物块上时显示的文字.) 然而, `ExampleChest`需要两个地图条目. 新的键可以被轻易地添加进本地化文件中: 
 
 ```cs
 AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
