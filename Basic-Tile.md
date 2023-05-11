@@ -1,5 +1,5 @@
 ***
-This Guide has been updated to 1.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile/166add9cb77cce9848277575dc9c4f925ecfb69e)
+This Guide has been updated to 1.4.4. If you need to view the old 1.3 version of this wiki page, click [here](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile/166add9cb77cce9848277575dc9c4f925ecfb69e). The 1.4 version can be found [here](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile/9223cb4451dbe651c893589d95da583913098eba)
 ***
 
 # Basic Tile
@@ -11,10 +11,10 @@ It is important to clearly understand tiles in your mind. Starting out, you migh
 If you are curious about the `Tile` class itself, such as you would find in `Main.tile[]`, please see [Tile Class Documentation](Tile-Class-Documentation)
 
 ## Tile-Item Pairing
-An Item will place a specific Tile when `Item.createTile` is set to the TileType of the ModTile. If a Tile has multiple styles, setting `Item.placeStyle` allows you to specify that style. The ModTile can return the ModItem as well. For 1x1 tiles, simply set `ItemDrop = ModContent.ItemType<ItemName>());` in `ModTile.SetStaticDefaults`. For larger tiles and tiles with multiple styles, use `ModTile.KillMultiTile` combined with `Item.NewItem` to spawn the appropriate Item to the player. See [Multiple Styles](#multiple-styles) for more details.
+An Item will place a specific Tile when `Item.createTile` is set to the `TileType` of the `ModTile`. If a Tile has multiple styles, setting `Item.placeStyle` allows you to specify that style. See [Multiple Styles](#multiple-styles) for more details. The `ModTile` will return the `ModItem` when mined as well. This process is automated, but can be customized for special tiles if needed. Modders can use `ModTile.RegisterItemDrop` to manually register drops for specific styles. `ModTile.GetItemDrops` can be used for full control of the drops. [ExampleTrap.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleTrap.cs) is an example of a tile that uses custom styles, so custom item drop code is used.
 
 # Making a Tile
-To add a tile to Terraria, we must first create a "class" that "inherits" from ModTile. To do so, make a .cs file in your mod's source directory (My Games\Terraria\tModLoader\ModSources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
+To add a tile to Terraria, we must first create a "class" that "inherits" from `ModTile`. To do so, make a .cs file in your mod's source directory (My Games\Terraria\tModLoader\ModSources\MyModName) and then open that file in your text editor. Paste the following into that file, replacing `NameHere` with the internal name of your tile and `ModNamespaceHere` with your mod's foldername/namespace. (A common mistake is to use apostrophes or spaces in internal names, don't do this, the computer won't understand.)
 
 ```cs
 using ExampleMod.Dusts;
@@ -44,7 +44,7 @@ namespace ModNamespaceHere
 Now that you have a .cs file, bring in your texture file (a .png image file that you have made) and put it in the folder with this .cs file. Make sure read [Autoload](https://github.com/tModLoader/tModLoader/wiki/Basic-Autoload) so you know how to satisfy what the computer expects for its filename and folder structure.
 
 # Framed vs FrameImportant Tiles
-There are 2 different types of Tiles. One type is the regular tiles that are 1x1 (width of 1, height of 1) and adjust themselves as you place similar tiles next to them. These will be referred to as "Framed" tiles in this guide. The other type are the tiles that do not change automatically, which we will call "FrameImportant" tiles. These tiles are usually larger than 1x1 so another name for them could be "MultiTiles".   
+There are 2 different types of Tiles. One type is the regular tiles that are 1x1 (width of 1, height of 1) and adjust themselves as you place similar tiles next to them. These will be referred to as "Framed" tiles in this guide, but are also known as "Terrain" tiles. The other type are the tiles that do not change automatically, which we will call "FrameImportant" tiles. These tiles are usually larger than 1x1 so another name for them could be "MultiTiles". "Furniture" tiles is also another name for these tiles.  
 
 Here is an example of the sprite of a Framed tile:    
 ![](https://i.imgur.com/vtH5d8n.png)
@@ -64,7 +64,7 @@ Tile coordinates are 1/16th the size of World coordinates. Remember this if you 
 When making a sprite, it is important to know proper dimensions. For the most part, every individual tile will be 16x16 pixels with 2 pixels of padding to the right and below each, for a total of 18x18.
 
 # SetStaticDefaults
-Now that we've gone through some preliminary info, lets focus on SetStaticDefaults and what to put in it. This section will explain most of the common items in SetStaticDefaults. The point of SetStaticDefaults is to define how the tile acts, such as is it solid, can things stand on it, and does lava kill it. Consulting similar tiles that you wish to emulate in ExampleMod is probably better than trying to do this from scratch. Many of the lines below set something to true, this means the default value is false. Don't bother including lines setting the value to the default, it just clutters your code.
+Now that we've gone through some preliminary info, lets focus on `SetStaticDefaults` and what to put in it. This section will explain most of the common items in `SetStaticDefaults`. The point of `SetStaticDefaults` is to define how the tile acts, such as is it solid, can things stand on it, and does lava kill it. Consulting similar tiles that you wish to emulate in ExampleMod is probably better than trying to do this from scratch. Many of the lines below set something to true, this means the default value is false. Don't bother including lines setting the value to the default, it just clutters your code.
 
 For this guide, many gifs will refer to this tile sprite:    
 ![](https://i.imgur.com/b009P8f.png)    
@@ -152,9 +152,9 @@ These are more rarely used and won't be explained. See vanilla source code if yo
 ### Main.tileFrameCounter[Type] = true;
 
 ## Main.tileFrameImportant[Type] = true;
-This changes a Framed tile to a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a TileObjectData, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
+This indicates that a tile is a FrameImportant tile. The frame important part of the name suggest that the frame is important, but what is frame? Frame is the coordinates within the spritesheet that the current tile should draw. For Framed tiles, the frame is never saved since the coordinate frame of a Framed tile is calculated when the world is loaded. For FrameImportant tiles, the world needs to save those coordinates, hence, "important". For modders, just remember to set this to true when you make a tile that uses a `TileObjectData`, or basically all tiles that aren't like dirt, ores, or other basic building tiles. See [TileObjectData](#tileobjectdata) below for details.
 	
-## ModTile properties: DustType, ItemDrop, AdjTiles, etc
+## ModTile properties: DustType, AdjTiles, etc
 These are explained in the [documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_tile.html#pub-attribs). You may need to press on "Inherits [Terraria.ModLoader.ModBlockType](https://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_block_type.html)" to see other available methods and properties.
 
 ## AddToArray(ref TileID.Sets.RoomNeeds.????);
@@ -171,18 +171,18 @@ AddMapEntry is for setting the color and optional text associated with the Tile 
 
 <a name="tileobjectdata"></a>
 # TileObjectData or FrameImportant/MultiTiles
-If a ModTile is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetStaticDefaults`. FrameImportant tiles can be any size, from 1x1 to anything bigger. They can also have many different "styles". Each style can also have "alternates" which are alternate placements of the particular style. 
+If a `ModTile` is not a Framed tile, it must have `Main.tileFrameImportant[Type] = true;` and the `TileObjectData` in `SetStaticDefaults`. FrameImportant tiles can be any size, from 1x1 to anything bigger. They can also have many different "styles". Each style can also have "alternates" which are alternate placements of the particular style. 
 
 For this guide, many gifs will refer to this tile sprite:    
 ![](https://i.imgur.com/b009P8f.png)    
 
 ## Multiple Styles
-You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 ModTile file that places several styles. Each item that places this tile will have the same `Item.createTile` but will have different `Item.placeStyle` to differentiate which style to place. Usually, `TileFrameX` is used in `ModTile.KillMultiTile` to choose which item to spawn when the tile is mined, see [ExampleBar](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/ExampleBar.cs). See [StyleHorizonal](#stylehorizonal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
+You can take advantage of tile styles to simplify your code and avoid code repetition. Using this, you can have 1 `ModTile` file that places several styles. Each item that places this tile will have the same `Item.createTile` but will have different `Item.placeStyle` to differentiate which style to place. See [StyleHorizontal](#stylehorizontal), [StyleMultiplier](stylemultiplier) and [StyleWrapLimit](#stylewraplimit) below for more information.
 
 ![](https://i.imgur.com/O923oDq.png)    
 
 ## Basic TileObjectData.newTile structure
-In `SetStaticDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the TileObjectData by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
+In `SetStaticDefaults` we use `TileObjectData.newTile` to define properties of our tile. We typically start with `TileObjectData.newTile.CopyFrom(TileObjectData.Style???);`, make a few changes such as `TileObjectData.newTile.Something = SomeValue;`, then finish off the `TileObjectData` by calling `TileObjectData.addTile(Type);`. Doing this out of order will lead to errors.
 
 ## CopyFrom
 Use this to utilize an existing template. The names are self explanatory usually.
