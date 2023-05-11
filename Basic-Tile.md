@@ -220,6 +220,9 @@ TileObjectData.newTile.CoordinatePaddingFix = new Point16(0, 2); // We added two
 ....and finally calls:    
 ```TileObjectData.addTile(Type);```
 
+## CopyFrom TileID
+When copying from one of the `TileObjectData.StyleSomething` templates, there will be no alternate placement information copied. There will also be no style specific information copied. By using `CopyFrom` on a non-template `TileObjectData`, alternate placement information will be copied. This is also useful for copying from tiles that don't have a corresponding template or have done major tweaks to the template. For example, `TileObjectData.newTile.CopyFrom(TileObjectData.GetTileData(TileID.OpenDoor, 0));` will copy all the alternate placement information, but not the style specific information, such as how obsidian doors are lavaproof. The `FullCopyFrom` method would additionally copy the style specific information. 
+
 ## Width
 Modifies the width of the tiles in tile coordinates:    
 `TileObjectData.newTile.Width = 3;`    
@@ -317,6 +320,9 @@ If you are making a lot of styles, you should be aware that the maximum size for
 
 ## StyleMultiplier
 Used to give room for animation frames, growth stages, or tile states in the spritesheet.
+
+## StyleLineSkip
+Similar to `StyleMultiplier`, but adds room between lines of styles instead of in-line with styles.
 
 ## RandomStyleRange
 Coral also randomly places a style:    
