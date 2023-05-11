@@ -13,7 +13,7 @@ ___
 If you still need to install tModLoader refer to the [tModLoader guide for players](tModLoader-guide-for-players).
 
 ## Developing with tModLoader
-Before you begin, you will two things, the ".NET 6 SDK" and a suitable IDE. Once you have these installed, you should start with the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide).
+Before you begin, you will need two things, the ".NET 6 SDK" and a suitable IDE. Once you have these installed, you should start with the [Basic tModLoader Modding Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide).
 
 ### IDE
 Choose your favorite IDE to mod with tModLoader. Refer to the [development section](https://github.com/tModLoader/tModLoader/wiki#development) on the homepage. For the best mod making experience, using Visual Studio is highly recommended.
