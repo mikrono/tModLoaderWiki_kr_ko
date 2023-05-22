@@ -361,6 +361,7 @@ There are many things you should try:
 3. Try changing "Frame Skip" settings
 4. You can try a different graphics options. To do this, close the game and then in Steam, right click on `tModLoader`, select `Properties`, and then find the `Launch Options` box. Type `/gldevice:OpenGL` or `/gldevice:Vulkan` into the box and close the window. Launch the game and check your frame rate. Do these same steps to try the other option. If these have no effect, remove them in the same manner.      
 ![image](https://user-images.githubusercontent.com/4522492/194379953-0392ca08-8ac3-4610-8486-595620e3d1d7.png)    
+    1. If you are using the GOG version of the game, you can edit `start-tModLoader.bat` and change the 3rd line to `LaunchUtils/busybox-sh.bat ./LaunchUtils/ScriptCaller.sh /gldevice:Vulkan %*`, save, then test by launching the file.
 5. Come to [tModLoader Discord Support](#discord-support).
 
 ### Ghost Mouse 
