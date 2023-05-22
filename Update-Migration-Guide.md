@@ -162,6 +162,7 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `Player.rocketDamage` -> `Player.specialistDamage`
 * `AmmoID.Sets.IsRocket` -> `AmmoID.Sets.IsSpecialist`
 * `ModPrefix.GetTooltipLines` added. Some modders might want to move prefix specific tooltip lines from `GlobalItem.ModifyTooltips` to it for better code maintainability.
+* `Mods.{ModName}.TownNPCMood.{NPCName}.*` localization entries relocated to `Mods.{ModName}.NPCs.{NPCName}.TownNPCMood.*`
 
 ## Big change concepts
 
