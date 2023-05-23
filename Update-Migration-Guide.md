@@ -163,6 +163,7 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `AmmoID.Sets.IsRocket` -> `AmmoID.Sets.IsSpecialist`
 * `ModPrefix.GetTooltipLines` added. Some modders might want to move prefix specific tooltip lines from `GlobalItem.ModifyTooltips` to it for better code maintainability.
 * `Mods.{ModName}.TownNPCMood.{NPCName}.*` localization entries relocated to `Mods.{ModName}.NPCs.{NPCName}.TownNPCMood.*`
+* `ModItem.AutoLightSelect` removed. See the porting notes in [PR 3479](https://github.com/tModLoader/tModLoader/pull/3479) for more information on how to adapt to this change.
 
 ## Big change concepts
 
@@ -315,3 +316,5 @@ ExampleMod contains examples for a [custom display set](https://github.com/tModL
 **Porting Notes:**    
 * This is almost entirely optional. The only thing is `ModItem`s that should never exist in the inventory, or should otherwise not be researchable, now need `Item.ResearchUnlockCount = 0;` added where previously, they would be unsearchable by default. (Note: `CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 0;` will result in bugs, use `Item.ResearchUnlockCount = 0;`)
 * Modders might consider using this opportunity to add research values matching vanilla values to their `ModItem`: [Journey Mode Research wiki page](https://terraria.wiki.gg/wiki/Journey_Mode#Research).
+
+
