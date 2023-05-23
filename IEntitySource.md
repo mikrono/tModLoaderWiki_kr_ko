@@ -1,22 +1,28 @@
 If you are making a 1.4 tModLoader mod, you will need to use `IEntitySource`. This guide will go over the purpose of `IEntitySource` and the most frequent uses of it.
 
 # Purpose of IEntitySource
-To further facilitate interesting modding capabilities, many 1.4 tModLoader methods require the use of a `IEntitySource` object. This object encapsulates context information about the source of a particular spawning event of an Item/Projectile/NPC/etc. For example, when a Boss NPC spawns minions, those minions are spawned with the `IEntitySource` value resulting from the helper method `NPC.GetSource_FromAI()`. The result of that helper method is a `EntitySource_Parent` class with an `Entity` field of type `NPC`. This `IEntitySource` could then be detected by a mod that intended to reduce the HP of all boss minions by half. This additional info can help facilitate many more effects that were previously impossible to accomplish with mods.
+`IEntitySource` works with the `OnSpawn` hooks to provide additional information about _why_ a `Projectile/NPC/Item` is spawned in the world. There are two primary use cases:
+- Altering the properties of an `NPC`/`Projectile` only when spawned from a specific context (eg bombs from pots, or minions of a boss).
+- Transferring stats or buffs (such as npc banner id, or player/weapon crit chance), from the source to the spawned entity (normally a `Projectile`)
+
+For example, when a Boss NPC spawns minions, those minions are spawned with the `IEntitySource` value resulting from the helper method `NPC.GetSource_FromAI()`. The result of that helper method is a `EntitySource_Parent` class with an `Entity` field of type `NPC`. This `IEntitySource` could then be detected by a mod that intended to reduce the HP of all boss minions by half. This additional info can help facilitate many more effects that were previously impossible to accomplish with mods.
+
+Note that `OnSpawn` does not let you prevent the spawning of an entity. On/IL hooks are currently required for that, but such a hook could be considered in the future (causing the returned entity to be the 'dummy' entity slot at the end of the array).
 
 # Lifetime
 Do not store `IEntitySource` in fields. The validity of the information they encapsulate is only relevant at the moment of spawning. Any lasting effects of the source information will need to be registered in fields within your mod at the time of spawning. The details on why it is a bad idea are too advanced for this guide.
 
 # Methods requiring IEntitySource
 The following commonly used methods require `IEntitySource`.
-* Gore.NewGore
-* Gore.NewGoreDirect
-* Gore.NewGorePerfect
-* Player.QuickSpawnItem
-* Player.QuickSpawnClonedItem
-* Item.NewItem
-* NPC.NewNPC
-* Projectile.NewProjectile
-* Projectile.NewProjectileDirect
+* `Gore.NewGore`
+* `Gore.NewGoreDirect`
+* `Gore.NewGorePerfect`
+* `Player.QuickSpawnItem`
+* `Player.QuickSpawnClonedItem`
+* `Item.NewItem`
+* `NPC.NewNPC`
+* `Projectile.NewProjectile`
+* `Projectile.NewProjectileDirect`
 
 # Common Usage
 The most common usages of `IEntitySource` will be listed here. If you absolutely can't figure out a suitable `IEntitySource` for your situation, passing in `null` is acceptable, but be aware that the purpose of `IEntitySource` is to facilitate advanced modding capabilities and your users might be disappointed that their other mods do not work 100% correctly because you didn't use the correct `IEntitySource`.
