@@ -162,7 +162,7 @@ The following contains smaller scale changes to tModLoader members. More elabora
 * `Player.rocketDamage` -> `Player.specialistDamage`
 * `AmmoID.Sets.IsRocket` -> `AmmoID.Sets.IsSpecialist`
 * `ModPrefix.GetTooltipLines` added. Some modders might want to move prefix specific tooltip lines from `GlobalItem.ModifyTooltips` to it for better code maintainability.
-* `Mods.{ModName}.TownNPCMood.{NPCName}.*` localization entries relocated to `Mods.{ModName}.NPCs.{NPCName}.TownNPCMood.*`
+* `Mods.{ModName}.TownNPCMood.{NPCName}.*` localization entries relocated to `Mods.{ModName}.NPCs.{NPCName}.TownNPCMood.*`. See the porting notes in [PR 3446](https://github.com/tModLoader/tModLoader/pull/3446) for more information.
 * `ModItem.AutoLightSelect` removed. See the porting notes in [PR 3479](https://github.com/tModLoader/tModLoader/pull/3479) for more information on how to adapt to this change.
 
 ## Big change concepts
