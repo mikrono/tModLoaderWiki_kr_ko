@@ -166,7 +166,7 @@ This is usually caused by your Terraria install being out of date. First, launch
 If you are on Windows 7, you'll need to install the [directX package from Microsoft](https://support.microsoft.com/en-us/topic/update-for-the-d3dcompiler-47-dll-component-on-windows-server-2012-windows-7-and-windows-server-2008-r2-769c6690-ed30-4dee-8bf8-dfa30e2f8088). Restart your computer after running and finishing the installer.
 
 ### Multiple extensions for asset
-This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again.
+This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again. The issue will be fixed eventually, thumbs up the [issue](https://github.com/tModLoader/tModLoader/issues/2913) to prioritize this issue being fixed.
 
 ### System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
