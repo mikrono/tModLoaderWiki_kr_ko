@@ -157,6 +157,12 @@ The `Save All` icon is an easy way to recognize if they are in the wrong Visual 
 ![image](https://user-images.githubusercontent.com/4522492/194130930-c0bf7aef-a397-4666-9c49-858d7f91aad5.png)    
 The guidelines in Visual Studio are a dotted line, Visual Studio Code has solid lines, and Notepad++ has dotted lines with very small dots. Also note how Notepad++ fails to do complete syntax highlighting. Direct them to [Prerequisites](#prerequisites) to download Visual Studio 2022.
 
+### Unsaved Changes
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/b8a4b584-de98-47e1-818b-16d2fc45af77)    
+All editors have a small * mark in the editor tab indicating that a file has changes that are not saved. In Visual Studio and Notepad++, colors in the gutter area indicate lines that have not yet been saved. In VS, hollow gutter marks are unsaved edits or additions, while solid marks are recently saved changes. In Notepad++ orange lines are unsaved and green lines are saved changes. 
+
+Even if changes are saved, the mod might not have been rebuilt. The easiest way to avoid these issues altogether is to always launch directly from Visual Studio rather than saving changes in the editor and then building the mod in game. This approach also has the added benefit of allowing hot reload and build and continue to work, greatly speeding up testing.
+
 ### Miscellaneous Files
 ![image](https://user-images.githubusercontent.com/4522492/194131467-a47a0e90-692a-40c3-af8b-290566b6aabd.png)    
 If you see "Miscellaneous Files" instead of the mod name, the user didn't open their `.csproj` and instead opened the `.cs` file directly. Other clues include a lack of syntax highlighting for classes and method invocations. Direct them to [Opening your Project](#opening-your-project).
