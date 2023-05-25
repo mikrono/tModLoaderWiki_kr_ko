@@ -9,6 +9,8 @@ For example, when a Boss NPC spawns minions, those minions are spawned with the 
 
 Note that `OnSpawn` does not let you prevent the spawning of an entity. On/IL hooks are currently required for that, but such a hook could be considered in the future (causing the returned entity to be the 'dummy' entity slot at the end of the array).
 
+See `ExampleSourceDependentProjectileTweaks`, `ExampleSourceDependentItemTweaks`, or `ProjectileWithGrowingDamage` classes in Example Mod for some uses.
+
 # Lifetime
 Do not store `IEntitySource` in fields. The validity of the information they encapsulate is only relevant at the moment of spawning. Any lasting effects of the source information will need to be registered in fields within your mod at the time of spawning. The details on why it is a bad idea are too advanced for this guide.
 
