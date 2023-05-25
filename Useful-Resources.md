@@ -14,6 +14,7 @@ The following covers a list of useful resources, adapted from the [help thread o
 ## Utilities/Other
 
 * [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) | Extract images and sounds from Terraria. Useful for viewing various sprites.
+* [TPadder](https://github.com/MdTanjeemHaider/TPadder) | Add padding to multi-block tile textures with this tool.
 * [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) | Quickly create armor animation sprites with this tool
 * [Terraria Tile Generator](https://forums.terraria.org/index.php?threads/terraria-tile-generator.70088/) | Quickly makes tile textures for ores.
 * [tModLoaderHelper](https://forums.terraria.org/index.php?threads/tmodloaderhelper.73330/) | Allows for quick evaluation and debugging for armor, items, etc. against character models and other stuff.
