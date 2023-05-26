@@ -14,9 +14,6 @@ See `ExampleSourceDependentProjectileTweaks`, `ExampleSourceDependentItemTweaks`
 # Lifetime
 Do not store `IEntitySource` in fields. The validity of the information they encapsulate is only relevant at the moment of spawning. Any lasting effects of the source information will need to be registered in fields within your mod at the time of spawning. The details on why it is a bad idea are too advanced for this guide.
 
-# If in doubt, use `EntitySource_Parent`
-`EntitySource_Parent` is the most important source. tML uses this to transfer values such as `bannerIdToRespondTo/CritChance/ArmorPenetration` from the parent `NPC` or `Player` (or `Player` + `Item` in the case of `EntitySource_ItemUse`) to a spawned `Projectile`. These values are also transferred from parent projectiles to child projectiles via `EntitySource_Parent` ensuring the initial 'source' value is retained.
-
 # Methods requiring IEntitySource
 The following commonly used methods require `IEntitySource`.
 * `Gore.NewGore`
