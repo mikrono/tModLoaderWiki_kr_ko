@@ -32,7 +32,7 @@ Most of the time, this means calling `GetSource_FromThis()`, `GetSource_FromAI()
 
 `EntitySource_Parent` is the most important source. tML uses this to transfer values such as `bannerIdToRespondTo/CritChance/ArmorPenetration` from the parent `NPC` or `Player` (or `Player` + `Item` in the case of `EntitySource_ItemUse`) to a spawned `Projectile`. These values are also transferred from parent projectiles to child projectiles via `EntitySource_Parent` ensuring the initial 'source' value is retained.
 
-Several helper methods exist on `Entity` (`Player/NPC/Projectile/Item`) to help construct sources more easily.
+### Detailed list
 
 * NPC spawning projectiles should use `NPC.GetSource_FromAI()`
 * NPC spawning item drops should use `NPC.GetSource_Loot()` (if loot) or `NPC.GetSource_DropAsItem()` (if anything else). (Note that 99.9% of NPC item drops should be using the new loot system)
