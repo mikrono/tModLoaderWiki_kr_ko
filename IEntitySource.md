@@ -26,12 +26,12 @@ The following commonly used methods require `IEntitySource`.
 * `Projectile.NewProjectile`
 * `Projectile.NewProjectileDirect`
 
-# If in doubt use something which extends from `EntitySource_Parent`
+# Using Sources
+### If in doubt use something which extends from `EntitySource_Parent`
 Most of the time, this means calling `GetSource_FromThis()`, `GetSource_FromAI()`, `GetSource_Loot()`, `GetSource_Death()`, `GetSource_OnHit()` or `GetSource_OnHurt()`
 
 `EntitySource_Parent` is the most important source. tML uses this to transfer values such as `bannerIdToRespondTo/CritChance/ArmorPenetration` from the parent `NPC` or `Player` (or `Player` + `Item` in the case of `EntitySource_ItemUse`) to a spawned `Projectile`. These values are also transferred from parent projectiles to child projectiles via `EntitySource_Parent` ensuring the initial 'source' value is retained.
 
-# Other Sources
 Several helper methods exist on `Entity` (`Player/NPC/Projectile/Item`) to help construct sources more easily.
 
 * NPC spawning projectiles should use `NPC.GetSource_FromAI()`
