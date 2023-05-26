@@ -14,6 +14,9 @@ See `ExampleSourceDependentProjectileTweaks`, `ExampleSourceDependentItemTweaks`
 # Lifetime
 Do not store `IEntitySource` in fields. The validity of the information they encapsulate is only relevant at the moment of spawning. Any lasting effects of the source information will need to be registered in fields within your mod at the time of spawning. The details on why it is a bad idea are too advanced for this guide.
 
+# If in doubt, use `EntitySource_Parent`
+`EntitySource_Parent` is the most important source. tML uses this to transfer values such as `bannerIdToRespondTo/CritChance/ArmorPenetration` from the parent `NPC` or `Player` (or `Player` + `Item` in the case of `EntitySource_ItemUse`) to a spawned `Projectile`. These values are also transferred from parent projectiles to child projectiles via `EntitySource_Parent` ensuring the initial 'source' value is retained.
+
 # Methods requiring IEntitySource
 The following commonly used methods require `IEntitySource`.
 * `Gore.NewGore`
@@ -26,8 +29,13 @@ The following commonly used methods require `IEntitySource`.
 * `Projectile.NewProjectile`
 * `Projectile.NewProjectileDirect`
 
-# Common Usage
-The most common usages of `IEntitySource` will be listed here. If you absolutely can't figure out a suitable `IEntitySource` for your situation, passing in `null` is acceptable, but be aware that the purpose of `IEntitySource` is to facilitate advanced modding capabilities and your users might be disappointed that their other mods do not work 100% correctly because you didn't use the correct `IEntitySource`.
+# If in doubt use something which extends from `EntitySource_Parent`
+Most of the time, this means calling `GetSource_FromThis()`, `GetSource_FromAI()`, `GetSource_Loot()`, `GetSource_Death()`, `GetSource_OnHit()` or `GetSource_OnHurt()`
+
+`EntitySource_Parent` is the most important source. tML uses this to transfer values such as `bannerIdToRespondTo/CritChance/ArmorPenetration` from the parent `NPC` or `Player` (or `Player` + `Item` in the case of `EntitySource_ItemUse`) to a spawned `Projectile`. These values are also transferred from parent projectiles to child projectiles via `EntitySource_Parent` ensuring the initial 'source' value is retained.
+
+# Other Sources
+Several helper methods exist on `Entity` (`Player/NPC/Projectile/Item`) to help construct sources more easily.
 
 * NPC spawning projectiles should use `NPC.GetSource_FromAI()`
 * NPC spawning item drops should use `NPC.GetSource_Loot()` (if loot) or `NPC.GetSource_DropAsItem()` (if anything else). (Note that 99.9% of NPC item drops should be using the new loot system)
@@ -41,9 +49,8 @@ The most common usages of `IEntitySource` will be listed here. If you absolutely
 * An armor set bonus spawning a projectile: Not properly definable for modded ones, use `player.GetSource_Misc("SetBonus_MySetName")`
 * Spawning things in `ModItem.UseItem`, or any `ModItem` not covered elsewhere: `player.GetSource_ItemUse(Item)`
 * Player spawning Projectiles in `ModItem.Shoot` should use the `source` passed into the method
-* `Player.QuickSpawnItem` usage for a bag type item should use `player.GetSource_OpenItem(itemtype)`
 * Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
-* Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `player.GetSource_Misc("PlayerDropItemCheck")`
+* Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `new EntitySource_OverfullInventory(player)`
 
 # Retrieving Information from IEntitySource
 Using the information provided by `IEntitySource` is the other half of the purpose of this feature. There are various methods available that provide the source to the modder, all called `OnSpawn`.
