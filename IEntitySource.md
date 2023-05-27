@@ -43,10 +43,10 @@ Most of the time, this means calling `GetSource_FromThis()`, `GetSource_FromAI()
 * Held projectile weapons spawning other projectiles using ammo should use `player.GetSource_ItemUse_WithPotentialAmmo(player.HeldItem, usedAmmoItemId)`
 * Spawning minions or pets in `ModBuff.Update`: use `player.GetSource_Buff(buffIndex)`
 * An accessory spawning a projectile: use `player.GetSource_Accessory(itemInstance)`
-* An armor set bonus spawning a projectile: Not properly definable for modded ones, use `player.GetSource_Misc("SetBonus_MySetName")`
+* An armor set bonus spawning a projectile: Not properly definable for modded ones, use `player.GetSource_FromThis("SetBonus_MySetName")`
 * Spawning things in `ModItem.UseItem`, or any `ModItem` not covered elsewhere: `player.GetSource_ItemUse(Item)`
 * Player spawning Projectiles in `ModItem.Shoot` should use the `source` passed into the method
-* Tile dropping an item, such as in ModTile.KillMultiTile or ModTile.Drop, should use `new EntitySource_TileBreak(i, j)`
+* Tile dropping an item (`ModTile.KillMultiTile` or `GlobalTile.Drop`) should use `WorldGen.GetItemSource_FromTileBreak(i, j)`
 * Player spawning an item due to dropping or being unable to recover an item from a UISlot (player.GetItem overflow) should use `new EntitySource_OverfullInventory(player)`
 
 # Retrieving Information from IEntitySource
