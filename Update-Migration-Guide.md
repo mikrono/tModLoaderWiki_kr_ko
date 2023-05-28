@@ -50,7 +50,7 @@ All of the changes in this section will be handled by tModPorter and are listed 
 * `MessageID.StartPlaying` -> `MessageID.InitialSpawn`
 * `MessageID.SpawnBoss` -> `MessageID.SpawnBossUseLicenseStartEvent`
 * `MessageID.Teleport` -> `MessageID.TeleportEntity`
-* `MessageID.ClientHello` -> `MessageID.Hello
+* `MessageID.ClientHello` -> `MessageID.Hello`
 * `MessageID.LoadPlayer` -> `MessageID.PlayerInfo`
 * `MessageID.RequestWorldInfo` -> `MessageID.RequestWorldData`
 * `MessageID.RequestTileData` -> `MessageID.SpawnTileData`
