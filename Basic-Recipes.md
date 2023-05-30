@@ -260,6 +260,6 @@ There are other aspects of Recipes that will be covered in more advanced guides:
 * [Editing Recipes](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-recipes) -- Intermediate -- Edit existing recipes or disable existing recipes
 * Ordering Recipes
 * OnCraftCallback
-* ConsumeItemCallback
+* [Custom Item Consumption](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-item-consumption) -- Intermediate -- Allows a recipe to conditionally consume less ingredients than usual, such as what Alchemy Table does.
 * RecipeAvailable
 * [Cross-Mod Content](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) -- Intermediate -- Use Items or Tiles from other mods in your Recipe.
