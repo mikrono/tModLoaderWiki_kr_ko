@@ -156,7 +156,9 @@ Recipe.Create(ItemID.AlphabetStatueC)
 The Alchemy Table effect uses a bit of advanced logic. First, the Alchemy Table tile itself uses [AdjTiles](https://github.com/tModLoader/tModLoader/wiki/Basic-Recipes#making-an-upgraded-vanilla-tile) to act like `TileID.Bottles`. This means it will satisfy the crafting station requirement for recipes requiring `TileID.Bottles`. The code also sets the `Player.alchemyTable` bool to true, indicating that the player is under the effects of the alchemy table. Finally, the `ConsumeItemCallback` code applied to each of the potion recipes does the following to check for the `alchemyTable` bool and give each item a 1/3 chance to be consumed:
 ```cs
 public static ConsumeItemCallback Alchemy = (Recipe recipe, int type, ref int amount) => {
-	if (!Main.LocalPlayer.alchemyTable) return;
+	if (!Main.LocalPlayer.alchemyTable) {
+		return;
+	}
 
 	int amountUsed = 0;
 
@@ -169,6 +171,8 @@ public static ConsumeItemCallback Alchemy = (Recipe recipe, int type, ref int am
 	amount = amountUsed;
 };
 ```
+To adapt this to a modded situation, modders might need to use a `ModPlayer` bool or something like `Main.LocalPlayer.adjTile[TileID.HeavyWorkBench]` as the condition instead of the `alchemyTable` bool.
+
 As demonstrated, modders can do advanced logic in `ConsumeItemCallback` code. Remember that your users will not know about these effects unless it is communicated to them. The Alchemy Table item tooltip, for example, tells the player "33% chance to not consume potion crafting ingredients".
 
 # Editing Recipes
