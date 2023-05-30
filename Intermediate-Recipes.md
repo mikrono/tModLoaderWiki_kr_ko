@@ -108,6 +108,69 @@ public override void AddRecipeGroups()
 ```
 Note that checking `if (RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not *necessary*, but it will prevent errors if some other mod completely removes that recipe group for one reason or another. This can also be used for [cross-mod compatibility](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content).
 
+# Custom Item Consumption
+Recipes don't always consume all the items used as ingredients. For example, all recipes that use `TileID.Bottles` as a crafting station will be subject to the [Alchemy Table effect](https://terraria.wiki.gg/wiki/Alchemy_Table). All ingredients have a 1/3rd chance to not be consumed. Note that the modder still needs the full amount of ingredients to craft the item, they just might not be consumed.
+
+Modders can make their own custom recipe item consumption rules and apply them to individual recipes. This is done by the `AddConsumeItemCallback` method. The modder provides a delegate (The delegate is of the `ConsumeItemCallback` Type) that will run when the item is being crafted, for each ingredient. That delegate has the ability to adjust the amount of each item that is consumed.
+
+```cs
+Recipe.Create(ItemID.AlphabetStatueB)
+	.AddIngredient(ItemID.StoneBlock, 10)
+	.AddIngredient(ItemID.Chain)
+	.AddConsumeItemCallback((Recipe recipe, int type, ref int amount) => {
+		if (type == ItemID.Chain) {
+			amount = 0;
+		}
+	})
+	.AddTile(TileID.WorkBenches)
+	.Register();
+```
+In this example, we add a recipe that will not consume the `ItemID.Chain` item. This is done by adding a `ConsumeItemCallback` delegate that will set the amount to 0 if the ingredient being checked is `ItemID.Chain`. This approach works for effects used once, but adding the same code to many different recipes will be messy. The solution to this is to reuse the delegate. It is recommended to place all `ConsumeItemCallback` delegates in a static class so that they can easily be referenced for any recipe in your whole mod.
+
+Static class with shared `ConsumeItemCallback` delegates:
+```cs
+namespace ExampleMod.Content
+{
+	public static class ExampleConsumptionRules
+	{
+		public static void DontConsumeChain(Recipe recipe, int type, ref int amount) {
+			if (type == ItemID.Chain) {
+				amount = 0;
+			}
+		}
+
+		// Other ConsumeItemCallback delegates can go here.
+	}
+}
+```
+Using a `ConsumeItemCallback` delegate:
+```cs
+Recipe.Create(ItemID.AlphabetStatueC)
+	.AddIngredient(ItemID.StoneBlock, 10)
+	.AddIngredient(ItemID.Chain)
+	.AddConsumeItemCallback(ExampleConsumptionRules.DontConsumeChain)
+	.AddTile(TileID.WorkBenches)
+	.Register();
+```
+
+The Alchemy Table effect uses a bit of advanced logic. First, the Alchemy Table tile itself uses [AdjTiles](https://github.com/tModLoader/tModLoader/wiki/Basic-Recipes/_edit#making-an-upgraded-vanilla-tile) to act like `TileID.Bottles`. This means it will satisfy the crafting station requirement for recipes requiring `TileID.Bottles`. The code also sets the `Player.alchemyTable` bool to true, indicating that the player is under the effects of the alchemy table. Finally, the `ConsumeItemCallback` code applied to each of the potion recipes does the following to check for the `alchemyTable` bool and give each item a 1/3 chance to be consumed:
+```cs
+public static ConsumeItemCallback Alchemy = (Recipe recipe, int type, ref int amount) => {
+	if (!Main.LocalPlayer.alchemyTable) return;
+
+	int amountUsed = 0;
+
+	for (int i = 0; i < amount; i++) {
+		if (!Main.rand.NextBool(3)) {
+			amountUsed++;
+		}
+	}
+
+	amount = amountUsed;
+};
+```
+As demonstrated, modders can do advanced logic in `ConsumeItemCallback` code. Remember that your users will not know about these effects unless it is communicated to them. The Alchemy Table item tooltip, for example, tells the player "33% chance to not consume potion crafting ingredients".
+
 # Editing Recipes
 We can edit vanilla recipes or recipes from other mods from within a `ModSystem.PostAddRecipes` method. Basically, we iterate over the recipes to find the recipe we want to tweak, then modify ingredients, tiles, or even disable the recipe entirely.
 
