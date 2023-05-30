@@ -125,7 +125,7 @@ Recipe.Create(ItemID.AlphabetStatueB)
 	.AddTile(TileID.WorkBenches)
 	.Register();
 ```
-In this example, we add a recipe that will not consume the `ItemID.Chain` item. This is done by adding a `ConsumeItemCallback` delegate that will set the amount to 0 if the ingredient being checked is `ItemID.Chain`. This approach works for effects used once, but adding the same code to many different recipes will be messy. The solution to this is to reuse the delegate. It is recommended to place all `ConsumeItemCallback` delegates in an appropriately named static class so that they can easily be referenced for any recipe that would use it in your whole mod.
+In this example, we add a recipe that will not consume the `ItemID.Chain` item. This is done by adding a `ConsumeItemCallback` delegate that will set the amount to 0 if the ingredient being checked is `ItemID.Chain`. This approach works well for effects used in a single recipe, but adding the same code to many different recipes will be messy and error-prone. The solution to this is to reuse the delegate. It is recommended to place all `ConsumeItemCallback` delegates in an appropriately named static class so that they can easily be referenced for any recipe that would use it in your whole mod.
 
 Static class with shared `ConsumeItemCallback` delegates:
 ```cs
