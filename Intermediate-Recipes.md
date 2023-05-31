@@ -108,6 +108,10 @@ public override void AddRecipeGroups()
 ```
 Note that checking `if (RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not *necessary*, but it will prevent errors if some other mod completely removes that recipe group for one reason or another. This can also be used for [cross-mod compatibility](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content).
 
+# Custom Conditions
+
+# Custom Recipe Craft Behavior
+
 # Custom Item Consumption
 Recipes don't always consume all the items used as ingredients. For example, all recipes that use `TileID.Bottles` as a crafting station will be subject to the [Alchemy Table effect](https://terraria.wiki.gg/wiki/Alchemy_Table). All ingredients have a 1/3rd chance to not be consumed. Note that the modder still needs the full amount of ingredients to craft the item, they just might not be consumed.
 
