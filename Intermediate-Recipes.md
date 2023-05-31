@@ -109,8 +109,13 @@ public override void AddRecipeGroups()
 Note that checking `if (RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not *necessary*, but it will prevent errors if some other mod completely removes that recipe group for one reason or another. This can also be used for [cross-mod compatibility](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content).
 
 # Custom Conditions
+// TODO
 
 # Custom Recipe Craft Behavior
+// TODO
+
+# Shimmer Decrafting
+By default, the first recipe that results in an item will be the recipe used to decraft that item. This behavior can be customized with conditions. The comments and examples in [ShimmerShowcase.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/ShimmerShowcase.cs) teach how to customize to shimmer decrafting feature.
 
 # Custom Item Consumption
 Recipes don't always consume all the items used as ingredients. For example, all recipes that use `TileID.Bottles` as a crafting station will be subject to the [Alchemy Table effect](https://terraria.wiki.gg/wiki/Alchemy_Table). All ingredients have a 1/3rd chance to not be consumed. Note that the modder still needs the full amount of ingredients to craft the item, they just might not be consumed.
