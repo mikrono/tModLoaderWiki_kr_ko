@@ -239,6 +239,9 @@ namespace ExampleMod.Common
 }
 ```
 
+# Ordering Recipes
+// TODO
+
 # Editing Recipes
 We can edit vanilla recipes or recipes from other mods from within a `ModSystem.PostAddRecipes` method. Basically, we iterate over the recipes to find the recipe we want to tweak, then modify ingredients, tiles, or even disable the recipe entirely.
 
