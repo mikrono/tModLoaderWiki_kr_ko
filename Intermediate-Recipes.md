@@ -213,7 +213,7 @@ To adapt this to a modded situation, modders might need to use a `ModPlayer` boo
 As demonstrated, modders can do advanced logic in `ConsumeItemCallback` code. Remember that your users will not know about these effects unless it is communicated to them. The Alchemy Table item tooltip, for example, tells the player "33% chance to not consume potion crafting ingredients".
 
 # Custom Recipe Craft Behavior
-We can use the `AddOnCraftCallback` method to run code after the recipe is crafted. This is not done for any vanilla Terraria content, but it can be useful for advanced features added by mods. Similar to the approach shown for using [AddConsumeItemCallback](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-item-consumption), we want to store these methods statically so they are easily reusable. The following example is a trivial example, but should give an idea about what could be done. This example randomly spawns fireworks projectiles and the confetti item into the players inventory when the recipe is crafted. You can test this out by crafting the item in ExampleMod:
+We can use the `AddOnCraftCallback` method to run code after the recipe is crafted. This is not done for any vanilla Terraria content, but it can be useful for advanced features added by mods. Similar to the approach shown for using [AddConsumeItemCallback](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-item-consumption), we want to store these methods statically so they are easily reusable. The following example is a trivial example, but should give an idea about what can be done. This example randomly spawns fireworks projectiles and the confetti item into the players inventory when the recipe is crafted. You can test this out by crafting the item in ExampleMod:
 ```cs
 Recipe.Create(ItemID.AlphabetStatueZ)
 	.AddIngredient(ItemID.StoneBlock, 10)
@@ -232,7 +232,7 @@ namespace ExampleMod.Common
 				int fireworkProjectile = ProjectileID.RocketFireworksBoxRed + Main.rand.Next(4);
 				Projectile.NewProjectile(Main.LocalPlayer.GetSource_FromThis(), Main.LocalPlayer.Top, new Microsoft.Xna.Framework.Vector2(0, -Main.rand.NextFloat(2f, 4f)).RotatedByRandom(0.3f), fireworkProjectile, 0, 0, Main.myPlayer);
 
-				// Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ItemID.Confetti, 5);
+				Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ItemID.Confetti, 5);
 			}
 		}
 	}
