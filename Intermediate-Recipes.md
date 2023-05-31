@@ -139,7 +139,7 @@ Recipe.Create(ItemID.AlphabetStatueG)
 	.AddCondition(ExampleConditions.InExampleBiome)
 	.Register();
 ```
-The condition description will be shown to the user if they look at the recipe from the Guide's recipe help or a mod like [Recipe Browser](https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303)
+The condition description will be shown to the user if they look at the recipe from the Guide's recipe help or a mod like [Recipe Browser](https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303).    
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/e365694c-0405-4fe1-8f11-711b367bbb21)    
 
 # Custom Recipe Craft Behavior
