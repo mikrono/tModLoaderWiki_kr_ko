@@ -65,6 +65,7 @@ If you are in a `ModItem` class, you can also use that ModItem directly in a rec
 recipe.AddIngredient(this, 5);
 ```
 
+## Add Crafting Stations
 Next, we can specify the crafting stations. This follows the same patterns as items. You can [look up TileIDs here](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs).
 
 ```cs
@@ -75,12 +76,13 @@ recipe.AddTile(ModContent.TileType<Content.Tiles.Furniture.ExampleWorkbench>());
 recipe.AddTile(ModContent.GetInstance<Content.Tiles.Furniture.ExampleWorkbench>());
 recipe.AddTile(Mod, "ExampleWorkbench");
 ```
+## Register Recipe
 Finally, we need to tell tModLoader that our Recipe is complete and add it to the game:
 ```cs
 recipe.Register();
 ```
 
-### Using Vanilla vs Modded Ingredients and Tiles
+## Using Vanilla vs Modded Ingredients and Tiles
 As a recap, vanilla items and tiles use the `TileID` and `ItemID` classes, while modded items and items use the `ModContent.TileType` and `ModContent.ItemType` methods:
 
 ```cs
@@ -128,23 +130,24 @@ Recipe Groups allow a single ingredient to be satisfied from a selection of simi
 # Conditions
 In addition to ingredients and crafting stations, recipes can also have conditions. Each condition must be satisfied for the recipe to be able to be crafted.
 
-## Water, Honey, Lava
-Water, Honey, and Lava are not technically Tiles, so to make a recipe require standing next to those, use one of the following:
+## Water, Honey, Lava, Shimmer
+Water, Honey, Lava, and Shimmer are not technically Tiles, so to make a recipe require standing next to those, use one of the following:
 
 ```cs
-recipe.AddCondition(Recipe.Condition.NearWater);
-recipe.AddCondition(Recipe.Condition.NearLava);
-recipe.AddCondition(Recipe.Condition.NearHoney);
+recipe.AddCondition(Condition.NearWater);
+recipe.AddCondition(Condition.NearLava);
+recipe.AddCondition(Condition.NearHoney);
+recipe.AddCondition(Condition.NearShimmer);
 ```
-Note that `NearWater` is also satisfied by Sinks, so don't add the Sink tile separately. Also note that there is a needSnowBiome you can also set, but anything more advanced would utilize ModRecipe.RecipeAvailable.
+Note that `NearWater` is also satisfied by Sinks, so don't add the Sink tile separately.
+
+## Other Vanilla Conditions
+The [Conditions.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/patches/tModLoader/Terraria/Condition.cs) page lists all other vanilla conditions. Use them in a similar manner.
 
 ## Custom Condition
-Intermediate?
+Mods can also use custom conditions, those are discussed in the [Custom Conditions section of the Intermediate Recipes guide](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-conditions).
 
-### RecipeAvailable
-Intermediate?
-
-## Multiple Recipes
+# Multiple Recipes
 With multiple Recipes in the same AddRecipes, make sure not to re-declare your variable name. The following will cause errors: 
 
 ```cs
@@ -164,16 +167,16 @@ recipe = Recipe.Create(ItemID.AlphabetStatueB);
 
 If you are using the [Chain Syntax](#Chain-Syntax), then simply do the same approach for each recipe on subsequent lines.
 
-## Making an "upgraded" vanilla tile
+# Making an "upgraded" vanilla tile
 As an aside, you may want your ModTile to count as, say, a workbench or anvil. To do this, add the following to your `ModTile.SetStaticDefaults`:
 
 ```cs
 AdjTiles = new int[]{ TileID.WorkBenches };
 ```
 
-## Complete Examples
+# Complete Examples
 Here are 2 complete examples, one showing recipes added in a `ModItem` class more suitable for recipes involving that `ModItem`, and the other showing adding recipes in a `Mod` class more suitable for recipes involving vanilla items. Technically the recipes can go in either location, but for organization purposes it is sometimes nice to have recipes in ModItem classes.
-### ModItem Example
+## ModItem Example
 ```cs
 using Terraria;
 using Terraria.ID;
@@ -199,15 +202,15 @@ namespace ExampleMod.Items.Abomination
 			recipe = CreateRecipe(20);
 			recipe.AddIngredient<Content.Items.ExampleItem>(10);
 			recipe.AddTile<Content.Tiles.Furniture.ExampleWorkbench>();
-			recipe.AddCondition(Recipe.Condition.NearLava)
+			recipe.AddCondition(Condition.NearLava)
 			recipe.Register();
 		}
 	}
 }
 ```
 
-### Mod Example
-Remember that in `Mod` or `ModSystem`, we must pass in the receipe result item type.
+## Mod Example
+Remember that in `Mod` or `ModSystem`, we must pass in the recipe result item type.
 ```cs
 using Terraria;
 using Terraria.ID;
@@ -236,7 +239,7 @@ namespace ExampleMod
 }
 ```
 
-## Common Errors
+# Common Errors
 ### Error CS0117 'ItemID' (or TileID) does not contain a definition for 'MyModItem'
 You tried to use the vanilla item syntax for adding a ModItem, read this tutorial again.
 ### Error CS0103 The name 'recipe' does not exist in the current context
@@ -248,13 +251,13 @@ Check that your AddRecipes method has override not virtual.
 ### No suitable method to override
 Make sure you are only overriding AddRecipes in Mod, ModSystem, or ModItem.
 
-## Relevant References
+# Relevant References
 * [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs)
 * [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
 * [ModRecipe Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
 * [Mod Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod.html)
 
-## Not covered in Basic level
+# Not covered in Basic level
 There are other aspects of Recipes that will be covered in more advanced guides:
 * [RecipeGroups](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#recipegroups) -- Intermediate -- Allows a single ingredient to be 1 of a large group, like how most recipes involving wood can take Boreal Wood or Pearl Wood. ("any wood")
 * [Editing Recipes](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-recipes) -- Intermediate -- Edit existing recipes or disable existing recipes
