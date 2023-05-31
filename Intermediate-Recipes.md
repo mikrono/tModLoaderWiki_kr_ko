@@ -142,9 +142,6 @@ Recipe.Create(ItemID.AlphabetStatueG)
 The condition description will be shown to the user if they look at the recipe from the Guide's recipe help or a mod like [Recipe Browser](https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303).    
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/e365694c-0405-4fe1-8f11-711b367bbb21)    
 
-# Custom Recipe Craft Behavior
-// TODO
-
 # Shimmer Decrafting
 By default, the first recipe that results in an item will be the recipe used to decraft that item. This behavior can be customized with conditions. The comments and examples in [ShimmerShowcase.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/ShimmerShowcase.cs) teach how to customize to shimmer decrafting feature.
 
@@ -162,7 +159,7 @@ Recipe.Create(ItemID.AlphabetStatueB)
 			amount = 0;
 		}
 	})
-	.AddTile(TileID.WorkBenches)
+	.AddTile(TileID.HeavyWorkBench)
 	.Register();
 ```
 In this example, we add a recipe that will not consume the `ItemID.Chain` item. This is done by adding a `ConsumeItemCallback` delegate that will set the amount to 0 if the ingredient being checked is `ItemID.Chain`. This approach works well for effects used in a single recipe, but adding the same code to many different recipes will be messy and error-prone. The solution to this is to reuse the delegate. It is recommended to place all `ConsumeItemCallback` delegates in an appropriately named static class so that they can easily be referenced for any recipe that would use it in your whole mod.
@@ -189,7 +186,7 @@ Recipe.Create(ItemID.AlphabetStatueC)
 	.AddIngredient(ItemID.StoneBlock, 10)
 	.AddIngredient(ItemID.Chain)
 	.AddConsumeItemCallback(ExampleConsumptionRules.DontConsumeChain)
-	.AddTile(TileID.WorkBenches)
+	.AddTile(TileID.HeavyWorkBench)
 	.Register();
 ```
 
@@ -214,6 +211,33 @@ public static void Alchemy(Recipe recipe, int type, ref int amount) {
 To adapt this to a modded situation, modders might need to use a `ModPlayer` bool or something like `Main.LocalPlayer.adjTile[TileID.HeavyWorkBench]` as the condition instead of the `alchemyTable` bool.
 
 As demonstrated, modders can do advanced logic in `ConsumeItemCallback` code. Remember that your users will not know about these effects unless it is communicated to them. The Alchemy Table item tooltip, for example, tells the player "33% chance to not consume potion crafting ingredients".
+
+# Custom Recipe Craft Behavior
+We can use the `AddOnCraftCallback` method to run code after the recipe is crafted. This is not done for any vanilla Terraria content, but it can be useful for advanced features added by mods. Similar to the approach shown for using [AddConsumeItemCallback](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-item-consumption), we want to store these methods statically so they are easily reusable. The following example is a trivial example, but should give an idea about what could be done. This example randomly spawns fireworks projectiles and the confetti item into the players inventory when the recipe is crafted. You can test this out by crafting the item in ExampleMod:
+```cs
+Recipe.Create(ItemID.AlphabetStatueZ)
+	.AddIngredient(ItemID.StoneBlock, 10)
+	.AddIngredient(ItemID.Chain)
+	.AddOnCraftCallback(ExampleRecipeCallbacks.RandomlySpawnFireworks)
+	.AddTile(TileID.HeavyWorkBench)
+	.Register();
+```
+```cs
+namespace ExampleMod.Common
+{
+	public static class ExampleRecipeCallbacks
+	{
+		public static void RandomlySpawnFireworks(Recipe recipe, Item item, List<Item> consumedItems, Item destinationStack) {
+			if (Main.rand.NextBool(3)) {
+				int fireworkProjectile = ProjectileID.RocketFireworksBoxRed + Main.rand.Next(4);
+				Projectile.NewProjectile(Main.LocalPlayer.GetSource_FromThis(), Main.LocalPlayer.Top, new Microsoft.Xna.Framework.Vector2(0, -Main.rand.NextFloat(2f, 4f)).RotatedByRandom(0.3f), fireworkProjectile, 0, 0, Main.myPlayer);
+
+				// Main.LocalPlayer.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ItemID.Confetti, 5);
+			}
+		}
+	}
+}
+```
 
 # Editing Recipes
 We can edit vanilla recipes or recipes from other mods from within a `ModSystem.PostAddRecipes` method. Basically, we iterate over the recipes to find the recipe we want to tweak, then modify ingredients, tiles, or even disable the recipe entirely.
