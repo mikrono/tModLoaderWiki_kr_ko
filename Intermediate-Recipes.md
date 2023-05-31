@@ -109,7 +109,38 @@ public override void AddRecipeGroups()
 Note that checking `if (RecipeGroup.recipeGroupIDs.ContainsKey(...))` is not *necessary*, but it will prevent errors if some other mod completely removes that recipe group for one reason or another. This can also be used for [cross-mod compatibility](https://github.com/tModLoader/tModLoader/wiki/Expert-Cross-Mod-Content).
 
 # Custom Conditions
-// TODO
+In the [Conditions section of the Basic Recipes guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Recipes#conditions), using existing conditions in recipes is taught. Custom conditions can also be used in mods. 
+
+The most common custom condition for mods would likely be a condition for if the player is in a custom `ModBiome`. To do this, use the `AddCondition` method and pass in a new instance of the `Condition` class. Within the `Condition` class constructor, a localization key and a method with no arguments that returns a bool will need to be provided. In this case, we will use the `InModBiome` method to query if the local player is in our `ModBiome`. This example only allows the recipe to be crafted if the player is in the `ExampleSufaceBiome`:
+```cs
+Recipe.Create(ItemID.AlphabetStatueG)
+	.AddIngredient(ItemID.StoneBlock, 3)
+	.AddCondition(new Condition("Mods.ExampleMod.Conditions.InExampleBiome", () => Main.LocalPlayer.InModBiome<ExampleSurfaceBiome>()))
+	.Register();
+```
+This approach works well for effects used in a single recipe, but adding the same code to many different recipes will be messy and error-prone. The solution to this is to reuse the `Condition`. It is recommended to place all `Condition` instances in an appropriately named static class so that they can easily be referenced for any recipe that would use it in your whole mod.
+
+Static class with shared `Condition` instances:
+```cs
+namespace ExampleMod.Content
+{
+	public static class ExampleConditions
+	{
+		public static Condition InExampleBiome = new Condition("Mods.ExampleMod.Conditions.InExampleBiome", () => Main.LocalPlayer.InModBiome<ExampleSurfaceBiome>());
+
+		// Other Condition instances can go here.
+	}
+}
+```
+Using a `Condition` from the static class. This code can be used in any recipe in any file, provided the correct using statement is used:
+```cs
+Recipe.Create(ItemID.AlphabetStatueG)
+	.AddIngredient(ItemID.StoneBlock, 3)
+	.AddCondition(ExampleConditions.InExampleBiome)
+	.Register();
+```
+The condition description will be shown to the user if they look at the recipe from the Guide's recipe help or a mod like [Recipe Browser](https://steamcommunity.com/sharedfiles/filedetails/?id=2619954303)
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/e365694c-0405-4fe1-8f11-711b367bbb21)    
 
 # Custom Recipe Craft Behavior
 // TODO
