@@ -261,9 +261,9 @@ Make sure you are only overriding AddRecipes in Mod, ModSystem, or ModItem.
 There are other aspects of Recipes that will be covered in more advanced guides:
 * [Recipe Groups](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#recipe-groups) -- Intermediate -- Allows a single ingredient to be 1 of a large group, like how most recipes involving wood can take Boreal Wood or Pearl Wood. ("any wood")
 * [Editing Recipes](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#editing-recipes) -- Intermediate -- Edit existing recipes or disable existing recipes
-* Ordering Recipes
+* [Ordering Recipes](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#ordering-recipes) -- Intermediate -- Customize where in the crafting list a recipe will appear.
 * [Shimmer Decrafting](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#shimmer-decrafting) -- Intermediate -- Customize which recipe is used for decrafting via the shimmer liquid.
-* OnCraftCallback
 * [Custom Conditions](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-conditions) -- Intermediate -- Allows recipes to require custom conditions met in order to be crafted.
 * [Custom Item Consumption](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-item-consumption) -- Intermediate -- Allows a recipe to conditionally consume less ingredients than usual, such as what Alchemy Table does.
+* [Custom Recipe Craft Behavior](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#custom-recipe-craft-behavior) -- Intermediate -- Allows running code after a recipe is crafted.
 * [Cross-Mod Content](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Recipes#cross-mod-recipes) -- Intermediate -- Use Items or Tiles from other mods in your Recipe.
