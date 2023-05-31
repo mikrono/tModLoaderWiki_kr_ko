@@ -258,13 +258,7 @@ As you can see, this recipe takes `ExampleMod`'s `ExampleWings` item if `Example
 `ModSystem.AddRecipeGroups` has to go in the `ModSystem` class, not your `ModItem` class.
 
 # Relevant References
-* [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Item-IDs)
-* [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Tile-IDs)
+* [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Content-IDs#item-ids)
+* [Vanilla TileIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Content-IDs#tile-ids)
 * [ModRecipe Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod_recipe.html)
 * [Mod Documentation](http://tmodloader.github.io/tModLoader/docs/1.4-stable/class_terraria_1_1_mod_loader_1_1_mod.html)
-
-# Not covered in Intermediate level
-There are other aspects of Recipes that will be covered in more advanced guides:
-* Custom recipe conditions
-* AddOnCraftCallback
-* AddConsumeItemCallback
