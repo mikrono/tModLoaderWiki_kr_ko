@@ -42,8 +42,8 @@ Most of the time, this means calling `GetSource_FromThis()`, `GetSource_FromAI()
 * Projectiles spawning other projectiles, like a splitting projectile or a shooting minion, should use `Projectile.GetSource_FromThis()`
 * Held projectile weapons spawning other projectiles using ammo should use `player.GetSource_ItemUse_WithPotentialAmmo(player.HeldItem, usedAmmoItemId)`
 * Spawning minions or pets in `ModBuff.Update`: use `player.GetSource_Buff(buffIndex)`
-* An accessory spawning a projectile: use `player.GetSource_Accessory(itemInstance)`
-* An armor set bonus spawning a projectile: Not properly definable for modded ones, use `player.GetSource_FromThis("SetBonus_MySetName")`
+* An accessory spawning a projectile: use `player.GetSource_Accessory(itemInstance)` or `player.GetSource_Accessory_OnHurt(itemInstance, hurtInfo.DamageSource)`
+* An armor set bonus spawning a projectile: Use `player.GetSource_FromThis("SetBonus_MySetName")`
 * Spawning things in `ModItem.UseItem`, or any `ModItem` not covered elsewhere: `player.GetSource_ItemUse(Item)`
 * Player spawning Projectiles in `ModItem.Shoot` should use the `source` passed into the method
 * Tile dropping an item (`ModTile.KillMultiTile` or `GlobalTile.Drop`) should use `WorldGen.GetItemSource_FromTileBreak(i, j)`
@@ -63,5 +63,10 @@ if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.type
 	// Do things here to projectiles (BulletDeadeye) spawned by the TacticalSkeleton enemy without affecting others
 }
 ```
+
+For maximum compatibility with mods which add custom entity sources, use `is` with interfaces rather than classes when they exist:
+- `is IEntitySource_WithStatsFromItem` instead of `is EntitySource_ItemUse`
+- `is IEntitySource_OnHit` instead of `is EntitySource_OnHit`
+- `is IEntitySource_OnHurt` instead of `is EntitySource_OnHurt`
 
 Note that for most things, you'll have to manually sync changes. OnSpawn happens on the client or server that spawns the entity, any changes that should reflect on other clients need to by synced in some manner. The files in [ExampleMod/Common/EntitySources](https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Common/EntitySources) show examples of this.
