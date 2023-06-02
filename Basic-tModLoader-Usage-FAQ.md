@@ -158,6 +158,12 @@ This is usually solved by restarting the computer after confirming that you have
 This is caused by previously installing `tModLoader 64 bit`. First do a [fresh install](#fresh-install) if you haven't already, then right click on `tModLoader` in `Steam` and select `Properties`. Make sure `Launch Options` is completely empty, then close the window.    
 ![image](https://user-images.githubusercontent.com/4522492/194367542-7f6d2700-542e-4a14-8074-68fb9a9c7677.png)     
 
+### Failed to start process for tModLoader: "The operation completed successfully." 0x0
+![failiuyre](https://github.com/tModLoader/tModLoader/assets/4522492/5b6c8c50-ec14-42d2-bc4c-32474b500e99)    
+We've seen this reported when the file association for `.bat` files was broken. Open up the install folder and look at the `start-tModLoader.bat` file. The icon should look similar to this:    
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/0e2e487e-de0b-4214-af13-b6a4f09fcc66)    
+If it doesn't, the file association for `.bat` files has been changed. This shouldn't happen, you might want to scan for viruses. After that, you'll want to use Google to figure out how to fix the `.bat` file association for your Windows version.
+
 ### Failed to Load Asset (AssetLoadException)
 ![image](https://user-images.githubusercontent.com/4522492/194373688-06a6aedc-ca27-4fe5-9587-7971a6e6c09e.png)    
 This is usually caused by your Terraria install being out of date. First, launch Terraria and confirm that it is updated to the [latest version](https://terraria.fandom.com/wiki/PC_version_history) by looking in the bottom right corner. Next, follow the [Verify Game Integrity Terraria](#verify-game-integrity-terraria) instructions. If this doesn't solve the issue, it might be a mod causing this issue.
