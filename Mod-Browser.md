@@ -105,6 +105,11 @@ jobs:
 ```
 Now, replace `YourModNameHere` with the internal name of your mod. Commit this file. Next, visit `Settings->Secrets` and create a repository secret called `STEAMID64` with your steamid64 and another secret called `MODBROWSERPASSPHRASE` with your current mod browser passphrase. With these steps complete, the next time you push a commit to your master branch that increases the version in `build.txt`, the mod will automatically be published using the tModLoader version specified. As tModLoader updates, so too will `tModLoaderPublishIntegration`, so be sure to update the version used by changing `JavidPack/tModLoaderPublishIntegration@v0.11.8.8` to the tModLoader version you wish to publish with.
 
+## Renaming a Mod
+The displayName in [build.txt](https://github.com/tModLoader/tModLoader/wiki/build.txt) dictates the name user will see when interacting with mods. The internal name, is another name pertaining to a mod. The internal name must be unique on the workshop, so you might find that the internal name you have choosen for your mod is already taken when publishing. Or, you might want to rename the internal name for other reasons. Due to various factors, it is not recommend to change an internal name of a mod, but it can be done:
+
+TODO: Steps here.
+
 ## Limitations
 ### Terraria Community Forum Rules
 Mods published to the Mod Browser must abide by the [TCF Modding rules](https://forums.terraria.org/index.php?threads/player-created-game-enhancements-rules-guidelines.286/) Rules of note include the rule against porting content from non-PC versions of Terraria and the rules against plagiarism. Violating these will result in revoked Mod Browser privileges.
