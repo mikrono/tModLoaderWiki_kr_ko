@@ -92,7 +92,7 @@ On 1.4, if the folder contains a 'Build' folder, you will need to remove this in
             * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
 5.  [1.4 ONLY] GoG users will need to install Steam if they haven't already. Our Mod Browser uses some of the steam install files to facilitate accessing the Steam Workshop. You should NOT need an account/be logged in for this to work.
    1. Special Note for Linux: If your steam installation is not recognized (Error "unable to access steam workshop"), try uninstalling it and reinstalling Steam from the APT repositories via the terminal
-6. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that.
+6. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that. (The file `start-tModLoader.bat` launches the game, that is what you could make a shortcut to.)
 
 Tip: Here is an easy way to find where your Terraria files are located: ([video example](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
 
