@@ -122,6 +122,8 @@ There are a variety of issues that can cause this issue. If none of these sugges
 **Launch tModLoader Manually**    
 Sometimes launching manually can bypass certain launch issues. Open up the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and double click on "start-tModLoaderServer.bat". If this works, you should still try to fix the issue through other steps here or in [tModLoader Support](#tmodLoader-support) since launching this way is inconvenient.
 
+If, when you try this, an error message shows "Windows cannot find '[InstallFolderHere]/start-tModLoader.bat'. Make sure you typed the name correctly, and then try again.", then somehow your Windows has been corrupted and has a bad file association for `.bat` files. This issue will prevent your computer from running any `.bat` file, which might affect other programs, so it would be good to fix. Users have reported that following the steps in [this article](https://www.winhelponline.com/blog/bat-files-do-not-run-when-double-clicked-fix-association/) have worked for them.
+
 **Fresh Install**    
 Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
 
