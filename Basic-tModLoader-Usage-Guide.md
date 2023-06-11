@@ -6,6 +6,7 @@
 
 # Installing Mods
 - Mods are files with the ".tmod" extension. The most common way to get mods is through the in-game Steam workshop menus. This will work for GOG users as well. From the main menu, click `Workshop` and then `Download Mods`. You can then search and find mods to download. Alternatively you can visit the [tModLoader Steam workshop](https://steamcommunity.com/app/1281930/workshop/) directly and subscribe to mods on that website.
+    - It is highly recommended that you visit the website and/or read the description of mods you want to download. Many mods change game mechanics so familiarizing yourself with the changes will help avoid confusion.
 - If you manually download a mod, you can place it in the [Mods](#mods) folder. Note that this mod will not auto-update and will appear as purple in the mods menu to remind you that it is manually installed. Manually installing mods is mostly useful for users helping to test a mod, normal users should always use the workshop approach. 
 
 # Enabling Mods
