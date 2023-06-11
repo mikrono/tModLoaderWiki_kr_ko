@@ -93,6 +93,9 @@ Click Publish in the Mod Sources Menu. Within a few minutes, your users will now
 ### Update Website
 If you have a website, now would be a good time to advertise the update and changelog.
 
+## Multiple Versions
+Mods can publish different builds of their mods for stable and preview simultaneously. tModLoader will enable the appropriate version of the mod depending on the version of tModLoader the user is running, nothing needs to be done by the modder. 
+
 ## Unpublishing Mods
 You can unpublish a mod by visiting the steam workshop page for your mod and selecting delete.
 
