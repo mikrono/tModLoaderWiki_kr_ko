@@ -1,5 +1,5 @@
 ***
-This Guide is only relevant for 1.3. The [Workshop](https://github.com/tModLoader/tModLoader/wiki/Workshop) page is where you will find information relating to publishing mods for the 1.4 version of tModLoader
+This Guide is only relevant for 1.3. The [Workshop](https://github.com/tModLoader/tModLoader/wiki/Workshop) page is where you will find information relating to publishing mods for the 1.4 version of tModLoader.
 ***
 
 The Mod Browser is an online component of tModLoader where Mod Makers can publish their mods. Users are able to easily find, download, and install mods they are interested in directly from tModLoader. It is highly recommended that you visit the website and/or read the description of mods you want to download.
