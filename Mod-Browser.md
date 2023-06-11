@@ -1,6 +1,10 @@
+***
+This Guide is only relevant for 1.3. The [Workshop](https://github.com/tModLoader/tModLoader/wiki/Workshop) page is where you will find information relating to publishing mods for the 1.4 version of tModLoader
+***
+
 The Mod Browser is an online component of tModLoader where Mod Makers can publish their mods. Users are able to easily find, download, and install mods they are interested in directly from tModLoader. It is highly recommended that you visit the website and/or read the description of mods you want to download.
 
-### Direct Download for tModLoader 1.3
+### Direct Download
 If you are having trouble in-game, you can use [Direct Mod Download Listing](http://javid.ddns.net/tModLoader/DirectModDownloadListing.php) to download mods directly. Place them in `%userprofile%/Documents/My Games/Terraria/ModLoader/Mods/`
 
 ***
@@ -8,12 +12,9 @@ If you are having trouble in-game, you can use [Direct Mod Download Listing](htt
 ***
 
 ## Getting Started
-
-### tModLoader 1.3
 The first time you attempt to publish a mod by pressing the `Publish Mod` button in the `Mod Sources` menu, you will be directed to the [Mod Browser Registration page](http://javid.ddns.net/tModLoader/register.php) where you will authenticate via Steam to verify your identity. (You don't need to own Terraria on Steam, you just need an account) The Mod Browser, having confirmed your identity, will provide you with a `Passphrase` that will be pasted into tModLoader. Now that you have a passphrase, you can now publish mods on the Mod Browser.
 
-### tModLoader 1.4
-Since tModLoader 1.4 uses steam Workshop for sharing mods, you don't need to authenticate anything, you only need Steam client running to publish mods.
+> Note: Due to 1.3 tModLoader being legacy, it is no longer possible to register anymore. Please make mods for current versions of tModLoader if you wish to publish your mod.
 
 ## Publishing Mods
 Publishing a mod is simple, after making sure your mod is ready for release, you just press the `Publish` button in the `Mod Sources` menu. Before publishing, however, do the following:
@@ -127,3 +128,6 @@ This can happen if you finished github integration and then made your repository
 
 ### It won't publish my mod
 Reread the instructions on the [Mod Browser Registration page](http://javid.ddns.net/tModLoader/register.php).
+
+### I can't register / Access Denied
+Due to 1.3 tModLoader being legacy, it is no longer possible to register anymore. Please make mods for current versions of tModLoader if you wish to publish your mod.
