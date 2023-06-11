@@ -32,7 +32,7 @@ These pages tend to describe certain files or folders.
 - [Information about description.txt](description.txt)
 - [The tModLoader development pipeline](The-tModLoader-development-pipeline) (Learn about how tModLoader is built)
 - [Contribute translations to mods or tML](Contributing-Localization)
-- [Information about the Mod browser](Mod-Browser) (How to use it and how to publish your mod)
+- [Information about the Workshop](Workshop) (How to publish and update your mod)
 - [Licensing information](Licensing-information) (Among other things: how to license your mod, about tML's license)
 
 ## Getting started
