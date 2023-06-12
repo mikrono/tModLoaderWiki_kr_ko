@@ -31,6 +31,11 @@ Terraria 1.4.4 has many new features and changes. The [1.4.4 changelog](https://
 
 Of specific note is the Shimmer, modders should consider how content in their mod would interact with the Shimmer. [ExampleMod](https://github.com/tModLoader/tModLoader/search?utf8=%E2%9C%93&q=shimmer+path:ExampleMod&type=Code) contains examples of various shimmer features, such as transforming NPC, decrafting examples, and transforming items.
 
+### Other Vanilla Changes
+* `ModWaterStyle` now requires an additional texture, `_Slope`. See `ExampleWaterStyle` for details.
+* `GrantPrefixBenefits` is only called if `Item.accessory` is `true`. This applies in mod accessory slots too now.
+* Reforging is now implemented via `Item.ResetPrefix`. This sets `prefix` to 0 and then refreshes the item. Make sure any custom fields set by custom prefixes are not serialized independently.
+
 ## Renamed or Moved Members
 All of the changes in this section will be handled by tModPorter and are listed here for completeness. Modders can skip this section and go directly to [Big change concepts](#big-change-concepts) to see the changes that require the modder to make big changes to their mod.
 
