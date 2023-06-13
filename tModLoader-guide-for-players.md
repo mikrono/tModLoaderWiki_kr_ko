@@ -22,6 +22,7 @@ tModLoader updates regularly. Most users will want to use the default release, b
 Here are the available options:
 * default/None - This is the stable version that we expect players to use. It is currently based on Terraria v1.4.3.6 content.
 * 1.3-legacy - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
+* 1.4.3-legacy - This is the latest 1.4.3 release. This is where the majority of users should be. 
 * 1.4.4-preview - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended. It is currently based on Terraria 1.4.4.9 content.
 
 ### To access 1.3 (Legacy tModLoader) and other Beta options
