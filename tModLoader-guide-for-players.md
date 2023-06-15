@@ -28,6 +28,8 @@ Here are the available options:
 ### To access 1.3 (Legacy tModLoader) and other Beta options
 Use either the manual install instructions below (look for Release version 0.11.8.9 for 1.3) or take the following steps:
 
+The following steps can be seen in these [Video instructions](https://gfycat.com/AcidicDangerousAmericanwirehair) as well.     
+
  Go to Library: 
 
 ![image](https://user-images.githubusercontent.com/59670736/169886058-3eb1b43c-a113-468b-8213-ef0bcccc8e01.png)
