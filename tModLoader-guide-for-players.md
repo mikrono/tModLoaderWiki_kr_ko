@@ -12,21 +12,21 @@ ___
 To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
 Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
-Note that tModLoader does NOT currently support Family Share due to an issue with Valve's implementation. Active dialogs are still being had to fix it, we ask for your patience!
+Note that users using Family Share to install Terraria will need to follow the [Steam Family Share Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#steam-family-share-installation) instructions below.
 
-By Default, 1.4 tModLoader will be installed by Steam.
+By default, the current stable version of tModLoader will be installed by Steam. Currently the stable version is based on Terraria v1.4.3 content.
 
 ### Beta Branches
 tModLoader updates regularly. Most users will want to use the default release, but users can use the beta branches feature of Steam to switch to a legacy or preview version of tModLoader. Legacy versions of tModLoader are useful for playing a mod that hasn't been updated to the latest stable tModLoader. Preview versions of tModLoader are useful to test new features or to test new content added in a Terraria update that hasn't made it to stable yet.
 
 Here are the available options:
-* `default/None` - This is the stable version that we expect players to use. It is currently based on Terraria v1.4.3.6 content.
+* `default/None` - This is the stable version that we expect players to use. It is currently equivalent to `1.4.3-legacy`, but will update to Terraria v1.4.4 soon. Users in the middle of a playthrough should switch to `1.4.3-legacy`.
 * `1.3-legacy` - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
-* `1.4.3-legacy` - This is the latest 1.4.3 release. This is where the majority of users should be. 
+* `1.4.3-legacy` - This is the latest 1.4.3 release. This is where the majority of users currently playing the game should be. 
 * `1.4.4-preview` - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended. It is currently based on Terraria 1.4.4.9 content.
 
 ### To access 1.3 (Legacy tModLoader) and other Beta options
-Use either the manual install instructions below (look for Release version 0.11.8.9 for 1.3) or take the following steps:
+Follow the instructions below to switch to a different version of tModLoader in Steam. If you are a GOG user or otherwise need to manually install a specific version, use the [Manual Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#manual-installation) instructions instead.
 
 **Video Instructions:**
 
