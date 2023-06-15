@@ -28,7 +28,12 @@ Here are the available options:
 ### To access 1.3 (Legacy tModLoader) and other Beta options
 Use either the manual install instructions below (look for Release version 0.11.8.9 for 1.3) or take the following steps:
 
-The following steps can be seen in these [Video instructions](https://gfycat.com/AcidicDangerousAmericanwirehair) as well.     
+**Video Instructions:**
+
+If these [Video instructions](https://gfycat.com/AcidicDangerousAmericanwirehair) are unclear, read the **Written Instructions** below.     
+![](https://thumbs.gfycat.com/AcidicDangerousAmericanwirehair-size_restricted.gif)     
+
+<details><summary>Written Instructions:</summary><blockquote>
 
  Go to Library: 
 
@@ -50,7 +55,7 @@ The following steps can be seen in these [Video instructions](https://gfycat.com
 
 ![image](https://user-images.githubusercontent.com/59670736/169886307-e60be211-d331-443f-bcde-109f61c23323.png)
 
- In the dropdown, select "Public-1.3-beta" (or whichever beta you want)
+ In the dropdown, select whichever beta you want
 
 ![image](https://user-images.githubusercontent.com/59670736/169886370-5a340164-ccfe-4520-a3f5-515fd81671cf.png)
 
@@ -58,6 +63,7 @@ The following steps can be seen in these [Video instructions](https://gfycat.com
 
 ![image](https://user-images.githubusercontent.com/59670736/169886435-b9cd7a18-eeb9-46f8-a41f-3dc450be8702.png)
 
+</blockquote></details>
 
 ### How to uninstall?
 Simply right-click tModLoader -> Manage -> Uninstall.
