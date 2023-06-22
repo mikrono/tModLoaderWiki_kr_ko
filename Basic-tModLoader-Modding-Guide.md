@@ -138,4 +138,4 @@ It is not always obvious what code is doing, or sometimes you wish to make a not
 For beginners, it is highly advised to add as many comments as possible, even for things you think you already understand well. This will help you in the long run, you might come back to code months later and have forgotten how it works. For experienced modders, the challenge is to use as little comments as possible; your code should be evident in its behavior for others just by looking at it. Note many languages use different notations for comments, such as `::` and `#`, for C# use what's shown above.
 
 # Publishing your Mod
-Once your mod is in a working state, you can publish your mod to the Steam Workshop. This will make your mod available to all tModLoader users to subscribe to. The [Mod Browser guide](https://github.com/tModLoader/tModLoader/wiki/Mod-Browser) has more information about that.
+Once your mod is in a working state, you can publish your mod to the Steam Workshop. This will make your mod available to all tModLoader users to subscribe to. The [Workshop guide](https://github.com/tModLoader/tModLoader/wiki/Workshop) has more information about that.
