@@ -250,6 +250,8 @@ Read `Multiple Recipes` above.
 Check that your AddRecipes method has override not virtual.
 ### No suitable method to override
 Make sure you are only overriding AddRecipes in Mod, ModSystem, or ModItem.
+### The crafting station or ingredient doesn't match my recipe
+This is most likely because you mistakenly passed in an `ItemID` into `AddTile` or a `TileID` into `AddIngredient`. By using the wrong ID class, you have accidentally referred to the wrong ID.
 
 # Relevant References
 * [Vanilla ItemIDs](https://github.com/tModLoader/tModLoader/wiki/Vanilla-Content-IDs#item-ids)
