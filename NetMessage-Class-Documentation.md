@@ -670,6 +670,7 @@ Identical to MessageID.SyncItem (21), except also syncs Item.shimmered and Item.
 
 ## MessageID.ShimmerActions (146)
 Checks (number) with 3 results
+
 0. `Item.ShimmerEffect(new Vector2(number2, number3));`
 1. `Main.LocalPlayer.AddCoinLuck(new Vector2(number2, number3), number4);`
 2. `Main.npc[number2].SetNetShimmerEffect();`
