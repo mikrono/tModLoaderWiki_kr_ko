@@ -358,6 +358,47 @@ Steam workshop sometimes goes offline for maintenance, try in a few hours or the
 ### Can't redownload mod
 If you find that you can't redownload a mod in-game, you'll need to close the game, then visit the [tModLoader workshop](https://steamcommunity.com/app/1281930/workshop/). There, find the mod you are interested and subscribe. If you are already subscribed, unsubscribe and then subscribe again. Finally, restart steam by fully closing it (Steam->Exit), then launching it again. You may also need to follow the [Verify Game Integrity](#verify-game-integrity) steps to force steam to redownload mods you subscribed to.
 
+# Save Data File Issues
+### Windows 10+ Onedrive
+By default, Microsoft has forced Onedrive on to the 'My Documents' folder, which can mess with some games.
+
+Error Message: The Cloud File Provider is Not Running
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/2e17cd93-a44a-43f6-a169-c045d2c7f094)
+
+<details>
+<Summary>Solution 1: Uninstall Onedrive.</Summary>
+On Windows Searchbar, search Programs, and select 'Add or Remove Programs'
+Uninstall Onedrive.
+Problem solved.
+</details>
+
+<details>
+<summary>Solution 2: Get Onedrive up and running</summary>
+Follow: https://support.microsoft.com/en-gb/office/sync-files-with-onedrive-in-windows-615391c4-2bd3-4aae-a42a-858262e42a49 
+To turn on Onedrive. 
+Then turn off 'Documents' syncing in Manage Access menu
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/bc96bafd-4f03-450a-9797-5fd322e8a4bf)
+And/or turn on 'Always keep on this device:
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/e2a24cec-5ec2-4a7b-adf5-cf638c720b5d)
+</details>
+
+### Unable to find my tModLoader 1.4.3 save data OR Auto-migration of files failed.
+Do this for files on your computer, referencing example of copying files from 'default' to 1.4.3:
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/aced141b-3e5e-4df1-aff3-b6e8f097fa52)
+
+For Steam Cloud related files, unfortunately, there isn't a quick fix.
+Please download your files manually per https://www.howtogeek.com/428491/how-to-download-your-save-games-from-steam-cloud/
+
+### JsonReader Exception '0x00', Config.json
+Error Message: You basically have a corrupted config.json.
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/5ffb39ae-8677-4630-88c4-8e06e7aa0839)
+
+Replace Config.Json in the My Games/Terraria/tModLoader folder with the one provided here:
+[config.zip](https://github.com/tModLoader/tModLoader/files/11992590/config.zip)
+
+Example of File Location
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/dbe1c30b-09eb-4776-a5a1-943984735d4f)
+
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
 Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
