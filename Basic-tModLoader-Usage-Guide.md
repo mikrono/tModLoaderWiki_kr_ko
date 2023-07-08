@@ -27,7 +27,7 @@ In the backup folder, you'll find many zip files. The files are named with the d
 Now that you have a backup of the latest save, open the newest .zip file for the world backup you wish to restore from the `Terraria\ModLoader\Worlds\Backups` folder and copy the files to the clipboard. Navigate back to the Worlds folder and paste. Make sure to say "replace files in the destination" when asked.
 ![](https://i.imgur.com/kesLiid.png)    
 ![](https://i.imgur.com/8QSH6sF.png)    
-Now, open tModLoader and attempt to load the World. If it succeeds, great, if it fails, try again with the 2nd most recent backup. You can use cheat mods like Cheat Sheet or Heros Mod to restore lost items, if you wish. If you can't get backups to load, your issue is likely a broken mod. You can look at `Terraria\ModLoader\Logs\client.log` for hints as to which mod is erroring, or come to the Discord chat for help.
+Now, open tModLoader and attempt to load the World. If it succeeds, great, if it fails, try again with the 2nd most recent backup. You can use cheat mods like Cheat Sheet or Heros Mod to restore lost items, if you wish. If you can't get backups to load, your issue is likely a broken mod. You can look at `Terraria\ModLoader\Logs\client.log` for hints as to which mod is erroring, or come to [the Discord chat](https://discord.gg/tmodloader) for help.
 
 # Paths
 Here are some useful default paths:
