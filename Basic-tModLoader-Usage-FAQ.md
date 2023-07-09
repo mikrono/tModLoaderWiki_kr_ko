@@ -362,24 +362,27 @@ If you find that you can't redownload a mod in-game, you'll need to close the ga
 ### Windows 10+ Onedrive
 By default, Microsoft has forced Onedrive on to the 'My Documents' folder, which can mess with some games.
 
-Error Message: The Cloud File Provider is Not Running
-![image](https://github.com/tModLoader/tModLoader/assets/59670736/2e17cd93-a44a-43f6-a169-c045d2c7f094)
+Error Message: The Cloud File Provider is Not Running    
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/2e17cd93-a44a-43f6-a169-c045d2c7f094)    
 
 <details>
 <Summary>Solution 1: Uninstall Onedrive.</Summary>
-On Windows Searchbar, search Programs, and select 'Add or Remove Programs'
-Uninstall Onedrive.
-Problem solved.
+
+* On Windows Searchbar, search Programs, and select 'Add or Remove Programs'
+* Uninstall Onedrive.
+* Problem solved.
+
 </details>
 
 <details>
 <summary>Solution 2: Get Onedrive up and running</summary>
-Follow: https://support.microsoft.com/en-gb/office/sync-files-with-onedrive-in-windows-615391c4-2bd3-4aae-a42a-858262e42a49 
-To turn on Onedrive. 
-Then turn off 'Documents' syncing in Manage Access menu
-![image](https://github.com/tModLoader/tModLoader/assets/59670736/bc96bafd-4f03-450a-9797-5fd322e8a4bf)
-And/or turn on 'Always keep on this device:
-![image](https://github.com/tModLoader/tModLoader/assets/59670736/e2a24cec-5ec2-4a7b-adf5-cf638c720b5d)
+
+* Follow the instructions in [Sync files with OneDrive in Windows](https://support.microsoft.com/en-gb/office/sync-files-with-onedrive-in-windows-615391c4-2bd3-4aae-a42a-858262e42a49) to turn on OneDrive. 
+* Then turn off 'Documents' syncing in Manage Access menu    
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/bc96bafd-4f03-450a-9797-5fd322e8a4bf)    
+* And/or turn on 'Always keep on this device:    
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/e2a24cec-5ec2-4a7b-adf5-cf638c720b5d)    
+
 </details>
 
 ### Unable to find my tModLoader 1.4.3 save data OR Auto-migration of files failed.
@@ -390,14 +393,14 @@ For Steam Cloud related files, unfortunately, there isn't a quick fix.
 Please download your files manually per https://www.howtogeek.com/428491/how-to-download-your-save-games-from-steam-cloud/
 
 ### JsonReader Exception '0x00', Config.json
-Error Message: You basically have a corrupted config.json.
-![image](https://github.com/tModLoader/tModLoader/assets/59670736/5ffb39ae-8677-4630-88c4-8e06e7aa0839)
+Error Message: You basically have a corrupted config.json.    
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/5ffb39ae-8677-4630-88c4-8e06e7aa0839)    
 
-Replace Config.Json in the My Games/Terraria/tModLoader folder with the one provided here:
-[config.zip](https://github.com/tModLoader/tModLoader/files/11992590/config.zip)
+Replace Config.Json in the My Games/Terraria/tModLoader folder with the one provided here:    
+[config.zip](https://github.com/tModLoader/tModLoader/files/11992590/config.zip)     
 
-Example of File Location
-![image](https://github.com/tModLoader/tModLoader/assets/59670736/dbe1c30b-09eb-4776-a5a1-943984735d4f)
+Example of File Location    
+![image](https://github.com/tModLoader/tModLoader/assets/59670736/dbe1c30b-09eb-4776-a5a1-943984735d4f)    
 
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
