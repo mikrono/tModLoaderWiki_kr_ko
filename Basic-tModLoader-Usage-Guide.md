@@ -43,9 +43,14 @@ Linux Install: `~/.local/share/Steam/steamapps/common/tModLoader` or `~/.steam/s
 Mac Install: `Library/Application Support/Steam/steamapps/common/tModLoader/tModLoader.app/Contents/MacOS`    
 
 ## Saves
-Windows Saves: `%UserProfile%\Documents\My Games\Terraria\tModLoader` (This is typically found in `C:\Documents\`)    
-Linux Saves: `~/.local/share/Terraria/tModLoader/` or `$XDG_DATA_HOME/Terraria/tModLoader/`    
-Mac Saves: `~/Library/Application support/Terraria/tModLoader/`    
+Every major version of tModLoader uses it's own save folder. Replace `SAVEFOLDERNAMEHERE` in the next section with the one that matches the version you are currently on.
+* `1.3` - `ModLoader`
+* `1.4.3` - `tModLoader-1.4.3`
+* `1.4.4` - `tModLoader`
+
+Windows Saves: `%UserProfile%\Documents\My Games\Terraria\SAVEFOLDERNAMEHERE` (This is typically found in `C:\Documents\`)    
+Linux Saves: `~/.local/share/Terraria/SAVEFOLDERNAMEHERE/` or `$XDG_DATA_HOME/Terraria/SAVEFOLDERNAMEHERE/`    
+Mac Saves: `~/Library/Application support/Terraria/SAVEFOLDERNAMEHERE/`    
 
 ### Cloud
 Steam keeps a local copy of cloud data on the computer. This is useful if you need to copy cloud players or worlds from Terraria or tModLoader to the local saves. tModLoader data will in the tModLoader sub-folder:    
