@@ -60,8 +60,8 @@ Now that we know how to output text, lets go through an example. This exercise w
 public override void GetHealLife(Player player, bool quickHeal, ref int healValue) {
 	int numberOfDiamonds = player.CountItem(ItemID.DiamondRing);
 	float healMultiplier = numberOfDiamonds / 10;
-	healMultiplier = Utils.Clamp(0, healMultiplier, 10);
-	healValue = (int)(10 * healMultiplier);
+	healMultiplier = Utils.Clamp(healMultiplier, 0f, 1f);
+	healValue = 100 + (int)(10 * healMultiplier);
 }
 ```
 The intent of this code is to heal the player 100 health plus 10 health for every Diamond Ring in the player's inventory, up to a max of 200 health total. At first glance, this code seem correct, but it actually always heals for 100 health because of bugs. Lets add some text debugging to identify the issues:
@@ -114,9 +114,9 @@ In the Text Debugging section, we learned to output specific values to the chat 
 This section will cover the basics of debugging, it is highly recommended that modders familiar with these basics should further consult the official [First look at the Visual Studio Debugger](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022) guide for more tips. There are a variety of additional techniques discussed there to greatly enhance the usefulness of debugging. 
 
 ## Launching the Debugger
-First, make sure to open your mod's project in Visual Studio. Next, make sure tModLoader is closed. Now click the button labeled "Terraria" or press F5:    
+First, make sure to open your mod's project in Visual Studio. Next, make sure tModLoader is closed. Also make sure that "Debug" is selected in the solution configuration drop-down. Now click the button labeled "Terraria" or press F5:    
 
-![image](https://github.com/tModLoader/tModLoader/assets/4522492/44685ec0-9dbd-4ea8-a994-b3d12ca4514f)    
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/01413b2a-7525-418b-9d72-951c1e391938)    
 
 If you have errors, the Error List will appear, otherwise, the mod will build, be enabled automatically, and Terraria will start. (You may find that Full screen mode makes modding difficult, I suggest using Windowed mode while making mods.) If Visual Studio tells you that there are build errors and asks if you would like to launch anyway, say no! Fix the errors and try again. You'll know it is working if you see this:
 
@@ -125,9 +125,9 @@ If you have errors, the Error List will appear, otherwise, the mod will build, b
 Go in game and prepare to trigger your bug.
 
 ## Breakpoint
-We need to pause the program to "inspect" the data. This is called "break mode". To do this, click in the "gutter" on a line of code where you suspect a bug is happening. This will place a red dot. This red dot is a "breakpoint".    
+We need to pause the program to "inspect" the data. This is called "break mode". To do this, click in the "line number margin" on a line of code where you suspect a bug is happening. This will place a red dot. This red dot is a "breakpoint".    
 
-![image](https://github.com/tModLoader/tModLoader/assets/4522492/fff9bb62-9084-4de9-a2b1-85d5a235dba6)    
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/6409eb14-f43f-420f-957b-50367217e94a)    
 
 The next time tModLoader runs that line of code, the game will enter break mode and you'll see a yellow arrow in visual studio overlapping that breakpoint. You will not be able to interact with the game while in break mode. The yellow arrow indicates which line of code will run next. 
 
