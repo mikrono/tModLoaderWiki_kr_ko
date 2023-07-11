@@ -49,6 +49,19 @@ While debugging, you can edit the source code and recompile the mod in-game with
 # Next Steps
 Now that you have setup Visual Studio, your mod development speed can increase greatly. Please read [Why Use an IDE](Why-Use-an-IDE) for more tips on how an IDE like Visual Studio greatly speed up your modding.
 
+## Additional Recommended Extensions
+To further improve the modding experience, consider these extensions that can be added to Visual Studio.
+
+### HJSON
+The [Hjson extension](https://github.com/Rijam/vs-hjson/releases) adds syntax highlighting to `.hjson` files. Keys and values are colored to help identify mistakes.    
+
+![Hjson_Highlighting](https://github.com/tModLoader/tModLoader/assets/4522492/170fbe6b-ed73-4570-8d30-bf3a7e4b8ed9)     
+
+### HLSL
+The [HLSL Tools extension](https://github.com/tgjones/HlslTools) greatly improves editing shader files in Visual Studio.
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/b298659f-69ac-48ba-be44-5a27eec55d5e)    
+
 # Manual Setup
 Setting up a project for your mod manually is not recommended. Modders should use the automatic mod project generation. The info in this section is for informational purposes only.
 
