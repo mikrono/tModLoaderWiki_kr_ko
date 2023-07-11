@@ -1,7 +1,7 @@
 # What is Debugging?
 Debugging is how modders investigate problems in their code in an attempt to fix them. The mod builds fine, but the mod does not behave as expected. Inevitably, something in your mod will not work as intended. When this happens, you'll need to "debug" the mod to determine where the issue is happening.
 
-Debugging can take many forms, this guide will focus on 3 approaches: Isolation Debugging, Text Debugging, and Debugger Debugging. 
+Debugging can take many forms, this guide will focus on 3 approaches: [Isolation Debugging](#Isolation-Debugging), [Text Debugging](#Text-Debugging), and [Debugger Debugging](#Debugger-Debugging). 
 
 # Isolation Debugging
 The first step when encountering a bug is to isolate it as much as possible. Testing with a new world and new player can rule out many sources of issues. Additionally, other mods are a big source of unknown behaviors, the bug you are seeing could potentially be a feature or a conflict with one of them. 
