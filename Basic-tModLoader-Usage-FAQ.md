@@ -203,7 +203,7 @@ Click on the first result:
 Click `Yes` when asked "Do you want to allow this app to make changes to your device":    
 ![image](https://user-images.githubusercontent.com/4522492/176323236-8f69f573-78be-4335-af93-5cd05cc51d56.png)    
 
-You should now see information explaining that "dotnet.exe" was blocked from accessing the "My Games\Terraria\tModLoader" folder:    
+You should now see information explaining that "dotnet.exe" was blocked from accessing the [saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) (The saves folder is typically `"My Games\Terraria\tModLoader"`):    
 ![image](https://user-images.githubusercontent.com/4522492/176323400-53b3235e-7be1-4e62-8733-2de967532eb2.png)    
 
 Click `Actions` and then `Allow on Device`:    
@@ -216,12 +216,14 @@ tModLoader should now be able to create the save files it needs. Launch the game
 
 </details>
 
+If you followed the directions and still can't solve the issue, a last resort is to tell tModLoader to save to the [install directory](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) instead. You can do this by creating a `savehere.txt` file in the [install directory](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install).
+
 ### System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
 
 This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add "dotnet.exe" to your whitelist, for further instructions on how to do this continue reading below.
 
-(If you follow the directions below and still can't solve the issue, a last resort is to tell tModLoader to save to the install directory instead. You can do this by creating a `savehere.txt` file in the install directory.)
+First, follow the instructions in the [Controlled Folder Access](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#controlled-folder-access) section above, if that doesn't work then follow the steps below.
 
 <details><summary>Adding "dotnet.exe" to your whitelist</summary>
 
@@ -244,13 +246,16 @@ Left-Click "Allow an app through controlled folder access"
 ![](https://i.imgur.com/WLovfFc.png)  
 Left-Click "Add an allowed app", and select "Recently blocked apps"
 
-![](https://i.imgur.com/tsXmj1b.png)  
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/78d94913-578e-4fbb-94de-138720efef86)    
+
 Scroll through the list until you find "dotnet.exe", and click the + and then close, after this you're done! (If you cannot find "dotnet.exe" on your list, then continue with the below steps)
 
-![Extra Step 1](https://i.imgur.com/0ruiXoA.png)  
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/0335069e-4058-4400-9ca9-0fdc61b50a14)    
+
 Back in the "Add allowed app" selection, left-click "Browse all apps"
 
-![Extra Step 2](https://i.imgur.com/E7pnDZo.png)  
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/e2e5a8b0-738e-456f-af52-2e839979adef)    
+
 Navigate to the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and then navigate to and select "dotnet/6.0.0/dotnet.exe", then press `Open`. This will add the file to your whitelist. Done!
 
 </details>
