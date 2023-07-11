@@ -54,6 +54,7 @@ These pages aim to aid you to learn how to develop mods properly, how to setup y
 - [Developing with Notepad++](Developing-with-Notepad-Plus-Plus)
 - [Developing on Mac or Linux](Developing-on-Mac-or-Linux)
 - [Why Use an IDE](Why-Use-an-IDE)
+- [Learn How To Debug](Learn-How-To-Debug)
 - [Update Migration Guide](Update-Migration-Guide) -- Contains info on code updates required for updating (aka porting) mods to new tModLoader releases.
 
 ## Easy guides
