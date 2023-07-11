@@ -22,12 +22,14 @@ The following are typical approaches for text debugging in tModLoader. With all 
 This method outputs text to the in-game chat window. This is simple and straightforward. The text will be easily visible and will disappear after some time.   
 
 `Main.NewText($"Using Main.NewText: Current health: {player.statLife}.");`:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/6eacdbe3-9b39-4e0e-8c54-1fc7b0aefdc8)        
 
 ### Mod.Logger.Info
 This method outputs text to the [logs file](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). A client outputs to `client.log` and the server process outputs to `server.log`. This approach will persist the data, so it might be more useful to use this approach if you need to track something over time.     
 
 `Mod.Logger.Info($"Using Mod.Logger.Info: Current health: {player.statLife}.");`:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/6e2daa44-0442-4500-9dcf-7814b73c1cb9)    
 
 ### Console.WriteLine
@@ -37,6 +39,7 @@ If you are familiar with programming, using `Console.WriteLine` for text debuggi
 This approach spawns floating text. The text quickly disappears, but because the text spawns at a specified location, it can be useful for situations where that is helpful. The method requires passing in a Rectangle for the location and a Color: 
 
 `CombatText.NewText(player.getRect(), Color.Purple, $"Using CombatText.NewText: Current health: {player.statLife}.");`:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/a725aab3-7450-4343-9025-2058088fdd39)    
 
 ### Dust.QuickDust, Dust.QuickBox, Dust.QuickDustLine
@@ -46,6 +49,7 @@ Not text, but spawning dust at specific world coordinates can be useful for code
 Dust.QuickDust(player.TopLeft, Color.Red);
 Dust.QuickDust(player.BottomRight, Color.Blue);
 ```
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/97ef7aa3-7d1b-4d71-a481-9afde3de11c6)    
 
 ## How to use Text Debugging
@@ -72,13 +76,21 @@ public override void GetHealLife(Player player, bool quickHeal, ref int healValu
 }
 ```
 This code results in the following output when the player is holding 5 Diamond Rings:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/9c403f63-7b85-43f5-afd9-aeb8cebc4094)    
+
 For some reason the `CountItem` method is only counting up to 1. Lets look at the documentation for the method:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/4b2dcb64-1308-43ac-b97f-5e08df04f405)    
+
 It seems that there is a 2nd parameter called `stopCountingAt`. We want to count up to 10, so lets fix this issue by changing that line to `int numberOfDiamonds = player.CountItem(ItemID.DiamondRing, 10);` and try again:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/48eb0b0b-f6e6-492e-af6a-ba3e6236c7cd)    
+
 The value of `numberOfDiamonds` is now correct, but `healMultiplier` is still incorrect. It seems that `float healMultiplier = numberOfDiamonds / 10;` results in a value of `0` when `numberOfDiamonds` is `1`! This is not what we want. This is caused by [integer division](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#integer-division), we can fix this by changing `numberOfDiamonds / 10;` to `numberOfDiamonds / 10f;`. Lets do that fix and try again:    
+
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/0ec58e15-7cdc-43bb-9788-29b71281935f)    
+
 It's all working correctly now. 
 
 In this example we used text debugging to determine where bugs were happening. Using a similar approach, you should be able to locate logic errors in your mod's code. Text debugging is a useful tool, but can be quite tedious. Typing out code to output text to the chat isn't very efficient. Once you are familiar with the basic concept of debugging, you should advance to using [Debugger Debugging](#Debugger-Debugging) as soon as possible. 
@@ -97,13 +109,64 @@ Sometimes debug text can be useful if you are remotely helping a user of your mo
 # Debugger Debugging
 In the Text Debugging section, we learned to output specific values to the chat to identify and fix a couple of bugs. That process is tedious because the modder needs to rebuild the mod each time they make a change. In this section we will learn to leverage the power of a debugger (Visual Studio) to debug our mods. This section assumes the modder is using [Visual Studio](https://github.com/tModLoader/tModLoader/wiki/Developing-with-Visual-Studio) and has correctly set it up, please consult that guide to follow those prerequisites.
 
+This section will cover the basics of debugging, it is highly recommended that modders familiar with these basics should further consult the official [First look at the Visual Studio Debugger](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022) guide for more tips. There are a variety of additional techniques discussed there to greatly enhance the usefulness of debugging. 
+
 ## Launching the Debugger
-To debug, first make sure tModLoader is closed, then simply click the button labeled "Terraria" or press F5:
+First, make sure to open your mod's project in Visual Studio. Next, make sure tModLoader is closed. Now click the button labeled "Terraria" or press F5:    
 
-# Miscellaneous Info
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/44685ec0-9dbd-4ea8-a994-b3d12ca4514f)    
 
-Here are a couple example videos until someone writes this:
+If you have errors, the Error List will appear, otherwise, the mod will build, be enabled automatically, and Terraria will start. (You may find that Full screen mode makes modding difficult, I suggest using Windowed mode while making mods.) If Visual Studio tells you that there are build errors and asks if you would like to launch anyway, say no! Fix the errors and try again. You'll know it is working if you see this:
 
+![68747470733a2f2f692e696d6775722e636f6d2f39764b317276462e706e67](https://github.com/tModLoader/tModLoader/assets/4522492/93790fec-63a1-48a6-bae4-51af4fd27ec0)    
+
+Go in game and prepare to trigger your bug.
+
+## Breakpoint
+We need to pause the program to "inspect" the data. This is called "break mode". To do this, click in the "gutter" on a line of code where you suspect a bug is happening. This will place a red dot. This red dot is a "breakpoint".    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/fff9bb62-9084-4de9-a2b1-85d5a235dba6)    
+
+The next time tModLoader runs that line of code, the game will enter break mode and you'll see a yellow arrow in visual studio overlapping that breakpoint. You will not be able to interact with the game while in break mode. The yellow arrow indicates which line of code will run next. 
+
+In tModLoader, do whatever action is needed to trigger the line of code that has a breakpoint on it. (This could be shooting the weapon, killing an enemy, equipping an accessory, etc.)    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/2a01125c-6f3e-4c31-aebd-fbacc836005e)    
+
+By pressing the `F10` keys, you can advance the state of the game by 1 line. This is called "stepping through" the code. Pressing `F5` or the green continue button will leave break mode and the game will resume. The game will run until it hits another breakpoint.    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/e3e9b62e-f371-44a5-9d17-3e04845ab692)    
+
+## Inspect Variables
+If the game isn't in break mode, repeat the steps to enter break mode near the code that has a bug. We will now "inspect" variables. To do this, simply hover the cursor over the variable. The [First look at the Visual Studio Debugger](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022#inspect-variables-with-data-tips) guide talks more about this feature:    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/327eb0c3-1104-4e24-a0d8-3f768b054bd9)    
+
+It is important to remember that the yellow arrow indicates the next line to execute. In the image above, the value of `numberOfDiamonds` is still `0` because the line of code hasn't run yet. Pressing `F10` to advance one line, the value has now changed to `5`, which is correct.
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/d620f053-44e4-4c7f-b3b5-4c698e8a2987)     
+
+By stepping through the code and inspecting variables, we can follow the logic and identify where errors are happening. The [Autos and Locals windows](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022#inspect-variables-with-the-autos-and-locals-windows) will quickly show all variables relevant to the current method. Pinning variables is another useful technique. Another useful feature is that the values of pinned variables and variables in the Locals or Autos windows will turn red after they are changed while stepping through code.
+
+## Edit Code
+Once a bug has been identified, you can make edits to code even while debugging. When the file is saved, they should take effect immediately. To enable this feature, double check that the "Hot Reload on File Save" option is checked:    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/34e90454-6570-4884-8dfb-a9af6903c1ed)     
+
+Note that adding new methods and classes will likely require the game to be relaunched:    
+
+![image](https://github.com/tModLoader/tModLoader/assets/4522492/6a1c8fad-708d-4f6a-81da-1e4f3f792da8)    
+
+Using "Debugger Debugging", you should be able to fix the same issue used as an example in the "Text Debugging" much more quickly. Fixing bugs quicker leaves you more time to make fun mods.
+
+## Exception Debugging
+Debugging exceptions is something only possible while using the debugger. When an exception happens while debugging, the game will immediately enter break mode. In Visual Studio, the line responsible for the exception will appear. From there, you can inspect variables and try to identify the bug.
+
+If the exception happens in tModLoader code, you may see a blank screen because you do not have the source code available. In this case, look at the "Stack Trace" window and navigate to the lines from your mod that caused tModLoader code to throw an exception.
+
+The [Examine the call stack](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022#examine-the-call-stack) and [Inspect an exception](https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022#exception) sections on the official guide explain this concept in further depth.
+
+### Exception Debugging Example
 Discovering the exact cause of `Object reference not set to an instance of an object` errors: In this [video](https://gfycat.com/CluelessFineDarklingbeetle), we can easily diagnose where the error is happening. When the error happens in the game, Visual Studio is brought to the front and the line where the error occurs is highlighted. We can then hover over things and inspect their values. Here we notice that `instance` is null.
 
 Now we can fix the error, we can use `Find all references` to confirm that yes, we forgot to set `instance` to a value. You might notice the green underline under `instance` warning us that `instance` is never assigned. We should have paid attention! Now we can easily fix the error: [video](https://gfycat.com/RedBlackCollardlizard)
