@@ -16,6 +16,8 @@ Once your mod is working and functional, you may wish to share it with other use
 ### Steam Account
 Modders wishing to publish their mod must have the Steam version of tModLoader. Additionally, the steam account must not be [a limited user account](https://help.steampowered.com/en/faqs/view/71D3-35C2-AD96-AA3A). Usually, this just means that the account must have spent at least $5 on Steam.
 
+// TODO: Can Family Share publish?
+
 ### Steam Subscriber Agreement
 Modders must accept the [Steam Subscriber Agreement](https://steamcommunity.com/sharedfiles/workshoplegalagreement). There is a link to this page on the publish mod menu as well.
 
@@ -125,3 +127,9 @@ What will be deemed inappropriate? You can probably guess it, but still here's a
 
 ### Malicious Code
 Don't do it. The mods you upload are tagged with your Steam identity. You will be **permanently banned** from the browser and all of your mods will be removed. We will also notify Terraria and Steam staff about you and your malicious code.
+
+# Common Issues
+// TODO: decription.txt too long error
+
+### The content folder for the published item is missing?!
+Unconfirmed: If there is a Workshop folder in the saves directory, delete it. Try to publish again.
