@@ -54,7 +54,9 @@ Mac Saves: `~/Library/Application support/Terraria/SAVEFOLDERNAMEHERE/`
 
 ### Cloud
 Steam keeps a local copy of cloud data on the computer. This is useful if you need to copy cloud players or worlds from Terraria or tModLoader to the local saves. tModLoader data will in the tModLoader sub-folder:    
-Windows Cloud Saves: `C:\Program Files (x86)\Steam\userdata\[some number here]\105600\remote`     
+Windows Cloud Saves: `C:\Program Files (x86)\Steam\userdata\[some number here]\105600\remote`  
+
+Browser Cloud Access: [Steam Remote Storage](https://store.steampowered.com/account/remotestorage)
 
 ## Mods
 Your manually installed mods are stored in a subfolder of the [Saves](#saves) folder called `/Mods`. Workshop mods are stored in `C:\Program Files (x86)\Steam\steamapps\workshop\content\1281930`, but you shouldn't touch the folder and instead unsubscribe in steam.
