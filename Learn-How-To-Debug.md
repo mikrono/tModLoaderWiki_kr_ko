@@ -3,6 +3,8 @@ Debugging is how modders investigate problems in their code in an attempt to fix
 
 Debugging can take many forms, this guide will focus on 3 approaches: [Isolation Debugging](#Isolation-Debugging), [Text Debugging](#Text-Debugging), and [Debugger Debugging](#Debugger-Debugging). 
 
+This guide focuses on tModLoader modding. The official [How to debug for absolute beginners](https://learn.microsoft.com/en-us/visualstudio/debugger/debugging-absolute-beginners?view=vs-2022&tabs=csharp) guide is a great resource for general C# debugging and covers a few more conceptual topics as well as general C# debugging. It is highly recommended that modders read that as well. 
+
 # Isolation Debugging
 The first step when encountering a bug is to isolate it as much as possible. Testing with a new world and new player can rule out many sources of issues. Additionally, other mods are a big source of unknown behaviors, the bug you are seeing could potentially be a feature or a conflict with one of them. 
 
