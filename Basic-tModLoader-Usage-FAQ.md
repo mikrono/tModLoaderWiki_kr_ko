@@ -407,6 +407,18 @@ Replace Config.Json in the My Games/Terraria/tModLoader folder with the one prov
 Example of File Location    
 ![image](https://github.com/tModLoader/tModLoader/assets/59670736/dbe1c30b-09eb-4776-a5a1-943984735d4f)    
 
+# Linux / Steam Deck
+tModLoader is designed to run as a native Linux application. It is fully featured as a native program, and as such, does not require Proton.
+Unfortunately, due to unknown causes, tModLoader doesn't work with Proton.
+
+### Compatibility Options
+This is one of the rare applications where you will need to set Compatibility Options to 'None'.
+STEAM DECK: If you don't see the None option, you can install 'Steam Play None' to forcibly add the option.
+
+### Flatpak, SteamDeck Steam, and related sandboxed applications
+IF you want to develop mods, these will conflict with doing so.
+You will need to launch the game outside of Steam, using either 'Non-Steam Game' library option or launching it from the terminal.
+
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
 Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
