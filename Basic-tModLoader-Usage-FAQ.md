@@ -137,7 +137,9 @@ If you are still having issues, and `dotnet\6.0.0\dotnet.exe` or the mentioned 2
 If you are still having issues with dotnet, some users have reported that installing the [dotnet sdk](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.402-windows-x64-installer) to their computer after deleting the `dotnet` folder fixed the issue. Our guess is that the full installer fixes some issues that were preventing our installer from working.
 
 **Check Natives.log**    
-In the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs), open up `Natives.log`. If it says "An assembly specified in the application dependencies manifest (Microsoft.NETCore.App.deps.json) was not found" or something similar, double check that you followed all the steps in **Delete `dotnet` folder** suggestion above.    
+In the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs), open up `Natives.log`. 
+* If it says "An assembly specified in the application dependencies manifest (Microsoft.NETCore.App.deps.json) was not found" or something similar, double check that you followed all the steps in **Delete `dotnet` folder** suggestion above.    
+* If it says "System.AccessViolationException: Attempted to read or write protected memory.", follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps.
 
 **Disable Proton**    
 Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete dotnet folder](#delete-dotnet-folder) after disabling Proton for tModLoader.
