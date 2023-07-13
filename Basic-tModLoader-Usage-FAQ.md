@@ -113,21 +113,21 @@ This message is a boiler-plate message, it is purely informational. If the versi
 If you see this, the mod might be out of date. tModLoader updates every month and sometimes those updates will break mods. If it is the start of a month, the author might just be slow in updating. You will have to disable this mod until it is fixed. If you manually installed a mod, the mod will be purple on the `Mods` menu and you should delete it and use the workshop version.
 
 # Launch Issues
-### hostpolicy.dll error
+## hostpolicy.dll error
 Follow the instructions in the next section.
 
-### Black windows appears and closes but nothing else
+## Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
 
-**Launch tModLoader Manually**    
+### Launch tModLoader Manually    
 Sometimes launching manually can bypass certain launch issues. Open up the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) and double click on "start-tModLoaderServer.bat". If this works, you should still try to fix the issue through other steps here or in [tModLoader Support](#tmodLoader-support) since launching this way is inconvenient.
 
 If, when you try this, an error message shows "Windows cannot find '[InstallFolderHere]/start-tModLoader.bat'. Make sure you typed the name correctly, and then try again.", then somehow your Windows has been corrupted and has a bad file association for `.bat` files. This issue will prevent your computer from running any `.bat` file, which might affect other programs, so it would be good to fix. Users have reported that following the steps in [this article](https://www.winhelponline.com/blog/bat-files-do-not-run-when-double-clicked-fix-association/) have worked for them.
 
-**Fresh Install**    
+### Fresh Install
 Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
 
-**Delete `dotnet` folder**    
+### Delete `dotnet` folder    
 Deleting the `dotnet` folder in the [tModLoader install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) might help. If the issue persists, check that your antivirus isn't quarantining any of the files. The `dotnet\6.0.0\shared\Microsoft.NETCore.App\6.0.0` folder should have 223 items in it. If it doesn't, ensure that your OS is 64 bit and install the [dependencies](https://learn.microsoft.com/en-us/dotnet/core/install/windows?tabs=net60#additional-deps) listed for your OS before deleting the `dotnet` folder and trying again.
 
 Note: If your console window indicates that it is having trouble downloading dotnet on GOG, then you can manually download [dotnet 6.0.0](https://dotnetcli.azureedge.net/dotnet/Runtime/6.0.0/dotnet-runtime-6.0.0-win-x64.zip) and place it in the `LaunchUtils` folder in the [install folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install). The file should be named `dotnet-runtime-6.0.0-win-x64.zip`. Delete the `dotnet` folder once again and try launching again.
@@ -136,59 +136,59 @@ If you are still having issues, and `dotnet\6.0.0\dotnet.exe` or the mentioned 2
 
 If you are still having issues with dotnet, some users have reported that installing the [dotnet sdk](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.402-windows-x64-installer) to their computer after deleting the `dotnet` folder fixed the issue. Our guess is that the full installer fixes some issues that were preventing our installer from working.
 
-**Check Natives.log**    
+### Check Natives.log    
 In the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs), open up `Natives.log`. 
 * If it says "An assembly specified in the application dependencies manifest (Microsoft.NETCore.App.deps.json) was not found" or something similar, double check that you followed all the steps in **Delete `dotnet` folder** suggestion above.    
 * If it says "System.AccessViolationException: Attempted to read or write protected memory.", follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps.
 
-**Disable Proton**    
+### Disable Proton    
 Do not use Proton on Linux, it will not work. If you did, you'll have to [Delete dotnet folder](#delete-dotnet-folder) after disabling Proton for tModLoader.
 
-**Check launch.log**    
+### Check launch.log    
 Open up `launch.log` found in the [logs folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#logs). If the word "FAudio" shows up in your log, you might want to try the [IAudioClient-workaround.zip](https://github.com/tModLoader/tModLoader/issues/2863#issuecomment-1221975856)
 
-**Disable RGB Keyboard Features**    
+### Disable RGB Keyboard Features    
 Even if you don't think you have RGB keyboard, this can help. Follow the [RGB Keyboard Bug (Port 53664)](#rgb-keyboard-bug-port-53664) instructions.
 
-**Restart Computer**    
+### Restart Computer    
 Restarting the computer solves many issues tModLoader users face. It may seem trite, but it works, give it a try.
 
-### An error occurred while updating tModLoader (missing executable)    
+## An error occurred while updating tModLoader (missing executable)    
 ![image](https://user-images.githubusercontent.com/4522492/194225008-48810974-7292-4b5b-974a-e03363b4383f.png)    
 This is usually solved by restarting the computer after confirming that you have switched to the `None` branch for tModLoader and verifying game integrity, and following the next section.
 
-### Failed to start process for tModLoader: "The system cannot find the path specified"
+## Failed to start process for tModLoader: "The system cannot find the path specified"
 ![image](https://user-images.githubusercontent.com/4522492/194225054-b0d9cac7-10fd-4864-87e9-0d16c9418ed1.png)    
 This is caused by previously installing `tModLoader 64 bit`. First do a [fresh install](#fresh-install) if you haven't already, then right click on `tModLoader` in `Steam` and select `Properties`. Make sure `Launch Options` is completely empty, then close the window.    
 ![image](https://user-images.githubusercontent.com/4522492/194367542-7f6d2700-542e-4a14-8074-68fb9a9c7677.png)     
 
-### Failed to start process for tModLoader: "The operation completed successfully." 0x0
+## Failed to start process for tModLoader: "The operation completed successfully." 0x0
 ![failiuyre](https://github.com/tModLoader/tModLoader/assets/4522492/5b6c8c50-ec14-42d2-bc4c-32474b500e99)    
 We've seen this reported when the file association for `.bat` files was broken. Open up the install folder and look at the `start-tModLoader.bat` file. The icon should look similar to this:    
 ![image](https://github.com/tModLoader/tModLoader/assets/4522492/0e2e487e-de0b-4214-af13-b6a4f09fcc66)    
 If it doesn't, the file association for `.bat` files has been changed. This shouldn't happen, you might want to scan for viruses. After that, you'll want to use Google to figure out how to fix the `.bat` file association for your Windows version.
 
-### Failed to Load Asset (AssetLoadException)
+## Failed to Load Asset (AssetLoadException)
 ![image](https://user-images.githubusercontent.com/4522492/194373688-06a6aedc-ca27-4fe5-9587-7971a6e6c09e.png)    
 This is usually caused by your Terraria install being out of date. First, launch Terraria and confirm that it is updated to the [latest version](https://terraria.fandom.com/wiki/PC_version_history) by looking in the bottom right corner. Next, follow the [Verify Game Integrity Terraria](#verify-game-integrity-terraria) instructions. If this doesn't solve the issue, it might be a mod causing this issue.
 
-### NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
+## NoSuitableGraphicsDeviceException: Could not find d3dcompiler_47.dll
 If you are on Windows 7, you'll need to install the [directX package from Microsoft](https://support.microsoft.com/en-us/topic/update-for-the-d3dcompiler-47-dll-component-on-windows-server-2012-windows-7-and-windows-server-2008-r2-769c6690-ed30-4dee-8bf8-dfa30e2f8088). Restart your computer after running and finishing the installer.
 
-### Multiple extensions for asset
+## Multiple extensions for asset
 This is caused by an incompatible resource pack. Currently some resource packs are incompatible with tModLoader. To fix this, open up `\Documents\My Games\Terraria\tModLoader\config.json` in a text editor, find the "ResourcePacks" section, then change all `true` to `false`, save the file. Now tModLoader should launch again. The issue will be fixed eventually, thumbs up the [issue](https://github.com/tModLoader/tModLoader/issues/2913) to prioritize this issue being fixed.
 
-### System.Threading.SynchronizationLockException
+## System.Threading.SynchronizationLockException
 ![](https://i.imgur.com/IkPqCo6.png)    
 Solution. Disable BitDefender or disable the Safe Files feature of Bit Defender. Some more info has been collected [here](https://www.bitdefender.com/consumer/support/answer/2700/).
 
-### Enabling mods freezes the game/Setting controls doesn't work properly.
+## Enabling mods freezes the game/Setting controls doesn't work properly.
 This is most likely related to your antivirus blocking access to the `tModLoader` folder in the Documents directory. See the [below issue](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#systemunauthorizedaccessexception-access-to-the-path-is-denied) for the process (but do this with the folder instead of the exe)
 
-### Disk Write Error
+## Disk Write Error
 If you try to install tModLoader through Steam and it gives you a message with "Disk Write Error" in it, it is usually caused by Avast. Disable it temporarily and install tModLoader.
 
-### Controlled Folder Access
+## Controlled Folder Access
 ![](https://i.imgur.com/Zn40Ohq.png)    
 
 Controlled Folder Access is a Windows 10+ security feature intended to prevent ransomware. It is a useful feature, but it will get in the way of tModLoader saving files to the Documents folder where game save files are typically installed. If you have this feature enabled, you can add an exception to tModLoader to allow it to work. You can also just disable the feature completely, but don't do that unless you know what you are doing.
@@ -220,7 +220,7 @@ tModLoader should now be able to create the save files it needs. Launch the game
 
 If you followed the directions and still can't solve the issue, a last resort is to tell tModLoader to save to the [install directory](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install) instead. You can do this by creating a `savehere.txt` file in the [install directory](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#install).
 
-### System.UnauthorizedAccessException: Access to the path is denied.  
+## System.UnauthorizedAccessException: Access to the path is denied.  
 ![](https://i.imgur.com/ZjhIvNo.png)
 
 This issue can be caused by your antivirus or windows security settings. If you're using Windows Security (formerly Windows Defender) and are getting this error, then you will need to add "dotnet.exe" to your whitelist, for further instructions on how to do this continue reading below.
