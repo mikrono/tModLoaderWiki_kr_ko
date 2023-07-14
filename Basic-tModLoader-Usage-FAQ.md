@@ -399,6 +399,7 @@ Do this for files on your computer, referencing example of copying files from 'd
 For Steam Cloud related files, unfortunately, there isn't a quick fix.
 Please download your files manually per https://www.howtogeek.com/428491/how-to-download-your-save-games-from-steam-cloud/
 
+### Config.json Corrupted
 ### JsonReader Exception '0x00', Config.json
 Error Message: You basically have a corrupted config.json.    
 ![image](https://github.com/tModLoader/tModLoader/assets/59670736/5ffb39ae-8677-4630-88c4-8e06e7aa0839)    
