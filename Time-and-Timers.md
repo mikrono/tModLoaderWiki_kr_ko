@@ -166,3 +166,5 @@ Here are the important fields relating to World Time:
 
 # Wall Time
 When you are a beginner modder, you may find yourself googling "c# timer" in an attempt to code up something for your mod. If you did, you found examples of using `System.Timers`. Those concepts do not apply to video games or tModLoader modding at all, as they are examples of Wall Time. You'll need to consult [World Time](#world-time) and [Game Time](#game-time) above to determine the correct approach. Again, any usage of `System.Timers` is almost certainly the wrong approach. It'll be buggy and incorrect when the user pauses the game or uses an enchanted sundial.
+
+The same can be said for using `Thread.Sleep` to wait some time before running code. That will freeze the game. You need to write your own logic to run code later by taking advantage of the game loop.
