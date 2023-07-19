@@ -430,6 +430,10 @@ Unfortunately, due to unknown causes, tModLoader doesn't work with Proton.
 This is one of the rare applications where you will need to set Compatibility Options to 'None'.
 STEAM DECK: If you don't see the None option, you can install 'Steam Play None' to forcibly add the option.
 
+### Fails to launch the native build - Click Start in Steam but does nothing
+If the section of deleting 'dotnet' folder in this FAQ does not fix the issue, it has been reported that the following might, via #3612:
+Install `dotnet-sdk` from nixpkgs and create a symlink from the store binary to your TML installation. Ex: `ln -s /run/current-system/sw/bin/dotnet /home/<user>/.local/share/Steam/steamapps/common/tModLoader/dotnet/6.0.0/dotnet`
+
 ### Flatpak, SteamDeck Steam, and related sandboxed applications
 IF you want to develop mods, these will conflict with doing so.
 You will need to launch the game outside of Steam, using either 'Non-Steam Game' library option or launching it from the terminal.
