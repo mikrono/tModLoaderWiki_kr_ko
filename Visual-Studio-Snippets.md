@@ -73,6 +73,6 @@ Once you've finished writing the code for your snippet, save the file and open V
 
 Now that your snippet is in Visual Studio, you're ready to use it. Press `Control K` followed by `Control X`, click `My Code Snippets`, and select your snippet. The code that you put in the `<![CDATA[]]>` part of your snippet file should appear, and if it does, congratulations! You've completed your first Visual Studio snippet. You can repeat this process for all of your boilerplate code needs.
 
-Here's a demonstration of snippets using my example | [Snippet Code](https://gist.github.com/JustReq/8c09aa22768f958333d15a089529d465)
+Here's a demonstration of snippets using my example | [Snippet Code](https://gist.github.com/Arnimox/8c09aa22768f958333d15a089529d465)
 
 ![](https://cdn.discordapp.com/attachments/886315368027676702/948421370331689030/SnippetsShowcase.gif?size=4096)
