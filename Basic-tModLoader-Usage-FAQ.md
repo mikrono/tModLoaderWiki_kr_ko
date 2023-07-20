@@ -365,6 +365,16 @@ Steam workshop sometimes goes offline for maintenance, try in a few hours or the
 ### Can't redownload mod
 If you find that you can't redownload a mod in-game, you'll need to close the game, then visit the [tModLoader workshop](https://steamcommunity.com/app/1281930/workshop/). There, find the mod you are interested and subscribe. If you are already subscribed, unsubscribe and then subscribe again. Finally, restart steam by fully closing it (Steam->Exit), then launching it again. You may also need to follow the [Verify Game Integrity](#verify-game-integrity) steps to force steam to redownload mods you subscribed to.
 
+If the previous steps don't resolve it, the following may:
+if you get the **Item is/was already installed** message and/or a red `!` next to the mod name, do the following if the instructions provided by TML don't work:
+1) Delete the mod in Mods Menu first. 
+2) Close the game
+3) Unsub, sub, and unsub in Steam
+4) Close Steam fully
+5) In SteamApps/Workshop, delete appworkshop_1281930.acf
+6) start steam
+7) start the game
+
 # Save Data File Issues
 ### Windows 10+ Onedrive
 By default, Microsoft has forced Onedrive on to the 'My Documents' folder, which can mess with some games.
