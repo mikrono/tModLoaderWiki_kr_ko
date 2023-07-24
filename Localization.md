@@ -183,8 +183,6 @@ Using the existing item tooltips provided by the game in your modded items is a 
 "MechSummonDuringEverything": "'Part of a set'",
 "MechdusaSummonNotDuringEverything": "'It has no effect in this world'",
 "LuminiteVariant": "'A forbidden building material from beyond'",
-"IncreasesDefenseBy": "Increases defense by {0}",
-"IncreasesArmorPenBy": "Increases armor penetration by {0}",
 
 // Added by tModLoader
 "IncreasesMaxLifeBy": "Increases maximum life by {0}",
