@@ -225,12 +225,12 @@ namespace ExampleMod
 		public override void AddRecipes()
 		{
 			// Here is an example of a recipe.
-			Recipe recipe = CreateRecipe(ItemID.Wood, 999);
+			Recipe recipe = Recipe.CreateRecipe(ItemID.Wood, 999);
 			recipe.AddIngredient<Content.Items.ExampleItem>();
 			recipe.Register();
 
-			// Here we reuse 'recipe', meaning we don't need to re-declare that it is a ModRecipe 
-			recipe = CreateRecipe(ItemID.PumpkinPie, 2);
+			// Here we reuse 'recipe', meaning we don't need to re-declare that it is a Recipe
+			recipe = Recipe.CreateRecipe(ItemID.PumpkinPie, 2);
 			recipe.AddIngredient(ItemID.BlueBerries, 20);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
