@@ -2,7 +2,8 @@
 This Guide was written for tModLoader v1.4.4, an upcoming version of tModLoader. In current tModLoader, localization files won't auto update and some methods mentioned in this guide do not exist. The basic concepts still apply.
 ***
 
-[中文版 | Chinese version](https://github.com/tModLoader/tModLoader/wiki/zh-Localization-%E6%9C%AC%E5%9C%B0%E5%8C%96)
+[中文版 | Chinese version](https://github.com/tModLoader/tModLoader/wiki/zh-Localization-%E6%9C%AC%E5%9C%B0%E5%8C%96)<br />
+[Русская версия страницы | Russian version](https://github.com/tModLoader/tModLoader/wiki/ru-Localization-Локализация)
 
 ---
 
