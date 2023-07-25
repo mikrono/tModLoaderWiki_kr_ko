@@ -252,7 +252,7 @@ tModLoader автоматически назначает ключи перево
 ```cs
 public override LocalizedText Tooltip => Language.GetOrRegister("Mods.ExampleMod.Common.SomeSharedTooltip"); // Переопределяет свойство Tooltip класса в нужный вам LocalizedText.
 ```
-Если вы используете наследование, вам нужно сделать это только в базовом классе и даже можете переопределить это в дочерних классах, если определённый дочерний класс нуждается в другой локализации. О том, как добавить дополнительные локализации к содержимому, помимо свойств по умолчанию, предоставляемых tModLoader, читайте в разделе [«Добавление локализуемых свойств»](#добавление-локализуемых-свойств).
+Если вы используете наследование, вам нужно сделать это только в базовом классе и даже можете переопределить это в дочерних классах, если определённый дочерний класс нуждается в другой локализации. О том, как добавить дополнительные локализации к содержимому, помимо свойств по умолчанию, предоставляемых tModLoader, читайте в разделе [«Добавление свойств локализации»](#добавление-свойств-локализации).
 
 Авторы могут использовать `public override LocalizedText Tooltip => LocalizedText.Empty;`, чтобы указать, что ключ перевода не должен создаваться. Это позволяет сделать файлы локализации чище.
 
@@ -461,95 +461,95 @@ ExampleCanStackItem: {
 
 Комментарии, использующие стиль `/* */` или `//` в начале строки, используются tModLoader для указания на то, что ключ на другом языке перевода ещё не переведён. Это служит индикатором для автора о том, на какие языки не хватает перевода. Переводчик может перевести значение перевода на свой язык и удалить синтаксис комментария. Авторы не должны использовать этот синтаксис для обычных комментариев, так как они будут потеряны при автоматическом обновлении файлов `.hjson` в игре.
 
-## Translation File Names
-tModLoader will attempt to load all `.hsjon` files in the mod as localization files. As such, localization files can be placed in any folder path, but by convention we recommend placing them in a folder named "Localization" at the root of your mod's source folder. The mod generator follows this convention and will generate `Localization/en-US.hjson` in your mod to get started.
+## Имена файлов перевода
+tModLoader попытается загрузить все файлы `.hsjon` в модификацию как файлы локализации. Как таковые, файлы локализации могут быть размещены в любой папке, но по традиции мы рекомендуем поместить их в папку с именем «Localization» в корне исходной папки вашего мода. Генератор модификаций следует этому соглашению и для начала работы создаст в вашей модификации файл `Localization/en-US.hjson`.
 
-A valid culture code must be present at the start of the file-name, or as the name of a containing folder to determine the language.
+Для определения языка в начале имени файла или в имени содержащей его папки должен присутствовать допустимый код культуры.
 
-### Culture
+### Культура
 
-The following languages, also known as cultures, are supported: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), or Polish ("pl-PL"). These codes are used to indicate which language the `.hjson` file pertains to. To start supporting a new language, see [Adding a new Language](#adding-a-new-language).
+Поддерживаются следующие языки, также известные как культуры: Английский ("en-US"), немецкий ("de-DE"), итальянский ("it-IT"), французский ("fr-FR"), испанский ("es-ES"), русский ("ru-RU"), китайский ("zh-Hans"), португальский ("pt-BR") или польский ("pl-PL"). Эти коды используются для указания того, к какому языку относится файл `.hjson`. Чтобы начать поддержку нового языка, см. раздел [добавления нового языка](#добавление-нового-языка).
 
-### Prefix
-The prefix of a `.hjson` file indicates that all localization entries in the file share a common prefix. The most common usage of this is to omit the `Mods` and `ModNameHere` entries from localization files. By omitting these, the file is less indented and easier for some to work with. The vast majority of mods won't use localization values outside their mods prefix.
+### Префикс
+Префикс файла `.hjson` указывает на то, что все записи локализации в этом файле имеют общий префикс. Чаще всего он используется для того, чтобы опустить в файлах локализации записи `Mods` и `ExampleMod`. Если их опустить, то файл становится менее изрезанным и с ним легче работать. Подавляющее большинство модификаций не будет использовать значения локализации вне префикса.
 
-For example, a file called `Localization/en-US_Mods.ExampleMod.hjson` will inherit the `Mods.ExampleMod` prefix, meaning that the file can start directly with an entry for `Items`.
+Например, файл с именем `Localization/en-US_Mods.ExampleMod.hjson` унаследует префикс `Mods.ExampleMod`, что означает, что файл может начинаться непосредственно с записи для `Items`.
 
-The pattern for this is as follows: The file path is split by folder, then by underscore. After culture is found, the next result will be used as the prefix. The following are all examples of options to indicate that a file is intended for English and should use the `Mods.ExampleMod` prefix.
+Для этого используется следующая схема: Путь к файлу разделяется по папкам, затем по символам подчёркивания. После того, как культура найдена, в качестве префикса используется следующий результат. Ниже приведены примеры опций, указывающих на то, что файл предназначен для русского языка и должен использовать префикс `Mods.ExampleMod`.
 
 ```
-Localization/en-US_Mods.ExampleMod.hjson
-Localization/en-US/Mods.ExampleMod.hjson
-en-US_Mods.ExampleMod.hjson
-en-US/Mods.ExampleMod.hjson
-Localization/CoolBoss/en-US_Mods.ExampleMod.hjson
+Localization/ru-RU_Mods.ExampleMod.hjson
+Localization/ru-RU/Mods.ExampleMod.hjson
+ru-RU_Mods.ExampleMod.hjson
+ru-RU/Mods.ExampleMod.hjson
+Localization/CoolBoss/ru-RU_Mods.ExampleMod.hjson
 ```
 
-## Multiple Files
-Modders can use multiple `.hjson` files to organize their translations. For example, if a mod contained `en-US_Mods.ExampleMod.Items.hjson` and `en-US_Mods.ExampleMod.hjson`, the `en-US_Mods.ExampleMod.Items.hjson` file could contain all item localization while the other file contains the rest of the localization entries. New content will automatically end up in an existing `.hjson` file that has existing entries most similar to the translation key.
+## Множественные файлы
+Авторы могут использовать несколько файлов `.hjson` для организации своих переводов. Например, если модификация содержит `en-US_Mods.ExampleMod.Items.hjson` и `en-US_Mods.ExampleMod.hjson`, то файл `en-US_Mods.ExampleMod.Items.hjson` может содержать всю локализацию предметов, а другой файл - остальные записи локализации. Новое содержимое будет автоматически попадать в существующий файл `.hjson`, имеющий записи, наиболее схожие с ключом перевода.
 
 If you split up localization files, you only need to edit the English files and then build and reload the mod. The other languages will automatically adjust themselves to match the same layout.
 
-# Adding new Translation Keys
-Entries for new content will automatically populate the `.hjson` files, but custom translation keys can also be added to the files.
+# Добавление новых ключей перевода
+Записи для нового содержимого будут автоматически заполнять файлы `.hjson`, однако в них можно добавлять и свои ключи перевода.
 
-## Manually Adding Keys
-To add custom keys, a modder can follow the `.hjson` syntax to add the localization entry directly. For example, ExampleMod has a category called "Common", these entries were all manually added as they are not used by tModLoader classes directly.
+## Добавление ключей вручную
+Для добавления своих ключей автор может следовать синтаксису `.hjson` для непосредственного добавления записи локализации. Например, в ExampleMod есть категория «Common», все эти записи были добавлены вручную, поскольку они не используются классами tModLoader напрямую.
 
-For example, lets start with this `.hjson` file:
+Например, начнём с такого файла `.hjson`:
 ```
 Mods: {
 	ExampleMod: {
     		Common: {
-			PaperAirplane: Paper Airplane
+			PaperAirplane: Бумажный самолётик
 		}
         
-		Currencies.ExampleCustomCurrency: example currency
+		Currencies.ExampleCustomCurrency: примерная валюта
    	 }
 }
 ```
 
-We can add a new entry for a `Mods.ExampleMod.Common.NewKey` key by adding a line and following the `PaperAirplane` example. We can add a new category called `Uncommon` by following the syntax shown in the `Common` category. We can also add an entry that only takes a single line rather than specifying the category separately by following the `Currencies.ExampleCustomCurrency` example. The following shows each of these approaches:
+Мы можем добавить новую запись для ключа `Mods.ExampleMod.Common.НовыйКлюч`, добавив строку и следуя примеру `PaperAirplane`. Мы можем добавить новую категорию `Uncommon`, следуя синтаксису, показанному в категории `Common`. Мы также можем добавить запись, занимающую всего одну строку, вместо того чтобы указывать категорию отдельно, следуя примеру `Currencies.ExampleCustomCurrency`. Ниже показан каждый из этих подходов:
 ```
 Mods: {
 	ExampleMod: {
     		Common: {
-			PaperAirplane: Paper Airplane
-        		HotDog: Hot dog
+			PaperAirplane: Бумажный самолётик
+        		HotDog: Хот-дог
 		}
         
  		Uncommon: {
-            		Helicopter: Example Helicopter
+            		Helicopter: Примерный вертолёт
        		}
         
-		Currencies.ExampleCustomCurrency: example currency
-        	Currencies.DirtCurrency: piles of dirt
+		Currencies.ExampleCustomCurrency: примерная валюта
+        	Currencies.DirtCurrency: куча грязи
     	}
 }
 ```
 
-Do note that when the localization files are automatically updated, tModLoader will decide how to organize and format the file, which will result in entries moving, but no data will be lost.
+Следует иметь в виду, что при автоматическом обновлении файлов локализации tModLoader сам решит, как организовать и отформатировать файл, в результате чего записи будут перемещаться, но данные не будут потеряны.
 
 
-## Adding Localizable Properties
-Modders can add `LocalizedText` properties to their classes, for a variety of purposes. When correctly implemented, these properties will automatically populate the `.hjson` files and be ready for localization work. 
+## Добавление свойств локализации
+Авторы могут добавлять свойства `LocalizedText` в свои классы для различных целей. При правильной реализации эти свойства будут автоматически заполнять файлы `.hjson` и будут готовы к работе над локализацией. 
 
-[ExampleHealingPotion.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) shows one such use for this. `ExampleHealingPotion` uses a `LocalizedText` property called `RestoreLifeText` that is used in a dynamic tooltip.
+В примере [ExampleHealingPotion.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Consumables/ExampleHealingPotion.cs) показано одно из таких применений. В `ExampleHealingPotion` используется свойство `LocalizedText` под названием `RestoreLifeText`, которое используется в динамической всплывающей подсказке.
 
-The basic approach is the following:
-1. Add a static `LocalizedText` property to your class
-2. Assign that property in `SetStaticDefaults` using `this.GetLocalization` method
-3. Retrieve the localized text value when needed by accessing the property
+Основной подход заключается в следующем:
+1. Добавьте статическое свойство `LocalizedText` в свой класс
+2. Назначьте это свойство в `SetStaticDefaults` с помощью метода `this.GetLocalization`
+3. При необходимости получите значение локализованного текста, обратившись к свойству
 
-For example:
+Пример:
 ```cs
 public class ExampleHealingPotion : ModItem
 {
-	// Step 1: Make a static LocalizedText property
+	// Шаг 1: Создайте статическое свойство LocalizedText
 	public static LocalizedText RestoreLifeText { get; private set; }
 
 	public override void SetStaticDefaults() {
-		// Step 2: Assign RestoreLifeText to the result of GetLocalization
+		// Шаг 2: Присвоить RestoreLifeText результату GetLocalization
 		RestoreLifeText = this.GetLocalization(nameof(RestoreLifeText));
 	}
 
@@ -557,8 +557,8 @@ public class ExampleHealingPotion : ModItem
 		TooltipLine line = tooltips.FirstOrDefault(x => x.Mod == "Terraria" && x.Name == "HealLife");
 
 		if (line != null) {
-			// Change the text to 'Heals max/2 (max/4 when quick healing) life'
-			// Step 3: Retrieve the localized text. This example uses the Format method because it has placeholders to populate, but the Value property could be used otherwise
+			// Изменить текст на «Восстанавливает максимум/2 (максимум/4 при быстром лечении) ед. здоровья».
+			// Шаг 3: Получение локализованного текста. В данном примере используется метод Format, поскольку в нем есть заполняемые поля, но свойство Value можно использовать и иначе
 			line.Text = Language.GetTextValue("CommonItemTooltip.RestoresLife", RestoreLifeText.Format(Main.LocalPlayer.statLifeMax2 / 2, Main.LocalPlayer.statLifeMax2 / 4));
 		}
 	}
@@ -566,7 +566,7 @@ public class ExampleHealingPotion : ModItem
 
 ```
 
-In the above example, the `.hjson` file is automatically populated with an entry for `RestoreLifeText` alongside the existing `DisplayName` and `Tooltip` entries. The modder then updated it with the English text seen:
+В приведённом примере файл `.hjson` был автоматически заполнен записью для `RestoreLifeText` наряду с существующими записями `DisplayName` и `Tooltip`. Автор затем обновил его, добавив английский текст:
 ```
 ExampleHealingPotion: {
 	DisplayName: Example Healing Potion
@@ -575,29 +575,29 @@ ExampleHealingPotion: {
 }
 ```
 
-**Note**
-`LocalizedText` instances are meant to be statically stored. Ideally you should register and retrieve them once during loading. The `ExampleHealingPotion ` example does the registering in `SetStaticDefaults` and caches the retrieved `LocalizedText` into the `RestoreLifeText` property. If caching is too much effort, you can access the property every time you need it for a small performance cost. Note that for translations to be automatically populated to the `.hjson` files, you need to access the property at least once during load time.
+**Примечание**
+Экземпляры `LocalizedText` предназначены для статического хранения. В идеале их нужно регистрировать и извлекать один раз во время загрузки. В примере `ExampleHealingPotion` регистрация выполняется в `SetStaticDefaults`, а полученный `LocalizedText` кэшируется в свойстве `RestoreLifeText`. Если кэширование требует слишком больших усилий, то за небольшую плату можно обращаться к свойству каждый раз, когда оно необходимо. Обратите внимание, что для того, чтобы переводы автоматически заполняли файлы `.hjson`, необходимо обращаться к свойству хотя бы один раз во время загрузки.
 
-### Retrieving text from Localizable Properties
+### Получение текста из локализируемых свойств
 
-In the class, the `LocalizedText` property can be used to display localized text to the user:
+В классе свойство `LocalizedText` может быть использовано для отображения локализованного текста пользователю:
 
 ```cs
 Main.NewText(SomeLocalizedTextProperty.Value);
 ```
 
-If the text has placeholders, those can be populated with the `Format` method, which accepts as many arguments as there are placeholders:
+Если в тексте имеются заполнители, то они могут быть заполнены методом `Format`, который принимает столько аргументов, сколько имеется заполнителей:
 
 ```cs
 Main.NewText(SomeLocalizedTextPropertyWithPlaceholders.Format(Main.LocalPlayer.statLifeMax2, Main.LocalPlayer.statManaMax2));
 ```
 
-### Inheritable Localized Properties
-When using inheritance, rather than a static property, a get-only property in the base class or a non-static property in the inheriting classes can be used to the same effect. The nature of inheritance allows logic and translations to be reused, keeping code and `.hjson` files clean and without needless repetition.
+### Наследуемые локализированные свойства
+При наследовании вместо статического свойства можно использовать только свойство `get` в базовом классе или нестатическое свойство в наследуемых классах. Природа наследования позволяет повторно использовать логику и перевод, сохраняя код и файлы `.hjson` чистыми и без ненужных повторений.
 
-For example, imagine a base class shared by several items in a mod. A property can be added to the base class that holds the `LocalizedText` for each inheriting item. The property must be accessed during `SetStaticDefaults` for it to automatically appear in the `.hjson` files.
+Например, представим себе базовый класс, общий для нескольких элементов в модификации. В базовый класс может быть добавлено свойство, содержащее `LocalizedText` для каждого наследуемого предмета. Чтобы свойство автоматически появилось в файлах `.hjson`, к нему нужно обратиться во время `SetStaticDefaults`.
 
-**Base class: MyBaseClass** 
+**Базовый класс: MyBaseClass** 
 ```cs
 public LocalizedText SpecialMessage => this.GetLocalization(nameof(SpecialMessage));
 
@@ -606,7 +606,7 @@ public override void SetStaticDefaults() {
 }
 ```
 
-If classes `ClassA` and `ClassB` both inherit from `MyBaseClass`, then the `.hjson` file will be automatically populated with stub entries for the `SpecialMessage` key:
+Если классы `ClassA` и `ClassB` наследуют от `MyBaseClass`, то файл `.hjson` будет автоматически заполнен неполными записями для ключа `SpecialMessage`:
 
 ```
 ClassA: {
@@ -622,20 +622,20 @@ ClassB: {
 }
 ```
 
-If `ClassA` or `ClassB` override `SetStaticDefaults`, make sure to keep `base.SetStaticDefaults()` so the original code is executed.
+Если `ClassA` или `ClassB` переопределяют `SetStaticDefaults`, не забудьте сохранить `base.SetStaticDefaults()` для выполнения кода родителя (для доступа к свойству LocalisedText).
 
-The key `GetLocalization` generates will be of the form `Mods.{ModName}.{LocalizationCategory}.{ContentName}.{suffix}`. If a specific key outside the expected pattern is needed, a modder could use `Language.GetOrRegister("Full.Key.Here");` instead. Note that `GetLocalization` must be invoked prefixed by `this.` due to the design of C#, it can not be omitted. By using a full key in an inherited property, the shared localization can exist in a single common translation key, with inheriting classes that need their own key overriding the property and using their own key via `this.GetLocalization`.
+Создаваемый `GetLocalization` ключ будет иметь вид `Mods.{НазваниеМода}.{КатегорияЛокализации}.{НазваниеСодержимого}.{suffix}`. Если необходим конкретный ключ, выходящий за рамки ожидаемого шаблона, автор может использовать `Language.GetOrRegister("Полный.Ключ.Здесь");` вместо этого. Обратите внимание, что в силу особенностей конструкции C# `GetLocalization` должен вызываться с префиксом `this.`, его нельзя опускать. Благодаря использованию полного ключа в наследуемом свойстве общая локализация может существовать в одном общем ключе перевода, а наследуемые классы, которым нужен собственный ключ, переопределяют свойство и используют свой ключ через `this.GetLocalization`.
 
-### Another Example
+### Другой пример
 
-[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) serves as an example of using a custom key. By default, tModLoader will register a single translation key for each `ModTile` in the form `Mods.{ModName}.Tiles.{ContentName}.MapEntry`. This key makes it easy to add a map entry to a tile. (Map entries control the text shown to the user when the tile is hovered over in the fullscreen map.) `ExampleChest`, however, needs 2 map entries. Using `GetLocalization`, new keys can easily be added to the localization files:
+[ExampleChest.cs](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Tiles/Furniture/ExampleChest.cs) служит примером использования своего ключа. По умолчанию tModLoader регистрирует для каждого `ModTile` единственный ключ трансляции в виде `Mods.{НазваниеМодификации}.Tiles.{НазваниеСодержимого}.MapEntry`. Этот ключ позволяет легко добавить элемент карты к плитке. (Записи карты управляют текстом, отображаемым пользователю при наведении курсора на плитку в полноэкранной карте). Однако для `ExampleChest` требуется 2 записи карты. Используя `GetLocalization`, можно легко добавить новые ключи в файлы локализации:
 
 ```cs
 AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry0"), MapChestName);
 AddMapEntry(new Color(0, 141, 63), this.GetLocalization("MapEntry1"), MapChestName);
 ```
 
-The result of this code is that the localization file now contains these keys, ready for localizing into other languages:
+В результате работы этого кода файл локализации теперь содержит эти ключи, готовые для локализации на другие языки:
 ```
 ExampleChest: {
 	MapEntry0: Example Chest
@@ -643,30 +643,30 @@ ExampleChest: {
 }
 ```
 
-Elsewhere in ExampleChest.cs, these localization keys are dynamically retrieved using `GetLocalization`:
+В других местах файла ExampleChest.cs эти ключи локализации динамически извлекаются с помощью `GetLocalization`:
 
 ```cs
 public override LocalizedText DefaultContainerName(int frameX, int frameY) {
-	int option = frameX / 36;
+	int option = frameX / 36; // Используйте frameY, чтобы определить, в каком кадре находится коробка, что соответствует различным состояниям.
 	return this.GetLocalization("MapEntry" + option);
 }
 ```
 
-This approach is useful for localization keys that are dynamic.
+Такой подход удобен для динамических ключей локализации.
 
-### ModType and ILocalizedModType
-Mods implementing a custom `ModType` can implement `ILocalizedModType` to easily facilitate localization. This is as simple as adding `, ILocalizedModType` to the class inheritance and implementing the `LocalizationCategory` property by adding `public string LocalizationCategory => "MyModTypeCategory";`. For each `LocalizedText` in your custom `ModType` class, you can use `public virtual LocalizedText DisplayName => this.GetLocalization(nameof(DisplayName), PrettyPrintName);`, allowing them to be categorized properly in `.hjson` files as other existing `ModType` classes.
+### `ModType` и `ILocalizedModType`
+Авторы, реализующие пользовательский `ModType`, могут реализовать `ILocalizedModType` для облегчения локализации. Для этого достаточно добавить `, ILocalizedModType` в наследование класса и реализовать свойство `LocalizationCategory`, добавив `public string LocalizationCategory => "ТипКатегорииМоейМодификации";`. Для каждого `LocalizedText` в пользовательском классе `ModType` можно использовать свойство `public virtual LocalizedText DisplayName => this.GetLocalization(nameof(DisplayName), PrettyPrintName);`, что позволит им правильно классифицироваться в файлах `.hjson`, как и другим существующим классам `ModType`.
 
-**In Depth:** `GetLocalization` is a helper method to simplify code and avoid typos. `GetLocalization` is equivalent to calling `Language.GetOrRegister` with the full key passed in. Similarly, `GetLocalizedValue` is equivalent to `Language.GetTextValue` in the same manner. `GetLocalizationKey` can be used to retrieve the generated key if desired.
+**Подробнее:** `GetLocalization` - это вспомогательный метод, позволяющий упростить код и избежать опечаток. `GetLocalization` равен вызову `Language.GetOrRegister` с передачей полного ключа. Аналогично, `GetLocalizedValue` равен вызову `Language.GetTextValue`. При желании `GetLocalizationKey` можно использовать для получения созданного ключа.
 
-`GetLocalization` and `Language.GetOrRegister` have an optional 2nd parameter named `makeDefaultValue` that defines a function that will be used to make the default value that will be assumed if the localization does not exist. For example, passing in `() => ""`, will result in the default value being an empty string rather than the key. Modders can pass in `PrettyPrintName` to achieve the typical behavior of taking the internal name of a piece of content and adding a space between capital letters. This approach should be used if the localization is optional, or you have a sensible default value for it.
+`GetLocalization` и `Language.GetOrRegister` имеют необязательный второй параметр `makeDefaultValue`, определяющий функцию, которая будет использоваться для создания значения по умолчанию, принимаемого в случае, если локализация не существует. Например, если передать `() => ""`, то значением по умолчанию будет пустая строка, а не ключ. Авторы могут передать `PrettyPrintName`, чтобы добиться типичного поведения: взять внутреннее имя содержимого и добавить пробел между заглавными буквами. Этот подход следует использовать, если локализация является необязательной или для неё есть разумное значение по умолчанию.
 
-# Adding a new Language
-By default, tModLoader will only generate and update localization files for languages already appearing in `.hjson` files. To add a new language, simply make a text file and name it in the same manner as your existing localization files. You only need to make one. The file or folder path needs to contain the language code for the language: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), or Polish ("pl-PL"). Once the file is made and has the correct file extension, rebuilt the mod. The file will update with entries ready for translating. Other files will also be generated following the organization of the English hjson files.
+# Добавление нового языка
+По умолчанию tModLoader будет создавать и обновлять файлы локализации только для языков, уже присутствующих в файлах `.hjson`. Чтобы добавить новый язык, просто создайте текстовый файл и назовите его так же, как и существующие файлы локализации. Необходимо создать только один файл. Путь к файлу или папке должен содержать код языка: Английский ("en-US"), немецкий ("de-DE"), итальянский ("it-IT"), французский ("fr-FR"), испанский ("es-ES"), русский ("ru-RU"), китайский ("zh-Hans"), португальский ("pt-BR") или польский ("pl-PL"). После того как файл создан и имеет правильное расширение, перекомпилируйте модификацию. В файле появятся записи, готовые к переводу. Другие файлы также будут создаваться в соответствии с организацией английских `hjson`-файлов.
 
-Comments and organization of localization files other than English are all inherited from the English files. If you wish to add credits for translators, add them all to a comment at the top of the English files and they will propagate to the non-English files from there.
+Комментарии и организация файлов локализации, отличных от английских, наследуются от английских файлов. Если вы хотите добавить упоминания о переводчиках, добавьте их в комментарий в верхней части англоязычных файлов, и оттуда они будут распространяться на неанглоязычные файлы.
 
-Modders can freely organize the English localization files to their liking and the other language files will update to match them. If you split up localization files, you only need to edit the English files and then build and reload the mod. The other languages will automatically adjust themselves to match the same layout. Keys removed from the English files will similarly result in the key being removed from other language files. In short, modders typically only need to touch the English files and the other language files will automatically adjust themselves.
+Авторы могут свободно организовывать файлы английской локализации по своему усмотрению, а файлы других языков будут обновляться в соответствии с ними. Если вы разделите файлы локализации, вам нужно будет отредактировать только английские файлы, а затем скомпилировть и перезагрузить модификацию. Остальные языки автоматически подстроятся под него. Удаление ключей из английских файлов аналогичным образом приведёт к удалению ключей из файлов других языков. Короче говоря, авторам, как правило, достаточно поработать с английскими файлами, а остальные языковые файлы будут автоматически подстраиваться под них.
 
 ---
 
