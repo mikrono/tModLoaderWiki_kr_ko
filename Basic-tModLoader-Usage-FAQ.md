@@ -116,6 +116,10 @@ If you see this, the mod might be out of date. tModLoader updates every month an
 ## hostpolicy.dll error
 Follow the instructions in the next section.
 
+## Windows Version N and KN are missing some features / unable to load mfplat.dll
+You will need to download the Windows Media Pack, as it wasn't shipped with your Windows installation.
+Follow this [guide](https://answers.microsoft.com/en-us/windows/forum/all/mfplatdll-is-missing-cant-install-media-feature/15964b8d-9e43-4ea9-b073-bd20794b6f4d)
+
 ## Black windows appears and closes but nothing else
 There are a variety of issues that can cause this issue. If none of these suggestions work, please come to the [tModLoader Discord Support](#discord-support)
 
