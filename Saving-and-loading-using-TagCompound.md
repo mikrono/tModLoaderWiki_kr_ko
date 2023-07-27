@@ -32,6 +32,27 @@ public override void LoadData(TagCompound tag)
 
 Notice how `Initialize` sets the value to 10, the default value our mod expects. We then check that the tag has an entry for "QuestsLeft", and if it does, we retrieve that value. Without this check, `tag.GetInt` would return 0 if the key did not exist. Designing your variables such that the default values correspond to the expected default values might be useful if you wish to avoid checking `ContainsKey`. This example used the `Initialize` method in `ModPlayer` to show this concept, but other classes have similar methods that are suitable for initializing data. For `ModItem`, for example, initial values can be set in `SetDefaults`. 
 
+### Updates to data Type
+If in a version update a saved value changes `Type`, such as from `float` to `int`, extra care must be taken to not run into exceptions.
+
+<details><summary>Updates to data Type details</summary><blockquote>
+
+Attempting to use `tag.GetInt(key)`, `tag.Get<int>(key)`, or `tag.TryGet<int>(key, out int value))` when the value in the `TagCompound` for that key is a `float` will throw an exception. Using a new key will result in existing users losing their data when they update to the latest version if the mod. If unavoidable, the following code shows an example of preserving the old data when the data changes `Type`:
+
+```cs
+if (tag.ContainsKey("MyKey")) { 
+	object MyKeyData = tag["MyKey"];
+
+	if (MyKeyData is float MyKeyFloat)
+		MyKey = (int)MyKeyFloat;
+
+	if (MyKeyData is int MyKeyInt)
+		MyKey = MyKeyInt;
+}
+```
+
+</blockquote></details>
+
 ## Initialize
 Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because `LoadData` will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModSystem` values in `ModSystem.OnWorldLoad`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
 
@@ -83,7 +104,7 @@ public override void SaveData(TagCompound tag) {
 }
 
 public override void LoadData(TagCompound tag) {
-	exampleLifeFruits = (int)tag["exampleLifeFruits"];
+	exampleLifeFruits = tag.GetInt("exampleLifeFruits");
 }
 ```
 
