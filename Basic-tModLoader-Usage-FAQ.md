@@ -114,7 +114,7 @@ If you see this, the mod might be out of date. tModLoader updates every month an
 
 # Launch Issues
 ## hostpolicy.dll error
-Follow the instructions in the next section.
+Follow the instructions in the [Black windows appears and closes but nothing else](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#black-windows-appears-and-closes-but-nothing-else) section.
 
 ## Windows Version N and KN are missing some features / unable to load mfplat.dll
 You will need to download the Windows Media Pack, as it wasn't shipped with your Windows installation.
