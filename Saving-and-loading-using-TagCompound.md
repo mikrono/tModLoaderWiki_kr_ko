@@ -37,7 +37,7 @@ If in a version update a saved value changes `Type`, such as from `float` to `in
 
 <details><summary>Updates to data Type details</summary><blockquote>
 
-Attempting to use `tag.GetInt(key)`, `tag.Get<int>(key)`, or `tag.TryGet<int>(key, out int value))` when the value in the `TagCompound` for that key is a `float` will throw an exception. Using a new key will result in existing users losing their data when they update to the latest version if the mod. If unavoidable, the following code shows an example of preserving the old data when the data changes `Type`:
+Attempting to use `tag.GetInt(key)`, `tag.Get<int>(key)`, or `tag.TryGet<int>(key, out int value))` when the value in the `TagCompound` for that key is a `float` will throw an exception. Using a new key will result in existing users losing their data when they update to the latest version of the mod. If unavoidable, the following code shows an example of preserving the old data when the data changes `Type`:
 
 ```cs
 if (tag.ContainsKey("MyKey")) { 
@@ -53,15 +53,25 @@ if (tag.ContainsKey("MyKey")) {
 
 </blockquote></details>
 
+### Renaming the class
+If in a version update you change the name of the class, such as from `MyWorldModSystem` to `BossDownedModSystem`, it gets treated as a new thing and from the player's perspective it looks like the data got reset. To make it carry over the old data, you need to add the `[LegacyName("OldNameOfClass")]` attribute above the class. For things like `ModItem`, this has the benefit of not turning the old item into an "Unloaded Item". Here is an example:
+
+```cs
+[LegacyName("MyWorldModSystem")]
+internal class BossDownedModSystem : ModSystem
+{
+//...
+```
+
 ## Initialize
-Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because `LoadData` will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModSystem` values in `ModSystem.OnWorldLoad`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
+Make sure to initialize values in appropriate methods, constructors, or field initializers. This is because `LoadData` will not be called if no `TagCompound` has previously been saved for this entity. For example, always make sure to reset `ModSystem` values in `ModSystem.ClearWorld`, if you don't data from other worlds will cross over into other worlds as the player goes in and out of worlds. Here is an example:
 
 ```cs
 internal class MyWorldModSystem : ModSystem
 {
 	public static bool MySpecialBool;
 
-	public override void OnWorldLoad()
+	public override void ClearWorld()
 	{
 		MySpecialBool = false;
 	}
@@ -78,7 +88,7 @@ internal class MyWorldModSystem : ModSystem
 }
 ```
 
-In the above example, we make sure to set `MySpecialBool` to false in `ModSystem.OnWorldLoad`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have `TagCompound` data yet, so `Load` is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
+In the above example, we make sure to set `MySpecialBool` to false in `ModSystem.ClearWorld`. If we forgot to do this, the following could happen: Player enters World A, `MySpecialBool` is set to true because of some event (such as defeating a boss), player exits World A and enters World B, World B doesn't have `TagCompound` data yet, so `Load` is not called, `MySpecialBool` is still true despite the fact that what `MySpecialBool` represents has never happened in World B. Always remember to set values to default values in the appropriate method, constructor, or field initializer. 
 
 # Examples
 Here are links to various examples in ExampleMod and other mods, in order of complexity:
