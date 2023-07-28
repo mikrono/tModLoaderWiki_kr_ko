@@ -131,7 +131,7 @@ tML会自动为大多数内容分配键. 这些键的模板是`Mods.{模组名}.
 ### 自定义键
 如果你有许多描述相同的物品, 你可以令它们的描述指向同一个键. 要这么做, 重写描述属性并返回你要的`LocalizedText`: 
 ```cs
-public override LocalizedText Tooltip => Language.GetText("Mods.ExampleMod.Common.SomeSharedTooltip"); // 将该类的Tooltip属性重写为你需要的LocalizedText
+public override LocalizedText Tooltip => Language.GetOrRegister("Mods.ExampleMod.Common.SomeSharedTooltip"); // 将该类的Tooltip属性重写为你需要的LocalizedText
 ```
 如果你有其它的物品继承此类, 你只需要在此基类中重写描述. 当然, 如果有需要, 你还可以在子类中继续重写. 
 
