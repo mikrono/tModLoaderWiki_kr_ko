@@ -1,5 +1,5 @@
 ***
-This Guide was written for tModLoader v1.4.4, an upcoming version of tModLoader. In current tModLoader, localization files won't auto update and some methods mentioned in this guide do not exist. The basic concepts still apply.
+This Guide was written for tModLoader v1.4.4, the most recent version of tModLoader. In legacy tModLoader, localization files won't auto update and some methods mentioned in this guide do not exist. The basic concepts still apply.
 ***
 
 [中文版 | Chinese version](https://github.com/tModLoader/tModLoader/wiki/zh-Localization-%E6%9C%AC%E5%9C%B0%E5%8C%96)<br />
@@ -22,7 +22,7 @@ Beginning in tModLoader v2023.01, all localization is now done completely in the
 **If you are not using Git or some form of version control, it is recommended that you make a backup of your mod's source code folder before continuing.**
 
 ## Generate Localization Files on 1.4.3
-To begin, we need to use an older tModLoader to export localization files. You'll need to use Steam to switch to the `None` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
+To begin, we need to use an older tModLoader to export localization files. You'll need to use Steam to switch to the `1.4.3-legacy` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
 Once the game is on the right version, open up tModLoader, enable the mod, and visit the `Mod Sources` menu. Find your mod in the listing. You will find a green arrow that says "Export 1.4.4+ localization files" when hovered, press it.    
 ![image](https://user-images.githubusercontent.com/4522492/210681409-a659670d-5908-4e5d-bd45-74c0545f4666.png)    
@@ -55,7 +55,7 @@ Mods.{ModName}.Keybind.{ContentName}			Mods.{ModName}.Keybinds.{ContentName}.Dis
 </details>
 
 ## Switch to 1.4.4 tModLoader and Build Mod
-Use Steam to switch to the `1.4.4-preview` branch. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
+Use Steam to switch to the `None` branch to return to 1.4.4 tModLoader. ([Switching between tModLoader versions instructions](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
 After launching tModLoader, you'll notice that your mod (and most likely all other mods you had enabled) fails to load, this is expected. Visit the Mod Sources menu and press the "Run tModPorter" button. Along with other changes, this will remove all code using the old localization approach.     
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)    
