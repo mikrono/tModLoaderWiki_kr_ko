@@ -14,7 +14,7 @@ Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLo
 The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
 Note that users using Family Share to install Terraria will need to follow the [Steam Family Share Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#steam-family-share-installation) instructions below.
 
-By default, the current stable version of tModLoader will be installed by Steam. Currently the stable version is based on Terraria v1.4.3 content.
+By default, the current stable version of tModLoader will be installed by Steam. Currently the stable version is based on Terraria v1.4.4 content.
 
 ### Beta Branches
 tModLoader updates regularly. Most users will want to use the default release, but users can use the beta branches feature of Steam to switch to a legacy or preview version of tModLoader. Legacy versions of tModLoader are useful for playing a mod that hasn't been updated to the latest stable tModLoader. Preview versions of tModLoader are useful to test new features or to test new content added in a Terraria update that hasn't made it to stable yet.
