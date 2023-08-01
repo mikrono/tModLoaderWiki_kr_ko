@@ -19,6 +19,8 @@ By default, the current stable version of tModLoader will be installed by Steam.
 ### Beta Branches
 tModLoader updates regularly. Most users will want to use the default release, but users can use the beta branches feature of Steam to switch to a legacy or preview version of tModLoader. Legacy versions of tModLoader are useful for playing a mod that hasn't been updated to the latest stable tModLoader. Preview versions of tModLoader are useful to test new features or to test new content added in a Terraria update that hasn't made it to stable yet.
 
+> **Note:** If you are switching tModLoader versions to use a particular mod, be aware that other mods you enjoy might not be on the version you switch to, so you might not be able to use all the mods you want together. This is particularly true for preview versions of tModLoader.
+
 Here are the available options:
 * `default/None` - This is the stable version that we expect players to use. It is currently based on Terraria 1.4.4.9 content. Users in the middle of a 1.4.3 playthrough should switch back to to `1.4.3-legacy`.
 * `1.3-legacy` - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
