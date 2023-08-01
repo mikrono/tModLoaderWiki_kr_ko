@@ -25,7 +25,7 @@ Here are the available options:
 * `default/None` - This is the stable version that we expect players to use. It is currently based on Terraria 1.4.4.9 content. Users in the middle of a 1.4.3 playthrough should switch back to to `1.4.3-legacy`.
 * `1.3-legacy` - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
 * `1.4.3-legacy` - This is the latest 1.4.3 release. This is where many users currently playing the game should be, especially those waiting for mods to update to 1.4.4. 
-* `1.4.4-preview` - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended. It is currently based on Terraria 1.4.4.9 content.
+* `1.4.4-preview` - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended.
 
 ### To access 1.3 (Legacy tModLoader) and other Beta options
 Follow the instructions below to switch to a different version of tModLoader in Steam. If you are a GOG user or otherwise need to manually install a specific version, use the [Manual Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#manual-installation) instructions instead.
