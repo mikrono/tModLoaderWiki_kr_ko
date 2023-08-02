@@ -42,13 +42,15 @@ On the left side of the window will be a panel labeled explorer, this is your So
 
 ![](https://i.imgur.com/E9Ky5nJ.png)
 
-A new window will appear, select 'Add From...' a file explorer should appear. There are five files which must be added as refernces. First is tModLoader itself. In the file explorer navigate to tModLoader's install directory (if installed through steam it will likely be found here: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`, if is installed elsewhere, you can find it by right clicking tModLoader in your steam library then selecting Properties... > Local Files > Browse Local FIles...). Once you have navigated to the install directory, double click tModLoader.exe to add it as a project reference.
+A new window will appear, select 'Add From...' a file explorer should appear. There are five files which must be added as refernces. First is tModLoader itself. In the file explorer navigate to tModLoader's install directory (if installed through steam it will likely be found here: `C:\Program Files (x86)\Steam\steamapps\common\tModLoader`, if is installed elsewhere, you can find it by right clicking tModLoader in your steam library then selecting Properties... > Local Files > Browse Local FIles...). Once you have navigated to the install directory, double click tModLoader.dll to add it as a project reference.
 
 You will also need the XNA references. However, these can be hard to find. To give you a little help, you can try pasting this handcrafted search string in your explorer window:
 `search-ms:displayname=Search%20Results%20in%20GAC_32&crumb=filename%3A~<Microsoft.XNA%20OR%20System.Generic.String%3AMicrosoft.XNA&crumb=fileextension%3A~<Microsoft.XNA*.dll%20filename%3A~<Microsoft.XNA*.dll%20OR%20System.Generic.String%3AMicrosoft.XNA*.dll&crumb=location:C%3A%5CWindows%5CMicrosoft.NET%5Cassembly%5CGAC_32`
 With a little luck, the XNA references are found as shown:
 
 ![](https://i.imgur.com/POzJM8t.png)
+
+If you do not manage to find the files this way, try navigating to you `C:/Windows/Microsoft.NET/assembly/GAC_32` and search for `Microsoft.Xna.*.dll`
 
 It is important that you **do not move or delete these files**. Instead, select all of them, and COPY them. It is recommended to copy them to a safe location you will use to reference these files in your mod projects. Once you've placed them in a safe location you can proceed adding them like the previous reference. 
 
