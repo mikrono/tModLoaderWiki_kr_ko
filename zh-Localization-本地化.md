@@ -1,9 +1,9 @@
 ***
-此指南是为1.4.4版tModLoader, 一个即将到来的版本而作. 在当前版本的tML中, 本地化文件不会自动更新, 此指南中的一些方法也不存在. 基本的概念仍有效.
+此指南是为1.4.4版tModLoader而作。在1.4.3版本的tML中, 本地化文件不会自动更新, 此指南中的一些方法也不存在. 基本的概念仍有效.
 ***
 
-[Original Page (English) | 原页面 (英语)](https://github.com/tModLoader/tModLoader/wiki/Localization)<br />
-[Русская версия страницы | 俄文版网页](https://github.com/tModLoader/tModLoader/wiki/ru-Localization-Локализация)
+[Original Page (English) | 原页面 (英文)](https://github.com/tModLoader/tModLoader/wiki/Localization)<br />
+[Русская версия страницы | 俄文](https://github.com/tModLoader/tModLoader/wiki/ru-Localization-Локализация)
 
 ---
 
@@ -22,7 +22,7 @@
 **如果你没在使用Git或其它形式的版本控制的话, 建议在迁移之前备份好你的模组.**
 
 ## 在1.4.3生成本地化文件
-首先, 我们需要一个较 "老" 的tML来导出本地化文件. 用Steam将tML的测试版调至`无`. ([切换tML版本的教程](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
+首先, 我们需要一个较 "老" 的tML来导出本地化文件. 用Steam将tML的测试版调至`1.4.3-legacy`. ([切换tML版本的教程](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
 切换至正确的版本后, 启动游戏, 启用模组, 然后进入`开发模组`菜单. 在模组列表里找到你的模组. 你会看到一个绿色箭头按钮, 鼠标停留于其上时显示 "Export 1.4.4+ localization files", 点它.  
 ![image](https://user-images.githubusercontent.com/4522492/210681409-a659670d-5908-4e5d-bd45-74c0545f4666.png)  
@@ -55,7 +55,7 @@ Mods.{ModName}.Keybind.{ContentName}		-->	Mods.{ModName}.Keybinds.{ContentName}.
 </details>
 
 ## 切换至1.4.4并生成模组
-用Steam将tML的测试版调至`1.4.4-preview`. ([切换tML版本的教程](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
+用Steam将tML的测试版调至 `无`。([切换tML版本的教程](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#switch-to-stable-tmodloader-or-to-preview-tmodloader))
 
 启动tML后, 你会发现你的模组 (大概你启用的其它模组也会) 加载失败, 这是正常现象. 进入`开发模组`菜单并点击 "Run tModPorter" 按钮. 这会将过时的本地化方法连同其它过时内容一起移除 (译注: 但这并不能解决所有问题, 该手动改的还是逃不过的).  
 ![image](https://user-images.githubusercontent.com/4522492/210683375-43816104-2812-4db2-bac6-813ebb47a089.png)  
