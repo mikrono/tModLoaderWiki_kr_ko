@@ -106,6 +106,7 @@ The following guides are considered advanced, and should only be attempted if th
 - [Advanced Fixing Mod Not Fully Unloaded Guide](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
 - [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
 - [World Generation](World-Generation)
+- [Reflection](Reflection) -- Accessing and modifying `private` and `internal` members of tModLoader and other mods.
 
 ## Expert guides
 Expert-level guides are not necessarily harder than advanced guides, but they more often cover a particular (difficult) subject. Expert guides should be followed if you are interested in learning about complicated topics or improving your mod's quality.
