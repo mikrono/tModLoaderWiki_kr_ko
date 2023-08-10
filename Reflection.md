@@ -1,5 +1,5 @@
 # Introduction
-Terraria is programed in C#. In C#, [access modifiers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers) such as `public`, `internal`, and `private` are used to restrict how classes, methods, properties, and fields are accessed. For example, something with an accessibility of `private` will not be accessible outside of the class itself. Proper usage of access modifiers is a sign of well structured code, and usually there is little reason to bypass these access modifiers. 
+Terraria is programmed in C#. In C#, [access modifiers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/access-modifiers) such as `public`, `internal`, and `private` are used to restrict how classes, methods, properties, and fields are accessed. For example, something with an accessibility of `private` will not be accessible outside of the class itself. Proper usage of access modifiers is a sign of well structured code, and usually there is little reason to bypass these access modifiers. 
 
 As modders, however, we sometimes need to access something not normally accessible due to the nature of modding a game. Since we can't implement the code directly in the Terraria source code, we need to bypass the access restrictions using something called [`Reflection`](https://learn.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection). 
 
@@ -56,6 +56,6 @@ ExampleMagicMirrorItemNameCycleColorsFieldInfo.SetValue(null, MyItemNameCycleCol
 When using reflection, sometimes the code can get a bit verbose. The code examples in this guide are written with the intention of accessing or setting a reflected member once for the sake of simplicity. It is useful to use other programming approaches if accessing a member multiple times.
 
 ## Store MemberInfo instance
-Rather than use `GetField`/`GetMethod`/`GetProperty` each time the code should access a private member, you can store the `MemberInfo` as a field in your class and reuse it.
+Rather than use `GetField`/`GetMethod`/`GetProperty` each time the code should access a private member, you can store the `MemberInfo` as a field in your class and reuse it. This should be done for efficiency and convenience. Reflection is slow, so retrieving the `MemberInfo` only once and reusing it will speed up code that needs to use reflection. 
 
 `TODO: Example`
