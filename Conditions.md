@@ -1,5 +1,5 @@
 ***
-This Guide was written for tModLoader v1.4.4, an upcoming version of tModLoader.
+This Guide was written for tModLoader v1.4.4, the most recent version of tModLoader. In legacy tModLoader, this generalized Condition class does not exist.
 ***
 
 # Condition Class
