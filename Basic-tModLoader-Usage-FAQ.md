@@ -335,6 +335,9 @@ If you are curious which mods are using your limited Ram, you can enable the "Sh
 ![](https://i.imgur.com/3Pl6tG2.png)
 
 # Players/Worlds
+### Load Failed!
+When a world fails to load, usually this is caused by a buggy mod. To test this, disable all mods and see if the world loads. If that works, slowly add a few mods at a time and attempt to load the world. Eventually the world won't load again and you can reload mods once again to isolate the mod causing the world to not load. Once you figure out which mod is causing the world to not load properly, you'll want to seek out help from the mod creator, see [Mod Issues](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#mod-issues) for information on how to find mod-specific help.
+
 ### "(LaterVersion)" on player or world
 ![dotnet_2022-10-05_11-04-59](https://user-images.githubusercontent.com/4522492/194119673-44d0ad77-613b-4e6e-8198-20213d2b45c4.png)    
 This means that you migrated a player or world from a version of Terraria newer than the version of Terraria your version of tModLoader was built for. When Terraria updates, it takes a while for tModLoader to update, you'll have to be patient and wait for tModLoader to update to use that player or world.
