@@ -139,7 +139,6 @@ Expert-level guides are not necessarily harder than advanced guides, but they mo
 - [NetMessage Class Documentation](NetMessage-Class-Documentation)
 - [NPC Class Documentation](NPC-Class-Documentation)
 - [Projectile Class Documentation](Projectile-Class-Documentation)
-- [Tile Class Documentation](Tile-Class-Documentation)
 
 ## Other pages
 These are pages that we have so far failed to categorize or simply do not belong in one.
