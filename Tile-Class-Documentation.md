@@ -1,3 +1,11 @@
+***
+
+**Note:** This page is out of date and only relevant for 1.3 tModLoader. Modders using 1.4+ should rely on the documentation instead.
+
+
+***
+
+
 # Tile Class Documentation
 This page lists methods and fields pertaining to the Tile class. If you are working directly with `Tile`s, you can consult this page for an understanding of various things. If you want to create a Tile in your mod, this is not relevant, see [Basic Tile Guide](https://github.com/tModLoader/tModLoader/wiki/Basic-Tile) for that. See also [Main.tile[]](https://github.com/tModLoader/tModLoader/wiki/Main-Class-Documentation#tile). It is good to remember that `Main.tile[]` can have null values in it, null values are empty/air tiles. Non-null values could also be empty/air tiles as well.
 
