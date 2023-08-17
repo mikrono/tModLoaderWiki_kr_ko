@@ -494,6 +494,8 @@ If you split up localization files, you only need to edit the English files and 
 Entries for new content will automatically populate the `.hjson` files, but custom translation keys can also be added to the files.
 
 ## Manually Adding Keys
+Manually adding keys is not the recommended approach for most custom keys, it is easy to make a mistake and will not fully utilize the power of the localization system. See [Adding Localizable Properties](https://github.com/tModLoader/tModLoader/wiki/Localization#adding-localizable-properties) for the typical way of adding new keys to your mod. Manually added keys can be useful in some situations, however.
+
 To add custom keys, a modder can follow the `.hjson` syntax to add the localization entry directly. For example, ExampleMod has a category called "Common", these entries were all manually added as they are not used by tModLoader classes directly.
 
 For example, lets start with this `.hjson` file:
