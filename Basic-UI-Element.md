@@ -22,7 +22,7 @@ namespace YourMod.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(ModContent.GetTexture("Terraria/UI/ButtonPlay"), new Vector2(Main.screenWidth + 20, Main.screenHeight -20) / 2f, color);
+            spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("Terraria/UI/ButtonPlay"), new Vector2(Main.screenWidth + 20, Main.screenHeight -20) / 2f, color);
         }   
     }
 }
