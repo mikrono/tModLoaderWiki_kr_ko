@@ -4,7 +4,8 @@ In addition to all the Command Line and Server Config settings available in [van
 1) -loadlib
 2) -publish, -ciprep, -publishedmodfiles, -uploadfolder
 3) -experimental
-4) /gldevice:OpenGL
+4) XNA-FNA Args like /gldevice:OpenGL
+5) -steamworkshopfolder
 
 ### savedirectory [pathToSaveDirectoryFolder]
 Server and Client Command Line Argument    
