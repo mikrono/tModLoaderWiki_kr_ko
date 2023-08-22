@@ -269,7 +269,7 @@ public override void OnInitialize() {
     button.Height.Set(50, 0);
     button.HAlign = 0.5f;
     button.Top.Set(25, 0);            // 2
-    button.OnClick += OnButtonClick;  // 3
+    button.OnLeftClick += OnButtonClick;  // 3
     panel.Append(button);
 
     UIText text = new UIText("Click me!");
