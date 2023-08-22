@@ -319,6 +319,9 @@ Find some way of uploading this file to us on the Discord support channel. We ha
 
 </blockquote></details>
 
+## Can't Click on Anything
+If you find that you can't click on anything, you might have a broken `input profiles.json`. Follow the [Reset config.json](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ/#reset-configjson) steps pertaining to `input profiles.json`.
+
 # Load Mod
 ### "A Mod is crashing when I try to open tModLoader"
 You can skip loading mods by holding shift while tModLoader is loading until it reaches the main menu. Visit the `Workshop->Mods` menu to disable or delete the mod. If you need to directly delete a mod, you can unsubscribe on the [workshop](https://steamcommunity.com/app/1281930/workshop/). If you need to delete a manually installed a mod, open up the tModLoader [mods folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#mods) and delete the offending .tmod file.
