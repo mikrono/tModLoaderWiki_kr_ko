@@ -128,6 +128,8 @@ Sometimes launching manually can bypass certain launch issues. Open up the [tMod
 
 If, when you try this, an error message shows "Windows cannot find '[InstallFolderHere]/start-tModLoader.bat'. Make sure you typed the name correctly, and then try again.", then somehow your Windows has been corrupted and has a bad file association for `.bat` files. This issue will prevent your computer from running any `.bat` file, which might affect other programs, so it would be good to fix. Users have reported that following the steps in [this article](https://www.winhelponline.com/blog/bat-files-do-not-run-when-double-clicked-fix-association/) have worked for them.
 
+If the window immediately closes, one reported cause of this is the command prompt itself being broken. Try opening the command prompt from the start menu. If you can not do that, your computer is in a broken state and that will need to be fixed before attempting anything else.
+
 ### Fresh Install
 Follow the [Fresh Install](#fresh-install) and [Fresh Install Terraria](#fresh-install-terraria) steps. This may seem like a lot of effort but it solves a large portion of issues.
 
