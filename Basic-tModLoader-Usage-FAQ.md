@@ -320,7 +320,7 @@ Find some way of uploading this file to us on the Discord support channel. We ha
 </blockquote></details>
 
 ## Can't Click on Anything
-If you find that you can't click on anything, you might have a broken `input profiles.json`. Follow the [Reset config.json](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ/#reset-configjson) steps pertaining to `input profiles.json`.
+If you find that you can't click on anything, you might have a broken `input profiles.json`. Follow the [Reset config.json](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-FAQ#reset-configjson) steps pertaining to `input profiles.json`.
 
 # Load Mod
 ### "A Mod is crashing when I try to open tModLoader"
