@@ -4,7 +4,7 @@ ___
 
 ___
 
-**[I don't want to create mods, I want to contribute to tModLoader](tModLoader-guide-for-contributors)**
+**[I don't want to create mods, I want to contribute to tModLoader another way](tModLoader-guide-for-contributors)**
 
 ___
 
