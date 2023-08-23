@@ -385,7 +385,7 @@ public class UIClickableButton : UIElement {
         _uiText.VAlign = _uiText.HAlign = 0.5f; // 6
         _uiPanel.Append(_uiText);
 
-        _uiPanel.OnClick += _clickAction;       // 7
+        _uiPanel.OnLeftClick += _clickAction;       // 7
     }
 
     public override void Update(GameTime gameTime) {
