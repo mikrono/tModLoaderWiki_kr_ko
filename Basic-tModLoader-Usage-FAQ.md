@@ -462,6 +462,11 @@ Install `dotnet-sdk` from nixpkgs and create a symlink from the store binary to 
 IF you want to develop mods, these will conflict with doing so.
 You will need to launch the game outside of Steam, using either 'Non-Steam Game' library option or launching it from the terminal.
 
+### Arm64 Linux Workaround
+At this time, the Steamworks.NET library used by tModLoader doesn't support ARM in it's managed code.
+Please use the 20.1.0 Release build on [this fork](https://github.com/MikolajKolek/Steamworks.NET-arm64/releases/tag/20.1.0) by [MikolajKolek](https://github.com/MikolajKolek) to download a replacement Steamworks.NET.dll.
+Please install the ARM64 Linux Steamworks.NET.dll by replacing the existing .dll in Libraries/Steamworks.net/20.1.0/lib/netstandard2.1
+
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
 Networking issues (`SocketExceptionFactory`, `WebException`, `HttpRequestException`) addressed to port `53664` are caused by RGB keyboard support bugs. You can attempt to repair the installation of your keyboard software, or disable the feature. Even if you don't think you have RGB keyboard, this can help. Close tModLoader. Open up [the saves folder](https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Usage-Guide#saves) and find `config.json`, open the file in a text editor. Find the "UseRazerRGB", "UseCorsairRGB", "UseLogitechRGB", and "UseSteelSeriesRGB" entries and change "true" to "false" for each of them, then save the file and finally attempt to open tModLoader.
