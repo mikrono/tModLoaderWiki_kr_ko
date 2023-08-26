@@ -446,7 +446,7 @@ If tModLoader is still unable to migrate files, then a user can do it manually. 
 ### Illegal Filenames
 Rarely, the tModLoader saves folders might contain files or folders that can't be deleted or moved by normal means. First, restart the computer and try again. If the file or folder still can't be moved or deleted, it might have an illegal filename. Examples of illegal filenames are files ending with `.` or folders ending with a space. Due to bugs in mods or tModLoader, these files can rarely be created. The instructions in [the answers for this stackoverflow post](https://stackoverflow.com/questions/4075753/how-to-delete-a-folder-that-name-ended-with-a-dot) are all options for deleting these files and folders. If the issue was a folder in the Players folder ended with a space, take the opportunity to rename the corresponding `.plr` and `.tplr` files to remove the space from those files. Feel free to come to [our Discord Support](#discord-support) if you need help with this issue.
 
-# Linux / Steam Deck
+# Linux / Steam Deck / Mac
 tModLoader is designed to run as a native Linux application. It is fully featured as a native program, and as such, does not require Proton.
 Unfortunately, due to unknown causes, tModLoader doesn't work with Proton.
 
@@ -466,6 +466,14 @@ You will need to launch the game outside of Steam, using either 'Non-Steam Game'
 At this time, the Steamworks.NET library used by tModLoader doesn't support ARM in it's managed code.
 Please use the 20.1.0 Release build on [this fork](https://github.com/MikolajKolek/Steamworks.NET-arm64/releases/tag/20.1.0) by [MikolajKolek](https://github.com/MikolajKolek) to download a replacement Steamworks.NET.dll.
 Please install the ARM64 Linux Steamworks.NET.dll by replacing the existing .dll in Libraries/Steamworks.net/20.1.0/lib/netstandard2.1
+
+### System .NET SDK Could Not Be Found, No Sandboxing
+If the application is sandboxed, see the appropriate section here.
+If not, attempt the following steps:
+1) In a terminal check "which dotnet" command result. You should see information on what the system dotnet install is, and a path of "/my/path/dotnet"
+2) Create a text file at path /etc/paths.d/dotnet with contents "/my/path/dotnet"
+Try running again. 
+If this doesn't work, reach out in the Discord for further guidance
 
 # Other Issues
 ### RGB Keyboard Bug (Port 53664)
