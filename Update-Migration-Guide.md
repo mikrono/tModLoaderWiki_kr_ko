@@ -14,6 +14,7 @@ This page contains guides for migrating your code to new methods and functionali
     - [Tile Drop Changes](#tile-drop-changes)
     - [Improve Player.clientClone performance](#improve-playerclientclone-performance)
     - [Max Health and Mana Manipulation API](#max-health-and-mana-manipulation-api)
+    - [Extra Jump API](#extra-jump-api)
   - [Smaller Changes](#smaller-changes)
 
 # v2023.X (1.4.4)
@@ -288,6 +289,32 @@ ExampleMod contains examples for a [custom display set](https://github.com/tModL
 * Temporary stat increases to `Player.statLifeMax2` and `Player.statManaMax2` can still be performed as usual
   * Though they should not be changed in `ModPlayer.ModifyMaxStats`, since that runs too early for the changes to be kept
 * Use `Player.ConsumedLifeCrystals`, `Player.ConsumedLifeFruit` and `Player.ConsumedManaCrystals` instead of checking `Player.statLifeMax` or `Player.statManaMax` due to the stat fields being adjustable by mods
+
+### Extra Jump API
+[PR 3552](https://github.com/tModLoader/tModLoader/pull/3552) added a proper API for implementing and modifying extra mid-air jumps.
+
+**Short Summary:**
+* Adds `ExtraJump`, a singleton type representing an extra jump that is controlled via the `ExtraJumpState` structure
+  * The `ExtraJumpState` object for an extra jump can be obtained via the `GetJumpState` methods in `Player`
+  * Extra jumps can be disabled for the "current update tick" or consumed entirely
+    * **NOTE:** `ExtraJumpState.Disable()` will consume the extra jump if it is available and prematurely stops it if it's currently active
+* Adds new methods related to checking the state of the player's extra jumps to `Player`
+  * Also includes a `blockExtraJumps` field, which prevents any extra jumps from being used, but does not stop the currently active jump nor consume any remaining extra jumps
+* Flipper swimming is now considered an "extra jump" and can be accessed via `Player.GetJumpState(ExtraJump.Flipper)`
+* `Player.sandStorm` is now more directly related to the state of the *Sandstorm in a Bottle* extra jump
+
+ExampleMod contains examples for [simple](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleExtraJumpAccessory.cs) and [complex](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Content/Items/Accessories/ExampleMultiExtraJumpAccessory.cs) extra jumps, as well as an example for [modifying an extra jump](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/Common/Players/ExampleExtraJumpModificationPlayer.cs).
+
+The PR's original comment contains snippets for enabling/disabling an extra jump, temporarily disabling extra jumps in a `ModBuff` and changing the horizontal movement modifications for an extra jump.
+
+**Porting Notes:**
+* `Player.hasJumpOption_X`, `Player.canJumpAgain_X` and `Player.isPerformingJump_X` for all vanilla jumps are now accessed via the `ExtraJumpState` for the respective extra jump
+  * If you were setting one or more of these fields to `false` in order to disable the extra jump, use `ExtraJumpState.Disable()` instead
+  * If you were disabling all extra jumps:
+    * Set `Player.blockExtraJumps = true;` for temporary disabling
+    * Call `Player.ConsumeAllExtraJumps()` (optionally followed by `Player.StopExtraJumpInProgress()`) for permanent disabling until the player lands
+* `Player.accFlipper` and `Player.sandStorm` are now properties, so any code that was using them will have to be rebuilt
+  * For `Player.accFlipper` in particular, reading `accFlipper` is prohibited; use `Player.GetJumpState(ExtraJump.Flipper).Available` instead
 
 ## Smaller Changes
 ### [PR 3063](https://github.com/tModLoader/tModLoader/pull/3063): Fix Quick Heal and Quick Mana consuming non-consumables
