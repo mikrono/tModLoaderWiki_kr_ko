@@ -463,7 +463,7 @@ IF you want to develop mods, these will conflict with doing so.
 You will need to launch the game outside of Steam, using either 'Non-Steam Game' library option or launching it from the terminal.
 
 ### Arm64 Linux Workaround
-At this time, the Steamworks.NET library used by tModLoader doesn't support ARM in it's managed code.
+(This workaround is 1.4.3 only, it will not work on 1.4.4) At this time, the Steamworks.NET library used by tModLoader doesn't support ARM in it's managed code.
 Please use the 20.1.0 Release build on [this fork](https://github.com/MikolajKolek/Steamworks.NET-arm64/releases/tag/20.1.0) by [MikolajKolek](https://github.com/MikolajKolek) to download a replacement Steamworks.NET.dll.
 Please install the ARM64 Linux Steamworks.NET.dll by replacing the existing .dll in Libraries/Steamworks.net/20.1.0/lib/netstandard2.1
 
