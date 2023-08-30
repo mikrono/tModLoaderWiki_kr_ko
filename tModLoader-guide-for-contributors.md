@@ -33,7 +33,7 @@ ___
 
 **NOTE: The decompilation doesn't work on Mac or Linux. You need Windows Terraria.exe.**
 
-* When you're done, PR to 1.4, and *not* `master`
+* When you're done, PR to 1.4.4, and *not* `master`
 
 tModLoader uses its own code patcher. If you want to contribute to tModLoader, you will have to use this tool. We need to use a patches system, because we are not allowed to upload vanilla source code publicly. It also allows for relatively easy code maintenance. [Here's what the tool looks like](https://i.imgur.com/u9Yy1rl.png)
 
@@ -43,8 +43,8 @@ ___
 2. Fork this repository, then clone your fork onto your PC
 3. Open setup.bat in the root folder
 4. Click on 'Setup' (top left button)
-    * If asked, select your vanilla 1.4.3.6 Terraria.exe (must be vanilla) from steam. It is recommended to do a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.3.6.exe and TerrariaServer_1.4.3.6.exe, so that when steam updates, you can still keep working on tModLoader
-    * If you want to work on the 1.3 version of tModLoader, you need Terraria_1.3.5.3.exe and TerrariaServer_1.3.5.3.exe (Up to you to figure out how to get them)
+    * If asked, select your vanilla 1.4.4.9 Terraria.exe (must be vanilla) from steam. It is recommended to do a copy of both Terraria.exe and TerrariaServer.exe and renaming them Terraria_1.4.4.9.exe and TerrariaServer_1.4.4.9.exe, so that when steam updates, you can still keep working on tModLoader
+    * If you want to work on the 1.4.3 or 1.3 version of tModLoader, you need Terraria_1.4.3.6.exe and TerrariaServer_1.4.3.6.exe, or Terraria_1.3.5.3.exe and TerrariaServer_1.3.5.3.exe (Up to you to figure out how to get them)
 5. When decompilation is complete, verify that you have these folders:
     * src/decompiled/
     * src/Terraria/
