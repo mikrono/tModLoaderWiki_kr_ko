@@ -311,3 +311,6 @@ public static void PickAmmo(Item weapon, Item ammo, Player player, ref int type,
 
 ### Changing a return type
 Changing a return type causes incompatibilities. TODO, more info.
+
+### Examples
+- [Rename ModProjectile.Kill to ModProjectile.OnKill](https://github.com/tModLoader/tModLoader/pull/3770) - This example shows a typical hook renaming situation. We want the mods built to continue working, but want to move mods being built to the new approach immediately The old hook is set as `Obsolete` and the new hook is added with the new name. The PR makes sure to call the old hook to keep existing behavior. Note how `ProjectileLoader.Kill_Obsolete` is set as `Obsolete` while `ModProjectile.Kill` is set as `Obsolete` and flagged as a compile error. An `Obsolete` method can call a compile error flagged `Obsolete` method by design. `tModPorter` is used as well. The code ports to the new method name using `RenameMethod`, applies changes to ExampleMod, and has tests to verify their effect.
