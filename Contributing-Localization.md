@@ -211,7 +211,9 @@ Congratulations! You have now contributed the localization, and if the mod owner
 You can test your localizations by building the mod source from your personal fork. If you have not setup a modding environment then you should probably leave this to the owner of the mod you are helping out.
 
 ## tModLoader Translations
-tModLoader itself doesn't use .lang files, but .json files. The process is roughly the same, except for the structure of the files. Navigate to the [tModLoader source folder](https://github.com/tModLoader/tModLoader/tree/master/patches/tModLoader) and find the .json file you want to edit. Open the file and look for lines with Key Values that have `//` before them. These files are missing translations. Follow the same procedure as with translating mods. Fork, edit, and pull request. Remember to only change the right side and remove the `//` from the lines you localize.
+tModLoader itself doesn't use .lang files, but .json files. The process is roughly the same, except for the structure of the files. Navigate to the [tModLoader source folder](https://github.com/tModLoader/tModLoader/tree/1.4.4/patches/tModLoader/Terraria/Localization/Content) and find the .json file you want to edit. Open the file and look for lines with Key Values that have `//` before them. These files are missing translations. Follow the same procedure as with translating mods. Fork, edit, and pull request. Remember to only change the right side and remove the `//` from the lines you localize.
+
+In addition to the in-game text, we also localize the tModLoader store page itself. These files are found in the [SteamPageLocalization](https://github.com/tModLoader/tModLoader/tree/1.4.4/solutions/SteamWorkshopLocalization/SteamPageLocalization) folder and missing languages can be supplied through creating the files in a pull request.
 
 ## Miscellaneous 
 * Newlines can be added with `\n` interspersed in the Value.   
