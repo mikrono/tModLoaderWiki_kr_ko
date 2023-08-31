@@ -3,6 +3,7 @@ This page contains guides for migrating your code to new methods and functionali
 <!-- Generated with https://luciopaiva.com/markdown-toc/ -->
 # Table of contents
 
+- [v2023.08](#v202308)
 - [v2023.X (1.4.4)](#v2023x-144)
   - [Localization Changes](#localization-changes)
   - [New Vanilla Features](#new-vanilla-features)
@@ -16,6 +17,71 @@ This page contains guides for migrating your code to new methods and functionali
     - [Max Health and Mana Manipulation API](#max-health-and-mana-manipulation-api)
     - [Extra Jump API](#extra-jump-api)
   - [Smaller Changes](#smaller-changes)
+
+# v2023.08
+> Currently in Preview, coming to Stable on October 1st
+
+### [PR 3770](https://github.com/tModLoader/tModLoader/pull/3770): Rename `(Mod|Global)Projectile.Kill` hook to `OnKill`
+**Short Summary:** `(Mod|Global)Projectile.Kill` renamed to `OnKill` to better match the behavior and other similar hooks.     
+**Porting Notes:** Run tModPorter or rename usages of `(Mod|Global)Projectile.Kill` to `OnKill`
+
+### [PR 3759](https://github.com/tModLoader/tModLoader/pull/3759): `ModPlayer.OnPickup` hook
+**Short Summary:** 
+- Adds `ModPlayer.OnPickup` which functions the same as the `GlobalItem` hook.     
+- The hook has been added for convenience, to reduce the need to make a separate `GlobalItem` class when many of the effects modders want to make are stored on a `ModPlayer` instance
+
+### [PR 3746](https://github.com/tModLoader/tModLoader/pull/3746): Add modded world header data
+**Short Summary:** 
+- Modded world data can be now be saved into a 'header' in the .twld file. The header can be read without deserializing the entire .twld file, and the modded data is accessible in the world select menu and during vanilla world loading.
+- The list of mods the world was last played with is now shown in the world select menu, just like for players
+- The list of mods (and version of those mods) the world was generated with is now stored in the header. Only applies to worlds generated in the future of course.    
+
+See [PR 3746](https://github.com/tModLoader/tModLoader/pull/3746) for more details and usage examples    
+
+### [PR 2918](https://github.com/tModLoader/tModLoader/pull/2918): Modded Emote Bubble
+**Short Summary:**  
+- Modders can now make custom emotes
+- Modders can adjust how NPC pick emotes
+- ExampleMod shows off several custom emotes and custom emote spawning    
+
+### [PR 3731](https://github.com/tModLoader/tModLoader/pull/3731): Modded Builder Toggles
+**Short Summary:** Modders can now make builder toggles, which are those small icons top left of the inventory that are used for block swap, wire visibility, etc.     
+**Porting Notes:** If you previously made builders toggles using your own approach, use the tModLoader approach.
+
+### [PR 3710](https://github.com/tModLoader/tModLoader/pull/3710): Better Changelogs
+**Short Summary:** Expand ChangeLog functionality     
+**Porting Notes:** 
+-  tModLoader no longer adds it's own text when a changelog.txt is provided. We recommend adding to your own changelog.txt files based on [ExampleMod's changelog.txt](https://github.com/tModLoader/tModLoader/blob/1.4.4/ExampleMod/changelog.txt)
+- All 4 fields in the example, such as `{ModVersion}`, are replaced with the info from tModLoader during publishing for convenience.
+
+### [PR 3453](https://github.com/tModLoader/tModLoader/pull/3453): Rework `NPCID.Sets.DebuffImmunitySets`
+**Short Summary:**      
+- Replace `NPCID.Sets.DebuffImmunitySets` with `NPCID.Sets.SpecificDebuffImmunity`, `NPCID.Sets.ImmuneToAllBuffs`, and `NPCID.Sets.ImmuneToRegularBuffs` to simplify modder code.
+- Added buff immunity inheritance through the `BuffID.Sets.GrantImmunityWith` set and corresponding methods.
+
+**Porting Notes:** 
+- If your mod has any NPCs or does anything with buff immunity, you'll need to update their buff immunity code. Read the Porting Notes section of [PR 3453](https://github.com/tModLoader/tModLoader/pull/3453).
+- Mods should consider using the new buff immunity inheritance system for buff inheritance compatibility.
+
+### [PR 3568](https://github.com/tModLoader/tModLoader/pull/3568): Rubblemaker support
+**Short Summary:** Modders can now add tiles to the [Rubblemaker](https://terraria.wiki.gg/wiki/Rubblemaker)   
+
+### Other v2023.08 Changes
+* [`ItemID.Sets.IsSpaceGun` added](https://github.com/tModLoader/tModLoader/commit/b6a6fcc40d2d39aed6df98e862f29e8deaf7a77e)
+* [`GlobalInfoDisplay.ModifyDisplayParameters` replaces `ModifyDisplayValue`/`ModifyDisplayName`/`ModifyDisplayColor`](https://github.com/tModLoader/tModLoader/commit/3ca9bf16a3722c35ea86377b7a28f4456b072743)
+* [`GenPass.Disable` and `GenPass.Enabled`](https://github.com/tModLoader/tModLoader/commit/8460afd82e71a88b7fa3856713e33baa4f0fda57)
+* [`TooltipLine.Hide` and `TooltipLine.Visible`](https://github.com/tModLoader/tModLoader/commit/42daf2a8789bebab092902a4dad59bdfdfd88a17)
+* [`ModTree.Shake`'s `createLeaves` parameter now defaults to `true`](https://github.com/tModLoader/tModLoader/commit/1352e4b5c8109de9f86cc20735bceb91ebdb5198)
+* [Automatic TranslationsNeeded.txt feature](https://github.com/tModLoader/tModLoader/commit/aee3e5ece65982d28dd0e4c5930e4fbc501e3882)
+* [`GlobalInfoDisplay.ModifyDisplayColor` has new `displayShadowColor` parameter](https://github.com/tModLoader/tModLoader/commit/8e0274a1fb317b856600a804acc93cd2635d31fe)
+* [`DamageClassLoader.GetDamageClass` added](https://github.com/tModLoader/tModLoader/commit/e9572b649b8e8af69c2d493b33043bb61e3e9c9a)
+* [`TileRestingInfo` constructor changed](https://github.com/tModLoader/tModLoader/commit/e5ac187611e201685650bca482cbecfa457b7649)
+* [`ModTile.IsTileBiomeSightable` hook](https://github.com/tModLoader/tModLoader/commit/57d8c0de992e688465257c184f2eaf1c7307ea3e)
+* [`SceneMetrics.GetLiquidCount` added](https://github.com/tModLoader/tModLoader/commit/d03a022416e01f7858800454e20ce28a1d5c954b)
+* [`NPCID.Sets.BelongsToInvasionGoblinArmy`/`BelongsToInvasionFrostLegion`/`BelongsToInvasionPirate`/`BelongsToInvasionMartianMadness`/`NoInvasionMusic`/`InvasionSlotCount` added](https://github.com/tModLoader/tModLoader/commit/4f378265980bc513105618113a22b76f531358b3)
+* [`ArmorIDs.Head.Sets.IsTallHat` added](https://github.com/tModLoader/tModLoader/commit/a2f8cfa204f403fe6d99aee67a6722a22329cf0d)
+* [`GoreID.Sets.PaintedFallingLeaf` added](https://github.com/tModLoader/tModLoader/commit/e171965d2547488d7eca5d45c4eac6d0cadf252c)
+* [All `LocalizationCategory` implementations now virtual](https://github.com/tModLoader/tModLoader/commit/ffea871bc30f5eea3ba0f4d2162ce26c38d8eb2d)
 
 # v2023.X (1.4.4)
 The tModLoader team took advantage of the release of Terraria 1.4.4.9 to implement a wide variety of breaking changes. These changes are large features that have been highly requested from the community. The extent of the changes, as well as changes in Terraria, are so large that all mods will need to update to continue working on 1.4.4. tModLoader for 1.4.3 will continue to be available to users as the `1.4.3-legacy` steam beta option. If a modder intends to continue updating their mod for 1.4.3 users, they should use backups or [Git](https://github.com/tModLoader/tModLoader/wiki/Intermediate-Git-&-mod-management) to maintain copies of their source code for 1.4.3 and 1.4.4. 
