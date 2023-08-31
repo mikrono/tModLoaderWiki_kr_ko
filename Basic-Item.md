@@ -52,3 +52,5 @@ Items: {
 	}
 }
 ```
+
+If you want a tooltip with multiple lines, please read [the Multiline section in the Localization wiki page](https://github.com/tModLoader/tModLoader/wiki/Localization#multiline) to learn the correct syntax.
