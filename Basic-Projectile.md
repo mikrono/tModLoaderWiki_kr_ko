@@ -23,11 +23,7 @@ namespace ModNamespaceHere
 {
 	public class NameHere : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("English Display Name Here");
-		}
-
+		
 		public override void SetDefaults()
 		{
 			Projectile.arrow = true;
