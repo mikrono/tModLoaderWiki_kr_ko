@@ -105,6 +105,7 @@ The following guides are considered advanced, and should only be attempted if th
 - [Advanced Custom UI Guide](Advanced-guide-to-custom-UI)
 - [Advanced Fixing Mod Not Fully Unloaded Guide](https://github.com/tModLoader/tModLoader/wiki/Fixing-Mod-Not-Fully-Unloaded)
 - [Advanced Vanilla Code Adaption Guide](Advanced-Vanilla-Code-Adaption)
+- [Advanced Detouring Guide](https://github.com/tModLoader/tModLoader/wiki/Advanced-Detouring-Guide)
 - [World Generation](World-Generation)
 - [Reflection](Reflection) -- Accessing and modifying `private` and `internal` members of tModLoader and other mods.
 
