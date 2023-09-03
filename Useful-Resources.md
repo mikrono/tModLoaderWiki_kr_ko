@@ -16,7 +16,7 @@ The following covers a list of useful resources, adapted from the [help thread o
 * [TConvert](https://forums.terraria.org/index.php?threads/tconvert-extract-content-files-and-convert-them-back.61706/) | Extract images and sounds from Terraria. Useful for viewing various sprites.
 * [TPadder](https://github.com/MdTanjeemHaider/TPadder) | Add padding to multi-block tile textures with this tool
 * [tSpritePadder](https://forums.terraria.org/index.php?threads/tspritepadder-ready-to-use-sprites-for-terraria-tiles.96177/) | Ready-to-use sprites for Terraria tiles. Similar to **TPadder** but with more customization options
-* [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) | Quickly create armor animation sprites with this tool
+* [ArmorHelper](https://forums.terraria.org/index.php?threads/armorhelper-sprite-armor-sets-30x-times-faster.68744/) | Quickly create armor animation sprites with this tool (body/chestplate/shirt is broken since Terraria 1.4 changed how the sprite sheet of it changed)
 * [Terraria Tile Generator](https://forums.terraria.org/index.php?threads/terraria-tile-generator.70088/) | Quickly makes tile textures for ores.
 * [tModLoaderHelper](https://forums.terraria.org/index.php?threads/tmodloaderhelper.73330/) | Allows for quick evaluation and debugging for armor, items, etc. against character models and other stuff.
 * [Terraria c# crash course](https://docs.google.com/document/d/1xRz3kFNbewb8DI29AKXuyi6O327IcxlgihZ7sdK_IuE/edit?usp=sharing)
