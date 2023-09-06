@@ -1,200 +1,199 @@
 ___
 
-**[I don't want to just play mods, I want to make them](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-developers)**
+**[모드를 플레이만 하고 싶지 않고, 만들기도 하고 싶어요.](tModLoader-guide-for-developers-kokr)**
 
 ___
 
-**[I don't want to just play mods, I want to contribute to tModLoader](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-contributors)**
+**[모드를 플레이만 하고 싶지 않고, tModLoader에도 기여하고 싶어요.](tModLoader-guide-for-contributors-kokr)**
 
 ___
 
-## Steam Installation
-To install [tModLoader](https://store.steampowered.com/app/1281930/tModLoader) on Steam, you need to own [Terraria](https://store.steampowered.com/app/105600/Terraria) on Steam.
-Simply browse for [tModLoader](https://store.steampowered.com/app/1281930/tModLoader/) on Steam and install it.
-The tModLoader installation will exist alongside the vanilla installation, allowing you to play both vanilla and modded without the hassle of reinstalling vanilla. 
-Note that users using Family Share to install Terraria will need to follow the [Steam Family Share Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#steam-family-share-installation) instructions below.
+## 스팀 설치
+스팀에서 [모드로더](https://store.steampowered.com/app/1281930/tModLoader)를 설치하려면, 먼저 스팀에서 [테라리아](https://store.steampowered.com/app/105600/Terraria)를 보유하고 있어야 합니다.
+테라리아를 보유하고 있다면 스팀에서 '[tModLoader](https://store.steampowered.com/app/1281930/tModLoader/)'를 검색하고 설치하면 됩니다.
+모드로더는 바닐라와 별도로 설치되어 바닐라를 재설치하는 번거로움없이 바닐라와 모드를 모두 플레이할 수 있습니다. 
+Family Share를 사용해 테라리아를 설치하신 분은 하단의 [스팀 가족 공유 설치](tModLoader-guide-for-players-kokr#스팀-가족-공유-설치)을 참고하여 주시기 바랍니다.
 
-By default, the current stable version of tModLoader will be installed by Steam. Currently the stable version is based on Terraria v1.4.4 content.
+기본적으로 스팀은 현재 모드로더의 stable 버전을 설치합니다. 현재의 stable 버전은 테라리아 1.4.4 버전의 콘텐츠에 기반하고 있습니다.
 
-### Beta Branches
-tModLoader updates regularly. Most users will want to use the default release, but users can use the beta branches feature of Steam to switch to a legacy or preview version of tModLoader. Legacy versions of tModLoader are useful for playing a mod that hasn't been updated to the latest stable tModLoader. Preview versions of tModLoader are useful to test new features or to test new content added in a Terraria update that hasn't made it to stable yet.
+### 베타 버전
+모드로더는 정기적으로 업데이트합니다. 대부분의 유저는 기본 릴리즈를 사용하게 될 것입니다. 필요하다면 유저들은 스팀의 베타 속성을 사용해 레거시나 프리뷰 버전의 모드로더를 사용할 수 있습니다. 레거시 버전의 모드로더를 사용해 최신 stable 버전의 모드로더로 업데이트되지 않은 모드를 플레이할 수 있습니다. 프리뷰 버전의 모드로더는 stable 버전에 추가되지 않은 새 기능이나 테라리아의 콘텐츠를 테스트하는 데 사용할 수 있습니다.
 
-> **Note:** If you are switching tModLoader versions to use a particular mod, be aware that other mods you enjoy might not be on the version you switch to, so you might not be able to use all the mods you want together. This is particularly true for preview versions of tModLoader.
+> **주의사항:** 다른 버전의 모드로더를 사용할 때, 여러분이 원하는 모드가 해당 모드로더 버전에서 사용가능하지 않을 수 있습니다. 따라서 여러분이 원하는 모드들을 한번에 플레이할 수 없을 가능성이 큽니다. 프리뷰 버전의 모드로더에서는 그럴 가능성이 더욱 큽니다.
 
-Here are the available options:
-* `default/None` - This is the stable version that we expect players to use. It is currently based on Terraria 1.4.4.9 content. Users in the middle of a 1.4.3 playthrough should switch back to to `1.4.3-legacy`.
-* `1.3-legacy` - This is the latest 1.3 release. There are a few fondly remembered mods only available on 1.3 tModLoader.
-* `1.4.3-legacy` - This is the latest 1.4.3 release. This is where many users currently playing the game should be, especially those waiting for mods to update to 1.4.4. 
-* `1.4.4-preview` - This version contains upcoming changes. This is where we test new features. Users should be aware that playing through the game on a preview version is not recommended.
+다음은 선택 가능한 옵션입니다.:
+* `default/None` - 이것이 일반적인 플레이어들이 사용할 stable 버전입니다. 현재는 테라리아 1.4.4.9 버전에 기반하고 있습니다. 1.4.3버전에서 플레이중이던 플레이어는 `1.4.3-legacy`버전을 선택해야 합니다.
+* `1.3-legacy` - 1.3 모드로더의 최신 버전입니다. 많은 사랑을 받던 몇몇 모드들은 1.3 버전에서만 플레이할 수 있습니다.
+* `1.4.3-legacy` - 1.4.3 모드로더의 최신 버전입니다. 1.4.4 버전의 모드로더로 업데이트되지 않은 모드를 플레이하던 플레이어들은 이 버전에 남아있어야 합니다.
+* `1.4.4-preview` - 이 버전의 모드로더는 곧 업데이트될 변경점들을 담고 있습니다. 이곳은 우리가 새로운 변경점들을 테스트하는 곳이기도 합니다. 유저들은 프리뷰 버전에서 게임을 플레이하는 것이 추천되지 않는다는 것을 명심하여야 합니다.
 
-### To access 1.3 (Legacy tModLoader) and other Beta options
-Follow the instructions below to switch to a different version of tModLoader in Steam. If you are a GOG user or otherwise need to manually install a specific version, use the [Manual Installation](https://github.com/tModLoader/tModLoader/wiki/tModLoader-guide-for-players#manual-installation) instructions instead.
+### 1.3 (레거시 모드로더)와 기타 베타 옵션을 사용하는 방법
+아래 지침에 따라 Steam에서 다른 버전의 티모드로더로 전환하세요. GOG 사용자이거나 특정 버전을 수동으로 설치해야 하는 경우, [수동 설치](tModLoader-guide-for-players-kokr#수동-설치) 지침을 따르세요.
 
-**Video Instructions:**
+**동영상 지침:**
 
-If these [Video instructions](https://gfycat.com/AcidicDangerousAmericanwirehair) are unclear, read the **Written Instructions** below.     
+이 [동영상 지침](https://gfycat.com/AcidicDangerousAmericanwirehair)이 명확하지 않은 경우, 아래의 **글 지침**을 읽어보세요.     
 ![](https://thumbs.gfycat.com/AcidicDangerousAmericanwirehair-size_restricted.gif)     
 
-<details><summary>Written Instructions:</summary><blockquote>
+<details><요약>글 지침:</summary><blockquote>
 
- Go to Library: 
+ 라이브러리로 이동합니다: 
 
 ![image](https://user-images.githubusercontent.com/59670736/169886058-3eb1b43c-a113-468b-8213-ef0bcccc8e01.png)
 
- Find tModLoader:
+ tModLoader를 찾습니다:
 
 ![image](https://user-images.githubusercontent.com/59670736/169886128-43f95278-a2a4-4b13-bb7c-1b670c81b657.png)
 
- Right Click tModLoader:
+ tModLoader를 우클릭합니다:
 
 ![image](https://user-images.githubusercontent.com/59670736/169886174-dfe0612b-75d9-4469-8f13-be3649fd35fc.png)
 
- Click Properties to Open the Steam Game Control Panel
+ 속성을 클릭하여 Steam 게임 제어판을 엽니다.
 
 ![image](https://user-images.githubusercontent.com/59670736/169886269-f3a0e854-bbe6-4c2f-ab4c-6980406fea51.png)
 
- Select Betas
+ 베타를 선택합니다.
 
 ![image](https://user-images.githubusercontent.com/59670736/169886307-e60be211-d331-443f-bcde-109f61c23323.png)
 
- In the dropdown, select whichever beta you want
+ 드롭다운 메뉴에서 원하는 베타를 선택합니다.
 
 ![image](https://user-images.githubusercontent.com/59670736/169886370-5a340164-ccfe-4520-a3f5-515fd81671cf.png)
 
- Close the Prompt (no code required)
+ 창을 닫습니다(코드 필요 없음).
 
 ![image](https://user-images.githubusercontent.com/59670736/169886435-b9cd7a18-eeb9-46f8-a41f-3dc450be8702.png)
 
 </blockquote></details>
 
-### How to uninstall?
-Simply right-click tModLoader -> Manage -> Uninstall.
-Your vanilla install will be unharmed.
+### 어떻게 삭제하나요?
+tModLoader -> 관리 -> 제거를 마우스 오른쪽 버튼으로 클릭하기만 하면 됩니다.
+바닐라 설치는 영향받지 않습니다.
 
-### Steam Family Share Installation
-For some reason, if you don't own Terraria and are instead using a family shared Terraria, tModLoader won't launch and will take you to the Steam store. This is a limitation on Steam's end, however workarounds exist for both 1.4.X and 1.3 versions
-Please note that these workarounds do not allow for Steam Multiplayer and thus you will need to use `IP connect` options for multiplayer
+### 스팀 가족 공유 설치
+어떤 이유로 테라리아를 소유하지 않고 가족 공유 테라리아를 사용 중인 경우, tModLoader가 실행되지 않고 Steam 상점으로 이동합니다. 이는 Steam 측의 제한이지만 1.4.X 및 1.3 버전 모두에 대한 해결 방법이 있습니다.
+이러한 해결 방법으로는 Steam 멀티플레이어를 사용할 수 없으므로 멀티플레이어를 사용하려면 'IP 연결' 옵션을 사용해야 합니다.
 
 
-On the 1.4.X version, the workaround is to install tModLoader following the Manual Installation instructions and launch it using the `start-tModLoaderFamilyShare.bat/sh` included in the files. Alternatively, if you are able to get Steam to download the files in the Steam Client, that also works in theory, but has seen varying success among users.
-You may also choose to setup this launch as a `non-steam game` in your library to enable steam overlay in game.
+1.4.X 버전의 경우, 해결 방법은 수동 설치 지침에 따라 tModLoader를 설치하고 파일에 포함된 `start-tModLoaderFamilyShare.bat/sh`를 사용하여 실행하는 것입니다. 또는 Steam 클라이언트에서 파일을 다운로드할 수 있는 경우, 이론적으로는 작동하지만 사용자마다 실행가능 여부가 다릅니다.
+라이브러리에서 이 파일을 '비스팀 게임'으로 설정하여 게임에서 Steam 오버레이를 활성화할 수도 있습니다.
 
-On the 1.3 version, a workaround is to install tModLoader through steam as normal and then copy the `steam_appid.txt` file from the Terraria install folder to the tModLoader install folder, replacing the existing file.
+1.3 버전에서의 해결 방법은 정상적으로 Steam을 통해 tModLoader를 설치한 다음, Terraria 설치 폴더의 `steam_appid.txt` 파일을 기존 파일을 대체하여 tModLoader 설치 폴더에 복사하는 것입니다.
 
-## Manual Installation
-This installation is necessary for players who have purchased Terraria from GOG or who otherwise want to install a particular version of tModLoader.
+## 수동 설치
+이 설치는 GOG에서 Terraria를 구매했거나 특정 버전의 tModLoader를 설치하고자 하는 플레이어에게 필요합니다.
 
-Installing tModLoader is relatively easy.
+tModLoader 설치는 비교적 쉽습니다.
 
-1. Goto the **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download the tModLoader release you want.
-    1. `Default/None/1.4.4`: Visit **[latest](https://github.com/tModLoader/tModLoader/releases/latest)** and download `tModLoader.zip`
-    2. `1.3`: Visit [v0.11.8.9](https://github.com/tModLoader/tModLoader/releases/tag/v0.11.8.9) and download the file corresponding to your operating system
-    3. `1.4.3`: Visit the [releases page](https://github.com/tModLoader/tModLoader/releases) and find the latest entry that mentions 1.4.3. Expand the section labeled "Assets" and click to download the "tModLoader.zip" file.
-    4. `1.4.4-preview`: The download for the preview version of tModLoader for can be found by visiting the [releases page](https://github.com/tModLoader/tModLoader/releases). Find the most recent entry that has "preview" in the name. Expand the section labeled "Assets" and click to download the "tModLoader.zip" file. You'll need to regularly manually install new versions of 1.4.4-preview if you want to keep up to date with changes. 
-2. Unzip the **contents** of the zip you downloaded to a folder named `tModLoader` either next to or nested inside the Terraria install folder. 
-On 1.4, if the folder contains a 'Build' folder, you will need to remove this intermediate folder and bring the contents up one level. (GOG usually installs to `C:\GOG Games`, and Steam to `C:\Program Files (x86)\Steam\steamapps\common\Terraria`. See [this video](https://gfycat.com/SelfreliantAssuredIsabellineshrike) to find the steam installation location if you customized it.) (If you are on linux and own the game on GOG, the nested option inside `Terraria\game` is preferred) If you don't know how to unzip a zip file, get someone who knows how to use a computer to help you.
+1. **[releases](https://github.com/tModLoader/tModLoader/releases)** 페이지로 이동하여 원하는 tModLoader 릴리즈를 다운로드합니다.
+    1. 'Default/None/1.4.4': **[latest](https://github.com/tModLoader/tModLoader/releases/latest)** 페이지로 이동하여 `tModLoader.zip`을 다운로드합니다.
+    2. `1.3`: [v0.11.8.9](https://github.com/tModLoader/tModLoader/releases/tag/v0.11.8.9)를 방문하여 운영체제에 맞는 파일을 다운로드합니다.
+    3. `1.4.3`: [releases page](https://github.com/tModLoader/tModLoader/releases)를 방문하여 1.4.3이 언급된 최신 항목을 찾습니다. "Assets"라고 표시된 섹션을 확장하고 "tModLoader.zip" 파일을 클릭하여 다운로드합니다.
+    4. `1.4.4-preview`: tModLoader의 프리뷰 버전 다운로드는 [releases page](https://github.com/tModLoader/tModLoader/releases)에서 확인할 수 있습니다. 이름에 "preview"가 있는 가장 최근 항목을 찾습니다. "Assets"라고 표시된 섹션을 확장하고 "tModLoader.zip" 파일을 클릭하여 다운로드합니다. 변경 사항을 최신 상태로 유지하려면 정기적으로 1.4.4-프리뷰의 새 버전을 수동으로 설치해야 합니다. 
+2. 다운로드한 압축 파일의 **내용물**를 Terraria 설치 폴더 옆 또는 폴더 안에 있는 `tModLoader`라는 이름의 폴더에 압축을 풉니다. 
+1.4 버전에서 폴더에 'Build' 폴더가 포함되어 있다면, 이 중간 폴더를 제거하고 내용을 한 단계 위로 올려야 합니다. (GOG는 보통 `C:\GOG Games`에, Steam은 `C:\Program Files (x86)\Steam\steamapps\common\Terraria`에 설치합니다. 사용자 지정한 경우 Steam 설치 위치를 찾으려면 [이 동영상](https://gfycat.com/SelfreliantAssuredIsabellineshrike)을 참조하세요.) (리눅스를 사용 중이고 GOG에서 게임을 소유하고 있는 경우, '테라리아\게임' 안에 중첩된 옵션을 권장합니다.) 압축 파일의 압축을 푸는 방법을 모른다면, 컴퓨터 사용법을 아는 사람에게 도움을 요청하세요.
 
-    * **Option 1, side-by-side (Recommended)**:    
+    * **옵션 1, 나란히 (권장)**:    
 ![](https://i.imgur.com/gmrBMSO.png)    
-    * **Option 2, nested**:    
+    **옵션 2, 중첩**:    
 ![](https://i.imgur.com/YWaqZPO.png)    
-    * **DO NOT** install the tModLoader files directly into the Terraria folder. This option not supported for GOG on Mac.
-3. [This step applies to 1.3 ONLY] Remove or Add the Steam files depending on which version of the game you own:
-    1. If you are using the GOG version of Terraria, delete the Steam file from the folder you just extracted tModLoader into (these files might already be deleted from the zip you downloaded):
+    * **설치하지 마세요** tModLoader 파일을 테라리아 폴더에 직접 설치하지 마세요. 이 옵션은 Mac의 GOG에서는 지원되지 않습니다.
+3. [이 단계는 1.3에만 적용됨] 소유한 게임 버전에 따라 Steam 파일을 제거하거나 추가합니다:
+    1. 테라리아의 GOG 버전을 사용 중인 경우, 방금 tModLoader를 추출한 폴더에서 Steam 파일을 삭제합니다(다운로드한 압축 파일에서 이미 삭제되었을 수 있음):
         * Windows: `steam_api.dll`
-        * Linux: `lib/libsteam_api.so` and `lib64/libsteam_api.so`
+        * Linux: `lib/libsteam_api.so` 및 `lib64/libsteam_api.so`
         * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib`
-    2. If you are using the Steam version of Terraria, if the Steam files are missing from the zip, copy them from your Terraria install to the tModLoader install:
-        * Copy the `steam_appid.txt`, then, depending on your platform:
-            * Windows: `steam_api.dll` and `CSteamworks.dll`
-            * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so`, and `lib64/libCSteamworks.so`
-            * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` and `tModLoader.app/Contents/MacOS/osx/CSteamworks`
-5.  [1.4 ONLY] GoG users will need to install Steam if they haven't already. Our Mod Browser uses some of the steam install files to facilitate accessing the Steam Workshop. You should NOT need an account/be logged in for this to work.
-   1. Special Note for Linux: If your steam installation is not recognized (Error "unable to access steam workshop"), try uninstalling it and reinstalling Steam from the APT repositories via the terminal
-6. Done. You can now make a desktop shortcut for tModLoader and launch tModLoader from that. (The file `start-tModLoader.bat` launches the game, that is what you could make a shortcut to.)
+    2. Steam 버전의 테라리아를 사용하는 경우, 압축 파일에 Steam 파일이 누락된 경우 테라리아 설치 파일에서 tModLoader 설치 파일로 복사하세요:
+        * 사용 중인 플랫폼에 따라 `steam_appid.txt`를 복사합니다:
+            * Windows: `steam_api.dll` 및 `CSteamworks.dll`
+            * Linux: `lib/libsteam_api.so`, `lib/libCSteamworks.so`, `lib64/libsteam_api.so` 및 `lib64/libCSteamworks.so`
+            * Mac: `tModLoader.app/Contents/MacOS/osx/libsteam_api.dylib` 및 `tModLoader.app/Contents/MacOS/osx/CSteamworks`
+5.  [1.4 전용] GoG 사용자는 아직 설치하지 않은 경우 Steam을 설치해야합니다. 모드 브라우저는 Steam 설치 파일 중 일부를 사용하여 Steam 창작마당에 쉽게 액세스할 수 있습니다. 이 기능을 사용하기 위해 계정이 필요하거나 로그인할 필요는 없습니다.
+   1. Linux용 특별 참고 사항: Steam 설치가 인식되지 않는 경우("Steam 창작마당에 액세스할 수 없음" 오류), 터미널을 통해 APT 저장소에서 Steam을 제거한 후 다시 설치해 보세요.
+6. 완료되었습니다. 이제 tModLoader에 대한 바탕 화면 바로 가기를 만들고 거기에서 tModLoader를 실행할 수 있습니다. (`start-tModLoader.bat` 파일은 게임을 시작하므로 바로 가기를 만들 수 있습니다.)
 
-Tip: Here is an easy way to find where your Terraria files are located: ([video example](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
+팁: 테라리아 파일의 위치를 쉽게 찾는 방법은 다음과 같습니다: ([동영상 예시](https://gfycat.com/SelfreliantAssuredIsabellineshrike))
 
-1. Locate Terraria in your Steam game library, right click it and click 'Properties'
-2. Browse to the 'Local Files' tab and click on the 'Browse local files...' button
-3. You are now in your Terraria folder (this is where you should install tModLoader)
+1. Steam 게임 라이브러리에서 테라리아를 찾아 마우스 오른쪽 버튼으로 클릭하고 '속성'을 클릭합니다.
+2. '로컬 파일' 탭을 찾아 '로컬 파일 찾아보기...' 버튼을 클릭합니다.
+3. 이제 테라리아 폴더로 이동합니다(이 폴더에 tModLoader를 설치해야 합니다).
 
-### Manual Installation Common Issues
-Windows 1.3 only: If the game doesn't launch at all, you might not have .NET 4.5 or XNA 4.0 installed. Download and run both installers:
+### 수동 설치 일반 문제
+Windows 1.3만 해당: 게임이 전혀 실행되지 않는다면, .NET 4.5 또는 XNA 4.0이 설치되어 있지 않을 수 있습니다. 두 인스톨러를 모두 다운로드하여 실행하세요:
 1. [Microsoft .NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=30653)
-2. [Microsoft XNA Framework Redistributable 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
+2. [Microsoft XNA 프레임워크 재배포 가능 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=20914)
 
-### How to uninstall?
+### 어떻게 제거하나요?
 
-1. Open Steam, go to your game library section and locate Terraria.
-2. Let Steam **[verify the integrity of game files](https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)** for Terraria, this will reconfigure your game files to run vanilla.
-4. Done. You can launch Terraria as usual.
+1. Steam을 열고 게임 라이브러리 섹션으로 이동하여 테라리아를 찾습니다.
+2. 2. Steam **[게임 파일 무결성 확인](https://support.steampowered.com/kb_article.php?ref=2037-QEUH-3335)**을 통해 테라리아를 실행하면 게임 파일이 바닐라 버전으로 재구성됩니다.
+4. 완료. 평소처럼 테라리아를 실행할 수 있습니다.
 
-If you use GOG, simply delete the tModLoader folder you made before. Your worlds and players will be saved.
+GOG를 사용하는 경우, 이전에 만든 tModLoader 폴더를 삭제하면 됩니다. 여러분의 월드와 플레이어가 저장됩니다.
 
-## Downgrade tModLoader
-1.4 tModLoader updates every month. Sometimes a mod you are using fails to update in a timely manner and will cease to work with the latest tModLoader 1.4 release. You can manually downgrade if this is the case. To manually downgrade, find the latest release for the version you used to use on **[releases](https://github.com/tModLoader/tModLoader/releases)** page and download it. It is a `tModLoader.zip` file. For example, if you launch tModLoader and it recently updated to `v2022.06+` and it stopped working with an important mod, you can find the latest `v2022.05+` release and download it. After downloading, open up the tModLoader install directory and delete all the files. Make sure you are in the install folder and not the saves folder. To find the install directory, right click on tModLoader, click `Manage`, then `Browse Local Files`. This [video](https://giant.gfycat.com/SoulfulImpoliteBigmouthbass.mp4) shows that process. After deleting the original files, you can take the files from the .zip you downloaded and put them in the install folder. This [video](https://giant.gfycat.com/RashHardAmurstarfish.mp4) shows this process. Once you know the outdated mod updated, you can delete all files in the install directory and use steam to verify game integrity to upgrade back to the current tModLoader release.  
+## tModLoader 다운그레이드하기
+1.4 tModLoader는 매달 업데이트됩니다. 때때로 사용 중인 모드가 적시에 업데이트되지 않아 최신 tModLoader 1.4 릴리스에서 작동이 중단될 수 있습니다. 이 경우 수동으로 다운그레이드할 수 있습니다. 수동으로 다운그레이드하려면 **[릴리즈](https://github.com/tModLoader/tModLoader/releases)** 페이지에서 사용하던 버전의 최신 릴리즈를 찾아서 다운로드하세요. 다운로드 파일은 `tModLoader.zip` 파일입니다. 예를 들어, 최근 `v2022.06+`로 업데이트된 tModLoader를 실행했는데 중요한 모드에서 작동이 멈췄다면, 최신 `v2022.05+` 릴리스를 찾아 다운로드하면 됩니다. 다운로드가 완료되면 tModLoader 설치 디렉토리를 열고 모든 파일을 삭제합니다. 저장 폴더가 아닌 설치 폴더에 있는지 확인하세요. 설치 디렉토리를 찾으려면 tModLoader를 마우스 오른쪽 버튼으로 클릭하고 `관리`를 클릭한 다음 `로컬 파일 찾아보기`를 클릭합니다. 이 [동영상](https://giant.gfycat.com/SoulfulImpoliteBigmouthbass.mp4)은 그 과정을 보여줍니다. 원본 파일을 삭제한 후 다운로드 한 .zip에서 파일을 가져와 설치 폴더에 넣을 수 있습니다. 이 [비디오](https://giant.gfycat.com/RashHardAmurstarfish.mp4)는이 과정을 보여줍니다. 오래된 모드가 업데이트되었음을 확인했다면, 설치 디렉터리에 있는 모든 파일을 삭제하고 Steam을 사용하여 게임 무결성을 확인하여 현재 tModLoader 릴리스로 다시 업그레이드할 수 있습니다.  
 
-To use 1.3, simply select `1.3-legacy` in the tModLoader betas menu: [video](https://giant.gfycat.com/ConsiderateClutteredBorer.mp4)
+1.3을 사용하려면 tModLoader 베타 메뉴에서 '1.3-legacy'를 선택하기만 하면 됩니다: [동영상](https://giant.gfycat.com/ConsiderateClutteredBorer.mp4)
 
-## Dual Install - Have 1.3 and 1.4 tModLoader installed at the same time
-You can keep 1.3 and 1.4 tModLoader installed at the same time if you utilize Steams ability to add non-Steam games. To do this, first switch to `1.3-legacy` and make sure the download finished. Open the install folder and copy all the files. Go up one level and make a tModLoader13 folder. Go into the tModLoader13 folder and paste the files. In Steam, switch back to the default beta branch on tModLoader. Next, click on the `Games` menu and click `Add a Non-Steam Game to My Library`. Click `Browse...` and navigate to the tModLoader13 folder, most likely this will be "C:\Program Files (x86)\Steam\steamapps\common\tModLoader13". Click on "tModLoader.exe", click "Open", then click "Add Selected Programs". Finally, right click on the 2nd tModLoader entry in your library and click properties, then change "tModLoader" to "tModLoader 1.3" and close the window. Now you have the legacy tModLoader and the auto-updating 1.4 tModLoader both in your library. 
+## 듀얼 인스톨 - 1.3과 1.4 tModLoader를 동시에 설치합니다.
+스팀이 아닌 게임을 추가하는 스팀 기능을 활용하면 1.3과 1.4 tModLoader를 동시에 설치할 수 있습니다. 이렇게 하려면 먼저 '1.3-legacy'로 전환하고 다운로드가 완료되었는지 확인합니다. 설치 폴더를 열고 모든 파일을 복사합니다. 한 단계 위로 이동하여 tModLoader13 폴더를 만듭니다. tModLoader13 폴더로 이동하여 파일을 붙여넣습니다. Steam에서 기본 베타 브랜치인 tModLoader로 다시 전환합니다. 다음으로 `게임` 메뉴를 클릭하고 `내 라이브러리에 스팀이 아닌 게임 추가`를 클릭합니다. 찾아보기...`를 클릭하고 tModLoader13 폴더로 이동합니다(대부분 "C:\Program Files (x86)\Steam\steamapps\common\tModLoader13"에 위치할 것입니다). "tModLoader.exe"를 클릭하고 "열기"를 클릭한 다음 "선택한 프로그램 추가"를 클릭합니다. 마지막으로 라이브러리에서 두 번째 tModLoader 항목을 마우스 오른쪽 버튼으로 클릭하고 속성을 클릭한 다음 "tModLoader"를 "tModLoader 1.3"으로 변경하고 창을 닫습니다. 이제 라이브러리에 레거시 tModLoader와 자동 업데이트되는 1.4 tModLoader가 모두 있습니다. 
 
-## Migrate Everything From 1.3 to 1.4
-For the most part, the transition from 1.3 to 1.4 should be a clean start. The 2 are practically different games, and available mods won't match up. If you want to, however, you can migrate existing mods, worlds, and players.
-### Mods
-Be aware the most of the mods you used on 1.3 might not be on 1.4. You can manually search for mods in the "Download Mods" menu, or you can use a modpack file to attempt to download all of them in one go. First, open up the 1.3 saves folder and find the enabled.json file in the Mods folder, this might be in `\Documents\My Games\Terraria\ModLoader\Mods\enabled.json`. Open up 1.4 tModLoader, click `Workshop`, `Mod Packs`, and then click `Open Mod Pack Folder`. Paste the enabled.json file that you copied earlier into this folder. Click `Back` and then `Mod Packs` to refresh the menu. You should see an entry for "enabled". Click `View Mods in Mod Browser` then click `Download All`. You'll most likely get a message that not all mods were found on the mod browser. If you do, simply click the download button on each mod in the listing. 
+## 1.3에서 1.4로 모두 마이그레이션하기
+대부분의 경우 1.3에서 1.4로의 전환은 깔끔하게 시작해야 합니다. 두 버전은 사실상 다른 게임이며 사용 가능한 모드가 일치하지 않습니다. 하지만 원하는 경우 기존 모드, 월드, 플레이어를 마이그레이션할 수 있습니다.
+### 모드
+1.3에서 사용했던 대부분의 모드가 1.4에서는 지원되지 않을 수 있습니다. "모드 다운로드" 메뉴에서 수동으로 모드를 검색하거나 모드팩 파일을 사용하여 모든 모드를 한 번에 다운로드할 수 있습니다. 먼저 1.3 저장 폴더를 열고 모드 폴더에서 enabled.json 파일을 찾습니다. 이 파일은 '\\문서\내 게임\테라리아\모드로더\모드\enabled.json'에 있을 수 있습니다. 1.4 tModLoader를 열고, `작업장`, `모드 팩`을 클릭한 다음, `모드 팩 폴더 열기`를 클릭합니다. 앞서 복사한 enabled.json 파일을 이 폴더에 붙여넣습니다. 뒤로`를 클릭한 다음 `모드 팩`을 클릭하여 메뉴를 새로 고칩니다. "활성화됨"이라는 항목이 보일 것입니다. 모드 브라우저에서 모드 보기`를 클릭한 다음 `모두 다운로드`를 클릭합니다. 모드 브라우저에서 모든 모드를 찾을 수 없다는 메시지가 표시될 가능성이 높습니다. 이 경우 목록에 있는 각 모드의 다운로드 버튼을 클릭하기만 하면 됩니다. 
 
-### Players
-Use the in-game menu to migrate players. Cloud players will not show up so you will have to switch to `1.3-legacy` and take them off the cloud if you wish to copy them over.
+### 플레이어
+게임 내 메뉴를 사용해 플레이어를 마이그레이션하세요. 클라우드 플레이어는 표시되지 않으므로 복사하려면 '1.3-legacy'로 전환하고 클라우드에서 플레이어를 제거해야 합니다.
 
-### Worlds
-Use the in-game menu to migrate worlds. Cloud worlds will not show up so you will have to switch to `1.3-legacy` and take them off the cloud if you wish to copy them over.
+### 월드
+게임 내 메뉴를 사용하여 월드를 마이그레이션하세요. 클라우드 월드는 표시되지 않으므로 복사하려면 `1.3-legacy`로 전환한 후 클라우드에서 제거해야 합니다.
 
-## My worlds and characters disappeared when I installed!
-**tModLoader DOES NOT use your vanilla world and player files.**
-The in-game should give you the option to _copy over_ your original vanilla files. This option won't work for players and worlds you have used in Terraria 1.4.
-You do not have to worry about your vanilla saves being modified; they will be copied for modded gameplay use. When you go back to vanilla, you will see your original saves.
+## 설치했을 때 월드와 캐릭터가 사라졌어요!
+**tModLoader는 바닐라 월드와 플레이어 파일을 사용하지 않습니다 **.
+게임 내에서 원본 바닐라 파일을 _복사_할 수 있는 옵션이 제공될 것입니다. 이 옵션은 테라리아 1.4에서 사용했던 플레이어와 월드에서는 작동하지 않습니다.
+바닐라 세이브가 수정되는 것에 대해 걱정할 필요는 없습니다. 수정된 게임플레이에 사용할 수 있도록 복사됩니다. 바닐라로 돌아가면 원래 저장한 내용을 볼 수 있습니다.
 
-tModLoader uses separate folders to store player (.plr) and world (.wld) files, mainly because it will store additional data for them. Your vanilla players and worlds will be stored in: `%UserProfile%\Documents\My Games\Terraria` (for Windows) in the _Players_ and _Worlds_ folders respectively.
+tModLoader는 플레이어(.plr) 및 월드(.wld) 파일을 저장하기 위해 별도의 폴더를 사용하는데, 이는 주로 추가 데이터를 저장하기 때문입니다. 바닐라 플레이어와 월드는 다음 폴더에 저장됩니다: '%사용자 프로필%\문서\내 게임\테라리아'(Windows의 경우)의 _플레이어_ 및 _월드_ 폴더에 각각 저장됩니다.
 
-If the automatic copy doesn't work, copy the "World" and "Player" folders from `%UserProfile%\Documents\My Games\Terraria` to `%UserProfile%\Documents\My Games\Terraria\tModLoader`.
+자동 복사가 작동하지 않는 경우, "World" 및 "Player" 폴더를 `%사용자 프로필%\문서\내 게임\테라리아`에서 `%사용자 프로필%\문서\내 게임\테라리아\tModLoader`로 복사해 주세요.
 
-## How do I download and play mods?
-tModLoader comes with a mod browser. Refer to the [mod browser guide](Mod-Browser) to learn how to download and play mods.
+## 모드를 다운로드하고 플레이하려면 어떻게 하나요?
+tModLoader는 모드 브라우저와 함께 제공됩니다. 모드 브라우저 가이드](모드 브라우저)를 참고하여 모드를 다운로드하고 플레이하는 방법을 알아보세요.
 
-## I have too little memory to run multiple mods!
-Terraria and 1.3 tModLoader are 32-bit applications. In short, this means they are only capable of utilizing up to ~4 GiB of RAM. With a lot of mods, you may run out of memory. The solution is using less mods, unfortunately. Alternatively, you can try using the unofficial 64-bit version of 1.3 tModLoader.
+## 메모리가 너무 부족해서 여러 모드를 실행할 수 없어요!
+테라리아와 1.3 tModLoader는 32비트 애플리케이션입니다. 즉, 최대 4기가바이트의 RAM까지만 사용할 수 있습니다. 모드가 많으면 메모리가 부족할 수 있습니다. 해결책은 안타깝게도 모드를 적게 사용하는 것입니다. 또는 비공식 64비트 버전의 1.3 tModLoader를 사용해 볼 수도 있습니다.
 
-1.4 tModLoader is 64 bit by default, which alleviates this problem.
+1.4 tModLoader는 기본적으로 64비트이므로 이 문제가 완화됩니다.
 
-## I use macOS Catalina. What do I do?
-If you experience any problems, try using the 64-bit version of tModLoader or talk to us on Discord.
+## macOS Catalina를 사용하고 있습니다. 어떻게 해야 하나요?
+문제가 발생하면 64비트 버전의 tModLoader를 사용해보거나 Discord에서 문의해 주세요.
 
-## How Do I Use Mod Packs in 1.4?
-1.4 tModLoader significantly overhauls the Mod Pack feature to provide several additional functionalities.
+## 1.4에서 모드 팩을 어떻게 사용하나요?
+1.4 버전에서는 모드 팩 기능을 대폭 개편하여 몇 가지 추가 기능을 제공합니다.
 
-To start with, save your Enabled Mods as usual.
-The UI will now show a lot of buttons. Let's walkthrough them.
+우선, 평소처럼 활성화된 모드를 저장하세요.
+이제 UI에 많은 버튼이 표시됩니다. 이제 그 버튼들을 살펴보겠습니다.
 ![image](https://user-images.githubusercontent.com/59670736/180901414-3ca8f2f4-c053-4851-8de7-fa617f182db1.png)
 
-First and foremost, I will use two different terms moving forward: 
-A mod pack will refer to a frozen copy of mods that don't update with time.
-A mod collection will refer to a list of mods that are always the latest.
+무엇보다도, 앞으로는 두 가지 다른 용어를 사용하겠습니다: 
+모드 팩은 시간이 지나도 업데이트되지 않는 고정된 모드 사본을 의미합니다.
+모드 컬렉션은 항상 최신인 모드 목록을 의미합니다.
 
-The first 2 buttons operate on the 'Mod Collection' style. 
-Enable Only this List - disables all mods, and than loads only those defined in the collection
-Enable this List - loads mods defined in the collection on top of any existing loaded mods. Useful for stacking collections
+처음 두 개의 버튼은 '모드 컬렉션' 스타일로 작동합니다. 
+이 목록만 활성화 - 모든 모드를 비활성화하고 컬렉션에 정의된 모드만 로드합니다.
+이 목록 활성화 - 기존에 로드된 모드 위에 컬렉션에 정의된 모드를 로드합니다. 컬렉션 스택에 유용합니다.
 
-View List & View Mods in Mod Browser allow you to see what the mods in the pack/collection are, and download them freshly on the mod browser for yourself.
+목록 보기 및 모드 브라우저에서 모드 보기를 사용하면 팩/컬렉션의 모드가 무엇인지 확인하고 모드 브라우저에서 직접 다운로드할 수 있습니다.
 
-Update List with Enabled - Updates the mod pack or collection with the currently enabled set of mods. Will delete or add to the collection/pack as required
+활성화된 목록 업데이트 - 현재 활성화된 모드 세트로 모드 팩 또는 컬렉션을 업데이트합니다. 필요에 따라 컬렉션/팩을 삭제하거나 추가합니다.
 
-Import Pack (Local) - Tells tModLoader to check the mod pack for the frozen set of mods to load. Any mods loaded from the Pack, while active, will override any existing mods you have downloaded. When a Mod Pack is active, it will shows as such in the Top Right Corner.
+팩 가져오기(로컬) - tModLoader가 고정된 모드 팩에서 로드할 모드 세트를 확인하도록 지시합니다. 팩에서 로드된 모든 모드는 활성화되어 있는 동안 다운로드한 기존 모드보다 우선합니다. 모드 팩이 활성화되면 오른쪽 상단에 해당 팩이 표시됩니다.
 
-Remove Pack (Local) - Undoes the changes made by Import Pack (Local)
+팩 제거(로컬) - 팩 가져오기(로컬)로 변경한 내용을 취소합니다.
 
-Export Pack Instance - Exports a copy of the ModConfigs and <ModPackName>/Mods folder to InstallDirectory/<ModPackName> so that you can either setup a second instance of tModLoader with an older version OR quickly setup a server with the pack. Check InstallDirectory/<ModPackName>/SaveData/Mods for an install.txt file listing all the workshop publish ids and a tmlversion.txt labelling the tml version to use.
+팩 인스턴스 내보내기 - ModConfigs 및 <모드팩명>/Mods 폴더의 사본을 InstallDirectory/<모드팩명>으로 내보내서 이전 버전으로 tModLoader의 두 번째 인스턴스를 설정하거나 팩이 포함된 서버를 빠르게 설정할 수 있도록 합니다. InstallDirectory/<모드팩이름>/SaveData/Mods에서 모든 창작마당 게시 ID가 나열된 install.txt 파일과 사용할 tml 버전이 표시된 tmlversion.txt를 확인합니다.
 
-Delete Instance - Deletes the exported instance files created by Export Pack Instance
-
+인스턴스 삭제 - 팩 인스턴스 내보내기로 생성된 내보낸 인스턴스 파일을 삭제합니다.
