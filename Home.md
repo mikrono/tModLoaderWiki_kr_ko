@@ -59,7 +59,7 @@ ___
 
 ## 초보자 가이드
 이 가이드들은 API를 처음 접하는 사람이 사용할 수 있도록 쉽게 작성되었습니다. 이 가이드들의 목표는 여러분이 tML과 친숙해지고 중요한 클래스들에 대해 배울 수 있도록 돕는 것입니다.
-- [기본 가이드 사전지식](Basic-Prerequisites-kokr)
+- [기본 가이드 필요 조건](Basic-Prerequisites-kokr)
 - [스프라이트](Spriting-kokr)
 - [기본 탄약 가이드](Basic-Ammo-kokr)
 - [기본 Autoloading 가이드](Basic-Autoload-kokr)
@@ -90,7 +90,7 @@ ___
 
 ## 중급자 가이드
 이 가이드들은 초급자 가이드보다 어려운 주제들을 다룹니다. 하지만 고급적이나 전문가 수준은 아닙니다.
-- [중급 가이드 사전지식](Intermediate-Prerequisites-kokr)
+- [중급 가이드 필요 조건](Intermediate-Prerequisites-kokr)
 - [중급 Git 및 모드 관리 가이드](Intermediate-Git-&-mod-management-kokr)
 - [C#6을 사용한 중급 모딩 가이드](Intermediate-modding-with-c%236-kokr)
 - [C#7을 사용한 중급 모딩 가이드](Intermediate-modding-with-c%237-kokr)
@@ -100,7 +100,7 @@ ___
 
 ## 고급자 가이드
 이 가이드들은 충분히 어려운 주제를 다루고 있어, 중급자 수준 마스터 이상의 숙련도가 있는 사람들에게 적합합니다.
-- [고급 가이드 사전지식](Advanced-Prerequisites-kokr)
+- [고급 가이드 필요 조건](Advanced-Prerequisites-kokr)
 - [고급 각속도 및 선속도 가이드](Advanced-Angular-velocity-and-Linear-velocity-kokr)
 - [고급 커스텀 UI 가이드](Advanced-guide-to-custom-UI-kokr)
 - [Mod Not Fully Unloaded 문제 해결 가이드](Fixing-Mod-Not-Fully-Unloaded-kokr)
@@ -111,7 +111,7 @@ ___
 
 ## 전문가 가이드
 전문가 가이드는 고급자 가이드보다 특별히 어렵지 않습니다. 다만, 좀 더 심화된 주제를 주로 다루게 됩니다. 전문가 가이드들은 여러분이 좀 더 복잡한 주제에 관해 배우고 싶거나 여러분이 개발하는 모드의 질을 향상시키기 위해 사용될 수 있습니다.
-- [전문가 가이드 사전지식](Expert-Prerequisites-kokr)
+- [전문가 가이드 필요 조건](Expert-Prerequisites-kokr)
 - [전문가 크로스 모드 콘텐츠 가이드](Expert-Cross-Mod-Content-kokr) -- Call, WeakReferences, modReferences, recipe
 - [전문가 IL 조작](Expert-IL-Editing-kokr) - MonoMod를 사용하여 게임 패치
 - [전문가 타 모드 IL 조작](Patching-Other-Mods-Using-MonoMod-kokr)
